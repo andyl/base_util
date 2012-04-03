@@ -3,24 +3,25 @@
 
 export TZ="America/Los_Angeles"
 
-source ~/.utilpath
+source ~/.util_dir     # defines $UTIL_DIR
+source ~/.util_path    # defines $UTIL_PATH
 
-export PATH=$UTILPATH/util/bin:./bin:/usr/bin:/bin:$PATH:
+export PATH=$UTIL_PATH:./bin:/usr/bin:/bin:$PATH:   # './bin' avoids 'bundle exec'
+export RAILS_ENV=development
 
-alias re="rbenv"
+##############################################################################
+
 if [ -d ~/.rbenv ] ; then 
   export PATH=~/.rbenv/bin:~/.rbenv/libexec:$PATH
   eval "$(rbenv init -)" 
 fi
 
-export RAILS_ENV=development
+if [ -f $UTIL_DIR/pdev_util/inc/_bashrc ] ; then
+  source $UTIL_DIR/pdev_util/inc/_bashrc
+fi
 
-# set bash command line editor to VI mode
-set -o vi
 ##############################################################################
-
 if [ -f ~/.java_env ] ; then source ~/.java_env ; fi 
-
 ##############################################################################
 
 # debugger support for Ruby 1.9.3
@@ -30,25 +31,29 @@ alias fast19="curl https://raw.github.com/gist/1688857/rvm.sh | sh"
 # install gems used for Ruby-IRB (see ~/.irbrc)
 alias irbgems="gem install hirb interactive_editor drx awesome_print wirble"
 
-alias r="rails"
+##############################################################################
+
 alias be="bundle exec"
+alias re="rbenv"
 
 alias va="vagrant"
-alias cs="chef-solo"
-
+alias pp="puppet"
+alias vh="vhost"
 alias xx="exit"
-alias h="history | tail -30"
+alias tm="tmux"
+alias vx="vbox_provision"
 
-alias gopen="gnome-open"
+alias h="history | tail -30"
+alias r="rails"
 alias g="git"
 alias t="thor"
 
+alias ba="cd .."
+alias sc="screen -c ~/util/bin/screenrc/sc.screen"
+alias mm="screen -c ~/util/bin/screenrc/mm.screen"
+
 alias sf="rm -f ~/.cp; ln -s \`pwd\` ~/.cp"           # set focus directory
 alias gf="if [ -d ~/.cp ] ; then cd -P ~/.cp ; fi"    # goto focus directory
-
-alias pp="puppet"
-
-alias vh="vhost"
 
 alias beep="alert beep"
 alias bell="alert bell"
@@ -56,55 +61,29 @@ alias buzz="alert buzz"
 alias ding="alert ding"
 alias ring="alert ring"
 
-##############################################################################
-
-alias vwl='xterm_title "<vc> $USER@`hostname`"; echo L k L > /tmp/s.txt; cd ~/todo/journal; vim -s /tmp/s.txt current.wlog;cls'
-alias vwu='ssh -t fils "w_set_current";echo DONE'
-alias vw='ssh -t  fils run_vw ; cls' 
-alias vg='ssh -t  fils run_vg ; cls' 
-alias fs='ssh -t  fils run_fs ; cls' 
-alias ft='ssh -t  fils run_ft ; cls' 
-alias tt="pgcl -s fils -f todo/gtd/current.gtd"
-alias vp='xterm_title "<vp> $USER@`hostname`"; ssh -t fils "vim -n ~/lcl/pl/current.wlog";cls'
-alias sprk='xterm_title "<sprk> ${PWD##*/}@`hostname`"; cls; spork'
-
-alias we="ssh -t fils run_we"    # irc client
-
-alias tm="tmux"
-
-alias vx="vbox_provision"
 alias rcon="rake_config"
- 
+alias gopen="gnome-open"
+
 ##############################################################################
 
-alias gu='cd $UTILPATH/util'
-alias gb='cd $UTILPATH/util/bin'
-alias gr='cd $UTILPATH/util/bin/rcon'
-alias gs='cd $UTILPATH/util/bin/rcon/sw'
+alias  gu='cd $UTIL_DIR'
 
-alias gd='cd /home/aleak/dl'
-alias ga='cd /home/aleak/apps'
-alias gj='cd /home/aleak/todo/journal'
-alias gp='cd /home/aleak/data/puppet'
-alias gl='cd /home/aleak/data/share/library'
-alias gv='cd /home/aleak/data/media/video'
-alias gt='cd /home/aleak/tst'
+alias gbb='cd $UTIL_DIR/base_util/bin'
+
+alias gpb='cd $UTIL_DIR/pdev_util/bin'
+alias gpr='cd $UTIL_DIR/pdev_util/bin/rcon'
+alias gps='cd $UTIL_DIR/pdev_util/bin/rcon/sw'
+
+alias gd='cd ~/dl'
+alias gj='cd ~/todo/journal'
+alias gp='cd ~/data/puppet'
+alias gl='cd ~/data/share/library'
+alias gv='cd ~/data/media/video'
+alias gt='cd ~/tst'
 alias gn='cd /opt/nginx'
 
-alias glr="cd /home/aleak/lr"
-alias grr="cd /home/aleak/rr"
-
-##############################################################################
-
-alias dhs="ssh alt55.com"
-alias ips="ssh -p 222 root@ipgi"
-alias lns="ssh bamru.net"
-alias lnsp="ssh backup.bamru.net"
-alias lnsb="ssh backup.x440.com"
-
-alias ba="cd .."
-alias sc="screen -c /home/aleak/util/bin/screenrc/sc.screen"
-alias mm="screen -c /home/aleak/util/bin/screenrc/mm.screen"
+alias glr="cd ~/lr"
+alias grr="cd ~/rr"
 
 ##############################################################################
 
@@ -112,7 +91,6 @@ alias more='less'
 alias copy='cp'
 alias move='mv'
 alias dir='ls'
-alias purge="(find . -name .*.swp -delete; find . -name *~ -delete) & > /dev/null"
 
 ##############################################################################
 
@@ -214,6 +192,9 @@ On_IWhite='\e[0;107m'   # White
 
 ##############################################################################
 
+# set bash command line editor to VI mode
+set -o vi
+
 # set the command prompt
 export USRNAME=`whoami`
 export SYSNAME=`hostname`
@@ -223,7 +204,7 @@ export GIT_PS1_SHOWSTASHSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true
 export GIT_PS1_SHOWUPSTREAD="auto"
 
-source ~/util/cfg/git-completion
+source $UTIL_DIR/base_util/cfg/git-completion
 
 PS1="${PSBlue}\u@\h${PSClear}\`__git_ps1\` \w${PSRed}>${PSClear} " 
 
@@ -233,7 +214,6 @@ PROMPT_COMMAND='export PWDS=`pwd_short`;xterm_title "${USRNAME}@${SYSNAME} ${PWD
 
 # Editor Aliases
 alias vim='echo -ne "\033]0;<vim> ${USER}@${HOSTNAME} `pwd_short` \007"; /usr/bin/vim'
-alias es='echo -ne "\033]0;<emacs> ${USER}@${HOSTNAME} `pwd_short` \007"; emacs -nw'
 alias vimm='vim'
 
 EDITOR="vim"

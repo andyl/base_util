@@ -51,19 +51,24 @@ The .util_dir and .util_path files are used in .bashrc to
 reference config files and scripts in the util directories.
 =end
 
+# capture util_dir and util_path
+util_dir  = File.dirname(File.dirname(File.expand_path(__FILE__)))
+util_path = Dir.glob(util_dir + "/*_util/bin").sort
+
+# cd to the home directory
 Dir.chdir(File.expand_path("~"))
+
+# prompt to ensure the user wants to destroy existing dot files (TODO)
 
 # create ~/.util_dir file
 # enables flexible location of the util/bin directory.
 # ~/.util_dir is sourced in .bashrc
-util_dir = File.dirname(File.dirname(File.expand_path(__FILE__)))
 File.open(".util_dir", 'w') {|f| f.puts "export UTIL_DIR=#{util_dir}"}
-puts "UTIL_DIR: #{util_dir}"
+puts " UTIL_DIR: #{util_dir}"
 
 # create ~/.util_path file
 # one path entry for each *_util/bin directory
 # ~/.util_path is sourced in .bashrc
-util_path = Dir.glob(util_dir + "/*_util/bin")
 File.open(".util_path", 'w') {|f| f.puts "export UTIL_PATH=#{util_path.join(':')}"}
 puts "UTIL_PATH: #{util_path}"
 
