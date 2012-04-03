@@ -79,7 +79,7 @@ highlight gNote      ctermfg=gray    ctermbg=black
 " SHARED FUNCTIONS -----
 function! SetMethod() range
 ruby << END
-require '/home/aleak/util/gems/vgtd/lib/vgtd'
+require '/home/aleak/util/pdev_util/gems/vgtd/lib/vgtd'
 def update_field(string, leader, newval)
   task = Gtask.new(string)
   task.update_field(leader, newval)
