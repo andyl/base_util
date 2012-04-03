@@ -1,1 +1,0 @@
-/home/aleak/util/base_util/cfg/_vim
