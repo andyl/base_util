@@ -1,0 +1,16 @@
+[user]
+  name = andyl
+  email = andy@r210.com
+[github]
+  user = andyl
+  token = 422d00fcb57562c2e2d722fdd8a3a8d4
+[color]
+  ui = true
+[alias]
+  c = commit
+  s = status
+  d = diff
+  a = add
+  l = log
+  b = branch
+  co = checkout

@@ -67,10 +67,14 @@ alias gopen="gnome-open"
 ##############################################################################
 
 alias  gu='cd $UTIL_DIR'
+alias gub='cd $UTIL_DIR/base_util'
+alias gup='cd $UTIL_DIR/pdev_util'
 
 alias gbb='cd $UTIL_DIR/base_util/bin'
+alias gbc='cd $UTIL_DIR/base_util/cfg'
 
 alias gpb='cd $UTIL_DIR/pdev_util/bin'
+alias gpc='cd $UTIL_DIR/pdev_util/cfg'
 alias gpr='cd $UTIL_DIR/pdev_util/bin/rcon'
 alias gps='cd $UTIL_DIR/pdev_util/bin/rcon/sw'
 
