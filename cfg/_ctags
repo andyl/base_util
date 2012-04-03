@@ -1,0 +1,10 @@
+--langdef=akl
+--langmap=akl:.txt.otl.md.mkd
+--regex-akl=/^(\*+ .+)/\1/s,structure/
+--regex-akl=/^(#[a-z][a-z0-9]+)/\1/s,structure/
+--regex-akl=/\[\[[^\]]+\]\[([^\]]+)\]\]/\1/r,reference/
+--regex-akl=/\[\[([^\]]+)\]\]/\1/r,reference/
+--regex-akl=/([A-Z][a-z]+([A-Z][a-z]+)+)/\1/r,reference/
+--regex-akl=/([a-z]+:\/\/[A-Za-z0-9.:%?=&_~@\/|-]+)/\1/u,url/
+--regex-akl=/([a-z]+:\/\/[A-Za-z0-9.:%?=&_~@\/|-]+)/\1/u,url/
+--regex-akl=/<< *([A-Za-z_0-9]+) *>>/\1/

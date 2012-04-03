@@ -1,0 +1,5 @@
+gem install wirble 
+gem install drx 
+gem install hirb
+gem install interactive_editor 
+gem install awesome_print

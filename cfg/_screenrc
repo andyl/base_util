@@ -1,0 +1,16 @@
+startup_message off
+vbell off
+escape ``
+autodetach on
+altscreen on
+defflow auto
+defscrollback 10000
+
+bind x remove
+bind s split
+bind - split
+bind i split -v
+bind v split -v
+bind r resize
+bind \' colon quit
+

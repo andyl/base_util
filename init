@@ -1,0 +1,86 @@
+#!/usr/bin/env ruby
+
+=begin
+About this script:
+
+Util directories contain dotfiles and utility scripts.
+
+The goal is to make it FAST to setup new user accounts, 
+configured with the right tools for a specific environment 
+(production, test, development, etc.)
+
+The setup process is:
+1) copy util directories onto your machine (eg to ~/util), 
+   using rcp, rsync, or git-clone
+2) run '~/util/base_util/init' and you're done
+
+Background:
+- there can be one or more util directories
+- each directory has a unique name <name>_util
+- each util directory may contain environment specific setups
+- e.g. 'dev', 'production', etc.
+- each util directory is a separate GIT repo (public or private)
+- all of the util directories must be in the same directory
+- the `base_util` directory has the init script (this script!)
+- all util directories have a bin subdir, for executable scripts
+- all util directories have a cfg subdir, for dotfiles
+- dotfile templates in the cfg subdir must begin with an underscore
+
+It starts with a standard directory structure:
+~/util                   # UTIL_DIR
+  /base_util
+    init
+    /bin                 # UTIL_PATH;
+      scripts...
+    /cfg
+      _dotfiles
+  /your_util
+    /bin                 # UTIL_PATH;
+      scripts...
+    /cfg
+      _dotfiles
+
+You run '~/util/base_util/init' (this script!)
+
+The script produces:
+- ~/.symlinks for each _dotfile (and directory)
+- a file ~/.util_dir with the path to the ~/util directory
+- a file ~/.util_path with path entries for all bin directories
+
+The .util_dir and .util_path files are used in .bashrc to 
+reference config files and scripts in the util directories.
+=end
+
+Dir.chdir(File.expand_path("~"))
+
+# create ~/.util_dir file
+# enables flexible location of the util/bin directory.
+# ~/.util_dir is sourced in .bashrc
+util_dir = File.dirname(File.dirname(File.expand_path(__FILE__)))
+File.open(".util_dir", 'w') {|f| f.puts "export UTIL_DIR=#{util_dir}"}
+puts "UTIL_DIR: #{util_dir}"
+
+# create ~/.util_path file
+# one path entry for each *_util/bin directory
+# ~/.util_path is sourced in .bashrc
+util_path = Dir.glob(util_dir + "/*_util/bin")
+File.open(".util_path", 'w') {|f| f.puts "export UTIL_PATH=#{util_path.join(':')}"}
+puts "UTIL_PATH: #{util_path}"
+
+# create symlinks for each cfg file...
+target_spec = util_dir + "/*_util/cfg/_*"
+target_list = Dir.glob(target_spec).sort
+
+puts "Symlinks for #{util_dir}..."
+
+target_list.each do |path|
+  file_base = path.split('/').last[1..-1]
+  util_base = path.split('/')[-3]
+  file = '.' + file_base
+  system "mv #{file} #{file}.old" if File.exist?(file)
+  system "rm -f #{file}"
+  puts "-> #{util_base}/#{file_base}"
+  system "ln -s #{path} #{file}"
+end
+
+

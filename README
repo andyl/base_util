@@ -1,0 +1,9 @@
+Dotfile and utility scripts.
+
+To use:
+  mkdir ~/util
+  cd ~/util
+  git clone git://github.com/andyl/base_util.git
+  base_util/init
+
+

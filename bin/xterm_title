@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+#
+
+usage = "Usage: xterm_title <title string> - changes the xterm title\n  To test: xterm_title Hello World; sleep 2" 
+abort usage if ARGV.length == 0
+
+print "\e]0;#{ARGV.join(' ')}\a" if ENV['TERM'].nil? || ENV['TERM'].include?('xterm') || ENV['TERM'].include?('screen')
+

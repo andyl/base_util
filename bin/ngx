@@ -1,0 +1,53 @@
+#!/usr/bin/env ruby -w
+
+#
+# manage the nginx server
+# meant to be used on a ubuntu server box
+#
+
+div             = "---"
+ngx_home 	= "/home/aleak/util/server" 
+ngx_conf 	= ngx_home + "/nginx.conf"
+ngx_pid		= ngx_home + "/nginx.pid"
+usage 		= "#{div}\nngx - manages nginx processes\nUsage: ngx [ start | stop | restart | test | list | killall ]\n#{div}"
+
+case
+  when ARGV.length == 0
+    puts usage
+    exit 0
+  when ARGV.first == "start"
+    command = "sudo nginx -c #{ngx_conf}"
+    puts "Starting nginx server"
+    puts "#{command}"
+    puts `#{command}`
+  when ARGV.first == "stop"
+    command = "sudo kill -QUIT `cat #{ngx_pid}`"
+    puts "Stopping nginx"
+    puts "#{command}"
+    puts `#{command}`
+  when ARGV.first == "restart"
+    command = "sudo kill -HUP `cat #{ngx_pid}`"
+    puts "Restarting nginx"
+    puts "#{command}"
+    puts `#{command}`
+  when ARGV.first == "list"
+    command = "ps -aef | egrep '(PID|nginx)' | grep -v grep"
+    puts "Listing nginx processes"
+    puts "#{command}"
+    puts `#{command}`
+  when ARGV.first == "killall"
+    command = "ps axo pid,comm | grep nginx | awk '{ print $1; }' | xargs sudo kill"
+    puts "Killing all nginx processes"
+    puts "#{command}"
+    puts `#{command}`
+  when ARGV.first == "test"
+    puts "Testing nginx Config file"
+    command = "sudo nginx -c #{ngx_conf} -t" 
+    puts "#{command}"
+    puts `#{command}`
+  else 
+    puts usage
+    exit 0
+end
+
+

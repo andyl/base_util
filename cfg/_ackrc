@@ -1,0 +1,7 @@
+--ignore-dir=.idea
+--ignore-dir=.subversion
+--ignore-dir=.rvm
+--ignore-dir=.gem
+--ignore-dir=.gems
+--type-set=wlog=.wlog
+--smart-case

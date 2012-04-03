@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templateSet group="Ruby">
+  <template name="asnt" value="assert_nothing_thrown { $END$ }" description="assert nothing thrown" toReformat="true" toShortenFQNames="true">
+    <context>
+      <option name="JAVA_CODE" value="false" />
+      <option name="JAVA_COMMENT" value="false" />
+      <option name="JAVA_STRING" value="false" />
+      <option name="XML" value="false" />
+      <option name="HTML" value="false" />
+      <option name="JSP" value="false" />
+      <option name="COMPLETION" value="false" />
+      <option name="RUBY" value="false" />
+      <option name="HTML_TEXT" value="false" />
+      <option name="XSL_TEXT" value="false" />
+      <option name="RHTML" value="false" />
+      <option name="CUCUMBER_FEATURE_FILE" value="false" />
+      <option name="CSS" value="true" />
+      <option name="JAVA_SCRIPT" value="false" />
+      <option name="SQL" value="false" />
+      <option name="HAML" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
+  <template name="d" value="Marshal.load(Marshal.dump($OBJECT_TO_COPY$))" description="Copies an object using Marshal.load and Marshal.dump" toReformat="true" toShortenFQNames="true">
+    <variable name="OBJECT_TO_COPY" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_CODE" value="false" />
+      <option name="JAVA_COMMENT" value="false" />
+      <option name="JAVA_STRING" value="false" />
+      <option name="XML" value="false" />
+      <option name="HTML" value="false" />
+      <option name="JSP" value="false" />
+      <option name="COMPLETION" value="false" />
+      <option name="RUBY" value="true" />
+      <option name="HTML_TEXT" value="false" />
+      <option name="XSL_TEXT" value="false" />
+      <option name="RHTML" value="false" />
+      <option name="CUCUMBER_FEATURE_FILE" value="false" />
+      <option name="CSS" value="false" />
+      <option name="JAVA_SCRIPT" value="false" />
+      <option name="SQL" value="false" />
+      <option name="HAML" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
+  <template name="all" value="all? { |$e$| $END$ }" description="all" toReformat="true" toShortenFQNames="true" deactivated="true">
+    <variable name="e" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_CODE" value="false" />
+      <option name="JAVA_COMMENT" value="false" />
+      <option name="JAVA_STRING" value="false" />
+      <option name="XML" value="false" />
+      <option name="HTML" value="false" />
+      <option name="JSP" value="false" />
+      <option name="COMPLETION" value="false" />
+      <option name="RUBY" value="true" />
+      <option name="HTML_TEXT" value="false" />
+      <option name="XSL_TEXT" value="false" />
+      <option name="RHTML" value="false" />
+      <option name="CUCUMBER_FEATURE_FILE" value="false" />
+      <option name="CSS" value="false" />
+      <option name="JAVA_SCRIPT" value="false" />
+      <option name="SQL" value="false" />
+      <option name="HAML" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
+</templateSet>
+

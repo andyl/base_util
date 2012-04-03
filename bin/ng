@@ -1,0 +1,36 @@
+#!/usr/bin/env ruby
+#
+# Commands to start/stop/monitor 
+# phusion passenger and nginx.
+#
+
+opt = ARGV[0]
+
+def ngd(opt) "sudo /etc/init.d/nginx #{opt}"; end
+def ngs(opt) "sudo /opt/nginx/sbin/nginx #{opt}"; end
+def pss(opt) 
+  case opt
+  when "pstat" then "sudo passenger-status --verbose"
+  when "pmem"  then "sudo passenger-memory-stats"
+  end
+end
+
+ngdc = %w(status reload stop start restart)
+ngsc = %w(-t -v)
+apps = %w(apps)
+pcmd = %w(pmem pstat)
+
+exe       = File.basename(__FILE__)
+usage_msg = "Usage: #{exe} [#{(ngdc + apps + pcmd + ngsc).join('|')}]"
+
+abort usage_msg if opt.nil? || opt.empty?
+
+cmd = ngd(opt) if ngdc.include?(opt)
+cmd = ngs(opt) if ngsc.include?(opt)
+cmd = pss(opt) if pcmd.include?(opt)
+cmd = "ls /home/aleak/a/_conf" if apps.include?(opt)
+
+abort "Unrecognized: #{opt}\n#{usage_msg}" if cmd.nil? || cmd.empty?
+
+puts cmd
+system cmd

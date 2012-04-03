@@ -1,0 +1,189 @@
+" PATHOGEN PLUGIN MANAGEMENT
+" from http://www.adamlowe.me/2009/12/vim-destroys-all-other-rails-editors.html
+filetype off 
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+
+" WORKLOG SETUP
+au BufRead,BufNewFile *.worklog set filetype=worklog
+au BufRead,BufNewFile *.wlog    set filetype=worklog
+au BufRead,BufNewFile *.thor    set filetype=ruby
+au BufRead,BufNewFile *.gtd     set filetype=gtd
+au BufRead,BufNewFile *.gta     set filetype=gtd
+
+" CLEAN UP JUNK DATA FILE
+au VimLeave * if filereadable(expand("~/.vim/.netrwhist"))|call delete(expand("~/.vim/.netrwhist"))|endif 
+
+" MATCHIT
+runtime macros/matchit.vim
+
+" ABBREV / TYPO FIXES
+abbrev teh the
+abbrev tihs this
+
+" WEB PREVIEW
+command! Preview :!firefox %<cr>
+
+" MISC STUFF
+syntax on
+set directory=~/.vimtmp,/tmp,.
+set splitright
+set splitbelow
+map go :only<CR>:vsp <cfile><CR>
+set number
+set incsearch
+set visualbell
+set ignorecase
+set smartcase
+set nocompatible
+set laststatus=2
+set printoptions=duplex:long,number:y
+let g:otl_text_view = 1
+let mapleader=','
+imap jj <esc>
+imap kk <esc>
+imap :w <esc>:w
+imap :q <esc>:q
+nmap <space> i~<esc>r
+set statusline=%F%m%r%h%w\ [TYPE=%Y]\ [%{hostname()}]\ [%{$TERM}]\ [%p%%]\ [LEN=%L]\ [%{$PWDS}]
+set title titlestring=<vim>\ %{$USER}@%{hostname()}\ %t\ %m%r%h%w
+
+" from http://stackoverflow.com/questions/2269005/how-can-i-change-the-keybinding-used-to-autocomplete-in-vim
+inoremap <Nul> <C-n>
+
+" MOVE LINE UP/DOWN
+nmap <C-Up> [e
+nmap <C-Down> ]e
+
+" MOVE REGION UP/DOWN
+vmap <C-Up> [egv
+vmap <C-Down> ]egv
+
+" FOR EDITING HELP OUTLINES - OPENS TARGET FILE IN VERTICAL SPLIT WINDOW
+map <F8> :vertical wincmd f<CR>
+
+" INDENTATION AND TABS
+filetype plugin indent on
+set softtabstop=2
+set tabstop=2
+set smarttab
+set shiftwidth=2
+set autoindent
+set expandtab
+set backspace=start,indent
+
+" PRINT COMMANDS
+nmap <leader>pp :! a2ps -c -Plj2p --line-numbers=1 %<cr>
+nmap <leader>p1 :! a2ps -c -Plj2p --line-numbers=1 --portrait  --columns=1 --font-size=9 %<cr>
+nmap <leader>pl :! a2ps -c -Plj2l --line-numbers=1 --landscape --columns=1 --font-size=9 %<cr>
+
+" WINDOW MANIPULATION
+nmap <silent> <C-k> :wincmd k<cr>
+nmap <silent> <C-j> :wincmd j<cr>
+nmap <silent> <C-h> :wincmd h<cr>
+nmap <silent> <C-l> :wincmd l<cr>
+
+" MISC PLUGIN COMMANDS
+nmap <leader>f :CommandT<cr>
+nmap <leader>n :NERDTreeToggle<cr>
+cmap w!! %!sudo tee > /dev/null % 
+
+" BUFFER MANIPULATION
+" (other commands from BufExplorer - be, bv, bs)
+nmap <leader>bb :BufExplorer<cr>
+nmap <leader>bd :bd<cr>
+
+" ALIGN
+" for this to work, had to comment out keymappings in
+" ~/.vim/bundle/vim-align/plugin/AlignMapsPlugin.vim
+" lines 69 and 71
+vmap <leader>a= :Align =<cr>gv<cr>
+vmap <leader>a, :Align ,<cr>gv<cr>
+vmap <leader>a: :Align :<cr>gv<cr>
+vmap <leader>a{ :Align {<cr>gv<cr>
+vmap <leader>a} :Align }<cr>gv<cr>
+vmap <leader>a@ :Align @<cr>gv<cr>
+vmap <leader>a* :Align *<cr>gv<cr>
+vmap <leader>a# :Align #<cr>gv<cr>
+vmap <leader>a> :Align =><cr>gv<cr>
+vmap <leader>a\| :Align \|<cr>gv<cr>
+
+" TAB MANIPULATION
+nmap <leader>tp :tabp<CR>
+nmap <leader>tn :tabnew<CR>
+nmap <leader>tc :tabclose<CR>
+nmap <leader>th :tabp<CR>
+nmap <leader>tl :tabn<CR>
+
+" TAGS
+let $CDIR=expand('%:p:h')
+set tags=$CDIR/.tags
+let Tlist_GainFocus_On_ToggleOpen=1
+nmap <leader>g :TlistToggle<cr>     
+nmap <leader>x :!ct<cr>:TlistUpdate<cr>
+
+" FILE NAVIGATION 
+" Enhances vim.ruby - for use with 'gf'
+" Adds Bundler paths. Run 'ct' to generate the .paths.vim
+au BufNewFile,BufRead *.rb silent! source .paths.vim
+
+" EDITING ~/.vimrc
+nmap <leader>ve :e ~/.vimrc<CR>
+nmap <leader>vs :source ~/.vimrc<CR>
+
+" SURROUND CUSTOMIZATION
+" Select text in an ERb file with visual mode and then press s- or s=
+" Or yss- to do entire line.
+autocmd FileType eruby let g:surround_45 = "<% \r %>"    " -
+autocmd FileType eruby let g:surround_61 = "<%= \r %>"   " =
+autocmd FileType ruby let g:surround_35  = "#{\r}"       " #
+
+" TERM-SPECIFIC ITEMS ------------------------------------------------
+
+" See http://vim.wikia.com/wiki/Change_cursor_color_in_different_modes
+if &term == "xterm"                       " xterms are used on ubuntu
+  let &t_SI = "\<Esc>]12;green\x7"        " when entering insert mode
+  let &t_EI = "\<Esc>]12;white\x7"        " when leaving insert mode
+  set mouse=a
+endif
+
+" See http://arniealmighty.wordpress.com for screen/cursor color notes
+if &term == 'screen'                          " GNU Screen
+  let &t_EI = "\033P\033]12;white\007\033\\"  " when entering insert mode
+  let &t_SI = "\033P\033]12;green\007\033\\"  " when leaving insert mode
+  map [1;5A <C-Up>
+  map [1;5B <C-Down>
+  set mouse=a
+endif
+
+if &term == "rxvt"                    " rxvt is used on cygwin
+  " this doesn't work - it causes the rxvt screen to redraw
+  " and wipe out the text on the screen (but it does 
+  " change the cursor color) 
+  " let &t_SI = "\033]12;red\007"     
+  " let &t_EI = "\033]12;black\007"   
+  " this causes rxvt to crash !!! 
+  " let &t_SI = "\033]50;CursorShape=1\007"
+  " let &t_EI = "\033]50;CursorShape=0\007"
+  set mouse=a
+endif
+
+if &term == "pcansi"
+  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+  set <left>=[D
+  set <right>=[C
+  set <up>=[A
+  set <down>=[B
+  set <A-n>=n
+  set <A-t>=t
+  set <A-h>=h
+  set <A-l>=l
+  set <BS>=
+  set <del>=[3~
+  set <home>=[1~
+  set <end>=[4~
+  set <pageup>=[5~
+  set <pagedown>=[6~
+endif
+
