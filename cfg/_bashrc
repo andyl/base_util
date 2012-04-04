@@ -219,6 +219,7 @@ PROMPT_COMMAND='export PWDS=`pwd_short`;xterm_title "${USRNAME}@${SYSNAME} ${PWD
 # Editor Aliases
 alias vim='echo -ne "\033]0;<vim> ${USER}@${HOSTNAME} `pwd_short` \007"; /usr/bin/vim'
 alias vimm='vim'
+alias vim-='/usr/bin/vim -'  # to get text from stdin - try "date | vim-"
 
 EDITOR="vim"
 export EDITOR
