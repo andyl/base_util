@@ -86,6 +86,8 @@ target_list.each do |path|
   system "rm -f #{file}"
   puts "-> #{util_base}/#{file_base}"
   system "ln -s #{path} #{file}"
+  artifact = "#{path}/#{file}"
+  system "rm #{artifact}" if File.exist?(artifact)
 end
 
 
