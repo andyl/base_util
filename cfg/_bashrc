@@ -6,7 +6,7 @@ export TZ="America/Los_Angeles"
 source ~/.util_dir     # defines $UTIL_DIR
 source ~/.util_path    # defines $UTIL_PATH
 
-export PATH=$UTIL_PATH:./bin:/usr/bin:/bin:$PATH:   # './bin' avoids 'bundle exec'
+export PATH=$UTIL_PATH:.:./bin:/usr/bin:/bin:$PATH:   # './bin' avoids 'bundle exec'
 export RAILS_ENV=development
 
 ##############################################################################
@@ -16,8 +16,14 @@ if [ -d ~/.rbenv ] ; then
   eval "$(rbenv init -)" 
 fi
 
+# bashrc extensions for the PDEV environment
 if [ -f $UTIL_DIR/pdev_util/inc/_bashrc ] ; then
   source $UTIL_DIR/pdev_util/inc/_bashrc
+fi
+
+# sets FACTERLIB environment variable for puppet/facter
+if [ -f ~/.facterlib ] ; then
+  source ~/.facterlib
 fi
 
 ##############################################################################
@@ -80,7 +86,7 @@ alias gps='cd $UTIL_DIR/pdev_util/bin/rcon/sw'
 
 alias gd='cd ~/dl'
 alias gj='cd ~/todo/journal'
-alias gp='cd ~/data/puppet'
+alias gp='cd ~/data/puppet/_puppet'
 alias gl='cd ~/data/share/library'
 alias gv='cd ~/data/media/video'
 alias gt='cd ~/tst'
@@ -217,9 +223,8 @@ PROMPT_COMMAND='export PWDS=`pwd_short`;xterm_title "${USRNAME}@${SYSNAME} ${PWD
 ##############################################################################
 
 # Editor Aliases
-alias vim='echo -ne "\033]0;<vim> ${USER}@${HOSTNAME} `pwd_short` \007"; /usr/bin/vim'
 alias vimm='vim'
-alias vim-='/usr/bin/vim -'  # to get text from stdin - try "date | vim-"
+alias vim-='vim -'
 
 EDITOR="vim"
 export EDITOR
