@@ -56,7 +56,8 @@ util_dir  = File.dirname(File.dirname(File.expand_path(__FILE__)))
 util_path = Dir.glob(util_dir + "/*_util/bin").sort
 
 # cd to the home directory
-Dir.chdir(File.expand_path("~"))
+homedir = ENV["BOOTSTRAP_HOME"] || File.expand_path("~")
+Dir.chdir homedir
 
 # prompt to ensure the user wants to destroy existing dot files (TODO)
 
