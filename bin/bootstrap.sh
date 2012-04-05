@@ -49,7 +49,7 @@ sudo apt-get -y -qq --force-yes install openssl libopenssl-ruby1.9.1 ruby1.9.1-d
 
 # ----- install ruby -----
 sudo apt-get -y -qq --force-yes install ruby1.9.1 
-ln -s /usr/bin/ruby1.9.1 /usr/bin/ruby
+sudo ln -s /usr/bin/ruby1.9.1 /usr/bin/ruby
 
 # ----- install ruby gems -----
 wget http://production.cf.rubygems.org/rubygems/rubygems-1.8.21.tgz --quiet
@@ -60,7 +60,7 @@ cd rubygems-1.8.21
 sudo ruby setup.rb --no-rdoc --no-ri
 if [ ! -s /usr/bin/gem1.9.1 ] ; then exit 1 ; fi
 
-ln -s /usr/bin/gem1.9.1 /usr/bin/gem
+sudo ln -s /usr/bin/gem1.9.1 /usr/bin/gem
 sudo gem update --system --no-rdoc --no-ri --quiet
 
 cd ..
@@ -69,13 +69,13 @@ rm -r rubygems-1*
 
 echo "======================================================="
 echo "Install Puppet and Utility Gems..."
-gem install --no-rdoc --no-ri --quiet wirble
-gem install --no-rdoc --no-ri --quiet awesome_print 
-gem install --no-rdoc --no-ri --quiet hirb 
-gem install --no-rdoc --no-ri --quiet drx 
-gem install --no-rdoc --no-ri --quiet interactive_editor
-gem install --no-rdoc --no-ri --quiet puppet 
-gem install --no-rdoc --no-ri --quiet bundler 
+sudo gem install --no-rdoc --no-ri --quiet wirble
+sudo gem install --no-rdoc --no-ri --quiet awesome_print 
+sudo gem install --no-rdoc --no-ri --quiet hirb 
+sudo gem install --no-rdoc --no-ri --quiet drx 
+sudo gem install --no-rdoc --no-ri --quiet interactive_editor
+sudo gem install --no-rdoc --no-ri --quiet puppet 
+sudo gem install --no-rdoc --no-ri --quiet bundler 
 
 echo "======================================================="
 echo "Setting up util directories..."
@@ -104,7 +104,7 @@ then
 else
   git clone git://github.com/andyl/puppet.git
 fi
-puppet/init
+sudo puppet/init
 
 echo "======================================================="
 echo "Running puppet configurator..."
@@ -115,6 +115,7 @@ echo "======================================================="
 echo "Setting file ownership"
 cd /home
 sudo chown -R $BOOTSTRAP_USER $BOOTSTRAP_USER
+sudo chgrp -R $BOOTSTRAP_USER $BOOTSTRAP_USER
 
 echo "======================================================="
 echo "Finished bootstrap for $BOOTSTRAP_USER at $BOOTSTRAP_HOME"
