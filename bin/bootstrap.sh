@@ -104,7 +104,7 @@ then
 else
   git clone git://github.com/andyl/puppet.git
 fi
-sudo puppet/init
+sudo puppet/init $BOOTSTRAP_HOME
 
 echo "======================================================="
 echo "Running puppet configurator..."
