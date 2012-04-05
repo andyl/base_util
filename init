@@ -91,4 +91,5 @@ target_list.each do |path|
   system "rm #{artifact}" if File.exist?(artifact)
 end
 
+system "touch #{homedir}/.hushlogin"
 
