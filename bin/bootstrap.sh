@@ -109,7 +109,7 @@ sudo puppet/init $BOOTSTRAP_HOME
 echo "======================================================="
 echo "Running puppet configurator..."
 cd $BOOTSTRAP_HOME
-sudo puppet apply .puppet/manifests/vagrant.pp 
+sudo puppet apply .puppet/manifests/bootstrap.pp 
 
 echo "======================================================="
 echo "Setting file ownership"
