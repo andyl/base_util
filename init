@@ -65,7 +65,7 @@ Dir.chdir homedir
 # enables flexible location of the util/bin directory.
 # ~/.util_dir is sourced in .bashrc
 File.open(".util_dir", 'w') {|f| f.puts "export UTIL_DIR=#{util_dir}"}
-puts " UTIL_DIR: #{util_dir}"
+puts "UTIL_DIR:  #{util_dir}"
 
 # create ~/.util_path file
 # one path entry for each *_util/bin directory
