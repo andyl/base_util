@@ -37,6 +37,7 @@ sudo apt-get update -y -q -q
 echo "======================================================="
 echo "Running apt-get install git-core..."
 sudo apt-get install git-core -y -qq
+sudo apt-get install python-software-properties -y -qq
 
 echo "======================================================="
 echo "Installing Ruby 1.9"
