@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+#
+# Gconf Configuration Scripts
+
+abort "This command only works on linux desktops" unless PLATFORM.include?('linux')
+
+rfile = File.expand_path("~/util/bin/base_util/gcdir/Rakefile")
+
+if ARGV.length == 0 or ARGV[0]=="-T"
+  cmd = "rake -f #{rfile} -T" 
+  system "#{cmd} | sed 's/rake/#{File.basename($0)}/g'"
+else
+  system "rake -f #{rfile} #{ARGV.join(' ')}"
+end

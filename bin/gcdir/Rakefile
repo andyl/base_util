@@ -1,0 +1,117 @@
+# Use 'gconf-editor' to find values to change
+# 
+def set_gc(client, key, val)
+  puts "Setting #{key} to #{val}"
+  client[key] = val
+end
+  
+desc "Configure the desktop"
+task :desktop do |x|
+  require 'rubygems'
+  require 'gconf2'
+  client = GConf::Client.default
+  set_gc(client,"/desktop/gnome/background/draw_background"             , false               )
+  set_gc(client,"/desktop/gnome/background/primary_color"               , "#55cccc"           )
+  set_gc(client,"/desktop/gnome/url-handlers/alpp/command"              , "glaunch '%s'"      )
+  set_gc(client,"/desktop/gnome/url-handlers/alpp/enabled"              , true                )
+  set_gc(client,"/desktop/gnome/url-handlers/alpp/need-terminal"        , false               )
+  set_gc(client,"/desktop/gnome/interface/gtk_theme"                    , "Clearlooks"        )
+  set_gc(client,"/desktop/gnome/interface/font_name"                    , "Sans 8"            )
+  set_gc(client,"/desktop/gnome/sound/input_feedback_sounds"            , true                )
+  set_gc(client,"/desktop/gnome/peripherals/keyboard/kbd/options"       , "[ctrl ctrl:nocaps]")
+  set_gc(client,"/apps/nautilus/preferences/desktop_is_home_dir"        , true                )
+  set_gc(client,"/apps/nautilus/preferences/default_folder_viewer"      , "list_view"         )
+  set_gc(client,"/apps/compiz/general/screen0/options/hsize"            , 5                   )
+  set_gc(client,"/apps/gnome-screensaver/lock_enabled"                  , false               )
+  set_gc(client,"/apps/gnome-terminal/keybindings/next_tab"             , "<Alt>Right"        )
+  set_gc(client,"/apps/gnome-terminal/keybindings/prev_tab"             , "<Alt>Left"         )
+  set_gc(client,"/apps/gnome-terminal/keybindings/detach_tab"           , "<Alt>Up"           )
+  set_gc(client,"/apps/gnome-terminal/keybindings/zoom_in"              , "<Control>equal"    )
+  set_gc(client,"/apps/gnome-terminal/keybindings/toggle_menubar"       , "<Ctrl>F9"          )
+  set_gc(client,"/apps/gnome-terminal/keybindings/switch_to_tab_1"      , "<Ctrl><Alt>1"      )
+  set_gc(client,"/apps/gnome-terminal/keybindings/switch_to_tab_2"      , "<Ctrl><Alt>2"      )
+  set_gc(client,"/apps/gnome-terminal/keybindings/switch_to_tab_3"      , "<Ctrl><Alt>3"      )
+  set_gc(client,"/apps/gnome-terminal/keybindings/switch_to_tab_4"      , "<Ctrl><Alt>4"      )
+  set_gc(client,"/apps/gnome-terminal/keybindings/switch_to_tab_5"      , "<Ctrl><Alt>5"      )
+  set_gc(client,"/apps/gnome-terminal/keybindings/switch_to_tab_6"      , "<Ctrl><Alt>6"      )
+  set_gc(client,"/apps/gnome-terminal/keybindings/switch_to_tab_7"      , "<Ctrl><Alt>7"      )
+  set_gc(client,"/apps/gnome-terminal/keybindings/switch_to_tab_8"      , "<Ctrl><Alt>8"      )
+  set_gc(client,"/apps/gnome-terminal/keybindings/switch_to_tab_9"      , "<Ctrl><Alt>9"      )
+  set_gc(client,"/apps/gnome-terminal/profiles/Default/silent_bell"     , true                )
+  set_gc(client,"/apps/gnome-terminal/profiles/Default/use_system_font" , false               )
+  set_gc(client,"/apps/gnome-terminal/profiles/Default/font"            , "Monospace 9"       )
+  set_gc(client,"/apps/nautilus/desktop/volumes_visible"                , false               )
+end
+
+desc "Set custom sound theme"
+task :sounds do |x|
+  require 'gconf2'
+  client = GConf::Client.default
+  set_gc(client,"/desktop/gnome/sound/theme_name", "__aleak")
+  system "mkdir -p ~/.local/share/sounds"
+  system "cp ~/util/base_util/bin/gcdir/sound.tar ~/.local/share/sounds"
+  system "cd ~/.local/share/sounds ; tar xf sound.tar ; rm sound.tar"
+end
+
+desc "Setup hotkeys"
+task :hotkeys do |x|
+  require 'gconf2'
+  client = GConf::Client.default
+  set_gc(client,"/desktop/gnome/keybindings/custom0/binding" , "<Shift><Control>m")
+  set_gc(client,"/desktop/gnome/keybindings/custom0/action"  , "/home/aleak/util/bin/tc m")
+  set_gc(client,"/desktop/gnome/keybindings/custom0/name"    , "mount")
+  set_gc(client,"/desktop/gnome/keybindings/custom1/binding" , "<Shift><Control>d")
+  set_gc(client,"/desktop/gnome/keybindings/custom1/action"  , "/home/aleak/util/bin/tc d")
+  set_gc(client,"/desktop/gnome/keybindings/custom1/name"    , "dismount")
+  set_gc(client,"/desktop/gnome/keybindings/custom2/binding" , "<Shift><Control>x")
+  set_gc(client,"/desktop/gnome/keybindings/custom2/action"  , "xterm")
+  set_gc(client,"/desktop/gnome/keybindings/custom2/name"    , "xterm")  
+end
+
+desc "Setup Vbox Defaults"
+task :vbox do |x|
+  puts " Setting Default Vbox Directories ".center(60, '-') 
+  system "mkdir -f /home/aleak/data/Vbox"
+  system "vboxmanage setproperty hdfolder /home/aleak/data/Vbox"
+  system "vboxmanage setproperty machinefolder /home/aleak/data/Vbox"
+  puts " Creating Template Image (_avb1004) and Attaching Disk ".center(60, '-')
+  system "vboxmanage createvm --name _avb1004 --basefolder /home/aleak/data/Vbox --ostype Ubuntu --register" 
+  system "vboxmanage storagectl _avb1004 --name sata --add scsi"
+  system "vboxmanage storageattach _avb1004 --storagectl sata --port 0 --device 0 --type hdd --medium /home/aleak/data/Vbox/_avb1004.vdi"
+end
+
+desc "Set Preferences"
+task :prefs do |x|
+  puts "Settings Permissions for FF, RM"
+  if File.exist?("/home/aleak/lcl/bin/")
+    system("cd /home/aleak/lcl/bin; chmod +x */*sh */moz* */flock* */fire* */updater */crashreporter */*so */bin/*sh")
+  end
+end
+
+__END__
+
+========================================================================
+TODOs
+========================================================================
+  
+Terms
+- term black
+- term red
+- term green
+
+FireFox
+- Need to set up a SFF button on the panel, with a different icon
+- Auto-install the selected firefox plugins
+-- Copy a master FF directory to a secure location
+-- Move the copy to the target machine when installing FF customizations
+
+Misc
+- Media Player
+- Soft Phone
+- See Linux Journal...
+
+Auto-remove these icons from the panel:
+- evolution
+- help
+
+
