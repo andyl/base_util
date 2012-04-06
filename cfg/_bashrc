@@ -214,11 +214,18 @@ export GIT_PS1_SHOWSTASHSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true
 export GIT_PS1_SHOWUPSTREAD="auto"
 
-source $UTIL_DIR/base_util/cfg/git-completion
+GITC=$UTIL_DIR/base_util/cfg/git-completion
+if [ -f $GITC ]
+then
+  source $GITC
+  PS1="${PSBlue}\u@\h${PSClear} \w${PSRed}>${PSClear} " 
+else
+  PS1="${PSBlue}\u@\h${PSClear}\`__git_ps1\` \w${PSRed}>${PSClear} " 
+fi
 
-PS1="${PSBlue}\u@\h${PSClear}\`__git_ps1\` \w${PSRed}>${PSClear} " 
-
-PROMPT_COMMAND='export PWDS=`pwd_short`;xterm_title "${USRNAME}@${SYSNAME} ${PWDS}"'
+if [ `which xterm_title.sh` ]; then
+  PROMPT_COMMAND='export PWDS=`pwd_short`;xterm_title.sh "${USRNAME}@${SYSNAME} ${PWDS}"'
+fi
 
 ##############################################################################
 
