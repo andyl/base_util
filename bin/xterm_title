@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# Sets the xterm-title
+
+XT="xterm_title"
+USAGE="Usage: $XT <title> - sets the xterm title\n To test: $XT Hello World; sleep 2" 
+
+if [ $# -eq 0 ]
+then
+  echo $USAGE
+  exit 1
+fi
+
+if [ "$TERM"=="xterm" ]
+then
+  echo -n "\033]0;$@\007" 
+fi
+
