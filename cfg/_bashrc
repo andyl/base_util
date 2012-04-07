@@ -44,7 +44,7 @@ alias xx="exit"
 alias tm="tmux"
 alias vx="vbox_provision"
 alias pp="puppet"
-alias ppa="puppet apply"
+alias ppa="sudo puppet apply --verbose"
 
 alias h="history | tail -30"
 alias r="rails"
@@ -83,7 +83,7 @@ alias gps='cd $UTIL_DIR/pdev_util/bin/rcon/sw'
 
 alias gd='cd ~/dl'
 alias gj='cd ~/todo/journal'
-alias gp='cd ~/data/puppet/_puppet'
+alias gp='cd ~/.puppet'
 alias gl='cd ~/data/share/library'
 alias gv='cd ~/data/media/video'
 alias gt='cd ~/tst'
