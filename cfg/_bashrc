@@ -39,11 +39,12 @@ alias be="bundle exec"
 alias re="rbenv"
 
 alias va="vagrant"
-alias pp="puppet"
 alias vh="vhost"
 alias xx="exit"
 alias tm="tmux"
 alias vx="vbox_provision"
+alias pp="puppet"
+alias ppa="puppet apply"
 
 alias h="history | tail -30"
 alias r="rails"
