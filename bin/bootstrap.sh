@@ -50,7 +50,7 @@ sudo apt-get -y -qq --force-yes install openssl libopenssl-ruby1.9.1 ruby1.9.1-d
 
 # ----- install ruby -----
 sudo apt-get -y -qq --force-yes install ruby1.9.1 
-sudo ln -s /usr/bin/ruby1.9.1 /usr/bin/ruby
+sudo ln -fs /usr/bin/ruby1.9.1 /usr/bin/ruby
 
 # ----- install ruby gems -----
 wget http://production.cf.rubygems.org/rubygems/rubygems-1.8.21.tgz --quiet
@@ -61,7 +61,7 @@ cd rubygems-1.8.21
 sudo ruby setup.rb --no-rdoc --no-ri
 if [ ! -s /usr/bin/gem1.9.1 ] ; then exit 1 ; fi
 
-sudo ln -s /usr/bin/gem1.9.1 /usr/bin/gem
+sudo ln -fs /usr/bin/gem1.9.1 /usr/bin/gem
 sudo gem update --system --no-rdoc --no-ri --quiet
 
 cd ..
