@@ -76,6 +76,7 @@ sudo gem install --no-rdoc --no-ri --quiet hirb
 sudo gem install --no-rdoc --no-ri --quiet drx 
 sudo gem install --no-rdoc --no-ri --quiet interactive_editor
 sudo gem install --no-rdoc --no-ri --quiet puppet 
+sudo gem install --no-rdoc --no-ri --quiet libshadow # so puppet can manage user passwords!
 sudo gem install --no-rdoc --no-ri --quiet bundler 
 
 echo "======================================================="
