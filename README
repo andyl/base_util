@@ -6,9 +6,9 @@ To use:
   git clone git://github.com/andyl/base_util.git
   base_util/init
 
-You can create any number of util directories that
-will live alongside base_util.  For example, you 
-may have private utilities for development, or 
+You can have any number of util directories that
+live alongside base_util.  For example, you may 
+have private utilities for development, or 
 deployment.  
 
 Each directory should have two sub-directories: 
