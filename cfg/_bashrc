@@ -27,6 +27,9 @@ if [ -f ~/.facterlib ] ; then
 fi
 
 if [ -f ~/.autojump/etc/profile.d/autojump.bash ] ; then
+  alias aj="autojump"
+  alias aja="autojump -a `pwd`"
+  alias ajs="autojump --stat"
   source ~/.autojump/etc/profile.d/autojump.bash
 fi
 
@@ -72,6 +75,9 @@ alias rcon="rake_config"
 alias gopen="gnome-open"
 
 ##############################################################################
+
+alias  pd='pushd'
+alias pop='popd'
 
 alias  gu='cd $UTIL_DIR'
 alias gub='cd $UTIL_DIR/base_util'
