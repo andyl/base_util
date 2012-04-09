@@ -26,6 +26,10 @@ if [ -f ~/.facterlib ] ; then
   source ~/.facterlib
 fi
 
+if [ -f ~/.autojump/etc/profile.d/autojump.bash ] ; then
+  source ~/.autojump/etc/profile.d/autojump.bash
+fi
+
 ##############################################################################
 if [ -f ~/.java_env ] ; then source ~/.java_env ; fi 
 ##############################################################################
