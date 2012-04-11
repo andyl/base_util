@@ -49,11 +49,13 @@ sudo apt-get -y -qq --force-yes install build-essential texinfo wget
 sudo apt-get -y -qq --force-yes install openssl libopenssl-ruby1.9.1 ruby1.9.1-dev 
 
 # ----- install ruby -----
-sudo apt-get -y -qq --force-yes install ruby1.9.1 
-sudo ln -fs /usr/bin/ruby1.9.1 /usr/bin/ruby
+if [ ! -f /usr/bin/gem1.9.1 ] ; then
+  sudo apt-get -y -qq --force-yes install ruby1.9.1 
+  sudo ln -fs /usr/bin/ruby1.9.1 /usr/bin/ruby
+fi
 
 # ----- install ruby gems -----
-if [ ! -d /usr/bin/gem1.9.1 ] ; then
+if [ ! -f /usr/bin/gem1.9.1 ] ; then
 
   wget http://production.cf.rubygems.org/rubygems/rubygems-1.8.21.tgz --quiet
   if [ ! -s rubygems-1.8.21.tgz ] ; then echo "Error: No Rubygem Download"; exit 1 ; fi
@@ -115,7 +117,13 @@ sudo puppet/init $BOOTSTRAP_HOME
 echo "======================================================="
 echo "Running puppet configurator..."
 cd $BOOTSTRAP_HOME
-sudo puppet apply .puppet/manifests/bootstrap.pp 
+if [ -f .puppet/manifests/bootstrap.pp ] ; then
+  sudo puppet apply .puppet/manifests/bootstrap.pp 
+else
+  echo "-----------------------------------------------------"
+  echo "WARNING: .puppet/manifests/bootstrap.pp NOT FOUND"
+  echo "-----------------------------------------------------"
+fi
 
 echo "======================================================="
 echo "Setting file ownership"
