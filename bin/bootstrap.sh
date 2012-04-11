@@ -9,16 +9,12 @@ USAGE_MSG="\nBOOTSTRAP WILL RECONFIGURE YOUR SYSTEM!!  USE WITH CAUTION!!\n\nUsa
 #   sudo bootstrap.sh <username> --proceed
 
 # ----- check command-line parameters -----
-if [ $# != 2 ]
-then
-  echo $USAGE_MSG
-  exit 1
+if [ $# != 2 ] ; then
+  echo $USAGE_MSG ; exit 1
 fi
 
-if [ $2 != "--proceed" ]
-then
-  echo $USAGE_MSG
-  exit 1
+if [ $2 != "--proceed" ] ; then
+  echo $USAGE_MSG ; exit 1
 fi
 
 # ----- core variables -----
@@ -42,21 +38,23 @@ sudo apt-get install python-software-properties -y -qq
 echo "======================================================="
 echo "Installing Ruby 1.9"
 
-# ----- install support libraries -----
-sudo apt-get -y -qq --force-yes install libxslt1-dev libxml2-dev sqlite3 libsqlite3-dev
-sudo apt-get -y -qq --force-yes install libreadline5-dev zlib1g-dev libssl-dev
-sudo apt-get -y -qq --force-yes install build-essential texinfo wget
-sudo apt-get -y -qq --force-yes install openssl libopenssl-ruby1.9.1 ruby1.9.1-dev 
-
-# ----- install ruby -----
-if [ ! -f /usr/bin/gem1.9.1 ] ; then
+if [ ! -f /usr/bin/gem1.9.1 ]
+then
+  # ----- install support libraries -----
+  sudo apt-get -y -qq --force-yes install libxslt1-dev libxml2-dev sqlite3 libsqlite3-dev
+  sudo apt-get -y -qq --force-yes install libreadline5-dev zlib1g-dev libssl-dev
+  sudo apt-get -y -qq --force-yes install build-essential texinfo wget
+  sudo apt-get -y -qq --force-yes install openssl libopenssl-ruby1.9.1 ruby1.9.1-dev 
+  # ----- install ruby -----
   sudo apt-get -y -qq --force-yes install ruby1.9.1 
   sudo ln -fs /usr/bin/ruby1.9.1 /usr/bin/ruby
+else
+  echo "Ruby 1.9.1 already installed..."
 fi
 
 # ----- install ruby gems -----
-if [ ! -f /usr/bin/gem1.9.1 ] ; then
-
+if [ ! -f /usr/bin/gem1.9.1 ]
+then
   wget http://production.cf.rubygems.org/rubygems/rubygems-1.8.21.tgz --quiet
   if [ ! -s rubygems-1.8.21.tgz ] ; then echo "Error: No Rubygem Download"; exit 1 ; fi
 
@@ -82,7 +80,8 @@ if [ ! -f /usr/bin/gem1.9.1 ] ; then
   sudo gem install --no-rdoc --no-ri --quiet puppet 
   sudo gem install --no-rdoc --no-ri --quiet libshadow # so puppet can manage user passwords!
   sudo gem install --no-rdoc --no-ri --quiet bundler 
-
+else
+  echo "RubyGems 1.9.1 already installed..."
 fi
 
 echo "======================================================="
