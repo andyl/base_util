@@ -53,31 +53,35 @@ sudo apt-get -y -qq --force-yes install ruby1.9.1
 sudo ln -fs /usr/bin/ruby1.9.1 /usr/bin/ruby
 
 # ----- install ruby gems -----
-wget http://production.cf.rubygems.org/rubygems/rubygems-1.8.21.tgz --quiet
-if [ ! -s rubygems-1.8.21.tgz ] ; then exit 1 ; fi
+if [ ! -d /usr/bin/gem1.9.1 ] ; then
 
-tar xf rubygems-1.8.21.tgz 
-cd rubygems-1.8.21
-sudo ruby setup.rb --no-rdoc --no-ri
-if [ ! -s /usr/bin/gem1.9.1 ] ; then exit 1 ; fi
+  wget http://production.cf.rubygems.org/rubygems/rubygems-1.8.21.tgz --quiet
+  if [ ! -s rubygems-1.8.21.tgz ] ; then echo "Error: No Rubygem Download"; exit 1 ; fi
 
-sudo ln -fs /usr/bin/gem1.9.1 /usr/bin/gem
-sudo gem update --system --no-rdoc --no-ri --quiet
+  tar xf rubygems-1.8.21.tgz 
+  cd rubygems-1.8.21
+  sudo ruby setup.rb --no-rdoc --no-ri
+  if [ ! -s /usr/bin/gem1.9.1 ] ; then echo "Error: No Rubygem Link"; exit 1 ; fi
 
-cd ..
-rm rubygems*tgz
-rm -r rubygems-1*
+  sudo ln -fs /usr/bin/gem1.9.1 /usr/bin/gem
+  sudo gem update --system --no-rdoc --no-ri --quiet
 
-echo "======================================================="
-echo "Install Puppet and Utility Gems..."
-sudo gem install --no-rdoc --no-ri --quiet wirble
-sudo gem install --no-rdoc --no-ri --quiet awesome_print 
-sudo gem install --no-rdoc --no-ri --quiet hirb 
-sudo gem install --no-rdoc --no-ri --quiet drx 
-sudo gem install --no-rdoc --no-ri --quiet interactive_editor
-sudo gem install --no-rdoc --no-ri --quiet puppet 
-sudo gem install --no-rdoc --no-ri --quiet libshadow # so puppet can manage user passwords!
-sudo gem install --no-rdoc --no-ri --quiet bundler 
+  cd ..
+  rm rubygems*tgz
+  rm -r rubygems-1*
+
+  echo "======================================================="
+  echo "Install Puppet and Utility Gems..."
+  sudo gem install --no-rdoc --no-ri --quiet wirble
+  sudo gem install --no-rdoc --no-ri --quiet awesome_print 
+  sudo gem install --no-rdoc --no-ri --quiet hirb 
+  sudo gem install --no-rdoc --no-ri --quiet drx 
+  sudo gem install --no-rdoc --no-ri --quiet interactive_editor
+  sudo gem install --no-rdoc --no-ri --quiet puppet 
+  sudo gem install --no-rdoc --no-ri --quiet libshadow # so puppet can manage user passwords!
+  sudo gem install --no-rdoc --no-ri --quiet bundler 
+
+fi
 
 echo "======================================================="
 echo "Setting up util directories..."
@@ -106,7 +110,7 @@ then
 else
   git clone git://github.com/andyl/puppet.git
 fi
-sudo puppet/init $BOOTSTRAP_HOME
+puppet/init $BOOTSTRAP_HOME
 
 echo "======================================================="
 echo "Running puppet configurator..."
