@@ -28,7 +28,7 @@ abort usage_msg if opt.nil? || opt.empty?
 cmd = ngd(opt) if ngdc.include?(opt)
 cmd = ngs(opt) if ngsc.include?(opt)
 cmd = pss(opt) if pcmd.include?(opt)
-cmd = "ls /home/aleak/a/_conf" if apps.include?(opt)
+cmd = "ls /home/#{`whoami`.chomp}/a/_conf" if apps.include?(opt)
 
 abort "Unrecognized: #{opt}\n#{usage_msg}" if cmd.nil? || cmd.empty?
 
