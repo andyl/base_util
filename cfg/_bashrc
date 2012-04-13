@@ -42,6 +42,10 @@ alias irbgems="gem install hirb interactive_editor drx awesome_print wirble"
 
 ##############################################################################
 
+setxkbmap -option caps:swapescape 2> /dev/null
+
+##############################################################################
+
 alias be="bundle exec"
 alias re="rbenv"
 
