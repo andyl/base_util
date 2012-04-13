@@ -2,9 +2,7 @@
 #
 # Gconf Configuration Scripts
 
-abort "This command only works on linux desktops" unless PLATFORM.include?('linux')
-
-rfile = File.expand_path("~/util/bin/base_util/gcdir/Rakefile")
+rfile = File.expand_path("~/util/base_util/bin/gcdir/Rakefile")
 
 if ARGV.length == 0 or ARGV[0]=="-T"
   cmd = "rake -f #{rfile} -T" 

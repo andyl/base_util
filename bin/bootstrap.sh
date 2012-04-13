@@ -9,16 +9,12 @@ USAGE_MSG="\nBOOTSTRAP WILL RECONFIGURE YOUR SYSTEM!!  USE WITH CAUTION!!\n\nUsa
 #   sudo bootstrap.sh <username> --proceed
 
 # ----- check command-line parameters -----
-if [ $# != 2 ]
-then
-  echo $USAGE_MSG
-  exit 1
+if [ $# != 2 ] ; then
+  echo $USAGE_MSG ; exit 1
 fi
 
-if [ $2 != "--proceed" ]
-then
-  echo $USAGE_MSG
-  exit 1
+if [ $2 != "--proceed" ] ; then
+  echo $USAGE_MSG ; exit 1
 fi
 
 # ----- core variables -----
@@ -42,42 +38,51 @@ sudo apt-get install python-software-properties -y -qq
 echo "======================================================="
 echo "Installing Ruby 1.9"
 
-# ----- install support libraries -----
-sudo apt-get -y -qq --force-yes install libxslt1-dev libxml2-dev sqlite3 libsqlite3-dev
-sudo apt-get -y -qq --force-yes install libreadline5-dev zlib1g-dev libssl-dev
-sudo apt-get -y -qq --force-yes install build-essential texinfo wget
-sudo apt-get -y -qq --force-yes install openssl libopenssl-ruby1.9.1 ruby1.9.1-dev 
-
-# ----- install ruby -----
-sudo apt-get -y -qq --force-yes install ruby1.9.1 
-sudo ln -fs /usr/bin/ruby1.9.1 /usr/bin/ruby
+if [ ! -f /usr/bin/gem1.9.1 ]
+then
+  # ----- install support libraries -----
+  sudo apt-get -y -qq --force-yes install libxslt1-dev libxml2-dev sqlite3 libsqlite3-dev
+  sudo apt-get -y -qq --force-yes install libreadline5-dev zlib1g-dev libssl-dev
+  sudo apt-get -y -qq --force-yes install build-essential texinfo wget
+  sudo apt-get -y -qq --force-yes install openssl libopenssl-ruby1.9.1 ruby1.9.1-dev 
+  # ----- install ruby -----
+  sudo apt-get -y -qq --force-yes install ruby1.9.1 
+  sudo ln -fs /usr/bin/ruby1.9.1 /usr/bin/ruby
+else
+  echo "Ruby 1.9.1 already installed..."
+fi
 
 # ----- install ruby gems -----
-wget http://production.cf.rubygems.org/rubygems/rubygems-1.8.21.tgz --quiet
-if [ ! -s rubygems-1.8.21.tgz ] ; then exit 1 ; fi
+if [ ! -f /usr/bin/gem1.9.1 ]
+then
+  wget http://production.cf.rubygems.org/rubygems/rubygems-1.8.21.tgz --quiet
+  if [ ! -s rubygems-1.8.21.tgz ] ; then echo "Error: No Rubygem Download"; exit 1 ; fi
 
-tar xf rubygems-1.8.21.tgz 
-cd rubygems-1.8.21
-sudo ruby setup.rb --no-rdoc --no-ri
-if [ ! -s /usr/bin/gem1.9.1 ] ; then exit 1 ; fi
+  tar xf rubygems-1.8.21.tgz 
+  cd rubygems-1.8.21
+  sudo ruby setup.rb --no-rdoc --no-ri
+  if [ ! -s /usr/bin/gem1.9.1 ] ; then echo "Error: No Rubygem Link"; exit 1 ; fi
 
-sudo ln -fs /usr/bin/gem1.9.1 /usr/bin/gem
-sudo gem update --system --no-rdoc --no-ri --quiet
+  sudo ln -fs /usr/bin/gem1.9.1 /usr/bin/gem
+  sudo gem update --system --no-rdoc --no-ri --quiet
 
-cd ..
-rm rubygems*tgz
-rm -r rubygems-1*
+  cd ..
+  rm rubygems*tgz
+  rm -r rubygems-1*
 
-echo "======================================================="
-echo "Install Puppet and Utility Gems..."
-sudo gem install --no-rdoc --no-ri --quiet wirble
-sudo gem install --no-rdoc --no-ri --quiet awesome_print 
-sudo gem install --no-rdoc --no-ri --quiet hirb 
-sudo gem install --no-rdoc --no-ri --quiet drx 
-sudo gem install --no-rdoc --no-ri --quiet interactive_editor
-sudo gem install --no-rdoc --no-ri --quiet puppet 
-sudo gem install --no-rdoc --no-ri --quiet libshadow # so puppet can manage user passwords!
-sudo gem install --no-rdoc --no-ri --quiet bundler 
+  echo "======================================================="
+  echo "Install Puppet and Utility Gems..."
+  sudo gem install --no-rdoc --no-ri --quiet wirble
+  sudo gem install --no-rdoc --no-ri --quiet awesome_print 
+  sudo gem install --no-rdoc --no-ri --quiet hirb 
+  sudo gem install --no-rdoc --no-ri --quiet drx 
+  sudo gem install --no-rdoc --no-ri --quiet interactive_editor
+  sudo gem install --no-rdoc --no-ri --quiet puppet 
+  sudo gem install --no-rdoc --no-ri --quiet libshadow # so puppet can manage user passwords!
+  sudo gem install --no-rdoc --no-ri --quiet bundler 
+else
+  echo "RubyGems 1.9.1 already installed..."
+fi
 
 echo "======================================================="
 echo "Setting up util directories..."
@@ -111,7 +116,13 @@ sudo puppet/init $BOOTSTRAP_HOME
 echo "======================================================="
 echo "Running puppet configurator..."
 cd $BOOTSTRAP_HOME
-sudo puppet apply .puppet/manifests/bootstrap.pp 
+if [ -f .puppet/manifests/bootstrap.pp ] ; then
+  sudo puppet apply .puppet/manifests/bootstrap.pp 
+else
+  echo "-----------------------------------------------------"
+  echo "WARNING: .puppet/manifests/bootstrap.pp NOT FOUND"
+  echo "-----------------------------------------------------"
+fi
 
 echo "======================================================="
 echo "Setting file ownership"
