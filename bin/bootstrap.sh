@@ -9,13 +9,8 @@ USAGE_MSG="\nBOOTSTRAP WILL RECONFIGURE YOUR SYSTEM!!  USE WITH CAUTION!!\n\nUsa
 #   sudo bootstrap.sh <username> --proceed
 
 # ----- check command-line parameters -----
-if [ $# != 2 ] ; then
-  echo $USAGE_MSG ; exit 1
-fi
-
-if [ $2 != "--proceed" ] ; then
-  echo $USAGE_MSG ; exit 1
-fi
+[ $# != 2 ] || { echo $USAGE_MSG ; exit 1 ; }
+[ $2 != "--proceed" ] || { echo $USAGE_MSG ; exit 1 ; }
 
 # ----- core variables -----
 export BOOTSTRAP_USER=$1

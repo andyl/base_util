@@ -17,14 +17,10 @@ if [ -d ~/.rbenv ] ; then
 fi
 
 # bashrc extensions for the PDEV environment
-if [ -f $UTIL_DIR/pdev_util/inc/_bashrc ] ; then
-  source $UTIL_DIR/pdev_util/inc/_bashrc
-fi
+tgt=$UTIL_DIR/pdev_util/inc/_bashrc ; [ -f $tgt ] && source $tgt
 
 # sets FACTERLIB environment variable for puppet/facter
-if [ -f ~/.facterlib ] ; then
-  source ~/.facterlib
-fi
+tgt=~/.facterlib ; [ -f $tgt ] && source $tgt
 
 if [ -f ~/.autojump/etc/profile.d/autojump.bash ] ; then
   alias aj="autojump"
@@ -34,7 +30,7 @@ if [ -f ~/.autojump/etc/profile.d/autojump.bash ] ; then
 fi
 
 ##############################################################################
-if [ -f ~/.java_env ] ; then source ~/.java_env ; fi 
+tgt=~/.java_env ; [ -f $tgt ] && source $tgt
 ##############################################################################
 
 # install gems used for Ruby-IRB (see ~/.irbrc)
