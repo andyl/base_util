@@ -74,6 +74,8 @@ alias ring="alert ring"
 alias rcon="rake_config"
 alias gopen="gnome-open"
 
+alias gree="tree"
+
 ##############################################################################
 
 alias  pd='pushd'
@@ -237,7 +239,9 @@ fi
 ##############################################################################
 
 # Editor Aliases
+alias lvim="vim -c \"normal '0\""  # open the last file edited
 alias vimm='vim'
+alias vin='vim'
 alias vim-='vim -'
 
 EDITOR="vim"
