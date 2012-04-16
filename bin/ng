@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 #
-# Commands to start/stop/monitor 
-# phusion passenger and nginx.
+# Commands to start/stop/monitor nginx.
 #
 
 opt = ARGV[0]

@@ -1,6 +1,6 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
-USAGE_MSG="\nBOOTSTRAP WILL RECONFIGURE YOUR SYSTEM!!  USE WITH CAUTION!!\n\nUsage: bootstrap.sh <username> --proceed\n"
+USAGE_MSG="\nBOOTSTRAP WILL RECONFIGURE YOUR SYSTEM!!  USE WITH CAUTION!!\n\nUsage: bootstrap.bash <username> --proceed\n"
 
 # This script is for bootstrapping new systems.
 # To use: 
@@ -9,8 +9,8 @@ USAGE_MSG="\nBOOTSTRAP WILL RECONFIGURE YOUR SYSTEM!!  USE WITH CAUTION!!\n\nUsa
 #   sudo bootstrap.sh <username> --proceed
 
 # ----- check command-line parameters -----
-[ $# != 2 ] || { echo $USAGE_MSG ; exit 1 ; }
-[ $2 != "--proceed" ] || { echo $USAGE_MSG ; exit 1 ; }
+[ $# == 2 ] || { echo -e $USAGE_MSG ; exit 1 ; }
+[ $2 == "--proceed" ] || { echo -e $USAGE_MSG ; exit 1 ; }
 
 # ----- core variables -----
 export BOOTSTRAP_USER=$1
@@ -18,7 +18,7 @@ export BOOTSTRAP_HOME="/home/$BOOTSTRAP_USER"
 
 # ----- starting the bootstrap... -----
 echo "======================================================="
-echo "Starting bootstrap for $BOOTSTRAP_USER at $BOOTSTRAP_HOME"
+echo "Starting bootstrap for $BOOTSTRAP_USER at $BOOTSTRAP_HOME on `hostname`"
 date
 
 echo "======================================================="
