@@ -98,6 +98,7 @@ alias gj='cd ~/todo/journal'
 alias gp='cd ~/.puppet'
 alias gl='cd ~/data/share/library'
 alias gv='cd ~/data/media/video'
+alias ga='cd ~/data/apt'
 alias gt='cd ~/tst'
 alias gn='cd /opt/nginx'
 
