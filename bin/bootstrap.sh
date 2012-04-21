@@ -22,6 +22,21 @@ echo "Starting bootstrap for $BOOTSTRAP_USER at $BOOTSTRAP_HOME on `hostname`"
 date
 
 echo "======================================================="
+echo "Adding apt repo for custom debs..."
+APT_DIR=""
+[ -d /apt ] && APT_DIR="/apt"
+[ -d $BOOTSTRAP_HOME/data/apt ] && APT_DIR="$BOOTSTRAP_HOME/data/apt"
+if [ "$APT_DIR" == "" ] 
+then
+  APT_URL="http://apt.alt55.com"
+  echo "deb $APT_URL ./" > /etc/apt/sources.list.d/r210.list
+  /usr/bin/wget $APT_URL/pub/gpg.key | /usr/bin/apt-key add -
+else
+  echo "deb file:$APT_DIR ./" > /etc/apt/sources.list.d/r210.list
+  $APT_DIR/pub/add_key.sh
+fi
+
+echo "======================================================="
 echo "Running apt-get update..."
 sudo apt-get update -y -q -q
 
@@ -121,9 +136,8 @@ fi
 
 echo "======================================================="
 echo "Setting file ownership"
-cd /home
-sudo chown -R $BOOTSTRAP_USER $BOOTSTRAP_USER
-sudo chgrp -R $BOOTSTRAP_USER $BOOTSTRAP_USER
+sudo chown -R $BOOTSTRAP_USER /home/$BOOTSTRAP_USER
+sudo chgrp -R $BOOTSTRAP_USER /home/$BOOTSTRAP_USER
 
 echo "======================================================="
 echo "Finished bootstrap for $BOOTSTRAP_USER at $BOOTSTRAP_HOME"
