@@ -6,3 +6,4 @@ update_sources: true
 sources: 
 - http://rubygems.org
 bulk_threshold: 1000
+:ssl_verify_mode: 0
