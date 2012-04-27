@@ -1,25 +1,27 @@
-require 'rubygems' rescue nil
-require 'wirble'
-require 'pp'
-require 'ap'
-require 'drx'
-require 'hirb'
-require 'interactive_editor'
+# vim : set ft=ruby :
 
-IRB.conf[:AUTO_INDENT] = true
+# require 'rubygems' rescue nil
+# require 'wirble'
+# require 'pp'
+# require 'ap'
+# require 'drx'
+# require 'hirb'
+# require 'interactive_editor'
+# 
+# IRB.conf[:AUTO_INDENT] = true
+# 
+# Wirble.init
+# Wirble.colorize
+# 
+# Hirb::View.enable
+# 
+# class Object
+#   def local_methods
+#     (methods - Object.instance_methods).sort
+#   end
+#   alias lmethods local_methods
+# end
 
-Wirble.init
-Wirble.colorize
-
-Hirb::View.enable
-
-class Object
-  def local_methods
-    (methods - Object.instance_methods).sort
-  end
-  alias lmethods local_methods
-end
-
-puts "Loaded IRB Environment"
+puts "Loaded PRY Environment"
 
 alias xx exit

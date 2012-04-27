@@ -54,7 +54,7 @@ alias xx="exit"
 alias tm="tmux"
 alias vx="vbox_provision"
 alias pp="puppet"
-alias ppa="sudo puppet apply --verbose"
+alias ppa="sudo puppet apply"
 
 alias h="history | tail -30"
 alias r="rails"
