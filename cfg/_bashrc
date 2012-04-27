@@ -46,6 +46,7 @@ setxkbmap -option caps:swapescape 2> /dev/null
 
 alias be="bundle exec"
 alias re="rbenv"
+alias reh="rbenv usergems-rehash"
 
 alias va="vagrant"
 alias vh="vhost"
