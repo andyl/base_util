@@ -11,12 +11,24 @@ export RAILS_ENV=development
 
 ##############################################################################
 
-RBENV_BASE="/opt/rbenv"
-if [ -d $RBENV_BASE ] ; then 
-  export RBENV_ROOT=$RBENV_BASE
-  export PATH=$RBENV_ROOT/bin:$RBENV_ROOT/libexec:$PATH
-  eval "$(rbenv usergems-init -)" 
-fi
+RBENV_BASE=""
+[ -d "/opt/rbenv" ]   && RBENV_BASE="/opt/rbenv"
+[ -d "$HOME/.rbenv" ] && RBENV_BASE="$HOME/.rbenv"
+
+case $RBENV_BASE in
+  "/opt/rbenv")
+    export RBENV_ROOT=$RBENV_BASE
+    export PATH=$RBENV_ROOT/bin:$RBENV_ROOT/libexec:$PATH
+    eval "$(rbenv usergems-init -)" 
+    ;;
+  "$HOME/.rbenv")
+    export RBENV_ROOT=$RBENV_BASE
+    export PATH=$RBENV_ROOT/bin:$RBENV_ROOT/libexec:$PATH
+    eval "$(rbenv init -)" 
+    ;;
+esac
+
+##############################################################################
 
 # bashrc extensions for the PDEV environment
 tgt=$UTIL_DIR/pdev_util/inc/_bashrc ; [ -f $tgt ] && source $tgt
