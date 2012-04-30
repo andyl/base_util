@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Sets the xterm-title
 
