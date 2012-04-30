@@ -83,8 +83,19 @@ nmap <silent> <C-j> :wincmd j<cr>
 nmap <silent> <C-h> :wincmd h<cr>
 nmap <silent> <C-l> :wincmd l<cr>
 
+" CTRLP
+let g:ctrlp_max_files = 10000        " Set the max files
+if has("unix")                       " Optimize file searching 
+  let g:ctrlp_user_command = {
+    \ 'types': {
+    \ 1: ['.git/', 'cd %s && git ls-files']
+    \ },
+    \ 'fallback': 'find %s -type f | head -' . g:ctrlp_max_files
+    \ }
+endif
+
 " MISC PLUGIN COMMANDS
-nmap <leader>f :CommandT<cr>
+nmap <leader>f :CtrlP<cr>
 nmap <leader>n :NERDTreeToggle<cr>
 cmap w!! %!sudo tee > /dev/null % 
 
@@ -186,4 +197,5 @@ if &term == "pcansi"
   set <pageup>=[5~
   set <pagedown>=[6~
 endif
+
 
