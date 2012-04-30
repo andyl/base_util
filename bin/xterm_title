@@ -7,12 +7,12 @@ USAGE="Usage: $XT <title> - sets the xterm title\n To test: $XT Hello World; sle
 
 if [ $# -eq 0 ]
 then
-  echo $USAGE
+  echo -e $USAGE
   exit 1
 fi
 
 if [ "$TERM"=="xterm" ]
 then
-  echo -n "\033]0;$@\007" 
+  echo -ne "\033]0;$@\007" 
 fi
 
