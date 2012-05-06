@@ -47,6 +47,8 @@ fi
 tgt=~/.java_env ; [ -f $tgt ] && source $tgt
 ##############################################################################
 
+alias bp="bin/proctor"
+
 # install gems used for Ruby-IRB (see ~/.irbrc)
 alias irbgems="gem install hirb interactive_editor drx awesome_print wirble"
 
