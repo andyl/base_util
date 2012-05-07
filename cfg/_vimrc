@@ -40,8 +40,7 @@ set laststatus=2
 set printoptions=duplex:long,number:y
 let g:otl_text_view = 1
 let mapleader=','
-imap jj <esc>
-imap kk <esc>
+imap kj <esc>
 imap :w <esc>:w
 imap :q <esc>:q
 nmap <space> i~<esc>r
