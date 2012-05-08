@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source ~/.bashrc
+source "$1/.bashrc"
 
 bundle --binstubs
 
