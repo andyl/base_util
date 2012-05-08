@@ -140,6 +140,6 @@ sudo chown -R $BOOTSTRAP_USER /home/$BOOTSTRAP_USER
 sudo chgrp -R $BOOTSTRAP_USER /home/$BOOTSTRAP_USER
 
 echo "======================================================="
-echo "Finished bootstrap for $BOOTSTRAP_USER at $BOOTSTRAP_HOME"
+echo "Finished bootstrap for $BOOTSTRAP_USER at $BOOTSTRAP_HOME on `hostname`"
 date
 echo ""

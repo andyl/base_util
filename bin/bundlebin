@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+source ~/.bashrc
+
+bundle --binstubs
+
+exit 0
