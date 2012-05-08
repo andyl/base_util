@@ -9,3 +9,4 @@ else
   [ -d ~/.rbenv-usergems ] && rbenv usergems-rehash
 fi
 
+exit 0
