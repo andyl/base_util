@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# rhsh - runs rbenv rehash
+
+if [ -d ~/.rbenv ]
+then
+  rbenv rehash
+else
+  [ -d ~/.rbenv-usergems ] && rbenv usergems-rehash
+fi
+
