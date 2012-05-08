@@ -2,6 +2,8 @@
 
 # rhsh - runs rbenv rehash
 
+source ~/.bashrc
+
 if [ -d ~/.rbenv ]
 then
   rbenv rehash
