@@ -11,29 +11,18 @@ export RAILS_ENV=development
 
 ##############################################################################
 
-RBENV_BASE=""
-[ -d "/opt/rbenv" ]   && RBENV_BASE="/opt/rbenv"
-[ -d "$HOME/.rbenv" ] && RBENV_BASE="$HOME/.rbenv"
+RBENV_BASE="$HOME/.rbenv"
+if [ -d "$RBENV_BASE" ] ; then
+  export RBENV_ROOT=$RBENV_BASE
+  export PATH=$RBENV_ROOT/bin:$RBENV_ROOT/libexec:$PATH
+  eval "$(rbenv init -)" 
 
-case $RBENV_BASE in
-  "/opt/rbenv")
-    export RBENV_ROOT=$RBENV_BASE
-    export PATH=$RBENV_ROOT/bin:$RBENV_ROOT/libexec:$PATH
-    eval "$(rbenv usergems-init -)" 
-    ;;
-  "$HOME/.rbenv")
-    export RBENV_ROOT=$RBENV_BASE
-    export PATH=$RBENV_ROOT/bin:$RBENV_ROOT/libexec:$PATH
-    eval "$(rbenv init -)" 
-    ;;
-esac
-
-# only run gems with this command - not shell scripts
-function rbenvsudo(){
-  executable=$1
-  shift 1
-  sudo $(rbenv which $executable) $* 
-}
+  function rbenvsudo(){
+    executable=$1
+    shift 1
+    sudo $(rbenv which $executable) $* 
+  }
+fi
 
 ##############################################################################
 
