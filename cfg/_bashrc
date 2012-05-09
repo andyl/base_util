@@ -28,6 +28,7 @@ case $RBENV_BASE in
     ;;
 esac
 
+# only run gems with this command - not shell scripts
 function rbenvsudo(){
   executable=$1
   shift 1

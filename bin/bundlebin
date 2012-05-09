@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-source "$1/.bashrc"
-
-bundle --binstubs
-
-exit 0
