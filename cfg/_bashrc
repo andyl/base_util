@@ -18,9 +18,14 @@ if [ -d "$RBENV_BASE" ] ; then
   eval "$(rbenv init -)" 
 
   function rbenvsudo(){
-    executable=$1
-    shift 1
-    sudo $(rbenv which $executable) $* 
+    if [ -z $1 ] 
+    then
+      echo "Usage: rbenvsudo <command>" 
+    else
+      executable=$1
+      shift 1
+      sudo $(rbenv which $executable) $* 
+    fi
   }
 fi
 
