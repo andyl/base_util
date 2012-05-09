@@ -11,7 +11,10 @@ export RAILS_ENV=development
 
 ##############################################################################
 
-RBENV_BASE="$HOME/.rbenv"
+RBENV_BASE="rbenv_base"
+[ -d /opt/rbenv ] && RBENV_BASE="/opt/rbenv"
+[ -d ~/.rbenv ]   && RBENV_BASE="$HOME/.rbenv"
+
 if [ -d "$RBENV_BASE" ] ; then
   export RBENV_ROOT=$RBENV_BASE
   export PATH=$RBENV_ROOT/bin:$RBENV_ROOT/libexec:$PATH
