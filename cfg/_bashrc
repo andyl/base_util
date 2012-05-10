@@ -134,10 +134,7 @@ alias dir='ls'
 
 ##############################################################################
 
-# makes Caps appear before lower case file/directory names for 'ls'
-LC_COLLATE=C
-export LC_COLLATE
-
+export LC_COLLATE=C  # sorts Caps before lower case file names for 'ls'
 alias ls='ls -FC --group-directories --color'
 alias lsd='ls -l | grep ^d'
 alias ll='ls'
