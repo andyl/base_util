@@ -1,8 +1,0 @@
-#!/bin/bash
-
-# Sets the xterm-title
-
-xterm_title "<tmux> $USER@$SYSNAME $PWDS"
-
-tmux $@
-
