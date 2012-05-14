@@ -1,4 +1,4 @@
 #!/bin/sh
 
-pwd | sed -e s/\\/home\\/aleak/~/
+pwd | sed -e s/\\/home\\/$USER/~/
 
