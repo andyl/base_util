@@ -259,6 +259,7 @@ fi
 # Editor Aliases
 alias lvim="vim -c \"normal '0\""  # open the last file edited
 alias vimm='vim'
+alias vimn='vim'
 alias vin='vim'
 alias vim-='vim -'
 
