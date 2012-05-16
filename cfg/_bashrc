@@ -30,6 +30,8 @@ if [ -d "$RBENV_BASE" ] ; then
       sudo $(rbenv which $executable) $* 
     fi
   }
+
+  alias reh="rbenv rehash"
 fi
 
 ##############################################################################
