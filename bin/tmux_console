@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# creates a tmux console that can be shared across multiple clients
+# the console is defined in a separate file, referenced by $1
+# if no args are given, a default console is rendered
+
 if [ -z $1 ] ; then
   export APP="console"
   create_new_session()
@@ -28,7 +32,7 @@ fi
 
 # if there are attached clients, then attach using a Grouped
 # Session (this enabled different clients to view different pages)
-while [ true ] ; do # loop until an available client-id is found...
+while [ true ] ; do  # loop until an available client-id is found...
   client_count=`tmux list-clients | grep $APP$count | wc -l`
   session_count=`tmux list-sessions | grep $APP$count | wc -l`
   if [ $client_count == 0 ] ; then
