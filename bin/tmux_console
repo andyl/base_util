@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 
 # creates a tmux console that can be shared across multiple clients
-# the console is defined in a separate file, referenced by $1
-# if no args are given, a default console is rendered
 
+# the console is defined in a setup file, referenced by $1
+# the setup file must define '$APP' and 'create_new_session()'
+# if no args are given, a default console is rendered
 if [ -z $1 ] ; then
   export APP="console"
   create_new_session()
@@ -14,9 +15,8 @@ else
   source $1
 fi
 
-tmux has-session -t $APP 2> /dev/null
-
 # create a new session if none exists
+tmux has-session -t $APP 2> /dev/null
 if [ $? != 0 ] ; then
   create_new_session
 fi
