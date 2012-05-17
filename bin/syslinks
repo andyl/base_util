@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+
+host = ENV['SYSNAME']
+
+if File.exist?("/etc/monitrc")
+  puts "Monit:"
+  puts "http://#{host}:8989"
+end
+
+if Dir.exist?("/etc/nginx/conf.d")
+  Dir.glob("/etc/nginx/conf.d/*.conf").each do |file|
+    app = file.split('.').first
+    text = File.read(file)
+    port = text.match(/\:([0-9][0-9][0-9][0-9])\;/)
+    vhosts = text.match(/server_name (.+)\;/).split(' ')
+    puts app
+    puts "direct access: "
+    puts "http://#{host}:#{port}"
+    puts "nginx access: "
+    vhosts.each do |vhost|
+      puts "http://#{vhost}"
+    end
+end
+
