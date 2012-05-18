@@ -142,7 +142,7 @@ echo "======================================================="
 echo "Loading utility gems"
 bindir=$BOOTSTRAP_HOME/util/base_util/bin
 su - $BOOTSTRAP_USER -c "rbenv rehash"
-su - $BOOTSTRAP_USER -c "cd $bindir && bundle"
+su - $BOOTSTRAP_USER -c "cd $bindir && bundle --quiet"
 su - $BOOTSTRAP_USER -c "rbenv rehash"
 
 echo "======================================================="
