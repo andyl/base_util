@@ -13,7 +13,7 @@ end
 
 # NGINX BASE
 if File.exist?("/etc/nginx/nginx.conf") 
-  puts "> NGINX BASE ".ljust(50, '-').cyan
+  puts "> Nginx Base ".ljust(50, '-').cyan
   puts "http://#{host}"
 end
 
