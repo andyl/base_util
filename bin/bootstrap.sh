@@ -139,13 +139,10 @@ sudo chown -R $BOOTSTRAP_USER $BOOTSTRAP_HOME
 sudo chgrp -R $BOOTSTRAP_USER $BOOTSTRAP_HOME
 
 echo "======================================================="
-echo "Loading development gems"
-cd $BOOTSTRAP_HOME/util/base_util/bin
-pwd
-ls
-whoami
+echo "Loading utility gems"
+bindir=$BOOTSTRAP_HOME/util/base_util/bin
 su - $BOOTSTRAP_USER -c "rbenv rehash"
-su - $BOOTSTRAP_USER -c "bundle"
+su - $BOOTSTRAP_USER -c "cd $bindir && bundle"
 su - $BOOTSTRAP_USER -c "rbenv rehash"
 
 echo "======================================================="
