@@ -12,6 +12,8 @@ if [ -z $1 ] ; then
     tmux new-session -s $APP -d    
   }
 else
+  export SRC_DIR=`dirname $1`
+  export ABS_SRC_DIR=`cd $SRC_DIR ; pwd`
   source $1
 fi
 
