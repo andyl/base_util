@@ -1,12 +1,14 @@
 # vim : set ft=ruby :
 
+require 'rubygems'
+require 'hirb'
+
+
 # require 'rubygems' rescue nil
 # require 'wirble'
 # require 'pp'
 # require 'ap'
 # require 'drx'
-# require 'hirb'
-# require 'interactive_editor'
 # 
 # IRB.conf[:AUTO_INDENT] = true
 # 
@@ -22,6 +24,14 @@
 #   alias lmethods local_methods
 # end
 
-puts "Loaded PRY Environment"
+Pry.config.prompt = Pry::NAV_PROMPT
+
+Hirb.enable
+
+Pry.config.print = proc do |output, value|
+  Hirb::View.view_or_page_output(value) || Pry::DEFAULT_PRINT.call(output, value)
+end
 
 alias xx exit
+
+puts "Loaded PRY Environment"
