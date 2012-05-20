@@ -52,7 +52,7 @@ if [ ! -f /usr/bin/gem1.9.1 ]
 then
   # ----- install support libraries -----
   sudo apt-get -y -qq --force-yes install libxslt1-dev libxml2-dev sqlite3 libsqlite3-dev
-  sudo apt-get -y -qq --force-yes install libreadline5-dev zlib1g-dev libssl-dev
+  sudo apt-get -y -qq --force-yes install zlib1g-dev libssl-dev
   sudo apt-get -y -qq --force-yes install build-essential texinfo wget
   sudo apt-get -y -qq --force-yes install openssl libopenssl-ruby1.9.1 ruby1.9.1-dev 
   # ----- install ruby -----
