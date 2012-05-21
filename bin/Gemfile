@@ -6,3 +6,7 @@ gem "pry-doc"
 gem "colored"
 gem "debugger"
 
+gem "net-ssh"
+gem "net-sftp"
+gem "highline"
+
