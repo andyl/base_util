@@ -49,6 +49,18 @@ nmap <space> i~<esc>r
 set statusline=%F%m%r%h%w\ [TYPE=%Y]\ [%{hostname()}]\ [%{$TERM}]\ [%p%%]\ [LEN=%L]\ [%{$PWDS}]
 set title titlestring=<vim>\ %{$USER}@%{hostname()}\ %t\ %m%r%h%w
 
+" search for selected text, forwards or backwards
+vnoremap <silent> * :<C-U>
+  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+  \gvy/<C-R><C-R>=substitute(
+  \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+  \gV:call setreg('"', old_reg, old_regtype)<CR>
+vnoremap <silent> # :<C-U>
+  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+  \gvy?<C-R><C-R>=substitute(
+  \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+  \gV:call setreg('"', old_reg, old_regtype)<CR>
+
 " from http://stackoverflow.com/questions/2269005/how-can-i-change-the-keybinding-used-to-autocomplete-in-vim
 inoremap <Nul> <C-n>
 
