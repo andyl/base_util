@@ -46,21 +46,20 @@ sudo apt-get install git-core -y -qq
 sudo apt-get install python-software-properties -y -qq
 
 echo "======================================================="
-echo "Installing Ruby 1.9"
+echo "Installing Ruby 1.8.7"
 
-if [ -f /usr/bin/gem1.9.1 ]
+if [ -f /usr/bin/ruby ]
 then
-  echo "Ruby 1.9.1 already installed..."
+  echo "Ruby 1.8.7 already installed..."
 else
   # ----- install support libraries -----
-  sudo apt-get -y -qq --force-yes install libxslt1-dev libxml2-dev sqlite3 libsqlite3-dev
+  sudo apt-get -y -qq --force-yes install libxslt1-dev libxml2-dev 
   sudo apt-get -y -qq --force-yes install zlib1g-dev libssl-dev
   sudo apt-get -y -qq --force-yes install libevent-1.4
-  sudo apt-get -y -qq --force-yes install build-essential texinfo wget
-  sudo apt-get -y -qq --force-yes install openssl libopenssl-ruby1.9.1 ruby1.9.1-dev 
+  sudo apt-get -y -qq --force-yes install build-essential texinfo wget curl
+  sudo apt-get -y -qq --force-yes install openssl libopenssl-ruby ruby-dev 
   # ----- install ruby -----
-  sudo apt-get -y -qq --force-yes install ruby1.9.1 
-  sudo ln -fs /usr/bin/ruby1.9.1 /usr/bin/ruby
+  sudo apt-get -y -qq --force-yes install ruby rubygems
   # ----- install ruby gems -----
   echo "======================================================="
   echo "Install Puppet and Utility Gems..."
