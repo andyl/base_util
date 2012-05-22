@@ -184,18 +184,6 @@ if &term == 'screen-256color'                 " GNU Screen / TMUX
   let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]12;white\x7\<Esc>\\"  " when entering insert mode
 endif
 
-if &term == "rxvt"                    " rxvt is used on cygwin
-  " this doesn't work - it causes the rxvt screen to redraw
-  " and wipe out the text on the screen (but it does 
-  " change the cursor color) 
-  " let &t_SI = "\033]12;red\007"     
-  " let &t_EI = "\033]12;black\007"   
-  " this causes rxvt to crash !!! 
-  " let &t_SI = "\033]50;CursorShape=1\007"
-  " let &t_EI = "\033]50;CursorShape=0\007"
-  set mouse=a
-endif
-
 if &term == "pcansi"
   let &t_SI = "\<Esc>]50;CursorShape=1\x7"
   let &t_EI = "\<Esc>]50;CursorShape=0\x7"
