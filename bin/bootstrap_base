@@ -48,8 +48,10 @@ sudo apt-get install python-software-properties -y -qq
 echo "======================================================="
 echo "Installing Ruby 1.9"
 
-if [ ! -f /usr/bin/gem1.9.1 ]
+if [ -f /usr/bin/gem1.9.1 ]
 then
+  echo "Ruby 1.9.1 already installed..."
+else
   # ----- install support libraries -----
   sudo apt-get -y -qq --force-yes install libxslt1-dev libxml2-dev sqlite3 libsqlite3-dev
   sudo apt-get -y -qq --force-yes install zlib1g-dev libssl-dev
@@ -59,28 +61,7 @@ then
   # ----- install ruby -----
   sudo apt-get -y -qq --force-yes install ruby1.9.1 
   sudo ln -fs /usr/bin/ruby1.9.1 /usr/bin/ruby
-else
-  echo "Ruby 1.9.1 already installed..."
-fi
-
-# ----- install ruby gems -----
-if [ ! -f /usr/bin/gem1.9.1 ]
-then
-  wget http://production.cf.rubygems.org/rubygems/rubygems-1.8.21.tgz --quiet
-  if [ ! -s rubygems-1.8.21.tgz ] ; then echo "Error: No Rubygem Download"; exit 1 ; fi
-
-  tar xf rubygems-1.8.21.tgz 
-  cd rubygems-1.8.21
-  sudo ruby setup.rb --no-rdoc --no-ri
-  if [ ! -s /usr/bin/gem1.9.1 ] ; then echo "Error: No Rubygem Link"; exit 1 ; fi
-
-  sudo ln -fs /usr/bin/gem1.9.1 /usr/bin/gem
-  sudo gem update --system --no-rdoc --no-ri --quiet
-
-  cd ..
-  rm rubygems*tgz
-  rm -r rubygems-1*
-
+  # ----- install ruby gems -----
   echo "======================================================="
   echo "Install Puppet and Utility Gems..."
   sudo gem install --no-rdoc --no-ri --quiet wirble
@@ -90,8 +71,6 @@ then
   sudo gem install --no-rdoc --no-ri --quiet interactive_editor
   sudo gem install --no-rdoc --no-ri --quiet puppet 
   sudo gem install --no-rdoc --no-ri --quiet libshadow # so puppet can manage user passwords!
-else
-  echo "RubyGems 1.9.1 already installed..."
 fi
 
 echo "======================================================="
