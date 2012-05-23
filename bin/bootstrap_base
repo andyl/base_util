@@ -30,11 +30,12 @@ if [ "$APT_DIR" == "" ]
 then
   APT_URL="http://apt.alt55.com"
   echo "deb $APT_URL ./" > /etc/apt/sources.list.d/r210.list
-  /usr/bin/wget $APT_URL/pub/gpg.key | /usr/bin/apt-key add -
+  /usr/bin/curl $APT_URL/pub/gpg.key | /usr/bin/apt-key add -
 else
   echo "deb file:$APT_DIR ./" > /etc/apt/sources.list.d/r210.list
   $APT_DIR/pub/add_key.sh
 fi
+
 
 echo "======================================================="
 echo "Running apt-get update..."
