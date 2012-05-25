@@ -11,13 +11,7 @@ if File.exist?("/etc/nginx/nginx.conf")
   puts "http://#{host}"
 end
 
-# MONIT
-if File.exist?("/etc/monitrc")
-  puts "> Monit ".ljust(50, '-').cyan
-  puts "http://#{host}:8989"
-end
-
-# APPS
+# APP 
 if Dir.exist?("/etc/nginx/conf.d")
   Dir.glob("/etc/nginx/conf.d/*.conf").each do |path|
     app = File.basename(path).split('.').first
@@ -32,5 +26,11 @@ if Dir.exist?("/etc/nginx/conf.d")
       puts "http://#{vhost}"
     end
   end
+end
+
+# MONIT
+if File.exist?("/etc/monitrc")
+  puts "> Monit ".ljust(50, '-').cyan
+  puts "http://#{host}:8989"
 end
 
