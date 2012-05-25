@@ -5,16 +5,16 @@ require 'colored'
 
 host = ENV['SYSNAME'].downcase
 
-# MONIT
-if File.exist?("/etc/monitrc")
-  puts "> Monit ".ljust(50, '-').cyan
-  puts "http://#{host}:8989"
-end
-
 # NGINX BASE
 if File.exist?("/etc/nginx/nginx.conf") 
   puts "> Nginx Base ".ljust(50, '-').cyan
   puts "http://#{host}"
+end
+
+# MONIT
+if File.exist?("/etc/monitrc")
+  puts "> Monit ".ljust(50, '-').cyan
+  puts "http://#{host}:8989"
 end
 
 # APPS

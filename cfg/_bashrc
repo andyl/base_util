@@ -75,6 +75,8 @@ alias vx="vbox_provision"
 alias pp="puppet"
 alias ppa="sudo puppet apply"
 
+alias visudo="sudo EDITOR=vim visudo"
+
 alias h="history | tail -30"
 alias r="rails"
 alias g="git"
