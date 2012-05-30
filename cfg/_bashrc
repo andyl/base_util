@@ -274,3 +274,8 @@ export EDITOR
 
 ##############################################################################
 
+# postgress helpers
+
+alias pgc="sudo -u postgres psql"
+alias pga="(pgadmin3 & > /dev/null) > /dev/null 2>&1"
+alias vk=valkyrie
