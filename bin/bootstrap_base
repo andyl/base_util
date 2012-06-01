@@ -4,9 +4,9 @@ USAGE_MSG="\nBOOTSTRAP WILL RECONFIGURE YOUR SYSTEM!!  USE WITH CAUTION!!\n\nUsa
 
 # This script is for bootstrapping new systems.
 # To use: 
-#   scp bootstrap.sh new_system:
+#   scp bootstrap_base new_system:
 #   ssh new_system
-#   sudo bootstrap.sh <username> --proceed
+#   sudo bootstrap_base <username> --proceed
 
 # ----- check command-line parameters -----
 [ $# == 2 ] || { echo -e $USAGE_MSG ; exit 1 ; }
