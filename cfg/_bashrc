@@ -251,7 +251,7 @@ GITC=$UTIL_DIR/base_util/cfg/git-completion
 if [ -f $GITC ]
 then
   source $GITC
-  PS1="${PSBlue}\u@\h${PSClear}\`__git_ps1\` \w${PSRed}>${PSClear} " 
+  PS1="${PSBlue}\u@\h${PSClear}${PSYellow}\`__git_ps1\`${PSClear} \w${PSRed}>${PSClear} " 
 else
   PS1="${PSBlue}\u@\h${PSClear} \w${PSRed}>${PSClear} " 
 fi
