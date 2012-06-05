@@ -86,9 +86,9 @@ set expandtab
 set backspace=start,indent
 
 " PRINT COMMANDS
-nmap <leader>pp :! a2ps -c -Plj2p --line-numbers=1 %<cr>
-nmap <leader>p1 :! a2ps -c -Plj2p --line-numbers=1 --portrait  --columns=1 --font-size=9 %<cr>
-nmap <leader>pl :! a2ps -c -Plj2l --line-numbers=1 --landscape --columns=1 --font-size=9 %<cr>
+nmap <leader>pp :! a2ps -c --sides=duplex --line-numbers=1 %<cr>
+nmap <leader>p1 :! a2ps -c --sides=duplex --line-numbers=1 --portrait  --columns=1 --font-size=9 %<cr>
+nmap <leader>pl :! a2ps -c --sides=duplex --line-numbers=1 --landscape --columns=1 --font-size=9 %<cr>
 
 " WINDOW MANIPULATION
 nmap <silent> <C-k> :wincmd k<cr>
