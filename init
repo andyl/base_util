@@ -49,6 +49,9 @@ The script produces:
 
 The .util_dir and .util_path files are used in .bashrc to 
 reference config files and scripts in the util directories.
+
+TODO: rewrite this script in bash
+
 =end
 
 # capture util_dir and util_path
