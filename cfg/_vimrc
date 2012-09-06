@@ -41,8 +41,8 @@ set printoptions=duplex:long,number:y
 let g:otl_text_view = 1
 let mapleader=','
 imap kj <esc>
-imap jj <esc>
-imap kk <esc>
+" imap jj <esc>
+" imap kk <esc>
 imap :w <esc>:w
 imap :q <esc>:q
 nmap <space> i~<esc>r
@@ -96,7 +96,7 @@ nmap <silent> <C-j> :wincmd j<cr>
 nmap <silent> <C-h> :wincmd h<cr>
 nmap <silent> <C-l> :wincmd l<cr>
 
-" CTRLP
+" CTRLP - fast window finding
 let g:ctrlp_max_files = 10000        " Set the max files
 if has("unix")                       " Optimize file searching 
   let g:ctrlp_user_command = {
