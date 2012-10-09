@@ -37,6 +37,10 @@ It starts with a standard directory structure:
   /your_util
     /bin                 # UTIL_PATH;
       scripts...
+    /gems
+      /your_gem
+        /bin             # UTIL_PATH
+          scripts...
     /cfg
       _dotfiles
 
@@ -56,7 +60,8 @@ TODO: rewrite this script in bash
 
 # capture util_dir and util_path
 util_dir  = File.dirname(File.dirname(File.expand_path(__FILE__)))
-util_path = Dir.glob(util_dir + "/*_util/bin").sort
+path_glob = [util_dir + "/*_util/bin", util_dir + "/*_util/gems/*/bin"]
+util_path = Dir.glob(path_glob).sort
 
 # cd to the home directory
 homedir = ENV["BOOTSTRAP_HOME"] || File.expand_path("~")

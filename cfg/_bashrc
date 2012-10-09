@@ -116,8 +116,8 @@ alias gbc='cd $UTIL_DIR/base_util/cfg'
 
 alias gpb='cd $UTIL_DIR/pdev_util/bin'
 alias gpc='cd $UTIL_DIR/pdev_util/cfg'
-alias gpr='cd $UTIL_DIR/pdev_util/bin/rcon'
-alias gps='cd $UTIL_DIR/pdev_util/bin/rcon/sw'
+alias gpi='cd $UTIL_DIR/pdev_util/inc'
+alias gpg='cd $UTIL_DIR/pdev_util/gems'
 
 alias gd='cd ~/dl'
 alias gj='cd ~/todo/journal'

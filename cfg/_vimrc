@@ -41,7 +41,7 @@ set printoptions=duplex:long,number:y
 let g:otl_text_view = 1
 let mapleader=','
 imap kj <esc>
-" imap jj <esc>
+imap jj <esc>
 " imap kk <esc>
 imap :w <esc>:w
 imap :q <esc>:q
@@ -213,3 +213,10 @@ if &diff
   map <leader>2 :diffget BASE<CR>
   map <leader>3 :diffget REMOTE<CR>
 endif
+
+" AUTO-RELOAD .VIMRC
+augroup reload_vimrc " {
+  autocmd!
+  autocmd BufWritePost $MYVIMRC source $MYVIMRC
+augroup END " }
+
