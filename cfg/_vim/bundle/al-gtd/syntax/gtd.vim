@@ -205,8 +205,8 @@ vmap <leader>s# :!pgsort contact<cr>gv
 nmap <leader>s# mm:%!pgsort contact<cr>`m
 
 " GROUP KEYMAPS -----
-vmap <leader>g! :!pggroup !<cr>gv
-nmap <leader>g! mm:%!pggroup !<cr>`m
+" vmap <leader>g! :!pggroup !<cr>gv
+" nmap <leader>g! mm:%!pggroup !<cr>`m
 
 vmap <leader>g= :!pggroup =<cr>gv
 nmap <leader>g= mm:%!pggroup =<cr>`m
