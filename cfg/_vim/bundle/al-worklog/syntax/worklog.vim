@@ -1,7 +1,7 @@
 " WLOG SYNTAX -----
+syntax match wRoadmap   /^# ROADMAP.*/
 syntax match wTitle     /^Title: Week beginning [01][0-9]-[01][0-9]-[0-3][0-9]$/
-syntax match wDayStart  
-     \  /^# \(MON\|TUE\|WED\|THU\|FRI\|SAT\|SUN\) [01][0-9]-[01][0-9]-[0-3][0-9].*/ 
+syntax match wDayStart  /^# \(MON\|TUE\|WED\|THU\|FRI\|SAT\|SUN\) [01][0-9]-[01][0-9]-[0-3][0-9].*/ 
 syntax match wDayEnd    /^---$/  
 syntax match wTaskStart /^## [0-2][0-9][0134][05].*/
 syntax match wTaskEnd   /^\[\]$/
@@ -13,6 +13,7 @@ syntax match wDONE      /DONE:/
 " SYNTAX HIGHLIGHTING -----
 highlight wTitle     ctermfg=yellow     ctermbg=red
 highlight wDayStart  ctermfg=red  
+highlight wRoadmap   ctermfg=red  
 highlight wDayEnd    ctermfg=red 
 highlight wTaskStart ctermfg=blue
 highlight wTaskEnd   ctermfg=blue 
@@ -22,8 +23,8 @@ highlight wDONE      ctermfg=LightGreen  ctermbg=LightBlue
 
 " FOLDING -----
 syn region levelOne 
-     \  start=/^# \(MON\|TUE\|WED\|THU\|FRI\|SAT\|SUN\)/ 
-     \  end=/^---$/ fold contains=wDayStart,wDayEnd,wCode,wTODO,wDONE keepend
+     \  start=/^# \(ROADMAP\|MON\|TUE\|WED\|THU\|FRI\|SAT\|SUN\)/ 
+     \  end=/^---$/ fold contains=wRoadmap,wDayStart,wDayEnd,wCode,wTODO,wDONE keepend
 
 syn region levelTwo start=/^## / end=/^\[\]$/ 
      \ fold contains=wTaskStart,wTaskEnd,wCode,wTODO,wDONE 
