@@ -83,6 +83,7 @@ alias h="history | tail -30"
 alias r="rails"
 alias g="git"
 alias t="thor"
+alias z="zeus"
 
 alias ba="cd .."
 alias sc="screen -c ~/util/bin/screenrc/sc.screen"
