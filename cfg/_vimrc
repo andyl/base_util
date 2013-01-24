@@ -133,11 +133,11 @@ vmap <leader>a> :Align =><cr>gv<cr>
 vmap <leader>a\| :Align \|<cr>gv<cr>
 
 " TAB MANIPULATION
-nmap <leader>tp :tabp<CR>
 nmap <leader>tn :tabnew<CR>
-nmap <leader>tc :tabclose<CR>
 nmap <leader>th :tabp<CR>
 nmap <leader>tl :tabn<CR>
+nmap <leader>tc :tabclose<CR>
+nmap <leader>tm :tabm 
 
 " TAGS
 let $CDIR=expand('%:p:h')
