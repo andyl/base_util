@@ -33,6 +33,8 @@ It starts with a standard directory structure:
     /bin                 # UTIL_PATH;
       scripts...
     /cfg
+      config
+        _dotfiles
       _dotfiles
   /your_util
     /bin                 # UTIL_PATH;
@@ -48,6 +50,7 @@ You run '~/util/base_util/init' (this script!)
 
 The script produces:
 - ~/.symlinks for each _dotfile (and directory)
+- ~/.config/symlinks for each config/_dotfile (and directory)
 - a file ~/.util_dir with the path to the ~/util directory
 - a file ~/.util_path with path entries for all bin directories
 
@@ -94,6 +97,24 @@ target_list.each do |path|
   system "mv #{file} #{file}.old" if File.exist?(file)
   system "rm -f #{file}"
   puts "-> #{util_base}/#{file_base}"
+  system "ln -s #{path} #{file}"
+  artifact = "#{path}/#{file}"
+  system "rm #{artifact}" if File.exist?(artifact)
+end
+
+# create symlinks for each cfg/config file...
+target_spec = util_dir + "/*_util/cfg/config/_*"
+target_list = Dir.glob(target_spec).sort
+
+puts "Symlinks for #{util_dir}/*/config..."
+
+target_list.each do |path|
+  file_base = path.split('/').last[1..-1]
+  util_base = path.split('/')[-4]
+  file = '.config/' + file_base
+  system "mv #{file} #{file}.old" if File.exist?(file)
+  system "rm -f #{file}"
+  puts "-> #{util_base}/config/#{file_base}"
   system "ln -s #{path} #{file}"
   artifact = "#{path}/#{file}"
   system "rm #{artifact}" if File.exist?(artifact)
