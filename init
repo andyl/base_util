@@ -66,6 +66,7 @@ util_path = Dir.glob(path_glob).sort
 # cd to the home directory
 homedir = ENV["BOOTSTRAP_HOME"] || File.expand_path("~")
 Dir.chdir homedir
+system "touch #{homedir}/.hushlogin"
 
 # prompt to ensure the user wants to destroy existing dot files (TODO)
 
@@ -85,6 +86,8 @@ puts "UTIL_PATH: #{util_path}"
 target_spec = util_dir + "/*_util/cfg/_*"
 target_list = Dir.glob(target_spec).sort
 
+exit if target_list.length == 0
+
 puts "Symlinks for #{util_dir}..."
 
 target_list.each do |path|
@@ -98,6 +101,4 @@ target_list.each do |path|
   artifact = "#{path}/#{file}"
   system "rm #{artifact}" if File.exist?(artifact)
 end
-
-system "touch #{homedir}/.hushlogin"
 
