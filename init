@@ -105,8 +105,6 @@ target_list.each do |path|
   system "rm #{artifact}" if File.exist?(artifact)
 end
 
-<<<<<<< HEAD
-=======
 # create symlinks for each cfg/config file...
 target_spec = util_dir + "/*_util/cfg/config/_*"
 target_list = Dir.glob(target_spec).sort
@@ -127,4 +125,3 @@ end
 
 system "touch #{homedir}/.hushlogin"
 
->>>>>>> 7718b100bc005f7d1863a49fbb9ff4e7d0e68d84
