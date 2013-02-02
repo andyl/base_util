@@ -64,12 +64,16 @@ else
   sudo apt-get -y -qq --force-yes install zlib1g-dev libssl-dev
   sudo apt-get -y -qq --force-yes install libevent-1.4
   sudo apt-get -y -qq --force-yes install build-essential texinfo wget curl
-  sudo apt-get -y -qq --force-yes install openssl libopenssl-ruby ruby-dev 
+  sudo apt-get -y -qq --force-yes install openssl 
+  #libopenssl-ruby ruby-dev 
   # ----- install ruby -----
   sudo apt-get -y -qq --force-yes install ruby1.9.3 ruby-switch
   sudo ruby-switch --set ruby1.9.3
-  sudo apt-get -y -qq --force-yes install rubygems
   # ----- install ruby gems -----
+  sudo apt-get -y -qq --force-yes install rubygems
+
+  exit
+
   echo "======================================================="
   echo "Install Puppet and Utility Gems..."
   sudo gem install --no-rdoc --no-ri --quiet wirble
