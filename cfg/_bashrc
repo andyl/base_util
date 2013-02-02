@@ -89,8 +89,9 @@ alias ba="cd .."
 alias sc="screen -c ~/util/bin/screenrc/sc.screen"
 alias mm="screen -c ~/util/bin/screenrc/mm.screen"
 
-alias sf="rm -f ~/.cp; ln -s \`pwd\` ~/.cp"           # set focus directory
-alias gf="if [ -d ~/.cp ] ; then cd -P ~/.cp ; fi"    # goto focus directory
+alias sf="rm -f ~/.cp; ln -s \`pwd\` ~/.cp"               # set focus directory
+alias gf="if [ -d ~/.cp ] ; then cd -P ~/.cp ; fi"        # goto focus directory
+alias gfc="gf ; if [ -d current ] ; then cd current ; fi" # goto focus/current directory
 
 alias beep="alert beep"
 alias bell="alert bell"
