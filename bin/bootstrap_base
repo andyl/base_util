@@ -48,12 +48,16 @@ sudo apt-get install git-core -y -qq
 sudo apt-get install python-software-properties -y -qq
 
 echo "======================================================="
-echo "Installing Ruby 1.8.7"
+echo "Installing Ruby 1.9.3"
 
 if [ -f /usr/bin/ruby ]
 then
-  echo "Ruby 1.8.7 already installed..."
+  echo "Ruby 1.9.3 already installed..."
 else
+  # ----- add brightbox repository -----
+  # see http://wiki.brightbox.co.uk/docs:ruby-ng
+  sudo apt-add-repository ppa:brightbox/ruby-ng
+  sudo apt-get update
   # ----- install support libraries -----
   sudo apt-get -y -qq --force-yes install libxslt1-dev libxml2-dev 
   sudo apt-get -y -qq --force-yes install sqlite3 libsqlite3-dev
@@ -62,7 +66,9 @@ else
   sudo apt-get -y -qq --force-yes install build-essential texinfo wget curl
   sudo apt-get -y -qq --force-yes install openssl libopenssl-ruby ruby-dev 
   # ----- install ruby -----
-  sudo apt-get -y -qq --force-yes install ruby rubygems
+  sudo apt-get -y -qq --force-yes install ruby1.9.3 ruby-switch
+  sudo ruby-switch --set ruby1.9.3
+  sudo apt-get -y -qq --force-yes install rubygems
   # ----- install ruby gems -----
   echo "======================================================="
   echo "Install Puppet and Utility Gems..."
