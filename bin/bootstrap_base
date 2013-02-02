@@ -72,8 +72,6 @@ else
   # ----- install ruby gems -----
   sudo apt-get -y -qq --force-yes install rubygems1.9.1
 
-  exit
-
   echo "======================================================="
   echo "Install Puppet and Utility Gems..."
   sudo gem install --no-rdoc --no-ri --quiet wirble
