@@ -68,9 +68,9 @@ else
   #libopenssl-ruby ruby-dev 
   # ----- install ruby -----
   sudo apt-get -y -qq --force-yes install ruby1.9.3 ruby-switch
-  sudo ruby-switch --set ruby1.9.3
+  sudo ruby-switch --set ruby1.9.1
   # ----- install ruby gems -----
-  sudo apt-get -y -qq --force-yes install rubygems
+  sudo apt-get -y -qq --force-yes install rubygems1.9.1
 
   exit
 
