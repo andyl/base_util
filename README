@@ -12,9 +12,23 @@ have private utilities for development, or
 deployment.  
 
 Each directory should have two sub-directories: 
-'cfg' and 'bin'.  Each file and directory under 
-'cfg' will be symlinked as a ~/.dotfile.  Each 
-bin directory will go onto your path.
+'cfg' and 'bin'.  
+
+Each bin directory will go onto your path.
+
+Each file and directory under 'cfg' beginning with
+an underscore will be symlinked as a ~/.dotfile.  
+
+Some programs store their configuration data under
+the ~/.config directory.  To support thisk, the
+cfg symlinking supports nested config directories.
+
+For example, the path: `_config/term/config.txt`
+
+Will generate the following commands:
+> mkdir -p ~/.config
+> if [ -e ~/.config/term ] ; then mv ~/.config/term ~/.config/term.old ; fi
+> ln -s ~/util/base_util/cfg/_config/term ~/.config/term
 
 
 
