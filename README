@@ -23,12 +23,12 @@ Some programs store their configuration data under
 the ~/.config directory.  To support thisk, the
 cfg symlinking supports nested config directories.
 
-For example, the path: `_config/term/config.txt`
+Nested paths must be encoded using the following filename conventions:
+-> a single '+' character to show the dotfile root
+-> a single '^' character to show where to built the symlink
 
-Will generate the following commands:
-> mkdir -p ~/.config
-> if [ -e ~/.config/term ] ; then mv ~/.config/term ~/.config/term.old ; fi
-> ln -s ~/util/base_util/cfg/_config/term ~/.config/term
+For example:
+~/util/base_util/cfg/+config/app/^subdir/myfile
 
-
-
+Will generate:
+~/.config/app/subdir -> ~/util/base_util/cfg/+config/app/^subdir
