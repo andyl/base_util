@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 
-USAGE_MSG="\nBOOTSTRAP WILL RECONFIGURE YOUR SYSTEM!!  USE WITH CAUTION!!\n\nUsage: bootstrap.bash <username> --proceed\n"
+USAGE_MSG = <<-EOF
+
+BOOTSTRAP WILL RECONFIGURE YOUR SYSTEM!!  USE WITH CAUTION!!
+
+Usage: bootstrap.bash <username> --proceed"
+
+EOF
 
 # This script is for bootstrapping new systems.
 # To use: 
@@ -47,6 +53,7 @@ echo "Running apt-get install git-core..."
 sudo apt-get install git-core -y -qq
 sudo apt-get install python-software-properties -y -qq
 
+# system-wide ruby is required for Puppet (unfortunately)
 echo "======================================================="
 echo "Installing Ruby 1.9.3"
 

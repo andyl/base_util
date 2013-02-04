@@ -1,10 +1,10 @@
-# A sample Gemfile
+# Standard Gems
 source "https://rubygems.org"
 
 gem "pry"
-gem "colored"
 gem "debugger"
 
+gem "colored"
 gem "net-ssh"
 gem "net-sftp"
 gem "highline"

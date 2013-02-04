@@ -1,5 +1,5 @@
 # Startup file for bash - goes in the user home directory 
-##############################################################################
+###########################################################################
 
 export TZ="America/Los_Angeles"
 
@@ -9,11 +9,12 @@ source ~/.util_path    # defines $UTIL_PATH
 export PATH=$UTIL_PATH:/usr/bin:/bin:$PATH:   
 export RAILS_ENV=development
 
-##############################################################################
+###########################################################################
 
+# set rbenv base directory
 RBENV_BASE="rbenv_base"
 [ -d /opt/rbenv ] && RBENV_BASE="/opt/rbenv"
-[ -d ~/.rbenv ]   && RBENV_BASE="$HOME/.rbenv"
+[ -d ~/.rbenv ]   && RBENV_BASE="$HOME/.rbenv" 
 
 if [ -d "$RBENV_BASE" ] ; then
   export RBENV_ROOT=$RBENV_BASE
@@ -36,7 +37,7 @@ else
   export PATH=.:./bin:$PATH
 fi
 
-##############################################################################
+###########################################################################
 
 # bashrc extensions for the PDEV environment
 tgt=$UTIL_DIR/pdev_util/inc/_bashrc ; [ -f $tgt ] && source $tgt
@@ -44,6 +45,7 @@ tgt=$UTIL_DIR/pdev_util/inc/_bashrc ; [ -f $tgt ] && source $tgt
 # sets FACTERLIB environment variable for puppet/facter
 tgt=~/.facterlib ; [ -f $tgt ] && source $tgt
 
+# autojump is a faster way to navigate the filesystem - see 'man autojump'
 if [ -f ~/.autojump/etc/profile.d/autojump.bash ] ; then
   alias aj="autojump"
   alias aja="autojump -a `pwd`"
@@ -51,20 +53,13 @@ if [ -f ~/.autojump/etc/profile.d/autojump.bash ] ; then
   source ~/.autojump/etc/profile.d/autojump.bash
 fi
 
-##############################################################################
+###########################################################################
 tgt=~/.java_env ; [ -f $tgt ] && source $tgt
-##############################################################################
-
-alias bp="bin/proctor"
-
-# install gems used for Ruby-IRB (see ~/.irbrc)
-alias irbgems="gem install hirb interactive_editor drx awesome_print wirble"
-
-##############################################################################
+###########################################################################
 
 setxkbmap -option caps:swapescape 2> /dev/null
 
-##############################################################################
+###########################################################################
 
 alias be="bundle exec"
 alias re="rbenv"
@@ -89,9 +84,9 @@ alias ba="cd .."
 alias sc="screen -c ~/util/bin/screenrc/sc.screen"
 alias mm="screen -c ~/util/bin/screenrc/mm.screen"
 
-alias sf="rm -f ~/.cp; ln -s \`pwd\` ~/.cp"               # set focus directory
-alias gf="if [ -d ~/.cp ] ; then cd -P ~/.cp ; fi"        # goto focus directory
-alias gfc="gf ; if [ -d current ] ; then cd current ; fi" # goto focus/current directory
+alias sf="rm -f ~/.cp; ln -s \`pwd\` ~/.cp"               # set focus dir
+alias gf="if [ -d ~/.cp ] ; then cd -P ~/.cp ; fi"        # goto focus dir
+alias gfc="gf ; if [ -d current ] ; then cd current ; fi" # production env
 
 alias beep="alert beep"
 alias bell="alert bell"
@@ -104,7 +99,7 @@ alias gopen="gnome-open"
 
 alias gree="tree"
 
-##############################################################################
+###########################################################################
 
 alias  pd='pushd'
 alias pop='popd'
@@ -133,14 +128,14 @@ alias gn='cd /opt/nginx'
 alias glr="cd ~/lr"
 alias grr="cd ~/rr"
 
-##############################################################################
+###########################################################################
 
 alias more='less'
 alias copy='cp'
 alias move='mv'
 alias dir='ls'
 
-##############################################################################
+###########################################################################
 
 export LC_COLLATE=C  # sorts Caps before lower case file names for 'ls'
 alias ls='ls -FC --group-directories --color'
@@ -148,7 +143,7 @@ alias lsd='ls -l | grep ^d'
 alias ll='ls'
 alias cls='clear'
 
-##############################################################################
+###########################################################################
 
 Color_Off='\e[0m'       # Text Reset
 Clear='\e[0m'           # Text Reset
@@ -235,7 +230,7 @@ On_IPurple='\e[10;95m'  # Purple
 On_ICyan='\e[0;106m'    # Cyan
 On_IWhite='\e[0;107m'   # White 
 
-##############################################################################
+###########################################################################
 
 # set bash command line editor to VI mode
 set -o vi
@@ -262,7 +257,7 @@ if [ `which xterm_title` ]; then
   PROMPT_COMMAND='export PWDS=`pwd_short`;xterm_title "${USRNAME}@${SYSNAME} ${PWDS}"'
 fi
 
-##############################################################################
+###########################################################################
 
 # Editor Aliases
 alias lvim="vim -c \"normal '0\""  # open the last file edited
@@ -274,10 +269,9 @@ alias vim-='vim -'
 EDITOR="vim"
 export EDITOR
 
-##############################################################################
+###########################################################################
 
 # postgress helpers
 
 alias pgc="sudo -u postgres psql"
 alias pga="(pgadmin3 & > /dev/null) > /dev/null 2>&1"
-alias vk=valkyrie

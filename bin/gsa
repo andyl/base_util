@@ -1,8 +1,0 @@
-#!/usr/bin/env ruby
-
-Dir["*"].each do |d|
-  if File.directory?(d) && File.directory?("#{d}/.git")
-    puts " DIRECTORY: #{d} ".center(60, '=')
-    system "cd #{d}; git status; cd .."
-  end
-end
