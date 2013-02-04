@@ -84,7 +84,6 @@ else
   sudo gem install --no-rdoc --no-ri --quiet wirble
   sudo gem install --no-rdoc --no-ri --quiet awesome_print 
   sudo gem install --no-rdoc --no-ri --quiet hirb 
-  sudo gem install --no-rdoc --no-ri --quiet drx 
   sudo gem install --no-rdoc --no-ri --quiet interactive_editor
   sudo gem install --no-rdoc --no-ri --quiet puppet 
   sudo gem install --no-rdoc --no-ri --quiet libshadow # so puppet can manage user passwords!
@@ -106,7 +105,7 @@ base_util/init
 
 echo "======================================================="
 echo "Create puppet group"
-if cat /etc/group | grep -q "puppet"
+if ! cat /etc/group | grep -q "puppet"
 then addgroup puppet 
 fi
 
