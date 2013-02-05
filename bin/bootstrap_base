@@ -81,7 +81,7 @@ else
   sudo gem install --no-rdoc --no-ri --quiet hirb 
   sudo gem install --no-rdoc --no-ri --quiet interactive_editor
   sudo gem install --no-rdoc --no-ri --quiet puppet 
-  sudo gem install --no-rdoc --no-ri --quiet libshadow # so puppet can manage user passwords!
+  # sudo gem install --no-rdoc --no-ri --quiet libshadow # so puppet can manage user passwords!
 fi
 
 echo "======================================================="
@@ -143,7 +143,8 @@ sudo chgrp -R $BOOTSTRAP_USER $BOOTSTRAP_HOME
 echo "======================================================="
 echo "setting up RBENV"
 sudo apt-get install -y -q rbenv-base rbenv193p194
-su - $BOOTSTRAP_USER -d "rbenv_setup"
+su - $BOOTSTRAP_USER -c "rbenv_setup ; rbenv rehash"
+su - $BOOTSTRAP_USER -c "rbenv global 1.9.3-p194"
 
 echo "======================================================="
 echo "Loading utility gems"
