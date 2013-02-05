@@ -142,6 +142,7 @@ sudo chgrp -R $BOOTSTRAP_USER $BOOTSTRAP_HOME
 
 echo "======================================================="
 echo "setting up RBENV"
+sudo apt-get install -y -q rbenv-base rbenv193p194
 su - $BOOTSTRAP_USER -d "rbenv_setup"
 
 echo "======================================================="
