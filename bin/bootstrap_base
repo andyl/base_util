@@ -30,7 +30,7 @@ echo "Starting bootstrap for $BOOTSTRAP_USER at $BOOTSTRAP_HOME on `hostname`"
 date
 
 echo "======================================================="
-echo "Adding apt repo for custom debs..."
+echo "Adding apt repository for custom debs..."
 APT_DIR=""
 [ -d /apt ] && APT_DIR="/apt"
 [ -d $BOOTSTRAP_HOME/data/apt ] && APT_DIR="$BOOTSTRAP_HOME/data/apt"
@@ -45,8 +45,14 @@ else
 fi
 
 echo "======================================================="
+echo "add brightbox repository"
+# see http://wiki.brightbox.co.uk/docs:ruby-ng
+# this is for the brightbox ruby packages
+sudo apt-add-repository ppa:brightbox/ruby-ng
+
+echo "======================================================="
 echo "Running apt-get update..."
-sudo apt-get update -y -q -q
+sudo apt-get update -y -qq
 
 # system-wide ruby is required for Puppet (unfortunately)
 echo "======================================================="
@@ -56,10 +62,6 @@ if [ -f /usr/bin/ruby ]
 then
   echo "Ruby 1.9.3 already installed..."
 else
-  # ----- add brightbox repository -----
-  # see http://wiki.brightbox.co.uk/docs:ruby-ng
-  sudo apt-add-repository ppa:brightbox/ruby-ng
-  sudo apt-get update
   # ----- install support libraries -----
   sudo apt-get -y -qq --force-yes install libxslt1-dev libxml2-dev 
   sudo apt-get -y -qq --force-yes install sqlite3 libsqlite3-dev
@@ -67,7 +69,6 @@ else
   sudo apt-get -y -qq --force-yes install libevent-1.4
   sudo apt-get -y -qq --force-yes install build-essential texinfo wget curl
   sudo apt-get -y -qq --force-yes install openssl 
-  #libopenssl-ruby ruby-dev 
   # ----- install ruby -----
   sudo apt-get -y -qq --force-yes install ruby1.9.3 ruby-switch
   sudo ruby-switch --set ruby1.9.1
@@ -81,7 +82,7 @@ else
   sudo gem install --no-rdoc --no-ri --quiet hirb 
   sudo gem install --no-rdoc --no-ri --quiet interactive_editor
   sudo gem install --no-rdoc --no-ri --quiet puppet 
-  # sudo gem install --no-rdoc --no-ri --quiet libshadow # so puppet can manage user passwords!
+  sudo gem install --no-rdoc --no-ri --quiet libshadow # so puppet can manage user passwords!
 fi
 
 echo "======================================================="
@@ -89,11 +90,6 @@ echo "Create puppet group"
 if ! cat /etc/group | grep -q "puppet"
   then addgroup puppet 
 fi
-
-echo "======================================================="
-echo "Running apt-get install git-core..."
-sudo apt-get install git-core -y -qq
-sudo apt-get install python-software-properties -y -qq
 
 echo "======================================================="
 echo "Setting up util directories..."
