@@ -11,7 +11,7 @@ cd
 cd .rbenv
 ./update_rbenv.sh
 
-if [ $1 != "dev" ]
+if [ ! $1 == "dev" ]
 then
   mv versions versions.old
   ln -s /opt/rbenv/versions versions
