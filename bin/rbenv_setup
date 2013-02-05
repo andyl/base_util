@@ -11,9 +11,17 @@ cd
 cd .rbenv
 ./update_rbenv.sh
 
-if [ ! $1 == "dev" ]
+if [ -z "$1" ]
 then
+  echo "creating versions symlink"
   mv versions versions.old
   ln -s /opt/rbenv/versions versions
+fi
+
+if [ "$1" == "dev" ]
+then
+  echo "creating development rubies"
+  mv versions versions.old
+  cp -r /opt/rbenv/versions .
 fi
 
