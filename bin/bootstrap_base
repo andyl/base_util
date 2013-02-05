@@ -54,7 +54,9 @@ echo "======================================================="
 echo "add brightbox repository"
 # see http://wiki.brightbox.co.uk/docs:ruby-ng
 # this is for the brightbox ruby packages
-sudo apt-add-repository ppa:brightbox/ruby-ng
+# only add the repo if it is not already installed...
+CMD="sudo apt-add-repository ppa:brightbox/ruby-ng"
+ls /etc/apt/sources.list.d/brightbox* &> /dev/null && $CMD
 
 echo "======================================================="
 echo "Running apt-get update..."
