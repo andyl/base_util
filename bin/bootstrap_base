@@ -30,6 +30,11 @@ echo "Starting bootstrap for $BOOTSTRAP_USER at $BOOTSTRAP_HOME on `hostname`"
 date
 
 echo "======================================================="
+echo "Installing support utilities"
+sudo apt-get install git-core -y -qq
+sudo apt-get install python-software-properties -y -qq
+
+echo "======================================================="
 echo "Adding apt repository for custom debs..."
 APT_DIR=""
 [ -d /apt ] && APT_DIR="/apt"
