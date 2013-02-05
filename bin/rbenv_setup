@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+echo "======================================================="
+echo "Setting up .rbenv for `whoami`"
+
+cd
+
+[ -d .rbenv ] || cp -r /opt/rbenv .rbenv
+
+
+cd .rbenv
+./update_rbenv.sh
+
+if [ $1 != "dev" ]
+then
+  mv versions versions.old
+  ln -s /opt/rbenv/versions versions
+fi
+
