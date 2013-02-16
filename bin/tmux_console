@@ -17,16 +17,12 @@ else
   source $1
 fi
 
-echo "AAA - $APP"
-
 # create a new session if none exists
 tmux has-session -t $APP # 2> /dev/null
 if [ $? != 0 ] ; then
   echo "CREATING SESSION"
   create_new_session
 fi
-
-echo "BBB"
 
 # get a count of active clients
 count=`tmux list-clients | grep $APP | wc -l`
@@ -36,8 +32,6 @@ if [ $count == 0 ] ; then
   tmux attach -t $APP
   exit $?
 fi
-
-echo "CCC"
 
 # if there are attached clients, then attach using a Grouped
 # Session (this enabled different clients to view different pages)
