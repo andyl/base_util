@@ -72,11 +72,12 @@ then
 else
   # ----- install support libraries -----
   sudo apt-get -y -qq --force-yes install libxslt1-dev libxml2-dev 
-  sudo apt-get -y -qq --force-yes install sqlite3 libsqlite3-dev
+  sudo apt-get -y -qq --force-yes install sqlite3 libsqlite3-dev     # in case we want to run sqlite...
   sudo apt-get -y -qq --force-yes install zlib1g-dev libssl-dev
   sudo apt-get -y -qq --force-yes install libevent-1.4
-  sudo apt-get -y -qq --force-yes install build-essential texinfo wget curl
-  sudo apt-get -y -qq --force-yes install openssl 
+  sudo apt-get -y -qq --force-yes install libffi-dev libffi-ruby     # spring preloader requires this
+  sudo apt-get -y -qq --force-yes install build-essential texinfo 
+  sudo apt-get -y -qq --force-yes install openssl wget curl
   # ----- install ruby -----
   sudo apt-get -y -qq --force-yes install ruby1.9.3 ruby-switch
   sudo ruby-switch --set ruby1.9.1
