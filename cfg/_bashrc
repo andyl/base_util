@@ -68,8 +68,6 @@ alias z="zeus"
 alias sp="spring"
 
 alias ba="cd .."
-alias sc="screen -c ~/util/bin/screenrc/sc.screen"
-alias mm="screen -c ~/util/bin/screenrc/mm.screen"
 
 alias sf="rm -f ~/.cp; ln -s \`pwd\` ~/.cp"               # set focus dir
 alias gf="if [ -d ~/.cp ] ; then cd -P ~/.cp ; fi"        # goto focus dir
