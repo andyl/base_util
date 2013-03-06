@@ -67,12 +67,6 @@ alias t="thor"
 alias z="zeus"
 alias sp="spring"
 
-alias ba="cd .."
-
-alias sf="rm -f ~/.cp; ln -s \`pwd\` ~/.cp"               # set focus dir
-alias gf="if [ -d ~/.cp ] ; then cd -P ~/.cp ; fi"        # goto focus dir
-alias gfc="gf ; if [ -d current ] ; then cd current ; fi" # production env
-
 alias beep="alert beep"
 alias bell="alert bell"
 alias buzz="alert buzz"
@@ -86,32 +80,67 @@ alias gree="tree"
 
 ###########################################################################
 
-alias  pd='pushd'
-alias pop='popd'
+# prevents duplicate paths from filling up the pushd stack  
+function pushdp
+{
+  if [ -z "$1" ] 
+  then
+    pushd
+  else
+    stack=`dirs` ; IFS=' ' ; idx=0 ; pos=0 ; src=`readlink -f $1`
+    for path in $stack ; do
+      tgt=`eval echo $path`    # expand ~ character...
+      if [ "$src" == "$tgt" ]
+      then
+        pos=$idx      
+      fi
+      ((idx++))
+    done
+    if [ "$pos" == "0" ]
+    then
+      pushd $1
+    else
+      pushd +$pos       
+    fi
+  fi
+}
 
-alias  gu='cd $UTIL_DIR'
-alias gub='cd $UTIL_DIR/base_util'
-alias gup='cd $UTIL_DIR/pdev_util'
+alias pa='pushdp'              # add directory to stack
+alias px='popd'               # remove directory from stac
+alias pd='dirs -v'            # display stack
+alias pc='dirs -c ; dirs -v'  # clear stack 
+alias  b='pushd +1'           # go back on the stack
+alias  f='pushd -0'           # go forward on the stack
 
-alias gbb='cd $UTIL_DIR/base_util/bin'
-alias gbc='cd $UTIL_DIR/base_util/cfg'
+alias  gu='pushdp $UTIL_DIR'
+alias gub='pushdp $UTIL_DIR/base_util'
+alias gup='pushdp $UTIL_DIR/pdev_util'
 
-alias gpb='cd $UTIL_DIR/pdev_util/bin'
-alias gpc='cd $UTIL_DIR/pdev_util/cfg'
-alias gpi='cd $UTIL_DIR/pdev_util/inc'
-alias gpg='cd $UTIL_DIR/pdev_util/gems'
+alias gbb='pushdp $UTIL_DIR/base_util/bin'
+alias gbc='pushdp $UTIL_DIR/base_util/cfg'
 
-alias gd='cd ~/dl'
-alias gj='cd ~/todo/journal'
-alias gp='cd ~/.puppet'
-alias gl='cd ~/data/share/library'
-alias gv='cd ~/data/media/video'
-alias ga='cd ~/data/apt'
-alias gt='cd ~/tst'
-alias gn='cd /opt/nginx'
+alias gpb='pushdp $UTIL_DIR/pdev_util/bin'
+alias gpc='pushdp $UTIL_DIR/pdev_util/cfg'
+alias gpi='pushdp $UTIL_DIR/pdev_util/inc'
+alias gpg='pushdp $UTIL_DIR/pdev_util/gems'
 
-alias glr="cd ~/lr"
-alias grr="cd ~/rr"
+alias gd='pushdp ~/dl'
+alias gj='pushdp ~/todo/journal'
+alias gp='pushdp ~/.puppet'
+alias gl='pushdp ~/data/share/library'
+alias gv='pushdp ~/data/media/video'
+alias ga='pushdp ~/data/apt'
+alias gt='pushdp ~/tst'
+alias gn='pushdp /opt/nginx'
+
+alias glr='pushdp ~/lr'
+alias grr='pushdp ~/rr'
+
+alias ba="cd .."
+
+alias sf="rm -f ~/.cp; ln -s \`pwd\` ~/.cp"                      # set focus dir
+alias gf="if [ -d ~/.cp ] ; then pushdp `readlink ~/.cp` ; fi"   # goto focus dir
+alias gfc="gf ; if [ -d current ] ; then pushdp ./current ; fi"  # production env
 
 ###########################################################################
 
