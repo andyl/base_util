@@ -1,11 +1,6 @@
 #!/usr/bin/env bash
 
-USAGE_MSG='
-\n   BOOTSTRAP WILL RECONFIGURE YOUR SYSTEM!!  USE WITH CAUTION!!
-\n  
-\n   Usage: sudo bootstrap_base <username> --proceed"
-\n  
-'
+USAGE_MSG="\nBOOTSTRAP WILL RECONFIGURE YOUR SYSTEM!!  USE WITH CAUTION!!\n\nUsage: sudo bootstrap_base <username> --proceed"
 
 # This script is for bootstrapping new systems.
 # To use: 
