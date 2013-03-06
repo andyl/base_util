@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
 
-USAGE_MSG = <<-EOF
-
-BOOTSTRAP WILL RECONFIGURE YOUR SYSTEM!!  USE WITH CAUTION!!
-
-Usage: bootstrap.bash <username> --proceed"
-
-EOF
+USAGE_MSG='
+\n   BOOTSTRAP WILL RECONFIGURE YOUR SYSTEM!!  USE WITH CAUTION!!
+\n  
+\n   Usage: sudo bootstrap_base <username> --proceed"
+\n  
+'
 
 # This script is for bootstrapping new systems.
 # To use: 
@@ -148,7 +147,6 @@ sudo chgrp -R $BOOTSTRAP_USER $BOOTSTRAP_HOME
 echo "======================================================="
 echo "setting up RBENV"
 sudo apt-get install -y -q rbenv-base rbenv193p194
-sudo apt-get install -y -q rbenvjruby172 rbenv200rc1
 # create local .rbenv for BOOTSTRAP_USER
 su - $BOOTSTRAP_USER -c "rbenv_setup" 
 su - $BOOTSTRAP_USER -c "rbenv global 1.9.3-p194"
