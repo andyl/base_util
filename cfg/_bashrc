@@ -7,18 +7,18 @@ source ~/.util_dir     # defines $UTIL_DIR
 source ~/.util_path    # defines $UTIL_PATH
 
 export PATH=$UTIL_PATH:/usr/bin:/bin:$PATH:   
-# export RAILS_ENV=development
 
 ###########################################################################
 
-RBENV_BASE="$HOME/.rbenv" 
+RBENV_BASE="rbenv_base" 
+[ -d /opt/rbenv ] && RBENV_BASE="/opt/rbenv"
+[ -d ~/.rbenv ]   && RBENV_BASE="$HOME/.rbenv"
 
 if [ -d "$RBENV_BASE" ] ; then
   export RBENV_ROOT=$RBENV_BASE
   export PATH=$RBENV_ROOT/bin:$RBENV_ROOT/libexec:$PATH
   eval "$(rbenv init -)" 
   export PATH=.:./bin:$PATH
-  alias reh="rbenv rehash"
 else
   export PATH=.:./bin:$PATH
 fi
@@ -47,7 +47,7 @@ setxkbmap -option caps:swapescape 2> /dev/null
 
 ###########################################################################
 
-alias be="bundle exec"
+alias reh="rbenv rehash"
 alias re="rbenv"
 
 alias va="vagrant"
