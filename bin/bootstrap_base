@@ -56,36 +56,16 @@ echo "======================================================="
 echo "Running apt-get update..."
 sudo apt-get update -y -qq
 
-# system-wide ruby is required for Puppet (unfortunately)
 echo "======================================================="
-echo "Installing Ruby 1.9.3"
-
-if [ -f /usr/bin/ruby ]
+echo "Install puppet..."
+if [ -f /usr/bin/puppet ]
 then
-  echo "Ruby 1.9.3 already installed..."
+  echo "Puppet is already installed..."
 else
-  # ----- install support libraries -----
-  sudo apt-get -y -qq --force-yes install libxslt1-dev libxml2-dev 
-  sudo apt-get -y -qq --force-yes install sqlite3 libsqlite3-dev     # in case we want to run sqlite...
-  sudo apt-get -y -qq --force-yes install zlib1g-dev libssl-dev
-  sudo apt-get -y -qq --force-yes install libevent-1.4
-  sudo apt-get -y -qq --force-yes install libffi-dev libffi-ruby     # spring preloader requires this
-  sudo apt-get -y -qq --force-yes install build-essential texinfo 
-  sudo apt-get -y -qq --force-yes install openssl wget curl
-  # ----- install ruby -----
-  sudo apt-get -y -qq --force-yes install ruby1.9.3 ruby-switch
-  sudo ruby-switch --set ruby1.9.1
-  # ----- install ruby gems -----
-  sudo apt-get -y -qq --force-yes install rubygems1.9.1
-
-  echo "======================================================="
-  echo "Install Puppet and Utility Gems..."
-  sudo gem install --no-rdoc --no-ri --quiet wirble
-  sudo gem install --no-rdoc --no-ri --quiet awesome_print 
-  sudo gem install --no-rdoc --no-ri --quiet hirb 
-  sudo gem install --no-rdoc --no-ri --quiet interactive_editor
-  sudo gem install --no-rdoc --no-ri --quiet puppet 
-  sudo gem install --no-rdoc --no-ri --quiet libshadow # so puppet can manage user passwords!
+  wget http://apt.puppetlabs.com/puppetlabs-release-precise.deb
+  sudo dpkg -i puppetlabs-release-precise.deb
+  sudo apt-get update
+  sudo apt-get install puppet -y -qq
 fi
 
 echo "======================================================="
