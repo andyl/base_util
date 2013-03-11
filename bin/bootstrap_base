@@ -65,6 +65,7 @@ else
   wget http://apt.puppetlabs.com/puppetlabs-release-precise.deb
   sudo dpkg -i puppetlabs-release-precise.deb
   sudo apt-get update
+  sudo apt-get install ruby1.9.3 -y -qq
   sudo apt-get install puppet -y -qq
 fi
 
