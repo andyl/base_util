@@ -62,10 +62,12 @@ if [ -f /usr/bin/puppet ]
 then
   echo "Puppet is already installed..."
 else
+  echo "Installing Ruby 1.9.3..."
+  sudo apt-get install ruby1.9.3 -y -qq
+  echo "Installing Pupppet..."
   wget http://apt.puppetlabs.com/puppetlabs-release-precise.deb
   sudo dpkg -i puppetlabs-release-precise.deb
   sudo apt-get update
-  sudo apt-get install ruby1.9.3 -y -qq
   sudo apt-get install puppet -y -qq
 fi
 
@@ -122,7 +124,7 @@ sudo chgrp -R $BOOTSTRAP_USER $BOOTSTRAP_HOME
 
 echo "======================================================="
 echo "setting up RBENV"
-sudo apt-get install -y -q rbenv-base rbenv193p194
+sudo apt-get install -y -q rbenv-base rbenv193p194 rbenv200p0
 # create local .rbenv for BOOTSTRAP_USER
 su - $BOOTSTRAP_USER -c "rbenv_setup" 
 su - $BOOTSTRAP_USER -c "rbenv global 1.9.3-p194"

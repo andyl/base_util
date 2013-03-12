@@ -7,7 +7,6 @@ cd
 
 [ -d .rbenv ] || cp -r /opt/rbenv .rbenv
 
-
 cd .rbenv
 ./update_rbenv.sh
 
