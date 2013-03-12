@@ -5,22 +5,16 @@ echo "Setting up .rbenv for `whoami`"
 
 cd
 
-[ -d .rbenv ] || cp -r /opt/rbenv .rbenv
+[ -d .rbenv ] || (cp -r /opt/rbenv .rbenv ; rm -rf .rbenv/versions)
 
 cd .rbenv
 ./update_rbenv.sh
 
-if [ -z "$1" ]
-then
-  echo "creating versions symlink"
-  mv versions versions.old
-  ln -s /opt/rbenv/versions versions
-fi
+mkdir -p versions
+cd versions
 
-if [ "$1" == "dev" ]
-then
-  echo "creating development rubies"
-  mv versions versions.old
-  cp -r /opt/rbenv/versions .
-fi
+for RB_PATH in /opt/rbenv/versions/* 
+do
+  ln -s $RB_PATH . 2> /dev/null
+done
 

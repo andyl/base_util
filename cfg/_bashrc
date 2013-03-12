@@ -136,6 +136,9 @@ alias gn='pushdp /opt/nginx'
 alias glr='pushdp ~/lr'
 alias grr='pushdp ~/rr'
 
+alias gorb='pushdp /opt/rbenv'
+alias glrb='pushdp ~/.rbenv'
+
 alias ba="cd .."
 
 alias sf="rm -f ~/.cp; ln -s \`pwd\` ~/.cp"                      # set focus dir
