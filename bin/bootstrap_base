@@ -126,7 +126,7 @@ sudo chgrp -R $BOOTSTRAP_USER $BOOTSTRAP_HOME
 echo "======================================================="
 echo "setting up RBENV"
 # sudo apt-get install -y -q rbenv-base rbenv193p194 rbenv200p0
-sudo apt-get install -y -q rbenv-base rbenv200p0 1.9.3-p327-perf
+sudo apt-get install -y -q rbenv-base rbenv200p0 rbenv193p327perf
 # create local .rbenv for BOOTSTRAP_USER
 su - $BOOTSTRAP_USER -c "rbenv_setup" 
 su - $BOOTSTRAP_USER -c "rbenv global 1.9.3-p327-perf"
