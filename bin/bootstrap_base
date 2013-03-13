@@ -132,12 +132,11 @@ su - $BOOTSTRAP_USER -c "rbenv_setup"
 su - $BOOTSTRAP_USER -c "rbenv global 1.9.3-p327-perf"
 su - $BOOTSTRAP_USER -c "rbenv rehash" 
 
-echo "======================================================="
-echo "Loading utility gems"
-bindir=$BOOTSTRAP_HOME/util/base_util/bin
-su - $BOOTSTRAP_USER -c "rbenv rehash"
-su - $BOOTSTRAP_USER -c "cd $bindir && bundle --quiet"
-su - $BOOTSTRAP_USER -c "rbenv rehash"
+# echo "======================================================="
+# echo "Loading utility gems"
+# bindir=$BOOTSTRAP_HOME/util/base_util/bin
+# su - $BOOTSTRAP_USER -c "cd $bindir && bundle --quiet"
+# su - $BOOTSTRAP_USER -c "rbenv rehash"
 
 echo "======================================================="
 echo "Finished bootstrap for $BOOTSTRAP_USER at $BOOTSTRAP_HOME on `hostname`"
