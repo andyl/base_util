@@ -44,13 +44,13 @@ else
   $APT_DIR/pub/add_key.sh
 fi
 
-echo "======================================================="
-echo "add brightbox repository"
+# echo "======================================================="
+# echo "add brightbox repository"
 # see http://wiki.brightbox.co.uk/docs:ruby-ng
 # this is for the brightbox ruby packages
 # only add the repo if it is not already installed...
-CMD="sudo apt-add-repository ppa:brightbox/ruby-ng"
-ls /etc/apt/sources.list.d/brightbox* &> /dev/null || $CMD
+# CMD="sudo apt-add-repository ppa:brightbox/ruby-ng"
+# ls /etc/apt/sources.list.d/brightbox* &> /dev/null || $CMD
 
 echo "======================================================="
 echo "Running apt-get update..."
@@ -62,13 +62,14 @@ if [ -f /usr/bin/puppet ]
 then
   echo "Puppet is already installed..."
 else
-  echo "Installing Ruby 1.9.3..."
-  sudo apt-get install ruby1.9.3 -y -qq
+  # echo "Installing Ruby 1.9.3..."
+  # sudo apt-get install ruby1.9.3 -y -qq
   echo "Installing Pupppet..."
   wget http://apt.puppetlabs.com/puppetlabs-release-precise.deb
   sudo dpkg -i puppetlabs-release-precise.deb
   sudo apt-get update
   sudo apt-get install puppet -y -qq
+  rm puppetlabs-release-precise.deb
 fi
 
 echo "======================================================="
@@ -124,10 +125,11 @@ sudo chgrp -R $BOOTSTRAP_USER $BOOTSTRAP_HOME
 
 echo "======================================================="
 echo "setting up RBENV"
-sudo apt-get install -y -q rbenv-base rbenv193p194 rbenv200p0
+# sudo apt-get install -y -q rbenv-base rbenv193p194 rbenv200p0
+sudo apt-get install -y -q rbenv-base rbenv200p0 1.9.3-p327-perf
 # create local .rbenv for BOOTSTRAP_USER
 su - $BOOTSTRAP_USER -c "rbenv_setup" 
-su - $BOOTSTRAP_USER -c "rbenv global 1.9.3-p194"
+su - $BOOTSTRAP_USER -c "rbenv global 1.9.3-p327-perf"
 su - $BOOTSTRAP_USER -c "rbenv rehash" 
 
 echo "======================================================="
