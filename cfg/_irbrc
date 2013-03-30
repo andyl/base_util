@@ -1,8 +1,7 @@
-require 'rubygems' rescue nil
+require 'rubygems' 
 require 'wirble'
 require 'pp'
 require 'ap'
-require 'drx'
 require 'hirb'
 require 'interactive_editor'
 
