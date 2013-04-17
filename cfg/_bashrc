@@ -284,7 +284,9 @@ alias vin='vim'
 alias vim-='vim -'
 
 EDITOR="vim"
+VISUAL="vim"
 export EDITOR
+export VISUAL
 
 ###########################################################################
 
