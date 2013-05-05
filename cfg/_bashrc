@@ -47,6 +47,8 @@ setxkbmap -option caps:swapescape 2> /dev/null
 
 ###########################################################################
 
+alias bb="sudo screen /dev/ttyUSB0 115200"
+
 alias reh="rbenv rehash"
 alias re="rbenv"
 
