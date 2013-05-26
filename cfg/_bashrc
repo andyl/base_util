@@ -6,7 +6,7 @@ export TZ="America/Los_Angeles"
 source ~/.util_dir     # defines $UTIL_DIR
 source ~/.util_path    # defines $UTIL_PATH
 
-export PATH=$UTIL_PATH:/usr/bin:/bin:$PATH:   
+export PATH=$UTIL_PATH:/usr/bin:/bin:$PATH:~/lcl/bin/elix/bin   
 
 ###########################################################################
 
