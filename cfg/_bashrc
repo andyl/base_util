@@ -59,6 +59,7 @@ alias tm="tmux"
 alias vx="vbox_provision"
 alias pp="puppet"
 alias ppa="sudo puppet apply"
+alias an="ansible"
 
 alias visudo="sudo EDITOR=vim visudo"
 
