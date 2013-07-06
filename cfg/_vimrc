@@ -132,6 +132,9 @@ vmap <leader>a# :Align #<cr>gv<cr>
 vmap <leader>a> :Align =><cr>gv<cr>
 vmap <leader>a\| :Align \|<cr>gv<cr>
 
+" Underline the current line with dashes in normal mode
+nmap <leader>u yyp<c-v>$r-
+
 " TAB MANIPULATION
 nmap <leader>tn :tabnew<CR>
 nmap <leader>th :tabp<CR>
