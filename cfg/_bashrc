@@ -129,7 +129,7 @@ alias gpg='pushdp $UTIL_DIR/pdev_util/gems'
 
 alias gd='pushdp ~/dl'
 alias gj='pushdp ~/todo/journal'
-alias gp='pushdp ~/.puppet'
+alias gp='pushdp ~/.playbooks'
 alias gl='pushdp ~/data/share/library'
 alias gv='pushdp ~/data/media/video'
 alias ga='pushdp ~/data/apt'

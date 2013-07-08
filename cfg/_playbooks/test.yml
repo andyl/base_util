@@ -1,4 +1,7 @@
 ---
-- tasks
-  - first
-    - name: First Task
+- hosts: all
+  tasks:
+    - name: get system uptime
+      command: uptime
+    - name: get system date
+      command: date
