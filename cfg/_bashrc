@@ -119,34 +119,33 @@ alias  gu='pushdp $UTIL_DIR'
 alias gub='pushdp $UTIL_DIR/base_util'
 alias gup='pushdp $UTIL_DIR/pdev_util'
 
-alias gbb='pushdp $UTIL_DIR/base_util/bin'
-alias gbc='pushdp $UTIL_DIR/base_util/cfg'
+alias gubb='pushdp $UTIL_DIR/base_util/bin'
+alias gubc='pushdp $UTIL_DIR/base_util/cfg'
 
-alias gpb='pushdp $UTIL_DIR/pdev_util/bin'
-alias gpc='pushdp $UTIL_DIR/pdev_util/cfg'
-alias gpi='pushdp $UTIL_DIR/pdev_util/inc'
-alias gpg='pushdp $UTIL_DIR/pdev_util/gems'
+alias gupb='pushdp $UTIL_DIR/pdev_util/bin'
+alias gupc='pushdp $UTIL_DIR/pdev_util/cfg'
+alias gupi='pushdp $UTIL_DIR/pdev_util/inc'
+alias gupg='pushdp $UTIL_DIR/pdev_util/gems'
 
-alias gd='pushdp ~/dl'
-alias gj='pushdp ~/todo/journal'
-alias gp='pushdp ~/.playbooks'
-alias gl='pushdp ~/data/share/library'
-alias gv='pushdp ~/data/media/video'
-alias ga='pushdp ~/data/apt'
-alias gt='pushdp ~/tst'
-alias gn='pushdp /opt/nginx'
+alias  gd='pushdp ~/dl'
+alias  gt='pushdp ~/tst'
+alias  gj='pushdp ~/todo/journal'
+alias  gl='pushdp ~/data/share/library'
+alias  gv='pushdp ~/data/media/video'
+alias  ga='pushdp ~/data/apt'
+alias  gp='pushdp ~/.puppet'
+alias gai='pushdp ~/.ansible_inventory'
+alias gap='pushdp ~/.ansible_playbooks'
 
 alias glr='pushdp ~/lr'
 alias grr='pushdp ~/rr'
 
-alias gorb='pushdp /opt/rbenv'
-alias glrb='pushdp ~/.rbenv'
+alias grb='pushdp ~/.rbenv'
 
 alias ba="cd .."
 
-alias sf="rm -f ~/.cp; ln -s \`pwd\` ~/.cp"                      # set focus dir
-# alias gf="if [ -d ~/.cp ] ; then pushdp `readlink ~/.cp` ; fi"   # goto focus dir
-alias gf="if [ -d ~/.cp ] ; then cd -P ~/.cp; fi"                # goto focus dir
+alias  sf="rm -f ~/.cp; ln -s \`pwd\` ~/.cp"                      # set focus dir
+alias  gf="if [ -d ~/.cp ] ; then cd -P ~/.cp; fi"                # goto focus dir
 alias gfc="gf ; if [ -d current ] ; then pushdp ./current ; fi"  # production env
 
 ###########################################################################
@@ -154,14 +153,13 @@ alias gfc="gf ; if [ -d current ] ; then pushdp ./current ; fi"  # production en
 alias more='less'
 alias copy='cp'
 alias move='mv'
-alias dir='ls'
+alias  dir='ls'
 
 ###########################################################################
 
 export LC_COLLATE=C  # sorts Caps before lower case file names for 'ls'
-alias ls='ls -FC --group-directories --color'
-alias lsd='ls -l | grep ^d'
-alias ll='ls'
+alias  ls='ls -FC --group-directories --color'
+alias  ll='ls'
 alias cls='clear'
 
 ###########################################################################
