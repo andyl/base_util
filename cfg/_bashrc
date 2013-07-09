@@ -108,8 +108,8 @@ function pushdp
   fi
 }
 
-alias pa='pushdp'              # add directory to stack
-alias px='popd'               # remove directory from stac
+alias pa='pushdp'             # add directory to stack
+alias px='popd'               # remove directory from stack 
 alias pd='dirs -v'            # display stack
 alias pc='dirs -c ; dirs -v'  # clear stack 
 alias  b='pushd +1'           # go back on the stack
