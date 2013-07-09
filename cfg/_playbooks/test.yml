@@ -1,7 +1,10 @@
 ---
 - hosts: all
   tasks:
-    - name: get system uptime
+    - name:    get system uptime
       command: uptime
-    - name: get system date
+    - name:    get system date
       command: date
+    - name: install ansible using APT
+      sudo: true
+      apt:  pkg=ansible state=installed
