@@ -1,5 +1,0 @@
----
-- hosts: hosts-cli
-  tasks:
-    - name: get system uptime
-      command: uptime

@@ -1,5 +1,7 @@
 ---
 - hosts: hosts-dualmon
+  sudo:  true
   tasks:
-    - name: get system uptime
-      command: uptime
+    - name: install arandr sw for dual-monitor config
+      apt:  pkg=arandr state=installed
+      
