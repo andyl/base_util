@@ -46,7 +46,7 @@ imap kk <esc>
 imap :w <esc>:w
 imap :q <esc>:q
 nmap <space> i~<esc>r
-set statusline=%F%m%r%h%w\ [TYPE=%Y]\ [%{hostname()}]\ [%{$TERM}]\ [%p%%]\ [LEN=%L]\ [%{$PWDS}]
+set statusline=%F%m%r%h%w\ [TYPE=%Y]\ [%{hostname()}]\ [%l,%v]\ [%p%%]\ [LEN=%L]\ [%{$PWDS}]
 set title titlestring=<vim>\ %{$USER}@%{hostname()}\ %t\ %m%r%h%w
 
 " search for selected text, forwards or backwards

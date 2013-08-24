@@ -1,7 +1,7 @@
 benchmark: false
 verbose: true
 backtrace: false
-gem: --no-rdoc --no-ri
+gem: --no-rdoc 
 update_sources: true
 sources: 
 - http://rubygems.org
