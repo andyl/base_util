@@ -83,6 +83,13 @@ alias gree="tree"
 
 ###########################################################################
 
+shopt -s cdspell    # spell correction during cd command
+shopt -s dirspell   # spell correction during <tab> completion
+shopt -s extglob    # extended glob pattern matching
+shopt -s globstar   # enable **/<filename> matching
+
+###########################################################################
+
 # prevents duplicate paths from filling up the pushd stack  
 function pushdp
 {
