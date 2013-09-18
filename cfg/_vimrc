@@ -29,7 +29,7 @@ syntax on
 set directory=~/.vimtmp,/tmp,.
 set splitright
 set splitbelow
-map go :only<CR>:vsp <cfile><CR>
+map go :only<CR>:~vsp <cfile><CR>
 set number
 set incsearch
 set visualbell
@@ -155,8 +155,8 @@ nmap <leader>x :!ct<cr>:TlistUpdate<cr>
 au BufNewFile,BufRead *.rb silent! source .paths.vim
 
 " EDITING ~/.vimrc
-nmap <leader>ve :e ~/.vimrc<CR>
-nmap <leader>vs :source ~/.vimrc<CR>
+nmap <leader>ve :split  ~/.vimrc<CR>   
+nmap <leader>vs :source ~/.vimrc<CR>   
 
 " SURROUND CUSTOMIZATION
 " Select text in an ERb file with visual mode and then press s- or s=
