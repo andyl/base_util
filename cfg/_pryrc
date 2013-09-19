@@ -1,5 +1,3 @@
-# vim : set ft=ruby :
-
 require 'rubygems'
 require 'hirb'
 
@@ -14,3 +12,6 @@ end
 alias xx exit
 
 puts "Loaded PRY Environment"
+
+#
+# vim: set ft=ruby:
