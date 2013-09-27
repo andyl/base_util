@@ -1,28 +1,5 @@
-# vim : set ft=ruby :
-
 require 'rubygems'
 require 'hirb'
-
-
-# require 'rubygems' rescue nil
-# require 'wirble'
-# require 'pp'
-# require 'ap'
-# require 'drx'
-# 
-# IRB.conf[:AUTO_INDENT] = true
-# 
-# Wirble.init
-# Wirble.colorize
-# 
-# Hirb::View.enable
-# 
-# class Object
-#   def local_methods
-#     (methods - Object.instance_methods).sort
-#   end
-#   alias lmethods local_methods
-# end
 
 Pry.config.prompt = Pry::NAV_PROMPT
 
@@ -32,6 +9,21 @@ Pry.config.print = proc do |output, value|
   Hirb::View.view_or_page_output(value) || Pry::DEFAULT_PRINT.call(output, value)
 end
 
+if defined?(PryDebugger)
+  puts "PryDebugger is on"
+  Pry.commands.alias_command 'c', 'continue'
+  Pry.commands.alias_command 's', 'step'
+  Pry.commands.alias_command 'n', 'next'
+  Pry.commands.alias_command 'f', 'finish'
+end
+
+if defined?(Rails) && Rails.env
+  extend Rails::ConsoleMethods
+end
+
 alias xx exit
 
 puts "Loaded PRY Environment"
+
+#
+# vim: set ft=ruby:
