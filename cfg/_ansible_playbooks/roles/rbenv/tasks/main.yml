@@ -1,0 +1,48 @@
+---
+- name:  rbenv | update rbenv repo
+  git:   repo=git://github.com/sstephenson/rbenv.git dest={{rbenv_root}} 
+
+- name:  rbenv | install ruby-build
+  git:   repo=git://github.com/sstephenson/ruby-build.git dest={{rbenv_root}}/plugins/ruby-build
+
+- name:  rbenv | install rubies
+  shell: RBENV_ROOT={{rbenv_root}} {{rbenv_cmd}} install {{item}} creates={{rbenv_vers}}/{{item}}
+  with_items: rbenv_rubies
+
+- name:  rbenv | set global ruby to {{global_ruby}}
+  shell: RBENV_ROOT={{rbenv_root}} {{rbenv_cmd}} global {{rbenv_global}}
+  changed_when: false
+
+- name:  rbenv | create rbenv_init from template
+  template: src=rbenv_init dest=/home/{{user}}/.rbenv_init
+
+- name:  rbenv | get .bashrc filetype
+  stat: path=/home/{{user}}/.bashrc 
+  register: bashrc_filetype
+  changed_when: false
+
+- name:  rbenv | set rbenv path in .bashrc
+  lineinfile: state=present dest=/home/{{user}}/.bashrc regexp="^export PATH=" line='export PATH="$HOME/.rbenv/bin:$PATH"'
+  when: bashrc_filetype.stat.isreg 
+
+- name:  rbenv | source .rbenv-init in .bashrc
+  lineinfile: state=present dest=/home/{{user}}/.bashrc regexp="^source .HOME/.rbenv_init" line='source $HOME/.rbenv_init'
+  when: bashrc_filetype.stat.isreg 
+
+- name: rbenv | comment out line which prevents loading bash profile by ssh
+  lineinfile: dest=~/.bashrc regexp='[ -z "$PS1" ] && return' line='# [ -z "$PS1" ] && return' state=present
+  when: bashrc_filetype.stat.isreg 
+
+- name:  rbenv | run rbenv rehash
+  shell: RBENV_ROOT={{rbenv_root}} {{rbenv_cmd}} rehash 
+  changed_when: false
+
+- name: rbenv  | get rbenv_owner
+  shell: stat -c %U /home/{{user}}/.rbenv
+  register: rbenv_owner
+  changed_when: false
+
+- name:  rbenv | set rbenv permissions
+  file:  path={{rbenv_root}} recurse=yes group={{user}} owner={{user}} state=directory
+  when:  rbenv_owner != user
+  changed_when: false

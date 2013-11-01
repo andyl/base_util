@@ -1,0 +1,4 @@
+---
+- name: create a deploy user
+  sudo: true
+  user: name={{user}} shell=/bin/bash password=$1$dingo$53EDfjILS5gDnt244RzZk. 
