@@ -309,3 +309,9 @@ export VISUAL
 
 alias pgc="sudo -u postgres psql"
 alias pga="(pgadmin3 & > /dev/null) > /dev/null 2>&1"
+
+###########################################################################
+
+# ansible hack
+
+source /home/aleak/src/ansible/hacking/env-setup

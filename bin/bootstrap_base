@@ -56,12 +56,12 @@ echo "======================================================="
 echo "Running apt-get update..."
 sudo apt-get update -y -qq
 
-echo "======================================================="
-echo "Install puppet..."
-if [ -f /usr/bin/puppet ]
-then
-  echo "Puppet is already installed..."
-else
+# echo "======================================================="
+# echo "Install puppet..."
+# if [ -f /usr/bin/puppet ]
+# then
+#   echo "Puppet is already installed..."
+# else
   # echo "Installing Ruby 1.9.3..."
   # sudo apt-get install ruby1.9.3 -y -qq
   echo "Installing Pupppet..."

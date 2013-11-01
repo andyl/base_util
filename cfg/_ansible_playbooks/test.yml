@@ -3,8 +3,3 @@
   tasks:
     - name:    get system uptime
       command: uptime
-    - name:    get system date
-      command: date
-    - name: install ansible using APT
-      sudo: true
-      apt:  pkg=ansible state=installed

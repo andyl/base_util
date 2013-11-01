@@ -68,8 +68,6 @@ homedir = ENV["BOOTSTRAP_HOME"] || File.expand_path("~")
 Dir.chdir homedir
 system "touch #{homedir}/.hushlogin"
 
-# prompt to ensure the user wants to destroy existing dot files (TODO)
-
 # create ~/.util_dir file
 # enables flexible location of the util/bin directory.
 # ~/.util_dir is sourced in .bashrc
@@ -85,13 +83,15 @@ puts "UTIL_PATH: #{util_path}"
 # create symlinks for each cfg file...
 target_spec = util_dir + "/*_util/cfg/_*"
 target_list = Dir.glob(target_spec).sort
+target_hash = target_list.reduce({}) { |acc,val| acc[val.split('/').last] = val; acc}
 
 if target_list.length > 0
-  puts "Symlinks for #{util_dir}..."
-  target_list.each do |path|
+  puts "Generating symlinks for #{util_dir}"
+  target_hash.values.each do |path|
     file_base = path.split('/').last[1..-1]
     util_base = path.split('/')[-3]
     file = '.' + file_base
+    next if File.exist?(file) && File.symlink?(file) && File.readlink(file) == path
     system "mv #{file} #{file}.old" if File.exist?(file)
     system "rm -f #{file}"
     puts "-> #{util_base}/#{file_base}"
@@ -101,35 +101,3 @@ if target_list.length > 0
   end
 end
 
-def valid_path(path)
-  %w(^ +).all? do |char|
-    if path.count(char) == 1
-      true
-    else
-      puts "Skipping: #{path} (must have a single '#{char}')"
-      false
-    end
-  end
-end
-  
-# create symlinks for each nested path...
-target_spec = util_dir + "/*_util/cfg/**/^*"
-target_list = Dir.glob(target_spec).sort
-
-if target_list.length > 0
-  puts "Nested Symlinks for #{util_dir}..."
-  target_list.each do |path|
-    if valid_path(path)
-      head, tail = path.split('^')
-      util_base = head.split("/util/")[1].split('/')[0]
-      gen_path = '~/.' + head.split('+')[1]
-      gen_link = gen_path + tail.split('/')[0]
-      tgt_link = head + '^' + tail.split('/')[0]
-      system "mkdir -p #{gen_path}"
-      exist_link = File.exist?(File.expand_path(gen_link))
-      system "mv #{gen_link} #{gen_link}.old" if exist_link 
-      puts "-> #{util_base}/#{path.split('/cfg/')[1]}"
-      system "ln -s #{tgt_link} #{gen_link}"
-    end
-  end
-end
