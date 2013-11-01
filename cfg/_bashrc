@@ -149,6 +149,7 @@ alias gwm='pushdp ~/tst/dwiki/member_help'
 alias gwa='pushdp ~/tst/dwiki/admin_help'
 alias gai='pushdp ~/.ansible_inventory'
 alias gap='pushdp ~/.ansible_playbooks'
+alias gapr='pushdp ~/.ansible_playbooks/roles'
 
 alias glr='pushdp ~/lr'
 alias grr='pushdp ~/rr'
@@ -312,6 +313,3 @@ alias pga="(pgadmin3 & > /dev/null) > /dev/null 2>&1"
 
 ###########################################################################
 
-# ansible hack
-
-source /home/aleak/src/ansible/hacking/env-setup
