@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: ekel:vagrant:ison
   tasks:
     - name:    get system uptime
       command: uptime

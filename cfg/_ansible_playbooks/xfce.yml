@@ -1,5 +1,0 @@
----
-- hosts: hosts-xfce
-  tasks:
-    - name: get system uptime
-      command: uptime

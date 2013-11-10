@@ -28,9 +28,6 @@ fi
 # bashrc extensions for the PDEV environment
 tgt=$UTIL_DIR/pdev_util/inc/_bashrc ; [ -f $tgt ] && source $tgt
 
-# sets FACTERLIB environment variable for puppet/facter
-tgt=~/.facterlib ; [ -f $tgt ] && source $tgt
-
 # autojump is a faster way to navigate the filesystem - see 'man autojump'
 if [ -f ~/.autojump/etc/profile.d/autojump.bash ] ; then
   alias aj="autojump"
@@ -58,7 +55,6 @@ alias vh="vhost"
 alias xx="exit"
 alias tm="tmux"
 alias vx="vbox_provision"
-alias pp="puppet"
 alias an="ansible"
 alias ap="ansible-playbook"
 alias be="bundle exec"
@@ -142,7 +138,6 @@ alias  gj='pushdp ~/todo/journal'
 alias  gl='pushdp ~/data/share/library'
 alias  gv='pushdp ~/data/media/video'
 alias  ga='pushdp ~/data/apt'
-alias  gp='pushdp ~/.puppet'
 alias  gw='pushdp ~/tst/dwiki'
 alias gwd='pushdp ~/tst/dwiki/design_notes'
 alias gwm='pushdp ~/tst/dwiki/member_help'
@@ -150,6 +145,7 @@ alias gwa='pushdp ~/tst/dwiki/admin_help'
 alias gai='pushdp ~/.ansible_inventory'
 alias gap='pushdp ~/.ansible_playbooks'
 alias gapr='pushdp ~/.ansible_playbooks/roles'
+alias gapl='pushdp ~/.ansible_playbooks/library'
 
 alias glr='pushdp ~/lr'
 alias grr='pushdp ~/rr'

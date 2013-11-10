@@ -5,6 +5,9 @@
 - name:  rbenv | install ruby-build
   git:   repo=git://github.com/sstephenson/ruby-build.git dest={{rbenv_root}}/plugins/ruby-build
 
+- name:  rbenv | install rbenv-vars
+  git:   repo=git://github.com/andyl/rbenv-vars.git dest={{rbenv_root}}/plugins/rbenv-vars
+
 - name:  rbenv | install rubies
   shell: RBENV_ROOT={{rbenv_root}} {{rbenv_cmd}} install {{item}} creates={{rbenv_vers}}/{{item}}
   with_items: rbenv_rubies

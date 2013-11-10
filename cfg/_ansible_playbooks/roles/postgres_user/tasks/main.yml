@@ -1,0 +1,5 @@
+---
+- name: create a postgres user
+  postgresql_user: user={{pg_user}} password={{pg_pass}} role_attr_flags=CREATEDB,LOGIN,SUPERUSER
+  sudo: true
+

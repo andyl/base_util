@@ -1,28 +1,4 @@
 ---
-- name: whoami
-  shell: whoami
-  changed_when: false
-
-- name: pwd
-  shell: pwd
-  changed_when: false
-
-- name: shell
-  shell: echo $SHELL
-  changed_when: false
-
-- name: path
-  shell: echo $PATH
-  changed_when: false
-
-- name: which ruby
-  shell: which ruby
-  changed_when: false
-
-- name: ruby version
-  shell: ruby -v
-  changed_when: false
-
 - name: create a util directory
   command: /bin/mkdir /home/${user}/util creates=/home/${user}/util
 

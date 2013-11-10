@@ -43,3 +43,7 @@
     - zlib1g-dev
     - exuberant-ctags
     - vim-gnome
+
+- name: upload lang.sh
+  copy: src=lang.sh dest=/etc/profile.d/lang.sh
+  sudo: true

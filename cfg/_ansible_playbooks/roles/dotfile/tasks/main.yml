@@ -1,0 +1,4 @@
+---
+- name: load dotenv variables
+  sudo: false
+  local_action: dotenv file={{dotfile}}

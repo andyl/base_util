@@ -1,0 +1,9 @@
+---
+- name: rbgems | install gems
+  gem:  name={{item}} state=latest
+  with_items:
+    - bundler
+- name:  rbgems | rbenv rehash
+  shell: rbenv rehash
+  changed_when: false
+
