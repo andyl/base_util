@@ -33,7 +33,7 @@
   when: bashrc_filetype.stat.isreg 
 
 - name: rbenv | comment out line which prevents loading bash profile by ssh 
-  lineinfile: state=present dest=/home/{{user}}/.bashrc regexp="^. -z" line='# [ -z "$PS1" ] && return' 
+  lineinfile: state=present dest=/home/{{user}}/.bashrc regexp="^. -z" line='# [ -z "$PS1" ] && return' backrefs=yes
   when: bashrc_filetype.stat.isreg 
 
 - name:  rbenv | run rbenv rehash
