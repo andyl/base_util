@@ -36,3 +36,4 @@
     - ${roles_dir}/memcached
     - ${roles_dir}/rbgems
     - ${roles_dir}/gui_base
+    - ${roles_dir}/gui_util
