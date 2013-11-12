@@ -12,7 +12,7 @@
   shell: RBENV_ROOT={{rbenv_root}} {{rbenv_cmd}} install {{item}} creates={{rbenv_vers}}/{{item}}
   with_items: rbenv_rubies
 
-- name:  rbenv | set global ruby to {{global_ruby}}
+- name:  rbenv | set global ruby to ${global_ruby}
   shell: RBENV_ROOT={{rbenv_root}} {{rbenv_cmd}} global {{rbenv_global}}
   changed_when: false
 

@@ -1,5 +1,5 @@
 ---
-- name: install base packages
+- name: gui_base | install base packages
   sudo: true
   apt:  pkg=$item state=latest install_recommends=no
   with_items:

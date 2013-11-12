@@ -1,5 +1,5 @@
 ---
-- name: install base packages
+- name: cli_base | install base packages
   sudo: true
   apt:  pkg=$item state=latest install_recommends=no
   with_items:
@@ -36,6 +36,6 @@
     - exuberant-ctags
     - vim-gnome
 
-- name: upload lang.sh
+- name: cli_base | upload lang.sh
   copy: src=lang.sh dest=/etc/profile.d/lang.sh
   sudo: true

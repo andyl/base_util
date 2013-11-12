@@ -1,6 +1,16 @@
 ---
-- name: install redis packages
+- name: install nginx packages
   sudo: true
   apt:  pkg=$item state=latest install_recommends=yes
   with_items:
     - nginx
+
+- name: set config directory permissions
+  file: path=/etc/nginx/conf.d group={{user}} owner={{user}} state=directory
+  sudo: true
+
+- name: create deploy directory
+  file: path=/home/{{user}}/a state=directory group={{user}} owner={{user}}
+
+- name: create deploy symlink 
+  file: src=/etc/nginx/conf.d dest=/home/{{user}}/a/_conf owner={{user}} group={{user}} state=link
