@@ -1,13 +1,13 @@
 ---
-- name: update the apt repository 
+- name: apt_update | update the repository 
   apt:  update_cache=yes cache_valid_time=3600   # 3600 seconds = 1 hour
   sudo: true
   
-- name: install aptitude
+- name: apt_update | install aptitude
   apt:  pkg=aptitude state=latest
   sudo: true
 
-- name: upgrade apt packages
+- name: apt_update | upgrade packages
   apt:  upgrade=yes
   sudo: true
 

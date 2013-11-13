@@ -1,9 +1,9 @@
 ---
-- name: add tmux PPA
+- name: tmux | add PPA
   sudo: true
   apt_repository: repo=ppa:pi-rho/dev 
 
-- name: install tmux 
+- name: tmux | install 
   sudo: true
   apt:  pkg=$item state=latest install_recommends=yes
   with_items:

@@ -1,9 +1,11 @@
 ---
-- name: rbgems | install gems
-  gem:  name={{item}} state=latest
-  with_items:
-    - bundler
+- name: rbgems | install bundler
+  shell: /home/{{rem_user}}/.rbenv/shims/gem install bundler --no-rdoc --no-ri creates=/home/{{rem_user}}/.rbenv/shims/bundle executable=/bin/bash
+
+- name: rbgems | install pry
+  shell: /home/{{rem_user}}/.rbenv/shims/gem install pry --no-rdoc --no-ri creates=/home/{{rem_user}}/.rbenv/shims/pry executable=/bin/bash
+
 - name:  rbgems | rbenv rehash
-  shell: rbenv rehash
+  shell: /home/{{rem_user}}/.rbenv/bin/rbenv rehash executable=/bin/bash
   changed_when: false
 

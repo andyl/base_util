@@ -1,4 +1,4 @@
 ---
-- name: load dotenv variables
+- name: dotdeb | load variables
   sudo: false
   local_action: dotenv file={{dotfile}}
