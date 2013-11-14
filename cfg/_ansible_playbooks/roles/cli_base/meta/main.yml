@@ -1,4 +1,3 @@
 ---
 dependencies:
   - { role: "${roles_dir}/apt_update" }
-  - { role: "${roles_dir}/tmux" }
