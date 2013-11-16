@@ -1,9 +1,10 @@
 ---
-- name: cli_user | create a util directory
+- name: cli_util | create a util directory
   command: /bin/mkdir /home/${rem_user}/util creates=/home/${rem_user}/util
 
-- name: cli_user | install base_util for target user
+- name: cli_util | install base_util for target user
   git: repo=git://github.com/andyl/base_util.git dest=/home/${rem_user}/util/base_util
-
-- name: cli_user | run util init script
+ 
+- name: cli_util | run init script 
   shell: /home/${rem_user}/util/base_util/init creates=/home/${rem_user}/.hushlogin
+

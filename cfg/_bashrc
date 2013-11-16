@@ -273,7 +273,7 @@ export GIT_PS1_SHOWSTASHSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true
 export GIT_PS1_SHOWUPSTREAD="auto"
 
-GITC=$UTIL_DIR/base_util/cfg/git-completion
+GITC=$UTIL_DIR/base_util/bin/git-completion
 if [ -f $GITC ]
 then
   source $GITC
