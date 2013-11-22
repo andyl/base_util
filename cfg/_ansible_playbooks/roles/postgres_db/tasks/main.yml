@@ -1,0 +1,5 @@
+---
+- name: postgres_db | create 
+  sudo: true
+  postgresql_db: name={{item}} template=template_base owner={{pg_user}}
+  with_items: pg_dbs

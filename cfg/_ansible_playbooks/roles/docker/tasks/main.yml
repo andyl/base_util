@@ -1,0 +1,26 @@
+---
+
+# install docker
+# see http://docs.docker.io/en/latest/installation/ubuntulinux/
+
+- name: docker | install the backported kernel
+  apt:  pkg=linux-image-generic-lts-raring state=present
+  register: kernel_status
+
+- name: docker | reboot
+  command: /sbin/reboot 
+  when: kernel_status.changed == "False"
+
+- name: docker | wait for the machine to reboot
+  local_action: wait_for port=22 delay=20 timeout=300
+  sudo: false
+  when: kernel_status.changed == "False"
+
+- name: docker | add docker PPA
+  apt_repository: repo=ppa:dotcloud/lxc-docker state=present
+
+- name: docker | update the apt cache
+  apt:  update-cache=true
+
+- name: docker | install docker
+  apt:  pkg=lxc-docker state=present 

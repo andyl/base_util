@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+cd
+
+echo "`whoami`"
+echo "`pwd`"
+echo "`hostname`"
+echo "`ls`"
+
+# [ -f .hushlogin ] && exit
+
+echo "Running Init"
+util/base_util/init
