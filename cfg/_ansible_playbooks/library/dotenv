@@ -1,13 +1,18 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env bash
 
-file    = ARGV[0]
+export FILEARG=$1
+
+/usr/bin/env ruby <<-EOF
+
+file    = ENV["FILEARG"]
+puts "file is #{file}"
 dotfile = if File.exist?(file)
             File.read(file).split('=').last
           else
-            raise("Needs dotfile (absolute path)")
+            abort("Needs dotfile (absolute path)")
           end
 
-raise("Dotfile not found (#{dotfile})") unless File.exist?(dotfile)
+abort("Dotfile not found (#{dotfile})") unless File.exist?(dotfile)
 
 require 'json'
 
@@ -20,3 +25,5 @@ File.readlines(dotfile).each do |line|
 end
 
 puts JSON.dump({"ansible_facts" => env})
+
+EOF
