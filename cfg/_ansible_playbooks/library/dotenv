@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
+#
+# All of these contortions are done to use the .rbenv
+# ruby instead of the system ruby.
 
 export FILEARG=$1
 
 /usr/bin/env ruby <<-EOF
 
 file    = ENV["FILEARG"]
-puts "file is #{file}"
 dotfile = if File.exist?(file)
             File.read(file).split('=').last
           else
