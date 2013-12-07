@@ -154,10 +154,13 @@ alias grb='pushdp ~/.rbenv'
 
 alias ba="cd .."
 
-alias   sf="rm -f ~/.cp; ln -s \`pwd\` ~/.cp"                             # set focus dir
-alias   gf="if [ -d ~/.cp ] ; then cd -P ~/.cp; fi"                       # goto focus dir
+alias   sf="rm -f ~/.dir_fcs; ln -s \`pwd\` ~/.dir_fcs"                   # set focus dir
+alias   gf="if [ -d ~/.dir_fcs ] ; then cd -P ~/.dir_fcs; fi"             # goto focus dir
 alias  gfc="gf ; if [ -d current ]     ; then pushdp ./current     ; fi"  # production env
 alias gfcl="gf ; if [ -d current/log ] ; then pushdp ./current/log ; fi"  # current/log
+
+alias   sr="rm -f ~/.dir_rsv; ln -s \`pwd\` ~/.dir_rsv"                   # set reserve dir
+alias   gr="if [ -d ~/.dir_rsv ] ; then cd -P ~/.dir_rsv; fi"             # goto reserve dir
 
 ###########################################################################
 
