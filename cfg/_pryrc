@@ -18,12 +18,12 @@ if defined?(PryDebugger)
 end
 
 if defined?(Rails) && Rails.env
-  extend Rails::ConsoleMethods
+  extend Rails::ConsoleMethods if defined?(Rails::ConsoleMethods)
 end
 
 alias xx exit
 
-puts "Loaded PRY Environment"
+puts "\nLoaded PRY Environment"
 
 #
 # vim: set ft=ruby:
