@@ -65,7 +65,6 @@ alias h="history | tail -30"
 alias r="rails"
 alias g="git"
 alias t="thor"
-alias z="zeus"
 alias sp="spring"
 
 alias beep="alert beep"
@@ -78,6 +77,8 @@ alias rcon="rake_config"
 alias gopen="gnome-open"
 
 alias gree="tree"
+
+alias kar="killall -9 ruby"
 
 ###########################################################################
 
