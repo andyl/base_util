@@ -3,19 +3,23 @@
   sudo: true
   apt:  pkg=$item state=latest install_recommends=no
   with_items:
+    - python-software-properties
     - build-essential
-    - curl                      
     - dnsutils                  
-    - dstat                     
-    - encfs                     
     - git-core                  
-    - htop                      
-    - iftop                     
     - libmagickcore-dev         
     - libmagickwand-dev         
-    - graphviz                  
     - imagemagick               
+    - graphviz                  
+    - htop                      
+    - atop
+    - ncdu
+    - nmon
+    - iftop                     
+    - dstat                     
     - iotop                     
+    - nload
+    - sysstat
     - libcurl4-openssl-dev
     - libevent-dev              
     - libncurses5-dev           
@@ -23,14 +27,15 @@
     - libssl-dev
     - libxml2-dev               
     - libxslt1-dev
-    - multitail                 
-    - python-software-properties
-    - sshfs                     
-    - tree                      
-    - unison                    
-    - wget                      
     - wkhtmltopdf               
+    - multitail                 
+    - unison                    
+    - encfs                     
+    - sshfs                     
     - xvfb                      
+    - tree                      
+    - curl                      
+    - wget                      
     - zip                       
     - zlib1g-dev
     - exuberant-ctags

@@ -80,6 +80,9 @@ alias gree="tree"
 
 alias kar="killall -9 ruby"
 
+alias mm="middleman"
+alias update="sudo apt-get update ; sudo apt-get upgrade -y -q"
+
 ###########################################################################
 
 shopt -s cdspell    # spell correction during cd command
