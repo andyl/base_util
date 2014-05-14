@@ -149,6 +149,10 @@ let Tlist_GainFocus_On_ToggleOpen=1
 nmap <leader>g :TlistToggle<cr>     
 nmap <leader>x :!ct<cr>:TlistUpdate<cr>
 
+" CTAGS-BUNDLER
+set tags+=./.tags/tags
+set tags+=./.tags/gems.tags
+
 " FILE NAVIGATION 
 " Enhances vim.ruby - for use with 'gf'
 " Adds Bundler paths. Run 'ct' to generate the .paths.vim
