@@ -1,0 +1,9 @@
+---
+- name: ruby_gems | install bundler
+  sudo: no
+  shell: gem install bundler --no-rdoc --no-ri creates=/home/{{rem_user}}/.gem/{{chruby_global}}/bin/bundle executable=/bin/bash
+
+- name: ruby_gems | install pry
+  sudo: no
+  shell: gem install pry --no-rdoc --no-ri creates=/home/{{rem_user}}/.gem/bin/pry executable=/bin/bash
+
