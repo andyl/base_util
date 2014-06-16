@@ -24,6 +24,9 @@ abbrev tihs this
 " WEB PREVIEW
 command! Preview :!firefox %<cr>
 
+" WRITE THE CURRENT BUFFER, THEN CLOSE IT
+command! Wc write|bdelete
+
 " MISC STUFF
 syntax on
 set directory=~/.vimtmp,/tmp,.
@@ -144,14 +147,12 @@ nmap <leader>tm :tabm
 
 " TAGS
 let $CDIR=expand('%:p:h')
-set tags=$CDIR/.tags
+" set tags=$CDIR/.tags
+" CTAGS-BUNDLER
+set tags=tags,gems.tags
 let Tlist_GainFocus_On_ToggleOpen=1
 nmap <leader>g :TlistToggle<cr>     
 nmap <leader>x :!ct<cr>:TlistUpdate<cr>
-
-" CTAGS-BUNDLER
-set tags+=./.tags/tags
-set tags+=./.tags/gems.tags
 
 " FILE NAVIGATION 
 " Enhances vim.ruby - for use with 'gf'
@@ -226,4 +227,25 @@ augroup reload_vimrc " {
   autocmd!
   autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END " }
+
+" STRIP TRAILING WHITESPACE 
+" see http://vimcasts.org/episodes/tidying-whitespace/
+" to show non-printable characters - :set list
+" to hide non-printable characters - :set nolist
+
+" function definition
+function! <SID>StripTrailingWhitespaces()
+  " Prep: save last search and cursor position
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " Do the business
+  %s/\s\+$//e
+  " Cleanup: restore previous search history and cursor position
+  let @/=_s
+  call cursor(l,c)
+endfunction
+
+" call function before saving
+autocmd BufWritePre *.rb,*.slim,*.rake,*.erb :call <SID>StripTrailingWhitespaces()
 

@@ -10,18 +10,23 @@ export PATH=$UTIL_PATH:/usr/bin:/bin:$PATH:~/lcl/bin/elix/bin
 
 ###########################################################################
 
-RBENV_BASE="rbenv_base" 
-[ -d /opt/rbenv ] && RBENV_BASE="/opt/rbenv"
-[ -d ~/.rbenv ]   && RBENV_BASE="$HOME/.rbenv"
+# RBENV_BASE="rbenv_base" 
+# [ -d /opt/rbenv ] && RBENV_BASE="/opt/rbenv"
+# [ -d ~/.rbenv ]   && RBENV_BASE="$HOME/.rbenv"
+# 
+# if [ -d "$RBENV_BASE" ] ; then
+#   export RBENV_ROOT=$RBENV_BASE
+#   export PATH=$RBENV_ROOT/bin:$RBENV_ROOT/libexec:$PATH
+#   eval "$(rbenv init -)" 
+#   export PATH=.:./bin:$PATH
+# else
+#   export PATH=.:./bin:$PATH
+# fi
 
-if [ -d "$RBENV_BASE" ] ; then
-  export RBENV_ROOT=$RBENV_BASE
-  export PATH=$RBENV_ROOT/bin:$RBENV_ROOT/libexec:$PATH
-  eval "$(rbenv init -)" 
-  export PATH=.:./bin:$PATH
-else
-  export PATH=.:./bin:$PATH
-fi
+###########################################################################
+
+source /usr/local/share/chruby/chruby.sh
+source /usr/local/share/chruby/auto.sh
 
 ###########################################################################
 
@@ -43,6 +48,9 @@ tgt=~/.java_env ; [ -f $tgt ] && source $tgt
 setxkbmap -option caps:swapescape 2> /dev/null
 
 ###########################################################################
+
+alias rollback="echo '>> rollback dev' ; bundle exec rake db:rollback ; echo '>> rollback test' ; RAILS_ENV=test bundle exec rake db:rollback"
+alias migrate="echo '>> migrate dev' ; bundle exec rake db:migrate ; echo '>> migrate test' ; RAILS_ENV=test bundle exec rake db:migrate"
 
 alias bb="sudo screen /dev/ttyUSB0 115200"
 alias ss="xfce4-screenshooter"

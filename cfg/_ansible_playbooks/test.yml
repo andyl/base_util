@@ -1,5 +1,6 @@
 ---
 - hosts: ekel:vagrant:ison
+  gather_facts: no
   tasks:
     - name:    get system uptime
       command: uptime

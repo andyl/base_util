@@ -1,0 +1,77 @@
+---
+- name: chruby | get package
+  sudo: no
+  get_url:
+    url: https://github.com/postmodern/chruby/archive/v{{version}}.tar.gz
+    dest: ~/chruby-{{version}}.tar.gz
+    force: no
+
+- name: chruby | untar package
+  sudo: no
+  shell: tar -xzf ~/chruby-{{version}}.tar.gz creates=~/chruby-{{version}}
+
+- name: chruby | install
+  sudo: yes
+  command: make install chdir=/home/{{ansible_ssh_user}}/chruby-{{version}} creates=/usr/local/share/chruby/chruby.sh
+
+- name: chruby | profile.d {{version}}
+  sudo: yes
+  lineinfile:
+    dest: /etc/profile.d/chruby.sh
+    line: source /usr/local/share/chruby/chruby.sh
+    regexp: chruby.sh
+    create: yes
+    owner: root
+    group: root
+    mode: 0755
+
+# - name:  chruby | update chruby repo
+#   git:   repo=git://github.com/sstephenson/chruby.git dest={{chruby_root}} 
+# 
+# - name:  chruby | install ruby-build
+#   git:   repo=git://github.com/sstephenson/ruby-build.git dest={{chruby_root}}/plugins/ruby-build
+# 
+# - name:  chruby | install chruby-vars
+#   git:   repo=git://github.com/andyl/chruby-vars.git dest={{chruby_root}}/plugins/chruby-vars
+# 
+# - name:  chruby | install rubies
+#   shell: chruby_ROOT={{chruby_root}} {{chruby_cmd}} install {{item}} creates={{chruby_vers}}/{{item}}
+#   with_items: chruby_rubies
+# 
+# - name:  chruby | set global ruby to ${global_ruby}
+#   shell: chruby_ROOT={{chruby_root}} {{chruby_cmd}} global {{chruby_global}}
+#   changed_when: false
+# 
+# - name:  chruby | create chruby_init from template
+#   template: src=chruby_init dest=/home/{{rem_user}}/.chruby_init
+# 
+# - name:  chruby | get .bashrc filetype
+#   stat: path=/home/{{rem_user}}/.bashrc 
+#   register: bashrc_filetype
+#   changed_when: false
+# 
+# - name:  chruby | set chruby path in .bashrc
+#   lineinfile: state=present dest=/home/{{rem_user}}/.bashrc regexp="^export PATH=" line='export PATH="$HOME/.chruby/bin:$PATH"'
+#   when: bashrc_filetype.stat.isreg 
+# 
+# - name:  chruby | source .chruby-init in .bashrc
+#   lineinfile: state=present dest=/home/{{rem_user}}/.bashrc regexp="^source .HOME/.chruby_init" line='source $HOME/.chruby_init'
+#   when: bashrc_filetype.stat.isreg 
+# 
+# - name: chruby | comment out line which prevents loading bash profile by ssh 
+#   lineinfile: state=present dest=/home/{{rem_user}}/.bashrc regexp="^. -z" line='# [ -z "$PS1" ] && return' backrefs=yes
+#   when: bashrc_filetype.stat.isreg 
+# 
+# - name:  chruby | run chruby rehash
+#   shell: chruby_ROOT={{chruby_root}} {{chruby_cmd}} rehash 
+#   changed_when: false
+# 
+# - name: chruby  | get chruby_owner
+#   shell: stat -c %U /home/{{rem_user}}/.chruby
+#   register: chruby_owner
+#   changed_when: false
+# 
+# - name:  chruby | set chruby permissions
+#   file:  path={{chruby_root}} recurse=yes group={{rem_user}} owner={{rem_user}} state=directory
+#   when:  chruby_owner != rem_user
+#   changed_when: false
