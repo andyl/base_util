@@ -2,42 +2,23 @@
 - name: chruby | get package
   sudo: no
   get_url:
-    url: https://github.com/postmodern/chruby/archive/v{{version}}.tar.gz
-    dest: ~/chruby-{{version}}.tar.gz
+    url:  https://github.com/postmodern/chruby/archive/v{{chruby_version}}.tar.gz
+    dest: /tmp/chruby-{{chruby_version}}.tar.gz
     force: no
 
 - name: chruby | untar package
   sudo: no
-  shell: tar -xzf ~/chruby-{{version}}.tar.gz creates=~/chruby-{{version}}
+  shell: tar -xzf /tmp/chruby-{{chruby_version}}.tar.gz chdir=/tmp creates=/tmp/chruby-{{chruby_version}}
 
 - name: chruby | install
   sudo: yes
-  command: make install chdir=/home/{{ansible_ssh_user}}/chruby-{{version}} creates=/usr/local/share/chruby/chruby.sh
+  command: make install chdir=/tmp/chruby-{{chruby_version}} creates=/usr/local/share/chruby/chruby.sh
+ 
+- name:  chruby | install rubies
+  sudo:  no
+  shell: chruby_ROOT={{chruby_root}} {{chruby_cmd}} install {{item}} creates={{chruby_vers}}/{{item}}
+  with_items: chruby_rubies
 
-- name: chruby | profile.d {{version}}
-  sudo: yes
-  lineinfile:
-    dest: /etc/profile.d/chruby.sh
-    line: source /usr/local/share/chruby/chruby.sh
-    regexp: chruby.sh
-    create: yes
-    owner: root
-    group: root
-    mode: 0755
-
-# - name:  chruby | update chruby repo
-#   git:   repo=git://github.com/sstephenson/chruby.git dest={{chruby_root}} 
-# 
-# - name:  chruby | install ruby-build
-#   git:   repo=git://github.com/sstephenson/ruby-build.git dest={{chruby_root}}/plugins/ruby-build
-# 
-# - name:  chruby | install chruby-vars
-#   git:   repo=git://github.com/andyl/chruby-vars.git dest={{chruby_root}}/plugins/chruby-vars
-# 
-# - name:  chruby | install rubies
-#   shell: chruby_ROOT={{chruby_root}} {{chruby_cmd}} install {{item}} creates={{chruby_vers}}/{{item}}
-#   with_items: chruby_rubies
-# 
 # - name:  chruby | set global ruby to ${global_ruby}
 #   shell: chruby_ROOT={{chruby_root}} {{chruby_cmd}} global {{chruby_global}}
 #   changed_when: false

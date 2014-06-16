@@ -1,20 +1,20 @@
 ---
-- name: get the package
+- name: ruby-install | get package
   sudo: no
   get_url:
-    url: https://github.com/postmodern/ruby-install/archive/v{{version}}.tar.gz
-    dest: ~/ruby-install-{{version}}.tar.gz
+    url: https://github.com/postmodern/ruby-install/archive/v{{ruby_install_version}}.tar.gz
+    dest: /tmp/ruby-install-{{ruby_install_version}}.tar.gz
     force: no
 
-- name: untar the package
+- name: ruby-install | untar package
   sudo: no
-  shell: tar -xzf ~/ruby-install-{{version}}.tar.gz creates=~/ruby-install-{{version}}
+  shell: tar -xzf /tmp/ruby-install-{{ruby_install_version}}.tar.gz chdir=/tmp creates=/tmp/ruby-install-{{ruby_install_version}}
 
-- name: install
+- name: ruby-install | install
   sudo: yes
-  command: make install chdir=/home/{{ansible_ssh_user}}/ruby-install-{{version}} creates=/usr/local/bin/ruby-install
+  command: make install chdir=/tmp/ruby-install-{{ruby_install_version}} creates=/usr/local/bin/ruby-install
 
-- name: build {{ruby}}
-  sudo: no
-  shell: /usr/local/bin/ruby-install {{ruby}} creates=~/.rubies/{{ruby.replace(' ','-')}}
-  when: ruby is defined
+# - name: ruby-install | build {{ruby}}
+#   sudo: no
+#   shell: /usr/local/bin/ruby-install {{ruby}} creates=~/.rubies/{{ruby.replace(' ','-')}}
+#   when: ruby is defined

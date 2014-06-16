@@ -14,11 +14,11 @@
     - rbenv_rubies: 
         - 2.0.0-p247
   roles:
-    - ${roles_dir}/dotfile
-    - ${roles_dir}/visudo
-    - ${roles_dir}/cli_base
-    - ${roles_dir}/cli_user 
-    - ${roles_dir}/rbenv
+    - "{{roles_dir}}/dotfile"
+    - "{{roles_dir}}/visudo"
+    - "{{roles_dir}}/cli_base"
+    - "{{roles_dir}}/cli_user" 
+    - "{{roles_dir}}/rbenv"
 
 - hosts: mego
   user:  aleak
@@ -28,12 +28,12 @@
     - pg_user:   x440 
     - pg_pass:   ${POSTGRES_PASS}
   roles:
-    - ${roles_dir}/cli_util
-    - ${roles_dir}/postgres
-    - ${roles_dir}/postgres_user 
-    # - ${roles_dir}/nginx
-    # - ${roles_dir}/redis
-    - ${roles_dir}/memcached
-    - ${roles_dir}/rbgems
-    - ${roles_dir}/gui_base
-    - ${roles_dir}/gui_util
+    - "{{roles_dir}}/cli_util"
+    - "{{roles_dir}}/postgres"
+    - "{{roles_dir}}/postgres_user" 
+    # - {{roles_dir}}/nginx
+    # - {{roles_dir}}/redis
+    - "{{roles_dir}}/memcached"
+    - "{{roles_dir}}/rbgems"
+    - "{{roles_dir}}/gui_base"
+    - "{{roles_dir}}/gui_util"

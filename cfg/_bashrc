@@ -10,21 +10,6 @@ export PATH=$UTIL_PATH:/usr/bin:/bin:$PATH:~/lcl/bin/elix/bin
 
 ###########################################################################
 
-# RBENV_BASE="rbenv_base" 
-# [ -d /opt/rbenv ] && RBENV_BASE="/opt/rbenv"
-# [ -d ~/.rbenv ]   && RBENV_BASE="$HOME/.rbenv"
-# 
-# if [ -d "$RBENV_BASE" ] ; then
-#   export RBENV_ROOT=$RBENV_BASE
-#   export PATH=$RBENV_ROOT/bin:$RBENV_ROOT/libexec:$PATH
-#   eval "$(rbenv init -)" 
-#   export PATH=.:./bin:$PATH
-# else
-#   export PATH=.:./bin:$PATH
-# fi
-
-###########################################################################
-
 source /usr/local/share/chruby/chruby.sh
 source /usr/local/share/chruby/auto.sh
 
@@ -54,9 +39,6 @@ alias migrate="echo '>> migrate dev' ; bundle exec rake db:migrate ; echo '>> mi
 
 alias bb="sudo screen /dev/ttyUSB0 115200"
 alias ss="xfce4-screenshooter"
-
-alias reh="rbenv rehash"
-alias re="rbenv"
 
 alias va="vagrant"
 alias vh="vhost"
@@ -162,7 +144,7 @@ alias gapl='pushdp ~/.ansible/playbooks/library'
 alias glr='pushdp ~/lr'
 alias grr='pushdp ~/rr'
 
-alias grb='pushdp ~/.rbenv'
+alias grb='pushdp ~/.rubies'
 
 alias ba="cd .."
 

@@ -1,18 +1,10 @@
 ---
-# - name: sysruby | enable brightbox PPA
-#   apt_repository: repo=ppa:brightbox/ruby-ng state=present
-#   sudo: true
-# - name: sysruby | install Ruby and RubyGems
-#   apt:  pkg=$item state=latest update_cache=yes
-#   sudo: true
-#   with_items:
-#     - ruby2.0
-#     - rubygems
-
+# install a basic system ruby to run utility scripts
 - name: sysruby | install Ruby and RubyGems
   sudo: true
-  apt:  pkg=$item state=latest update_cache=yes
+  apt:  pkg={{item}} state=latest update_cache=yes
   with_items:
-    - ruby2.1
+    - ruby1.9.1
+    - rubygems1.9.1
     - build-essential
     - libssl-dev

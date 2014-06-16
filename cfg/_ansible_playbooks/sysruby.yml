@@ -4,4 +4,4 @@
   vars:
     - roles_dir:  ~/.ansible_playbooks/roles
   roles:
-    - ${roles_dir}/sysruby
+    - "{{roles_dir}}/sysruby"

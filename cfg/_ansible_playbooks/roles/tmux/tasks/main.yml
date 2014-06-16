@@ -5,6 +5,6 @@
 
 - name: tmux | install 
   sudo: true
-  apt:  pkg=$item state=latest install_recommends=yes
+  apt:  pkg={{item}} state=latest install_recommends=yes
   with_items:
     - tmux
