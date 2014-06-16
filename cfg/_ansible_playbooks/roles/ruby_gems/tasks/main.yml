@@ -1,9 +1,9 @@
 ---
-- name: ruby_gems | install bundler
+- name: ruby_gems | install base gems
   sudo: no
-  shell: gem install bundler --no-rdoc --no-ri creates=/home/{{rem_user}}/.gem/{{chruby_global}}/bin/bundle executable=/bin/bash
-
-- name: ruby_gems | install pry
-  sudo: no
-  shell: gem install pry --no-rdoc --no-ri creates=/home/{{rem_user}}/.gem/{{chruby_global}}/bin/pry executable=/bin/bash
+  # shell: ~/.rubies/ruby-{{chruby_global}}/bin/gem install {{item}} --no-rdoc --no-ri creates=/home/{{rem_user}}/.gem/{{chruby_global}}/bin/{{item}} executable=/bin/bash
+  shell: ~/.rubies/ruby-{{chruby_global}}/bin/gem install {{item}} --no-rdoc --no-ri creates=~/.gem/{{chruby_global}}/bin/{{item}} executable=/bin/bash
+  with_items:
+    - bundler
+    - pry
 

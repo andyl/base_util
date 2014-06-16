@@ -13,14 +13,14 @@
     - apt-cache update
 - name: postgres | remove old postgres versions
   sudo: true
-  apt: pkg=$item state=absent purge=yes
+  apt: pkg={{item}} state=absent purge=yes
   with_items:
     - postgresql
     - postgresql-9.1
 - meta: flush_handlers
 - name: postgres | install postgres packages
   sudo: true
-  apt:  pkg=$item state=latest install_recommends=yes
+  apt:  pkg={{item}} state=latest install_recommends=yes
   with_items:
     - libpq-dev 
     - python-psycopg2

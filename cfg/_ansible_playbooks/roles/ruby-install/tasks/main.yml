@@ -18,3 +18,8 @@
   sudo: no
   shell: /usr/local/bin/ruby-install ruby {{item}} creates=~/.rubies/ruby-{{item}}
   with_items: chruby_rubies
+
+- name: ruby-install | set global ruby
+  sudo: no
+  shell: echo {{chruby_global}} > ~/.ruby-version
+  changed_when: false
