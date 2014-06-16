@@ -40,6 +40,7 @@
     - zlib1g-dev
     - exuberant-ctags
     - vim-gnome
+    - ruby1.9.1
 
 - name: cli_base | upload lang.sh
   copy: src=lang.sh dest=/etc/profile.d/lang.sh

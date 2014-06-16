@@ -1,9 +1,10 @@
 ---
 - name: ruby_gems | install base gems
   sudo: no
-  # shell: ~/.rubies/ruby-{{chruby_global}}/bin/gem install {{item}} --no-rdoc --no-ri creates=/home/{{rem_user}}/.gem/{{chruby_global}}/bin/{{item}} executable=/bin/bash
-  shell: ~/.rubies/ruby-{{chruby_global}}/bin/gem install {{item}} --no-rdoc --no-ri creates=~/.gem/{{chruby_global}}/bin/{{item}} executable=/bin/bash
+  # shell: ~/.rubies/ruby-{{chruby_global}}/bin/gem install {{item}} -N creates=~/.gem/ruby/{{chruby_global}}/bin/{{item}}* executable=/bin/bash
+  chruby-gem: "{{item}}"
   with_items:
     - bundler
     - pry
+    - hirb
 
