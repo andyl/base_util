@@ -10,11 +10,11 @@
   sudo: no
   shell: tar -xzf /tmp/ruby-install-{{ruby_install_version}}.tar.gz chdir=/tmp creates=/tmp/ruby-install-{{ruby_install_version}}
 
-- name: ruby-install | install
+- name: ruby-install | install script
   sudo: yes
   command: make install chdir=/tmp/ruby-install-{{ruby_install_version}} creates=/usr/local/bin/ruby-install
 
-# - name: ruby-install | build {{ruby}}
-#   sudo: no
-#   shell: /usr/local/bin/ruby-install {{ruby}} creates=~/.rubies/{{ruby.replace(' ','-')}}
-#   when: ruby is defined
+- name: ruby-install | build rubies
+  sudo: no
+  shell: /usr/local/bin/ruby-install ruby {{item}} creates=~/.rubies/ruby-{{item}}
+  with_items: chruby_rubies
