@@ -7,6 +7,7 @@
     - build-essential
     - dnsutils                  
     - git-core                  
+    - libicu-dev
     - libmagickcore-dev         
     - libmagickwand-dev         
     - imagemagick               
