@@ -6,19 +6,11 @@
     - lcl_user:     aleak
     - rem_user:     aleak
     - src_root:     /home/{{lcl_user}}/lr/X440
-    - dotfile:      ${src_root}/.rbenv-vars-private
-    - rbenv_root:   /home/{{rem_user}}/.rbenv
-    - rbenv_vers:   ${rbenv_root}/versions
-    - rbenv_cmd:    ${rbenv_root}/bin/rbenv
-    - rbenv_global: 2.0.0-p247
-    - rbenv_rubies: 
-        - 2.0.0-p247
   roles:
     - "{{roles_dir}}/dotfile"
     - "{{roles_dir}}/visudo"
     - "{{roles_dir}}/cli_base"
     - "{{roles_dir}}/cli_user" 
-    - "{{roles_dir}}/rbenv"
 
 - hosts: mego
   user:  aleak
