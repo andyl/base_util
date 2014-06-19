@@ -1,0 +1,35 @@
+---
+# to run: ansible_playbook dev64.yml 
+- vars:
+    - rem_host:     sigs
+    - rem_user:     aleak 
+    - lcl_user:     aleak                            
+    - roles_dir:    ~/.ansible_playbooks/roles       
+    - lcl_root:     "/home/{{lcl_user}}/lr/X440"       
+    - dotfile:      "{{lcl_root}}/.env"
+    - pg_user:      "{{APP_NAME}}"
+    - pg_pass:      "{{POSTGRES_PASS}}"
+    - pg_dbs:
+        - "{{pg_user}}_production"
+        - "{{pg_user}}_test"
+        - "{{pg_user}}_development"
+  remote_user: "{{rem_user}}"
+  hosts:       "{{rem_host}}"
+  roles:
+    - "{{roles_dir}}/dotdeb"
+    - "{{roles_dir}}/cli_base"
+    - "{{roles_dir}}/cli_user"
+    - "{{roles_dir}}/cli_util"
+    - "{{roles_dir}}/chruby"
+    - "{{roles_dir}}/ruby-install"
+    - "{{roles_dir}}/ruby_gems"
+    - "{{roles_dir}}/postgres"
+    - "{{roles_dir}}/postgres_user"
+    - "{{roles_dir}}/postgres_db"  
+    - "{{roles_dir}}/nginx"
+    - "{{roles_dir}}/redis"
+    - "{{roles_dir}}/memcached"
+    - "{{roles_dir}}/gui_base"
+    - "{{roles_dir}}/gui_util"
+
+
