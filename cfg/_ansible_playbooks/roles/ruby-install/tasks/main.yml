@@ -28,4 +28,4 @@
   file: path=/home/{{rem_user}}/.rbenv state=directory
 
 - name: ruby-install | create rbenv symlink (for RubyMine support)
-  file: src=/home/{{rem_user}}/.rbenv/versions dest=/home/{{rem_user}}/.rubies state=link 
+  file: src=/home/{{rem_user}}/.rubies dest=/home/{{rem_user}}/.rbenv/versions state=link 
