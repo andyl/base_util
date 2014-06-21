@@ -46,5 +46,5 @@
     - "{{roles_dir}}/virtual_box"
     - "{{roles_dir}}/vagrant"
     - "{{roles_dir}}/chrome"
-    - "{{roles_dir}}/java7"
+    - "{{roles_dir}}/java8"
 

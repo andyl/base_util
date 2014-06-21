@@ -23,3 +23,9 @@
   sudo: no
   shell: echo {{chruby_global}} > ~/.ruby-version
   changed_when: false
+
+- name: ruby-install | setup rbenv symlink directory
+  file: path=/home/{{rem_user}}/.rbenv state=directory
+
+- name: ruby-install | create rbenv symlink (for RubyMine support)
+  file: src=/home/{{rem_user}}/.rbenv/versions dest=/home/{{rem_user}}/.rubies state=link 

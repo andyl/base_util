@@ -14,12 +14,3 @@
   sudo: yes
   command: make install chdir=/tmp/chruby-{{chruby_version}} creates=/usr/local/share/chruby/chruby.sh
  
-# - name: chruby  | get chruby_owner
-#   shell: stat -c %U /home/{{rem_user}}/.chruby
-#   register: chruby_owner
-#   changed_when: false
-# 
-# - name:  chruby | set chruby permissions
-#   file:  path={{chruby_root}} recurse=yes group={{rem_user}} owner={{rem_user}} state=directory
-#   when:  chruby_owner != rem_user
-#   changed_when: false
