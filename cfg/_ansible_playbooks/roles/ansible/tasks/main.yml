@@ -1,7 +1,12 @@
 ---
-- name: install repo managment software (add-apt-repository)
+# install ansible
+# see http://docs.ansible.com/intro_installation.html
+- name: ansible | install repo managment software (add-apt-repository)
   apt:  pkg=python-software-properties
-- name: add ansible ppa
+
+# https://launchpad.net/~rquillo/+archive/ansible
+- name: ansible | add PPA
   apt_repository: repo=ppa:rquillo/ansible state=present
-- name: install ansible package
-  apt: pkg=ansible=1.6.3
+
+- name: ansible | install package
+  apt: pkg=ansible state=latest 

@@ -1,7 +1,13 @@
 ---
-# to run: ansible_playbook -K gui64.yml
+# first:
+# - install ubuntu
+# - sudo apt-get install ssh
+# - from old: keysend <newsys> <passwd>
+# - visudo
+# then run: ansible_playbook gui64.yml
+# then run from new: keysend fils <passwd>
 - vars:
-    - rem_host:     sigs
+    - rem_host:     gui64
     - rem_user:     aleak 
     - lcl_user:     aleak                            
     - roles_dir:    ~/.ansible_playbooks/roles       
@@ -13,12 +19,15 @@
         - "{{pg_user}}_production"
         - "{{pg_user}}_test"
         - "{{pg_user}}_development"
+    - chruby_global: 2.1.2
+    - chruby_rubies:
+        2.1.2
   remote_user: "{{rem_user}}"
   hosts:       "{{rem_host}}"
+  sudo: true
   roles:
     - "{{roles_dir}}/dotdeb"
     - "{{roles_dir}}/cli_base"
-    - "{{roles_dir}}/cli_user"
     - "{{roles_dir}}/cli_util"
     - "{{roles_dir}}/chruby"
     - "{{roles_dir}}/ruby-install"
@@ -31,5 +40,10 @@
     - "{{roles_dir}}/memcached"
     - "{{roles_dir}}/gui_base"
     - "{{roles_dir}}/gui_util"
-
+    - "{{roles_dir}}/gui_config"
+    - "{{roles_dir}}/ansible"
+    - "{{roles_dir}}/docker"
+    - "{{roles_dir}}/virtual_box"
+    - "{{roles_dir}}/vagrant"
+    - "{{roles_dir}}/chrome"
 

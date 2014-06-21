@@ -1,0 +1,11 @@
+---
+# install vagrant
+# see:
+# - https://docs.vagrantup.com/v2/installation/index.html
+# - https://www.vagrantup.com/downloads
+
+- name: vagrant | get deb file
+  get_url: url=https://dl.bintray.com/mitchellh/vagrant/vagrant_1.6.3_x86_64.deb dest=/tmp/vagrant.deb
+
+- name: vagrant | install package
+  apt: deb=/tmp/vagrant.deb
