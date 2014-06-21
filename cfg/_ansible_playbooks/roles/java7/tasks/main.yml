@@ -1,0 +1,13 @@
+---
+
+# install java7
+
+- name: java7 | add PPA
+  apt_repository: repo=ppa:webupd8team/java state=present
+
+- name: java7 | auto select the Oracle License
+  shell: echo debconf shared/accepted-oracle-license-v1-1 select true | sudo debconf-set-selections
+
+- name: java7 | install
+  apt: pkg=oracle-java7-installer state=latest 
+
