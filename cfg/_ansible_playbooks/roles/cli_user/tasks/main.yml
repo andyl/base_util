@@ -1,4 +1,0 @@
----
-- name: cli_user | create a deploy user
-  sudo: true
-  user: name={{rem_user}} shell=/bin/bash password=$1$dingo$53EDfjILS5gDnt244RzZk. generate_ssh_key=yes update_password=on_create

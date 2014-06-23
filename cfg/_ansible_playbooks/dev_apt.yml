@@ -1,7 +1,0 @@
----
-- hosts: kana:ison:ekel
-  sudo: true
-  vars:
-    - roles_dir:  ~/.ansible_playbooks/roles
-  roles:
-    - "{{roles_dir}}/apt_update"

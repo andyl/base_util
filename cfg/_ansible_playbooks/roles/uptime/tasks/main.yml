@@ -1,4 +1,0 @@
----
-- name:    get system uptime
-  command: uptime
-  changed_when: false

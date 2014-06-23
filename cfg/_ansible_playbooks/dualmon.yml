@@ -1,7 +1,0 @@
----
-- hosts: hosts-dualmon
-  sudo:  true
-  tasks:
-    - name: install arandr sw for dual-monitor config
-      apt:  pkg=arandr state=installed
-      

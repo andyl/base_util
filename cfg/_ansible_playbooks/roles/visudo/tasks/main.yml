@@ -1,3 +1,0 @@
----
-- name:    add {{rem_user}} to sudoers
-  template: src=sudoers.in dest=/etc/sudoers validate="visudo -cf %s"

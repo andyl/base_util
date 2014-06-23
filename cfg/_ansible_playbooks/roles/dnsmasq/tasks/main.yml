@@ -1,6 +1,0 @@
----
-# install dnsmasq
-# see http://www.thekelleys.org.uk/dnsmasq/doc.html
-- name: install dnsmasq
-  sudo: true
-  apt:  pkg=dnsmasq state=present

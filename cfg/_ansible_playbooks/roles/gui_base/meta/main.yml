@@ -1,3 +1,0 @@
----
-dependencies:
-  - { role: "{{roles_dir}}/apt_update" }
