@@ -6,7 +6,6 @@ gem "pry"
 gem "colored"
 gem "net-ssh"
 gem "net-sftp"
-gem "highline"
 
 gem "octokit"
 
