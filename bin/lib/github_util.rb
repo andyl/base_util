@@ -37,7 +37,9 @@ module GitHubUtil
   end
 
   def ensure_valid_repository
-    unless client.repositories.find {|x| x["full_name"] == repo}
+    begin
+      client.repo(repo)
+    rescue
       abort "GitHub repository '#{repo}' not found"
     end
   end
