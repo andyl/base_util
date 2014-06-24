@@ -1,0 +1,42 @@
+#!/usr/bin/env ruby
+
+# adds a deploy key for a repo on github
+
+require_relative "lib/github_util"
+
+msg = "Usage: add_deploy_key <repo> [<github_passwd>]"
+abort msg if (ARGV.length == 0)
+
+class AddDeployKey
+
+  include GitHubUtil
+
+  attr_reader :argv, :repo
+
+  def initialize(argv)
+    @argv = argv
+    set_repo(argv[0])
+    set_passwd(argv[1])
+  end
+
+  def process
+    ensure_pub_file
+    ensure_valid_repository
+    add_deploy_key
+  end
+
+  private
+
+  def add_deploy_key
+    puts "Adding deploy key '#{host}' to repo '#{repo}'"
+    begin
+      client.add_deploy_key "#{repo}", host, key
+    rescue => e
+      puts "Key is already in use"
+    end
+  end
+
+end
+
+AddDeployKey.new(ARGV).process
+puts "DONE"

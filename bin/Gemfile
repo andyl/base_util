@@ -2,10 +2,11 @@
 source "https://rubygems.org"
 
 gem "pry"
-gem "debugger"
 
 gem "colored"
 gem "net-ssh"
 gem "net-sftp"
 gem "highline"
+
+gem "octokit"
 

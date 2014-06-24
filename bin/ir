@@ -1,7 +1,0 @@
-#!/usr/bin/env ruby
-
-user = ENV['USER']; host = `hostname`.chomp; pwds = `pwd_short`.chomp
-system "xterm_title '<irb>' #{user}@#{host} '#{pwds}'"
-
-system "irb"
-
