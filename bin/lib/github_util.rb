@@ -1,4 +1,5 @@
 require 'octokit'
+require 'pry'
 
 module GitHubUtil
 
@@ -38,6 +39,7 @@ module GitHubUtil
 
   def ensure_valid_repository
     unless client.repositories.find {|x| x["full_name"] == repo}
+      binding.pry
       abort "GitHub repository '#{repo}' not found"
     end
   end
