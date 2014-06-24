@@ -2,7 +2,7 @@ require 'octokit'
 
 module GitHubUtil
 
-  PUBFILE = '/home/aleak/.ssh/id_rsa.pub'
+  PUBFILE = File.expand_path("~/.ssh/id_rsa.pub")
 
   attr_reader :passwd
 
