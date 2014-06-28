@@ -58,9 +58,9 @@ alias g="git"
 alias t="thor"
 alias sp="spring"
 
-alias rls="bin/rails"
-alias rke="bin/rake"
-alias rsp="bin/rspec"
+alias brl="bin/rails"
+alias brk="bin/rake"
+alias brs="bin/rspec"
 
 alias beep="alert beep"
 alias bell="alert bell"
