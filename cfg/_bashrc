@@ -8,10 +8,9 @@ export TZ="America/Los_Angeles"
 source /usr/local/share/chruby/chruby.sh
 source /usr/local/share/chruby/auto.sh
 
-
 ###########################################################################
 
-function showpath() {
+function path() {
   IFS=:
   printf "%s\n" $PATH | tr -d \,
 }

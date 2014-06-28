@@ -60,7 +60,7 @@ TODO: rewrite this script in bash
 
 # capture util_dir and util_path
 util_dir  = File.dirname(File.dirname(File.expand_path(__FILE__)))
-path_glob = [util_dir + "/*_util/bin", util_dir + "/*_util/gems/*/bin"]
+path_glob = [util_dir + "/*_util/bin"]
 util_path = Dir.glob(path_glob).sort
 
 # cd to the home directory
