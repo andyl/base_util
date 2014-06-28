@@ -3,28 +3,23 @@
 
 export TZ="America/Los_Angeles"
 
-source ~/.util_dir     # defines $UTIL_DIR
-source ~/.util_path    # defines $UTIL_PATH
-
-export PATH=$UTIL_PATH:./bin:$PATH
-
 ###########################################################################
 
 source /usr/local/share/chruby/chruby.sh
 source /usr/local/share/chruby/auto.sh
 
+
+###########################################################################
+
+function showpath() {
+  IFS=:
+  printf "%s\n" $PATH | tr -d \,
+}
+
 ###########################################################################
 
 # bashrc extensions for the PDEV environment
 tgt=$UTIL_DIR/pdev_util/inc/_bashrc ; [ -f $tgt ] && source $tgt
-
-# autojump is a faster way to navigate the filesystem - see 'man autojump'
-if [ -f ~/.autojump/etc/profile.d/autojump.bash ] ; then
-  alias aj="autojump"
-  alias aja="autojump -a `pwd`"
-  alias ajs="autojump --stat"
-  source ~/.autojump/etc/profile.d/autojump.bash
-fi
 
 ###########################################################################
 tgt=~/.java_env ; [ -f $tgt ] && source $tgt
