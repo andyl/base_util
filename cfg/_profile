@@ -7,9 +7,3 @@ if [ -n "$BASH_VERSION" ]; then                 # if running bash
   [ -f "$HOME/.bashrc" ] && . "$HOME/.bashrc"   # source if it exists
 fi
 
-if [ -z "$UTIL_PATH" ]; then                   # if UTIL_PATH is undefined
-  . ~/.util_dir                                # define $UTIL_DIR
-  . ~/.util_path                               # define $UTIL_PATH
-  [ -n "$UTIL_PATH" ] && PATH=$UTIL_PATH:$PATH # update PATH if set
-fi
-
