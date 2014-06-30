@@ -93,13 +93,7 @@ nmap <leader>pp :! a2ps -c --sides=duplex --line-numbers=1 %<cr>
 nmap <leader>p1 :! a2ps -c --sides=duplex --line-numbers=1 --portrait  --columns=1 --font-size=9 %<cr>
 nmap <leader>pl :! a2ps -c --sides=duplex --line-numbers=1 --landscape --columns=1 --font-size=9 %<cr>
 
-" WINDOW MANIPULATION
-nmap <silent> <C-k> :wincmd k<cr>
-nmap <silent> <C-j> :wincmd j<cr>
-nmap <silent> <C-h> :wincmd h<cr>
-nmap <silent> <C-l> :wincmd l<cr>
-
-" CTRLP - fast window finding
+" CTRLP - fast file finding
 let g:ctrlp_max_files = 10000        " Set the max files
 if has("unix")                       " Optimize file searching 
   let g:ctrlp_user_command = {
@@ -138,12 +132,17 @@ vmap <leader>a\| :Align \|<cr>gv<cr>
 " Underline the current line with dashes in normal mode
 nmap <leader>u yyp<c-v>$r-
 
-" TAB MANIPULATION
+" TAB MANIPULATION AND NAVIGATION
 nmap <leader>tn :tabnew<CR>
+nmap <leader>tc :tabclose<CR>
 nmap <leader>th :tabp<CR>
 nmap <leader>tl :tabn<CR>
-nmap <leader>tc :tabclose<CR>
-nmap <leader>tm :tabm 
+
+" WINDOW MANIPULATION
+nmap <silent> <C-k> :wincmd k<cr>
+nmap <silent> <C-j> :wincmd j<cr>
+nmap <silent> <C-h> :wincmd h<cr>
+nmap <silent> <C-l> :wincmd l<cr>
 
 " TAGS
 let $CDIR=expand('%:p:h')
