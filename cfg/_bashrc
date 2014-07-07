@@ -71,12 +71,6 @@ alias brc="bin/rails console"
 alias brk="bin/rake"
 alias brs="bin/rspec"
 
-alias beep="alert beep"
-alias bell="alert bell"
-alias buzz="alert buzz"
-alias ding="alert ding"
-alias ring="alert ring"
-
 alias rcon="rake_config"
 alias gopen="gnome-open"
 
