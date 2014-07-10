@@ -138,13 +138,13 @@ nmap <leader>tc :tabclose<CR>
 nmap <leader>th :tabp<CR>
 nmap <leader>tl :tabn<CR>
 
-" WINDOW NAVIGATION
+" PANE NAVIGATION
 nmap <silent> <C-k> :wincmd k<cr>
 nmap <silent> <C-j> :wincmd j<cr>
 nmap <silent> <C-h> :wincmd h<cr>
 nmap <silent> <C-l> :wincmd l<cr>
 
-" WINDOW RESIZING (Up/Down)
+" PANE RESIZING (Up/Down)
 func! BarUp()
   let curwindow = winnr() " save current window
   wincmd k                " move to a upper-window
@@ -170,7 +170,7 @@ endfun
 nnoremap <A-Up> :call BarUp()<cr>
 nnoremap <A-Down> :call BarDown()<cr>
 
-" WINDOW RESIZING (Left/Right)
+" PANE RESIZING (Left/Right)
 func! BarLeft()
   let curwindow = winnr() " save current window
   wincmd h                " move to a left-window
@@ -195,6 +195,10 @@ endfun
 
 nnoremap <A-Left> :call BarLeft()<cr>
 nnoremap <A-Right> :call BarRight()<cr>
+
+" PANE ZOOMING
+nmap <leader>z <C-w>o<cr>
+vmap <leader>z <C-w>o<cr>
 
 " TAGS
 let $CDIR=expand('%:p:h')
