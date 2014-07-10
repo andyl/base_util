@@ -167,8 +167,8 @@ func! BarDown()
   endif
 endfun
 
-nnoremap <A-Up> :call BarUp()<cr>
-nnoremap <A-Down> :call BarDown()<cr>
+nnoremap <silent> <A-Up> :call BarUp()<cr>
+nnoremap <silent> <A-Down> :call BarDown()<cr>
 
 " PANE RESIZING (Left/Right)
 func! BarLeft()
@@ -193,8 +193,8 @@ func! BarRight()
   endif
 endfun
 
-nnoremap <A-Left> :call BarLeft()<cr>
-nnoremap <A-Right> :call BarRight()<cr>
+nnoremap <silent> <A-Left> :call BarLeft()<cr>
+nnoremap <silent> <A-Right> :call BarRight()<cr>
 
 " PANE ZOOMING
 nmap <leader>z <C-w>o<cr>
