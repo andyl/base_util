@@ -138,11 +138,63 @@ nmap <leader>tc :tabclose<CR>
 nmap <leader>th :tabp<CR>
 nmap <leader>tl :tabn<CR>
 
-" WINDOW MANIPULATION
+" WINDOW NAVIGATION
 nmap <silent> <C-k> :wincmd k<cr>
 nmap <silent> <C-j> :wincmd j<cr>
 nmap <silent> <C-h> :wincmd h<cr>
 nmap <silent> <C-l> :wincmd l<cr>
+
+" WINDOW RESIZING (Up/Down)
+func! BarUp()
+  let curwindow = winnr() " save current window
+  wincmd k                " move to a upper-window
+  if winnr() == curwindow " if top-most window
+    resize -2             " shrink it
+  else
+    wincmd j              " else move to the lower-window
+    resize +2             " grow it
+  endif
+endfun
+
+func! BarDown()
+  let curwindow = winnr() " save current window
+  wincmd j                " move to a lower-window
+  if winnr() == curwindow " if bottom-most window
+    resize -2             " shrink it
+  else
+    wincmd k              " else move to the upper-window
+    resize +2             " grow it
+  endif
+endfun
+
+nnoremap <A-Up> :call BarUp()<cr>
+nnoremap <A-Down> :call BarDown()<cr>
+
+" WINDOW RESIZING (Left/Right)
+func! BarLeft()
+  let curwindow = winnr() " save current window
+  wincmd h                " move to a left-window
+  if winnr() == curwindow " if left-most window
+    vertical resize -2    " shrink it
+  else
+    wincmd l              " else move to the right-window
+    vertical resize +2    " grow it
+  endif
+endfun
+
+func! BarRight()
+  let curwindow = winnr() " save current window
+  wincmd l                " move to a right-window
+  if winnr() == curwindow " if right-most window
+    vertical resize -2    " shrink it
+  else
+    wincmd h              " else move to the left-window
+    vertical resize +2    " grow it
+  endif
+endfun
+
+nnoremap <A-Left> :call BarLeft()<cr>
+nnoremap <A-Right> :call BarRight()<cr>
 
 " TAGS
 let $CDIR=expand('%:p:h')
