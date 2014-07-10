@@ -201,12 +201,12 @@ nmap <leader>z <C-w>o
 vmap <leader>z <C-w>o
 
 " ZOOM STATE ON STATUS LINE
-let g:zstate='n'
+let g:zstate=''
 fun! ZoomState(state)
   if a:state
    let g:zstate='Z'
   else
-   let g:zstate='n'
+   let g:zstate=''
   endif
 endfun
 if !exists("g:ZoomWin_funcref")
