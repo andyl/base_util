@@ -134,7 +134,7 @@ nmap <leader>u yyp<c-v>$r-
 
 " TAB MANIPULATION AND NAVIGATION
 nmap <leader>tn :tabnew<CR>
-nmap <leader>tc :tabclose<CR>
+nmap <leader>tx :tabclose<CR>
 nmap <leader>th :tabp<CR>
 nmap <leader>tl :tabn<CR>
 
