@@ -49,7 +49,7 @@ imap kk <esc>
 imap :w <esc>:w
 imap :q <esc>:q
 nmap <space> i~<esc>r
-set statusline=%F%m%r%h%w\ [TYPE=%Y]\ [%{hostname()}]\ [%l,%v]\ [%p%%]\ [LEN=%L]\ [%{$PWDS}]%{zstate}
+set statusline=%F%m%r%h%w\ [TYPE=%Y]\ [%{hostname()}]\ [%l,%v]\ [%p%%]\ [LEN=%L]\ [%{$PWDS}]%{Zstate()}
 set title titlestring=<vim>\ %{$USER}@%{hostname()}\ %t\ %m%r%h%w
 
 " search for selected text, forwards or backwards
@@ -145,7 +145,7 @@ nmap <silent> <C-h> :wincmd h<cr>
 nmap <silent> <C-l> :wincmd l<cr>
 
 " PANE RESIZING (Up/Down)
-func! BarUp()
+fun! BarUp()
   let curwindow = winnr() " save current window
   wincmd k                " move to a upper-window
   if winnr() == curwindow " if top-most window
@@ -156,7 +156,7 @@ func! BarUp()
   endif
 endfun
 
-func! BarDown()
+fun! BarDown()
   let curwindow = winnr() " save current window
   wincmd j                " move to a lower-window
   if winnr() == curwindow " if bottom-most window
@@ -171,7 +171,7 @@ nnoremap <silent> <A-Up> :call BarUp()<cr>
 nnoremap <silent> <A-Down> :call BarDown()<cr>
 
 " PANE RESIZING (Left/Right)
-func! BarLeft()
+fun! BarLeft()
   let curwindow = winnr() " save current window
   wincmd h                " move to a left-window
   if winnr() == curwindow " if left-most window
@@ -182,7 +182,7 @@ func! BarLeft()
   endif
 endfun
 
-func! BarRight()
+fun! BarRight()
   let curwindow = winnr() " save current window
   wincmd l                " move to a right-window
   if winnr() == curwindow " if right-most window
@@ -201,19 +201,29 @@ nmap <leader>z <C-w>o
 vmap <leader>z <C-w>o
 
 " ZOOM STATE ON STATUS LINE
-let g:zstate=''
+let t:zstate=''
+
 fun! ZoomState(state)
   if a:state
-   let g:zstate='Z'
+   let t:zstate='Z'
   else
-   let g:zstate=''
+   let t:zstate=''
   endif
 endfun
+
+fun! Zstate()
+  if exists("t:zstate")
+    return t:zstate
+  else
+    return ''
+  endif
+endfun
+
 if !exists("g:ZoomWin_funcref")
  let g:ZoomWin_funcref= function("ZoomState")
 endif
  
-" " TAGS
+" TAGS
 let $CDIR=expand('%:p:h')
 " set tags=$CDIR/.tags
 " CTAGS-BUNDLER
