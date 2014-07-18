@@ -28,6 +28,10 @@ function path() {                    # show path elements, one per line
 # bashrc extensions/aliases for the PDEV environment
 tgt=$UTIL_DIR/pdev_util/inc/_bashrc ; [ -f $tgt ] && source $tgt
 
+# autocomplete
+cpd=~/.complete
+[ -d $cpd ] && for f in $cpd/*.sh $cpd/*.bash; do source $f; done
+
 ###########################################################################
 tgt=~/.java_env ; [ -f $tgt ] && source $tgt
 ###########################################################################
@@ -54,6 +58,7 @@ alias va="vagrant"
 alias vh="vhost"
 alias xx="exit"
 alias tm="tmux"
+alias tn="tmuxinator"
 alias vx="vbox_provision"
 alias an="ansible"
 alias ap="ansible-playbook"
