@@ -203,5 +203,4 @@ _tmux() {
    fi
    return 0
 }
-complete -F _tmux tmux
-complete -F _tmux tm
+complete -F _tmux tmux tm
