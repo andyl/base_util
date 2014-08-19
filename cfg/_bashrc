@@ -64,6 +64,8 @@ alias an="ansible"
 alias ap="ansible-playbook"
 alias be="bundle exec"
 
+alias ej="sudo ejabberdctl" 
+
 alias visudo="sudo EDITOR=vim visudo"
 
 alias h="history | tail -30"
