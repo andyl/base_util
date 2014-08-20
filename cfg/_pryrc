@@ -3,6 +3,11 @@ require 'hirb'
 
 Pry.config.prompt = Pry::NAV_PROMPT
 
+Pry.config.commands.alias_command "h"  , "hist -T 30"     , desc: "Last 30 commands"
+Pry.config.commands.alias_command "H"  , "hist"           , desc: "All commands"
+Pry.config.commands.alias_command "hg" , "hist -T 30 -G " , desc: "Show matching commands"
+Pry.config.commands.alias_command "HG" , "hist -G "       , desc: "Show all matching commands"
+
 Hirb.enable
 
 # Pry.config.print = proc do |output, value|
