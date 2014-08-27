@@ -3,6 +3,8 @@
 
 export TZ="America/Los_Angeles"
 
+[ -f ~/.rails_env ] && source ~/.rails_env
+
 ###########################################################################
 
 if [ -z "$UTIL_PATH" ]; then                   # if UTIL_PATH is undefined
