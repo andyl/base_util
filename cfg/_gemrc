@@ -7,7 +7,7 @@ sources:
 update_sources: true
 verbose: true
 benchmark: false
-gem: "--no-rdoc"
+gem: "--no-rdoc --no-ri"
 ssl_verify_mode: 0
 gempath:
 - /home/aleak/.gem/ruby/2.1.2
