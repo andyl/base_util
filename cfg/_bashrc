@@ -84,7 +84,7 @@ alias brc="spring rails console"
 alias brk="spring rake"
 alias brs="spring rspec"
 
-alias rt="rake -T"
+alias rt="bundle exec rake -T"
 
 alias gopen="gnome-open"
 
