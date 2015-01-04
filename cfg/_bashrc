@@ -51,6 +51,9 @@ function migrate() {     # DB migration for Rails development
   echo '>> migrate dev'  ; bundle exec rake db:migrate 
   echo '>> migrate test' ; RAILS_ENV=test bundle exec rake db:migrate
 }
+function reorder() {     # Reorder Membership Records
+  echo '>> reorder dev'  ; bundle exec rails runner "Membership.all.each {|m| m.uras!}"
+}
 
 ###########################################################################
 
