@@ -1,3 +1,27 @@
+Style/SpaceBeforeComma:
+  Enabled: false
 
-inherit_from: .rubocop_todo.yml
+Style/SpaceBeforeSemicolon:
+  Enabled: false
+
+Style/SpaceInsideBlockBraces:
+  Enabled: false
+
+Style/SpaceInsideHashLiteralBraces:
+  Enabled: false
+
+Style/SpaceInsideParens:
+  Enabled: false
+
+Style/AlignArray:
+  Enabled: false
+
+Style/AlignHash:
+  Enabled: false
+
+Style/AlignParameters:
+  Enabled: false
+
+Style/BracesAroundHashParameters:
+  Enabled: false
 
