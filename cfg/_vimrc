@@ -4,6 +4,13 @@ filetype off
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
+" VIM-PLUG - http://github.com/junegunn/vim-plug
+call plug#begin('~/.vim/plugged')
+Plug 'junegunn/seoul256.vim'
+" Plug 'junegunn/vim-easy-align'
+" Plug 'scrooloose/nerdtree', { 'on' : 'NerdTreeToggle' }
+call plug#end()
+
 " WORKLOG SETUP
 au BufRead,BufNewFile *.worklog set filetype=worklog
 au BufRead,BufNewFile *.wlog    set filetype=worklog
