@@ -4,11 +4,12 @@ filetype off
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
-" VIM-PLUG - http://github.com/junegunn/vim-plug
+" VIM-PLUG - ALTERNATIVE PLUGIN MANAGER
+" Main Commands - :PlugInstall / :PlugStatus / :PlugDiff
+" Docco at http://github.com/junegunn/vim-plug 
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/seoul256.vim'
-" Plug 'junegunn/vim-easy-align'
-" Plug 'scrooloose/nerdtree', { 'on' : 'NerdTreeToggle' }
+Plug 'junegunn/vim-easy-align'
 call plug#end()
 
 " WORKLOG SETUP
