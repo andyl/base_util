@@ -17,8 +17,10 @@ export PATH=$PATH:~/npm-global/bin             # setup NPM path
 
 ###########################################################################
 
-source /usr/local/share/chruby/chruby.sh   # set ruby path using chruby
-source /usr/local/share/chruby/auto.sh     # autoset chruby on every `cd`
+chruby_path="/usr/local/share/chruby.sh"
+authsh_path="/usr/local/share/auto.sh"
+[ -f $chruby_path ] && source $chruby_path   # setup chruby path
+[ -f $autosh_path ] && source $autosh_path   # autoset chruby on every `cd`
 
 ###########################################################################
 
