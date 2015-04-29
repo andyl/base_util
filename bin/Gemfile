@@ -6,6 +6,7 @@ gem "pry"
 gem "colored"
 gem "net-ssh"
 gem "net-sftp"
-
 gem "octokit"
+gem "faraday"
+gem "multipart-post"
 
