@@ -7,12 +7,6 @@ export TZ="America/Los_Angeles"
 
 ###########################################################################
 
-# if [ -z "$UTIL_PATH" ]; then                   # if UTIL_PATH is undefined
-#   . ~/.util_dir                                # define $UTIL_DIR
-#   . ~/.util_path                               # define $UTIL_PATH
-#   [ -n "$UTIL_PATH" ] && export PATH=$UTIL_PATH:$PATH # update PATH if set
-# fi
-
 . ~/.util_dir                                # define $UTIL_DIR
 . ~/.util_path                               # define $UTIL_PATH
 export PATH=$UTIL_PATH:$PATH                 # setup util PATH 
@@ -20,8 +14,8 @@ export PATH=$PATH:~/npm-global/bin           # setup NPM path
 
 ###########################################################################
 
-chruby_path="/usr/local/share/chruby.sh"
-autosh_path="/usr/local/share/auto.sh"
+chruby_path="/usr/local/share/chruby/chruby.sh"
+autosh_path="/usr/local/share/chruby/auto.sh"
 [ -f $chruby_path ] && source $chruby_path   # setup chruby path
 [ -f $autosh_path ] && source $autosh_path   # autoset chruby on every `cd`
 
