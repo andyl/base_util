@@ -1,16 +1,16 @@
-" PATHOGEN PLUGIN MANAGEMENT
+"PATHOGEN PLUGIN MANAGEMENT
 " from http://www.adamlowe.me/2009/12/vim-destroys-all-other-rails-editors.html
 filetype off 
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
 " VIM-PLUG - ALTERNATIVE PLUGIN MANAGER
-" Main Commands - :PlugInstall / :PlugStatus / :PlugDiff
+" Main Commands - :PlugInstall / :PlugStatus / :PlugDiff / :PlugClean
 " Docco at http://github.com/junegunn/vim-plug 
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/vim-easy-align'
-Plug 'jceb/vim-orgmode'
+Plug 'andyl/vim-orgmode'
 Plug 'farseer90718/vim-taskwarrior'
 Plug 'tpope/vim-speeddating'
 call plug#end()
