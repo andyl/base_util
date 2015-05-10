@@ -10,6 +10,9 @@ call pathogen#helptags()
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/vim-easy-align'
+Plug 'jceb/vim-orgmode'
+Plug 'farseer90718/vim-taskwarrior'
+Plug 'tpope/vim-speeddating'
 call plug#end()
 
 " WORKLOG SETUP

@@ -3,12 +3,14 @@
 
 export TZ="America/Los_Angeles"
 
-[ -f ~/.rails_env ] && source ~/.rails_env
+[ -f ~/.rails_env ]      && source ~/.rails_env
+[ -f ~/.bash_aliases ]   && source ~/.bash_aliases
+[ -f ~/.bash_functions ] && source ~/.bash_functions
 
 ###########################################################################
 
-. ~/.util_dir                                # define $UTIL_DIR
-. ~/.util_path                               # define $UTIL_PATH
+[ -f ~/.util_dir  ] && source ~/.util_dir    # define $UTIL_DIR
+[ -f ~/.util_path ] && source ~/.util_path   # define $UTIL_PATH
 export PATH=$UTIL_PATH:$PATH                 # setup util PATH 
 export PATH=$PATH:~/npm-global/bin           # setup NPM path
 
@@ -20,11 +22,6 @@ autosh_path="/usr/local/share/chruby/auto.sh"
 [ -f $autosh_path ] && source $autosh_path   # autoset chruby on every `cd`
 
 ###########################################################################
-
-function path() {                    # show path elements, one per line
-  IFS=:
-  printf "%s\n" $PATH | tr -d \,
-}
 
 ###########################################################################
 
@@ -42,6 +39,11 @@ tgt=~/.java_env ; [ -f $tgt ] && source $tgt
 setxkbmap -option caps:swapescape 2> /dev/null
 
 ###########################################################################
+
+function path() {                    # show path elements, one per line
+  IFS=:
+  printf "%s\n" $PATH | tr -d \,
+}
 
 function rollback() {     # DB rollback for Rails development
   echo '>> rollback dev'  ; bundle exec rake db:rollback
