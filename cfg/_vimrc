@@ -10,9 +10,10 @@ call pathogen#helptags()
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/vim-easy-align'
-Plug 'andyl/vim-orgmode'
-Plug 'farseer90718/vim-taskwarrior'
-Plug 'tpope/vim-speeddating'
+Plug 'andyl/vim-orgmode'              " outline editor for notes
+Plug 'farseer90718/vim-taskwarrior'   " task manager
+Plug 'vim-scripts/utl.vim'            " hyperlinking - required by vim-orgmode
+Plug 'tpope/vim-speeddating'          " required by vim-orgmode
 call plug#end()
 
 " WORKLOG SETUP
