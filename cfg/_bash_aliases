@@ -11,6 +11,7 @@
 
 # taskwarrior
 alias tk='task'
+alias tks='task sync'
 
 # quick directory movement
 alias ..='cd ..'
