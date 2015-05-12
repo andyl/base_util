@@ -14,6 +14,9 @@ Plug 'andyl/vim-orgmode'              " outline editor for notes
 Plug 'vim-scripts/utl.vim'            " hyperlinking - required by vim-orgmode
 Plug 'tpope/vim-speeddating'          " required by vim-orgmode
 Plug 'chase/vim-ansible-yaml'         " use modeline '#vim:ft=ansible:'
+Plug 'elixir-lang/vim-elixir'         " syntax highlighting
+Plug 'mattreduce/vim-mix'             " mix helpers
+Plug 'carlosgaldino/elixir-snippets'  " snipmate snippets for elixir
 call plug#end()
 
 " WORKLOG SETUP
