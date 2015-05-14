@@ -8,9 +8,8 @@ call pathogen#helptags()
 " Main Commands - :PlugInstall / :PlugStatus / :PlugDiff / :PlugClean
 " Docco at http://github.com/junegunn/vim-plug 
 call plug#begin('~/.vim/plugged')
-Plug 'junegunn/seoul256.vim'
-Plug 'junegunn/vim-easy-align'
-Plug 'andyl/vim-orgmode'              " outline editor for notes
+Plug 'junegunn/seoul256.vim'          " color schemes
+Plug 'junegunn/vim-easy-align'        " column alignment
 Plug 'vim-scripts/utl.vim'            " hyperlinking - required by vim-orgmode
 Plug 'tpope/vim-speeddating'          " required by vim-orgmode
 Plug 'chase/vim-ansible-yaml'         " use modeline '#vim:ft=ansible:'
@@ -18,6 +17,7 @@ Plug 'elixir-lang/vim-elixir'         " syntax highlighting
 Plug 'mattreduce/vim-mix'             " mix helpers
 Plug 'carlosgaldino/elixir-snippets'  " snipmate snippets for elixir
 Plug 'farseer90718/vim-taskwarrior'   " taskwarrior
+Plug 'vimoutliner/vimoutliner'        " vim outliner
 call plug#end()
 
 " WORKLOG SETUP
@@ -130,20 +130,16 @@ cmap w!! %!sudo tee > /dev/null %
 nmap <leader>bb :BufExplorer<cr>
 nmap <leader>bd :bd<cr>
 
-" ALIGN
-" for this to work, had to comment out keymappings in
-" ~/.vim/bundle/vim-align/plugin/AlignMapsPlugin.vim
-" lines 69 and 71
-vmap <leader>a= :Align =<cr>gv<cr>
-vmap <leader>a, :Align ,<cr>gv<cr>
-vmap <leader>a: :Align :<cr>gv<cr>
-vmap <leader>a{ :Align {<cr>gv<cr>
-vmap <leader>a} :Align }<cr>gv<cr>
-vmap <leader>a@ :Align @<cr>gv<cr>
-vmap <leader>a* :Align *<cr>gv<cr>
-vmap <leader>a# :Align #<cr>gv<cr>
-vmap <leader>a> :Align =><cr>gv<cr>
-vmap <leader>a\| :Align \|<cr>gv<cr>
+" -----------------------------------------------------
+" Vim Easy Align
+vmap at :EasyAlign *\|<cr>
+vmap ac <Plug>(EasyAlign)
+nmap ac <Plug>(EasyAlign)
+
+" at = align table
+" usage: vipat
+" ac = align character
+" usage: vipac=
 
 " Underline the current line with dashes in normal mode
 nmap <leader>u yyp<c-v>$r-
