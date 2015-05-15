@@ -39,17 +39,17 @@ delimited by a unique character:
 | #      | contact  | contact info                        |
 +--------+----------+-------------------------------------+
 
-+----------------------+------------------+
-| Valid Categories     | Valid Priorities |
-+----------------------+------------------+
-| =I : Inbox           | -H : High        |
-| =A : Active          | -M : Medium      |
-| =W : Waiting         | -L : Low         |
-| =T : ???             |                  |
-| =S : Someday / Maybe |                  |
-| =R : ???             |                  |
-| =X : Done            |                  |
-+----------------------+------------------+
++-------------------------------+------------------+
+| Valid Categories              | Valid Priorities |
++-------------------------------+------------------+
+| =I : Inbox                    | -H : High        |
+| =A : Active (next action)     | -M : Medium      | 
+| =W : Waiting on someone       | -L : Low         |
+| =T : Tickler (time triggered) |                  |
+| =S : Someday / Maybe          |                  |
+| =R : Reference/reading        |                  |
+| =X : Done                     |                  |
++-------------------------------+------------------+
 
 ==============================================================================
 GROUPS                                                              *gtd-groups*
