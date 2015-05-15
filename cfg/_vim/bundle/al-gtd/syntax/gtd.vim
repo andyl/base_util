@@ -21,19 +21,6 @@ function! GetCategory()
   end
 endfunction
 
-" FOLDING -----
-" syn region Task start="<" end="^\n" fold  
-"   \ contains=gFilter,gHandle,gCategory,gProject,gContext,gNote,gTask
-"   \ keepend extend  
-" 
-" " syn region levelTwo start=/^## / end=/^\[\]$/ 
-" "      \ fold contains=wTaskStart,wTaskEnd,wCode,wTODO,wDONE 
-" "      \ contained extend keepend containedin=levelOne
-" 
-" " FOLDING METHODS -----
-" set foldenable
-" set foldmethod=syntax
-
 " HELPER FUNCTION FOR INPUT MODE -----
 function! CRMode()
   let first_char = matchstr(getline('.'), "^.")
