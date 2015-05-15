@@ -1,4 +1,4 @@
-Getting Things Done in Vim                                            *gtd* *vgtd*
+GETTING THINGS DONE IN VIM                                            *gtd* *vgtd*
 ==============================================================================
 CONTENTS                                                          *gtd-outline*
 
@@ -19,7 +19,7 @@ thousand others.  VGTD saves data in plain-text files, editable in Vim.
 
 
 ==============================================================================
-BLOCKS                                                         *gtd-blocks*
+BLOCKS                                                              *gtd-blocks*
 
 
 Tasks are organized into blocks:
@@ -28,7 +28,7 @@ Tasks are organized into blocks:
   - W : Waiting
 
 ==============================================================================
-FIELDS                                                         *gtd-fields*
+FIELDS                                                              *gtd-fields*
 
 Each task is on a single line, and has a standard set of fields delimited by a
 unique character:
@@ -40,19 +40,19 @@ unique character:
 | @    | context | the context for completing the project |
 
 ==============================================================================
-COMMANDS                                                         *gtd-commands*
+COMMANDS                                                          *gtd-commands*
 
 ==============================================================================
-ARCHIVE                                                 *gtd-archive*
+ARCHIVE                                                            *gtd-archive*
 
 ==============================================================================
-SUPPORT SOFTWARE                                                *gtd-support*
+SUPPORT SOFTWARE                                                   *gtd-support*
 
 ==============================================================================
-ALTERNATE UI:                                                *gtd-alt-ui*
+ALTERNATE UI                                                        *gtd-alt-ui*
 
 ==============================================================================
-RELATED TOOLS:                                                *gtd-tools*
+RELATED TOOLS                                                        *gtd-tools*
 
   - pgcl - command line utility for adding tasks 
   - pgvw - command line utility for viewing task list

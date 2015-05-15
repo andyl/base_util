@@ -1,6 +1,6 @@
-Worklog                                                           *wlog* *worklog* 
+WORKLOG                                                           *wlog* *worklog* 
 ==============================================================================
-Contents:                                                         *wlog-outline*
+CONTENTS                                                          *wlog-outline*
 
   Introduction    |wlog-intro|
   Features        |wlog-features|
@@ -8,18 +8,18 @@ Contents:                                                         *wlog-outline*
   Support Tools   |wlog-support|
 
 ==============================================================================
-Introduction:                                                       *wlog-intro*
+INTRODUCTION                                                        *wlog-intro*
 
 Worklog - activity log and technical notes.
 
 ==============================================================================
-Features:                                                        *wlog-features*
+FEATURES                                                         *wlog-features*
 
 - Organized by date and time stamp
 - high-level TODO tracking
 
 ==============================================================================
-Commands:                                                        *wlog-commands*
+COMMANDS                                                         *wlog-commands*
 
 <C-a>d - create a new 'day' heading   (relies on `w_timestamp` script)
 <C-a>t - create a new 'time' heading  (relies on `w_date` script)
@@ -33,7 +33,7 @@ Commands:                                                        *wlog-commands*
 <C-t>x remove the TODO/DONE label
 
 ==============================================================================
-Support Tools:                                                    *wlog-support*
+SUPPORT TOOLS                                                     *wlog-support*
 
 Worklog relies on ruby script to insert timestamps and dates:
 - w_timestamp
