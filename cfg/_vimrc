@@ -16,7 +16,6 @@ Plug 'chase/vim-ansible-yaml'         " use modeline '#vim:ft=ansible:'
 Plug 'elixir-lang/vim-elixir'         " syntax highlighting
 Plug 'mattreduce/vim-mix'             " mix helpers
 Plug 'carlosgaldino/elixir-snippets'  " snipmate snippets for elixir
-Plug 'farseer90718/vim-taskwarrior'   " taskwarrior
 Plug 'vimoutliner/vimoutliner'        " vim outliner
 call plug#end()
 
