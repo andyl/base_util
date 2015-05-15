@@ -17,6 +17,7 @@ Plug 'elixir-lang/vim-elixir'         " syntax highlighting
 Plug 'mattreduce/vim-mix'             " mix helpers
 Plug 'carlosgaldino/elixir-snippets'  " snipmate snippets for elixir
 Plug 'vimoutliner/vimoutliner'        " vim outliner
+Plug 'dhruvasagar/vim-table-mode'     " vim table mode
 call plug#end()
 
 " WORKLOG SETUP

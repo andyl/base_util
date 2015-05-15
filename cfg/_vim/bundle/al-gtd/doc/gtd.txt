@@ -1,8 +1,6 @@
-*gtd* Getting Things Done in Vim
-Maintainer: Andy Leak <andy@r210.com>
-Documentation version: 0.1
+Getting Things Done in Vim                                            *gtd* *vgtd*
 ==============================================================================
-Contents:                                                        *gtd-outline*
+CONTENTS                                                          *gtd-outline*
 
   Introduction  |gtd-intro|
   Outlines      |gtd-outlines|
@@ -12,234 +10,51 @@ Contents:                                                        *gtd-outline*
   Settings      |gtd-settings|
 
 ==============================================================================
-Introduction:                                                      *gtd-intro*
+INTRODUCTION                                                         *gtd-intro*
 
-Getting Things Done in Vim
+VGTD - A simple task-tracking app.
 
-==============================================================================
-Outlines in gtd:                                                *gtd-outlines*
+Other task trackers include: vim-orgmode, taskwarrior, vitalist, and a
+thousand others.  VGTD saves data in plain-text files, editable in Vim.
 
-gtd uses Vim's |folding| capabilities to provide an outlining capability
-similar to that of familiar outliners:
-
-- folded headlines hide all sub-headlines
-
-- text blocks fold separately so you can see the first line under its
-  corresponding headline.
-
-A gtd outline consists of:
-
-- Headings -- Text with 0 or more tabs preceding it. These are by default
-  displayed in color, and logically include text and headings that are more
-  indented. If the tabs are immediately followed by a '+' character, then that
-  heading will be extracted along with the text when you do a \T
-  |gtd-<LocalLeader>T|.
-
-- Plain text -- Text preceded by 0 or more tabs and the '|' character.
-
-- File links -- File names enclosed in square brackets like [README.otl]. You
-  can navigate to these files
-
-- Vim tags -- Regular vim tags (which use a |tags| file), enclosed in square
-  brackets like [gtd-outlines]. If you have |Thlnk| installed, these can also
-  use its style of tags.
-
-- Viki tags -- If you have |viki| installed, these will also be navigable.
-
-- Vim command tags -- Vim |commands| enclosed in square brackets with a leading
-  colon, like [:he tags]
-
-You can choose at what level headings become hidden.
-
-You can choose to fold all the headings and see just text blocks with their
-immediately enclosing headings.
 
 ==============================================================================
-Mappings:                                                       *gtd-mappings*
+BLOCKS                                                         *gtd-blocks*
 
-Standard Vim keystrokes redefined:
 
-Some little-used Vim commands have been re-defined for
-convenience in gtd:
-
-  =       open heading (zo) |zo|                                       *gtd-=*
-  -       close heading (zc) |zc|                                      *gtd--*
-
-Standard Vim keystrokes that work slightly differently in gtd:
-
-Some commands have been enhanced for gtd, mostly to deal
-with the differences between headlines and text blocks:
-
-  g<C-]>                                                          *gtd-g<C-]>*
-  g<LeftMouse>                                              *gtd-g<LeftMouse>*
-  <C-]>     tag jump                                               *gtd-<C-]>*
-
-  g<RightMouse>                                            *gtd-g<RightMouse>*
-  <C-RightMouse>                                          *gtd-<C-RightMouse>*
-  <C-T>     tag return                                             *gtd-<C-T>*
-
-  J         join lines                                                 *gtd-J*
-  o         open line below                                            *gtd-o*
-  O         open line above                                            *gtd-O*
-
-Fold operations:                                                 *gtd-folding*
-
-Read the Vim manual about folding |fold-commands|
-
-Outliner macro mappings:                                          *gtd-macros*
-
-Note that the mappings shown here as \x are really using the local leader
-character, which can be changed to whatever you want using the
-|maplocalleader| command.
-
-Display operations:
-
-  \1      show level 1                                    *gtd-<LocalLeader>1*
-  \2      show level 2                                    *gtd-<LocalLeader>2*
-  \3      show level 3                                    *gtd-<LocalLeader>3*
-  \4      show level 4                                    *gtd-<LocalLeader>4*
-  \5      show level 5                                    *gtd-<LocalLeader>5*
-  \6      show level 6                                    *gtd-<LocalLeader>6*
-  \7      show level 7                                    *gtd-<LocalLeader>7*
-  \8      show level 8                                    *gtd-<LocalLeader>8*
-  \9      show level 9                                    *gtd-<LocalLeader>9*
-  \a      show all levels and text                        *gtd-<LocalLeader>a*
-  \t      toggles showing just the first line of text     *gtd-<LocalLeader>t*
-
-Heading operations:
-
-All of these that change text operate on a heading and all its text and
-subheadings.
-
-  \u      move heading up one                             *gtd-<LocalLeader>u*
-  \d      move heading down one                           *gtd-<LocalLeader>d*
-  \C      change the current heading                      *gtd-<LocalLeader>C*
-  \D      delete the current heading                      *gtd-<LocalLeader>D*
-  \y      yank the current heading                        *gtd-<LocalLeader>y*
-  \p      insert yanked/deleted heading after the current line  *gtd-<LocalLeader>p*
-  \P      insert yanked/deleted heading before the current line *gtd-<LocalLeader>P*
-  \>      shift current heading right (demote)            *gtd-<LocalLeader>>*
-  <Shift-Tab>  shift current heading right (demote)       *gtd-<Shift-Tab>*
-  \<      shift current heading left (promote)            *gtd-<LocalLeader><*
-  <Tab>   shift current heading left (promote)            *gtd-<Tab>*
-  -       close current heading
-  =       open current heading
-
-Motion:
-
-  \k      move cursor up one heading                      *gtd-<LocalLeader>k*
-  \j      move cursor down one heading                    *gtd-<LocalLeader>j*
-  \[      move cursor to top of fold                      *gtd-<LocalLeader>[*
-  \]      move cursor to bottom of fold                   *gtd-<LocalLeader>]*
-
-Miscellaneous:
-
-  \T      extract text to new window                      *gtd-<LocalLeader>T*
-  \H      extract headers to new window                   *gtd-<LocalLeader>H*
-  \b      convert heading to text or back                 *gtd-<LocalLeader>b*
-  \h      toggle bold headers display                     *gtd-<LocalLeader>h*
-  \f      format current fold                             *gtd-<LocalLeader>f*
-  \F      format current fold after joining all lines     *gtd-<LocalLeader>F*
-  \w      count words in text blocks                      *gtd-<LocalLeader>w*
-
-Switching modes:
-
-These let you switch between entering text and entering headers.
-If the cursor is on a header line, these make a new text line, or if the
-cursor is on a text line, these make a new header.
-
-  <C-CR>  toggle mode and insert line after current               *gtd-<C-CR>*
-  \o      toggle mode and insert line after current       *gtd-<LocalLeader>o*
-  \O      toggle mode and insert line before current      *gtd-<LocalLeader>O*
+Tasks are organized into blocks:
+  - I : Inbox
+  - A : Active Tasks
+  - W : Waiting
 
 ==============================================================================
-Word-compatible level changing:                       *gtd-word-compatibility*
+FIELDS                                                         *gtd-fields*
 
-  Alt-shift-down          shift heading down one              *gtd-<M-S-Down>*
-  Alt-shift-up            shift heading up one                  *gtd-<M-S-Up>*
-  Alt-down                move cursor down one heading          *gtd-<M-Down>*
-  Alt-up                  move cursor up one heading              *gtd-<M-Up>*
-  Alt-shift-Left          promote current heading             *gtd-<M-S-Left>*
-  Alt-shift-Right         demote current heading             *gtd-<M-S-Right>*
-  Alt-shift-keyboardPlus  open current fold                  *gtd-<M-S-kPlus>*
-  Alt-shift-keyboardMinus close current fold                *gtd-<M-S-kMinus>*
+Each task is on a single line, and has a standard set of fields delimited by a
+unique character:
 
-==============================================================================
-Mouse Operation:                                                   *gtd-mouse*
-
-A double-click on a heading will toggle its folded state.
+| Char | Element | Desc                                   |
+| ---- | ------- | -------------------------------------- |
+| !    | handle  | a generated UUID-style task ID         |
+| =    | project | the task project                       |
+| @    | context | the context for completing the project |
 
 ==============================================================================
-Commands:                                                       *gtd-commands*
-
-  :OtlJoin   takes range of lines and joins them
+COMMANDS                                                         *gtd-commands*
 
 ==============================================================================
-Toolbar:                                                         *gtd-toolbar*
-
-If you are using the toolbar, some buttons have been added:
-
-Left, right: promote or demote the current heading (\< and \>)
-Convert to body text
-Up, down: move the current heading up or down
-+, - : expand or collapse the current heading
-1 - 7: show the corresponding level (\1 - \7)
-All: show all levels plus text (\t)
+ARCHIVE                                                 *gtd-archive*
 
 ==============================================================================
-Settings:                                                     *gtd-settings*
+SUPPORT SOFTWARE                                                *gtd-support*
 
-These can be set in your .vimrc file to change the default behavior of gtd:
+==============================================================================
+ALTERNATE UI:                                                *gtd-alt-ui*
 
-Turn off bold headers (useful if you find the colors too dark in a color
-terminal):
-  let g:otl_bold_headers = 0
+==============================================================================
+RELATED TOOLS:                                                *gtd-tools*
 
-Don't install gtd menu:
-  let g:otl_install_menu = 0
-
-Don't install gtd toolbar buttons:
-  let g:otl_install_toolbar = 0
-
-Don't install any gtd keyboard mappings:
-  let g:no_otl_maps = 1
-
-Install gtd mapping of <Tab> and <Shift-Tab> to demote/promote (default=0):
-  let g:otl_map_tabs = 1
-
-Don't install gtd insert mode mappings:
-  let g:no_otl_insert_maps = 1
-
-Start out in text view:
-  let g:otl_text_view = 1
-
-Set default initial foldlevel (default=9)
-Note that you can override this in a modeline in an .otl file
-  let g:otl_initial_foldlevel=9
-
-If you have installed Viki:
-
-  Set g:otl_use_viki to 0 if Viki is installed but you don't want to use it
-    let g:otl_use_viki=1
-
-  Set g:otl_viki_name_types to the default Viki name types that you want to use
-  (see viki.txt)
-    s Simple viki name
-    c CamelCase
-    S simple, quoted viki name
-    i interviki
-    u URL
-
-    let otl_viki_name_types='csSeui'
-
-    let otl_viki_anchor_marker='#'
-
-    let otl_viki_comment_string='.*\[\[%s]]'
-
-Don't use |thlnk| even if it exists:
-  let g:otl_use_thlnk = 0
-
-Change the key prefix for gtd mappings |gtd-mappings| (in this example, to a comma):
-  let maplocalleader = ","
+  - pgcl - command line utility for adding tasks 
+  - pgvw - command line utility for viewing task list
 
 " vim: ft=help tw=78 ts=2 et
