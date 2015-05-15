@@ -3,8 +3,11 @@ GETTING THINGS DONE IN VIM                                            *gtd* *vgt
 CONTENTS                                                          *gtd-outline*
 
   Introduction  |gtd-intro|
-  Outlines      |gtd-outlines|
-  Mappings      |gtd-mappings|
+  Fields        |gtd-fields|
+  Groups        |gtd-groups|
+  Editing       |gtd-editing|
+  Sorting       |gtd-sorting|
+  Grouping      |gtd-grouping|
   Commands      |gtd-commands|
   Toolbar       |gtd-toolbar|
   Settings      |gtd-settings|
@@ -12,35 +15,81 @@ CONTENTS                                                          *gtd-outline*
 ==============================================================================
 INTRODUCTION                                                         *gtd-intro*
 
-VGTD - A simple task-tracking app.
-
-Other task trackers include: vim-orgmode, taskwarrior, vitalist, and a
-thousand others.  VGTD saves data in plain-text files, editable in Vim.
-
-
-==============================================================================
-BLOCKS                                                              *gtd-blocks*
-
-
-Tasks are organized into blocks:
-  - I : Inbox
-  - A : Active Tasks
-  - W : Waiting
+VGTD is a simple task-tracking app.  There are lots of great task trackers:
+vim-orgmode, taskwarrior, vitalist, and more.  This tracker saves data in
+plain-text files, editable in Vim.
 
 ==============================================================================
 FIELDS                                                              *gtd-fields*
 
-Each task is on a single line, and has a standard set of fields delimited by a
-unique character:
+Each task is on a single line.  Each task has a standard set of fields
+delimited by a unique character:
 
-| Char | Element | Desc                                   |
-| ---- | ------- | -------------------------------------- |
-| !    | handle  | a generated UUID-style task ID         |
-| =    | project | the task project                       |
-| @    | context | the context for completing the project |
++--------+----------+-------------------------------------+
+| Char   | Element  | Desc                                |
++--------+----------+-------------------------------------+
+| !      | handle   | a generated UUID-style task ID      |
+| =      | category | the task category                   |
+| :      | project  | the task project                    |
+| @      | context  | the context for completing the task |
+| -      | priority | task priority (H, M or L)           |
+| 'pipe' | title    | task title                          |
+| []     | text     | extended text                       |
+| /      | date     | completion date                     |
+| #      | contact  | contact info                        |
++--------+----------+-------------------------------------+
+
++----------------------+------------------+
+| Valid Categories     | Valid Priorities |
++----------------------+------------------+
+| =I : Inbox           | -H : High        |
+| =A : Active          | -M : Medium      |
+| =W : Waiting         | -L : Low         |
+| =T : ???             |                  |
+| =S : Someday / Maybe |                  |
+| =R : ???             |                  |
+| =X : Done            |                  |
++----------------------+------------------+
 
 ==============================================================================
-COMMANDS                                                          *gtd-commands*
+GROUPS                                                              *gtd-groups*
+
+Tasks are organized into groups, by category, project, context, etc.:
+
+Groups are indicated by a group header, in the format: `{=I}`
+
+For example: 
+- `{=I}`   : group by category
+- `{:h}`   : group by project
+- `{@err}` : group by context 
+
+==============================================================================
+EDITING                                                            *gtd-editing*
+
+You can edit anything directly - it's just text.  Put fields anywhere on a
+row. Fields will be parsed and reformatted automatically.
+
+There are also editing commands, to speed up your work.  Editing Commands work
+on the current row.  In visual mode, all selected rows are affected.
+
+- <leader>c=    change the category (interactive)
+- <leader>c:    change the project  (interactive)
+- <leader>c-    change the priority (interactive)
+- <leader>c@    change the context  (interactive)
+- <leader>c/    change the date     (interactive)
+- <leader>c#    change the contact  (interactive)
+
+- <leader>x  change the category to 'X' 
+- <leader>a  change the category to 'A' 
+- <leader>h  change the priority to 'H' 
+- <leader>m  change the priority to 'M' 
+- <leader>l  change the priority to 'L' 
+
+==============================================================================
+SORTING                                                            *gtd-sorting*
+
+==============================================================================
+GROUPING                                                          *gtd-grouping*
 
 ==============================================================================
 ARCHIVE                                                            *gtd-archive*

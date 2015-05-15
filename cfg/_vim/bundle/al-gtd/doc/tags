@@ -1,11 +1,13 @@
 gtd	gtd.txt	/*gtd*
 gtd-alt-ui	gtd.txt	/*gtd-alt-ui*
 gtd-archive	gtd.txt	/*gtd-archive*
-gtd-blocks	gtd.txt	/*gtd-blocks*
-gtd-commands	gtd.txt	/*gtd-commands*
+gtd-editing	gtd.txt	/*gtd-editing*
 gtd-fields	gtd.txt	/*gtd-fields*
+gtd-grouping	gtd.txt	/*gtd-grouping*
+gtd-groups	gtd.txt	/*gtd-groups*
 gtd-intro	gtd.txt	/*gtd-intro*
 gtd-outline	gtd.txt	/*gtd-outline*
+gtd-sorting	gtd.txt	/*gtd-sorting*
 gtd-support	gtd.txt	/*gtd-support*
 gtd-tools	gtd.txt	/*gtd-tools*
 vgtd	gtd.txt	/*vgtd*

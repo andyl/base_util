@@ -139,11 +139,6 @@ imap <CR> <ESC>:call CRMode()<CR>
 vmap <leader>c= :call UpdateCategory("v")<cr>gv
 nmap <leader>c= :call UpdateCategory("n")<cr>
 
-vmap <leader>x :call UpdateSpecificCategory("X", "v")<cr>gv
-nmap <leader>x :call UpdateSpecificCategory("X", "n")<cr>
-vmap <leader>a :call UpdateSpecificCategory("A", "v")<cr>gv
-nmap <leader>a :call UpdateSpecificCategory("A", "n")<cr>
-
 vmap <leader>c: :call UpdateProject("v")<cr>gv
 nmap <leader>c: :call UpdateProject("n")<cr>
 
@@ -153,19 +148,23 @@ nmap <leader>c@ :call UpdateContext("n")<cr>
 vmap <leader>c- :call UpdatePriority("v")<cr>gv
 nmap <leader>c- :call UpdatePriority("n")<cr>
 
-vmap <leader>ch :call DoUpdatePriority("H", "v")<cr>gv
-vmap <leader>cm :call DoUpdatePriority("M", "v")<cr>gv
-vmap <leader>cl :call DoUpdatePriority("L", "v")<cr>gv
-nmap <leader>ch :call DoUpdatePriority("H", "n")<cr>
-nmap <leader>cm :call DoUpdatePriority("M", "n")<cr>
-nmap <leader>cl :call DoUpdatePriority("L", "n")<cr>
-
 vmap <leader>c/ :call UpdateDate("v")<cr>gv
 nmap <leader>c/ :call UpdateDate("n")<cr>
 
 vmap <leader>c# :call UpdateContact("v")<cr>gv
 nmap <leader>c# :call UpdateContact("n")<cr>
 
+vmap <leader>x :call UpdateSpecificCategory("X", "v")<cr>gv
+nmap <leader>x :call UpdateSpecificCategory("X", "n")<cr>
+vmap <leader>a :call UpdateSpecificCategory("A", "v")<cr>gv
+nmap <leader>a :call UpdateSpecificCategory("A", "n")<cr>
+
+vmap <leader>h :call DoUpdatePriority("H", "v")<cr>gv
+vmap <leader>m :call DoUpdatePriority("M", "v")<cr>gv
+vmap <leader>l :call DoUpdatePriority("L", "v")<cr>gv
+nmap <leader>h :call DoUpdatePriority("H", "n")<cr>
+nmap <leader>m :call DoUpdatePriority("M", "n")<cr>
+nmap <leader>l :call DoUpdatePriority("L", "n")<cr>
 
 " SORT KEYMAPS -----
 vmap <leader>ss :!pgsort<cr>gv
