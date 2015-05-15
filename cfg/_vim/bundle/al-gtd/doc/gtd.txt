@@ -1,16 +1,16 @@
 GETTING THINGS DONE IN VIM                                            *gtd* *vgtd*
 ==============================================================================
-CONTENTS                                                          *gtd-outline*
+CONTENTS                                                           *gtd-outline*
 
-  Introduction  |gtd-intro|
-  Fields        |gtd-fields|
-  Groups        |gtd-groups|
-  Editing       |gtd-editing|
-  Sorting       |gtd-sorting|
-  Grouping      |gtd-grouping|
-  Commands      |gtd-commands|
-  Toolbar       |gtd-toolbar|
-  Settings      |gtd-settings|
+  Introduction       |gtd-intro|
+  Fields             |gtd-fields|
+  Groups             |gtd-groups|
+  Editing            |gtd-editing|
+  Sorting            |gtd-sorting|
+  Grouping           |gtd-grouping|
+  Archive            |gtd-archive|
+  Support Software   |gtd-support|
+  Related Tools      |gtd-tools|
 
 ==============================================================================
 INTRODUCTION                                                         *gtd-intro*
@@ -88,22 +88,36 @@ on the current row.  In visual mode, all selected rows are affected.
 ==============================================================================
 SORTING                                                            *gtd-sorting*
 
+- <leader>ss    reformat and resort the list
+
+- <leader>s=    reformat and sort by category
+- <leader>s:    reformat and sort by project
+- <leader>s@    reformat and sort by context
+- <leader>s-    reformat and sort by priority
+
 ==============================================================================
 GROUPING                                                          *gtd-grouping*
+
+- <leader>g=    reformat and group by category
+- <leader>g:    reformat and group by project
+- <leader>g@    reformat and group by context
+- <leader>g-    reformat and group by priority
 
 ==============================================================================
 ARCHIVE                                                            *gtd-archive*
 
+When the file is saved, all DONE topics `{=X}` are moved to the archive file
+`current.gta`.
+
 ==============================================================================
 SUPPORT SOFTWARE                                                   *gtd-support*
 
-==============================================================================
-ALTERNATE UI                                                        *gtd-alt-ui*
+This editing mode relies on a ruby gem `vgtd` which has a set of executable
+scripts (`pgsort`, `pggroup`, etc.) perform sorting and formatting and archiving.
 
 ==============================================================================
 RELATED TOOLS                                                        *gtd-tools*
 
   - pgcl - command line utility for adding tasks 
-  - pgvw - command line utility for viewing task list
 
 " vim: ft=help tw=78 ts=2 et
