@@ -8,11 +8,11 @@ hi OL1 guifg=black      ctermfg=green
 hi OL2 guifg=red        ctermfg=red
 hi OL3 guifg=blue       ctermfg=blue
 hi OL4 guifg=darkviolet ctermfg=magenta
-hi OL5 guifg=black      ctermfg=black
-hi OL6 guifg=red        ctermfg=red
+hi OL5 guifg=black      ctermfg=yellow
+hi OL6 guifg=red        ctermfg=cyan
 hi OL7 guifg=blue       ctermfg=blue
 hi OL8 guifg=darkviolet ctermfg=magenta
-hi OL9 guifg=black      ctermfg=black
+hi OL9 guifg=black      ctermfg=green
 
 " " colors for tags
 " hi outlTags guifg=darkred	ctermfg=darkred
