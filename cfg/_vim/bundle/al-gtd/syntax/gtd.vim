@@ -36,18 +36,18 @@ endfunction
 
 " GTD SYNTAX -----
 " syntax match gFilter   /<.*>/
-syntax match gFilter   /{.*}/
-syntax match gHandle   /\![A-z0-9][A-z0-9][A-z0-9]/
-syntax match gCategory /=[IAWSTRXiawstrx]/ 
-syntax match gProject  /:[^ ]*/
-syntax match gContext  /@[^ ]*/
+syntax match gFilter    /{.*}/
+syntax match gHandle    /\![A-z0-9][A-z0-9][A-z0-9]/
+syntax match gCategory  /=[IAWSTRXiawstrx]/ 
+syntax match gProject   /:[^ ]*/
+syntax match gContext   /@[^ ]*/
 syntax match gHPriority /\-[Hh]/
 syntax match gMPriority /\-[Mm]/
 syntax match gLPriority /\-[Ll]/
-syntax match gContact  /#[^ ]*/
-syntax match gDate     /\/[^ ]*/
-syntax match gTask     /|[^\[\/\#\:\@\=]*/
-syntax match gNote     /\[.*\]/
+syntax match gContact   /#[^ ]*/
+syntax match gDate      /\/[^ ]*/
+syntax match gTask      /|[^\[\/\#\:\@\=]*/
+syntax match gNote      /\[.*\]/
 
 " SYNTAX HIGHLIGHTING -----
 highlight gFilter    ctermfg=green
@@ -66,6 +66,7 @@ highlight gNote      ctermfg=gray    ctermbg=black
 " SHARED FUNCTIONS -----
 function! SetMethod() range
 ruby << END
+$VERBOSE=nil
 require '/home/aleak/util/pdev_util/gems/vgtd/lib/vgtd187'
 def update_field(string, leader, newval)
   task = Gtask.new(string)
