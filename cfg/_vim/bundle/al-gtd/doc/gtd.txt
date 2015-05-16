@@ -25,31 +25,31 @@ FIELDS                                                              *gtd-fields*
 Each task is on a single line.  Each task has a standard set of fields
 delimited by a unique character:
 
-+--------+----------+-------------------------------------+
-| Char   | Element  | Desc                                |
-+--------+----------+-------------------------------------+
-| !      | handle   | a generated UUID-style task ID      |
-| =      | category | the task category                   |
-| :      | project  | the task project                    |
-| @      | context  | the context for completing the task |
-| -      | priority | task priority (H, M or L)           |
-| 'pipe' | title    | task title                          |
-| []     | text     | extended text                       |
-| /      | date     | completion date                     |
-| #      | contact  | contact info                        |
-+--------+----------+-------------------------------------+
++--------+------------+-------------------------------------+
+| Char   | Element    | Desc                                |
++--------+------------+-------------------------------------+
+| !      | Handle     | a generated UUID-style task ID      |
+| =      | Box        | a task collection (inbox, etc.)     |
+| :      | Project    | the task project                    |
+| @      | Context    | the context for completing the task |
+| -      | Importance | task priority (H, M or L)           |
+| 'pipe' | Title      | task title                          |
+| []     | note_      | extended text                       |
+| /      | Date       | completion date                     |
+| #      | Associate  | contact info                        |
++--------+------------+-------------------------------------+
 
-+-------------------------------+------------------+
-| Valid Categories              | Valid Priorities |
-+-------------------------------+------------------+
-| =I : Inbox                    | -H : High        |
-| =A : Active (next action)     | -M : Medium      | 
-| =W : Waiting on someone       | -L : Low         |
-| =T : Tickler (time triggered) |                  |
-| =S : Someday / Maybe          |                  |
-| =R : Reference/reading        |                  |
-| =X : Done                     |                  |
-+-------------------------------+------------------+
++--------------------------------+-------------------+
+| Valid Boxes                    | Valid Importances |
++--------------------------------+-------------------+
+| =I : Inbox                     | -H : High         |
+| =A : Active (next action)      | -M : Medium       |
+| =W : Waiting on associate      | -L : Low          |
+| =C : Calendar (time triggered) |                   |
+| =S : Someday / Maybe           |                   |
+| =R : Reference / Reading       |                   |
+| =X : Done                      |                   |
++--------------------------------+-------------------+
 
 ==============================================================================
 GROUPS                                                              *gtd-groups*
