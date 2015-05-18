@@ -9,18 +9,18 @@ call pathogen#helptags()
 " Docco at http://github.com/junegunn/vim-plug 
 call plug#begin('~/.vim/plugged')
 " snippet stuff -----
-Plug 'MarcWeber/vim-addon-mw-utils'   " support lib for snipmate
-Plug 'tomtom/tlib_vim'                " support lib for snipmate
-Plug 'garbas/vim-snipmate'            " snippet plugin
+" Plug 'MarcWeber/vim-addon-mw-utils'   " support lib for snipmate
+" Plug 'tomtom/tlib_vim'                " support lib for snipmate
+" Plug 'garbas/vim-snipmate'            " snippet plugin
 " junegunn utils -----
 Plug 'junegunn/seoul256.vim'          " color schemes
 Plug 'junegunn/vim-easy-align'        " column alignment
 " ansible yaml files -----
 Plug 'chase/vim-ansible-yaml'         " use modeline '#vim:ft=ansible:'
 " elixir -----
+" Plug 'carlosgaldino/elixir-snippets'  " snipmate snippets for elixir
 Plug 'elixir-lang/vim-elixir'         " syntax highlighting
 Plug 'mattreduce/vim-mix'             " mix helpers
-Plug 'carlosgaldino/elixir-snippets'  " snipmate snippets for elixir
 " editing utils -----
 Plug 'vimoutliner/vimoutliner'        " vim outliner
 Plug 'dhruvasagar/vim-table-mode'     " vim table mode
