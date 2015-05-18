@@ -40,16 +40,16 @@ hi OL9 guifg=black      ctermfg=green
 " hi PT9 guifg=darkblue	ctermfg=cyan
 " 
 " " color for tables 
-" hi TA1 guifg=darkviolet	ctermfg=cyan
-" hi TA2 guifg=darkviolet	ctermfg=cyan
-" hi TA3 guifg=darkviolet	ctermfg=cyan
-" hi TA4 guifg=darkviolet	ctermfg=cyan
-" hi TA5 guifg=darkviolet	ctermfg=cyan
-" hi TA6 guifg=darkviolet	ctermfg=cyan
-" hi TA7 guifg=darkviolet	ctermfg=cyan
-" hi TA8 guifg=darkviolet	ctermfg=cyan
-" hi TA9 guifg=darkviolet	ctermfg=cyan
-" 
+hi TA1 guifg=darkviolet	ctermfg=cyan
+hi TA2 guifg=darkviolet	ctermfg=cyan
+hi TA3 guifg=darkviolet	ctermfg=cyan
+hi TA4 guifg=darkviolet	ctermfg=cyan
+hi TA5 guifg=darkviolet	ctermfg=cyan
+hi TA6 guifg=darkviolet	ctermfg=cyan
+hi TA7 guifg=darkviolet	ctermfg=cyan
+hi TA8 guifg=darkviolet	ctermfg=cyan
+hi TA9 guifg=darkviolet	ctermfg=cyan
+
 " " color for user text (wrapping)
 " hi UT1 guifg=darkred	ctermfg=cyan
 " hi UT2 guifg=darkred	ctermfg=cyan
