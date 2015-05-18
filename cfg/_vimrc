@@ -9,16 +9,16 @@ call pathogen#helptags()
 " Docco at http://github.com/junegunn/vim-plug 
 call plug#begin('~/.vim/plugged')
 " snippet stuff -----
-" Plug 'MarcWeber/vim-addon-mw-utils'   " support lib for snipmate
-" Plug 'tomtom/tlib_vim'                " support lib for snipmate
-" Plug 'garbas/vim-snipmate'            " snippet plugin
+Plug 'MarcWeber/vim-addon-mw-utils'   " support lib for snipmate
+Plug 'tomtom/tlib_vim'                " support lib for snipmate
+Plug 'garbas/vim-snipmate'            " snippet plugin
 " junegunn utils -----
 Plug 'junegunn/seoul256.vim'          " color schemes
 Plug 'junegunn/vim-easy-align'        " column alignment
 " ansible yaml files -----
 Plug 'chase/vim-ansible-yaml'         " use modeline '#vim:ft=ansible:'
 " elixir -----
-" Plug 'carlosgaldino/elixir-snippets'  " snipmate snippets for elixir
+Plug 'carlosgaldino/elixir-snippets'  " snipmate snippets for elixir
 Plug 'elixir-lang/vim-elixir'         " syntax highlighting
 Plug 'mattreduce/vim-mix'             " mix helpers
 " editing utils -----
@@ -26,7 +26,7 @@ Plug 'vimoutliner/vimoutliner'        " vim outliner
 Plug 'dhruvasagar/vim-table-mode'     " vim table mode
 call plug#end()
 
-" WORKLOG SETUP
+" FILE MODES
 au BufRead,BufNewFile *.worklog set filetype=worklog
 au BufRead,BufNewFile *.wlog    set filetype=worklog
 au BufRead,BufNewFile *.thor    set filetype=ruby
@@ -35,6 +35,9 @@ au BufRead,BufNewFile *.gta     set filetype=gtd
 
 " CLEAN UP JUNK DATA FILE
 au VimLeave * if filereadable(expand("~/.vim/.netrwhist"))|call delete(expand("~/.vim/.netrwhist"))|endif 
+
+" FILE BACKUPS
+set updatecount=0     " disable file backups
 
 " MATCHIT
 runtime macros/matchit.vim
