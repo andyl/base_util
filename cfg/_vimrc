@@ -55,6 +55,7 @@ command! Wc write|bdelete
 " MISC STUFF
 syntax on
 set directory=~/.vimtmp,/tmp,.
+set hlsearch                          " highlight search term - mute with :noh(lsearch)
 set splitright
 set splitbelow
 map go :only<CR>:~vsp <cfile><CR>
