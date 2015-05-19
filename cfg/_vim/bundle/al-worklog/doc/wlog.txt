@@ -10,23 +10,22 @@ CONTENTS                                                          *wlog-outline*
 ==============================================================================
 INTRODUCTION                                                        *wlog-intro*
 
-Worklog - activity log and technical notes.
+Worklog - for writing an activity log and technical notes.
 
 ==============================================================================
 FEATURES                                                         *wlog-features*
 
-- Organized by date and time stamp
+- Organized by date and time stamp headers
 - high-level TODO tracking
 
 ==============================================================================
 COMMANDS                                                         *wlog-commands*
 
-<C-a>d - create a new 'day' heading   (relies on `w_timestamp` script)
-<C-a>t - create a new 'time' heading  (relies on `w_date` script)
+<C-h>d - create a new 'day' heading   (relies on `w_timestamp` script)
+<C-h>t - create a new 'time' heading  (relies on `w_date` script)
 <C-t>s - create a time stamp          (relies on `w_time` script)
 
-<space> toggle the date/time heading open and closed
-        (za also works...)
+<space> toggle the date/time heading open and closed (za also works...)
 
 <C-t>t insert a TODO label
 <C-t>d insert a DONE label 

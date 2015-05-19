@@ -46,10 +46,10 @@ imap <C-t>x <esc>:s/[TD]O[DN][OE]\: //g<cr>i
 nmap <C-t>s :r !w_timestamp<cr>kddA
 imap <C-t>s <esc>:r !w_timestamp<cr>kddA
 
-nmap <C-a>d :r !w_date<cr>k$
-imap <C-a>d <esc>:r !w_date<cr>k$
-nmap <C-a>t :r !w_time<cr>k$a
-imap <C-a>t <esc>:r !w_time<cr>k$a
+nmap <C-h>d :r !w_date<cr>k$
+imap <C-h>d <esc>:r !w_date<cr>k$
+nmap <C-h>t :r !w_time<cr>k$a
+imap <C-h>t <esc>:r !w_time<cr>k$a
 
 " TEXT OBJECTS -----
 " see http://vim.wikia.com/wiki/Creating_new_text_objects
