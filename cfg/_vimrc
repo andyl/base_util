@@ -24,6 +24,8 @@ Plug 'mattreduce/vim-mix'             " mix helpers
 " editing utils -----
 Plug 'vimoutliner/vimoutliner'        " vim outliner
 Plug 'dhruvasagar/vim-table-mode'     " vim table mode
+" NerdTree -----
+Plug 'scrooloose/nerdtree'            " file browser
 call plug#end()
 
 " FILE MODES
@@ -38,6 +40,9 @@ au VimLeave * if filereadable(expand("~/.vim/.netrwhist"))|call delete(expand("~
 
 " FILE BACKUPS
 set updatecount=0     " disable file backups
+
+" TERMINAL ENCODING
+set enc=utf-8
 
 " MATCHIT
 runtime macros/matchit.vim
