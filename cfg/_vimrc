@@ -102,12 +102,12 @@ vnoremap <silent> # :<C-U>
 inoremap <Nul> <C-n>
 
 " MOVE LINE UP/DOWN
-nmap <C-Up> [e
-nmap <C-Down> ]e
+nmap <C-A-Up> [e
+nmap <C-A-Down> ]e
 
 " MOVE REGION UP/DOWN
-vmap <C-Up> [egv
-vmap <C-Down> ]egv
+vmap <C-A-Up> [egv
+vmap <C-A-Down> ]egv
 
 " FOR EDITING HELP OUTLINES - OPENS TARGET FILE IN VERTICAL SPLIT WINDOW
 map <F8> :vertical wincmd f<CR>
@@ -197,8 +197,8 @@ fun! BarDown()
   endif
 endfun
 
-nnoremap <silent> <A-Up> :call BarUp()<cr>
-nnoremap <silent> <A-Down> :call BarDown()<cr>
+nnoremap <silent> <C-Up> :call BarUp()<cr>
+nnoremap <silent> <C-Down> :call BarDown()<cr>
 
 " PANE RESIZING (Left/Right)
 fun! BarLeft()
@@ -223,8 +223,8 @@ fun! BarRight()
   endif
 endfun
 
-nnoremap <silent> <A-Left> :call BarLeft()<cr>
-nnoremap <silent> <A-Right> :call BarRight()<cr>
+nnoremap <silent> <C-Left> :call BarLeft()<cr>
+nnoremap <silent> <C-Right> :call BarRight()<cr>
 
 " PANE ZOOMING
 nmap <leader>z <C-w>o
