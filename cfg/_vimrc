@@ -107,12 +107,12 @@ vnoremap <silent> # :<C-U>
 inoremap <Nul> <C-n>
 
 " MOVE LINE UP/DOWN
-nmap <C-A-Up> [e
-nmap <C-A-Down> ]e
+nmap <S-Up> [e
+nmap <S-Down> ]e
 
 " MOVE REGION UP/DOWN
-vmap <C-A-Up> [egv
-vmap <C-A-Down> ]egv
+vmap <S-Up> [egv
+vmap <S-Down> ]egv
 
 " FOR EDITING HELP OUTLINES - OPENS TARGET FILE IN VERTICAL SPLIT WINDOW
 map <F8> :vertical wincmd f<CR>
