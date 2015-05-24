@@ -38,8 +38,12 @@ au BufRead,BufNewFile *.gta     set filetype=gtd
 " CLEAN UP JUNK DATA FILE
 au VimLeave * if filereadable(expand("~/.vim/.netrwhist"))|call delete(expand("~/.vim/.netrwhist"))|endif 
 
-" FILE BACKUPS
-set updatecount=0     " disable file backups
+" FILE BACKUPS - disable file backups
+set updatecount=0     
+set nobackup
+set noswapfile
+
+set shortmess+=I
 
 " TERMINAL ENCODING
 set enc=utf-8
