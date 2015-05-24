@@ -24,8 +24,9 @@ Plug 'mattreduce/vim-mix'             " mix helpers
 " editing utils -----
 Plug 'vimoutliner/vimoutliner'        " vim outliner
 Plug 'dhruvasagar/vim-table-mode'     " vim table mode
-" NerdTree -----
+" file utils -----
 Plug 'scrooloose/nerdtree'            " file browser
+Plug 'ctrlpvim/ctrlp.vim'             " fuzzy file open
 call plug#end()
 
 " FILE MODES
