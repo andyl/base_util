@@ -192,8 +192,8 @@ alias  dir='ls'
 
 ###########################################################################
 
-export LC_COLLATE="C"  # sorts Caps before lower case file names for 'ls'
-export LC_ALL="C"      # sorts Caps before lower case file names for 'ls'
+export LC_COLLATE="C"       # sorts Caps before lower case file names for 'ls'
+export LC_ALL="en_US.UTF-8" # UTF-8 is default...
 alias  ls='ls -FC --group-directories --color'
 alias  ll='ls'
 alias lsl='ls -L'
