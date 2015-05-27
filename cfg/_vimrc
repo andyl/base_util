@@ -148,6 +148,8 @@ nmap <leader>f :CtrlP<cr>
 nmap <leader>n :NERDTreeToggle<cr>
 cmap w!! %!sudo tee > /dev/null % 
 
+let g:NERDTreeDirArrows=0
+
 " BUFFER MANIPULATION
 " (other commands from BufExplorer - be, bv, bs)
 nmap <leader>bb :BufExplorer<cr>
