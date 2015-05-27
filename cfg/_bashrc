@@ -2,24 +2,32 @@
 ###########################################################################
 
 export TZ="America/Los_Angeles"
-
 [ -f ~/.rails_env ]      && source ~/.rails_env
 [ -f ~/.bash_aliases ]   && source ~/.bash_aliases
 [ -f ~/.bash_functions ] && source ~/.bash_functions
 
 ###########################################################################
-
+# UTIL
 [ -f ~/.util_dir  ] && source ~/.util_dir    # define $UTIL_DIR
 [ -f ~/.util_path ] && source ~/.util_path   # define $UTIL_PATH
 export PATH=$UTIL_PATH:$PATH                 # setup util PATH 
+
+###########################################################################
+# NPM
 export PATH=$PATH:~/npm-global/bin           # setup NPM path
 
 ###########################################################################
-
+# RUBY
 chruby_path="/usr/local/share/chruby/chruby.sh"
 autosh_path="/usr/local/share/chruby/auto.sh"
 [ -f $chruby_path ] && source $chruby_path   # setup chruby path
 [ -f $autosh_path ] && source $autosh_path   # autoset chruby on every `cd`
+
+###########################################################################
+# GO
+mkdir -p ~/.go
+export GOPATH=~/.go
+export PATH=$PATH:$GOPATH/bin
 
 ###########################################################################
 
