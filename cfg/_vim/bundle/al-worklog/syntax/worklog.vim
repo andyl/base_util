@@ -10,6 +10,9 @@ syntax match wCode      /\`.*\`/
 syntax match wTODO      /TODO:/
 syntax match wDONE      /DONE:/
 
+" COLOR SCHEME -----
+let g:colors_name="wlog"
+
 " SYNTAX HIGHLIGHTING -----
 highlight wTitle     ctermfg=yellow     ctermbg=red
 highlight wDayStart  ctermfg=red  
@@ -40,8 +43,8 @@ nmap <C-t>d iDONE: <esc>
 nmap <C-t>t iTODO: 
 imap <C-t>d DONE: 
 imap <C-t>t TODO: 
-nmap <C-t>x :s/[TD]O[DN][OE]\: //g<cr>
-imap <C-t>x <esc>:s/[TD]O[DN][OE]\: //g<cr>i
+nmap <C-t>x :s/[TD]O[DN][OE]\: //g<cr>:noh<cr>
+imap <C-t>x <esc>:s/[TD]O[DN][OE]\: //g<cr>:noh<cr>i
 
 nmap <C-t>s :r !w_timestamp<cr>kddA
 imap <C-t>s <esc>:r !w_timestamp<cr>kddA
