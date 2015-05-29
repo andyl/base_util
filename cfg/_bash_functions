@@ -1,18 +1,26 @@
+# check for active TMUX session
+no_tmux () {
+  if [ -n "$TMUX" ]; then
+    echo "Live TMUX Session!!!"
+    return 1
+  fi
+}
+
 # edit the selected bash config file
-function editbash {
+editbash () {
     echo $1
     if [[ "$1" == "a" ]]; then
-        emacs ~/.bash_aliases
+        vim ~/.bash_aliases
     elif [[ "$1" == "f" ]]; then
-        emacs ~/.bash_functions
+        vim ~/.bash_functions
     else
-        emacs ~/.bashrc
+        vim ~/.bashrc
     fi
     echo "done"
 }
 
 # print the last ten modified files in the specified directory
-function last {
+last () {
     ls -lt $1 | head
 }
 
@@ -43,3 +51,5 @@ function g {
        ./$filename
     fi
 }
+
+# vim: ft=sh

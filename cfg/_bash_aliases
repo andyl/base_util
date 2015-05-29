@@ -9,13 +9,6 @@
 # alias rm='rm -i'
 # alias mv='mv -i'
 
-# taskwarrior
-alias tw='task'
-alias tk='task'
-alias tws='task sync'
-alias tks='task sync'
-alias vit='vit -titlebar'
-
 # quick directory movement
 alias ..='cd ..'
 alias ...='cd ../..'
