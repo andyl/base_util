@@ -155,6 +155,11 @@ let g:NERDTreeDirArrows=0
 nmap <leader>bb :BufExplorer<cr>
 nmap <leader>bd :bd<cr>
 
+" SCRATCH FILE MANIPULATION
+nmap <leader>sy :w ~/.vimscratch<cr>
+vmap <leader>sy :w ~/.vimscratch<cr>
+nmap <leader>sp :r ~/.vimscratch<cr>
+
 " -----------------------------------------------------
 " Vim Easy Align
 vmap at :EasyAlign *\|<cr>
