@@ -78,7 +78,7 @@ set nocompatible
 set laststatus=2
 set printoptions=duplex:long,number:y
 let g:otl_text_view = 1
-let mapleader=','
+let mapleader="\<Space>"
 imap kj <esc>
 imap jj <esc>
 imap kk <esc>
