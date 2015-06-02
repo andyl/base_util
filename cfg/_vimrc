@@ -156,9 +156,11 @@ nmap <leader>bb :BufExplorer<cr>
 nmap <leader>bd :bd<cr>
 
 " SCRATCH FILE MANIPULATION
-nmap <leader>sy :w ~/.vimscratch<cr>
-vmap <leader>sy :w ~/.vimscratch<cr>
-nmap <leader>sp :r ~/.vimscratch<cr>
+nmap <leader>sy y:call writefile(split(@0,'\n'), "/tmp/vimscratch")<cr>
+vmap <leader>sy y:call writefile(split(@0,'\n'), "/tmp/vimscratch")<cr>
+nmap <leader>sd d:call writefile(split(@1,'\n'), "/tmp/vimscratch")<cr>
+vmap <leader>sd d:call writefile(split(@1,'\n'), "/tmp/vimscratch")<cr>
+nmap <leader>sp :r /tmp/vimscratch<cr>
 
 " -----------------------------------------------------
 " Vim Easy Align
