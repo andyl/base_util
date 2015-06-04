@@ -321,6 +321,8 @@ if [ `which xterm_title` ]; then
   PROMPT_COMMAND='export PWDS=`pwd_short`;xterm_title "${USRNAME}@${SYSNAME} ${PWDS}"'
 fi
 
+export TERM='xterm-256color'
+
 ###########################################################################
 
 # Editor Aliases

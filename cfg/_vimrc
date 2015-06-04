@@ -4,6 +4,7 @@ filetype off
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
+
 " VIM-PLUG - ALTERNATIVE PLUGIN MANAGER
 " Main Commands - :PlugInstall / :PlugStatus / :PlugDiff / :PlugClean
 " Docco at http://github.com/junegunn/vim-plug 
@@ -30,6 +31,7 @@ Plug 'ctrlpvim/ctrlp.vim'             " fuzzy file open
 " misc -----
 Plug 'bling/vim-airline'              " fancy status bar
 Plug 'tpope/vim-fugitive'             " git integration
+Plug 'tpope/vim-rails'                " rails support
 call plug#end()
 
 " FILE MODES
@@ -303,22 +305,21 @@ autocmd FileType ruby let g:surround_35  = "#{\r}"       " #
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
-" let g:airline_left_sep = ""
-" let g:airline_right_sep = ""
-" let g:airline_symbols.space = "\\ua0"
+let g:airline_detect_whitespace = 0
+let g:airline_theme = 'powerlineish'
 let g:airline_powerline_fonts = 1
 
 " TERM-SPECIFIC ITEMS ------------------------------------------------
 
 if exists('$TMUX')
-  set term=screen-256color
+  set term=xterm-256color
 end
 
 set encoding=utf-8
 set t_Co=256
 
 " See http://vim.wikia.com/wiki/Change_cursor_color_in_different_modes
-if &term == "xterm"                       " xterms are gnu-term and terminator
+if &term == "xterm-256color"              " xterms are gnu-term and terminator
   let &t_SI = "\<Esc>]12;green\x7"        " when entering insert mode
   let &t_EI = "\<Esc>]12;white\x7"        " when leaving insert mode
   set mouse=a
