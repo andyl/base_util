@@ -38,7 +38,7 @@ set foldenable
 set foldmethod=syntax
 
 " HOT-KEYS -----
-nmap <space> za
+nmap , za
 nmap <C-t>d iDONE: <esc>
 nmap <C-t>t iTODO: 
 imap <C-t>d DONE: 
