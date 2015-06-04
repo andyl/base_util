@@ -27,7 +27,19 @@ Plug 'dhruvasagar/vim-table-mode'     " vim table mode
 " file utils -----
 Plug 'scrooloose/nerdtree'            " file browser
 Plug 'ctrlpvim/ctrlp.vim'             " fuzzy file open
+" misc -----
+Plug 'bling/vim-airline'              " fancy status bar
+Plug 'tpope/vim-fugitive'             " git integration
 call plug#end()
+
+" VIM-AIRLINE
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_left_sep = ""
+let g:airline_right_sep = ""
+let g:airline_symbols.space = "\ua0"
+let g:airline_powerline_fonts = 1
 
 " FILE MODES
 au BufRead,BufNewFile *.worklog set filetype=worklog
@@ -45,9 +57,6 @@ set nobackup
 set noswapfile
 
 set shortmess+=I
-
-" TERMINAL ENCODING
-set enc=utf-8
 
 " MATCHIT
 runtime macros/matchit.vim
@@ -150,8 +159,6 @@ endif
 nmap <leader>f :CtrlP<cr>
 nmap <leader>n :NERDTreeToggle<cr>
 cmap w!! %!sudo tee > /dev/null % 
-
-let g:NERDTreeDirArrows=0
 
 " BUFFER MANIPULATION
 " (other commands from BufExplorer - be, bv, bs)
@@ -302,6 +309,13 @@ autocmd FileType eruby let g:surround_61 = "<%= \r %>"   " =
 autocmd FileType ruby let g:surround_35  = "#{\r}"       " #
 
 " TERM-SPECIFIC ITEMS ------------------------------------------------
+
+if exists('$TMUX')
+  set term=screen-256color
+end
+
+set enc=utf-8
+set t_Co=256
 
 " See http://vim.wikia.com/wiki/Change_cursor_color_in_different_modes
 if &term == "xterm"                       " xterms are gnu-term and terminator
