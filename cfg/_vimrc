@@ -305,7 +305,7 @@ autocmd FileType ruby let g:surround_35  = "#{\r}"       " #
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
-let g:airline_detect_whitespace = 0
+let g:airline#extensions#whitespace#enabled = 0
 let g:airline_theme = 'powerlineish'
 let g:airline_powerline_fonts = 1
 
