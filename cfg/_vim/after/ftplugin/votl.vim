@@ -11,5 +11,5 @@ colorscheme otl    " use the 'otl' colorscheme (defined in ~/.vim/colors/otl.vim
 
 nmap <space> za
 
-setlocal foldlevel=0  " start with everything closed...
+" setlocal foldlevel=0  " start with everything closed...
 
