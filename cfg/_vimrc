@@ -29,7 +29,8 @@ Plug 'dhruvasagar/vim-table-mode'     " vim table mode
 Plug 'scrooloose/nerdtree'            " file browser
 Plug 'ctrlpvim/ctrlp.vim'             " fuzzy file open
 " misc -----
-Plug 'bling/vim-airline'              " fancy status bar
+Plug 'bling/vim-airline'              " status bar
+Plug 'bling/vim-bufferline'           " buffers in status bar
 Plug 'tpope/vim-fugitive'             " git integration
 Plug 'tpope/vim-rails'                " rails support
 call plug#end()
@@ -85,7 +86,7 @@ set nocompatible
 set laststatus=2
 set printoptions=duplex:long,number:y
 let g:otl_text_view = 1
-let mapleader="\<Space>"
+let mapleader=","
 " use jk or kj as a single keystroke to escape
 imap kj <esc>
 imap jk <esc>
@@ -152,18 +153,20 @@ if has("unix")                       " Optimize file searching
     \ 'fallback': 'find %s -type f | head -' . g:ctrlp_max_files
     \ }
 endif
+nmap <leader>f :CtrlP<cr>
 
 " MISC PLUGIN COMMANDS
-nmap <leader>f :CtrlP<cr>
-nmap <leader>n :NERDTreeToggle<cr>
+nmap <leader>d :NERDTreeToggle<cr>
+
 cmap w!! %!sudo tee > /dev/null % 
 
 " BUFFER MANIPULATION
 " (other commands from BufExplorer - be, bv, bs)
-nmap <leader>bb :BufExplorer<cr>
+nmap <leader>bb :CtrlPBuffer<cr>
 nmap <leader>bd :bd<cr>
+nmap <leader>bx :bd<cr>
 
-" SCRATCH FILE MANIPULATION
+" SCRATCH FILE - copy between vim instances using scratch file
 nmap <leader>sy y:call writefile(split(@0,'\n'), "/tmp/vimscratch")<cr>
 vmap <leader>sy y:call writefile(split(@0,'\n'), "/tmp/vimscratch")<cr>
 nmap <leader>sd d:call writefile(split(@1,'\n'), "/tmp/vimscratch")<cr>
@@ -189,6 +192,15 @@ nmap <leader>tn :tabnew<CR>
 nmap <leader>tx :tabclose<CR>
 nmap <leader>th :tabp<CR>
 nmap <leader>tl :tabn<CR>
+nmap <leader>t1 1gt
+nmap <leader>t2 2gt
+nmap <leader>t3 3gt
+nmap <leader>t4 4gt
+nmap <leader>t5 5gt
+nmap <leader>t6 6gt
+nmap <leader>t7 7gt
+nmap <leader>t8 8gt
+nmap <leader>t9 9gt
 
 " PANE NAVIGATION
 nmap <silent> <C-k> :wincmd k<cr>
@@ -306,7 +318,7 @@ autocmd FileType eruby let g:surround_45 = "<% \r %>"    " -
 autocmd FileType eruby let g:surround_61 = "<%= \r %>"   " =
 autocmd FileType ruby let g:surround_35  = "#{\r}"       " #
 
-" VIM-AIRLINE 
+" VIM-AIRLINE / VIM-BUFFERLINE
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
@@ -322,6 +334,11 @@ let g:airline#extensions#tabline#buffer_min_count = 2
 let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline#extensions#tabline#tab_nr_type = 2
 let g:airline#extensions#tabline#buffer_idx_mode = 1
+let g:airline#extensions#tabline#show_close_button = 0
+let g:airline#extensions#bufferline#enabled = 1
+let g:bufferline_echo = 0
+let g:bufferline_show_bufnr = 0
+let g:bufferline_rotate = 2
 nmap <leader>1 <Plug>AirlineSelectTab1
 nmap <leader>2 <Plug>AirlineSelectTab2
 nmap <leader>3 <Plug>AirlineSelectTab3
