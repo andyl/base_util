@@ -166,12 +166,12 @@ nmap <leader>bb :CtrlPBuffer<cr>
 nmap <leader>bd :bd<cr>
 nmap <leader>bx :bd<cr>
 
-" SCRATCH FILE - copy between vim instances using scratch file
-nmap <leader>sy y:call writefile(split(@0,'\n'), "/tmp/vimscratch")<cr>
-vmap <leader>sy y:call writefile(split(@0,'\n'), "/tmp/vimscratch")<cr>
-nmap <leader>sd d:call writefile(split(@1,'\n'), "/tmp/vimscratch")<cr>
-vmap <leader>sd d:call writefile(split(@1,'\n'), "/tmp/vimscratch")<cr>
-nmap <leader>sp :r /tmp/vimscratch<cr>
+" TMP FILE - copy between vim instances using tmp file
+nmap <leader>ty y:call writefile(split(@0,'\n'), "/tmp/vimtmp")<cr>
+vmap <leader>ty y:call writefile(split(@0,'\n'), "/tmp/vimtmp")<cr>
+nmap <leader>td d:call writefile(split(@1,'\n'), "/tmp/vimtmp")<cr>
+vmap <leader>td d:call writefile(split(@1,'\n'), "/tmp/vimtmp")<cr>
+nmap <leader>tp :r /tmp/vimscratch<cr>
 
 " -----------------------------------------------------
 " Vim Easy Align
@@ -201,6 +201,10 @@ nmap <leader>t6 6gt
 nmap <leader>t7 7gt
 nmap <leader>t8 8gt
 nmap <leader>t9 9gt
+
+" PANE SPLITTING
+nmap <leader>s :sp<cr>
+nmap <leader>v :vsp<cr>
 
 " PANE NAVIGATION
 nmap <silent> <C-k> :wincmd k<cr>
@@ -302,8 +306,8 @@ nmap <leader>x :!ct<cr>:TlistUpdate<cr>
 au BufNewFile,BufRead *.rb silent! source .paths.vim
 
 " EDITING ~/.vimrc
-nmap <leader>ve :split  ~/.vimrc<CR>
-nmap <leader>vs :source ~/.vimrc<CR>
+nmap <leader>ce :split  ~/.vimrc<CR>
+nmap <leader>cs :source ~/.vimrc<CR>
 
 " AUTO-RELOAD .VIMRC
 augroup reload_vimrc " {
