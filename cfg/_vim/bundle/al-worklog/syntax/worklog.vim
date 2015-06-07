@@ -21,8 +21,8 @@ highlight wDayEnd    ctermfg=red
 highlight wTaskStart ctermfg=blue
 highlight wTaskEnd   ctermfg=blue 
 highlight wCode      ctermfg=green
-highlight wTODO      ctermfg=LightRed    ctermbg=LightBlue
-highlight wDONE      ctermfg=LightGreen  ctermbg=LightBlue
+highlight wTODO      ctermfg=black  ctermbg=red
+highlight wDONE      ctermfg=black  ctermbg=green
 
 " FOLDING -----
 syn region levelOne 
