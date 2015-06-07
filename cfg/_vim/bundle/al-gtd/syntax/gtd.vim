@@ -55,9 +55,9 @@ highlight gHandle    ctermfg=black
 highlight gCategory  ctermfg=red  
 highlight gProject   ctermfg=yellow 
 highlight gContext   ctermfg=blue
-highlight gHPriority ctermfg=gray    ctermbg=red
-highlight gMPriority ctermfg=gray    ctermbg=blue
-highlight gLPriority ctermfg=gray    ctermbg=yellow
+highlight gHPriority ctermfg=black    ctermbg=red
+highlight gMPriority ctermfg=black    ctermbg=blue
+highlight gLPriority ctermfg=black    ctermbg=yellow
 highlight gContact   ctermfg=magenta
 highlight gDate      ctermfg=cyan
 highlight gTask      ctermfg=white
