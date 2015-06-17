@@ -90,9 +90,8 @@ let mapleader=","
 " use jk or kj as a single keystroke to escape
 imap kj <esc>
 imap jk <esc>
-" use skj or sjk to escape then save
-imap skj <esc>:w<cr>
-imap sjk <esc>:w<cr>
+imap kk <esc>
+imap jj <esc>
 imap :w <esc>:w
 imap :q <esc>:q
 nmap <space> i~<esc>r
@@ -327,7 +326,7 @@ if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 
-" let g:airline_theme = 'powerlineish'
+let g:airline_theme = 'luna'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#tabline#enabled = 1
