@@ -33,6 +33,7 @@ Plug 'bling/vim-airline'              " status bar
 Plug 'bling/vim-bufferline'           " buffers in status bar
 Plug 'tpope/vim-fugitive'             " git integration
 Plug 'tpope/vim-rails'                " rails support
+Plug 'slim-template/vim-slim'         " slim templates
 call plug#end()
 
 " FILE MODES
