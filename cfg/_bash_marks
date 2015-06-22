@@ -75,7 +75,7 @@ function check_help {
 }
 
 # list bookmarks with dirnam
-function bl {
+function ml {
     check_help $1
     source $SDIRS
         
@@ -136,12 +136,12 @@ function _purge_line {
 
 # bind completion command for g,p,d to _comp
 if [ $ZSH_VERSION ]; then
-    compctl -K _compzsh mj
+    compctl -K _compzsh mg
     compctl -K _compzsh mp
     compctl -K _compzsh md
 else
     shopt -s progcomp
-    complete -F _comp mj
+    complete -F _comp mg
     complete -F _comp mp
     complete -F _comp md
 fi
