@@ -5,6 +5,7 @@ export TZ="America/Los_Angeles"
 [ -f ~/.rails_env ]      && source ~/.rails_env
 [ -f ~/.bash_aliases ]   && source ~/.bash_aliases
 [ -f ~/.bash_functions ] && source ~/.bash_functions
+[ -f ~/.bash_marks ]     && source ~/.bash_marks
 
 ###########################################################################
 # UTIL
