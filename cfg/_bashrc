@@ -361,3 +361,9 @@ export PROMPT_COMMAND="history -a; history -n; ${PROMPT_COMMAND}"   # mem/file s
 # if [[ $- =~ .*i.* ]]; then bind '"\\C-r": "\\C-ahh \\C-j"'; fi
 # bind '"\\C-r": "\\C-a hh \\C-j"'
 
+###########################################################################
+# RAKE
+
+export COMP_WORDBREAKS="${COMP_WORDBREAKS/\:/}"
+echo "zingzing is ${COMP_WORDBREAKS}"
+
