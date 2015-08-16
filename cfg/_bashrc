@@ -365,5 +365,4 @@ export PROMPT_COMMAND="history -a; history -n; ${PROMPT_COMMAND}"   # mem/file s
 # RAKE
 
 export COMP_WORDBREAKS="${COMP_WORDBREAKS/\:/}"
-echo "zingzing is ${COMP_WORDBREAKS}"
 
