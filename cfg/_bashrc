@@ -366,3 +366,4 @@ export PROMPT_COMMAND="history -a; history -n; ${PROMPT_COMMAND}"   # mem/file s
 
 export COMP_WORDBREAKS="${COMP_WORDBREAKS/\:/}"
 
+alias jslave='javaws https://jenkins.michaelgregg.com:8080/computer/aleak-house/slave-agent.jnlp'
