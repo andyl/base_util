@@ -1,13 +1,12 @@
-# ls aliases
-# alias ls='ls --color'
-# alias ll='ls -lh --color'
-# alias la='ls -lA --color'
-# alias l='ls'
+# SSID scanning
+alias ssid_scan='nmcli dev wifi list'
 
-# safe file management
-# alias cp='cp -iv'
-# alias rm='rm -i'
-# alias mv='mv -i'
+# ls aliases
+alias ls='ls --color'
+alias ll='ls -lh --color'
+alias la='ls -lA --color'
+alias sl='ls'
+alias l='ls'
 
 # quick directory movement
 alias ..='cd ..'
