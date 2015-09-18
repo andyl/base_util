@@ -120,7 +120,7 @@ shopt -s globstar   # enable **/<filename> matching
 # prevents duplicate paths from filling up the pushd stack  
 function pushdp
 {
-  if [ -z "$1" ] 
+  if [ -z "$1" ]
   then
     pushd
   else
