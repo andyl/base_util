@@ -1,5 +1,5 @@
 # SSID scanning
-alias ssid_scan='nmcli dev wifi list'
+alias ssid_scan='sudo iwlist wlan0 scan | grep ESSID ; nmcli dev wifi list'
 
 # ls aliases
 alias ls='ls --color'
