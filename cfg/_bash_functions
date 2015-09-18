@@ -1,3 +1,13 @@
+# get a list of ssid's from wlan0
+ssidls () {
+  div='-----------------------------------------------------------------------'
+  echo $div
+  sudo iwlist wlan0 scan | grep ESSID | sed -e 's/^[[:space:]]*/   /'
+  echo $div
+  nmcli dev wifi list
+  echo $div
+}
+
 # check for active TMUX session
 no_tmux () {
   if [ -n "$TMUX" ]; then
