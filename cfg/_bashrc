@@ -120,21 +120,18 @@ shopt -s globstar   # enable **/<filename> matching
 # prevents duplicate paths from filling up the pushd stack  
 function pushdp
 {
-  if [ -z "$1" ] 
-  then
+  if [ -z "$1" ]; then 
     pushd
   else
     stack=`dirs` ; IFS=' ' ; idx=0 ; pos=0 ; src=`readlink -f $1`
     for path in $stack ; do
       tgt=`eval echo $path`    # expand ~ character...
-      if [ "$src" == "$tgt" ]
-      then
+      if [ "$src" == "$tgt" ]; then
         pos=$idx      
       fi
       ((idx++))
     done
-    if [ "$pos" == "0" ]
-    then
+    if [ "$pos" == "0" ]; then
       pushd $1
     else
       pushd +$pos       
@@ -142,12 +139,29 @@ function pushdp
   fi
 }
 
-alias pa='pushdp'             # add directory to stack
-alias px='popd'               # remove directory from stack 
+ph () {
+  echo " PUSHD/POPD ALIASES"
+  echo " ph - Help (this command!)"
+  echo " pd - Display stack"
+  echo " pa - Add directory to stack"
+  echo " pr - Remove directory from stack"
+  echo " pc - Clear stack"
+  echo " pb - go Back on the stack"
+  echo " pf - go Forward on the stack"
+  echo " pn <num> - go to the Nth dir on the stack"
+  echo " pg <dir> - Go to a directory"
+}
+
 alias pd='dirs -v'            # display stack
+alias pa='pushdp'             # add directory to stack
+alias pr='popd'               # remove directory from stack 
 alias pc='dirs -c ; dirs -v'  # clear stack 
-alias  b='pushd +1'           # go back on the stack
-alias  f='pushd -0'           # go forward on the stack
+alias pb='pushd +1'           # go back on the stack
+alias pf='pushd -0'           # go forward on the stack
+alias pn='cd ~'               # go to the Nth dir on the stack 
+alias pg='pushdb'             # go to a directory
+
+alias gls='alias | grep pushdp | grep "alias g"'
 
 alias  gu='pushdp $UTIL_DIR'
 alias gub='pushdp $UTIL_DIR/base_util'
@@ -185,7 +199,7 @@ alias grb='pushdp ~/.rubies'
 alias ba="cd .."
 
 alias   sf="rm -f ~/.dir_fcs; ln -s \`pwd\` ~/.dir_fcs"                   # set focus dir
-alias   gf="if [ -d ~/.dir_fcs ] ; then cd -P ~/.dir_fcs; fi"             # goto focus dir
+alias   gf="if [ -d ~/.dir_fcs ] ; then ga; cd -P ~/.dir_fcs; ga   ; fi"  # goto focus dir
 alias  gfc="gf ; if [ -d current ]     ; then pushdp ./current     ; fi"  # production env
 alias gfcl="gf ; if [ -d current/log ] ; then pushdp ./current/log ; fi"  # current/log
 
