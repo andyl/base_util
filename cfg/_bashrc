@@ -354,6 +354,8 @@ alias vim-='vim -'
 export EDITOR="vim"
 export VISUAL="vim"
 
+alias em="emacs -nw"
+
 ###########################################################################
 
 # postgress helpers
