@@ -137,6 +137,7 @@ function pushdp
       pushd +$pos       
     fi
   fi
+  DIRSTACK=(a b c d)
 }
 
 ph () {
@@ -159,7 +160,7 @@ alias pc='dirs -c ; dirs -v'  # clear stack
 alias pb='pushd +1'           # go back on the stack
 alias pf='pushd -0'           # go forward on the stack
 alias pn='cd ~'               # go to the Nth dir on the stack 
-alias pg='pushdb'             # go to a directory
+alias pg='pushdp'             # go to a directory
 
 alias gls='alias | grep pushdp | grep "alias g"'
 
