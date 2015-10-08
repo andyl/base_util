@@ -137,7 +137,6 @@ function pushdp
       pushd +$pos       
     fi
   fi
-  DIRSTACK=(a b c d)
 }
 
 ph () {
