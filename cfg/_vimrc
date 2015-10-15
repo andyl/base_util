@@ -22,6 +22,8 @@ Plug 'chase/vim-ansible-yaml'         " use modeline '#vim:ft=ansible:'
 Plug 'carlosgaldino/elixir-snippets'  " snipmate snippets for elixir
 Plug 'elixir-lang/vim-elixir'         " syntax highlighting
 Plug 'mattreduce/vim-mix'             " mix helpers
+" crystal -----
+Plug 'rhysd/vim-crystal'              " syntax highlighting
 " editing utils -----
 Plug 'vimoutliner/vimoutliner'        " vim outliner
 Plug 'dhruvasagar/vim-table-mode'     " vim table mode

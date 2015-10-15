@@ -108,6 +108,8 @@ alias kar="killall -9 ruby"
 alias mm="middleman"
 alias update="sudo apt-get update ; sudo apt-get upgrade -y -q"
 
+alias cy="crystal"
+
 ###########################################################################
 
 shopt -s cdspell    # spell correction during cd command
@@ -174,6 +176,7 @@ alias gupb='pushdp $UTIL_DIR/pdev_util/bin'
 alias gupc='pushdp $UTIL_DIR/pdev_util/cfg'
 alias gupi='pushdp $UTIL_DIR/pdev_util/inc'
 alias gupg='pushdp $UTIL_DIR/pdev_util/gems'
+alias gups='pushdp $UTIL_DIR/pdev_util/shards'
 
 alias   gd='pushdp ~/dl'
 alias   gt='pushdp ~/tst'
