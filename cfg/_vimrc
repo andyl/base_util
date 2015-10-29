@@ -4,7 +4,6 @@ filetype off
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
-
 " VIM-PLUG - ALTERNATIVE PLUGIN MANAGER
 " Main Commands - :PlugInstall / :PlugStatus / :PlugDiff / :PlugClean
 " Docco at http://github.com/junegunn/vim-plug 
@@ -17,7 +16,8 @@ Plug 'garbas/vim-snipmate'            " snippet plugin
 Plug 'junegunn/seoul256.vim'          " color schemes
 Plug 'junegunn/vim-easy-align'        " column alignment
 " ansible yaml files -----
-Plug 'chase/vim-ansible-yaml'         " use modeline '#vim:ft=ansible:'
+" Plug 'chase/vim-ansible-yaml'         " use modeline '#vim:ft=ansible:'
+Plug 'pearofducks/ansible-vim'
 " elixir -----
 Plug 'carlosgaldino/elixir-snippets'  " snipmate snippets for elixir
 Plug 'elixir-lang/vim-elixir'         " syntax highlighting
@@ -30,6 +30,9 @@ Plug 'dhruvasagar/vim-table-mode'     " vim table mode
 " file utils -----
 Plug 'scrooloose/nerdtree'            " file browser
 Plug 'ctrlpvim/ctrlp.vim'             " fuzzy file open
+" coffeescript / javascript -----
+Plug 'mxw/vim-jsx'                    " ReactJS/JSX
+Plug 'kchmck/vim-coffee-script'       " coffeescript
 " misc -----
 Plug 'bling/vim-airline'              " status bar
 Plug 'bling/vim-bufferline'           " buffers in status bar

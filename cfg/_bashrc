@@ -11,7 +11,7 @@ export TZ="America/Los_Angeles"
 # UTIL
 [ -f ~/.util_dir  ] && source ~/.util_dir    # define $UTIL_DIR
 [ -f ~/.util_path ] && source ~/.util_path   # define $UTIL_PATH
-export PATH=$UTIL_PATH:$PATH                 # setup util PATH 
+export PATH=$UTIL_PATH:~/bin:$PATH           # setup util PATH 
 
 ###########################################################################
 # NPM
@@ -70,14 +70,15 @@ function reorder() {     # Reorder Membership Records
 
 alias ss="xfce4-screenshooter"   # screen shot
 
-alias va="vagrant"
-alias vh="vhost"
-alias xx="exit"
-alias tm="tmux"
-alias vx="vbox_provision"
-alias an="ansible"
-alias ap="ansible-playbook"
-alias be="bundle exec"
+alias  va="vagrant"
+alias  vh="vhost"
+alias  xx="exit"
+alias  tm="tmux"
+alias  vx="vbox_provision"
+alias  an="ansible"
+alias  ap="ansible-playbook"
+alias  be="bundle exec"
+alias ber="bundle exec rake"
 
 alias ej="sudo ejabberdctl" 
 
