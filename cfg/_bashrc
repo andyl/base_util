@@ -111,6 +111,8 @@ alias update="sudo apt-get update ; sudo apt-get upgrade -y -q"
 
 alias cy="crystal"
 
+alias inf="/opt/influxdb/influx"
+
 ###########################################################################
 
 shopt -s cdspell    # spell correction during cd command
