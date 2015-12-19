@@ -1,3 +1,6 @@
+# chgrp
+alias aa='sudo chown -R aleak:aleak *'
+
 # ls aliases
 alias ls='ls --color'
 alias ll='ls -lh --color'
