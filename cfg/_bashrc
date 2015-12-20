@@ -179,6 +179,7 @@ alias gupi='pushdp $UTIL_DIR/pdev_util/inc'
 alias gupg='pushdp $UTIL_DIR/pdev_util/gems'
 alias gups='pushdp $UTIL_DIR/pdev_util/shards'
 
+alias   gb='pushdp ~/b'
 alias   gd='pushdp ~/dl'
 alias   gt='pushdp ~/tst'
 alias   gj='pushdp ~/todo/journal'
