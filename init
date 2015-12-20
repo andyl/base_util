@@ -27,7 +27,7 @@ Background:
 - dotfile templates in the cfg subdir must begin with an underscore
 
 It starts with a standard directory structure:
-~/util                   # UTIL_DIR
+~/g                      # UTIL_DIR
   /base_util
     init
     /bin                 # UTIL_PATH;
@@ -44,7 +44,7 @@ It starts with a standard directory structure:
     /cfg
       _dotfiles
 
-You run '~/util/base_util/init' (this script!)
+You run '~/g/base_util/init' (this script!)
 
 The script produces:
 - ~/.symlinks for each _dotfile (and directory)
