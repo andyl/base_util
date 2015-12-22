@@ -69,8 +69,8 @@ function reorder() {     # Reorder Membership Records
 ###########################################################################
 
 alias ss="xfce4-screenshooter"   # screen shot
-alias sc="systemctl"
-alias jc="journalctl"
+alias sc="sudo systemctl"
+alias jc="sudo journalctl"
 
 alias  va="vagrant"
 alias  vh="vhost"
