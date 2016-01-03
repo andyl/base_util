@@ -31,6 +31,10 @@ export GOPATH=~/.go
 export PATH=$PATH:$GOPATH/bin
 
 ###########################################################################
+# GPODDER
+export GPODDER_HOME=~/Gpod
+
+###########################################################################
 
 # bashrc extensions/aliases for the PDEV environment
 tgt=$UTIL_DIR/pdev_util/inc/_bashrc ; [ -f $tgt ] && source $tgt
