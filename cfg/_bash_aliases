@@ -13,6 +13,9 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 
+# eagle cam
+alias eagle="nohup ~/d/eagle-7.5.0/bin/eagle 2>1 > /dev/null &"
+
 # go to the last directory you were in
 alias back='cd $OLDPWD'
 
