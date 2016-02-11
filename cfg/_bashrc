@@ -202,7 +202,7 @@ alias   ga='pushdp ~/.ansible'
 alias  gai='pushdp ~/.ansible/inventory'
 alias  gap='pushdp ~/.ansible/playbooks'
 alias gapl='pushdp ~/.ansible/playbooks/library'
-alias gapr='pushdp ~/g/roles'
+alias gapr='pushdp ~/g/x-ansible/roles'
 
 alias glr='pushdp ~/lr'
 alias grr='pushdp ~/rr'
