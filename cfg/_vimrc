@@ -105,8 +105,8 @@ nmap <space> i~<esc>r
 set statusline=%F%m%r%h%w\ [TYPE=%Y]\ [%{hostname()}]\ [%l,%v]\ [%p%%]\ [LEN=%L]\ [%{$PWDS}]%{Zstate()}
 set title titlestring=<vim>\ %{$USER}@%{hostname()}\ %t\ %m%r%h%w
 
-let g:table_mode_corner = '+'
-let g:table_mode_corner_corner = '+'
+let g:table_mode_corner = '|'
+let g:table_mode_corner_corner = '|'
 
 " search for selected text, forwards or backwards
 vnoremap <silent> * :<C-U>
