@@ -33,7 +33,8 @@ Plug 'ctrlpvim/ctrlp.vim'             " fuzzy file open
 Plug 'mxw/vim-jsx'                    " ReactJS/JSX
 Plug 'kchmck/vim-coffee-script'       " coffeescript
 " misc -----
-Plug 'bling/vim-airline'              " status bar
+Plug 'vim-airline/vim-airline'        " status bar
+Plug 'vim-airline/vim-airline-themes' " vim-airline themes
 Plug 'bling/vim-bufferline'           " buffers in status bar
 Plug 'tpope/vim-fugitive'             " git integration
 Plug 'tpope/vim-rails'                " rails support
