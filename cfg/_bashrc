@@ -72,6 +72,13 @@ function reorder() {     # Reorder Membership Records
 
 ###########################################################################
 
+function ap() {
+  ansible-playbook "$@"
+  rm -f *retry
+}
+
+###########################################################################
+
 alias ss="xfce4-screenshooter"   # screen shot
 alias sc="sudo systemctl"
 alias jc="sudo journalctl"
@@ -82,7 +89,6 @@ alias  xx="exit"
 alias  tm="tmux"
 alias  vx="vbox_provision"
 alias  an="ansible"
-alias  ap="ansible-playbook"
 alias  be="bundle exec"
 alias ber="bundle exec rake"
 
