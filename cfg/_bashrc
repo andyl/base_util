@@ -75,6 +75,7 @@ function reorder() {     # Reorder Membership Records
 function ap() {
   ansible-playbook "$@"
   rm -f *retry
+  alert ding
 }
 
 ###########################################################################
