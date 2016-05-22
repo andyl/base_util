@@ -237,10 +237,11 @@ alias  dir='ls'
 
 export LC_ALL="en_US.UTF-8" # UTF-8 is default...
 export LC_COLLATE="C"       # sorts Caps before lower case file names for 'ls'
-alias  ls='LC_ALL=C ls -FC --group-directories --color'
-alias  ll='ls'
-alias lsl='ls -l'
-alias cls='clear'
+alias   ls='LC_ALL=C ls -FC --group-directories --color'
+alias   ll='ls'
+alias  lsl='ls -l'
+alias lsal='ls -al'
+alias  cls='clear'
 
 ###########################################################################
 
