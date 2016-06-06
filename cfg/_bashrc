@@ -117,7 +117,7 @@ alias gopen="gnome-open"
 
 alias gree="tree"
 
-alias kar="killall -9 ruby"
+alias kar="killall -9 ruby ; pkill -f spring"
 
 alias mm="middleman"
 alias update="sudo apt-get update ; sudo apt-get upgrade -y -q"
@@ -205,6 +205,7 @@ alias  gmm='pushdp ~/mmht'
 alias  gwd='pushdp ~/tst/dwiki/design_notes'
 alias  gwm='pushdp ~/tst/dwiki/member_help'
 alias  gwa='pushdp ~/tst/dwiki/admin_help'
+alias  gzz='pushdp ~/zz'
 alias   ga='pushdp ~/.ansible'
 alias  gai='pushdp ~/.ansible/inventory'
 alias  gap='pushdp ~/.ansible/playbooks'
