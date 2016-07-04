@@ -1,3 +1,17 @@
+tmux_version () {
+  tmux -V | cut -d' ' -f2
+}
+
+tmux_gt_20 () {
+  [[ `tmux_version` > 2.0 ]] && return 0 
+  return 1
+}
+
+tmux_lte_20 () {
+  [[ `tmux_version` < 2.0 || `tmux_version` == 2.0 ]] && return 0
+  return 1
+}
+
 # get a list of ssid's from wlan0
 ssidls () {
   div='-----------------------------------------------------------------------'
