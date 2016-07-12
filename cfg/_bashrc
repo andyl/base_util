@@ -158,7 +158,7 @@ ph () {
   echo " ph - Help (this command!)"
   echo " pd - Display stack"
   echo " pa - Add directory to stack"
-  echo " pr - Remove directory from stack"
+  echo " px - Remove directory from stack"
   echo " pc - Clear stack"
   echo " pb - go Back on the stack"
   echo " pf - go Forward on the stack"
@@ -168,7 +168,7 @@ ph () {
 
 alias pd='dirs -v'            # display stack
 alias pa='pushdp'             # add directory to stack
-alias pr='popd'               # remove directory from stack 
+alias px='popd'               # remove directory from stack 
 alias pc='dirs -c ; dirs -v'  # clear stack 
 alias pb='pushd +1'           # go back on the stack
 alias pf='pushd -0'           # go forward on the stack
