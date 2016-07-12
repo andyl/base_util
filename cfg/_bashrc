@@ -115,8 +115,6 @@ alias rt="bundle exec rake -T"
 
 alias gopen="gnome-open"
 
-alias gree="tree"
-
 alias kar="killall -9 ruby ; pkill -f spring"
 
 alias mm="middleman"
@@ -243,6 +241,9 @@ alias   ll='ls'
 alias  lsl='ls -l'
 alias lsal='ls -al'
 alias  cls='clear'
+alias gree='tree'
+alias tree='tree -C --dirsfirst -L 5'
+
 
 ###########################################################################
 
