@@ -23,6 +23,8 @@ Plug 'elixir-lang/vim-elixir'         " syntax highlighting
 Plug 'mattreduce/vim-mix'             " mix helpers
 " crystal -----
 Plug 'rhysd/vim-crystal'              " syntax highlighting
+" rust -----
+Plug 'rust-lang/rust.vim'              " syntax highlighting
 " editing utils -----
 Plug 'vimoutliner/vimoutliner'        " vim outliner
 Plug 'dhruvasagar/vim-table-mode'     " vim table mode
