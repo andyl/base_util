@@ -335,7 +335,7 @@ On_IWhite='\e[0;107m'   # White
 ###########################################################################
 
 # set bash command line editor to VI mode
-set -o vi
+# set -o vi
 
 # set the command prompt
 export USRNAME=`whoami`
