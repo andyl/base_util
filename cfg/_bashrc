@@ -25,6 +25,10 @@ autosh_path="/usr/local/share/chruby/auto.sh"
 [ -f $autosh_path ] && source $autosh_path   # autoset chruby on every `cd`
 
 ###########################################################################
+# ELIXIR/ERLANG
+alias ie="iex -pa ~/.iex "
+
+###########################################################################
 # GO
 mkdir -p ~/.go
 export GOPATH=~/.go
