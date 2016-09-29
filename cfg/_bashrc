@@ -192,6 +192,7 @@ alias gubc='pushdp $UTIL_DIR/base_util/cfg'
 alias gupb='pushdp $UTIL_DIR/pdev_util/bin'
 alias gupc='pushdp $UTIL_DIR/pdev_util/cfg'
 alias gupi='pushdp $UTIL_DIR/pdev_util/inc'
+alias gupe='pushdp $UTIL_DIR/pdev_util/es'
 alias gupg='pushdp $UTIL_DIR/pdev_util/gems'
 alias gups='pushdp $UTIL_DIR/pdev_util/shards'
 
