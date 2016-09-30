@@ -129,10 +129,11 @@ alias cy="crystal"
 
 ###########################################################################
 
-shopt -s cdspell    # spell correction during cd command
-shopt -s dirspell   # spell correction during <tab> completion
-shopt -s extglob    # extended glob pattern matching
-shopt -s globstar   # enable **/<filename> matching
+shopt -s cdspell      # spell correction during cd command
+shopt -s dirspell     # spell correction during <tab> completion
+shopt -s extglob      # extended glob pattern matching
+shopt -s globstar     # enable **/<filename> matching
+shopt -s histverify   # history expansion
 
 ###########################################################################
 
