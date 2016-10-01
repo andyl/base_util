@@ -44,10 +44,6 @@ export GPODDER_HOME=~/Gpod
 # bashrc extensions/aliases for the PDEV environment
 tgt=$UTIL_DIR/pdev_util/inc/_bashrc ; [ -f $tgt ] && source $tgt
 
-# autocomplete
-cpd=~/.complete
-[ -d $cpd ] && for f in $cpd/*.sh $cpd/*.bash; do source $f; done
-
 ###########################################################################
 tgt=~/.java_env ; [ -f $tgt ] && source $tgt
 ###########################################################################
@@ -343,6 +339,13 @@ On_IWhite='\e[0;107m'   # White
 
 ###########################################################################
 
+# Autocomplete
+
+CPD=~/.complete
+[ -d $CPD ] && for f in $CPD/*.sh $CPD/*.bash; do source $f; done
+
+###########################################################################
+
 # set bash command line editor to VI mode
 # set -o vi
 
@@ -355,7 +358,7 @@ export GIT_PS1_SHOWSTASHSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true
 export GIT_PS1_SHOWUPSTREAD="auto"
 
-GITC=$UTIL_DIR/base_util/bin/git-completion
+GITC=$CPD/git-completion.sh
 if [ -f $GITC ]
 then
   source $GITC
