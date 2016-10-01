@@ -85,15 +85,16 @@ function ap() {
 
 ###########################################################################
 
+alias  xx="exit"                 # kill the shell...
 alias ss="xfce4-screenshooter"   # screen shot
-alias sc="sudo systemctl"
-alias jc="sudo journalctl"
+
+alias sc="sudo systemctl"        # systemd job control
+alias jc="sudo journalctl"       # systemd log viewer
+
+alias  tm="tmux-next"            # tmux
+alias  mx="tmuxinator"           # tmux
 
 alias  va="vagrant"
-alias  vh="vhost"
-alias  xx="exit"
-alias  tm="tmux-next"
-alias  mx="tmuxinator"
 alias  vx="vbox_provision"
 alias  an="ansible"
 alias  be="bundle exec"
