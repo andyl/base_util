@@ -40,17 +40,36 @@ export PATH=$PATH:$GOPATH/bin
 export GPODDER_HOME=~/Gpod
 
 ###########################################################################
+# TMUX / TMUXINATOR
 
-# bashrc extensions/aliases for the PDEV environment
+function in_tmux() {
+  if [ -z $TMUX ]; then
+    echo "TMUX NOT STARTED!"
+    return 1
+  else
+    return 0
+  fi
+}
+
+alias  tm="tmux-next"   
+alias  mx="tmuxinator" 
+alias tmt="in_tmux && tm new-window -c '#{pane_current_path}'"       # new tab
+alias tms="in_tmux && tm split-window -v -c '#{pane_current_path}'"  # split win
+alias tmv="in_tmux && tm split-window -h -c '#{pane_current_path}'"  # split vert
+
+# note also: ~/.complete has completions for tmux and tmuxinator
+
+###########################################################################
+# PDEV BASH EXTENSIONS
 tgt=$UTIL_DIR/pdev_util/inc/_bashrc ; [ -f $tgt ] && source $tgt
 
 ###########################################################################
-tgt=~/.java_env ; [ -f $tgt ] && source $tgt
-###########################################################################
+# MISC 
+tgt=~/.java_env ; [ -f $tgt ] && source $tgt     # source java support
+setxkbmap -option caps:swapescape 2> /dev/null   # swap tab and escape key
 
-setxkbmap -option caps:swapescape 2> /dev/null
-
 ###########################################################################
+# FUNCTIONS
 
 function path() {                    # show path elements, one per line
   IFS=:
@@ -71,50 +90,45 @@ function reorder() {     # Reorder Membership Records
   echo '>> reorder dev'  ; bundle exec rails runner "Membership.all.each {|m| m.uras!}"
 }
 
-###########################################################################
-
-function ap() {
+function ap() {          # Run Ansible
   ansible-playbook "$@"
   rm -f *retry
   alert ding
 }
 
 ###########################################################################
+# ALIASES
 
-alias  xx="exit"                 # kill the shell...
+alias xx="exit"                  # kill the shell...
 alias ss="xfce4-screenshooter"   # screen shot
 
 alias sc="sudo systemctl"        # systemd job control
 alias jc="sudo journalctl"       # systemd log viewer
 
-alias  tm="tmux-next"            # tmux
-alias  mx="tmuxinator"           # tmux
-
 alias  va="vagrant"
 alias  vx="vbox_provision"
 alias  an="ansible"
+
 alias  be="bundle exec"
 alias ber="bundle exec rake"
-
-alias ej="sudo ejabberdctl" 
+alias  rt="bundle exec rake -T"
 
 alias visudo="sudo EDITOR=vim visudo"
 
-alias h="history | tail -30"
-alias H="history"
+alias  h="history | tail -30"
+alias  H="history"
 alias hg="history | tail -30 | grep"
 alias Hg="history | grep"
 alias HG="history | grep"
-alias g="git"
-alias t="thor"
-alias sp="spring"
 
+alias  g="git"
+alias  t="thor"
+
+alias  sp="spring"
 alias brl="spring rails"
 alias brc="spring rails console"
 alias brk="spring rake"
 alias brs="spring rspec"
-
-alias rt="bundle exec rake -T"
 
 alias gopen="gnome-open"
 
@@ -126,6 +140,7 @@ alias update="sudo apt-get update ; sudo apt-get upgrade -y -q"
 alias cy="crystal"
 
 ###########################################################################
+# BASH OPTIONS
 
 shopt -s cdspell      # spell correction during cd command
 shopt -s dirspell     # spell correction during <tab> completion
@@ -134,6 +149,7 @@ shopt -s globstar     # enable **/<filename> matching
 shopt -s histverify   # history expansion
 
 ###########################################################################
+# DIRECTORY PUSH/POP
 
 # prevents duplicate paths from filling up the pushd stack  
 function pushdp
@@ -231,13 +247,7 @@ alias   sr="rm -f ~/.dir_rsv; ln -s \`pwd\` ~/.dir_rsv"                   # set 
 alias   gr="if [ -d ~/.dir_rsv ] ; then cd -P ~/.dir_rsv; fi"             # goto reserve dir
 
 ###########################################################################
-
-alias more='less'
-alias copy='cp'
-alias move='mv'
-alias  dir='ls'
-
-###########################################################################
+# DIRECTORY LISTING
 
 export LC_ALL="en_US.UTF-8" # UTF-8 is default...
 export LC_COLLATE="C"       # sorts Caps before lower case file names for 'ls'
@@ -249,8 +259,13 @@ alias  cls='clear'
 alias gree='tree'
 alias tree='tree -C --dirsfirst -L 5'
 
+alias more='less'
+alias copy='cp'
+alias move='mv'
+alias  dir='ls'
 
 ###########################################################################
+# TERMINAL COLORS
 
 Color_Off='\e[0m'       # Text Reset
 Clear='\e[0m'           # Text Reset
@@ -338,13 +353,13 @@ On_ICyan='\e[0;106m'    # Cyan
 On_IWhite='\e[0;107m'   # White 
 
 ###########################################################################
-
-# Autocomplete
+# AUTOCOMPLETE
 
 CPD=~/.complete
 [ -d $CPD ] && for f in $CPD/*.sh $CPD/*.bash; do source $f; done
 
 ###########################################################################
+# BASH PROMPT
 
 # set bash command line editor to VI mode
 # set -o vi
@@ -378,8 +393,8 @@ else
 fi
 
 ###########################################################################
+# EDITOR ALIASES
 
-# Editor Aliases
 alias lvim="vim -c \"normal '0\""  # open the last file edited
 alias vimm='vim'
 alias vimn='vim'
@@ -393,15 +408,13 @@ alias em="emacs -nw"
 alias nv="nvim"
 
 ###########################################################################
-
-# postgress helpers
+# POSTGRESS HELPERS
 
 alias pgc="sudo -u postgres psql"
 alias pga="(pgadmin3 & > /dev/null) > /dev/null 2>&1"
 
 ###########################################################################
-
-# hh (hstr) configuration
+# HISTORY CONFIGURATION
 
 export HH_CONFIG=hicolor         # get more colors
 shopt -s histappend              # append new history items to .bash_history
@@ -418,4 +431,3 @@ export PROMPT_COMMAND="history -a; history -n; ${PROMPT_COMMAND}"   # mem/file s
 
 export COMP_WORDBREAKS="${COMP_WORDBREAKS/\:/}"
 
-alias jslave='javaws https://jenkins.michaelgregg.com:8080/computer/aleak-house/slave-agent.jnlp'
