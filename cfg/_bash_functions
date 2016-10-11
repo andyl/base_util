@@ -8,14 +8,6 @@ ssidls () {
   echo $div
 }
 
-# check for active TMUX session
-no_tmux () {
-  if [ -n "$TMUX" ]; then
-    echo "Live TMUX Session!!!"
-    return 1
-  fi
-}
-
 # edit the selected bash config file
 editbash () {
     echo $1
