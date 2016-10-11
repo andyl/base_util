@@ -43,20 +43,31 @@ export GPODDER_HOME=~/Gpod
 ###########################################################################
 # TMUX / TMUXINATOR
 
-function in_tmux() {
+# check for active TMUX session
+no_tmux () {
+  if [ -n "$TMUX" ]; then
+    echo "Live TMUX Session!!!"
+    return 1
+  fi
+}
+
+in_tmux() {
   if [ -z $TMUX ]; then
     echo "TMUX NOT STARTED!"
     return 1
-  else
-    return 0
   fi
 }
 
 alias  tm="tmux-next"   
 alias  mx="tmuxinator" 
+
 alias tmt="in_tmux && tm new-window -c '#{pane_current_path}'"       # new tab
 alias tms="in_tmux && tm split-window -v -c '#{pane_current_path}'"  # split win
 alias tmv="in_tmux && tm split-window -h -c '#{pane_current_path}'"  # split vert
+
+tmr() {
+  no_tmux && tm new \; send "$*" C-m \; attach
+}
 
 # note also: ~/.complete has completions for tmux and tmuxinator
 
