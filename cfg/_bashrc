@@ -26,8 +26,7 @@ autosh_path="/usr/local/share/chruby/auto.sh"
 
 ###########################################################################
 # ELIXIR/ERLANG
-alias ie="iex -pa ~/.iex"
-# alias iex="iex -pa ~/.iex"
+alias ie="iex"
 export PATH=$PATH:~/.mix/escripts             # setup escript path
 
 ###########################################################################
