@@ -22,6 +22,7 @@ Plug 'carlosgaldino/elixir-snippets'  " snipmate snippets for elixir
 Plug 'elixir-lang/vim-elixir'         " syntax highlighting
 Plug 'mattreduce/vim-mix'             " mix helpers
 Plug 'slashmili/alchemist.vim'        " refactoring helpers
+Plug 'powerman/vim-plugin-AnsiEsc'    " show docco with ANSI colors
 " crystal -----
 Plug 'rhysd/vim-crystal'              " syntax highlighting
 " rust -----
@@ -52,6 +53,10 @@ au BufRead,BufNewFile *.wlog    set filetype=worklog
 au BufRead,BufNewFile *.thor    set filetype=ruby
 au BufRead,BufNewFile *.gtd     set filetype=gtd
 au BufRead,BufNewFile *.gta     set filetype=gtd
+
+" ELIXIR CONFIG
+
+let g:alchemist#elixir_erlang_src = "~/.beam_src"
 
 " CLEAN UP JUNK DATA FILE
 au VimLeave * if filereadable(expand("~/.vim/.netrwhist"))|call delete(expand("~/.vim/.netrwhist"))|endif 
