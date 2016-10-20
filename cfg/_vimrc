@@ -8,9 +8,6 @@ call pathogen#helptags()
 " Cmds - :PlugInstall / :PlugStatus / :PlugUpdate / :PlugClean / :PlugUpgrade
 " Docco at http://github.com/junegunn/vim-plug 
 call plug#begin('~/.vim/plugged')
-" junegunn utils -----
-Plug 'junegunn/seoul256.vim'          " color schemes
-Plug 'junegunn/vim-easy-align'        " column alignment
 " snippets -----
 Plug 'MarcWeber/vim-addon-mw-utils'   " support lib for snipmate
 Plug 'tomtom/tlib_vim'                " support lib for snipmate
@@ -41,7 +38,7 @@ Plug 'rust-lang/rust.vim'              " syntax highlighting
 " editing utils -----
 Plug 'vimoutliner/vimoutliner'        " vim outliner
 Plug 'dhruvasagar/vim-table-mode'     " vim table mode
-Plug 'godlygeek/tabular'              " vertical-alignment
+Plug 'junegunn/vim-easy-align'        " column alignment
 " text manipulation -----
 Plug 'vim-scripts/tComment'           " toggle comments on/off
 Plug 'kana/vim-textobj-user'          " customizable text objects
@@ -60,6 +57,7 @@ Plug 'tpope/vim-markdown'             " markdown
 " tmux -----
 Plug 'benmills/vimux'                 " tmux integration
 " layouts -----
+Plug 'junegunn/seoul256.vim'          " color schemes
 Plug 'vim-airline/vim-airline'        " status bar
 Plug 'vim-airline/vim-airline-themes' " vim-airline themes
 Plug 'bling/vim-bufferline'           " buffers in status bar
