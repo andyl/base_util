@@ -60,6 +60,7 @@ Plug 'benmills/vimux'                 " tmux integration
 Plug 'junegunn/seoul256.vim'          " color schemes
 Plug 'vim-airline/vim-airline'        " status bar
 Plug 'vim-airline/vim-airline-themes' " vim-airline themes
+Plug 'regedarek/ZoomWin'              " pane zooming
 " misc -----
 Plug 'tpope/vim-fugitive'             " git integration
 Plug 'mattn/gist-vim'                 " post github gists
@@ -134,7 +135,7 @@ imap jj <esc>
 imap :w <esc>:w
 imap :q <esc>:q
 nmap <space> i~<esc>r
-set statusline=%F%m%r%h%w\ [TYPE=%Y]\ [%{hostname()}]\ [%l,%v]\ [%p%%]\ [LEN=%L]\ [%{$PWDS}]%{Zstate()}
+set statusline=%F%m%r%h%w\ [TYPE=%Y]\ [%{hostname()}]\ [%l,%v]\ [%p%%]\ [LEN=%L]\ [%{$PWDS}]
 set title titlestring=<vim>\ %{$USER}@%{hostname()}\ %t\ %m%r%h%w
 
 let g:table_mode_corner = '|'
@@ -296,33 +297,6 @@ endfun
 nnoremap <silent> <C-Left> :call BarLeft()<cr>
 nnoremap <silent> <C-Right> :call BarRight()<cr>
 
-" PANE ZOOMING
-nmap <leader>z <C-w>o
-vmap <leader>z <C-w>o
-
-" ZOOM STATE ON STATUS LINE
-let t:zstate=''
-
-fun! ZoomState(state)
-  if a:state
-   let t:zstate='Z'
-  else
-   let t:zstate=''
-  endif
-endfun
-
-fun! Zstate()
-  if exists("t:zstate")
-    return t:zstate
-  else
-    return ''
-  endif
-endfun
-
-if !exists("g:ZoomWin_funcref")
- let g:ZoomWin_funcref= function("ZoomState")
-endif
- 
 " TAGS
 let $CDIR=expand('%:p:h')
 " set tags=$CDIR/.tags
@@ -354,12 +328,39 @@ autocmd FileType eruby let g:surround_45 = "<% \r %>"    " -
 autocmd FileType eruby let g:surround_61 = "<%= \r %>"   " =
 autocmd FileType ruby  let g:surround_35  = "#{\r}"      " #
 
-" BUFFER MANIPULATION / BufExplorer
+" BUFFER MANIPULATION [BufExplorer]  
 " (other commands from BufExplorer - be, bv, bs)
 nmap <leader>bb :CtrlPBuffer<cr>
 nmap <leader>bd :bd<cr>
 nmap <leader>bx :bd<cr>
 
+" PANE ZOOMING
+nmap <leader>z <C-w>o
+vmap <leader>z <C-w>o
+
+" ZOOM STATE ON STATUS LINE
+fun! SetZoomState(state)
+  if a:state
+    if g:airline_section_y != "ZOOM"
+      let g:orig_zoom_state   = g:airline_section_y
+    endif
+    let g:airline_section_y = "ZOOM"
+    let g:airline_theme = 'light'
+  else
+    if exists("g:orig_zoom_state")
+      let g:airline_section_y = g:orig_zoom_state
+      let g:airline_theme = 'luna'
+      let g:orig_zoom_state = ""
+    endif
+  endif
+  AirlineRefresh
+  AirlineRefresh
+endfun
+
+if !exists("g:ZoomWin_funcref")
+ let g:ZoomWin_funcref= function("SetZoomState")
+endif
+ 
 " VIM-AIRLINE 
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
@@ -426,13 +427,6 @@ if &term == 'screen-256color'                                 " GNU Screen / TMU
   execute "set <xDown>=\e[1;*B"
   execute "set <xRight>=\e[1;*C"
   execute "set <xLeft>=\e[1;*D"
-endif
-
-" VIMDIFF
-if &diff
-  map <leader>1 :diffget LOCAL<CR>
-  map <leader>2 :diffget BASE<CR>
-  map <leader>3 :diffget REMOTE<CR>
 endif
 
 " STRIP TRAILING WHITESPACE 
