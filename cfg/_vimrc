@@ -333,6 +333,8 @@ autocmd FileType ruby  let g:surround_35  = "#{\r}"      " #
 nmap <leader>bb :CtrlPBuffer<cr>
 nmap <leader>bd :bd<cr>
 nmap <leader>bx :bd<cr>
+nmap <leader>bn :bnext<cr>
+nmap <leader>bp :bprev<cr>
 
 " PANE ZOOMING
 nmap <leader>z <C-w>o
