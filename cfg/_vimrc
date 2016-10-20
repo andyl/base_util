@@ -60,7 +60,6 @@ Plug 'benmills/vimux'                 " tmux integration
 Plug 'junegunn/seoul256.vim'          " color schemes
 Plug 'vim-airline/vim-airline'        " status bar
 Plug 'vim-airline/vim-airline-themes' " vim-airline themes
-Plug 'bling/vim-bufferline'           " buffers in status bar
 " misc -----
 Plug 'tpope/vim-fugitive'             " git integration
 Plug 'mattn/gist-vim'                 " post github gists
