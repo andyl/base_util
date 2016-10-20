@@ -5,10 +5,10 @@ call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
 " VIM-PLUG - ALTERNATIVE PLUGIN MANAGER
-" Cmds - :PlugInstall / :PlugStatus / :PlugUpdate / :PlugClean / :PlugUpgrade
+" Cmds - :PlugInstall / :PlugClean / :PlugStatus / :PlugUpdate / :PlugUpgrade
 " Docco at http://github.com/junegunn/vim-plug 
 call plug#begin('~/.vim/plugged')
-" snippets -----
+" snipmate -----
 Plug 'MarcWeber/vim-addon-mw-utils'   " support lib for snipmate
 Plug 'tomtom/tlib_vim'                " support lib for snipmate
 Plug 'garbas/vim-snipmate'            " snippet plugin
@@ -67,6 +67,7 @@ Plug 'vim-scripts/bats.vim'           " bats editing
 call plug#end()
 
 " FILE MODES
+
 au BufRead,BufNewFile *.worklog set filetype=worklog
 au BufRead,BufNewFile *.wlog    set filetype=worklog
 au BufRead,BufNewFile *.thor    set filetype=ruby
@@ -196,12 +197,6 @@ nmap <leader>f :CtrlP<cr>
 nmap <leader>d :NERDTreeToggle<cr>
 
 cmap w!! %!sudo tee > /dev/null % 
-
-" BUFFER MANIPULATION
-" (other commands from BufExplorer - be, bv, bs)
-nmap <leader>bb :CtrlPBuffer<cr>
-nmap <leader>bd :bd<cr>
-nmap <leader>bx :bd<cr>
 
 " TMP FILE - copy between vim instances using tmp file
 nmap <leader>ty y:call writefile(split(@0,'\n'), "/tmp/vimtmp")<cr>
@@ -357,9 +352,15 @@ augroup END " }
 " Or yss- to do entire line.
 autocmd FileType eruby let g:surround_45 = "<% \r %>"    " -
 autocmd FileType eruby let g:surround_61 = "<%= \r %>"   " =
-autocmd FileType ruby let g:surround_35  = "#{\r}"       " #
+autocmd FileType ruby  let g:surround_35  = "#{\r}"      " #
 
-" VIM-AIRLINE / VIM-BUFFERLINE
+" BUFFER MANIPULATION / BufExplorer
+" (other commands from BufExplorer - be, bv, bs)
+nmap <leader>bb :CtrlPBuffer<cr>
+nmap <leader>bd :bd<cr>
+nmap <leader>bx :bd<cr>
+
+" VIM-AIRLINE 
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
@@ -377,9 +378,6 @@ let g:airline#extensions#tabline#tab_nr_type = 2
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline#extensions#tabline#show_close_button = 0
 let g:airline#extensions#bufferline#enabled = 1
-let g:bufferline_echo = 0
-let g:bufferline_show_bufnr = 0
-let g:bufferline_rotate = 2
 nmap <leader>1 :bl\|1bn<cr>
 nmap <leader>2 :bl\|2bn<cr>
 nmap <leader>3 :bl\|3bn<cr>
