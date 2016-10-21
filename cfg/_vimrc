@@ -69,8 +69,6 @@ call plug#end()
 
 " FILE MODES
 
-au BufRead,BufNewFile *.worklog set filetype=worklog
-au BufRead,BufNewFile *.wlog    set filetype=worklog
 au BufRead,BufNewFile *.thor    set filetype=ruby
 au BufRead,BufNewFile *.gtd     set filetype=gtd
 au BufRead,BufNewFile *.gta     set filetype=gtd
@@ -116,7 +114,6 @@ syntax on
 set directory=~/.vimtmp,/tmp,.
 set splitright
 set splitbelow
-map go :only<CR>:~vsp <cfile><CR>
 set number
 set incsearch
 set visualbell
@@ -184,20 +181,10 @@ nmap <leader>pl :! a2ps -c --sides=duplex --line-numbers=1 --landscape --columns
 
 " CTRLP - fast file finding
 let g:ctrlp_max_files = 10000        " Set the max files
-" if has("unix")                       " Optimize file searching 
-"   let g:ctrlp_user_command = {
-"     \\ 'types': {
-"     \\ 1: ['.git/', 'cd %s && git ls-files']
-"     \\ },
-"     \\ 'fallback': 'find %s -type f | head -' . g:ctrlp_max_files
-"     \\ }
-" endif
 nmap <leader>f :CtrlP<cr>
 
 " MISC PLUGIN COMMANDS
 nmap <leader>d :NERDTreeToggle<cr>
-
-cmap w!! %!sudo tee > /dev/null % 
 
 " TMP FILE - copy between vim instances using tmp file
 nmap <leader>ty y:call writefile(split(@0,'\n'), "/tmp/vimtmp")<cr>
@@ -333,8 +320,8 @@ autocmd FileType ruby  let g:surround_35  = "#{\r}"      " #
 nmap <leader>bb :CtrlPBuffer<cr>
 nmap <leader>bd :bd<cr>
 nmap <leader>bx :bd<cr>
-nmap <leader>bn :bnext<cr>
-nmap <leader>bp :bprev<cr>
+nmap <leader>bl :bnext<cr>
+nmap <leader>bh :bprev<cr>
 
 " PANE ZOOMING
 nmap <leader>z <C-w>o
@@ -344,10 +331,10 @@ vmap <leader>z <C-w>o
 fun! SetZoomState(state)
   if a:state
     if g:airline_section_y != "ZOOM"
-      let g:orig_zoom_state   = g:airline_section_y
+      let g:orig_zoom_state = g:airline_section_y
     endif
     let g:airline_section_y = "ZOOM"
-    let g:airline_theme = 'light'
+    let g:airline_theme     = 'light'
   else
     if exists("g:orig_zoom_state")
       let g:airline_section_y = g:orig_zoom_state
