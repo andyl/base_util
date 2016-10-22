@@ -8,60 +8,63 @@ call pathogen#helptags()
 " Cmds - :PlugInstall / :PlugClean / :PlugStatus / :PlugUpdate / :PlugUpgrade
 " Docco at http://github.com/junegunn/vim-plug 
 call plug#begin('~/.vim/plugged')
-" snipmate -----
+" -- SNIPMATE -----
 Plug 'MarcWeber/vim-addon-mw-utils'   " support lib for snipmate
 Plug 'tomtom/tlib_vim'                " support lib for snipmate
 Plug 'garbas/vim-snipmate'            " snippet plugin
-" file utils -----
+" -- FILE UTILS -----
 Plug 'scrooloose/nerdtree'            " file browser
 Plug 'ctrlpvim/ctrlp.vim'             " fuzzy file open
 Plug 'tpope/vim-projectionist'        " src/test file nav
 Plug 'jlanzarotta/bufexplorer'        " buffer manipulation
-" lang:elixir -----
+Plug 'mileszs/ack.vim'                " file searching
+" -- LANG ELIXIR -----
 Plug 'elixir-lang/vim-elixir'         " syntax highlighting
 Plug 'mattreduce/vim-mix'             " mix helpers
 Plug 'slashmili/alchemist.vim'        " refactoring helpers
 Plug 'powerman/vim-plugin-AnsiEsc'    " docco with ANSI colors
 Plug 'carlosgaldino/elixir-snippets'  " snippets for elixir
-" lang:ruby -----
+" -- LANG RUBY -----
 Plug 'vim-ruby/vim-ruby'              " syntax highlighting
 Plug 'tpope/vim-rails'                " rails support
 Plug 'nelstrom/vim-textobj-rubyblock' " ruby text objects
 Plug 'bronson/vim-ruby-block-conv'    " toggle {} to begin/end
-" lang:javascript -----
+" -- LANG JAVASCRIPT -----
 Plug 'mxw/vim-jsx'                    " ReactJS/JSX
 Plug 'kchmck/vim-coffee-script'       " coffeescript
-" lang:crystal -----
+" -- LANG CRYSTAL -----
 Plug 'rhysd/vim-crystal'              " syntax highlighting
-" lang:rust -----
+" -- LANG RUST -----
 Plug 'rust-lang/rust.vim'              " syntax highlighting
-" editing utils -----
-Plug 'vimoutliner/vimoutliner'        " vim outliner
+" -- EDITING UTILS -----
 Plug 'dhruvasagar/vim-table-mode'     " vim table mode
 Plug 'junegunn/vim-easy-align'        " column alignment
-" text manipulation -----
+" -- TEXT MANIPULATION -----
 Plug 'vim-scripts/tComment'           " toggle comments on/off
 Plug 'kana/vim-textobj-user'          " customizable text objects
 Plug 'tpope/vim-surround'             " edit containing objects
 Plug 'tpope/vim-repeat'               " repeat support for plugins
-" coding utilities -----
+" -- CODING UTILITIES -----
 Plug 'vim-scripts/taglist.vim'        " source code browsing
 Plug 'scrooloose/syntastic'           " source code highlighting
 Plug 'tpope/vim-unimpaired'           " jump leading/trailing paren
 Plug 'tmhedberg/matchit'              " % matching
-Plug 'mileszs/ack.vim'                " searching
-" file formats -----
+" -- FILE FORMATS -----
+Plug 'vimoutliner/vimoutliner'        " outline files
 Plug 'pearofducks/ansible-vim'        " ansible yaml files
-Plug 'slim-template/vim-slim'         " slim templates
-Plug 'tpope/vim-markdown'             " markdown
-" tmux -----
+Plug 'slim-template/vim-slim'         " slim files
+Plug 'tpope/vim-markdown'             " markdown files
+" -- TMUX -----
 Plug 'benmills/vimux'                 " tmux integration
-" layouts -----
+" -- LAYOUTS -----
 Plug 'junegunn/seoul256.vim'          " color schemes
 Plug 'vim-airline/vim-airline'        " status bar
 Plug 'vim-airline/vim-airline-themes' " vim-airline themes
-Plug 'regedarek/ZoomWin'              " pane zooming
-" misc -----
+Plug 'andyl/zoomwintab.vim'           " pane zooming
+Plug 'kshenoy/vim-signature'          " show marks
+Plug 'xolox/vim-session'              " session save/restore
+Plug 'xolox/vim-misc'                 " utilities for vim-session
+" -- MISC -----
 Plug 'tpope/vim-fugitive'             " git integration
 Plug 'mattn/gist-vim'                 " post github gists
 Plug 'vim-scripts/bats.vim'           " bats editing
@@ -86,8 +89,10 @@ set noswapfile
 
 set shortmess+=I
 
-" ACK.VIM
+" SESSION SAVE/RESTORE
+let g:session_autosave = 'no'
 
+" ACK.VIM
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
 " MATCHIT
@@ -328,26 +333,22 @@ nmap <leader>z <C-w>o
 vmap <leader>z <C-w>o
 
 " ZOOM STATE ON STATUS LINE
-fun! SetZoomState(state)
-  if a:state
-    if g:airline_section_y != "ZOOM"
-      let g:orig_zoom_state = g:airline_section_y
-    endif
+fun! SetZoomState()
+  if g:airline_section_y != "ZOOM"
+    let g:orig_zoom_state = g:airline_section_y
     let g:airline_section_y = "ZOOM"
     let g:airline_theme     = 'light'
   else
-    if exists("g:orig_zoom_state")
-      let g:airline_section_y = g:orig_zoom_state
-      let g:airline_theme = 'luna'
-      let g:orig_zoom_state = ""
-    endif
+    let g:airline_section_y = g:orig_zoom_state
+    let g:airline_theme = 'luna'
+    let g:orig_zoom_state = ""
   endif
   AirlineRefresh
   AirlineRefresh
 endfun
 
-if !exists("g:ZoomWin_funcref")
- let g:ZoomWin_funcref= function("SetZoomState")
+if !exists("g:ZoomWinFuncRef")
+ let g:ZoomWinFuncRef = function("SetZoomState")
 endif
  
 " VIM-AIRLINE 
