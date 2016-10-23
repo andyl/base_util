@@ -114,6 +114,10 @@ nmap <leader>h :set hlsearch!<cr>
 nmap <F4> :set hlsearch! hlsearch?<cr>
 nnoremap / :set hlsearch<cr>/
 
+" SEARCH AND REPLACE
+vmap <F3> :s///g<left><left>
+nmap <F3> :%s///g<left><left>
+
 " MISC STUFF
 syntax on
 set directory=~/.vimtmp,/tmp,.
@@ -384,10 +388,14 @@ nmap <leader>9 :bl\|9bn<cr>
 if exists('$TMUX')
   if !has('nvim')
     set term=screen-256color
-  end
-end
+  endif
+endif
 
-set encoding=utf-8
+if !exists('g:encoding_set')
+  set encoding=utf-8
+endif
+let g:encoding_set=1
+
 set t_Co=256
 
 " See http://vim.wikia.com/wiki/Change_cursor_color_in_different_modes
