@@ -29,6 +29,8 @@ autosh_path="/usr/local/share/chruby/auto.sh"
 alias ie="iex"
 export PATH=$PATH:~/.mix/escripts             # setup escript path
 
+alias shx="search_ex"
+
 ###########################################################################
 # GO
 mkdir -p ~/.go
@@ -414,6 +416,7 @@ alias vim-='vim -'
 
 export EDITOR="vim"
 export VISUAL="vim"
+export TERMINAL="terminator"
 
 alias em="emacs -nw"
 alias nv="nvim"

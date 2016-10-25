@@ -91,6 +91,7 @@ set shortmess+=I
 
 " SESSION SAVE/RESTORE
 let g:session_autosave = 'no'
+let g:session_autoload = 'no'
 
 " ACK.VIM
 let g:ackprg = 'ag --nogroup --nocolor --column'
