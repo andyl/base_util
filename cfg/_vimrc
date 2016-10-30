@@ -71,7 +71,6 @@ Plug 'vim-scripts/bats.vim'           " bats editing
 call plug#end()
 
 " FILE MODES
-
 au BufRead,BufNewFile *.thor    set filetype=ruby
 au BufRead,BufNewFile *.gtd     set filetype=gtd
 au BufRead,BufNewFile *.gta     set filetype=gtd
@@ -119,6 +118,18 @@ nnoremap / :set hlsearch<cr>/
 vmap <F3> :s///g<left><left>
 nmap <F3> :%s///g<left><left>
 
+" search for selected text, forwards or backwards
+vnoremap <silent> * :<C-U>
+  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+  \gvy/<C-R><C-R>=substitute(
+  \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+  \gV:call setreg('"', old_reg, old_regtype)<CR>
+vnoremap <silent> # :<C-U>
+  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+  \gvy?<C-R><C-R>=substitute(
+  \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+  \gV:call setreg('"', old_reg, old_regtype)<CR>
+
 " MISC STUFF
 syntax on
 set directory=~/.vimtmp,/tmp,.
@@ -145,20 +156,9 @@ nmap <space> i~<esc>r
 set statusline=%F%m%r%h%w\ [TYPE=%Y]\ [%{hostname()}]\ [%l,%v]\ [%p%%]\ [LEN=%L]\ [%{$PWDS}]
 set title titlestring=<vim>\ %{$USER}@%{hostname()}\ %t\ %m%r%h%w
 
+" TABLE MODE
 let g:table_mode_corner = '|'
 let g:table_mode_corner_corner = '|'
-
-" search for selected text, forwards or backwards
-vnoremap <silent> * :<C-U>
-  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
-  \gvy/<C-R><C-R>=substitute(
-  \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
-  \gV:call setreg('"', old_reg, old_regtype)<CR>
-vnoremap <silent> # :<C-U>
-  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
-  \gvy?<C-R><C-R>=substitute(
-  \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
-  \gV:call setreg('"', old_reg, old_regtype)<CR>
 
 " from http://stackoverflow.com/questions/2269005/how-can-i-change-the-keybinding-used-to-autocomplete-in-vim
 inoremap <Nul> <C-n>
@@ -183,6 +183,10 @@ set shiftwidth=2
 set autoindent
 set expandtab
 set backspace=start,indent
+
+" Underline the current line with dashes 
+nmap <leader>u yyp<c-v>$r-
+nmap <leader>U yyp<c-v>$r=
 
 " PRINT COMMANDS
 nmap <leader>pp :! a2ps -c --sides=duplex --line-numbers=1 %<cr>
@@ -212,10 +216,6 @@ nmap ac <Plug>(EasyAlign)
 " usage: vipat
 " ac = align character
 " usage: vipac=
-
-" Underline the current line with dashes 
-nmap <leader>u yyp<c-v>$r-
-nmap <leader>U yyp<c-v>$r=
 
 " TAB MANIPULATION AND NAVIGATION
 nmap <leader>tn :tabnew<CR>
@@ -321,10 +321,16 @@ nmap <leader>ce :split  ~/.vimrc<CR>
 nmap <leader>cs :source ~/.vimrc<CR>
 
 " AUTO-RELOAD .VIMRC
-augroup reload_vimrc " {
-  autocmd!
-  autocmd BufWritePost $MYVIMRC source $MYVIMRC
-augroup END " }
+" augroup reload_vimrc " {
+"   autocmd!
+"   autocmd BufWritePost $MYVIMRC source $MYVIMRC
+" augroup END " }
+
+" SESSION MANAGEMENT
+nmap :ss :SaveSession 
+nmap :so :OpenSession 
+nmap :sr :RestartVim
+nmap :sd :DeleteSession 
 
 " SURROUND CUSTOMIZATION
 " Select text in an ERb file with visual mode and then press s- or s=
