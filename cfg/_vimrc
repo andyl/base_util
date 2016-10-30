@@ -203,8 +203,7 @@ nmap <leader>td d:call writefile(split(@1,'\n'), "/tmp/vimtmp")<cr>
 vmap <leader>td d:call writefile(split(@1,'\n'), "/tmp/vimtmp")<cr>
 nmap <leader>tp :r /tmp/vimtmp<cr>
 
-" -----------------------------------------------------
-" Vim Easy Align
+" VIM EASY ALIGN
 vmap at :EasyAlign *\|<cr>
 vmap ac <Plug>(EasyAlign)
 nmap ac <Plug>(EasyAlign)
@@ -213,6 +212,20 @@ nmap ac <Plug>(EasyAlign)
 " usage: vipat
 " ac = align character
 " usage: vipac=
+
+" apple ,   =red
+" grass+= ,green
+" sky-=   , blue
+
+
+
+
+
+
+
+
+
+
 
 " Underline the current line with dashes in normal mode
 nmap <leader>u yyp<c-v>$r-
