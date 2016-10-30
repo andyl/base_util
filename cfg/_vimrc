@@ -213,8 +213,9 @@ nmap ac <Plug>(EasyAlign)
 " ac = align character
 " usage: vipac=
 
-" Underline the current line with dashes in normal mode
+" Underline the current line with dashes 
 nmap <leader>u yyp<c-v>$r-
+nmap <leader>U yyp<c-v>$r=
 
 " TAB MANIPULATION AND NAVIGATION
 nmap <leader>tn :tabnew<CR>
@@ -234,6 +235,14 @@ nmap <leader>t9 9gt
 " PANE SPLITTING
 nmap <leader>s :sp<cr>
 nmap <leader>v :vsp<cr>
+
+" PANE ARRANGEMENT
+" arrange split
+nmap <leader>as <C-w>J<cr>
+" arrange vertical
+nmap <leader>av <C-w>L<cr>
+" rotate panes
+nmap <leader>ar <C-w>r<cr>
 
 " PANE NAVIGATION
 nmap <silent> <C-k> :wincmd k<cr>
