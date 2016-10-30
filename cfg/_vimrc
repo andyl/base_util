@@ -213,20 +213,6 @@ nmap ac <Plug>(EasyAlign)
 " ac = align character
 " usage: vipac=
 
-" apple ,   =red
-" grass+= ,green
-" sky-=   , blue
-
-
-
-
-
-
-
-
-
-
-
 " Underline the current line with dashes in normal mode
 nmap <leader>u yyp<c-v>$r-
 
