@@ -327,10 +327,9 @@ nmap <leader>cs :source ~/.vimrc<CR>
 " augroup END " }
 
 " SESSION MANAGEMENT
-nmap :ss :SaveSession 
-nmap :so :OpenSession 
-nmap :sr :RestartVim
-nmap :sd :DeleteSession 
+nmap :sns :SaveSession 
+nmap :sno :OpenSession 
+nmap :snd :DeleteSession 
 
 " SURROUND CUSTOMIZATION
 " Select text in an ERb file with visual mode and then press s- or s=
