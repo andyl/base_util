@@ -27,7 +27,7 @@ Plug 'carlosgaldino/elixir-snippets'  " snippets for elixir
 " -- LANG RUBY -----
 Plug 'vim-ruby/vim-ruby'              " syntax highlighting
 Plug 'tpope/vim-rails'                " rails support
-Plug 'nelstrom/vim-textobj-rubyblock' " ruby text objects
+" Plug 'nelstrom/vim-textobj-rubyblock' " ruby text objects
 Plug 'bronson/vim-ruby-block-conv'    " toggle {} to begin/end
 " -- LANG JAVASCRIPT -----
 Plug 'mxw/vim-jsx'                    " ReactJS/JSX
