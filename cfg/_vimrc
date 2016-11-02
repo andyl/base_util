@@ -138,6 +138,7 @@ set directory=~/.vimtmp,/tmp,.
 set splitright
 set splitbelow
 set number
+set nowritebackup
 set incsearch
 set visualbell
 set ignorecase
