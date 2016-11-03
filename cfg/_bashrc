@@ -38,8 +38,18 @@ export GOPATH=~/.go
 export PATH=$PATH:$GOPATH/bin
 
 ###########################################################################
-# GPODDER
-export GPODDER_HOME=~/Gpod
+# VIM / NEOVIM / NVIM / NV
+
+# use for .vimrc and plugin testing
+# restart vim by simply ":qa!"
+# terminate cycle by killing console...
+vimcycle() {
+  if [ -z "$1" ]; then
+    echo "Usage: vimcycle <file>"
+    return 1
+  fi
+  in_tmux && while [ true ] ; do nvim $1 ; done
+}
 
 ###########################################################################
 # TMUX / TMUXINATOR
