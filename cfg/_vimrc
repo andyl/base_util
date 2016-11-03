@@ -67,6 +67,7 @@ Plug 'kshenoy/vim-signature'          " show marks
 Plug 'xolox/vim-session'              " session save/restore
 Plug 'xolox/vim-misc'                 " utilities for vim-session
 " -- MISC -----
+Plug 'terryma/vim-expand-region'      " select with + and _
 Plug 'tpope/vim-fugitive'             " git integration
 Plug 'mattn/gist-vim'                 " post github gists
 Plug 'vim-scripts/bats.vim'           " bats editing
@@ -187,9 +188,19 @@ set autoindent
 set expandtab
 set backspace=start,indent
 
-" Underline the current line with dashes 
+" Underline the current line 
 nmap <leader>u yyp<c-v>$r-
 nmap <leader>U yyp<c-v>$r=
+
+" Insert header line
+nmap <leader>h o<Esc>65i-<Esc>
+nmap <leader>H o<Esc>65i=<Esc>
+
+" Pagination helpers
+nmap <leader>pc gg:%s///g<cr>gg
+nmap <leader>ps /<cr>zz
+nmap <leader>pd 73jzz
+nmap <leader>pi i<esc>
 
 " PRINT COMMANDS
 nmap <leader>pp :! a2ps -c --sides=duplex --line-numbers=1 %<cr>
