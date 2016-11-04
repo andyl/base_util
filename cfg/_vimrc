@@ -26,6 +26,7 @@ Plug 'powerman/vim-plugin-AnsiEsc'    " docco with ANSI colors
 Plug 'andyl/vim-snipmate-elixir'      " snippets for elixir
 Plug 'andyl/vim-projectionist-elixir' " source/test file navigation
 Plug 'andyl/vim-textobj-elixir'       " elixir text objects
+Plug 'andyl/vim-refactoring-elixir'   " basic refactoring support
 " -- LANG RUBY -----
 Plug 'vim-ruby/vim-ruby'              " syntax highlighting
 Plug 'tpope/vim-rails'                " rails support
@@ -74,55 +75,51 @@ Plug 'mattn/gist-vim'                 " post github gists
 Plug 'vim-scripts/bats.vim'           " bats editing
 call plug#end()
 
-" FILE MODES
+" === FILE MODES
 au BufRead,BufNewFile *.thor    set filetype=ruby
 au BufRead,BufNewFile *.gtd     set filetype=gtd
 au BufRead,BufNewFile *.gta     set filetype=gtd
 
-" ELIXIR CONFIG
+" === ELIXIR CONFIG
 let g:alchemist#elixir_erlang_src = "~/.beam_src"
 
-" CLEAN UP JUNK DATA FILE
+" === CLEAN UP JUNK DATA FILE
 au VimLeave * if filereadable(expand("~/.vim/.netrwhist"))|call delete(expand("~/.vim/.netrwhist"))|endif 
 
-" FILE BACKUPS - disable file backups
+" === FILE BACKUPS - disable file backups
 set updatecount=0     
 set nobackup
 set noswapfile
 
 set shortmess+=I
 
-" REFACTORING - EXTRACT VARIABLE
-
-vmap <C-e> ditmp_var<esc>O<C-a> = <esc>p0<C-n><C-n>
-
-" SESSION SAVE/RESTORE
+" === SESSION SAVE/RESTORE
 let g:session_autosave = 'no'
 let g:session_autoload = 'no'
 
-" ACK.VIM
+" === ACK.VIM
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
-" MATCHIT
+" === MATCHIT
 runtime macros/matchit.vim
 
-" ABBREV / TYPO FIXES
+" === ABBREV / TYPO FIXES
 abbrev teh the
 abbrev tihs this
 
-" WEB PREVIEW
+" === WEB PREVIEW
 command! Preview :!firefox %<cr>
 
-" WRITE THE CURRENT BUFFER, THEN CLOSE IT
+" === WRITE THE CURRENT BUFFER, THEN CLOSE IT
 command! Wc write|bdelete
 
-" SEARCH HIGHLIGHT
+" === SEARCH HIGHLIGHT
 set hlsearch
 nmap <leader>h :set hlsearch!<cr>
 nmap <F4> :set hlsearch! hlsearch?<cr>
 nnoremap / :set hlsearch<cr>/
 
-" SEARCH AND REPLACE
+" === SEARCH AND REPLACE
 vmap <F3> :s///g<left><left>
 nmap <F3> :%s///g<left><left>
 
@@ -138,7 +135,7 @@ vnoremap <silent> # :<C-U>
   \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
   \gV:call setreg('"', old_reg, old_regtype)<CR>
 
-" MISC STUFF
+" === MISC STUFF
 syntax on
 set directory=~/.vimtmp,/tmp,.
 set splitright
@@ -165,25 +162,25 @@ nmap <space> i~<esc>r
 set statusline=%F%m%r%h%w\ [TYPE=%Y]\ [%{hostname()}]\ [%l,%v]\ [%p%%]\ [LEN=%L]\ [%{$PWDS}]
 set title titlestring=<vim>\ %{$USER}@%{hostname()}\ %t\ %m%r%h%w
 
-" TABLE MODE
+" === TABLE MODE
 let g:table_mode_corner = '|'
 let g:table_mode_corner_corner = '|'
 
 " from http://stackoverflow.com/questions/2269005/how-can-i-change-the-keybinding-used-to-autocomplete-in-vim
 inoremap <Nul> <C-n>
 
-" MOVE LINE UP/DOWN
+" === MOVE LINE UP/DOWN
 nmap <A-Up> [e
 nmap <A-Down> ]e
 
-" MOVE REGION UP/DOWN
+" === MOVE REGION UP/DOWN
 vmap <A-Up> [egv
 vmap <A-Down> ]egv
 
-" FOR EDITING HELP OUTLINES - OPENS TARGET FILE IN VERTICAL SPLIT WINDOW
+" === FOR EDITING HELP OUTLINES - OPENS TARGET FILE IN VERTICAL SPLIT WINDOW
 map <F8> :vertical wincmd f<CR>
 
-" INDENTATION AND TABS
+" === INDENTATION AND TABS
 filetype plugin indent on
 set softtabstop=2
 set tabstop=2
@@ -207,29 +204,45 @@ nmap <leader>ps /<cr>zz
 nmap <leader>pd 73jzz
 nmap <leader>pi i<esc>
 
-" PRINT COMMANDS
+" === PRINT COMMANDS
 nmap <leader>pp :! a2ps -c --sides=duplex --line-numbers=1 %<cr>
 nmap <leader>p1 :! a2ps -c --sides=duplex --line-numbers=1 --portrait  --columns=1 --font-size=9 %<cr>
 nmap <leader>pl :! a2ps -c --sides=duplex --line-numbers=1 --landscape --columns=1 --font-size=9 %<cr>
 
-" CTRLP - fast file finding
+" === CTRLP - fast file finding
 let g:ctrlp_max_files = 10000        " Set the max files
 nmap <leader>f :CtrlP<cr>
 
-" NERD TREE
+" === NERD TREE
 nmap <leader>d :NERDTreeToggle<cr>
 
 let g:NERDTreeMapOpenVSplit = "v"
 let g:NERDTreeMapOpenSplit  = "s"
 
-" TMP FILE - copy between vim instances using tmp file
+" returns true iff is NERDTree open/active
+function! rc:isNTOpen()        
+  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
+endfunction
+
+" calls NERDTreeFind iff NERDTree is active, current window contains a
+" === modifiable file, and we're not in vimdiff
+function! rc:syncTree()
+  if &modifiable && rc:isNTOpen() && strlen(expand('%')) > 0 && !&diff
+    NERDTreeFind
+    wincmd p
+  endif
+endfunction
+
+autocmd BufEnter * call rc:syncTree()
+
+" === TMP FILE - copy between vim instances using tmp file
 nmap <leader>ty y:call writefile(split(@0,'\n'), "/tmp/vimtmp")<cr>
 vmap <leader>ty y:call writefile(split(@0,'\n'), "/tmp/vimtmp")<cr>
 nmap <leader>td d:call writefile(split(@1,'\n'), "/tmp/vimtmp")<cr>
 vmap <leader>td d:call writefile(split(@1,'\n'), "/tmp/vimtmp")<cr>
 nmap <leader>tp :r /tmp/vimtmp<cr>
 
-" VIM EASY ALIGN
+" === VIM EASY ALIGN
 vmap at :EasyAlign *\|<cr>
 vmap ac <Plug>(EasyAlign)
 nmap ac <Plug>(EasyAlign)
@@ -239,7 +252,7 @@ nmap ac <Plug>(EasyAlign)
 " ac = align character
 " usage: vipac=
 
-" TAB MANIPULATION AND NAVIGATION
+" === TAB MANIPULATION AND NAVIGATION
 nmap <leader>tn :tabnew<CR>
 nmap <leader>tx :tabclose<CR>
 nmap <leader>th :tabp<CR>
@@ -254,11 +267,11 @@ nmap <leader>t7 7gt
 nmap <leader>t8 8gt
 nmap <leader>t9 9gt
 
-" PANE SPLITTING
+" === PANE SPLITTING
 nmap <leader>s :sp<cr>
 nmap <leader>v :vsp<cr>
 
-" PANE ARRANGEMENT
+" === PANE ARRANGEMENT
 " arrange split
 nmap <leader>as <C-w>J<cr>
 " arrange vertical
@@ -266,13 +279,13 @@ nmap <leader>av <C-w>L<cr>
 " rotate panes
 nmap <leader>ar <C-w>r<cr>
 
-" PANE NAVIGATION
+" === PANE NAVIGATION
 nmap <silent> <C-k> :wincmd k<cr>
 nmap <silent> <C-j> :wincmd j<cr>
 nmap <silent> <C-h> :wincmd h<cr>
 nmap <silent> <C-l> :wincmd l<cr>
 
-" PANE RESIZING (Up/Down)
+" === ANE RESIZING (Up/Down)
 fun! BarUp()
   let curwindow = winnr() " save current window
   wincmd k                " move to a upper-window
@@ -298,9 +311,9 @@ endfun
 nnoremap <silent> <C-Up> :call BarUp()<cr>
 nnoremap <silent> <C-Down> :call BarDown()<cr>
 
-" PANE RESIZING (Left/Right)
+" === PANE RESIZING (Left/Right)
 fun! BarLeft()
-  let curwindow = winnr() " save current window
+  let curwindow = winnr() " === save current window
   wincmd h                " move to a left-window
   if winnr() == curwindow " if left-most window
     vertical resize -2    " shrink it
@@ -324,7 +337,7 @@ endfun
 nnoremap <silent> <C-Left> :call BarLeft()<cr>
 nnoremap <silent> <C-Right> :call BarRight()<cr>
 
-" TAGS
+" === TAGS
 let $CDIR=expand('%:p:h')
 " set tags=$CDIR/.tags
 " CTAGS-BUNDLER
@@ -333,12 +346,12 @@ let Tlist_GainFocus_On_ToggleOpen=1
 nmap <leader>g :TlistToggle<cr>     
 nmap <leader>x :!ct<cr>:TlistUpdate<cr>
 
-" FILE NAVIGATION 
+" === FILE NAVIGATION 
 " Enhances vim.ruby - for use with 'gf'
 " Adds Bundler paths. Run 'ct' to generate the .paths.vim
 au BufNewFile,BufRead *.rb silent! source .paths.vim
 
-" EDITING ~/.vimrc
+" === EDITING ~/.vimrc
 nmap <leader>ce :split  ~/.vimrc<CR>
 nmap <leader>cs :source ~/.vimrc<CR>
 
@@ -348,19 +361,19 @@ nmap <leader>cs :source ~/.vimrc<CR>
 "   autocmd BufWritePost $MYVIMRC source $MYVIMRC
 " augroup END " }
 
-" SESSION MANAGEMENT
+" === SESSION MANAGEMENT
 nmap :sns :SaveSession 
 nmap :sno :OpenSession 
 nmap :snd :DeleteSession 
 
-" SURROUND CUSTOMIZATION
+" === SURROUND CUSTOMIZATION
 " Select text in an ERb file with visual mode and then press s- or s=
 " Or yss- to do entire line.
 autocmd FileType eruby let g:surround_45 = "<% \r %>"    " -
 autocmd FileType eruby let g:surround_61 = "<%= \r %>"   " =
 autocmd FileType ruby  let g:surround_35  = "#{\r}"      " #
 
-" BUFFER MANIPULATION [BufExplorer]  
+" === BUFFER MANIPULATION [BufExplorer]  
 " (other commands from BufExplorer - be, bv, bs)
 nmap <leader>bb :CtrlPBuffer<cr>
 nmap <leader>bd :bd<cr>
@@ -368,11 +381,11 @@ nmap <leader>bx :bd<cr>
 nmap <leader>bl :bnext<cr>
 nmap <leader>bh :bprev<cr>
 
-" PANE ZOOMING
+" === PANE ZOOMING
 nmap <leader>z <C-w>o
 vmap <leader>z <C-w>o
 
-" ZOOM STATE ON STATUS LINE
+" === ZOOM STATE ON STATUS LINE
 fun! SetZoomState()
   if g:airline_section_y != "ZOOM"
     let g:orig_zoom_state = g:airline_section_y
@@ -391,7 +404,7 @@ if !exists("g:ZoomWinFuncRef")
  let g:ZoomWinFuncRef = function("SetZoomState")
 endif
  
-" VIM-AIRLINE 
+" === VIM-AIRLINE 
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
@@ -419,7 +432,7 @@ nmap <leader>7 :bl\|7bn<cr>
 nmap <leader>8 :bl\|8bn<cr>
 nmap <leader>9 :bl\|9bn<cr>
 
-" TERM-SPECIFIC ITEMS ------------------------------------------------
+" === TERM-SPECIFIC ITEMS 
 
 if exists('$TMUX')
   if !has('nvim')
@@ -463,7 +476,7 @@ if &term == 'screen-256color'                                 " GNU Screen / TMU
   execute "set <xLeft>=\e[1;*D"
 endif
 
-" STRIP TRAILING WHITESPACE 
+" === STRIP TRAILING WHITESPACE 
 " see http://vimcasts.org/episodes/tidying-whitespace/
 " to show non-printable characters - :set list
 " to hide non-printable characters - :set nolist
