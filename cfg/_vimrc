@@ -211,7 +211,9 @@ nmap <leader>pl :! a2ps -c --sides=duplex --line-numbers=1 --landscape --columns
 
 " === CTRLP - fast file finding
 let g:ctrlp_max_files = 10000        " Set the max files
-nmap <leader>f :CtrlP<cr>
+let g:ctrlp_map = "<C-p>"
+let g:ctrlp_cmd = "CtrlPMRU"
+nmap <leader>f :CtrlPMRU<cr>
 
 " === NERD TREE
 let g:NERDTreeMapOpenVSplit = "v"
@@ -225,7 +227,7 @@ endfunction
 
 function! <SID>ToggleNerd()
   let g:NerdTreeIdle = 0
-  if s:IsNTOpen()
+  if s:IsNTOpen() || strlen(expand('%')) == 0
     NERDTreeToggle
   else
     NERDTreeFind
@@ -281,6 +283,7 @@ nmap <leader>t9 9gt
 " === PANE SPLITTING
 nmap <leader>s :sp<cr>
 nmap <leader>v :vsp<cr>
+nmap <leader>q :q<cr>
 
 " === PANE ARRANGEMENT
 " arrange split
@@ -373,9 +376,9 @@ nmap <leader>cs :source ~/.vimrc<CR>
 " augroup END " }
 
 " === SESSION MANAGEMENT
-nmap :sns :SaveSession 
-nmap :sno :OpenSession 
-nmap :snd :DeleteSession 
+nnoremap :sns :SaveSession 
+nnoremap :sno :OpenSession 
+nnoremap :snd :DeleteSession 
 
 " === SURROUND CUSTOMIZATION
 " Select text in an ERb file with visual mode and then press s- or s=
