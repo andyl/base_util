@@ -214,26 +214,37 @@ let g:ctrlp_max_files = 10000        " Set the max files
 nmap <leader>f :CtrlP<cr>
 
 " === NERD TREE
-nmap <leader>d :NERDTreeToggle<cr>
-
 let g:NERDTreeMapOpenVSplit = "v"
 let g:NERDTreeMapOpenSplit  = "s"
+let g:NerdTreeIdle = 1
 
 " returns true iff is NERDTree open/active
-function! rc:isNTOpen()        
+function! s:IsNTOpen()        
   return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
 endfunction
 
+function! <SID>ToggleNerd()
+  let g:NerdTreeIdle = 0
+  if s:IsNTOpen()
+    NERDTreeToggle
+  else
+    NERDTreeFind
+  endif
+  let g:NerdTreeIdle = 1
+endfunction
+
 " calls NERDTreeFind iff NERDTree is active, current window contains a
-" === modifiable file, and we're not in vimdiff
-function! rc:syncTree()
-  if &modifiable && rc:isNTOpen() && strlen(expand('%')) > 0 && !&diff
+" modifiable file, and we're not in vimdiff
+function! <SID>SyncTree()
+  if g:NerdTreeIdle && &modifiable && s:IsNTOpen() && strlen(expand('%')) > 0 && !&diff
     NERDTreeFind
     wincmd p
   endif
 endfunction
 
-autocmd BufEnter * call rc:syncTree()
+nnoremap <silent> <leader>d :call <SID>ToggleNerd()<cr>
+
+autocmd BufEnter * call <SID>SyncTree()
 
 " === TMP FILE - copy between vim instances using tmp file
 nmap <leader>ty y:call writefile(split(@0,'\n'), "/tmp/vimtmp")<cr>
