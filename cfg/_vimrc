@@ -213,6 +213,7 @@ nmap <leader>pl :! a2ps -c --sides=duplex --line-numbers=1 --landscape --columns
 let g:ctrlp_max_files = 10000        " Set the max files
 let g:ctrlp_map = "<C-p>"
 let g:ctrlp_cmd = "CtrlPMRU"
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
 nmap <leader>f :CtrlPMRU<cr>
 
 " === NERD TREE
