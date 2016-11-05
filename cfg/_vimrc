@@ -14,6 +14,7 @@ Plug 'tomtom/tlib_vim'                " support lib for snipmate
 Plug 'garbas/vim-snipmate'            " snippet plugin
 " -- FILE UTILS -----
 Plug 'scrooloose/nerdtree'            " file browser
+Plug 'dsimidzija/vim-nerdtree-ignore' " file browser
 Plug 'ctrlpvim/ctrlp.vim'             " fuzzy file open
 Plug 'tpope/vim-projectionist'        " src/test file nav
 Plug 'jlanzarotta/bufexplorer'        " buffer manipulation
