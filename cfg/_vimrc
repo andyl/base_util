@@ -167,7 +167,11 @@ set title titlestring=<vim>\ %{$USER}@%{hostname()}\ %t\ %m%r%h%w
 let g:table_mode_corner = '|'
 let g:table_mode_corner_corner = '|'
 
+" === COMPLETION
 " from http://stackoverflow.com/questions/2269005/how-can-i-change-the-keybinding-used-to-autocomplete-in-vim
+" <C-y> to trigger autocompletion
+inoremap <C-y> <C-x><C-o>
+" <C-space> instead of <C-n> 
 inoremap <Nul> <C-n>
 
 " === MOVE LINE UP/DOWN
