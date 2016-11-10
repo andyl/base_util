@@ -452,6 +452,12 @@ nmap <leader>7 :bl\|7bn<cr>
 nmap <leader>8 :bl\|8bn<cr>
 nmap <leader>9 :bl\|9bn<cr>
 
+" === NEOVIM SETTINGS
+
+" if has('nvim')
+"   set inccommand=nosplit
+" endif
+
 " === TERM-SPECIFIC ITEMS 
 
 if exists('$TMUX')
