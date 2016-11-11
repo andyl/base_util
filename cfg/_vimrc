@@ -15,6 +15,7 @@ Plug 'garbas/vim-snipmate'               " snippet plugin
 " -- FILE UTILS -----
 Plug 'scrooloose/nerdtree'               " file browser
 Plug 'dsimidzija/vim-nerdtree-ignore'    " file browser
+Plug 'vim-scripts/nerdtree-ack'          " search from directory
 Plug 'ctrlpvim/ctrlp.vim'                " fuzzy file open
 Plug 'tpope/vim-projectionist'           " src/test file nav
 Plug 'jlanzarotta/bufexplorer'           " buffer manipulation
@@ -206,7 +207,7 @@ nmap <leader>U yyp<c-v>$r=
 nmap <leader>h o<Esc>65i-<Esc>
 nmap <leader>H o<Esc>65i=<Esc>
 
-" Pagination helpers
+" Pagination helpers (for putting page breaks in text printouts)
 nmap <leader>pc gg:%s///g<cr>gg
 nmap <leader>ps /<cr>zz
 nmap <leader>pd 73jzz
@@ -216,6 +217,9 @@ nmap <leader>pi i<esc>
 nmap <leader>pp :! a2ps -c --sides=duplex --line-numbers=1 %<cr>
 nmap <leader>p1 :! a2ps -c --sides=duplex --line-numbers=1 --portrait  --columns=1 --font-size=9 %<cr>
 nmap <leader>pl :! a2ps -c --sides=duplex --line-numbers=1 --landscape --columns=1 --font-size=9 %<cr>
+
+" === ACK - fast file searching
+nmap <leader>k :Ack 
 
 " === CTRLP - fast file finding
 let g:ctrlp_max_files = 10000        " Set the max files
@@ -293,6 +297,7 @@ nmap <leader>t9 9gt
 nmap <leader>s :sp<cr>
 nmap <leader>v :vsp<cr>
 nmap <leader>q :q<cr>
+nmap <leader>o :only<cr>
 
 " === PANE ARRANGEMENT
 " arrange split
@@ -308,7 +313,7 @@ nmap <silent> <C-j> :wincmd j<cr>
 nmap <silent> <C-h> :wincmd h<cr>
 nmap <silent> <C-l> :wincmd l<cr>
 
-" === ANE RESIZING (Up/Down)
+" === PANE RESIZING (Up/Down)
 fun! BarUp()
   let curwindow = winnr() " save current window
   wincmd k                " move to a upper-window
@@ -385,9 +390,9 @@ nmap <leader>cs :source ~/.vimrc<CR>
 " augroup END " }
 
 " === SESSION MANAGEMENT
-nnoremap :sns :SaveSession 
-nnoremap :sno :OpenSession 
-nnoremap :snd :DeleteSession 
+nmap <leader>ns :SaveSession
+nmap <leader>no :OpenSession
+nmap <leader>nd :DeleteSession
 
 " === SURROUND CUSTOMIZATION
 " Select text in an ERb file with visual mode and then press s- or s=
