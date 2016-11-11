@@ -9,71 +9,74 @@ call pathogen#helptags()
 " Docco at http://github.com/junegunn/vim-plug 
 call plug#begin('~/.vim/plugged')
 " -- SNIPMATE ----- 
-Plug 'MarcWeber/vim-addon-mw-utils'   " support lib for snipmate
-Plug 'tomtom/tlib_vim'                " support lib for snipmate
-Plug 'garbas/vim-snipmate'            " snippet plugin
+Plug 'MarcWeber/vim-addon-mw-utils'      " support lib for snipmate
+Plug 'tomtom/tlib_vim'                   " support lib for snipmate
+Plug 'garbas/vim-snipmate'               " snippet plugin
 " -- FILE UTILS -----
-Plug 'scrooloose/nerdtree'            " file browser
-Plug 'dsimidzija/vim-nerdtree-ignore' " file browser
-Plug 'ctrlpvim/ctrlp.vim'             " fuzzy file open
-Plug 'tpope/vim-projectionist'        " src/test file nav
-Plug 'jlanzarotta/bufexplorer'        " buffer manipulation
-Plug 'mileszs/ack.vim'                " file searching
+Plug 'scrooloose/nerdtree'               " file browser
+Plug 'dsimidzija/vim-nerdtree-ignore'    " file browser
+Plug 'ctrlpvim/ctrlp.vim'                " fuzzy file open
+Plug 'tpope/vim-projectionist'           " src/test file nav
+Plug 'jlanzarotta/bufexplorer'           " buffer manipulation
+Plug 'mileszs/ack.vim'                   " file searching
 " -- LANG ELIXIR -----
-Plug 'elixir-lang/vim-elixir'         " syntax highlighting
-Plug 'mattreduce/vim-mix'             " mix helpers
-Plug 'slashmili/alchemist.vim'        " refactoring helpers
-Plug 'powerman/vim-plugin-AnsiEsc'    " docco with ANSI colors
-Plug 'andyl/vim-snipmate-elixir'      " snippets for elixir
-Plug 'andyl/vim-projectionist-elixir' " source/test file navigation
-Plug 'andyl/vim-textobj-elixir'       " elixir text objects
-Plug 'andyl/vim-refactoring-elixir'   " basic refactoring support
-" -- LANG RUBY -----
-Plug 'vim-ruby/vim-ruby'              " syntax highlighting
-Plug 'tpope/vim-rails'                " rails support
-Plug 'nelstrom/vim-textobj-rubyblock' " ruby text objects
-Plug 'bronson/vim-ruby-block-conv'    " toggle {} to begin/end
+Plug 'elixir-lang/vim-elixir'            " syntax highlighting
+Plug 'mattreduce/vim-mix'                " mix helpers
+Plug 'slashmili/alchemist.vim'           " refactoring helpers
+Plug 'powerman/vim-plugin-AnsiEsc'       " docco with ANSI colors
+Plug 'andyl/vim-snipmate-elixir'         " snippets for elixir
+Plug 'andyl/vim-projectionist-elixir'    " source/test file navigation
+Plug 'andyl/vim-textobj-elixir'          " elixir text objects
+Plug 'andyl/vim-refactoring-elixir'      " basic refactoring support
+" -- LANG RUBY ----- 
+Plug 'vim-ruby/vim-ruby'                 " syntax highlighting
+Plug 'tpope/vim-rails'                   " rails support
+Plug 'nelstrom/vim-textobj-rubyblock'    " ruby text objects
+Plug 'bronson/vim-ruby-block-conv'       " toggle {} to begin/end
 " -- LANG JAVASCRIPT -----
-Plug 'mxw/vim-jsx'                    " ReactJS/JSX
-Plug 'kchmck/vim-coffee-script'       " coffeescript
+Plug 'mxw/vim-jsx'                       " ReactJS/JSX
+Plug 'kchmck/vim-coffee-script'          " coffeescript
 " -- LANG CRYSTAL -----
-Plug 'rhysd/vim-crystal'              " syntax highlighting
+Plug 'rhysd/vim-crystal'                 " syntax highlighting
 " -- LANG RUST -----
-Plug 'rust-lang/rust.vim'             " syntax highlighting
+Plug 'rust-lang/rust.vim'                " syntax highlighting
 " -- EDITING UTILS -----
-Plug 'dhruvasagar/vim-table-mode'     " vim table mode
-Plug 'junegunn/vim-easy-align'        " column alignment
+Plug 'dhruvasagar/vim-table-mode'        " vim table mode
+Plug 'junegunn/vim-easy-align'           " column alignment
 " -- TEXT MANIPULATION -----
-Plug 'vim-scripts/tComment'           " toggle comments on/off
-Plug 'kana/vim-textobj-user'          " customizable text objects
-Plug 'tpope/vim-surround'             " edit containing objects
-Plug 'tpope/vim-repeat'               " repeat support for plugins
+Plug 'vim-scripts/tComment'              " toggle comments on/off
+Plug 'kana/vim-textobj-user'             " customizable text objects
+Plug 'tpope/vim-surround'                " edit containing objects
+Plug 'tpope/vim-repeat'                  " repeat support for plugins
 " -- CODING UTILITIES -----
-Plug 'vim-scripts/taglist.vim'        " source code browsing
-Plug 'scrooloose/syntastic'           " source code highlighting
-Plug 'tpope/vim-unimpaired'           " jump leading/trailing paren
-Plug 'tmhedberg/matchit'              " % matching
+Plug 'vim-scripts/taglist.vim'           " source code browsing
+Plug 'scrooloose/syntastic'              " source code highlighting
+Plug 'tpope/vim-unimpaired'              " jump leading/trailing paren
+Plug 'tmhedberg/matchit'                 " % matching
 " -- FILE FORMATS -----
-Plug 'vimoutliner/vimoutliner'        " outline files
-Plug 'pearofducks/ansible-vim'        " ansible yaml files
-Plug 'slim-template/vim-slim'         " slim files
-Plug 'tpope/vim-markdown'             " markdown files
+Plug 'vimoutliner/vimoutliner'           " outline files
+Plug 'pearofducks/ansible-vim'           " ansible yaml files
+Plug 'slim-template/vim-slim'            " slim files
+Plug 'tpope/vim-markdown'                " markdown files
 " -- TMUX -----
-Plug 'benmills/vimux'                 " tmux integration
+Plug 'benmills/vimux'                    " tmux integration
 " -- LAYOUTS -----
-Plug 'junegunn/seoul256.vim'          " color schemes
-Plug 'vim-airline/vim-airline'        " status bar
-Plug 'vim-airline/vim-airline-themes' " vim-airline themes
-Plug 'andyl/zoomwintab.vim'           " pane zooming
-Plug 'kshenoy/vim-signature'          " show marks
-Plug 'xolox/vim-session'              " session save/restore
-Plug 'xolox/vim-misc'                 " utilities for vim-session
+Plug 'junegunn/seoul256.vim'             " seoul256
+Plug 'NLKNguyen/papercolor-theme'        " PaperColor
+Plug 'noahfrederick/vim-hemisu'          " hemisu 
+" -- LAYOUTS -----
+Plug 'vim-airline/vim-airline'           " status bar
+Plug 'vim-airline/vim-airline-themes'    " vim-airline themes
+Plug 'andyl/zoomwintab.vim'              " pane zooming
+Plug 'kshenoy/vim-signature'             " show marks
+Plug 'xolox/vim-session'                 " session save/restore
+Plug 'xolox/vim-misc'                    " utilities for vim-session
 " -- MISC -----
-Plug 'terryma/vim-multiple-cursors'   " multiple cursors
-Plug 'terryma/vim-expand-region'      " select with + and _
-Plug 'tpope/vim-fugitive'             " git integration
-Plug 'mattn/gist-vim'                 " post github gists
-Plug 'vim-scripts/bats.vim'           " bats editing
+Plug 'terryma/vim-multiple-cursors'      " multiple cursors
+Plug 'terryma/vim-expand-region'         " select with + and _
+Plug 'tpope/vim-fugitive'                " git integration
+Plug 'mattn/gist-vim'                    " post github gists
+Plug 'vim-scripts/bats.vim'              " bats editing
 call plug#end()
 
 " === FILE MODES
@@ -137,7 +140,6 @@ vnoremap <silent> # :<C-U>
   \gV:call setreg('"', old_reg, old_regtype)<CR>
 
 " === MISC STUFF
-syntax on
 set directory=~/.vimtmp,/tmp,.
 set splitright
 set splitbelow
@@ -471,12 +473,19 @@ if !exists('g:encoding_set')
 endif
 let g:encoding_set=1
 
+" Colors
 set t_Co=256
+syntax on
+set cursorline
+set cursorcolumn
+set background=dark
+colorscheme hemisu
+
 
 " See http://vim.wikia.com/wiki/Change_cursor_color_in_different_modes
 if &term == "xterm-256color"              " xterms are gnu-term and terminator
   let &t_SI = "\<Esc>]12;green\x7"        " when entering insert mode
-  let &t_EI = "\<Esc>]12;magenta\x7"      " when leaving insert mode
+  let &t_EI = "\<Esc>]12;white\x7"        " when leaving insert mode
   set mouse=a
 endif
 
@@ -484,14 +493,14 @@ endif
 " (doesn't seem to be working)
 if &term == 'screen'                            " GNU Screen / TMUX
   let &t_SI = "\033P\033]12;green\007\033\\"    " when entering insert mode
-  let &t_EI = "\033P\033]12;magenta\007\033\\"  " when leaving insert mode
+  let &t_EI = "\033P\033]12;white\007\033\\"    " when leaving insert mode
 endif
 
 " See https://gist.github.com/1973419 (this works)
 " http://superuser.com/questions/401926/how-to-get-shiftarrows-and-ctrlarrows-working-in-vim-in-tmux
 if &term == 'screen-256color'                                   " GNU Screen / TMUX
   let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]12;green\x7\<Esc>\\"    " when entering insert mode
-  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]12;magenta\x7\<Esc>\\"  " when entering insert mode
+  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]12;white\x7\<Esc>\\"    " when entering insert mode
   nmap [1;5A [e
   nmap [1;5B ]e
   vmap [1;5A [egv
@@ -522,4 +531,3 @@ endfunction
 
 " call function before saving
 autocmd BufWritePre *.rb,*.slim,*.rake,*.erb :call <SID>StripTrailingWhitespaces()
-
