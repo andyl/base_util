@@ -60,10 +60,11 @@ Plug 'slim-template/vim-slim'            " slim files
 Plug 'tpope/vim-markdown'                " markdown files
 " -- TMUX -----
 Plug 'benmills/vimux'                    " tmux integration
-" -- LAYOUTS -----
+" -- COLORSCHEMES -----
 Plug 'junegunn/seoul256.vim'             " seoul256
 Plug 'NLKNguyen/papercolor-theme'        " PaperColor
 Plug 'noahfrederick/vim-hemisu'          " hemisu 
+Plug 'sjl/badwolf'                       " badwolf
 " -- LAYOUTS -----
 Plug 'vim-airline/vim-airline'           " status bar
 Plug 'vim-airline/vim-airline-themes'    " vim-airline themes
@@ -479,8 +480,7 @@ syntax on
 set cursorline
 set cursorcolumn
 set background=dark
-colorscheme hemisu
-
+colorscheme badwolf
 
 " See http://vim.wikia.com/wiki/Change_cursor_color_in_different_modes
 if &term == "xterm-256color"              " xterms are gnu-term and terminator
