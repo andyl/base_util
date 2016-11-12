@@ -10,9 +10,6 @@ syntax match wCode      /\`.*\`/
 syntax match wTODO      /TODO:/
 syntax match wDONE      /DONE:/
 
-" COLOR SCHEME -----
-let g:colors_name="wlog"
-
 " FOLDING -----
 syn region levelOne 
      \  start=/^# \(ROADMAP\|MON\|TUE\|WED\|THU\|FRI\|SAT\|SUN\)/ 

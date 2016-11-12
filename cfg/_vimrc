@@ -487,9 +487,12 @@ set t_Co=256
 syntax on
 
 function! <SID>focus()
+  set cc=""
+  if &filetype == "nerdtree"
+    return
+  endif
   hi clear
   let defaultTypes = ["text", "otl", "wlog"]
-  set cc=""
   if index(defaultTypes, &filetype)
     colorscheme badwolf
   else
