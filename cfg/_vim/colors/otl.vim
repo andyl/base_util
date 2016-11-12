@@ -1,5 +1,7 @@
 let g:colors_name="votl"
 
+hi clear
+
 set background=dark
 
 hi normal guifg=black guibg=white	ctermfg=white ctermbg=black

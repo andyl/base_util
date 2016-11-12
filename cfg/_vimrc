@@ -103,7 +103,7 @@ set shortmess+=I
 let g:session_autosave = 'no'
 let g:session_autoload = 'no'
 
-" === ACK.VIM
+" === ACK.VIM 
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
 " === MATCHIT
@@ -119,15 +119,20 @@ command! Preview :!firefox %<cr>
 " === WRITE THE CURRENT BUFFER, THEN CLOSE IT
 command! Wc write|bdelete
 
+" === CURSORLINE
+set cursorline
+set nocursorcolumn
+nmap <F2> :set cursorline! cursorline?<cr>
+
+" === SEARCH AND REPLACE
+vmap <F3> :s///g<left><left>
+nmap <F3> :%s///g<left><left>
+
 " === SEARCH HIGHLIGHT
 set hlsearch
 nmap <leader>h :set hlsearch!<cr>
 nmap <F4> :set hlsearch! hlsearch?<cr>
 nnoremap / :set hlsearch<cr>/
-
-" === SEARCH AND REPLACE
-vmap <F3> :s///g<left><left>
-nmap <F3> :%s///g<left><left>
 
 " search for selected text, forwards or backwards
 vnoremap <silent> * :<C-U>
@@ -461,13 +466,11 @@ nmap <leader>8 :bl\|8bn<cr>
 nmap <leader>9 :bl\|9bn<cr>
 
 " === NEOVIM SETTINGS
-
 " if has('nvim')
 "   set inccommand=nosplit
 " endif
 
 " === TERM-SPECIFIC ITEMS 
-
 if exists('$TMUX')
   if !has('nvim')
     set term=screen-256color
@@ -479,14 +482,34 @@ if !exists('g:encoding_set')
 endif
 let g:encoding_set=1
 
-" Colors
+" === COLOR SCHEMES, FOCUS AND BLUR
 set t_Co=256
 syntax on
-set cursorline
-set cursorcolumn
-set background=dark
-colorscheme badwolf
 
+function! <SID>focus()
+  hi clear
+  let defaultTypes = ["text", "otl", "wlog"]
+  set cc=""
+  if index(defaultTypes, &filetype)
+    colorscheme badwolf
+  else
+    echom &filetype
+    colorscheme default
+    colorscheme &filetype
+  end
+  AirlineRefresh
+endfunction
+
+function! <SID>blur()
+  hi clear
+  set cc=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130
+  AirlineRefresh
+endfunction
+
+autocmd BufEnter,FocusGained,VimEnter,WinEnter * :call <SID>focus()
+autocmd FocusLost,WinLeave                     * :call <SID>blur()
+
+" === CURSOR CUSTOMIZATION
 " See http://vim.wikia.com/wiki/Change_cursor_color_in_different_modes
 if &term == "xterm-256color"              " xterms are gnu-term and terminator
   let &t_SI = "\<Esc>]12;green\x7"        " when entering insert mode
@@ -527,7 +550,6 @@ endif
 " to show non-printable characters - :set list
 " to hide non-printable characters - :set nolist
 
-" function definition
 function! <SID>StripTrailingWhitespaces()
   " Prep: save last search and cursor position
   let _s=@/
