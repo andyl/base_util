@@ -122,6 +122,7 @@ command! Preview :!firefox %<cr>
 command! Wc write|bdelete
 
 " === CURSORLINE
+" note: cursorline also set in the `focus` function
 set cursorline
 set nocursorcolumn
 nmap <F2> :set cursorline! cursorline?<cr>
@@ -231,9 +232,11 @@ nmap <leader>k :Ack
 " === CTRLP - fast file finding
 let g:ctrlp_max_files = 10000        " Set the max files
 let g:ctrlp_map = "<C-p>"
-let g:ctrlp_cmd = "CtrlPMRU"
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
-nmap <leader>f :CtrlPMRU<cr>
+nmap <leader>pf :CtrlP<cr>
+nmap <leader>pm :CtrlPMRU<cr>
+nmap <leader>pb :CtrlPBuffer<cr>
+nmap <leader>bb :CtrlPBuffer<cr>
 
 " === NERD TREE
 let g:NERDTreeMapOpenVSplit = "v"
@@ -489,7 +492,6 @@ set t_Co=256
 syntax on
 set background=dark
 
-
 function! <SID>focus()
   set cc=""
   if &filetype == "nerdtree"
@@ -501,8 +503,8 @@ function! <SID>focus()
     let g:gruvbox_contrast_dark='hard'
     colorscheme gruvbox
   else
-    colorscheme default
     set nocursorline
+    colorscheme default
   end
   AirlineRefresh
 endfunction
