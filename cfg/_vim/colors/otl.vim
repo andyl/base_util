@@ -3,11 +3,14 @@ let g:colors_name="votl"
 hi clear
 
 set background=dark
+set nocursorline
 
 hi normal guifg=black guibg=white	ctermfg=white ctermbg=black
 hi StatusLine guifg=black guibg=white	ctermfg=white ctermbg=black
 hi StatusLineNC guifg=black guibg=white	ctermfg=white ctermbg=black
 hi VertSplit guifg=black guibg=white	ctermfg=white ctermbg=black
+
+hi ColorColumn  ctermbg=240
 
 hi OL1 guifg=black      ctermfg=green
 hi OL2 guifg=red        ctermfg=red

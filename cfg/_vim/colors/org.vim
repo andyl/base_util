@@ -12,6 +12,7 @@ if exists("syntax_on")
   syntax reset
 endif
 let g:colors_name = "org"
+hi ColorColumn  ctermbg=240
 hi Normal		guifg=yellow	guibg=darkBlue	ctermfg=yellow	ctermbg=darkBlue
 hi NonText		guifg=magenta	ctermfg=lightMagenta
 hi comment		guifg=gray		ctermfg=gray	ctermbg=darkBlue	gui=bold 
