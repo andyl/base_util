@@ -122,6 +122,7 @@ command! Wc write|bdelete
 set cursorline
 set nocursorcolumn
 nmap <F2> :set cursorline! cursorline?<cr>
+imap <F2> <esc>:set cursorline! cursorline?<cr>i<right>
 
 " === SEARCH AND REPLACE
 vmap <F3> :s///g<left><left>
