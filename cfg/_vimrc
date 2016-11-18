@@ -51,7 +51,8 @@ Plug 'tpope/vim-surround'                " edit containing objects
 Plug 'tpope/vim-repeat'                  " repeat support for plugins
 " -- CODING UTILITIES -----
 Plug 'vim-scripts/taglist.vim'           " source code browsing
-Plug 'neomake/neomake'                   " code check tool
+" Plug 'neomake/neomake'                   " code check tool
+Plug 'scrooloose/syntastic'              " code check tool
 Plug 'milkypostman/vim-togglelist'       " toggle quicklist and location list
 Plug 'tpope/vim-unimpaired'              " jump leading/trailing paren
 Plug 'tmhedberg/matchit'                 " % matching
@@ -108,11 +109,17 @@ set noswapfile
 set shortmess+=I
 
 " === NEOMAKE
-autocmd! BufWritePost * Neomake 
+" autocmd! BufWritePost * Neomake 
 " let g:neomake_verbose=3
-let g:neomake_logfile="/tmp/neomake.log"
-let g:neomake_open_list = 2
-let g:neomake_elixir_enabled_makers = ['elixir']
+" let g:neomake_logfile="/tmp/neomake.log"
+" let g:neomake_open_list = 2
+" let g:neomake_elixir_enabled_makers = ['elixir']
+
+" === SYNTASTIC 
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_enable_elixir_checker = 1
+let g:syntastic_elixir_checkers = ['elixir']
 
 " === ACK.VIM 
 let g:ackprg = 'ag --nogroup --nocolor --column'
