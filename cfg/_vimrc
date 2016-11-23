@@ -152,6 +152,7 @@ nmap <F3> :%s///g<left><left>
 set hlsearch
 nmap <leader>h :set hlsearch!<cr>
 nmap <F4> :set hlsearch! hlsearch?<cr>
+imap <F4> <esc>:set hlsearch! hlsearch?<cr>i<right>
 nnoremap / :set hlsearch<cr>/
 
 " search for selected text, forwards or backwards
