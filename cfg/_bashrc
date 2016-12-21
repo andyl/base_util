@@ -29,6 +29,7 @@ autosh_path="/usr/local/share/chruby/auto.sh"
 alias ie="iex"
 export PATH=$PATH:~/.mix/escripts             # setup escript path
 
+alias shx="searchex"
 alias she="mix escript.build && MIX_ENV=eval ./searchex"
 alias shd="mix escript.build && ./searchex"
 
