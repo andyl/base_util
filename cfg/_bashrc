@@ -57,7 +57,7 @@ vimcycle() {
 # TMUX / TMUXINATOR
 
 # check for active TMUX session
-no_tmux () {
+no_tmux() {
   if [ -n "$TMUX" ]; then
     echo "Live TMUX Session!!!"
     return 1
@@ -407,6 +407,15 @@ else
   PS1="${PSGreen}\u@\h${PSClear} \w${PSRed}>${PSClear} " 
 fi
 
+DEMP=~/.demoprompt
+if [ -f $DEMP ]
+then 
+  PS1="${PSGreen}user@host${PSClear}${PSRed}>${PSClear} "
+fi
+
+alias setdemoprompt="touch $DEMP"
+alias deldemoprompt="rm -f $DEMP"
+
 if [ `which xterm_title` ]; then
   PROMPT_COMMAND='export PWDS=`pwd_short`;xterm_title "${USRNAME}@${SYSNAME} ${PWDS}"'
 fi
@@ -416,6 +425,15 @@ if [ -n "$TMUX" ]; then
 else
   export TERM='xterm-256color'
 fi
+
+###########################################################################
+# ASCIINEMA
+
+asciirec() {
+  setdemoprompt
+  asciinema rec
+  deldemoprompt
+}
 
 ###########################################################################
 # EDITOR ALIASES
