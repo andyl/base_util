@@ -407,14 +407,22 @@ else
   PS1="${PSGreen}\u@\h${PSClear} \w${PSRed}>${PSClear} " 
 fi
 
-DEMP=~/.demoprompt
-if [ -f $DEMP ]
+###########################################################################
+# DEMO PROMPT
+
+PROMPT_FILE=~/.demoprompt
+
+if [ -f $PROMPT_FILE ]
 then 
-  PS1="${PSGreen}user@host${PSClear}${PSRed}>${PSClear} "
+  PROMPT_TEXT=`cat $PROMPT_FILE`
+  PS1="${PSGreen}$PROMPT_TEXT${PSClear}${PSRed}>${PSClear} "
 fi
 
-alias setdemoprompt="touch $DEMP"
-alias deldemoprompt="rm -f $DEMP"
+alias setdemoprompt="echo 'user@host' > $PROMPT_FILE"
+alias deldemoprompt="rm -f $PROMPT_FILE"
+
+###########################################################################
+# MISC
 
 if [ `which xterm_title` ]; then
   PROMPT_COMMAND='export PWDS=`pwd_short`;xterm_title "${USRNAME}@${SYSNAME} ${PWDS}"'
@@ -425,15 +433,6 @@ if [ -n "$TMUX" ]; then
 else
   export TERM='xterm-256color'
 fi
-
-###########################################################################
-# ASCIINEMA
-
-asciirec() {
-  setdemoprompt
-  asciinema rec
-  deldemoprompt
-}
 
 ###########################################################################
 # EDITOR ALIASES
