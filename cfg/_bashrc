@@ -159,6 +159,7 @@ alias gopen="gnome-open"
 
 alias kar="killall -9 ruby ; pkill -f spring"
 
+alias bej="bundle exec jekyll"
 alias mm="middleman"
 alias update="sudo apt-get update ; sudo apt-get upgrade -y -q"
 
