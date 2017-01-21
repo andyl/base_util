@@ -21,14 +21,14 @@ Plug 'tpope/vim-projectionist'           " src/test file nav
 Plug 'jlanzarotta/bufexplorer'           " buffer manipulation
 Plug 'mileszs/ack.vim'                   " file searching
 " -- LANG ELIXIR -----
-Plug 'elixir-lang/vim-elixir'            " syntax highlighting
-Plug 'mattreduce/vim-mix'                " mix helpers
-Plug 'slashmili/alchemist.vim'           " refactoring helpers
-Plug 'powerman/vim-plugin-AnsiEsc'       " docco with ANSI colors
-Plug 'andyl/vim-snipmate-elixir'         " snippets for elixir
-Plug 'andyl/vim-projectionist-elixir'    " source/test file navigation
-Plug 'andyl/vim-textobj-elixir'          " elixir text objects
-Plug 'andyl/vim-refactoring-elixir'      " basic refactoring support
+" Plug 'elixir-lang/vim-elixir'            " syntax highlighting
+" Plug 'mattreduce/vim-mix'                " mix helpers
+" Plug 'slashmili/alchemist.vim'           " refactoring helpers
+" Plug 'powerman/vim-plugin-AnsiEsc'       " docco with ANSI colors
+" Plug 'andyl/vim-snipmate-elixir'         " snippets for elixir
+" Plug 'andyl/vim-projectionist-elixir'    " source/test file navigation
+" Plug 'andyl/vim-textobj-elixir'          " elixir text objects
+" Plug 'andyl/vim-refactoring-elixir'      " basic refactoring support
 " -- LANG RUBY ----- 
 Plug 'vim-ruby/vim-ruby'                 " syntax highlighting
 Plug 'tpope/vim-rails'                   " rails support
@@ -52,7 +52,7 @@ Plug 'tpope/vim-repeat'                  " repeat support for plugins
 " -- CODING UTILITIES -----
 Plug 'vim-scripts/taglist.vim'           " source code browsing
 " Plug 'neomake/neomake'                   " code check tool
-Plug 'scrooloose/syntastic'              " code check tool
+" Plug 'scrooloose/syntastic'              " code check tool
 Plug 'milkypostman/vim-togglelist'       " toggle quicklist and location list
 Plug 'tpope/vim-unimpaired'              " jump leading/trailing paren
 Plug 'tmhedberg/matchit'                 " % matching
@@ -75,12 +75,12 @@ Plug 'vim-airline/vim-airline'           " status bar
 Plug 'vim-airline/vim-airline-themes'    " vim-airline themes
 Plug 'andyl/zoomwintab.vim'              " pane zooming
 Plug 'kshenoy/vim-signature'             " show marks
-Plug 'xolox/vim-session'                 " session save/restore
+" Plug 'xolox/vim-session'                 " session save/restore
 Plug 'xolox/vim-misc'                    " utilities for vim-session
 " -- MISC -----
-Plug 'terryma/vim-multiple-cursors'      " multiple cursors
+" Plug 'terryma/vim-multiple-cursors'      " multiple cursors
 Plug 'itchyny/calendar.vim'              " vim calendars
-Plug 'terryma/vim-expand-region'         " select with + and _
+" Plug 'terryma/vim-expand-region'         " select with + and _
 Plug 'tpope/vim-fugitive'                " git integration
 Plug 'mattn/gist-vim'                    " post github gists
 Plug 'vim-scripts/bats.vim'              " bats editing
