@@ -21,14 +21,14 @@ Plug 'tpope/vim-projectionist'           " src/test file nav
 Plug 'jlanzarotta/bufexplorer'           " buffer manipulation
 Plug 'mileszs/ack.vim'                   " file searching
 " -- LANG ELIXIR -----
-" Plug 'elixir-lang/vim-elixir'            " syntax highlighting
-" Plug 'mattreduce/vim-mix'                " mix helpers
-" Plug 'slashmili/alchemist.vim'           " refactoring helpers
-" Plug 'powerman/vim-plugin-AnsiEsc'       " docco with ANSI colors
-" Plug 'andyl/vim-snipmate-elixir'         " snippets for elixir
-" Plug 'andyl/vim-projectionist-elixir'    " source/test file navigation
-" Plug 'andyl/vim-textobj-elixir'          " elixir text objects
-" Plug 'andyl/vim-refactoring-elixir'      " basic refactoring support
+Plug 'elixir-lang/vim-elixir'            " syntax highlighting
+Plug 'mattreduce/vim-mix'                " mix helpers
+Plug 'slashmili/alchemist.vim'           " refactoring helpers
+Plug 'powerman/vim-plugin-AnsiEsc'       " docco with ANSI colors
+Plug 'andyl/vim-snipmate-elixir'         " snippets for elixir
+Plug 'andyl/vim-projectionist-elixir'    " source/test file navigation
+Plug 'andyl/vim-textobj-elixir'          " elixir text objects
+Plug 'andyl/vim-refactoring-elixir'      " basic refactoring support
 " -- LANG RUBY ----- 
 Plug 'vim-ruby/vim-ruby'                 " syntax highlighting
 Plug 'tpope/vim-rails'                   " rails support
