@@ -26,11 +26,11 @@ autosh_path="/usr/local/share/chruby/auto.sh"
 
 ###########################################################################
 # ELIXIR/ERLANG
-alias ie="iex"
 export PATH=$PATH:~/.mix/escripts             # setup escript path
-
+alias ie="iex 2> /dev/null"
+alias iex="iex 2> /dev/null"
+alias imx="iex -S mix 2> /dev/null"
 alias shx="searchex"
-alias imx="iex -S mix"
 alias she="mix escript.build && MIX_ENV=eval ./searchex"
 alias shd="mix escript.build && ./searchex"
 alias mc="mix compile"
