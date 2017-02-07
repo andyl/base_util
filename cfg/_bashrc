@@ -43,6 +43,10 @@ export GOPATH=~/.go
 export PATH=$PATH:$GOPATH/bin
 
 ###########################################################################
+# RUST
+export PATH=$PATH:~/.cargo/bin
+
+###########################################################################
 # VIM / NEOVIM / NVIM / NV
 
 # use for .vimrc and plugin testing
