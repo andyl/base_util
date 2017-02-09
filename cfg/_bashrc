@@ -8,10 +8,14 @@ export TZ="America/Los_Angeles"
 [ -f ~/.bash_marks ]     && source ~/.bash_marks
 
 ###########################################################################
-# UTIL
+# BASE UTIL
 [ -f ~/.util_dir  ] && source ~/.util_dir    # define $UTIL_DIR
 [ -f ~/.util_path ] && source ~/.util_path   # define $UTIL_PATH
 export PATH=$UTIL_PATH:~/bin:$PATH           # setup util PATH 
+
+###########################################################################
+# PDEV UTIL
+tgt=$UTIL_DIR/pdev_util/inc/_bashrc ; [ -f $tgt ] && source $tgt
 
 ###########################################################################
 # NPM
@@ -23,6 +27,7 @@ chruby_path="/usr/local/share/chruby/chruby.sh"
 autosh_path="/usr/local/share/chruby/auto.sh"
 [ -f $chruby_path ] && source $chruby_path   # setup chruby path
 [ -f $autosh_path ] && source $autosh_path   # autoset chruby on every `cd`
+export PATH=./bin:$PATH                      # prepend binstubs path
 
 ###########################################################################
 # ELIXIR/ERLANG
@@ -90,10 +95,6 @@ tmr() {
 }
 
 # note also: ~/.complete has completions for tmux and tmuxinator
-
-###########################################################################
-# PDEV BASH EXTENSIONS
-tgt=$UTIL_DIR/pdev_util/inc/_bashrc ; [ -f $tgt ] && source $tgt
 
 ###########################################################################
 # MISC 
