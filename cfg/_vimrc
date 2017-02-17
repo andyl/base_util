@@ -275,6 +275,8 @@ nmap <leader>k :Ack
 " === NERD TREE
 let g:NERDTreeMapOpenVSplit = "v"
 let g:NERDTreeMapOpenSplit  = "s"
+let g:NERDTreeCaseSensitiveSort = 1
+let g:NERDTreeSortHiddenFirst = 1
 let g:NerdTreeIdle = 1
 
 " returns true iff is NERDTree open/active
@@ -500,22 +502,16 @@ nmap <leader>7 :bl\|7bn<cr>
 nmap <leader>8 :bl\|8bn<cr>
 nmap <leader>9 :bl\|9bn<cr>
 
-" === NEOVIM SETTINGS
-" if has('nvim')
-"   set inccommand=nosplit
-" endif
-
-" === TERM-SPECIFIC ITEMS 
-if exists('$TMUX')
-  if !has('nvim')
-    set term=screen-256color
-  endif
-endif
-
+" === ENCODING
 if !exists('g:encoding_set')
   set encoding=utf-8
 endif
 let g:encoding_set=1
+
+" === NEOVIM SETTINGS
+" if has('nvim')
+"   set inccommand=nosplit
+" endif
 
 " === COLOR SCHEMES, FOCUS AND BLUR
 " see https://github.com/morhetz/gruvbox
@@ -560,6 +556,13 @@ autocmd BufEnter,FocusGained,VimEnter,WinEnter *.wlog colorscheme worklog | Airl
 autocmd BufEnter,FocusGained,VimEnter,WinEnter *.otl  colorscheme otl     | AirlineRefresh
 autocmd FocusLost,WinLeave                     *      :call <SID>blur()
 
+" === TERM-SPECIFIC ITEMS 
+if exists('$TMUX')
+  if !has('nvim')
+    set term=screen-256color
+  endif
+endif
+
 " === CURSOR CUSTOMIZATION
 " See http://vim.wikia.com/wiki/Change_cursor_color_in_different_modes
 if &term == "xterm-256color"              " xterms are gnu-term and terminator
@@ -569,16 +572,8 @@ if &term == "xterm-256color"              " xterms are gnu-term and terminator
 endif
 
 " https://github.com/neovim/neovim/wiki/FAQ#how-can-i-change-the-cursor-shape-in-the-terminal
-" broken...
-" if &term == "nvim" 
-"   let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-" endif
-
-" See http://arniealmighty.wordpress.com for screen/cursor color notes
-" (doesn't seem to be working)
-if &term == 'screen'                            " GNU Screen 
-  let &t_SI = "\033P\033]12;green\007\033\\"    " when entering insert mode
-  let &t_EI = "\033P\033]12;white\007\033\\"    " when entering normal mode
+if &term == "nvim" 
+  let $NVIM_TUI_ENABLE_CURSOR_SHAPE=2
 endif
 
 " See https://gist.github.com/1973419 (this works)
@@ -596,6 +591,13 @@ if &term == 'screen-256color'                                   " TMUX
   execute "set <xLeft>=\e[1;*D"
 endif
  
+" See http://arniealmighty.wordpress.com for screen/cursor color notes
+" (doesn't seem to be working)
+if &term == 'screen'                            " GNU Screen 
+  let &t_SI = "\033P\033]12;green\007\033\\"    " when entering insert mode
+  let &t_EI = "\033P\033]12;white\007\033\\"    " when entering normal mode
+endif
+
 " === STRIP TRAILING WHITESPACE 
 " see http://vimcasts.org/episodes/tidying-whitespace/
 " to show non-printable characters - :set list
