@@ -1,0 +1,57 @@
+#!/usr/bin/env ruby
+
+# complete rake tasks script for bash
+
+# Save it somewhere and then add 
+# `complete -C path/to/script -o default rake` 
+# to your ~/.bashrc
+#
+# Might need to add `export COMP_WORDBREAKS="${COMP_WORDBREAKS/\:/}"` to the
+# bottom of .bashrc if there are problems with colons in nested tasks.
+#
+#
+# Derived from https://gist.github.com/grosser/3395598, combining work from
+#   http://fhwang.net/rb/rake-complete.rb
+#   http://www.webtypes.com/2006/03/31/rake-completion-script-that-handles-namespaces
+
+require 'fileutils'
+
+def fresh_cache?(cache_file, rakefile)
+  all_files = TASKFILES << rakefile
+  File.mtime(cache_file) >= all_files.map { |x| File.mtime(x) }.max
+end
+
+def filtered_tasks
+  raw_lines = `rake --silent --tasks 2>/dev/null`
+  raw_lines.each_line.select {|l| l.match(/^rake/)}.join
+end
+
+def gen_task_match
+  match = /^rake\b/ =~ ENV["COMP_LINE"] 
+  exit 0 if match.nil?
+  mlast = $'     
+  empty_match = (mlast.nil? || mlast.empty? || mlast =~ /\s$/)
+  empty_match ? nil : mlast.split.last
+end
+
+RAKEFILES = ['rakefile', 'Rakefile', 'rakefile.rb', 'Rakefile.rb']
+TASKFILES = Dir['lib/tasks/*.rake', 'lib/rake/*.rake']
+exit 0 unless RAKEFILES.any? { |rf| File.file?(File.join(Dir.pwd, rf)) }
+
+task_match = gen_task_match
+cache_dir  = File.join( ENV['HOME'], '.rake', 'tc_cache' )
+FileUtils.mkdir_p cache_dir
+rakefile = RAKEFILES.detect { |rf| File.file?(File.join(Dir.pwd, rf)) }
+rakefile_path = File.join( Dir.pwd, rakefile )
+cache_file = File.join( cache_dir, rakefile_path.gsub( %r{/}, '_' ) )
+if File.exist?( cache_file ) && fresh_cache?(cache_file, rakefile)
+  task_lines = File.read( cache_file )
+else
+  task_lines = filtered_tasks
+  File.open( cache_file, 'w' ) do |f| f << task_lines; end
+end
+tasks = task_lines.split("\n").map {|line| line.split[1]}
+tasks = tasks.select {|t| /^#{Regexp.escape task_match}/ =~ t} if task_match
+
+puts tasks
+exit 0
