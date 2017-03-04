@@ -158,6 +158,7 @@ alias HG="history | grep"
 
 alias  g="git"
 alias  t="thor"
+alias  r="rails"
 
 alias  sp="spring"
 alias brl="spring rails"
