@@ -76,7 +76,7 @@ Plug 'kshenoy/vim-signature'             " show marks
 " Plug 'xolox/vim-session'                 " session save/restore
 Plug 'xolox/vim-misc'                    " utilities for vim-session
 " -- MISC -----
-" Plug 'terryma/vim-multiple-cursors'      " multiple cursors
+Plug 'terryma/vim-multiple-cursors'      " multiple cursors
 Plug 'itchyny/calendar.vim'              " vim calendars
 " Plug 'terryma/vim-expand-region'         " select with + and _
 Plug 'tpope/vim-fugitive'                " git integration
