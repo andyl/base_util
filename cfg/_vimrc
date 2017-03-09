@@ -256,9 +256,9 @@ nmap <leader>pd 73jzz
 nmap <leader>pi i<esc>
 
 " === PRINT COMMANDS
-nmap <leader>pp :! a2ps -c --highlight-level=none --sides=duplex --line-numbers=1 %<cr>
-nmap <leader>p1 :! a2ps -c --highlight-level=none --sides=duplex --line-numbers=1 --portrait  --columns=1 --font-size=9 %<cr>
-nmap <leader>pl :! a2ps -c --highlight-level=none --sides=duplex --line-numbers=1 --landscape --columns=1 --font-size=9 %<cr>
+nmap <leader>pp :! a2ps -c --highlight-level=none --sides=duplex -t2 --line-numbers=1 %<cr>
+nmap <leader>p1 :! a2ps -c --highlight-level=none --sides=duplex -t2 --line-numbers=1 --portrait  --columns=1 --font-size=9 %<cr>
+nmap <leader>pl :! a2ps -c --highlight-level=none --sides=duplex -t2 --line-numbers=1 --landscape --columns=1 --font-size=9 %<cr>
 
 " === CTRLP - fast file finding
 let g:ctrlp_max_files = 10000        " Set the max files
