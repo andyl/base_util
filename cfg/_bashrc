@@ -21,7 +21,7 @@ tgt=$UTIL_DIR/pdev_util/inc/_bashrc ; [ -f $tgt ] && source $tgt
 
 ###########################################################################
 # NPM
-export PATH=$PATH:~/.npm-global/bin           # setup NPM path
+export PATH=$PATH:~/.npm-global/bin:./node_modules/.bin    
 
 ###########################################################################
 # RUBY
