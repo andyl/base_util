@@ -73,7 +73,6 @@ Plug 'vim-airline/vim-airline'           " status bar
 Plug 'vim-airline/vim-airline-themes'    " vim-airline themes
 Plug 'andyl/zoomwintab.vim'              " pane zooming
 Plug 'kshenoy/vim-signature'             " show marks
-" Plug 'xolox/vim-session'                 " session save/restore
 Plug 'xolox/vim-misc'                    " utilities for vim-session
 " -- MISC -----
 Plug 'terryma/vim-multiple-cursors'      " multiple cursors
