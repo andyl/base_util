@@ -20,7 +20,9 @@ Pry.config.print = proc do |*args|
     Hirb::View.view_or_page_output(args[1]) || old_print.call(*args)
 end
 
-if defined?(PryDebugger)
+puts "Loaded PRY Environment"
+
+if defined?(PryDebugger) || defined?(PryByebug)
   puts "PryDebugger is on"
   Pry.commands.alias_command 'c', 'continue'
   Pry.commands.alias_command 's', 'step'
@@ -33,8 +35,6 @@ if defined?(Rails) && Rails.env
 end
 
 alias xx exit
-
-puts "\nLoaded PRY Environment"
 
 #
 # vim: set ft=ruby:
