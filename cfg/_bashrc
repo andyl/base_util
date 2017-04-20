@@ -52,7 +52,7 @@ export PATH=$PATH:$GOPATH/bin
 ###########################################################################
 # ANDROID
 export ANDROID_HOME=/home/aleak/Android/sdk
-export PATH=$PATH:${ ANDROID_HOME }/tools:${ ANDROID_HOME }/platform-tools
+export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 
 ###########################################################################
 # RUST
