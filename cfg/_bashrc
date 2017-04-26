@@ -104,6 +104,41 @@ tmr() {
 # note also: ~/.complete has completions for tmux and tmuxinator
 
 ###########################################################################
+# TMATE 
+# screen sharing utility for tmux
+
+# show the links that others can use to join the sharing session
+alias tmate-links="tmate show-messages | grep -v clear | grep -v ssh.tmate.io | cut -d ' ' -f 1-6 --complement"
+
+# need a links-send command...
+
+###########################################################################
+# BUILDROOT
+# utility to create embedded system images
+
+buildroot-install() {
+  BUILDROOT_VERSION="2017.02.1"
+  if [ -n "$(ls -A .)" ]
+  then
+    echo "ERROR: current directory must be empty!"
+    return 1
+  else
+    echo "INSTALLING BUILDROOT"
+    wget https://buildroot.org/downloads/buildroot-$BUILDROOT_VERSION.tar.gz
+    tar xf *gz
+    rm *gz
+    mv buildroot-$BUILDROOT_VERSION/* .
+    mv buildroot-$BUILDROOT_VERSION/.* . 2> /dev/null
+    rmdir buildroot-$BUILDROOT_VERSION
+    echo "--------------------------------------------------------------"
+    echo "current BR Version: $BUILDROOT_VERSION (defined in .bashrc)"
+    echo "find latest BR version at https://buildroot.org/download.html"
+    echo "BR docs at https://buildroot.org/docs.html"
+    echo "now you can run '> make menuconfig'..."
+  fi
+}
+
+###########################################################################
 # MISC 
 tgt=~/.java_env ; [ -f $tgt ] && source $tgt     # source java support
 setxkbmap -option caps:swapescape 2> /dev/null   # swap tab and escape key
