@@ -50,9 +50,9 @@ export GOPATH=~/.go
 export PATH=$PATH:$GOPATH/bin
 
 ###########################################################################
-# ANDROID
+# ANDROID STUDIO
 export ANDROID_HOME=/home/aleak/Android/Sdk
-export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+export PATH=$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 
 ###########################################################################
 # RUST
