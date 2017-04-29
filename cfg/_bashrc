@@ -90,7 +90,7 @@ in_tmux() {
   fi
 }
 
-alias  tm="tmux-next"   
+alias  tm="tmux"   
 alias  mx="tmuxinator" 
 
 alias tmt="in_tmux && tm new-window -c '#{pane_current_path}'"       # new tab
