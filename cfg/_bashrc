@@ -209,6 +209,7 @@ alias brs="spring rspec"
 alias gopen="gnome-open"
 
 alias kar="killall -9 ruby ; pkill -f spring"
+alias kan="killall -9 node"
 
 alias bej="bundle exec jekyll"
 alias mm="middleman"
