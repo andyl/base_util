@@ -572,7 +572,7 @@ endif
 
 " https://github.com/neovim/neovim/wiki/FAQ#how-can-i-change-the-cursor-shape-in-the-terminal
 if &term == "nvim" 
-  let $NVIM_TUI_ENABLE_CURSOR_SHAPE=2
+  set guicursor=i:ver25-iCursor
 endif
 
 " See https://gist.github.com/1973419 (this works)
