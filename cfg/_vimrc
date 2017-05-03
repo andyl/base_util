@@ -20,6 +20,7 @@ Plug 'ctrlpvim/ctrlp.vim'                " fuzzy file open
 Plug 'tpope/vim-projectionist'           " src/test file nav
 Plug 'jlanzarotta/bufexplorer'           " buffer manipulation
 Plug 'mileszs/ack.vim'                   " file searching
+Plug 'vim-scripts/SyntaxRange'           " vimdeck syntax highlighting
 " -- LANG ELIXIR -----
 Plug 'elixir-lang/vim-elixir'            " syntax highlighting
 Plug 'mattreduce/vim-mix'                " mix helpers
