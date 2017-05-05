@@ -554,7 +554,7 @@ endfunction
 autocmd BufEnter,FocusGained,VimEnter,WinEnter *      :call <SID>focus()
 autocmd BufEnter,FocusGained,VimEnter,WinEnter *.wlog colorscheme worklog | AirlineRefresh
 autocmd BufEnter,FocusGained,VimEnter,WinEnter *.otl  colorscheme otl     | AirlineRefresh
-autocmd FocusLost,WinLeave                     *      :call <SID>blur()
+" autocmd FocusLost,WinLeave                     *      :call <SID>blur()
 
 " === TERM-SPECIFIC ITEMS 
 if exists('$TMUX')
