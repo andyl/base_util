@@ -27,6 +27,7 @@ export PATH=$PATH:~/.npm-global/bin:./node_modules/.bin
 # RUBY
 chruby_path="/usr/local/share/chruby/chruby.sh"
 autosh_path="/usr/local/share/chruby/auto.sh"
+GEM_PATH=/home/aleak/g/pdev_util/bin/gems
 [ -f $chruby_path ] && source $chruby_path   # setup chruby path
 [ -f $autosh_path ] && source $autosh_path   # autoset chruby on every `cd`
 export PATH=./bin:$PATH                      # prepend binstubs path
