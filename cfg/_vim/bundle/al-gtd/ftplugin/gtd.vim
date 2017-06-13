@@ -1,6 +1,0 @@
-
-snippet #!
-	#!/usr/bin/env ruby
-
-snippet =
-	=${1:`GetCategory()`} :${2:`GetProject()`} @${3:`GetContext()`} |${4:Task Label}
