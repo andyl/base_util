@@ -30,7 +30,7 @@ delimited by a unique character:
 | Char   | Element    | Desc                                |
 +--------+------------+-------------------------------------+
 | !      | Handle     | a generated UUID-style task ID      |
-| =      | Box        | a task collection (inbox, etc.)     |
+| =      | Status     | task status (inbox, completed)      |
 | :      | Scope      | the task scope                      |
 | @      | Context    | the context for completing the task |
 | -      | Priority   | task priority (H, M or L)           |
@@ -41,7 +41,7 @@ delimited by a unique character:
 +--------+------------+-------------------------------------+
 
 +--------------------------------+-------------------+
-| Valid Boxes                    | Valid Importances |
+| Valid Status                   | Valid Priorities  |
 +--------------------------------+-------------------+
 | =I : Inbox                     | -H : High         |
 | =A : Active (next action)      | -M : Medium       |
