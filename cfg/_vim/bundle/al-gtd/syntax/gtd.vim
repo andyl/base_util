@@ -45,9 +45,9 @@ syntax match gHPriority /\-[Hh]/
 syntax match gMPriority /\-[Mm]/
 syntax match gLPriority /\-[Ll]/
 syntax match gContact   /#[^ ]*/
-syntax match gDate      /\/[^ ]*/
 syntax match gTask      /|[^\[\/\#\:\@\=]*/
 syntax match gNote      /\[.*\]/
+" syntax match gDate      /\/[^ ]*/
 
 " SYNTAX HIGHLIGHTING -----
 highlight gFilter    ctermfg=green
@@ -59,9 +59,9 @@ highlight gHPriority ctermfg=black    ctermbg=red
 highlight gMPriority ctermfg=black    ctermbg=blue
 highlight gLPriority ctermfg=black    ctermbg=yellow
 highlight gContact   ctermfg=magenta
-highlight gDate      ctermfg=cyan
 highlight gTask      ctermfg=white
 highlight gNote      ctermfg=gray    ctermbg=black
+highlight gDate      ctermfg=cyan
 
 " SHARED FUNCTIONS -----
 function! SetMethod() range

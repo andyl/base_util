@@ -8,6 +8,7 @@ CONTENTS                                                           *gtd-outline*
   Editing            |gtd-editing|
   Sorting            |gtd-sorting|
   Grouping           |gtd-grouping|
+  File Structure     |gtd-files|
   Archive            |gtd-archive|
   Support Software   |gtd-support|
   Related Tools      |gtd-tools|
@@ -15,9 +16,9 @@ CONTENTS                                                           *gtd-outline*
 ==============================================================================
 INTRODUCTION                                                         *gtd-intro*
 
-VGTD is a simple task-tracking app.  There are lots of great task trackers:
+VGTD is a simple task-tracking app.  There are many task trackers:
 vim-orgmode, taskwarrior, vitalist, and more.  This tracker saves data in
-plain-text files, editable in Vim.
+plain-text files, editable in Vim, one file per project.
 
 ==============================================================================
 FIELDS                                                              *gtd-fields*
@@ -30,11 +31,11 @@ delimited by a unique character:
 +--------+------------+-------------------------------------+
 | !      | Handle     | a generated UUID-style task ID      |
 | =      | Box        | a task collection (inbox, etc.)     |
-| :      | Project    | the task project                    |
+| :      | Scope      | the task scope                      |
 | @      | Context    | the context for completing the task |
-| -      | Importance | task priority (H, M or L)           |
-| 'pipe' | Title      | task title                          |
-| []     | note_      | extended text                       |
+| -      | Priority   | task priority (H, M or L)           |
+| ]      | Title      | task title                          |
+| *      | Addendum   | presence of extended text addendum  |
 | /      | Date       | completion date                     |
 | #      | Associate  | contact info                        |
 +--------+------------+-------------------------------------+
@@ -59,7 +60,7 @@ Tasks are organized into groups, by category, project, context, etc.:
 Groups are indicated by a group header, in the format: `{=I}`
 
 For example: 
-- `{=I}`   : group by category
+- `{=I}`   : group by box
 - `{:h}`   : group by project
 - `{@err}` : group by context 
 
@@ -102,6 +103,11 @@ GROUPING                                                          *gtd-grouping*
 - <leader>g:    reformat and group by project
 - <leader>g@    reformat and group by context
 - <leader>g-    reformat and group by priority
+
+==============================================================================
+FILE STRUCTURE                                                       *gtd-files*
+
+TBD
 
 ==============================================================================
 ARCHIVE                                                            *gtd-archive*
