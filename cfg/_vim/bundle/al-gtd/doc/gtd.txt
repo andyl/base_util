@@ -34,7 +34,7 @@ delimited by a unique character:
 | :      | Scope      | the task scope                      |
 | @      | Context    | the context for completing the task |
 | -      | Priority   | task priority (H, M or L)           |
-| _      | Title      | task title                          |
+| $      | Title      | task title                          |
 | *      | Addendum   | presence of extended text addendum  |
 | /      | Date       | completion date                     |
 | #      | Associate  | contact info                        |
