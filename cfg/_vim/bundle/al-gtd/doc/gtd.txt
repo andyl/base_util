@@ -8,7 +8,7 @@ CONTENTS                                                           *gtd-outline*
   Editing            |gtd-editing|
   Sorting            |gtd-sorting|
   Grouping           |gtd-grouping|
-  File Structure     |gtd-files|
+  File Layout        |gtd-files|
   Archive            |gtd-archive|
   Support Software   |gtd-support|
   Related Tools      |gtd-tools|
@@ -26,19 +26,19 @@ FIELDS                                                              *gtd-fields*
 Each task is on a single line.  Each task has a standard set of fields
 delimited by a unique character:
 
-+--------+------------+-------------------------------------+
-| Char   | Element    | Desc                                |
-+--------+------------+-------------------------------------+
-| !      | Handle     | a generated UUID-style task ID      |
-| =      | Status     | task status (inbox, completed)      |
-| :      | Scope      | the task scope                      |
-| @      | Context    | the context for completing the task |
-| -      | Priority   | task priority (H, M or L)           |
-| $      | Title      | task title                          |
-| *      | Addendum   | presence of extended text addendum  |
-| /      | Date       | completion date                     |
-| #      | Associate  | contact info                        |
-+--------+------------+-------------------------------------+
++------+----------+-------------------------------------+
+| Char | Element  | Description                         |
++------+----------+-------------------------------------+
+| !    | Handle   | a generated UUID-style task ID      |
+| =    | Status   | task status (inbox, completed)      |
+| :    | Scope    | the task scope                      |
+| @    | Context  | the context for completing the task |
+| -    | Priority | task priority (H, M or L)           |
+| +    | Title    | task title                          |
+| *    | Addendum | presence of extended text addendum  |
+| &    | Date     | completion date                     |
+| #    | Contact  | contact name                        |
++------+----------+-------------------------------------+
 
 +--------------------------------+-------------------+
 | Valid Status                   | Valid Priorities  |
@@ -107,7 +107,20 @@ GROUPING                                                          *gtd-grouping*
 ==============================================================================
 FILE STRUCTURE                                                       *gtd-files*
 
-TBD
+gtd_root/
+- archive/
+-- notes/
+--- 4arZ.md
+--- 3J4a.md
+-- base_yymmdd.gta
+-- project_yymmdd.gta
+- notes/
+-- 5tYo.md
+-- 3W98.md
+- base.gtd
+- base.gta
+- project.gtd
+- project.gta
 
 ==============================================================================
 ARCHIVE                                                            *gtd-archive*

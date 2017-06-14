@@ -7,11 +7,13 @@ function! GetContext()
   let x = getline(line('.')-1)
   return matchstr(x,'@\zs[^ ]*\ze')
 endfunction
-function! GetProject()
+
+function! GetScope()
   let x = getline(line('.')-1)
   return matchstr(x,':\zs[^ ]*\ze')
 endfunction
-function! GetCategory()
+
+function! GetStatus()
   let x = getline(line('.')-1)
   let y = matchstr(x,'=\zs[IAWSTRX]*\ze')
   if y == ""
@@ -35,39 +37,38 @@ function! CRMode()
 endfunction
 
 " GTD SYNTAX -----
-syntax match gFilter   /<.*>/
-" syntax match gFilter    /{.*}/
-syntax match gHandle    /\![A-z0-9][A-z0-9][A-z0-9]/
-syntax match gCategory  /=[IAWSTRXiawstrx]/ 
-syntax match gProject   /:[^ ]*/
+syntax match gGroup     /{.*}/
+syntax match gHandle    /\![A-z0-9][A-z0-9][A-z0-9][A-z0-9]/
+syntax match gStatus    /=[IAWSTRXiawstrx]/ 
+syntax match gScope     /:[^ ]*/
 syntax match gContext   /@[^ ]*/
 syntax match gHPriority /\-[Hh]/
 syntax match gMPriority /\-[Mm]/
 syntax match gLPriority /\-[Ll]/
 syntax match gContact   /#[^ ]*/
-syntax match gTask      /|[^\[\/\#\:\@\=]*/
-syntax match gNote      /\[.*\]/
-" syntax match gDate      /\/[^ ]*/
+syntax match gTitle     /+[^\&\#\:\@\*\=]*/
+syntax match gNote      /*/
+syntax match gDate      /&[^ ]*/
 
 " SYNTAX HIGHLIGHTING -----
-highlight gFilter    ctermfg=green
+highlight gGroup     ctermfg=green
 highlight gHandle    ctermfg=black
-highlight gCategory  ctermfg=red  
-highlight gProject   ctermfg=yellow 
+highlight gStatus    ctermfg=red  
+highlight gScope     ctermfg=yellow 
 highlight gContext   ctermfg=blue
 highlight gHPriority ctermfg=black    ctermbg=red
 highlight gMPriority ctermfg=black    ctermbg=blue
 highlight gLPriority ctermfg=black    ctermbg=yellow
 highlight gContact   ctermfg=magenta
-highlight gTask      ctermfg=white
-highlight gNote      ctermfg=gray    ctermbg=black
+highlight gTitle     ctermfg=white
+highlight gNote      ctermfg=red       ctermbg=black
 highlight gDate      ctermfg=cyan
 
 " SHARED FUNCTIONS -----
 function! SetMethod() range
 ruby << END
 $VERBOSE=nil
-require '/home/aleak/util/pdev_util/gems/vgtd/lib/vgtd187'
+require '/home/aleak/util/pdev_util/gems/vgtd/lib/vgtd'
 def update_field(string, leader, newval)
   task = Gtask.new(string)
   task.update_field(leader, newval)
@@ -124,7 +125,7 @@ endfunction
 
 function! UpdateDate(mode) range
   call SetMethod()
-  call UpdateTask("/", GetInput("New Date: "), a:mode)
+  call UpdateTask("&", GetInput("New Date: "), a:mode)
 endfunction
 
 function! UpdateContact(mode) range
