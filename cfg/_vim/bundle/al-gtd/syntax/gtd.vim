@@ -63,7 +63,6 @@ highlight gDate      ctermfg=cyan
 highlight gTask      ctermfg=white
 highlight gNote      ctermfg=gray    ctermbg=black
 
-syntax on
 " SHARED FUNCTIONS -----
 function! SetMethod() range
 ruby << END
