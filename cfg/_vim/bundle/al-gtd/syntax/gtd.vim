@@ -35,8 +35,8 @@ function! CRMode()
 endfunction
 
 " GTD SYNTAX -----
-" syntax match gFilter   /<.*>/
-syntax match gFilter    /{.*}/
+syntax match gFilter   /<.*>/
+" syntax match gFilter    /{.*}/
 syntax match gHandle    /\![A-z0-9][A-z0-9][A-z0-9]/
 syntax match gCategory  /=[IAWSTRXiawstrx]/ 
 syntax match gProject   /:[^ ]*/
@@ -63,6 +63,7 @@ highlight gDate      ctermfg=cyan
 highlight gTask      ctermfg=white
 highlight gNote      ctermfg=gray    ctermbg=black
 
+syntax on
 " SHARED FUNCTIONS -----
 function! SetMethod() range
 ruby << END
