@@ -77,7 +77,7 @@ on the current row.  In visual mode, all selected rows are affected.
 - <leader>c:    change the project  (interactive)
 - <leader>c-    change the priority (interactive)
 - <leader>c@    change the context  (interactive)
-- <leader>c/    change the date     (interactive)
+- <leader>c&    change the date     (interactive)
 - <leader>c#    change the contact  (interactive)
 
 - <leader>x  change the category to 'X' 
@@ -126,7 +126,7 @@ gtd_root/
 ARCHIVE                                                            *gtd-archive*
 
 When the file is saved, all DONE topics `{=X}` are moved to the archive file
-`current.gta`.
+`<project>.gta`.
 
 ==============================================================================
 SUPPORT SOFTWARE                                                   *gtd-support*
