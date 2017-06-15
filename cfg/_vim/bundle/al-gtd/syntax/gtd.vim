@@ -40,12 +40,12 @@ endfunction
 syntax match gGroup     /{.*}/
 syntax match gHandle    /\![A-z0-9][A-z0-9][A-z0-9][A-z0-9]/
 syntax match gStatus    /=[IAWSTRXiawstrx]/ 
-syntax match gScope     /:[^ ]*/
-syntax match gContext   /@[^ ]*/
+syntax match gScope     /:[a-z][a-z_]*/
+syntax match gContext   /@[a-z][a-z]*/
 syntax match gHPriority /\-[Hh]/
 syntax match gMPriority /\-[Mm]/
 syntax match gLPriority /\-[Ll]/
-syntax match gContact   /#[^ ]*/
+syntax match gContact   /#[A-Za-z][A-Za-z0-9\.\-\_]*/
 syntax match gTitle     /+[^\&\#\:\@\*\=]*/
 syntax match gNote      /*/
 syntax match gDate      /&[^ ]*/
@@ -169,44 +169,44 @@ nmap <leader>l :call DoUpdatePriority("L", "n")<cr>
 
 " SORT KEYMAPS -----
 vmap <leader>ss :!pgsort<cr>gv
-nmap <leader>ss mm:%!pgsort<cr>`m
+nmap <leader>ss :%!pgsort<cr>`m
 
 vmap <leader>s! :!pgsort handle<cr>gv
-nmap <leader>s! mm:%!pgsort handle<cr>`m
+nmap <leader>s! :%!pgsort handle<cr>`m
 
 vmap <leader>s= :!pgsort category<cr>gv
-nmap <leader>s= mm:%!pgsort category<cr>`m
+nmap <leader>s= :%!pgsort category<cr>`m
 
 vmap <leader>s: :!pgsort project<cr>gv
-nmap <leader>s: mm:%!pgsort project<cr>`m
+nmap <leader>s: :%!pgsort project<cr>`m
 
 vmap <leader>s@ :!pgsort context<cr>gv
-nmap <leader>s@ mm:%!pgsort context<cr>`m
+nmap <leader>s@ :%!pgsort context<cr>`m
 
 vmap <leader>s- :!pgsort priority<cr>gv
-nmap <leader>s- mm:%!pgsort priority<cr>`m
+nmap <leader>s- :%!pgsort priority<cr>`m
 
 vmap <leader>s/ :!pgsort date<cr>gv
-nmap <leader>s/ mm:%!pgsort date<cr>`m
+nmap <leader>s/ :%!pgsort date<cr>`m
 
 vmap <leader>s# :!pgsort contact<cr>gv
-nmap <leader>s# mm:%!pgsort contact<cr>`m
+nmap <leader>s# :%!pgsort contact<cr>`m
 
 " GROUP KEYMAPS -----
 " vmap <leader>g! :!pggroup !<cr>gv
-" nmap <leader>g! mm:%!pggroup !<cr>`m
+" nmap <leader>g! :%!pggroup !<cr>`m
 
 vmap <leader>g= :!pggroup =<cr>gv
-nmap <leader>g= mm:%!pggroup =<cr>`m
+nmap <leader>g= :%!pggroup =<cr>`m
 
 vmap <leader>g: :!pggroup :<cr>gv
-nmap <leader>g: mm:%!pggroup :<cr>`m
+nmap <leader>g: :%!pggroup :<cr>`m
 
 vmap <leader>g@ :!pggroup @<cr>gv
-nmap <leader>g@ mm:%!pggroup @<cr>`m
+nmap <leader>g@ :%!pggroup @<cr>`m
 
 vmap <leader>g- :!pggroup -<cr>gv
-nmap <leader>g- mm:%!pggroup -<cr>`m
+nmap <leader>g- :%!pggroup -<cr>`m
 
 vmap <leader>g# :!pggroup #<cr>gv
-nmap <leader>g# mm:%!pggroup #<cr>`m
+nmap <leader>g# :%!pggroup #<cr>`m
