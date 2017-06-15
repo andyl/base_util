@@ -38,7 +38,7 @@ endfunction
 
 " GTD SYNTAX -----
 syntax match gGroup     /{.*}/
-syntax match gHandle    /\![A-z0-9][A-z0-9][A-z0-9][A-z0-9]/
+syntax match gHandle    /\![a-z0-9][a-z0-9][a-z0-9][a-z0-9]/
 syntax match gStatus    /=[IAWSTRXiawstrx]/ 
 syntax match gScope     /:[a-z][a-z_]*/
 syntax match gContext   /@[a-z][a-z]*/
@@ -68,7 +68,7 @@ highlight gDate      ctermfg=cyan
 function! SetMethod() range
 ruby << END
 $VERBOSE=nil
-require '/home/aleak/util/pdev_util/gems/vgtd/lib/vgtd'
+require 'vgtd'
 def update_field(string, leader, newval)
   task = Gtask.new(string)
   task.update_field(leader, newval)
@@ -93,19 +93,19 @@ function! UpdateTask(leader, value, mode) range
 endfunction
 
 " UPDATE FUNCTIONS -----
-function! UpdateCategory(mode) range
+function! UpdateStatus(mode) range
   call SetMethod()
-  call UpdateTask("=", GetInput("New Category: "), a:mode)
+  call UpdateTask("=", GetInput("New Status: "), a:mode)
 endfunction
 
-function! UpdateSpecificCategory(val, mode) range
+function! UpdateSpecificStatus(val, mode) range
   call SetMethod()
   call UpdateTask("=", a:val, a:mode)
 endfunction
 
-function! UpdateProject(mode) range
+function! UpdateScope(mode) range
   call SetMethod()
-  call UpdateTask(":", GetInput("New Project: "), a:mode)
+  call UpdateTask(":", GetInput("New Scope: "), a:mode)
 endfunction
 
 function! UpdateContext(mode) range
@@ -137,11 +137,11 @@ endfunction
 imap <CR> <ESC>:call CRMode()<CR>
 
 " CHANGE KEYMAPS -----
-vmap <leader>c= :call UpdateCategory("v")<cr>gv
-nmap <leader>c= :call UpdateCategory("n")<cr>
+vmap <leader>c= :call UpdateStatus("v")<cr>gv
+nmap <leader>c= :call UpdateStatus("n")<cr>
 
-vmap <leader>c: :call UpdateProject("v")<cr>gv
-nmap <leader>c: :call UpdateProject("n")<cr>
+vmap <leader>c: :call UpdateScope("v")<cr>gv
+nmap <leader>c: :call UpdateScope("n")<cr>
 
 vmap <leader>c@ :call UpdateContext("v")<cr>gv
 nmap <leader>c@ :call UpdateContext("n")<cr>
@@ -155,10 +155,10 @@ nmap <leader>c/ :call UpdateDate("n")<cr>
 vmap <leader>c# :call UpdateContact("v")<cr>gv
 nmap <leader>c# :call UpdateContact("n")<cr>
 
-vmap <leader>x :call UpdateSpecificCategory("X", "v")<cr>gv
-nmap <leader>x :call UpdateSpecificCategory("X", "n")<cr>
-vmap <leader>a :call UpdateSpecificCategory("A", "v")<cr>gv
-nmap <leader>a :call UpdateSpecificCategory("A", "n")<cr>
+vmap <leader>x :call UpdateSpecificStatus("X", "v")<cr>gv
+nmap <leader>x :call UpdateSpecificStatus("X", "n")<cr>
+vmap <leader>a :call UpdateSpecificStatus("A", "v")<cr>gv
+nmap <leader>a :call UpdateSpecificStatus("A", "n")<cr>
 
 vmap <leader>h :call DoUpdatePriority("H", "v")<cr>gv
 vmap <leader>m :call DoUpdatePriority("M", "v")<cr>gv
