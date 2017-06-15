@@ -1,5 +1,8 @@
 " AUTO COMMAND to create archive file
-autocmd VimLeave *.gtd :silent !pgbackup <afile>
+augroup onexit
+  autocmd!
+  autocmd VimLeave *.gtd :silent !pgbackup <afile>
+augroup END
 
 " SNIPPET HELPER FUNCTIONS -----
 function! GetContext()
@@ -148,8 +151,8 @@ nmap <leader>c@ :call UpdateContext("n")<cr>
 vmap <leader>c- :call UpdatePriority("v")<cr>gv
 nmap <leader>c- :call UpdatePriority("n")<cr>
 
-vmap <leader>c/ :call UpdateDate("v")<cr>gv
-nmap <leader>c/ :call UpdateDate("n")<cr>
+vmap <leader>c& :call UpdateDate("v")<cr>gv
+nmap <leader>c& :call UpdateDate("n")<cr>
 
 vmap <leader>c# :call UpdateContact("v")<cr>gv
 nmap <leader>c# :call UpdateContact("n")<cr>
