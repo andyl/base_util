@@ -528,7 +528,7 @@ function! <SID>focus()
     return
   endif
   hi clear
-  let defaultTypes = ["text", "otl", "wlog"]
+  let defaultTypes = ["text", "otl", "wlog", "gtd"]
   if index(defaultTypes, &filetype)
     let g:gruvbox_contrast_dark='hard'
     set background=dark
@@ -555,7 +555,7 @@ endfunction
 autocmd BufEnter,FocusGained,VimEnter,WinEnter *      :call <SID>focus()
 autocmd BufEnter,FocusGained,VimEnter,WinEnter *.wlog colorscheme worklog | AirlineRefresh
 autocmd BufEnter,FocusGained,VimEnter,WinEnter *.otl  colorscheme otl     | AirlineRefresh
-" autocmd FocusLost,WinLeave                     *      :call <SID>blur()
+autocmd BufEnter,FocusGained,VimEnter,WinEnter *.gtd  colorscheme gtd     | AirlineRefresh
 
 " === TERM-SPECIFIC ITEMS 
 if exists('$TMUX')
