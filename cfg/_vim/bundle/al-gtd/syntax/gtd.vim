@@ -1,5 +1,4 @@
 " AUTO COMMAND to create archive file
-" autocmd BufWritePost,FileWritePost *.gtd :silent !pgbackup <afile>
 autocmd VimLeave *.gtd :silent !pgbackup <afile>
 
 " SNIPPET HELPER FUNCTIONS -----
