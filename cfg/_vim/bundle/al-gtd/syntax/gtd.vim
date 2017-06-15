@@ -25,6 +25,11 @@ function! GetStatus()
   end
 endfunction
 
+function! GetHandle()
+  let x = getline(line('.')-1)
+  return matchstr(x,'!\zs[^ ]*\ze')
+endfunction
+
 " HELPER FUNCTION FOR INPUT MODE -----
 function! CRMode()
   let first_char = matchstr(getline('.'), "^.")
@@ -181,8 +186,8 @@ vmap <leader>s# :!pgsort contact<cr>gv
 nmap <leader>s# :%!pgsort contact<cr>`m
 
 " GROUP KEYMAPS -----
-" vmap <leader>g! :!pggroup !<cr>gv
-" nmap <leader>g! :%!pggroup !<cr>`m
+vmap <leader>g! :!pggroup !<cr>gv
+nmap <leader>g! :%!pggroup !<cr>`m
 
 vmap <leader>g= :!pggroup =<cr>gv
 nmap <leader>g= :%!pggroup =<cr>`m
