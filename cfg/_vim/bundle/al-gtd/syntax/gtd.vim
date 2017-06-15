@@ -25,18 +25,13 @@ function! GetStatus()
   end
 endfunction
 
-function! GetHandle()
-  let x = getline(line('.')-1)
-  return matchstr(x,'!\zs[^ ]*\ze')
-endfunction
-
 " HELPER FUNCTION FOR INPUT MODE -----
 function! CRMode()
   let first_char = matchstr(getline('.'), "^.")
   if first_char == '!' || first_char == '='
     execute "normal mm"
     %!pgsort
-    execute "normal `mo=\<TAB>"
+    execute "normal `mo=\<TAB>mm"
   else
     execute "normal! a\<CR>"
     startinsert
@@ -122,12 +117,28 @@ function! UpdateDate(mode) range
 endfunction
 
 function! UpdateContact(mode) range
-  call SetMethod()
-  call UpdateTask("#", GetInput("New Contact: "), a:mode)
+  call setmethod()
+  call updatetask("#", getinput("new contact: "), a:mode)
+endfunction
+
+" NOTE FUNCTION -----
+function! OpenNote() range
+  let line   = getline(line('.'))
+  let handle = matchstr(line,'!\zs[^ ]*\ze')
+  if handle == ""
+    return ""
+  end
+  execute "normal zt"
+  execute "only"
+  execute "split notes/" . handle . ".md"
 endfunction
 
 " KEYMAPS -----
 imap <CR> <ESC>:call CRMode()<CR>
+
+" NOTE KEYMAPS -----
+vmap <leader>n :call OpenNote()<cr>gv
+nmap <leader>n :call OpenNote()<cr>
 
 " CHANGE KEYMAPS -----
 vmap <leader>c= :call UpdateStatus("v")<cr>gv
@@ -162,44 +173,44 @@ nmap <leader>l :call DoUpdatePriority("L", "n")<cr>
 
 " SORT KEYMAPS -----
 vmap <leader>ss :!pgsort<cr>gv
-nmap <leader>ss :%!pgsort<cr>`m
+nmap <leader>ss mm:%!pgsort<cr>`mmm
 
 vmap <leader>s! :!pgsort handle<cr>gv
-nmap <leader>s! :%!pgsort handle<cr>`m
+nmap <leader>s! mm:%!pgsort handle<cr>`mmm
 
 vmap <leader>s= :!pgsort category<cr>gv
-nmap <leader>s= :%!pgsort category<cr>`m
+nmap <leader>s= mm:%!pgsort category<cr>`mmm
 
 vmap <leader>s: :!pgsort project<cr>gv
-nmap <leader>s: :%!pgsort project<cr>`m
+nmap <leader>s: mm:%!pgsort project<cr>`mmm
 
 vmap <leader>s@ :!pgsort context<cr>gv
-nmap <leader>s@ :%!pgsort context<cr>`m
+nmap <leader>s@ mm:%!pgsort context<cr>`mmm
 
 vmap <leader>s- :!pgsort priority<cr>gv
-nmap <leader>s- :%!pgsort priority<cr>`m
+nmap <leader>s- mm:%!pgsort priority<cr>`mmm
 
 vmap <leader>s/ :!pgsort date<cr>gv
-nmap <leader>s/ :%!pgsort date<cr>`m
+nmap <leader>s/ mm:%!pgsort date<cr>`mmm
 
 vmap <leader>s# :!pgsort contact<cr>gv
-nmap <leader>s# :%!pgsort contact<cr>`m
+nmap <leader>s# mm:%!pgsort contact<cr>`mmm
 
 " GROUP KEYMAPS -----
 vmap <leader>g! :!pggroup !<cr>gv
-nmap <leader>g! :%!pggroup !<cr>`m
+nmap <leader>g! mm:%!pggroup !<cr>`mmm
 
 vmap <leader>g= :!pggroup =<cr>gv
-nmap <leader>g= :%!pggroup =<cr>`m
+nmap <leader>g= mm:%!pggroup =<cr>`mmm
 
 vmap <leader>g: :!pggroup :<cr>gv
-nmap <leader>g: :%!pggroup :<cr>`m
+nmap <leader>g: mm:%!pggroup :<cr>`mmm
 
 vmap <leader>g@ :!pggroup @<cr>gv
-nmap <leader>g@ :%!pggroup @<cr>`m
+nmap <leader>g@ mm:%!pggroup @<cr>`mmm
 
 vmap <leader>g- :!pggroup -<cr>gv
-nmap <leader>g- :%!pggroup -<cr>`m
+nmap <leader>g- mm:%!pggroup -<cr>`mmm
 
 vmap <leader>g# :!pggroup #<cr>gv
-nmap <leader>g# :%!pggroup #<cr>`m
+nmap <leader>g# mm:%!pggroup #<cr>`mmm
