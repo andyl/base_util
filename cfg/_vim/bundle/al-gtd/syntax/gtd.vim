@@ -31,7 +31,7 @@ function! CRMode()
   if first_char == '!' || first_char == '='
     execute "normal mm"
     %!pgsort
-    execute "normal `mo=\<TAB>mm"
+    execute "normal `mo=\<TAB>"
   else
     execute "normal! a\<CR>"
     startinsert
