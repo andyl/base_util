@@ -49,7 +49,7 @@ syntax match gMPriority /\-[Mm]/
 syntax match gLPriority /\-[Ll]/
 syntax match gContact   /#[A-Za-z][A-Za-z0-9\.\-\_]*/
 syntax match gTitle     /+[^\^\~\$\&\#\:\@\*\=]*/
-syntax match gAppend    /\^[^\+\$\&\#\:\@\*\=]*/
+syntax match gAppend    /\^[^\+\$\&\#\@\*\=]*/
 syntax match gNote      /*/
 syntax match gDate      /\~[^ ]*/
 
