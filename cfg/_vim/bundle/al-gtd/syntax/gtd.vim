@@ -48,9 +48,10 @@ syntax match gHPriority /\-[Hh]/
 syntax match gMPriority /\-[Mm]/
 syntax match gLPriority /\-[Ll]/
 syntax match gContact   /#[A-Za-z][A-Za-z0-9\.\-\_]*/
-syntax match gTitle     /+[^\&\#\:\@\*\=]*/
+syntax match gTitle     /+[^\$\&\#\:\@\*\=]*/
+syntax match gAppend    /&[^\+\$\&\#\:\@\*\=]*/
 syntax match gNote      /*/
-syntax match gDate      /&[^ ]*/
+syntax match gDate      /$[^ ]*/
 
 " SHARED FUNCTIONS -----
 function! SetMethod() range
@@ -113,7 +114,7 @@ endfunction
 
 function! UpdateDate(mode) range
   call SetMethod()
-  call UpdateTask("&", GetInput("New Date: "), a:mode)
+  call UpdateTask("$", GetInput("New Date: "), a:mode)
 endfunction
 
 function! UpdateContact(mode) range
@@ -153,8 +154,8 @@ nmap <leader>c@ :call UpdateContext("n")<cr>
 vmap <leader>c- :call UpdatePriority("v")<cr>gv
 nmap <leader>c- :call UpdatePriority("n")<cr>
 
-vmap <leader>c& :call UpdateDate("v")<cr>gv
-nmap <leader>c& :call UpdateDate("n")<cr>
+vmap <leader>c$ :call UpdateDate("v")<cr>gv
+nmap <leader>c$ :call UpdateDate("n")<cr>
 
 vmap <leader>c# :call UpdateContact("v")<cr>gv
 nmap <leader>c# :call UpdateContact("n")<cr>
@@ -190,8 +191,8 @@ nmap <leader>s@ mm:%!pgsort context<cr>`mmm
 vmap <leader>s- :!pgsort priority<cr>gv
 nmap <leader>s- mm:%!pgsort priority<cr>`mmm
 
-vmap <leader>s/ :!pgsort date<cr>gv
-nmap <leader>s/ mm:%!pgsort date<cr>`mmm
+vmap <leader>s$ :!pgsort date<cr>gv
+nmap <leader>s$ mm:%!pgsort date<cr>`mmm
 
 vmap <leader>s# :!pgsort contact<cr>gv
 nmap <leader>s# mm:%!pgsort contact<cr>`mmm
