@@ -10,6 +10,7 @@ highlight gMPriority ctermfg=black    ctermbg=blue
 highlight gLPriority ctermfg=black    ctermbg=yellow
 highlight gContact   ctermfg=magenta
 highlight gTitle     ctermfg=white
-highlight gNote      ctermfg=red       ctermbg=black
+highlight gNote      ctermfg=red      ctermbg=black
 highlight gDate      ctermfg=cyan
+highlight gAppend    ctermfg=LightGreen
 
