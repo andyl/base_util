@@ -42,16 +42,16 @@ endfunction
 syntax match gGroup     /{.*}/
 syntax match gHandle    /\![a-z0-9][a-z0-9][a-z0-9][a-z0-9]/
 syntax match gStatus    /=[IAWSTRXiawstrx]/ 
-syntax match gScope     /:[a-z][a-z_]*/
-syntax match gContext   /@[a-z][a-z]*/
+syntax match gScope     /\ :[a-z][a-z_]*/
+syntax match gContext   / @[a-z][a-z]*/
 syntax match gHPriority /\-[Hh]/
 syntax match gMPriority /\-[Mm]/
 syntax match gLPriority /\-[Ll]/
 syntax match gContact   /#[A-Za-z][A-Za-z0-9\.\-\_]*/
-syntax match gTitle     /+[^\$\&\#\:\@\*\=]*/
-syntax match gAppend    /&[^\+\$\&\#\:\@\*\=]*/
+syntax match gTitle     /+[^\^\~\$\&\#\:\@\*\=]*/
+syntax match gAppend    /\^[^\+\$\&\#\:\@\*\=]*/
 syntax match gNote      /*/
-syntax match gDate      /$[^ ]*/
+syntax match gDate      /\~[^ ]*/
 
 " SHARED FUNCTIONS -----
 function! SetMethod() range
