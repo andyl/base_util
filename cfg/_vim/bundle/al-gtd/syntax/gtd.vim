@@ -25,19 +25,6 @@ function! GetStatus()
   end
 endfunction
 
-" HELPER FUNCTION FOR INPUT MODE -----
-function! CRMode()
-  let first_char = matchstr(getline('.'), "^.")
-  if first_char == '!' || first_char == '='
-    execute "normal mm"
-    %!pgsort
-    execute "normal `mo=\<TAB>"
-  else
-    execute "normal! a\<CR>"
-    startinsert
-  end
-endfunction
-
 " GTD SYNTAX -----
 syntax match gGroup     /{.*}/
 syntax match gHandle    /\![a-z0-9][a-z0-9][a-z0-9][a-z0-9]/
@@ -133,9 +120,6 @@ function! OpenNote() range
   execute "only"
   execute "split notes/" . handle . ".md"
 endfunction
-
-" KEYMAPS -----
-imap <CR> <ESC>:call CRMode()<CR>
 
 " NOTE KEYMAPS -----
 vmap <leader>n :call OpenNote()<cr>gv
