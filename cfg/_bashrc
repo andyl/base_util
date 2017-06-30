@@ -27,7 +27,7 @@ export PATH=$PATH:~/.npm-global/bin:./node_modules/.bin
 # RUBY
 chruby_path="/usr/local/share/chruby/chruby.sh"
 autosh_path="/usr/local/share/chruby/auto.sh"
-GEM_PATH=/home/aleak/g/pdev_util/bin/gems
+GEM_PATH=/home/aleak/git/pdev_util/bin/gems
 [ -f $chruby_path ] && source $chruby_path   # setup chruby path
 [ -f $autosh_path ] && source $autosh_path   # autoset chruby on every `cd`
 export PATH=./bin:$PATH                      # prepend binstubs path
@@ -309,7 +309,7 @@ alias   ga='pushdp ~/.ansible'
 alias  gai='pushdp ~/.ansible/inventory'
 alias  gap='pushdp ~/.ansible/playbooks'
 alias gapl='pushdp ~/.ansible/playbooks/library'
-alias gapr='pushdp ~/g/x-ansible/roles'
+alias gapr='pushdp ~/git/x-ansible/roles'
 
 alias gdev='pushdp ~/dev'
 alias gdev='pushdp ~/dev'
