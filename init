@@ -27,7 +27,7 @@ Background:
 - dotfile templates in the cfg subdir must begin with an underscore
 
 It starts with a standard directory structure:
-~/g                      # UTIL_DIR
+~/git                    # UTIL_DIR
   /base_util
     init
     /bin                 # UTIL_PATH;

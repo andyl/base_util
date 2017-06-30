@@ -1,8 +1,8 @@
 Dotfile and Utility scripts.
 
 To use:
-  mkdir ~/util
-  cd ~/util
+  mkdir ~/git
+  cd ~/git
   git clone git://github.com/andyl/base_util.git
   base_util/init
 
@@ -28,8 +28,8 @@ Nested paths must be encoded using the following filename conventions:
 -> a single '^' character to show where to built the symlink
 
 For example:
-~/util/base_util/cfg/+config/app/^subdir/myfile
+~/git/base_util/cfg/+config/app/^subdir/myfile
 
 Will generate:
-~/.config/app/subdir -> ~/util/base_util/cfg/+config/app/^subdir
+~/.config/app/subdir -> ~/git/base_util/cfg/+config/app/^subdir
 

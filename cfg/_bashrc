@@ -311,8 +311,8 @@ alias  gap='pushdp ~/.ansible/playbooks'
 alias gapl='pushdp ~/.ansible/playbooks/library'
 alias gapr='pushdp ~/g/x-ansible/roles'
 
-alias glr='pushdp ~/lr'
-alias grr='pushdp ~/rr'
+alias gdev='pushdp ~/dev'
+alias gdev='pushdp ~/dev'
 
 alias grb='pushdp ~/.rubies'
 
