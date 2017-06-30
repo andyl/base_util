@@ -28,8 +28,8 @@ Nested paths must be encoded using the following filename conventions:
 -> a single '^' character to show where to built the symlink
 
 For example:
-~/git/base_util/cfg/+config/app/^subdir/myfile
+~/util/base_util/cfg/+config/app/^subdir/myfile
 
 Will generate:
-~/.config/app/subdir -> ~/git/base_util/cfg/+config/app/^subdir
+~/.config/app/subdir -> ~/util/base_util/cfg/+config/app/^subdir
 

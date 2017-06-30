@@ -44,7 +44,7 @@ It starts with a standard directory structure:
     /cfg
       _dotfiles
 
-You run '~/git/base_util/init' (this script!)
+You run '~/util/base_util/init' (this script!)
 
 The script produces:
 - ~/.symlinks for each _dotfile (and directory)
