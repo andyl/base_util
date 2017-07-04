@@ -280,6 +280,7 @@ alias gls='alias | grep pushdp | grep "alias g"'
 alias  gu='pushdp $UTIL_DIR'
 alias gub='pushdp $UTIL_DIR/base_util'
 alias gup='pushdp $UTIL_DIR/pdev_util'
+alias gud='pushdp $UTIL_DIR/doc'
 
 alias gubb='pushdp $UTIL_DIR/base_util/bin'
 alias gubc='pushdp $UTIL_DIR/base_util/cfg'
