@@ -36,14 +36,14 @@ export PATH=./bin:$PATH                      # prepend binstubs path
 # ELIXIR/ERLANG
 export ERL_AFLAGS="-kernel shell_history enabled"
 export PATH=$PATH:~/.mix/escripts             # setup escript path
-alias ie="iex 2> /dev/null"
+alias  ie="iex 2> /dev/null"
 alias iex="iex 2> /dev/null"
 alias imx="iex -S mix 2> /dev/null"
 alias shx="searchex"
 alias she="mix escript.build && MIX_ENV=eval ./searchex"
 alias shd="mix escript.build && ./searchex"
-alias mc="mix compile"
-alias mt="mix test"
+alias  mc="mix compile"
+alias  mt="mix test"
 
 ###########################################################################
 # GO
@@ -275,12 +275,11 @@ alias pf='pushd -0'           # go forward on the stack
 alias pn='cd ~'               # go to the Nth dir on the stack 
 alias pg='pushdp'             # go to a directory
 
-alias gls='alias | grep pushdp | grep "alias g"'
-
 alias  gu='pushdp $UTIL_DIR'
 alias gub='pushdp $UTIL_DIR/base_util'
 alias gup='pushdp $UTIL_DIR/pdev_util'
 alias gud='pushdp $UTIL_DIR/doc'
+alias guo='pushdp $UTIL_DIR/org'
 
 alias gubb='pushdp $UTIL_DIR/base_util/bin'
 alias gubc='pushdp $UTIL_DIR/base_util/cfg'
@@ -292,20 +291,21 @@ alias gupe='pushdp $UTIL_DIR/pdev_util/es'
 alias gupg='pushdp $UTIL_DIR/pdev_util/gems'
 alias gups='pushdp $UTIL_DIR/pdev_util/shards'
 
-alias   gb='pushdp ~/b'
-alias   gd='pushdp ~/d'
-alias   gg='pushdp ~/g'
-alias  gdl='pushdp ~/b/dl'
-alias   gt='pushdp ~/b/tst'
-alias   gj='pushdp ~/todo/journal'
-alias   gl='pushdp ~/data/share/library'
-alias   gv='pushdp ~/data/media/video'
-alias   gw='pushdp ~/tst/dwiki'
-alias  gmm='pushdp ~/mmht'
-alias  gwd='pushdp ~/tst/dwiki/design_notes'
-alias  gwm='pushdp ~/tst/dwiki/member_help'
-alias  gwa='pushdp ~/tst/dwiki/admin_help'
+alias  gv='pushdp /home/aleak/var'
+alias gvb='pushdp /home/aleak/var/backup'
+alias gvc='pushdp /home/aleak/var/cache'
+alias gvd='pushdp /home/aleak/var/data'
+alias gvi='pushdp /home/aleak/var/iso'
+alias gvs='pushdp /home/aleak/var/seed'
+
+alias  gs='pushdp /home/aleak/src'
+alias gsp='pushdp /home/aleak/src/BAMRU-Private'
+alias gsl='pushdp /home/aleak/src/lica'
+alias gsm='pushdp /home/aleak/src/mvscim'
+
+alias  gdl='pushdp ~/dl'
 alias  gzz='pushdp ~/zz'
+
 alias   ga='pushdp ~/.ansible'
 alias  gai='pushdp ~/.ansible/inventory'
 alias  gap='pushdp ~/.ansible/playbooks'
