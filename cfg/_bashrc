@@ -262,8 +262,8 @@ ph () {
   echo " pc - Clear stack"
   echo " pb - go Back on the stack"
   echo " pf - go Forward on the stack"
-  echo " pn <num> - go to the Nth dir on the stack"
-  echo " pg <dir> - Go to a directory"
+  echo " pg <dir> - go to a directory (full path)"
+  echo " g<num> - go to the Nth dir on the stack"
 }
 
 alias pd='dirs -v'            # display stack
@@ -272,8 +272,17 @@ alias px='popd'               # remove directory from stack
 alias pc='dirs -c ; dirs -v'  # clear stack 
 alias pb='pushd +1'           # go back on the stack
 alias pf='pushd -0'           # go forward on the stack
-alias pn='cd ~'               # go to the Nth dir on the stack 
 alias pg='pushdp'             # go to a directory
+alias g0='cd ~0'              # go to the Nth dir on the stack 
+alias g1='cd ~1'              # go to the Nth dir on the stack 
+alias g2='cd ~2'              # go to the Nth dir on the stack 
+alias g3='cd ~3'              # go to the Nth dir on the stack 
+alias g4='cd ~4'              # go to the Nth dir on the stack 
+alias g5='cd ~5'              # go to the Nth dir on the stack 
+alias g6='cd ~6'              # go to the Nth dir on the stack 
+alias g7='cd ~7'              # go to the Nth dir on the stack 
+alias g8='cd ~8'              # go to the Nth dir on the stack 
+alias g9='cd ~9'              # go to the Nth dir on the stack 
 
 alias  gu='pushdp $UTIL_DIR'
 alias gub='pushdp $UTIL_DIR/base_util'
