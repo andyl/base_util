@@ -154,13 +154,11 @@ function path() {                    # show path elements, one per line
 }
 
 function rollback() {     # DB rollback for Rails development
-  echo '>> rollback dev'  ; bundle exec rake db:rollback
-  echo '>> rollback test' ; RAILS_ENV=test bundle exec rake db:rollback
+  (echo '>> rollback dev'  ; bundle exec rails db:rollback) && (echo '>> rollback test' ; RAILS_ENV=test bundle exec rails db:rollback)
 }
 
 function migrate() {     # DB migration for Rails development
-  echo '>> migrate dev'  ; bundle exec rake db:migrate 
-  echo '>> migrate test' ; RAILS_ENV=test bundle exec rake db:migrate
+  (echo '>> migrate dev'  ; bundle exec rails db:migrate) && (echo '>> migrate test' ; RAILS_ENV=test bundle exec rails db:migrate)
 }
 
 function reorder() {     # Reorder Membership Records
