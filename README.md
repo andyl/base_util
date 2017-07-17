@@ -20,7 +20,7 @@ Each file and directory under 'cfg' beginning with
 an underscore will be symlinked as a ~/.dotfile.  
 
 Some programs store their configuration data under
-the ~/.config directory.  To support thisk, the
+the ~/.config directory.  To support this, the
 cfg symlinking supports nested config directories.
 
 Nested paths must be encoded using the following filename conventions:
