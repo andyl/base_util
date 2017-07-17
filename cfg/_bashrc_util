@@ -3,21 +3,30 @@
 
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
 
+###########################################################################
+
+function sourcefile() {
+  tgt=$1
+  [ -f $1 ] && source $1
+}
+
+###########################################################################
+
 export TZ="America/Los_Angeles"
-[ -f ~/.rails_env ]       && source ~/.rails_env
-[ -f ~/.bashu_aliases ]   && source ~/.bashu_aliases
-[ -f ~/.bashu_functions ] && source ~/.bashu_functions
-[ -f ~/.bashu_marks ]     && source ~/.bashu_marks
+sourcefile ~/.rails_env
+sourcefile ~/.bashu_aliases
+sourcefile ~/.bashu_functions
+sourcefile ~/.bashu_marks
 
 ###########################################################################
 # BASE UTIL
-[ -f ~/.util_dir  ] && source ~/.util_dir    # define $UTIL_DIR
-[ -f ~/.util_path ] && source ~/.util_path   # define $UTIL_PATH
-export PATH=$UTIL_PATH:$PATH                 # setup util PATH 
+sourcefile ~/.util_dir            # define $UTIL_DIR
+sourcefile ~/.util_path           # define $UTIL_PATH
+export PATH=$UTIL_PATH:$PATH      # setup util PATH 
 
 ###########################################################################
 # PDEV UTIL
-tgt=$UTIL_DIR/pdev_util/inc/_bashrc ; [ -f $tgt ] && source $tgt
+sourcefile ~/.bashrc_pdev
 
 ###########################################################################
 # NPM
@@ -27,10 +36,9 @@ export PATH=$PATH:~/.npm-global/bin:./node_modules/.bin
 # RUBY
 chruby_path="/usr/local/share/chruby/chruby.sh"
 autosh_path="/usr/local/share/chruby/auto.sh"
-GEM_PATH=/home/aleak/util/pdev_util/bin/gems
-[ -f $chruby_path ] && source $chruby_path   # setup chruby path
-[ -f $autosh_path ] && source $autosh_path   # autoset chruby on every `cd`
-export PATH=./bin:$PATH                      # prepend binstubs path
+sourcefile $chruby_path   # setup chruby path
+sourcefile $autosh_path   # autoset chruby on every `cd`
+export PATH=./bin:$PATH   # prepend binstubs path
 
 ###########################################################################
 # ELIXIR/ERLANG
@@ -53,7 +61,7 @@ export PATH=$PATH:$GOPATH/bin
 
 ###########################################################################
 # ANDROID STUDIO
-export ANDROID_HOME=/home/aleak/Android/Sdk
+export ANDROID_HOME=~/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 
 ###########################################################################
@@ -308,7 +316,7 @@ alias gvs='pushdp ~/var/seed'
 alias  gs='pushdp ~/src'
 alias gsp='pushdp ~/src/BAMRU-Private'
 alias gsl='pushdp ~/src/lica'
-alias gsm='pushdp ~/src/mvscim'
+alias gsb='pushdp ~/src/bugmark'
 
 alias  gdl='pushdp ~/dl'
 alias  gzz='pushdp ~/zz'
@@ -361,7 +369,7 @@ PSClear='\[\e[0m\]'     # Text Reset
 
 # Regular Colors
 Black='\e[0;30m'        # Black
-Red='\e[0;31m'          # Red
+Red='\e[0;31m'          # Re d
 Green='\e[0;32m'        # Green
 Yellow='\e[0;33m'       # Yellow
 Blue='\e[0;34m'         # Blue
@@ -448,9 +456,6 @@ CPD=~/.complete
 
 ###########################################################################
 # BASH PROMPT
-
-# set bash command line editor to VI mode
-# set -o vi
 
 # set the command prompt
 export USRNAME=`whoami`
