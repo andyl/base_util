@@ -193,8 +193,8 @@ alias  vx="vbox_provision"
 alias  an="ansible"
 
 alias  be="bundle exec"
-alias ber="bundle exec rake"
-alias  rt="bundle exec rake -T"
+alias ber="bundle exec rails"
+alias  rt="bundle exec rails -T"
 
 alias visudo="sudo EDITOR=vim visudo"
 
