@@ -1,4 +1,4 @@
-Dotfile and Utility scripts.
+Dotfile and Utility scripts
 
 To use:
   mkdir ~/util
