@@ -36,8 +36,8 @@ delimited by a unique character:
 | -    | Priority | task priority (H, M or L)           |
 | +    | Title    | task title                          |
 | *    | Addendum | presence of extended text addendum  |
-| &    | Date     | completion date                     |
-| #    | Contact  | contact name                        |
+| ~    | Date     | completion date                     |
+| #    | Contact  | contact name (also use for event)   |
 +------+----------+-------------------------------------+
 
 +--------------------------------+-------------------+
@@ -45,10 +45,9 @@ delimited by a unique character:
 +--------------------------------+-------------------+
 | =I : Inbox                     | -H : High         |
 | =A : Active (next action)      | -M : Medium       |
-| =W : Waiting on associate      | -L : Low          |
+| =W : Waiting on contact        | -L : Low          |
 | =C : Calendar (time triggered) |                   |
 | =S : Someday / Maybe           |                   |
-| =R : Reference / Reading       |                   |
 | =X : Done                      |                   |
 +--------------------------------+-------------------+
 
@@ -77,7 +76,7 @@ on the current row.  In visual mode, all selected rows are affected.
 - <leader>c:    change the project  (interactive)
 - <leader>c-    change the priority (interactive)
 - <leader>c@    change the context  (interactive)
-- <leader>c$    change the date     (interactive)
+- <leader>c~    change the date     (interactive)
 - <leader>c#    change the contact  (interactive)
 
 - <leader>x  change the category to 'X' 
@@ -87,7 +86,7 @@ on the current row.  In visual mode, all selected rows are affected.
 - <leader>l  change the priority to 'L' 
 
 Special editing tips:
-- use Ruby statements for relative dates (eg $2.weeks.from_now)
+- use Ruby statements for relative dates (eg ~2.weeks.from_now)
 - append notes using an ampersand (&Note Content Here)
 
 ==============================================================================
