@@ -8,6 +8,7 @@ CONTENTS                                                           *gtd-outline*
   Editing            |gtd-editing|
   Sorting            |gtd-sorting|
   Grouping           |gtd-grouping|
+  Notes              |gtd-notes|
   File Layout        |gtd-files|
   Archive            |gtd-archive|
   Support Software   |gtd-support|
@@ -35,7 +36,8 @@ delimited by a unique character:
 | @    | Context  | the context for completing the task |
 | -    | Priority | task priority (H, M or L)           |
 | +    | Title    | task title                          |
-| *    | Addendum | presence of extended text addendum  |
+| *    | Note     | indicates presence of a task note   |
+| ^    | Append   | append text to the task note        |
 | ~    | Date     | completion date                     |
 | #    | Contact  | contact name (also use for event)   |
 +------+----------+-------------------------------------+
@@ -87,7 +89,7 @@ on the current row.  In visual mode, all selected rows are affected.
 
 Special editing tips:
 - use Ruby statements for relative dates (eg ~2.weeks.from_now)
-- append notes using an ampersand (&Note Content Here)
+- append note text using an caret (^Note Content Here)
 
 ==============================================================================
 SORTING                                                            *gtd-sorting*
@@ -106,6 +108,20 @@ GROUPING                                                          *gtd-grouping*
 - <leader>g:    reformat and group by project
 - <leader>g@    reformat and group by context
 - <leader>g-    reformat and group by priority
+
+
+==============================================================================
+TASK NOTES                                                           *gtd-notes*
+
+Tasks can have associated notes.
+
+- <leader>n    open the associated task note
+
+Append text to the task note:
+- Enter a caret followed by text (^Note content here)
+- Save the file
+- reformat and resort (<leader>ss)
+- the text will be appended to the task note
 
 ==============================================================================
 FILE STRUCTURE                                                       *gtd-files*
