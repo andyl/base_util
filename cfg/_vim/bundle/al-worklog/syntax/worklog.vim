@@ -5,6 +5,7 @@ syntax match wDayStart  /^# \(MON\|TUE\|WED\|THU\|FRI\|SAT\|SUN\) [01][0-9]-[01]
 syntax match wDayEnd    /^---$/  
 syntax match wTaskStart /^## [0-2][0-9][0134][05].*/
 syntax match wTaskEnd   /^\[\]$/
+syntax match wContact   /\#[a-z]\+/
 syntax match wCode      /^    .*/
 syntax match wCode      /\`.*\`/
 syntax match wTODO      /TODO:/
@@ -13,10 +14,10 @@ syntax match wDONE      /DONE:/
 " FOLDING -----
 syn region levelOne 
      \  start=/^# \(ROADMAP\|MON\|TUE\|WED\|THU\|FRI\|SAT\|SUN\)/ 
-     \  end=/^---$/ fold contains=wRoadmap,wDayStart,wDayEnd,wCode,wTODO,wDONE keepend
+     \  end=/^---$/ fold contains=wRoadmap,wDayStart,wDayEnd,wCode,wContact,wTODO,wDONE keepend
 
 syn region levelTwo start=/^## / end=/^\[\]$/ 
-     \ fold contains=wTaskStart,wTaskEnd,wCode,wTODO,wDONE 
+     \ fold contains=wTaskStart,wTaskEnd,wContact,wCode,wTODO,wDONE
      \ contained extend keepend containedin=levelOne
 
 " FOLDING METHODS -----
