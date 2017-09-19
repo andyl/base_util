@@ -1,4 +1,5 @@
 " Vim Outliner Customizations
+" vimoutliner
 "
 
 let maplocalleader = "\\"      " local leader character
@@ -11,5 +12,6 @@ colorscheme otl    " use the 'otl' colorscheme (defined in ~/.vim/colors/otl.vim
 
 nmap <space> za
 
-" setlocal foldlevel=0  " start with everything closed...
+" see https://github.com/vimoutliner/vimoutliner/issues/114
+setlocal foldlevel=1  " start with everything closed...
 
