@@ -11,5 +11,10 @@ highlight wTaskEnd   ctermfg=blue
 highlight wCode      ctermfg=green
 highlight wTODO      ctermfg=black  ctermbg=red
 highlight wDONE      ctermfg=black  ctermbg=green
-highlight wContact   ctermfg=cyan
+
+highlight wStatus    ctermfg=red  
+highlight wScope     ctermfg=yellow 
+highlight wContext   ctermfg=blue
+highlight wContact   ctermfg=magenta
+highlight wDate      ctermfg=cyan
 

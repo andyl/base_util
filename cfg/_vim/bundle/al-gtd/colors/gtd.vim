@@ -1,3 +1,5 @@
+" COLOR SCHEME -----
+
 let g:colors_name="gtd"
 
 highlight gGroup     ctermfg=green
