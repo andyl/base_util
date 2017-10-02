@@ -227,9 +227,11 @@ fu! SaveSess()
   execute 'mksession! ' . getcwd() . '/.session.vim'
 endfunction
 
-fu! RestoreSess()
+fu! ReSess()
+  echom "HELLO WORLD"
+    execute 'source ' . getcwd() . '/.session.vim'
   if filereadable(getcwd() . '/.session.vim')
-    execute 'so ' . getcwd() . '/.session.vim'
+    execute 'source ' . getcwd() . '/.session.vim'
     " if bufexists(1)
     "   for l in range(1, bufnr('$'))
     "     if bufwinnr(l) == -1
@@ -242,7 +244,7 @@ endfunction
 
 " autocmd VimLeave * call SaveSess()
 " autocmd VimEnter * nested call RestoreSess()
-autocmd VimEnter * call RestoreSess()
+autocmd VimEnter * call ReSess()
 
 " === INDENTATION AND TABS
 filetype plugin indent on
