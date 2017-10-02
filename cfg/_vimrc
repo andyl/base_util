@@ -215,17 +215,26 @@ vmap <A-Down> ]egv
 map <F8> :vertical wincmd f<CR>
 
 " === STANDUP CONFIGURATION
-fu! Standup()
-  if filereadable(getcwd() . '/3.monthly.md')
-    split 3.monthly.md
-    set filetype=markdown
-    wincmd l
-    split 4.quarterly.md
-    set filetype=markdown
+" fu! Standup()
+"   if filereadable(getcwd() . '/3.monthly.md')
+"     split 3.monthly.md
+"     set filetype=markdown
+"     wincmd l
+"     split 4.quarterly.md
+"     set filetype=markdown
+"   endif
+" endfunction
+
+" autocmd VimEnter * call Standup()
+
+" === AUTORUN - autoexec vim script on VimEnter
+fu! LoadAutorun()
+  if filereadable(getcwd() . '/.autorun.vim')
+    exec "source " . getcwd() . "/.autorun.vim"
   endif
 endfunction
 
-autocmd VimEnter * call Standup()
+autocmd VimEnter * call LoadAutorun()
 
 " === INDENTATION AND TABS
 filetype plugin indent on
