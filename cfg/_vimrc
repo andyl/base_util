@@ -75,8 +75,6 @@ Plug 'vim-airline/vim-airline'           " status bar
 Plug 'vim-airline/vim-airline-themes'    " vim-airline themes
 Plug 'andyl/zoomwintab.vim'              " pane zooming
 Plug 'kshenoy/vim-signature'             " show marks
-" Plug 'xolox/vim-session'                 " vim-session
-" Plug 'xolox/vim-misc'                    " utilities for vim-session
 " -- MISC -----
 Plug 'terryma/vim-multiple-cursors'      " multiple cursors
 Plug 'itchyny/calendar.vim'              " vim calendars
@@ -216,35 +214,18 @@ vmap <A-Down> ]egv
 " === FOR EDITING HELP OUTLINES - OPENS TARGET FILE IN VERTICAL SPLIT WINDOW
 map <F8> :vertical wincmd f<CR>
 
-" === SESSION SAVE / RESTORE
-" let g:session_autosave = 'no'
-" let g:session_autoload = 'no'
-" nmap <leader>ns :SaveSession
-" nmap <leader>no :OpenSession
-" nmap <leader>nd :DeleteSession
-
-fu! SaveSess()
-  execute 'mksession! ' . getcwd() . '/.session.vim'
-endfunction
-
-fu! ReSess()
-  echom "HELLO WORLD"
-    execute 'source ' . getcwd() . '/.session.vim'
-  if filereadable(getcwd() . '/.session.vim')
-    execute 'source ' . getcwd() . '/.session.vim'
-    " if bufexists(1)
-    "   for l in range(1, bufnr('$'))
-    "     if bufwinnr(l) == -1
-    "       exec 'sbuffer ' . l
-    "     endif
-    "   endfor
-    " endif
+" === STANDUP CONFIGURATION
+fu! Standup()
+  if filereadable(getcwd() . '/3.monthly.md')
+    split 3.monthly.md
+    set filetype=markdown
+    wincmd l
+    split 4.quarterly.md
+    set filetype=markdown
   endif
 endfunction
 
-" autocmd VimLeave * call SaveSess()
-" autocmd VimEnter * nested call RestoreSess()
-autocmd VimEnter * call ReSess()
+autocmd VimEnter * call Standup()
 
 " === INDENTATION AND TABS
 filetype plugin indent on
