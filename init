@@ -1,10 +1,6 @@
 #!/usr/bin/env ruby
 
-require 'ostruct'
-
 =begin
-About this script:
-
 Util directories contain dotfiles and utility scripts.
 
 The goal is to make it FAST to setup new user accounts, 
@@ -86,27 +82,59 @@ target_hash = target_list.reduce({}) { |acc,val| acc[val.split('/').last] = val;
 
 # if target_list.length > 0
 #   puts "Generating symlinks for #{util_dir}"
-#   target_hash.values.each do |path|
-#     file_base = path.split('/').last[1..-1]
-#     util_base = path.split('/')[-3]
-#     file = '.' + file_base
-#     next if File.exist?(file) && File.symlink?(file) && File.readlink(file) == path
-#     system "mv #{file} #{file}.old" if File.exist?(file)
-#     system "rm -f #{file}"
-#     puts "-> #{util_base}/#{file_base}"
-#     system "ln -s #{path} #{file}"
-#     artifact = "#{path}/#{file}"
+#   target_hash.values.each do |src_path|
+#     tgt_base  = src_path.split('/').last[1..-1]
+#     util_base = src_path.split('/')[-3]
+#     tgt_file  = '.' + tgt_base
+#     next if File.exist?(tgt_file) && File.symlink?(tgt_file) && File.readlink(tgt_file) == src_path
+#     system "mv #{tgt_file} #{tgt_file}.old" if File.exist?(tgt_file)
+#     system "rm -f #{tgt_file}"
+#     puts "-> #{util_base}/#{tgt_base}"
+#     system "ln -s #{src_path} #{tgt_file}"
+#     artifact = "#{src_path}/#{tgt_file}"
 #     system "rm #{artifact}" if File.exist?(artifact)
 #   end
 # end
 
-# create deep-link symlinks
+# -------------------------------------------------
+# Some programs store their configuration data under
+# the ~/.config directory.  To support this, the
+# cfg symlinking supports nested config directories.
+#
+# Nested paths must be encoded using the following filename conventions:
+# -> a single '+' character to show the dotfile root
+# -> a single '^' character to show where to build the symlink
+# -------------------------------------------------
+# For example:
+# ~/util/base_util/cfg/+config/app/^subdir/myfile
+#
+# Will generate:
+# ~/.config/app/subdir -> ~/util/base_util/cfg/+config/app/^subdir
+# -------------------------------------------------
+
+def invalid_input_path?(path)
+  path.count("^") != 1
+end
+
 target_spec = util_dir + "/*_util/cfg/+*/**/^*"
 target_list = Dir.glob(target_spec).sort.uniq
 
 if target_list.length > 0
-  puts "Generating deep target links for #{util_dir}"
+  puts "Generating deep target links for #{util_dir}/cfg"
   target_list.each do |elem|
-    puts elem
+    next if invalid_input_path?(elem)
+    util_base = elem.split("cfg").first + "cfg/"
+    src_path  = '+' + elem.split("+").last
+    src_array = src_path.split("/")
+    src_base  = elem
+    link_idx  = src_array.index {|el| el.count("^") > 0}
+    src_link  = util_base + src_array[0..link_idx].join("/")
+    tgt_base  = src_array[0..link_idx-1].join("/").gsub("^", "").gsub("+", ".")
+    tgt_link  = src_array[0..link_idx].join("/").gsub("^", "").gsub("+", ".")
+    next if File.exist?(tgt_link) && File.symlink?(tgt_link) && File.readlink(tgt_link) == src_link
+    puts "#{src_path} | make: #{tgt_base} | link: #{tgt_link} -> #{src_link}"
+    system "mv #{tgt_link} #{tgt_link}.old" if File.exist?(tgt_link)
+    system "mkdir -p #{tgt_base}"
+    system "ln -s #{src_link} #{tgt_link}"
   end
 end
