@@ -121,7 +121,7 @@ def pfield(field, result, results)
   result.send(field).to_s.ljust(results.map {|r| r.send(field).length}.max)
 end
 
-puts "Generating deep target links for #{util_dir}/cfg"
+puts "Generating deep links for #{util_dir}/cfg"
 results = target_list.reduce([]) do |acc, elem|
   next(acc) if elem.count("^") != 1
   util_base = elem.split("cfg").first + "cfg/"
@@ -138,7 +138,7 @@ end
 
 results.each do |result|
   pf = ->(field) { pfield(field, result, results) }
-  puts "#{pf.call(:src_path)} | make #{pf.call(:tgt_base)} | #{pf.call(:tgt_link)} -> #{pf.call(:src_link)}"
+  puts "#{pf.call(:src_path)} | make #{pf.call(:tgt_base)} | #{pf.call(:tgt_link)} -> #{pf.call(:src_link).delete("/home/aleak")}"
   system "mv #{result.tgt_link} #{result.tgt_link}.old" if File.exist?(result.tgt_link)
   system "mkdir -p #{result.tgt_base}"
   system "ln -s #{result.src_link} #{result.tgt_link}"
