@@ -1,57 +1,57 @@
 #!/usr/bin/env ruby
 
-=begin
-Util directories contain dotfiles and utility scripts.
+require 'ostruct'
 
-The goal is to make it FAST to setup new user accounts, 
-configured with the right tools for a specific environment 
-(production, test, development, etc.)
-
-The setup process is:
-1) copy util directories onto your machine (eg to ~/util), 
-   using rcp, rsync, or git-clone
-2) run '~/util/base_util/init' and you're done
-
-Background:
-- there can be one or more util directories
-- each directory has a unique name <name>_util
-- each util directory may contain environment specific setups
-- e.g. 'dev', 'production', etc.
-- each util directory is a separate GIT repo (public or private)
-- all of the util directories must be in the same directory
-- the `base_util` directory has the init script (this script!)
-- all util directories have a bin subdir, for executable scripts
-- all util directories have a cfg subdir, for dotfiles
-- dotfile templates in the cfg subdir must begin with an underscore
-
-It starts with a standard directory structure:
-~/git                    # UTIL_DIR
-  /base_util
-    init
-    /bin                 # UTIL_PATH;
-      scripts...
-    /cfg
-      _dotfiles
-  /your_util
-    /bin                 # UTIL_PATH;
-      scripts...
-    /gems
-      /your_gem
-        /bin             # UTIL_PATH
-          scripts...
-    /cfg
-      _dotfiles
-
-You run '~/util/base_util/init' (this script!)
-
-The script produces:
-- ~/.symlinks for each _dotfile (and directory)
-- a file ~/.util_dir with the path to the ~/util directory
-- a file ~/.util_path with path entries for all bin directories
-
-The .util_dir and .util_path files are used in .bashrc to 
-reference config files and scripts in the util directories.
-=end
+# Util directories contain dotfiles and utility scripts.
+#
+# The goal is to make it FAST to setup new user accounts, 
+# configured with the right tools for a specific environment 
+# (production, test, development, etc.)
+#
+# The setup process is:
+# 1) copy util directories onto your machine (eg to ~/util), 
+#    using rcp, rsync, or git-clone
+# 2) run '~/util/base_util/init' and you're done
+#
+# Background:
+# - there can be one or more util directories
+# - each directory has a unique name <name>_util
+# - each util directory may contain environment specific setups
+# - e.g. 'dev', 'production', etc.
+# - each util directory is a separate GIT repo (public or private)
+# - all of the util directories must be in the same directory
+# - the `base_util` directory has the init script (this script!)
+# - all util directories have a bin subdir, for executable scripts
+# - all util directories have a cfg subdir, for dotfiles
+# - dotfile templates in the cfg subdir must begin with an underscore
+#
+# It starts with a standard directory structure:
+# ~/git                    # UTIL_DIR
+#   /base_util
+#     init
+#     /bin                 # UTIL_PATH;
+#       scripts...
+#     /cfg
+#       _dotfiles
+#   /your_util
+#     /bin                 # UTIL_PATH;
+#       scripts...
+#     /gems
+#       /your_gem
+#         /bin             # UTIL_PATH
+#           scripts...
+#     /cfg
+#       _dotfiles
+#
+# You run '~/util/base_util/init' (this script!)
+#
+# The script produces:
+# - ~/.symlinks for each _dotfile (and directory)
+# - a file ~/.util_dir with the path to the ~/util directory
+# - a file ~/.util_path with path entries for all bin directories
+#
+# The .util_dir and .util_path files are used in .bashrc to 
+# reference config files and scripts in the util directories.
 
 # capture util_dir and util_path
 util_dir  = File.dirname(File.dirname(File.expand_path(__FILE__)))
@@ -80,21 +80,21 @@ target_spec = util_dir + "/*_util/cfg/_*"
 target_list = Dir.glob(target_spec).sort
 target_hash = target_list.reduce({}) { |acc,val| acc[val.split('/').last] = val; acc}
 
-# if target_list.length > 0
-#   puts "Generating symlinks for #{util_dir}"
-#   target_hash.values.each do |src_path|
-#     tgt_base  = src_path.split('/').last[1..-1]
-#     util_base = src_path.split('/')[-3]
-#     tgt_file  = '.' + tgt_base
-#     next if File.exist?(tgt_file) && File.symlink?(tgt_file) && File.readlink(tgt_file) == src_path
-#     system "mv #{tgt_file} #{tgt_file}.old" if File.exist?(tgt_file)
-#     system "rm -f #{tgt_file}"
-#     puts "-> #{util_base}/#{tgt_base}"
-#     system "ln -s #{src_path} #{tgt_file}"
-#     artifact = "#{src_path}/#{tgt_file}"
-#     system "rm #{artifact}" if File.exist?(artifact)
-#   end
-# end
+if target_list.length > 0
+  puts "Generating symlinks for #{util_dir}"
+  target_hash.values.each do |src_path|
+    tgt_base  = src_path.split('/').last[1..-1]
+    util_base = src_path.split('/')[-3]
+    tgt_file  = '.' + tgt_base
+    next if File.exist?(tgt_file) && File.symlink?(tgt_file) && File.readlink(tgt_file) == src_path
+    system "mv #{tgt_file} #{tgt_file}.old" if File.exist?(tgt_file)
+    system "rm -f #{tgt_file}"
+    puts "-> #{util_base}/#{tgt_base}"
+    system "ln -s #{src_path} #{tgt_file}"
+    artifact = "#{src_path}/#{tgt_file}"
+    system "rm #{artifact}" if File.exist?(artifact)
+  end
+end
 
 # -------------------------------------------------
 # Some programs store their configuration data under
@@ -112,29 +112,34 @@ target_hash = target_list.reduce({}) { |acc,val| acc[val.split('/').last] = val;
 # ~/.config/app/subdir -> ~/util/base_util/cfg/+config/app/^subdir
 # -------------------------------------------------
 
-def invalid_input_path?(path)
-  path.count("^") != 1
-end
-
 target_spec = util_dir + "/*_util/cfg/+*/**/^*"
 target_list = Dir.glob(target_spec).sort.uniq
 
-if target_list.length > 0
-  puts "Generating deep target links for #{util_dir}/cfg"
-  target_list.each do |elem|
-    next if invalid_input_path?(elem)
-    util_base = elem.split("cfg").first + "cfg/"
-    src_path  = '+' + elem.split("+").last
-    src_array = src_path.split("/")
-    src_base  = elem
-    link_idx  = src_array.index {|el| el.count("^") > 0}
-    src_link  = util_base + src_array[0..link_idx].join("/")
-    tgt_base  = src_array[0..link_idx-1].join("/").gsub("^", "").gsub("+", ".")
-    tgt_link  = src_array[0..link_idx].join("/").gsub("^", "").gsub("+", ".")
-    next if File.exist?(tgt_link) && File.symlink?(tgt_link) && File.readlink(tgt_link) == src_link
-    puts "#{src_path} | make: #{tgt_base} | link: #{tgt_link} -> #{src_link}"
-    system "mv #{tgt_link} #{tgt_link}.old" if File.exist?(tgt_link)
-    system "mkdir -p #{tgt_base}"
-    system "ln -s #{src_link} #{tgt_link}"
-  end
+return unless target_list.length > 0
+
+def pfield(field, result, results)
+  result.send(field).to_s.ljust(results.map {|r| r.send(field).length}.max)
+end
+
+puts "Generating deep target links for #{util_dir}/cfg"
+results = target_list.reduce([]) do |acc, elem|
+  next(acc) if elem.count("^") != 1
+  util_base = elem.split("cfg").first + "cfg/"
+  src_path  = '+' + elem.split("+").last
+  src_array = src_path.split("/")
+  src_base  = elem
+  link_idx  = src_array.index {|el| el.count("^") > 0}
+  src_link  = util_base + src_array[0..link_idx].join("/")
+  tgt_base  = src_array[0..link_idx-1].join("/").gsub("^", "").gsub("+", ".")
+  tgt_link  = src_array[0..link_idx].join("/").gsub("^", "").gsub("+", ".")
+  next(acc) if File.exist?(tgt_link) && File.symlink?(tgt_link) && File.readlink(tgt_link) == src_link
+  acc + [OpenStruct.new(src_path: src_path, tgt_base: tgt_base, tgt_link: tgt_link, src_link: src_link)]
+end 
+
+results.each do |result|
+  pf = ->(field) { pfield(field, result, results) }
+  puts "#{pf.call(:src_path)} | make #{pf.call(:tgt_base)} | #{pf.call(:tgt_link)} -> #{pf.call(:src_link)}"
+  system "mv #{result.tgt_link} #{result.tgt_link}.old" if File.exist?(result.tgt_link)
+  system "mkdir -p #{result.tgt_base}"
+  system "ln -s #{result.src_link} #{result.tgt_link}"
 end
