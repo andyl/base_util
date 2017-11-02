@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+require 'ostruct'
+
 =begin
 About this script:
 
@@ -53,9 +55,6 @@ The script produces:
 
 The .util_dir and .util_path files are used in .bashrc to 
 reference config files and scripts in the util directories.
-
-TODO: rewrite this script in bash
-
 =end
 
 # capture util_dir and util_path
@@ -85,19 +84,29 @@ target_spec = util_dir + "/*_util/cfg/_*"
 target_list = Dir.glob(target_spec).sort
 target_hash = target_list.reduce({}) { |acc,val| acc[val.split('/').last] = val; acc}
 
+# if target_list.length > 0
+#   puts "Generating symlinks for #{util_dir}"
+#   target_hash.values.each do |path|
+#     file_base = path.split('/').last[1..-1]
+#     util_base = path.split('/')[-3]
+#     file = '.' + file_base
+#     next if File.exist?(file) && File.symlink?(file) && File.readlink(file) == path
+#     system "mv #{file} #{file}.old" if File.exist?(file)
+#     system "rm -f #{file}"
+#     puts "-> #{util_base}/#{file_base}"
+#     system "ln -s #{path} #{file}"
+#     artifact = "#{path}/#{file}"
+#     system "rm #{artifact}" if File.exist?(artifact)
+#   end
+# end
+
+# create deep-link symlinks
+target_spec = util_dir + "/*_util/cfg/+*/**/^*"
+target_list = Dir.glob(target_spec).sort.uniq
+
 if target_list.length > 0
-  puts "Generating symlinks for #{util_dir}"
-  target_hash.values.each do |path|
-    file_base = path.split('/').last[1..-1]
-    util_base = path.split('/')[-3]
-    file = '.' + file_base
-    next if File.exist?(file) && File.symlink?(file) && File.readlink(file) == path
-    system "mv #{file} #{file}.old" if File.exist?(file)
-    system "rm -f #{file}"
-    puts "-> #{util_base}/#{file_base}"
-    system "ln -s #{path} #{file}"
-    artifact = "#{path}/#{file}"
-    system "rm #{artifact}" if File.exist?(artifact)
+  puts "Generating deep target links for #{util_dir}"
+  target_list.each do |elem|
+    puts elem
   end
 end
-

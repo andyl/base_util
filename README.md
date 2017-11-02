@@ -27,12 +27,14 @@ Nested paths must be encoded using the following filename conventions:
 -> a single '+' character to show the dotfile root
 -> a single '^' character to show where to built the symlink
 
+-------------------------------------------------
 For example:
 ~/util/base_util/cfg/+config/app/^subdir/myfile
 
 Will generate:
 ~/.config/app/subdir -> ~/util/base_util/cfg/+config/app/^subdir
 
+-------------------------------------------------
 For example:
 ~/util/base_util/cfg/+config/^app/myfile
 
