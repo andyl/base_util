@@ -33,3 +33,9 @@ For example:
 Will generate:
 ~/.config/app/subdir -> ~/util/base_util/cfg/+config/app/^subdir
 
+For example:
+~/util/base_util/cfg/+config/^app/myfile
+
+Will generate:
+~/.config/app -> ~/util/base_util/cfg/+config/^app
+
