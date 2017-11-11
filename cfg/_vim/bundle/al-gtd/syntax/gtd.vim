@@ -27,7 +27,7 @@ endfunction
 
 " GTD SYNTAX -----
 syntax match gGroup     /{.*}/
-syntax match gHandle    /\.[a-z0-9][a-z0-9][a-z0-9][a-z0-9]/
+syntax match gHandle    /\![a-z0-9][a-z0-9][a-z0-9][a-z0-9]/
 syntax match gStatus    /=[IAWSTRXiawstrx]/ 
 syntax match gScope     /\ :[a-z][a-z_]*/
 syntax match gContext   / @[a-z][a-z]*/
@@ -111,8 +111,8 @@ endfunction
 
 " NOTE FUNCTION -----
 function! OpenNote() range
-  let line   = getline(line('.'))
-  let handle = matchstr(line,'.\zs[^ ]*\ze')
+  let line   = getline(line('!'))
+  let handle = matchstr(line,'!\zs[^ ]*\ze')
   if handle == ""
     return ""
   end
