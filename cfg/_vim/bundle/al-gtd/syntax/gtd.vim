@@ -27,7 +27,7 @@ endfunction
 
 " GTD SYNTAX -----
 syntax match gGroup     /{.*}/
-syntax match gHandle    /\![a-z0-9][a-z0-9][a-z0-9][a-z0-9]/
+syntax match gHandle    /\.[a-z0-9][a-z0-9][a-z0-9][a-z0-9]/
 syntax match gStatus    /=[IAWSTRXiawstrx]/ 
 syntax match gScope     /\ :[a-z][a-z_]*/
 syntax match gContext   / @[a-z][a-z]*/
@@ -112,7 +112,7 @@ endfunction
 " NOTE FUNCTION -----
 function! OpenNote() range
   let line   = getline(line('.'))
-  let handle = matchstr(line,'!\zs[^ ]*\ze')
+  let handle = matchstr(line,'.\zs[^ ]*\ze')
   if handle == ""
     return ""
   end
@@ -160,8 +160,8 @@ nmap <leader>l :call DoUpdatePriority("L", "n")<cr>
 vmap <leader>ss :!pgsort<cr>gv
 nmap <leader>ss mm:%!pgsort<cr>`mmm
 
-vmap <leader>s! :!pgsort handle<cr>gv
-nmap <leader>s! mm:%!pgsort handle<cr>`mmm
+vmap <leader>s. :!pgsort handle<cr>gv
+nmap <leader>s. mm:%!pgsort handle<cr>`mmm
 
 vmap <leader>s= :!pgsort category<cr>gv
 nmap <leader>s= mm:%!pgsort category<cr>`mmm
@@ -182,8 +182,8 @@ vmap <leader>s# :!pgsort contact<cr>gv
 nmap <leader>s# mm:%!pgsort contact<cr>`mmm
 
 " GROUP KEYMAPS -----
-vmap <leader>g! :!pggroup !<cr>gv
-nmap <leader>g! mm:%!pggroup !<cr>`mmm
+vmap <leader>g. :!pggroup .<cr>gv
+nmap <leader>g. mm:%!pggroup .<cr>`mmm
 
 vmap <leader>g= :!pggroup =<cr>gv
 nmap <leader>g= mm:%!pggroup =<cr>`mmm
