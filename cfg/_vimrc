@@ -16,11 +16,12 @@ Plug 'garbas/vim-snipmate'               " snippet plugin
 Plug 'scrooloose/nerdtree'               " file browser
 Plug 'dsimidzija/vim-nerdtree-ignore'    " file browser
 Plug 'vim-scripts/nerdtree-ack'          " search from directory
-Plug 'ctrlpvim/ctrlp.vim'                " fuzzy file open
 Plug 'tpope/vim-projectionist'           " src/test file nav
 Plug 'jlanzarotta/bufexplorer'           " buffer manipulation
 Plug 'mileszs/ack.vim'                   " file searching
 Plug 'vim-scripts/SyntaxRange'           " vimdeck syntax highlighting
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Plug 'ctrlpvim/ctrlp.vim'                " fuzzy file open
 " -- LANG ELIXIR -----
 Plug 'elixir-lang/vim-elixir'            " syntax highlighting
 Plug 'mattreduce/vim-mix'                " mix helpers
@@ -263,15 +264,27 @@ nmap <leader>p1 :! a2ps -c --highlight-level=none --sides=duplex -T 2 --line-num
 nmap <leader>pl :! a2ps -c --highlight-level=none --sides=duplex -T 2 --line-numbers=1 --landscape --columns=1 --font-size=9 %<cr>
 
 " === CTRLP - fast file finding
-let g:ctrlp_max_files = 10000        " Set the max files
-let g:ctrlp_map = "<C-p>"
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
-nmap <leader>pf :CtrlP<cr>
-nmap <leader>pm :CtrlPMRU<cr>
-nmap <leader>pb :CtrlPBuffer<cr>
-nmap <leader>bb :CtrlPBuffer<cr>
+" let g:ctrlp_max_files = 10000        " Set the max files
+" let g:ctrlp_map = "<C-p>"
+" let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+" nmap <leader>pf :CtrlP<cr>
+" nmap <leader>pm :CtrlPMRU<cr>
+" nmap <leader>pb :CtrlPBuffer<cr>
+" nmap <leader>bb :CtrlPBuffer<cr>
+
+" === FZF - fast file finding
+" let g:ctrlp_max_files = 10000        " Set the max files
+" let g:ctrlp_map = "<C-p>"
+" let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+" nmap <leader>pf :CtrlP<cr>
+" nmap <leader>pm :CtrlPMRU<cr>
+" nmap <leader>pb :CtrlPBuffer<cr>
+" nmap <leader>bb :CtrlPBuffer<cr>
 
 " === ACK - fast file searching
+nmap <leader>k :Ack 
+
+" === ripgrep - fast file searching
 nmap <leader>k :Ack 
 
 " === NERD TREE
