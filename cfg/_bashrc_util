@@ -69,6 +69,10 @@ export PATH=$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/platf
 export PATH=$PATH:~/.cargo/bin
 
 ###########################################################################
+# FZF
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+
+###########################################################################
 # VIM / NEOVIM / NVIM / NV
 
 # use for .vimrc and plugin testing

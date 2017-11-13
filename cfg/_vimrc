@@ -12,16 +12,17 @@ call plug#begin('~/.vim/plugged')
 Plug 'MarcWeber/vim-addon-mw-utils'      " support lib for snipmate
 Plug 'tomtom/tlib_vim'                   " support lib for snipmate
 Plug 'garbas/vim-snipmate'               " snippet plugin
+" -- FZF ----- 
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " -- FILE UTILS ----- 
+Plug 'junegunn/fzf.vim'                  " fuzzy file open
 Plug 'scrooloose/nerdtree'               " file browser
 Plug 'dsimidzija/vim-nerdtree-ignore'    " file browser
 Plug 'vim-scripts/nerdtree-ack'          " search from directory
+Plug 'mileszs/ack.vim'                   " file search
 Plug 'tpope/vim-projectionist'           " src/test file nav
 Plug 'jlanzarotta/bufexplorer'           " buffer manipulation
-Plug 'mileszs/ack.vim'                   " file searching
 Plug 'vim-scripts/SyntaxRange'           " vimdeck syntax highlighting
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-" Plug 'ctrlpvim/ctrlp.vim'                " fuzzy file open
 " -- LANG ELIXIR -----
 Plug 'elixir-lang/vim-elixir'            " syntax highlighting
 Plug 'mattreduce/vim-mix'                " mix helpers
@@ -108,21 +109,11 @@ set noswapfile
 
 set shortmess+=I
 
-" === NEOMAKE
-" autocmd! BufWritePost * Neomake 
-" let g:neomake_verbose=3
-" let g:neomake_logfile="/tmp/neomake.log"
-" let g:neomake_open_list = 2
-" let g:neomake_elixir_enabled_makers = ['elixir']
-
 " === SYNTASTIC 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_enable_elixir_checker = 1
 let g:syntastic_elixir_checkers = ['elixir']
-
-" === ACK.VIM 
-let g:ackprg = 'ag --nogroup --nocolor --column'
 
 " === MATCHIT
 runtime macros/matchit.vim
@@ -263,29 +254,12 @@ nmap <leader>pp :! a2ps -c --highlight-level=none --sides=duplex -T 2 --line-num
 nmap <leader>p1 :! a2ps -c --highlight-level=none --sides=duplex -T 2 --line-numbers=1 --portrait  --columns=1 --font-size=9 %<cr>
 nmap <leader>pl :! a2ps -c --highlight-level=none --sides=duplex -T 2 --line-numbers=1 --landscape --columns=1 --font-size=9 %<cr>
 
-" === CTRLP - fast file finding
-" let g:ctrlp_max_files = 10000        " Set the max files
-" let g:ctrlp_map = "<C-p>"
-" let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
-" nmap <leader>pf :CtrlP<cr>
-" nmap <leader>pm :CtrlPMRU<cr>
-" nmap <leader>pb :CtrlPBuffer<cr>
-" nmap <leader>bb :CtrlPBuffer<cr>
-
 " === FZF - fast file finding
-" let g:ctrlp_max_files = 10000        " Set the max files
-" let g:ctrlp_map = "<C-p>"
-" let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
-" nmap <leader>pf :CtrlP<cr>
-" nmap <leader>pm :CtrlPMRU<cr>
-" nmap <leader>pb :CtrlPBuffer<cr>
-" nmap <leader>bb :CtrlPBuffer<cr>
+nmap <C-p> :<C-u>FZF<CR>
 
-" === ACK - fast file searching
+" === ACK.VIM 
 nmap <leader>k :Ack 
-
-" === ripgrep - fast file searching
-nmap <leader>k :Ack 
+let g:ackprg = 'rg --vimgrep --no-heading'
 
 " === NERD TREE
 let g:NERDTreeMapOpenVSplit = "v"
