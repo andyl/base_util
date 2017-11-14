@@ -111,8 +111,8 @@ endfunction
 
 " NOTE FUNCTION -----
 function! OpenNote() range
-  let line   = getline(line('!'))
-  let handle = matchstr(line,'!\zs[^ ]*\ze')
+  let line   = getline(line('.'))
+  let handle = matchstr(line,'\!\zs[^ ]*\ze')
   if handle == ""
     return ""
   end
