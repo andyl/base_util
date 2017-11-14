@@ -4,27 +4,6 @@ augroup onexit
   autocmd VimLeave *.gtd :silent !pgbackup <afile>
 augroup END
 
-" SNIPPET HELPER FUNCTIONS -----
-function! GetContext()
-  let x = getline(line('.')-1)
-  return matchstr(x,'@\zs[^ ]*\ze')
-endfunction
-
-function! GetScope()
-  let x = getline(line('.')-1)
-  return matchstr(x,':\zs[^ ]*\ze')
-endfunction
-
-function! GetStatus()
-  let x = getline(line('.')-1)
-  let y = matchstr(x,'=\zs[IAWSTRX]*\ze')
-  if y == ""
-    return "I"
-  else
-    return y
-  end
-endfunction
-
 " GTD SYNTAX -----
 syntax match gGroup     /{.*}/
 syntax match gHandle    /\![a-z0-9][a-z0-9][a-z0-9][a-z0-9]/
@@ -40,127 +19,69 @@ syntax match gAppend    /\^[^\+\$\&\#\@\*\=]*/
 syntax match gNote      /*/
 syntax match gDate      /\~[^ ]*/
 
-" SHARED FUNCTIONS -----
-function! SetMethod() range
-ruby << END
-$VERBOSE=nil
-require 'vgtd'
-def update_field(string, leader, newval)
-  task = Gtask.new(string)
-  task.update_field(leader, newval)
-  task.output
-end
-END
-endfunction
-
-function! GetInput(prompt) range
-call inputsave()
-let newval = input(a:prompt)
-call inputrestore()
-return newval
-endfunction
-
-function! UpdateTask(leader, value, mode) range
-  if a:mode == "v"
-    '<,'>rubydo $_ = update_field($_, VIM::evaluate("a:leader"), VIM::evaluate("a:value"))
-  else
-    .,.rubydo $_ = update_field($_, VIM::evaluate("a:leader"), VIM::evaluate("a:value"))
-  end
-endfunction
-
-function! UpTask(leader, value) range
+function! UpdateTask(leader, value) 
   let inline=getline(line("."))
   let argstr="\"\\".l:inline."|".a:leader."|".a:value."\""
   execute '.!pgline ' . l:argstr
 endfunction
 
 " UPDATE FUNCTIONS -----
-function! UpdateStatus(mode) range
-  call SetMethod()
-  call UpdateTask("=", GetInput("New Status: "), a:mode)
+function! UpdateStatus() range
+  call UpdateTask("=", GetInput("New Status: "))
 endfunction
 
-function! UpdateSpecificStatus(val, mode) range
-  call SetMethod()
-  call UpdateTask("=", a:val, a:mode)
+function! UpdateScope() range
+  call UpdateTask(":", GetInput("New Scope: "))
 endfunction
 
-function! UpdateScope(mode) range
-  call SetMethod()
-  call UpdateTask(":", GetInput("New Scope: "), a:mode)
+function! UpdateContext() range
+  call UpdateTask("@", GetInput("New Context: "))
 endfunction
 
-function! UpdateContext(mode) range
-  call SetMethod()
-  call UpdateTask("@", GetInput("New Context: "), a:mode)
+function! UpdatePriority() range
+  call UpdateTask("-", GetInput("New Priority: "))
 endfunction
 
-function! UpdatePriority(mode) range
-  call SetMethod()
-  call UpdateTask("-", GetInput("New Priority: "), a:mode)
+function! UpdateDate() range
+  call UpdateTask("$", GetInput("New Date: "))
 endfunction
 
-function! DoUpdatePriority(val, mode) range
-  call SetMethod()
-  call UpdateTask("-", a:val, a:mode)
+function! UpdateContact() range
+  call updatetask("#", GetInput("New Contact: "))
 endfunction
-
-function! UpdateDate(mode) range
-  call SetMethod()
-  call UpdateTask("$", GetInput("New Date: "), a:mode)
-endfunction
-
-function! UpdateContact(mode) range
-  call setmethod()
-  call updatetask("#", getinput("new contact: "), a:mode)
-endfunction
-
-" NOTE FUNCTION -----
-function! OpenNote() range
-  let line   = getline(line('.'))
-  let handle = matchstr(line,'\!\zs[^ ]*\ze')
-  if handle == ""
-    return ""
-  end
-  execute "normal zt"
-  execute "only"
-  execute "split notes/" . handle . ".md"
-endfunction
-
-" NOTE KEYMAPS -----
-vmap <leader>n :call OpenNote()<cr>gv
-nmap <leader>n :call OpenNote()<cr>
 
 " CHANGE KEYMAPS -----
-vmap <leader>c= :call UpdateStatus("v")<cr>gv
-nmap <leader>c= :call UpdateStatus("n")<cr>
+vmap <leader>c= :call UpdateStatus()<cr>gv
+nmap <leader>c= :call UpdateStatus()<cr>
 
-vmap <leader>c: :call UpdateScope("v")<cr>gv
-nmap <leader>c: :call UpdateScope("n")<cr>
+vmap <leader>c: :call UpdateScope()<cr>gv
+nmap <leader>c: :call UpdateScope()<cr>
 
-vmap <leader>c@ :call UpdateContext("v")<cr>gv
-nmap <leader>c@ :call UpdateContext("n")<cr>
+vmap <leader>c@ :call UpdateContext()<cr>gv
+nmap <leader>c@ :call UpdateContext()<cr>
 
-vmap <leader>c- :call UpdatePriority("v")<cr>gv
-nmap <leader>c- :call UpdatePriority("n")<cr>
+vmap <leader>c- :call UpdatePriority()<cr>gv
+nmap <leader>c- :call UpdatePriority()<cr>
 
-vmap <leader>c$ :call UpdateDate("v")<cr>gv
-nmap <leader>c$ :call UpdateDate("n")<cr>
+vmap <leader>c$ :call UpdateDate()<cr>gv
+nmap <leader>c$ :call UpdateDate()<cr>
 
-vmap <leader>c# :call UpdateContact("v")<cr>gv
-nmap <leader>c# :call UpdateContact("n")<cr>
+vmap <leader>c# :call UpdateContact()<cr>gv
+nmap <leader>c# :call UpdateContact()<cr>
 
-vmap <leader>x :call UpdateSpecificStatus("X", "v")<cr>gv
-nmap <leader>x :call UpdateSpecificStatus("X", "n")<cr>
-vmap <leader>a :call UpdateSpecificStatus("A", "v")<cr>gv
-nmap <leader>a :call UpdateSpecificStatus("A", "n")<cr>
+vmap <leader>x :call UpdateTask("=", "X")<cr>gv
+nmap <leader>x :call UpdateTask("=", "X")<cr>
 
-vmap <leader>h :call DoUpdatePriority("H", "v")<cr>gv
-vmap <leader>m :call DoUpdatePriority("M", "v")<cr>gv
-vmap <leader>l :call DoUpdatePriority("L", "v")<cr>gv
-nmap <leader>h :call DoUpdatePriority("H", "n")<cr>
-nmap <leader>m :call DoUpdatePriority("M", "n")<cr>
-nmap <leader>l :call DoUpdatePriority("L", "n")<cr>
+vmap <leader>a :call UpdateTask("=", "A")<cr>gv
+nmap <leader>a :call UpdateTask("=", "A")<cr>
+
+vmap <leader>h :call UpdateTask("-", "H")<cr>gv
+vmap <leader>m :call UpdateTask("-", "M")<cr>gv
+vmap <leader>l :call UpdateTask("-", "L")<cr>gv
+
+nmap <leader>h :call UpdateTask("-", "H")<cr>
+nmap <leader>m :call UpdateTask("-", "M")<cr>
+nmap <leader>l :call UpdateTask("-", "L")<cr>
 
 " SORT KEYMAPS -----
 vmap <leader>ss :!pgsort<cr>gv
@@ -205,3 +126,20 @@ nmap <leader>g- mm:%!pggroup -<cr>`mmm
 
 vmap <leader>g# :!pggroup #<cr>gv
 nmap <leader>g# mm:%!pggroup #<cr>`mmm
+
+" NOTE FUNCTION -----
+function! OpenNote() range
+  let line   = getline(line('.'))
+  let handle = matchstr(line,'\!\zs[^ ]*\ze')
+  if handle == ""
+    return ""
+  end
+  execute "normal zt"
+  execute "only"
+  execute "split notes/" . handle . ".md"
+endfunction
+
+" NOTE KEYMAPS -----
+vmap <leader>n :call OpenNote()<cr>gv
+nmap <leader>n :call OpenNote()<cr>
+
