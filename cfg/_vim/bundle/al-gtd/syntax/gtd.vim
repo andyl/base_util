@@ -68,6 +68,12 @@ function! UpdateTask(leader, value, mode) range
   end
 endfunction
 
+function! UpTask(leader, value) range
+  let inline=getline(line("."))
+  let argstr="\"\\".l:inline."|".a:leader."|".a:value."\""
+  execute '.!pgline ' . l:argstr
+endfunction
+
 " UPDATE FUNCTIONS -----
 function! UpdateStatus(mode) range
   call SetMethod()
