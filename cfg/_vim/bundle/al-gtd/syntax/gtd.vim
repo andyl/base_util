@@ -20,17 +20,17 @@ syntax match gNote      /*/
 syntax match gDate      /\~[^ ]*/
 
 " SHARED FUNCTIONS -----
-function! UpdateTask(leader, value) 
+
+" update a task-line
+function! UpdateTaskL(leader, value) 
   let inline=getline(line("."))
   let argstr=l:inline."|".a:leader."|".a:value
   execute '.!pgline ' . shellescape(l:argstr, "x")
 endfunction
 
-function! UpdateZ(leader, prompt) 
-  let value=GetInput(a:prompt)
-  let inline=getline(line("."))
-  let argstr=l:inline."|".a:leader."|".value
-  execute '.!pgline ' . shellescape(l:argstr, "x")
+" update a task-range
+function! UpdateTaskR(leader, value) range
+  '<,'>call UpdateTaskL(a:leader, a:value)
 endfunction
 
 function! GetInput(prompt) range
@@ -41,67 +41,38 @@ function! GetInput(prompt) range
   return newval
 endfunction
 
-" UPDATE FUNCTIONS -----
-function! UpdateStatus() range
-  call UpdateTask("=", GetInput("New Status: "))
-endfunction
-
-function! UpdateScope() range
-  call UpdateTask(":", GetInput("New Scope: "))
-endfunction
-
-function! UpdateContext() range
-  call UpdateTask("@", GetInput("New Context: "))
-endfunction
-
-function! UpdatePriority() range
-  call UpdateTask("-", GetInput("New Priority: "))
-endfunction
-
-function! UpdateDate() range
-  call UpdateTask("$", GetInput("New Date: "))
-endfunction
-
-function! UpdateContact() range
-  call UpdateTask("#", GetInput("New Contact: "))
-endfunction
-
 " CHANGE KEYMAPS -----
-" TODO: make this handle multi-line properly
-" vmap <leader>c= :call UpdateStatus()<cr>gv
-" nmap <leader>c= :call UpdateStatus()<cr>
+vmap <leader>c= :call UpdateTaskR("=", GetInput("New Status: "))<cr>gv
+nmap <leader>c= :call UpdateTaskL("=", GetInput("New Status: "))<cr>
 
-vmap <leader>c= :call UpdateZ("=", "New Status: ")<cr>:echom "done"<cr>gv
-nmap <leader>c= :call UpdateZ("=", "New Status: ")<cr>
+vmap <leader>c: :call UpdateTaskR(":", GetInput("New Scope: "))<cr>gv
+nmap <leader>c: :call UpdateTaskL(":", GetInput("New Scope: "))<cr>
 
-vmap <leader>c: :call UpdateScope()<cr>gv
-nmap <leader>c: :call UpdateScope()<cr>
+vmap <leader>c@ :call UpdateTaskR("@", GetInput("New Context: "))<cr>gv
+nmap <leader>c@ :call UpdateTaskL("@", GetInput("New Context: "))<cr>
 
-vmap <leader>c@ :call UpdateContext()<cr>gv
-nmap <leader>c@ :call UpdateContext()<cr>
+vmap <leader>c- :call UpdateTaskR("-", GetInput("New Priority: "))<cr>gv
+nmap <leader>c- :call UpdateTaskL("-", GetInput("New Priority: "))<cr>
 
-vmap <leader>c- :call UpdatePriority()<cr>gv
-nmap <leader>c- :call UpdatePriority()<cr>
+vmap <leader>c$ :call UpdateTaskR("$", GetInput("New Date: "))<cr>gv
+nmap <leader>c$ :call UpdateTaskL("$", GetInput("New Date: "))<cr>
 
-vmap <leader>c$ :call UpdateDate()<cr>gv
-nmap <leader>c$ :call UpdateDate()<cr>
+vmap <leader>c# :call UpdateTaskR("#", GetInput("New Contact: "))<cr>gv
+nmap <leader>c# :call UpdateTaskL("#", GetInput("New Contact: "))<cr>
 
-vmap <leader>c# :call UpdateContact()<cr>gv
-nmap <leader>c# :call UpdateContact()<cr>
+vmap <leader>x :call UpdateTaskL("=", "X")<cr>gv
+nmap <leader>x :call UpdateTaskL("=", "X")<cr>
 
-vmap <leader>x :call UpdateTask("=", "X")<cr>gv
-nmap <leader>x :call UpdateTask("=", "X")<cr>
+vmap <leader>a :call UpdateTaskL("=", "A")<cr>gv
+nmap <leader>a :call UpdateTaskL("=", "A")<cr>
 
-vmap <leader>a :call UpdateTask("=", "A")<cr>gv
-nmap <leader>a :call UpdateTask("=", "A")<cr>
+vmap <leader>h :call UpdateTaskL("-", "H")<cr>gv
+vmap <leader>m :call UpdateTaskL("-", "M")<cr>gv
+vmap <leader>l :call UpdateTaskL("-", "L")<cr>gv
 
-vmap <leader>h :call UpdateTask("-", "H")<cr>gv
-vmap <leader>m :call UpdateTask("-", "M")<cr>gv
-vmap <leader>l :call UpdateTask("-", "L")<cr>gv
-
-nmap <leader>h :call UpdateTask("-", "H")<cr>
-nmap <leader>m :call UpdateTask("-", "M")<cr>
-nmap <leader>l :call UpdateTask("-", "L")<cr>
+nmap <leader>h :call UpdateTaskL("-", "H")<cr>
+nmap <leader>m :call UpdateTaskL("-", "M")<cr>
+nmap <leader>l :call UpdateTaskL("-", "L")<cr>
 
 " SORT KEYMAPS -----
 vmap <leader>ss :!pgsort<cr>gv
