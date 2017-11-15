@@ -19,10 +19,18 @@ syntax match gAppend    /\^[^\+\$\&\#\@\*\=]*/
 syntax match gNote      /*/
 syntax match gDate      /\~[^ ]*/
 
+" SHARED FUNCTIONS -----
 function! UpdateTask(leader, value) 
   let inline=getline(line("."))
   let argstr="\"\\".l:inline."|".a:leader."|".a:value."\""
   execute '.!pgline ' . l:argstr
+endfunction
+
+function! GetInput(prompt) range
+  call inputsave()
+  let newval = input(a:prompt)
+  call inputrestore()
+  return newval
 endfunction
 
 " UPDATE FUNCTIONS -----
@@ -47,10 +55,11 @@ function! UpdateDate() range
 endfunction
 
 function! UpdateContact() range
-  call updatetask("#", GetInput("New Contact: "))
+  call UpdateTask("#", GetInput("New Contact: "))
 endfunction
 
 " CHANGE KEYMAPS -----
+" TODO: make this handle multi-line properly
 vmap <leader>c= :call UpdateStatus()<cr>gv
 nmap <leader>c= :call UpdateStatus()<cr>
 
