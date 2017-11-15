@@ -20,20 +20,17 @@ syntax match gNote      /*/
 syntax match gDate      /\~[^ ]*/
 
 " SHARED FUNCTIONS -----
-
-" update a task-line
-function! UpdateTaskL(leader, value) 
+function! UpdateTaskL(leader, value)        " update a task-line
   let inline=getline(line("."))
   let argstr=l:inline."|".a:leader."|".a:value
   execute '.!pgline ' . shellescape(l:argstr, "x")
 endfunction
 
-" update a task-range
-function! UpdateTaskR(leader, value) range
+function! UpdateTaskR(leader, value) range  " update a task-range
   '<,'>call UpdateTaskL(a:leader, a:value)
 endfunction
 
-function! GetInput(prompt) range
+function! GetInput(prompt) 
   let g:in_prompt = a:prompt
   call inputsave()
   let newval = input(a:prompt)
@@ -100,8 +97,8 @@ vmap <leader>s# :!pgsort contact<cr>gv
 nmap <leader>s# mm:%!pgsort contact<cr>`mmm
 
 " GROUP KEYMAPS -----
-vmap <leader>g. :!pggroup .<cr>gv
-nmap <leader>g. mm:%!pggroup .<cr>`mmm
+vmap <leader>g! :!pggroup .<cr>gv
+nmap <leader>g! mm:%!pggroup .<cr>`mmm
 
 vmap <leader>g= :!pggroup =<cr>gv
 nmap <leader>g= mm:%!pggroup =<cr>`mmm
@@ -119,7 +116,7 @@ vmap <leader>g# :!pggroup #<cr>gv
 nmap <leader>g# mm:%!pggroup #<cr>`mmm
 
 " NOTE FUNCTION -----
-function! OpenNote() range
+function! OpenNote() 
   let line   = getline(line('.'))
   let handle = matchstr(line,'\!\zs[^ ]*\ze')
   if handle == ""
@@ -131,6 +128,5 @@ function! OpenNote() range
 endfunction
 
 " NOTE KEYMAPS -----
-vmap <leader>n :call OpenNote()<cr>gv
 nmap <leader>n :call OpenNote()<cr>
 
