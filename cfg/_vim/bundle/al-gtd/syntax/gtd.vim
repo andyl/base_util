@@ -22,11 +22,19 @@ syntax match gDate      /\~[^ ]*/
 " SHARED FUNCTIONS -----
 function! UpdateTask(leader, value) 
   let inline=getline(line("."))
-  let argstr="\"".shellescape(l:inline)."|".a:leader."|".a:value."\""
-  execute '.!pgline ' . l:argstr
+  let argstr=l:inline."|".a:leader."|".a:value
+  execute '.!pgline ' . shellescape(l:argstr, "x")
+endfunction
+
+function! UpdateZ(leader, prompt) 
+  let value=GetInput(a:prompt)
+  let inline=getline(line("."))
+  let argstr=l:inline."|".a:leader."|".value
+  execute '.!pgline ' . shellescape(l:argstr, "x")
 endfunction
 
 function! GetInput(prompt) range
+  let g:in_prompt = a:prompt
   call inputsave()
   let newval = input(a:prompt)
   call inputrestore()
@@ -60,8 +68,11 @@ endfunction
 
 " CHANGE KEYMAPS -----
 " TODO: make this handle multi-line properly
-vmap <leader>c= :call UpdateStatus()<cr>gv
-nmap <leader>c= :call UpdateStatus()<cr>
+" vmap <leader>c= :call UpdateStatus()<cr>gv
+" nmap <leader>c= :call UpdateStatus()<cr>
+
+vmap <leader>c= :call UpdateZ("=", "New Status: ")<cr>:echom "done"<cr>gv
+nmap <leader>c= :call UpdateZ("=", "New Status: ")<cr>
 
 vmap <leader>c: :call UpdateScope()<cr>gv
 nmap <leader>c: :call UpdateScope()<cr>
@@ -96,8 +107,8 @@ nmap <leader>l :call UpdateTask("-", "L")<cr>
 vmap <leader>ss :!pgsort<cr>gv
 nmap <leader>ss mm:%!pgsort<cr>`mmm
 
-vmap <leader>s. :!pgsort handle<cr>gv
-nmap <leader>s. mm:%!pgsort handle<cr>`mmm
+vmap <leader>s! :!pgsort handle<cr>gv
+nmap <leader>s! mm:%!pgsort handle<cr>`mmm
 
 vmap <leader>s= :!pgsort category<cr>gv
 nmap <leader>s= mm:%!pgsort category<cr>`mmm
