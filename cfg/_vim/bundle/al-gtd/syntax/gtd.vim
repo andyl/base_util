@@ -22,7 +22,7 @@ syntax match gDate      /\~[^ ]*/
 " SHARED FUNCTIONS -----
 function! UpdateTask(leader, value) 
   let inline=getline(line("."))
-  let argstr="\"\\".l:inline."|".a:leader."|".a:value."\""
+  let argstr="\"".shellescape(l:inline)."|".a:leader."|".a:value."\""
   execute '.!pgline ' . l:argstr
 endfunction
 
