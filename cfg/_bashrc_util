@@ -525,8 +525,11 @@ alias nv="nvim"
 ###########################################################################
 # POSTGRESS HELPERS
 
+# pgadmin4 setup instructions -
+# https://askubuntu.com/questions/831262/how-to-install-pgadmin-4-in-desktop-mode-on-ubuntu
+
 alias pgc="sudo -u postgres psql"
-alias pga="(pgadmin3 & > /dev/null) > /dev/null 2>&1"
+alias pga="cd ~/.pgadmin4 && source bin/activate && python lib/python2.7/site-packages/pgadmin4/pgAdmin4.py"
 
 ###########################################################################
 # HISTORY CONFIGURATION
