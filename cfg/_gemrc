@@ -10,5 +10,5 @@ benchmark: false
 gem: "--no-rdoc --no-ri"
 ssl_verify_mode: 0
 gempath:
-- /home/aleak/.gem/ruby/2.1.2
-- /home/aleak/.rubies/ruby-2.1.2/lib/ruby/gems/2.1.0
+- ~/.gem/ruby/2.1.2
+- ~/.rubies/ruby-2.1.2/lib/ruby/gems/2.1.0
