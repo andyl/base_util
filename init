@@ -81,7 +81,7 @@ target_list = Dir.glob(target_spec).sort
 target_hash = target_list.reduce({}) { |acc,val| acc[val.split('/').last] = val; acc}
 
 if target_list.length > 0
-  puts "Generating symlinks for #{util_dir}"
+  puts "Generating base links for #{util_dir}"
   target_hash.values.each do |src_path|
     tgt_base  = src_path.split('/').last[1..-1]
     util_base = src_path.split('/')[-3]
@@ -138,7 +138,7 @@ end
 
 results.each do |result|
   pf = ->(field) { pfield(field, result, results) }
-  puts "#{pf.call(:src_path)} | make #{pf.call(:tgt_base)} | #{pf.call(:tgt_link)} -> #{pf.call(:src_link).delete("/home/aleak")}"
+  puts "#{pf.call(:src_path)} | make #{pf.call(:tgt_base)} | #{pf.call(:tgt_link)} -> #{pf.call(:src_link).gsub('/home/aleak', '~')}"
   system "mv #{result.tgt_link} #{result.tgt_link}.old" if File.exist?(result.tgt_link)
   system "mkdir -p #{result.tgt_base}"
   system "ln -s #{result.src_link} #{result.tgt_link}"
