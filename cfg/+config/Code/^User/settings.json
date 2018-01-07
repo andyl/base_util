@@ -3,5 +3,6 @@
 "vim.neovimPath": "/usr/bin/nvim",
 "editor.fontSize": 14,
 "editor.tabSize": 2,
-"keyboard.dispatch": "keyCode"
+"keyboard.dispatch": "keyCode",
+"editor.minimap.enabled": false
 }
