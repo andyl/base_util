@@ -5,5 +5,5 @@ imap kj <esc>
 imap jk <esc>
 imap kk <esc>
 imap jj <esc>
-imap :w <esc>:w<cr>k
+imap :w <esc>:w<cr>k$
 imap :q <esc>:q<cr>
