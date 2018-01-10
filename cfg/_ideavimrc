@@ -1,3 +1,9 @@
-set showmode   # message on status line showing insert mode
-set ignorecase # ignore case in search patterns
+" === MISC STUFF
 
+" use jk or kj as a single keystroke to escape
+imap kj <esc>
+imap jk <esc>
+imap kk <esc>
+imap jj <esc>
+imap :w <esc>:w<cr>k
+imap :q <esc>:q<cr>
