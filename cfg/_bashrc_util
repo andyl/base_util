@@ -52,6 +52,7 @@ alias she="mix escript.build && MIX_ENV=eval ./searchex"
 alias shd="mix escript.build && ./searchex"
 alias  mc="mix compile"
 alias  mt="mix test"
+alias  mr="mixrun"
 
 ###########################################################################
 # GO
