@@ -76,6 +76,9 @@ export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.g
 ###########################################################################
 # VIM / NEOVIM / NVIM / NV
 
+# use VI in terminal...
+set -o vi
+
 # use for .vimrc and plugin testing
 # restart vim by simply ":qa!"
 # terminate cycle by killing console...
@@ -550,3 +553,20 @@ export PROMPT_COMMAND="history -a; history -n; ${PROMPT_COMMAND}"   # mem/file s
 
 export COMP_WORDBREAKS="${COMP_WORDBREAKS/\:/}"
 
+###########################################################################
+# RAKE
+
+# function echo_color() {
+#   printf "\033[0;90m$1\033[0m\n"
+# }
+# echo_color "c-f  Move forward"
+# echo_color "c-b  Move backward"
+# echo_color "c-p  Move up"
+# echo_color "c-n  Move down"
+# echo_color "c-a  Jump to beginning of line"
+# echo_color "c-e  Jump to end of line"
+# echo_color "c-d  Delete forward"
+# echo_color "c-h  Delete backward"
+# echo_color "c-k  Delete forward to end of line"
+# echo_color "c-u  Delete entire line"
+#
