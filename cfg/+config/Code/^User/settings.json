@@ -5,6 +5,14 @@
 "editor.tabSize": 2,
 "keyboard.dispatch": "keyCode",
 "editor.minimap.enabled": false,
+"ruby.lint": {
+	"reek":      false,
+	"fasterer":  false,
+	"debride":   false,
+	"rubocop":   true,
+	"ruby":      false,    //Runs ruby -wc
+	"ruby-lint": false
+},
 "gitlens.advanced.messages": {
   "suppressCommitHasNoPreviousCommitWarning": false,
   "suppressCommitNotFoundWarning": false,
