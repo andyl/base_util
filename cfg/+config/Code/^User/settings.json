@@ -23,7 +23,11 @@
   "suppressUpdateNotice": false,
   "suppressWelcomeNotice": true
 },
-"window.zoomLevel": -2,
+"window.zoomLevel": -1,
 "workbench.colorTheme": "Monokai",
-"workbench.sideBar.location": "left"
+"workbench.sideBar.location": "left",
+"[elixir]": {
+  "editor.quickSuggestions": true
+},
+"window.menuBarVisibility": "toggle"
 }
