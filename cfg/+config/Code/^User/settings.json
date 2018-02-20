@@ -22,5 +22,7 @@
   "suppressNoRepositoryWarning": false,
   "suppressUpdateNotice": false,
   "suppressWelcomeNotice": true
-}
+},
+"window.zoomLevel": -1,
+"workbench.colorTheme": "Monokai"
 }
