@@ -1,7 +1,7 @@
 {
 "vim.enableNeovim": true ,
+"vim.hlsearch": true ,
 "vim.neovimPath": "/usr/bin/nvim",
-"editor.fontSize": 14,
 "editor.tabSize": 2,
 "keyboard.dispatch": "keyCode",
 "editor.minimap.enabled": false,
@@ -23,6 +23,6 @@
   "suppressUpdateNotice": false,
   "suppressWelcomeNotice": true
 },
-"window.zoomLevel": -1,
+"window.zoomLevel": -2,
 "workbench.colorTheme": "Monokai"
 }
