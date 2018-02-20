@@ -298,6 +298,21 @@ nnoremap <silent> <leader>e :call <SID>ToggleNerd()<cr>
 
 autocmd BufEnter * call <SID>SyncTree()
 
+" === ViMux
+function! s:IsVimuxOpen()
+  return exists("g:VimuxRunnerIndex")
+endfunction
+
+function! <SID>ToggleVimuxTerminal()
+  if s:IsVimuxOpen()
+    call VimuxCloseRunner()
+  else
+    call VimuxRunCommand("clear")
+  endif
+endfunction
+
+nnoremap <silent> <leader>c :call <SID>ToggleVimuxTerminal()<cr>
+
 " === TMP FILE - copy between vim instances using tmp file
 nmap <leader>ty y:call writefile(split(@0,'\n'), "/tmp/vimtmp")<cr>
 vmap <leader>ty y:call writefile(split(@0,'\n'), "/tmp/vimtmp")<cr>

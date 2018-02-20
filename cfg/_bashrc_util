@@ -119,6 +119,8 @@ tmr() {
   no_tmux && tm new \; send "$*" C-m \; attach
 }
 
+alias tv="no_tmux && tm new-session vim"
+
 # note also: ~/.complete has completions for tmux and tmuxinator
 
 ###########################################################################
