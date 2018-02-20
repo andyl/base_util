@@ -29,5 +29,7 @@
 "[elixir]": {
   "editor.quickSuggestions": true
 },
-"window.menuBarVisibility": "toggle"
+"window.menuBarVisibility": "default",
+"workbench.statusBar.visible": true,
+"workbench.activityBar.visible": true
 }

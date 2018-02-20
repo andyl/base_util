@@ -294,7 +294,7 @@ function! <SID>SyncTree()
   endif
 endfunction
 
-nnoremap <silent> <leader>d :call <SID>ToggleNerd()<cr>
+nnoremap <silent> <leader>e :call <SID>ToggleNerd()<cr>
 
 autocmd BufEnter * call <SID>SyncTree()
 
