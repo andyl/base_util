@@ -31,5 +31,5 @@
 },
 "window.menuBarVisibility": "default",
 "workbench.statusBar.visible": true,
-"workbench.activityBar.visible": true
+"workbench.activityBar.visible": false
 }
