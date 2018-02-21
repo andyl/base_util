@@ -96,6 +96,7 @@ function openUri(uri: Uri, options: Object) {
  * @param workspace the current workspace folder
  */
 function getConfiguration(workspace: WorkspaceFolder): Uri {
+  console.log("getConfiguration");
   const workspaceUri = workspace.uri;
   const configurationPath = path.resolve(
     workspaceUri.fsPath,

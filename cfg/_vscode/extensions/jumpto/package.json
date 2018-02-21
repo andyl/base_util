@@ -22,12 +22,14 @@
         "title": "Alternate File"
       }
     ],
-    "keybindings": [{
+    "keybindings": [
+      {
         "command": "extension.jumpToAlternate",
         "key": "ctrl+shift+j",
         "mac": "cmd+shift+j",
         "when": "editorTextFocus"
-    }]
+      }
+    ]
   },
   "scripts": {
     "postinstall": "node ./node_modules/vscode/bin/install"
