@@ -7,3 +7,5 @@ imap kk <esc>
 imap jj <esc>
 imap :w <esc>:w<cr>k$
 imap :q <esc>:q<cr>
+
+set surround
