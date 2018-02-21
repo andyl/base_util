@@ -13,7 +13,8 @@ Plug 'MarcWeber/vim-addon-mw-utils'      " support lib for snipmate
 Plug 'tomtom/tlib_vim'                   " support lib for snipmate
 Plug 'garbas/vim-snipmate'               " snippet plugin
 " -- LSP ----- 
-" Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins'}
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
 " -- FZF ----- 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " -- FILE UTILS ----- 
@@ -26,10 +27,9 @@ Plug 'tpope/vim-projectionist'           " src/test file nav
 Plug 'jlanzarotta/bufexplorer'           " buffer manipulation
 Plug 'vim-scripts/SyntaxRange'           " vimdeck syntax highlighting
 " -- LANG ELIXIR -----
+Plug 'powerman/vim-plugin-AnsiEsc'       " docco with ANSI colors
 Plug 'elixir-lang/vim-elixir'            " syntax highlighting
 Plug 'mattreduce/vim-mix'                " mix helpers
-Plug 'slashmili/alchemist.vim'           " refactoring helpers
-Plug 'powerman/vim-plugin-AnsiEsc'       " docco with ANSI colors
 Plug 'andyl/vim-snipmate-elixir'         " snippets for elixir
 Plug 'andyl/vim-projectionist-elixir'    " source/test file navigation
 Plug 'andyl/vim-textobj-elixir'          " elixir text objects
@@ -94,7 +94,14 @@ au BufRead,BufNewFile *.gtd     set filetype=gtd
 au BufRead,BufNewFile *.gta     set filetype=gtd
 
 " === ELIXIR CONFIG
-let g:alchemist#elixir_erlang_src = "~/.beam_src"
+augroup elixir_lsp
+  au!
+  au User lsp_setup call lsp#register_server({
+        \ 'name': 'elixir-ls',
+        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'env ERL_LIBS=/home/aleak/util/base_util/lsp mix elixir_ls.language_server']},
+        \ 'whitelist': ['elixir', 'eelixir'],
+        \ })
+augroup END
 
 " === LISTS
 let g:toggle_list_no_mappings=1
