@@ -1,7 +1,7 @@
 " PATHOGEN PLUGIN MANAGER 
 " LOADS CUSTOM PLUGINS IN ~/.vim/bundle ...
 " overdo overdo
-" like it so var
+" this it so var
 call pathogen#runtime_append_all_bundles()   
 call pathogen#helptags()
 
@@ -188,7 +188,7 @@ set title titlestring=<vim>\ %{$USER}@%{hostname()}\ %t\ %m%r%h%w
 
 " === MODE TRANSITION
 " use jk or kj as a single keystroke to escape
-imap <esc> <esc>l
+imap <esc> <esc>`^
 imap kj <esc>
 imap kk <esc>
 imap jj <esc>
