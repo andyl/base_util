@@ -3,8 +3,8 @@
 " redefine mapleader
 let mapleader=","
 
-" use jk or kj as a single keystroke to escape
-imap <esc> <esc>l
+" use kj as a single keystroke to escape
+autocmd InsertLeave * :normal `^
 imap kj <esc>  
 imap kk <esc>
 imap jj <esc>
