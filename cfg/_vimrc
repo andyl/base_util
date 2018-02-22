@@ -1,6 +1,7 @@
 " PATHOGEN PLUGIN MANAGER 
 " LOADS CUSTOM PLUGINS IN ~/.vim/bundle ...
-filetype off 
+" overdo overdo
+" like it so var
 call pathogen#runtime_append_all_bundles()   
 call pathogen#helptags()
 
@@ -82,7 +83,6 @@ Plug 'kshenoy/vim-signature'             " show marks
 " -- MISC -----
 Plug 'terryma/vim-multiple-cursors'      " multiple cursors
 Plug 'itchyny/calendar.vim'              " vim calendars
-" Plug 'terryma/vim-expand-region'         " select with + and _
 Plug 'tpope/vim-fugitive'                " git integration
 Plug 'mattn/gist-vim'                    " post github gists
 Plug 'vim-scripts/bats.vim'              " bats editing
@@ -168,6 +168,7 @@ vnoremap <silent> # :<C-U>
   \gV:call setreg('"', old_reg, old_regtype)<CR>
 
 " === MISC STUFF
+let mapleader=","
 set directory=~/.vimtmp,/tmp,.
 set splitright
 set splitbelow
@@ -181,17 +182,18 @@ set nocompatible
 set laststatus=2
 set printoptions=duplex:long,number:y
 let g:otl_text_view = 1
-let mapleader=","
+nmap <space> i~<esc>r
+set statusline=%F%m%r%h%w\ [TYPE=%Y]\ [%{hostname()}]\ [%l,%v]\ [%p%%]\ [LEN=%L]\ [%{$PWDS}]
+set title titlestring=<vim>\ %{$USER}@%{hostname()}\ %t\ %m%r%h%w
+
+" === MODE TRANSITION
 " use jk or kj as a single keystroke to escape
+imap <esc> <esc>l
 imap kj <esc>
-imap jk <esc>
 imap kk <esc>
 imap jj <esc>
 imap :w <esc>:w
 imap :q <esc>:q
-nmap <space> i~<esc>r
-set statusline=%F%m%r%h%w\ [TYPE=%Y]\ [%{hostname()}]\ [%l,%v]\ [%p%%]\ [LEN=%L]\ [%{$PWDS}]
-set title titlestring=<vim>\ %{$USER}@%{hostname()}\ %t\ %m%r%h%w
 
 " === TABLE MODE
 let g:table_mode_corner = '|'
@@ -577,10 +579,20 @@ if exists('$TMUX')
 endif
 
 " === CURSOR CUSTOMIZATION
-" See http://vim.wikia.com/wiki/Change_cursor_color_in_different_modes
-if &term == "xterm-256color"              " xterms are gnu-term and terminator
-  let &t_SI = "\<Esc>]12;green\x7"        " when entering insert mode
-  let &t_EI = "\<Esc>]12;white\x7"        " when leaving insert mode
+" http://vim.wikia.com/wiki/Change_cursor_color_in_different_modes
+" http://stackoverflow.com/questions/6488683/how-do-i-change-the-vim-cursor-in-insert-normal-mode
+" https://jonasjacek.github.io/colors/
+" cursor shapes (where N = \033[N q): 
+"   1 -> blinking block 
+"   2 -> solid block 
+"   3 -> blinking underscore 
+"   4 -> solid underscore
+"   5 -> blinking bar
+"   6 -> solid bar
+if &term == "xterm-256color"  " xterms are gnu-term and terminator
+  let &t_SI = "\e[5 q"      " when entering insert mode
+  let &t_SR = "\e[3 q"      " when entering replace mode
+  let &t_EI = "\e[2 q"      " when entering normal mode
   set mouse=a
 endif
 
@@ -592,8 +604,11 @@ endif
 " See https://gist.github.com/1973419 (this works)
 " http://superuser.com/questions/401926/how-to-get-shiftarrows-and-ctrlarrows-working-in-vim-in-tmux
 if &term == 'screen-256color'                                   " TMUX
-  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]12;green\x7\<Esc>\\"    " when entering insert mode
-  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]12;white\x7\<Esc>\\"    " when entering normal mode
+  " let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]12;green\x7\<Esc>\\"    " when entering insert mode
+  " let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]12;white\x7\<Esc>\\"    " when entering normal mode
+  let &t_SI = "\<Esc>Ptmux;\<Esc>\e[5 q\<Esc>\\"                 " when entering replace mode
+  let &t_SR = "\<Esc>Ptmux;\<Esc>\e[3 q\<Esc>\\"                 " when entering replace mode
+  let &t_EI = "\<Esc>Ptmux;\<Esc>\e[2 q\<Esc>\\"                 " when entering replace mode
   nmap [1;5A [e
   nmap [1;5B ]e
   vmap [1;5A [egv

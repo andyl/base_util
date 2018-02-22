@@ -1,13 +1,21 @@
-" === MISC STUFF
+" === MISC
+
+" redefine mapleader
+let mapleader=","
 
 " use jk or kj as a single keystroke to escape
-imap kj <esc>
-imap jk <esc>
+imap <esc> <esc>l
+imap kj <esc>  
 imap kk <esc>
 imap jj <esc>
-imap :w <esc>:w<cr>k$
+imap :w <esc>:w<cr>
 imap :q <esc>:q<cr>
 
 set surround
+
+" === HIGHLIGHTING
 set incsearch
 set hlsearch
+nmap <leader>h :nohlsearch<cr>
+nmap <F4> :nohlsearch<cr>
+imap <F4> <esc>:nohlsearch<cr>i
