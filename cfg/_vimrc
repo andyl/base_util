@@ -589,6 +589,8 @@ endif
 "   6 -> solid bar
 " test cursor shapes -> echo -ne "\e[5 q"
 " test cursor colors -> echo -ne "\e]12;green\x7"
+
+" Terminator terminal
 if &term == "xterm-256color"  " xterms are gnu-term and terminator
   let &t_SI = "\e[5 q"      " when entering insert mode
   let &t_SR = "\e[3 q"      " when entering replace mode
@@ -596,17 +598,7 @@ if &term == "xterm-256color"  " xterms are gnu-term and terminator
   set mouse=a
 endif
 
-if !empty($JETBRAINS_TERM)
-  let &t_SI = "\e]12;green\x7"    " when entering insert mode
-  let &t_SR = "\e]12;red\x7"      " when entering replace mode
-  let &t_EI = "\e]12;white\x7"    " when entering normal mode
-endif
-
-" https://github.com/neovim/neovim/wiki/FAQ#how-can-i-change-the-cursor-~"hape-in-the-terminal
-if &term == "nvim" 
-  set guicursor=i:ver25-iCursor
-endif
-
+" Tmux settings
 " See https://gist.github.com/1973419 (this works)
 " http://superuser.com/questions/401926/how-to-get-shiftarrows-and-ctrlarrows-working-in-vim-in-tmux
 if &term == 'screen-256color'                                   " TMUX
@@ -623,6 +615,20 @@ if &term == 'screen-256color'                                   " TMUX
   execute "set <xLeft>=\e[1;*D"
 endif
  
+" NeoVim
+" https://github.com/neovim/neovim/wiki/FAQ#how-can-i-change-the-cursor-~"hape-in-the-terminal
+if &term == "nvim" 
+  set guicursor=i:ver25-iCursor
+endif
+
+" Experiment with JetBrains console (it doesn't work)
+" The `JETBRAINS_TERM` var is setup in bashrc
+if !empty($JETBRAINS_TERM)
+  let &t_SI = "\e]12;green\x7"    " when entering insert mode
+  let &t_SR = "\e]12;red\x7"      " when entering replace mode
+  let &t_EI = "\e]12;white\x7"    " when entering normal mode
+endif
+
 " See http://arniealmighty.wordpress.com for screen/cursor color notes
 " (doesn't seem to be working)
 if &term == 'screen'                            " GNU Screen 

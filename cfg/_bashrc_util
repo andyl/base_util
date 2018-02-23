@@ -5,15 +5,6 @@ export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/b
 
 ###########################################################################
 
-function is_jetbrains() {
-  if [ "$(type -t load_login_configs)" == "function" ]; then
-    return 0
-  else
-    return 1
-  fi
-}
-is_jetbrains && export JETBRAINS_TERM="true"
-
 function sourcefile() {
   tgt=$1
   [ -f $1 ] && source $1
@@ -140,6 +131,21 @@ alias tv="no_tmux && tm new-session vim"
 alias tmate-links="tmate show-messages | grep -v clear | grep -v ssh.tmate.io | cut -d ' ' -f 1-6 --complement"
 
 # need a links-send command...
+
+###########################################################################
+# JETBRAINS TERMINAL SUPPORT
+# JetBrains defined the bash function `load_login_configs`
+# See the JetBrains directory `plugins/terminal`
+# See the terminal settings "Ctrl-Alt-S" (last setting "Shell Integration") 
+
+function is_jetbrains() {
+  if [ "$(type -t load_login_configs)" == "function" ]; then
+    return 0
+  else
+    return 1
+  fi
+}
+is_jetbrains && export JETBRAINS_TERM="true"
 
 ###########################################################################
 # BUILDROOT
