@@ -7,9 +7,9 @@ export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/b
 
 function is_jetbrains() {
   if [ "$(type -t load_login_configs)" == "function" ]; then
-    exit 0
+    return 0
   else
-    exit 1
+    return 1
   fi
 }
 
