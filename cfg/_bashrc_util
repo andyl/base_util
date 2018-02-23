@@ -12,6 +12,7 @@ function is_jetbrains() {
     return 1
   fi
 }
+is_jetbrains && export JETBRAINS_TERM="true"
 
 function sourcefile() {
   tgt=$1
