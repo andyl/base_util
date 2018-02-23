@@ -596,7 +596,14 @@ if &term == "xterm-256color"  " xterms are gnu-term and terminator
   set mouse=a
 endif
 
-" https://github.com/neovim/neovim/wiki/FAQ#how-can-i-change-the-cursor-shape-in-the-terminal
+if !empty($JETBRAINS_TERM)
+
+  let &t_SI = "\e]12;green\x7"    " when entering insert mode
+  let &t_SR = "\e]12;red\x7"      " when entering replace mode
+  let &t_EI = "\e]12;white\x7"    " when entering normal mode
+end
+
+" https://github.com/neovim/neovim/wiki/FAQ#how-can-i-change-the-cursor-~"hape-in-the-terminal
 if &term == "nvim" 
   set guicursor=i:ver25-iCursor
 endif
