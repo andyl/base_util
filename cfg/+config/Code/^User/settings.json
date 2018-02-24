@@ -1,35 +1,54 @@
 {
-"vim.enableNeovim": true ,
-"vim.hlsearch": true ,
-"vim.neovimPath": "/usr/bin/nvim",
-"editor.tabSize": 2,
-"keyboard.dispatch": "keyCode",
-"editor.minimap.enabled": false,
-"ruby.lint": {
-	"reek":      false,
-	"fasterer":  false,
-	"debride":   false,
-	"rubocop":   true,
-	"ruby":      false,    //Runs ruby -wc
-	"ruby-lint": false
-},
-"gitlens.advanced.messages": {
-  "suppressCommitHasNoPreviousCommitWarning": false,
-  "suppressCommitNotFoundWarning": false,
-  "suppressFileNotUnderSourceControlWarning": false,
-  "suppressGitVersionWarning": false,
-  "suppressLineUncommittedWarning": false,
-  "suppressNoRepositoryWarning": false,
-  "suppressUpdateNotice": false,
-  "suppressWelcomeNotice": true
-},
-"window.zoomLevel": -1,
-"workbench.colorTheme": "Monokai",
-"workbench.sideBar.location": "left",
-"[elixir]": {
-  "editor.quickSuggestions": true
-},
-"window.menuBarVisibility": "default",
-"workbench.statusBar.visible": true,
-"workbench.activityBar.visible": false
+  "vim.enableNeovim": true ,
+  "vim.hlsearch": true ,
+  "vim.neovimPath": "/usr/bin/nvim",
+  "vim.easymotion": true,
+  "vim.sneak": true,
+  "vim.incsearch": true,
+  "vim.useSystemClipboard": true,
+  "vim.useCtrlKeys": true,
+  "vim.insertModeKeyBindings": [
+    { "before": ["k","j"], "after": ["<Esc>"] }, 
+    { "before": ["j","j"], "after": ["<Esc>"] }, 
+    { "before": ["k","k"], "after": ["<Esc>"] } 
+  ],
+  "vim.otherModesKeyBindingsNonRecursive": [
+    { "before": ["<leader>","d"], "after": ["d", "d"] },
+    { "before": ["<C-n>"]       , "after": [], "commands": [ { "command": ":nohl" } ] }
+  ],
+  "vim.leader": ",",
+  "vim.handleKeys":{
+    "<C-a>": false,
+    "<C-f>": false
+  },
+  "editor.tabSize": 2,
+  "keyboard.dispatch": "keyCode",
+  "editor.minimap.enabled": false,
+  "ruby.lint": {
+    "reek":      false,
+    "fasterer":  false,
+    "debride":   false,
+    "rubocop":   true,
+    "ruby":      false,    //Runs ruby -wc
+    "ruby-lint": false
+  },
+  "gitlens.advanced.messages": {
+    "suppressCommitHasNoPreviousCommitWarning": false,
+    "suppressCommitNotFoundWarning": false,
+    "suppressFileNotUnderSourceControlWarning": false,
+    "suppressGitVersionWarning": false,
+    "suppressLineUncommittedWarning": false,
+    "suppressNoRepositoryWarning": false,
+    "suppressUpdateNotice": false,
+    "suppressWelcomeNotice": true
+  },
+  "window.zoomLevel": -1,
+  "workbench.colorTheme": "Monokai",
+  "workbench.sideBar.location": "left",
+  "[elixir]": {
+    "editor.quickSuggestions": true
+  },
+  "window.menuBarVisibility": "default",
+  "workbench.statusBar.visible": true,
+  "workbench.activityBar.visible": false
 }
