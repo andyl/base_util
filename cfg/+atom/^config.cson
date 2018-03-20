@@ -1,0 +1,42 @@
+"*":
+  "atom-ide-ui":
+    use: {}
+  core:
+    disabledPackages: [
+      "spell-check"
+      "linter"
+    ]
+    projectHome: "/home/aleak/zz"
+    telemetryConsent: "no"
+    themes: [
+      "atom-dark-ui"
+      "solarized-light-syntax"
+    ]
+  editor:
+    atomicSoftTabs: false
+    fontSize: 12
+    lineHeight: 1.4
+    showIndentGuide: true
+    showInvisibles: true
+    softTabs: false
+    tabType: "soft"
+  "exception-reporting":
+    userId: "a6e98fdf-91fe-6f2d-5505-e01110977963"
+  linter: {}
+  "open-recent":
+    maxRecentFiles: 16
+  "platformio-ide-terminal":
+    toggles:
+      autoClose: true
+      runInsertedText: false
+  related:
+    openSingleItemAutomatically: true
+  "spell-check": {}
+  "tree-view":
+    alwaysOpenExisting: true
+    autoReveal: true
+    hideVcsIgnoredFiles: true
+  welcome:
+    showOnStartup: false
+  zentabs:
+    maximumOpenedTabs: 4

@@ -1,0 +1,40 @@
+'.editor':
+  'alt-right':        'unset!'
+  'alt-left':         'unset!'
+  'ctrl-w':           'unset!'
+  'ctrl-f4':          'unset!'
+  'ctrl-shift-x':     'unset!'
+  'ctrl-shift-w':     'unset!'
+  'ctrl-shift-k':     'unset!'
+  'ctrl-shift-left':  'unset!'
+  'ctrl-shift-right': 'unset!'
+  'ctrl-shift-up':    'unset!'
+  'ctrl-shift-down':  'unset!'
+  'ctrl-shift-y':     'editor:delete-line'
+
+'.platform-linux atom-text-editor':
+  'ctrl-shift-l': 'unset!'
+
+'.body':
+  'ctrl-s': 'unset!'
+
+'body':
+  'ctrl-s':           'window:save-all'
+  'ctrl-shift-b':     'window:toggle-menu-bar'
+  'alt-left':         'pane:show-previous-item'
+  'alt-right':        'pane:show-next-item'
+  'ctrl-shift-x':     'core:close'
+  'ctrl-shift-s':     'pane:split-down-and-copy-active-item'
+  'ctrl-shift-v':     'pane:split-right-and-copy-active-item'
+  'ctrl-shift-h':     'window:focus-pane-on-left'
+  'ctrl-shift-j':     'window:focus-pane-below'
+  'ctrl-shift-k':     'window:focus-pane-above'
+  'ctrl-shift-l':     'window:focus-pane-on-right'
+  'ctrl-shift-z':     'maximize-panes:maximize'
+  'ctrl-shift-left':  'move-panes:move-left'
+  'ctrl-shift-right': 'move-panes:move-right'
+  'ctrl-shift-up':    'move-panes:move-up'
+  'ctrl-shift-down':  'move-panes:move-down'
+
+'atom-workspace':
+  'alt-`': 'editor:focus-main'

@@ -1,0 +1,18 @@
+'menu': [
+  {
+    'label': 'Packages'
+    'submenu': [
+      'label': 'Related'
+      'submenu': [
+        {
+          'label': 'Show related files'
+          'command': 'related:show-related-files'
+        },
+        {
+          'label': 'Edit related patterns',
+          'command': 'related:edit-related-patterns'
+        }
+      ]
+    ]
+  }
+]
