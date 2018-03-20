@@ -2,6 +2,17 @@
   "atom-ide-ui":
     use: {}
   core:
+    customFileTypes:
+      "source.ini": [
+        ".buckconfig"
+        ".hgrc"
+      ]
+      "source.json": [
+        "BUCK.autodeps"
+      ]
+      "source.python": [
+        "BUCK"
+      ]
     disabledPackages: [
       "spell-check"
       "linter"
@@ -23,6 +34,13 @@
   "exception-reporting":
     userId: "a6e98fdf-91fe-6f2d-5505-e01110977963"
   linter: {}
+  "linter-ui-default":
+    panelHeight: 287
+    showPanel: true
+  nuclide:
+    "nuclide-home":
+      showHome: false
+    use: {}
   "open-recent":
     maxRecentFiles: 16
   "platformio-ide-terminal":
