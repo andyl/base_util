@@ -35,7 +35,6 @@
   "tree-view":
     alwaysOpenExisting: true
     autoReveal: true
-    hideVcsIgnoredFiles: true
   welcome:
     showOnStartup: false
   zentabs:
