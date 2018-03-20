@@ -12,8 +12,8 @@ Plug 'MarcWeber/vim-addon-mw-utils'      " support lib for snipmate
 Plug 'tomtom/tlib_vim'                   " support lib for snipmate
 Plug 'garbas/vim-snipmate'               " snippet plugin
 " -- LSP ----- 
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
+Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
+Plug 'Shougo/deoplete.nvim'          , { 'do': ':UpdateRemotePlugins' }
 " -- FZF ----- 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " -- FILE UTILS ----- 
@@ -92,14 +92,21 @@ au BufRead,BufNewFile *.gtd     set filetype=gtd
 au BufRead,BufNewFile *.gta     set filetype=gtd
 
 " === ELIXIR CONFIG
-augroup elixir_lsp
-  au!
-  au User lsp_setup call lsp#register_server({
-        \ 'name': 'elixir-ls',
-        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'env ERL_LIBS=/home/aleak/util/base_util/lsp mix elixir_ls.language_server']},
-        \ 'whitelist': ['elixir', 'eelixir'],
-        \ })
-augroup END
+" augroup elixir_lsp
+"   au!
+"   au User lsp_setup call lsp#register_server({
+"         \ 'name': 'elixir-ls',
+"         \ 'cmd': {server_info->[&shell, &shellcmdflag, 'env ERL_LIBS=/home/aleak/util/base_util/lsp mix elixir_ls.language_server']},
+"         \ 'whitelist': ['elixir', 'eelixir']
+"         \ })
+" augroup END
+
+let g:LanguageClient_serverCommands = {
+      \ 'elixir': []
+      \ }
+nnoremap <silent> K    :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> gd   :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 
 " === LISTS
 let g:toggle_list_no_mappings=1
