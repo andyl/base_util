@@ -12,8 +12,7 @@ Plug 'MarcWeber/vim-addon-mw-utils'      " support lib for snipmate
 Plug 'tomtom/tlib_vim'                   " support lib for snipmate
 Plug 'garbas/vim-snipmate'               " snippet plugin
 " -- LSP ----- 
-Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
-Plug 'Shougo/deoplete.nvim'          , { 'do': ':UpdateRemotePlugins' }
+" use 'LanguageClient-neovim' or 'vim-lsp' ...
 " -- FZF ----- 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " -- FILE UTILS ----- 
