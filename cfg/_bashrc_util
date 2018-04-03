@@ -25,8 +25,8 @@ sourcefile ~/.util_path           # define $UTIL_PATH
 export PATH=$UTIL_PATH:$PATH      # setup util PATH 
 
 ###########################################################################
-# PDEV UTIL
-sourcefile ~/.bashrc_pdev
+# CODE UTIL
+sourcefile ~/.bashrc_code
 
 ###########################################################################
 # NPM
@@ -317,19 +317,20 @@ alias g9='cd ~9'              # go to the Nth dir on the stack
 
 alias  gu='pushdp $UTIL_DIR'
 alias gub='pushdp $UTIL_DIR/base_util'
-alias gup='pushdp $UTIL_DIR/pdev_util'
+alias guc='pushdp $UTIL_DIR/code_util'
+alias gud='pushdp $UTIL_DIR/depp_util'
 alias gud='pushdp $UTIL_DIR/doc'
 alias guo='pushdp $UTIL_DIR/org'
 
 alias gubb='pushdp $UTIL_DIR/base_util/bin'
 alias gubc='pushdp $UTIL_DIR/base_util/cfg'
 
-alias gupb='pushdp $UTIL_DIR/pdev_util/bin'
-alias gupc='pushdp $UTIL_DIR/pdev_util/cfg'
-alias gupi='pushdp $UTIL_DIR/pdev_util/inc'
-alias gupe='pushdp $UTIL_DIR/pdev_util/es'
-alias gupg='pushdp $UTIL_DIR/pdev_util/gems'
-alias gups='pushdp $UTIL_DIR/pdev_util/shards'
+alias gucb='pushdp $UTIL_DIR/code_util/bin'
+alias gucc='pushdp $UTIL_DIR/code_util/cfg'
+alias guci='pushdp $UTIL_DIR/code_util/inc'
+alias guce='pushdp $UTIL_DIR/code_util/es'
+alias gucg='pushdp $UTIL_DIR/code_util/gems'
+alias gucs='pushdp $UTIL_DIR/code_util/shards'
 
 alias  gv='pushdp ~/var'
 alias gvb='pushdp ~/var/backup'

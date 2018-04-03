@@ -1,10 +1,14 @@
-Dotfile and Utility scripts
+# Dotfile and Utility scripts
+
+## Usage
 
 To use:
   mkdir ~/util
   cd ~/util
   git clone git://github.com/andyl/base_util.git
   base_util/init
+
+## Layout
 
 You can have any number of util directories that
 live alongside base_util.  For example, you may 
@@ -26,6 +30,8 @@ cfg symlinking supports nested config directories.
 Nested paths must be encoded using the following filename conventions:
 -> a single '+' character to show the dotfile root
 -> a single '^' character to show where to built the symlink
+
+## Examples
 
 -------------------------------------------------
 For example:
