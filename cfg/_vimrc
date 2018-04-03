@@ -90,6 +90,10 @@ au BufRead,BufNewFile *.thor    set filetype=ruby
 au BufRead,BufNewFile *.gtd     set filetype=gtd
 au BufRead,BufNewFile *.gta     set filetype=gtd
 
+" === ELIMINATING MODE TRANSMISSION DELAYS
+" https://www.johnhawthorn.com/2012/09/vi-escape-delays/
+set timeoutlen=1000 ttimeoutlen=0
+
 " === ELIXIR CONFIG
 " augroup elixir_lsp
 "   au!
