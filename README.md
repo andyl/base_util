@@ -47,3 +47,4 @@ For example:
 Will generate:
 ~/.config/app -> ~/util/base_util/cfg/+config/^app
 
+## FINI
