@@ -86,24 +86,15 @@ Plug 'vim-scripts/bats.vim'              " bats editing
 call plug#end()
 
 " === FILE MODES
-au BufRead,BufNewFile *.thor    set filetype=ruby
-au BufRead,BufNewFile *.gtd     set filetype=gtd
-au BufRead,BufNewFile *.gta     set filetype=gtd
+" au BufRead,BufNewFile *.thor    set filetype=ruby
+" au BufRead,BufNewFile *.gtd     set filetype=gtd
+" au BufRead,BufNewFile *.gta     set filetype=gtd
 
 " === ELIMINATING MODE TRANSMISSION DELAYS
 " https://www.johnhawthorn.com/2012/09/vi-escape-delays/
 set timeoutlen=1000 ttimeoutlen=0
 
 " === ELIXIR CONFIG
-" augroup elixir_lsp
-"   au!
-"   au User lsp_setup call lsp#register_server({
-"         \ 'name': 'elixir-ls',
-"         \ 'cmd': {server_info->[&shell, &shellcmdflag, 'env ERL_LIBS=/home/aleak/util/base_util/lsp mix elixir_ls.language_server']},
-"         \ 'whitelist': ['elixir', 'eelixir']
-"         \ })
-" augroup END
-
 let g:LanguageClient_serverCommands = {
       \ 'elixir': []
       \ }
@@ -117,7 +108,7 @@ nmap <F7> :call ToggleQuickfixList()<cr>
 nmap <F9> :call ToggleLocationList()<cr>
 
 " === CLEAN UP JUNK DATA FILE
-au VimLeave * if filereadable(expand("~/.vim/.netrwhist"))|call delete(expand("~/.vim/.netrwhist"))|endif 
+" au VimLeave * if filereadable(expand("~/.vim/.netrwhist"))|call delete(expand("~/.vim/.netrwhist"))|endif 
 
 " === FILE BACKUPS - disable file backups
 set updatecount=0     
@@ -232,7 +223,7 @@ fu! LoadAutorun()
   endif
 endfunction
 
-autocmd VimEnter * call LoadAutorun()
+" autocmd VimEnter * call LoadAutorun()
 
 " === INDENTATION AND TABS
 filetype plugin indent on
@@ -313,7 +304,7 @@ endfunction
 
 nnoremap <silent> <leader>e :call <SID>ToggleNerd()<cr>
 
-autocmd BufEnter * call <SID>SyncTree()
+" autocmd BufEnter * call <SID>SyncTree()
 
 " === ViMux
 function! s:IsVimuxOpen()
@@ -574,10 +565,10 @@ function! <SID>blur()
   AirlineRefresh
 endfunction
 
-autocmd BufEnter,FocusGained,VimEnter,WinEnter *      :call <SID>focus()
-autocmd BufEnter,FocusGained,VimEnter,WinEnter *.wlog colorscheme worklog | AirlineRefresh
-autocmd BufEnter,FocusGained,VimEnter,WinEnter *.otl  colorscheme otl     | AirlineRefresh
-autocmd BufEnter,FocusGained,VimEnter,WinEnter *.gtd  colorscheme gtd     | AirlineRefresh
+" autocmd BufEnter,FocusGained,VimEnter,WinEnter *      :call <SID>focus()
+" autocmd BufEnter,FocusGained,VimEnter,WinEnter *.wlog colorscheme worklog | AirlineRefresh
+" autocmd BufEnter,FocusGained,VimEnter,WinEnter *.otl  colorscheme otl     | AirlineRefresh
+" autocmd BufEnter,FocusGained,VimEnter,WinEnter *.gtd  colorscheme gtd     | AirlineRefresh
 
 " === TERM-SPECIFIC ITEMS 
 if exists('$TMUX')
