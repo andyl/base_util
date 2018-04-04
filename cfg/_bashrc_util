@@ -319,7 +319,8 @@ alias  gu='pushdp $UTIL_DIR'
 alias gub='pushdp $UTIL_DIR/base_util'
 alias guc='pushdp $UTIL_DIR/code_util'
 alias gud='pushdp $UTIL_DIR/depp_util'
-alias gud='pushdp $UTIL_DIR/doc'
+alias gue='pushdp $UTIL_DIR/elix_util'
+alias gun='pushdp $UTIL_DIR/notes'
 alias guo='pushdp $UTIL_DIR/org'
 
 alias gubb='pushdp $UTIL_DIR/base_util/bin'
@@ -367,6 +368,10 @@ alias gfcl="gf ; if [ -d current/log ] ; then pushdp ./current/log ; fi"  # curr
 
 alias   sr="rm -f ~/.dir_rsv; ln -s \`pwd\` ~/.dir_rsv"                   # set reserve dir
 alias   gr="if [ -d ~/.dir_rsv ] ; then cd -P ~/.dir_rsv; fi"             # goto reserve dir
+
+# create new tab in current terminator window
+# https://askubuntu.com/questions/380315/command-to-open-new-tab-in-the-current-terminal
+alias nt="xdotool key ctrl+shift+t"
 
 ###########################################################################
 # DIRECTORY LISTING
