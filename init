@@ -141,5 +141,5 @@ results.each do |result|
   puts "#{pf.call(:src_path)} | make #{pf.call(:tgt_base)} | #{pf.call(:tgt_link)} -> #{pf.call(:src_link).gsub('/home/aleak', '~')}"
   system "mv #{result.tgt_link} #{result.tgt_link}.old" if File.exist?(result.tgt_link)
   system "mkdir -p #{result.tgt_base}"
-  system "ln -s #{result.src_link} #{result.tgt_link}"
+  system "ln -fs #{result.src_link} #{result.tgt_link}"
 end
