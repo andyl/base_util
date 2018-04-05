@@ -1,6 +1,10 @@
 " -----------------------------------------------------------------
 " ----- vimrc for 'old vim' (vim version 8)
 
+" PATHOGEN PLUGIN MANAGER 
+" LOADS CUSTOM PLUGINS IN ~/.vim/bundle ...
+call pathogen#runtime_append_all_bundles()   
+call pathogen#helptags()
 
 " -----------------------------------------------------------------
 " ----- load base config
