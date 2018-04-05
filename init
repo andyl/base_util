@@ -121,7 +121,7 @@ def pfield(field, result, results)
   result.send(field).to_s.ljust(results.map {|r| r.send(field).length}.max)
 end
 
-puts "Generating deep links for #{util_dir}/cfg"
+puts "Generating deep links for #{util_dir}/*_util/cfg"
 results = target_list.reduce([]) do |acc, elem|
   next(acc) if elem.count("^") != 1
   util_base = elem.split("cfg").first + "cfg/"
