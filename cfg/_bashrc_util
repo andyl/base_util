@@ -77,7 +77,7 @@ export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.g
 # VIM / NEOVIM / NVIM / NV
 
 # use VI in terminal...
-set -o vi
+# set -o vi
 
 # use for .vimrc and plugin testing
 # restart vim by simply ":qa!"
