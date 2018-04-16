@@ -176,7 +176,11 @@ buildroot-install() {
 ###########################################################################
 # MISC 
 tgt=~/.java_env ; [ -f $tgt ] && source $tgt     # source java support
-setxkbmap -option caps:swapescape 2> /dev/null   # swap tab and escape key
+
+function swapescape() {
+  setxkbmap -option caps:swapescape 2> /dev/null   # swap tab and escape key
+}
+swapescape
 
 ###########################################################################
 # FUNCTIONS
