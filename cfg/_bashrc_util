@@ -12,7 +12,11 @@ function sourcefile() {
 
 ###########################################################################
 
+# sudo timedatectl set-timezone <tz> -> updates /etc/timezone
+#      timedatectl                   -> shows timezone
+#      date                          -> shows time
 export TZ="America/Los_Angeles"
+# export TZ="America/New_York"
 sourcefile ~/.rails_env
 sourcefile ~/.bashu_aliases
 sourcefile ~/.bashu_functions
