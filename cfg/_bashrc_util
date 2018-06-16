@@ -388,8 +388,9 @@ alias   gr="if [ -d ~/.dir_rsv ] ; then cd -P ~/.dir_rsv; fi"             # goto
 
 # create new tab in current terminator window
 # https://askubuntu.com/questions/380315/command-to-open-new-tab-in-the-current-terminal
-alias nt="xdotool key ctrl+shift+t"
 alias tn="xdotool key ctrl+shift+t"
+alias ts="xdotool key ctrl+shift+s"
+alias tv="xdotool key ctrl+shift+v"
 
 ###########################################################################
 # DIRECTORY LISTING
