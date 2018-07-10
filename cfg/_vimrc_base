@@ -7,7 +7,9 @@ Plug 'MarcWeber/vim-addon-mw-utils'      " support lib for snipmate
 Plug 'tomtom/tlib_vim'                   " support lib for snipmate
 Plug 'garbas/vim-snipmate'               " snippet plugin
 " -- LSP ----- 
-" use 'LanguageClient-neovim' or 'vim-lsp' ...
+" use 'LanguageClient-neovim' or 'vim-lsc' or 'vim-lsp'
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
 " -- FZF ----- 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " -- FILE UTILS ----- 
@@ -111,6 +113,19 @@ set nobackup
 set noswapfile
 
 set shortmess+=I
+
+" === LSP
+
+augroup elixir_lsp
+  au!
+  au User lsp_setup call lsp#register_server({
+    \ 'name': 'elixir-ls',
+    \ 'cmd': {server_info->[&shell, &shellcmdflag, 'env ERL_LIBS=<path to your elixir-ls clone>/lsp mix elixir_ls.language_server']},
+    \ 'whitelist': ['elixir', 'eelixir'],
+    \ })
+augroup END
+
+
 
 " === SYNTASTIC 
 let g:syntastic_always_populate_loc_list = 1
