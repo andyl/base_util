@@ -116,14 +116,27 @@ set shortmess+=I
 
 " === LSP
 
-augroup elixir_lsp
-  au!
-  au User lsp_setup call lsp#register_server({
-    \ 'name': 'elixir-ls',
-    \ 'cmd': {server_info->[&shell, &shellcmdflag, 'env ERL_LIBS=<path to your elixir-ls clone>/lsp mix elixir_ls.language_server']},
-    \ 'whitelist': ['elixir', 'eelixir'],
-    \ })
-augroup END
+if executable('elixir_ls')
+  augroup elixir_lsp
+    au!
+    au User lsp_setup call lsp#register_server({
+      \ 'name': 'elixir-ls',
+      \ 'cmd': {server_info->['elixir_ls']},
+      \ 'whitelist': ['elixir', 'eelixir'],
+      \ })
+  augroup END
+endif
+
+if executable('solargraph')
+  augroup ruby_lsp
+    au!
+    au User lsp_setup call lsp#register_server({
+      \ 'name': 'ruby-ls',
+      \ 'cmd': {server_info->['solargraph', 'stdio']},
+      \ 'whitelist': ['ruby'],
+      \ })
+  augroup END
+endif
 
 " === SYNTASTIC 
 let g:syntastic_always_populate_loc_list = 1
