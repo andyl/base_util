@@ -6,10 +6,11 @@ call plug#begin('~/.vim/plugged')
 Plug 'MarcWeber/vim-addon-mw-utils'      " support lib for snipmate
 Plug 'tomtom/tlib_vim'                   " support lib for snipmate
 Plug 'garbas/vim-snipmate'               " snippet plugin
-" -- LSP ----- 
-" use 'LanguageClient-neovim' or 'vim-lsc' or 'vim-lsp'
+" -- LSP/COMPLETION ----- 
+Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
 " -- FZF ----- 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " -- FILE UTILS ----- 
@@ -113,6 +114,13 @@ set nobackup
 set noswapfile
 
 set shortmess+=I
+
+" === COMPLETION
+" from http://stackoverflow.com/questions/2269005/how-can-i-change-the-keybinding-used-to-autocomplete-in-vim
+" <C-y> to trigger autocompletion
+inoremap <C-y> <C-x><C-o>
+" <C-space> instead of <C-n> 
+inoremap <Nul> <C-n>
 
 " === LSP
 
@@ -218,13 +226,6 @@ imap :q <esc>:q
 " === TABLE MODE
 let g:table_mode_corner = '|'
 let g:table_mode_corner_corner = '|'
-
-" === COMPLETION
-" from http://stackoverflow.com/questions/2269005/how-can-i-change-the-keybinding-used-to-autocomplete-in-vim
-" <C-y> to trigger autocompletion
-inoremap <C-y> <C-x><C-o>
-" <C-space> instead of <C-n> 
-inoremap <Nul> <C-n>
 
 " === MOVE LINE UP/DOWN
 nmap <A-Up> [e
