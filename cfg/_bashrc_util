@@ -262,6 +262,11 @@ alias bej="bundle exec jekyll"
 alias bejek="bundle exec jekyll"
 
 ###########################################################################
+# DOCKER
+
+alias dkr="docker"
+
+###########################################################################
 # BASH OPTIONS
 
 shopt -s cdspell      # spell correction during cd command
