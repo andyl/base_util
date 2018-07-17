@@ -153,15 +153,17 @@ srclist = %w(
 
 results = srclist.reduce([]) do |acc, dir|
   src = File.expand_path(dir)
-  tgt = File.expand_path("~/" + src.split("/").last)
+  tgt = File.expand_path("~/." + src.split("/").last)
   next(acc) unless File.exist?(src)
   next(acc) if File.exist?(tgt) && File.symlink?(tgt) && File.readlink(tgt) == src
-  acc + [OpenStruct.new(src: src, tgt: tgt)
+  acc + [OpenStruct.new(src: src, tgt: tgt)]
 end
 
 results.each do |result|
-  puts "EXT LINK: #{result.src}"
+  tgt = result.tgt
+  src = result.src
+  puts "EXT LINK: #{src}"
   system "rm -r #{tgt}.old"     if File.exist?("#{tgt}.old")
   system "mv #{tgt} #{tgt}.old" if File.exist?(tgt)
-  system "ln -fs #{result.src} #{result.tgt}"
+  system "ln -fs #{src} #{tgt}"
 end
