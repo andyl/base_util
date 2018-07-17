@@ -143,3 +143,25 @@ results.each do |result|
   system "mkdir -p #{result.tgt_base}"
   system "ln -fs #{result.src_link} #{result.tgt_link}"
 end
+
+# -------------------------------------------------
+# Sometimes we store config data in alternate directories
+# -------------------------------------------------
+srclist = %w(
+  ~/var/data/vscode
+)
+
+results = srclist.reduce([]) do |acc, dir|
+  src = File.expand_path(dir)
+  tgt = File.expand_path("~/" + src.split("/").last)
+  next(acc) unless File.exist?(src)
+  next(acc) if File.exist?(tgt) && File.symlink?(tgt) && File.readlink(tgt) == src
+  acc + [OpenStruct.new(src: src, tgt: tgt)
+end
+
+results.each do |result|
+  puts "EXT LINK: #{result.src}"
+  system "rm -r #{tgt}.old"     if File.exist?("#{tgt}.old")
+  system "mv #{tgt} #{tgt}.old" if File.exist?(tgt)
+  system "ln -fs #{result.src} #{result.tgt}"
+end
