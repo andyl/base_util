@@ -448,13 +448,13 @@ nnoremap <silent> <C-Left> :call BarLeft()<cr>
 nnoremap <silent> <C-Right> :call BarRight()<cr>
 
 " === TAGS
-let $CDIR=expand('%:p:h')
+" let $CDIR=expand('%:p:h')
 " set tags=$CDIR/.tags
 " CTAGS-BUNDLER
-set tags=tags,gems.tags
-let Tlist_GainFocus_On_ToggleOpen=1
-nmap <leader>g :TlistToggle<cr>     
-nmap <leader>x :!ct<cr>:TlistUpdate<cr>
+" set tags=tags,gems.tags
+" let Tlist_GainFocus_On_ToggleOpen=1
+" nmap <leader>g :TlistToggle<cr>     
+" nmap <leader>x :!ct<cr>:TlistUpdate<cr>
 
 " === FILE NAVIGATION 
 " Enhances vim.ruby - for use with 'gf'
