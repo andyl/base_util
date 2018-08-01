@@ -33,6 +33,10 @@ export PATH=$UTIL_PATH:$PATH      # setup util PATH
 sourcefile ~/.bashrc_code
 
 ###########################################################################
+# AIRFLOW
+export AIRFLOW_HOME=/home/aleak/src/airflow
+
+###########################################################################
 # NPM
 export PATH=$PATH:~/.npm-global/bin:./node_modules/.bin    
 
