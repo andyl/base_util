@@ -13,6 +13,9 @@ Style/SpaceInsideHashLiteralBraces:
 Style/SpaceInsideParens:
   Enabled: false
 
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
 Style/AlignArray:
   Enabled: false
 
@@ -24,4 +27,7 @@ Style/AlignParameters:
 
 Style/BracesAroundHashParameters:
   Enabled: false
+
+Metrics/LineLength:
+  Max: 120
 
