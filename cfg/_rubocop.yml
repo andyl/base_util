@@ -1,3 +1,6 @@
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
 Style/SpaceBeforeComma:
   Enabled: false
 
