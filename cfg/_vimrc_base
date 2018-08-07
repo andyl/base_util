@@ -56,6 +56,7 @@ Plug 'vim-scripts/taglist.vim'           " source code browsing
 Plug 'milkypostman/vim-togglelist'       " toggle quicklist and location list
 Plug 'tpope/vim-unimpaired'              " jump leading/trailing paren
 Plug 'tmhedberg/matchit'                 " % matching
+Plug 'vim-syntastic/syntastic'           " file linting
 " -- FILE FORMATS -----
 Plug 'vimoutliner/vimoutliner'           " outline files
 Plug 'pearofducks/ansible-vim'           " ansible yaml files
@@ -93,12 +94,12 @@ autocmd BufRead,BufNewFile *.gta     set filetype=gtd
 set timeoutlen=1000 ttimeoutlen=0
 
 " === ELIXIR CONFIG
-let g:LanguageClient_serverCommands = {
-      \ 'elixir': []
-      \ }
-nnoremap <silent> K    :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> gd   :call LanguageClient_textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+" let g:LanguageClient_serverCommands = {
+"       \ 'elixir': []
+"       \ }
+" nnoremap <silent> K    :call LanguageClient_textDocument_hover()<CR>
+" nnoremap <silent> gd   :call LanguageClient_textDocument_definition()<CR>
+" nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 
 " === LISTS
 let g:toggle_list_no_mappings=1
@@ -118,11 +119,15 @@ set shortmess+=I
 " === COMPLETION
 " from http://stackoverflow.com/questions/2269005/how-can-i-change-the-keybinding-used-to-autocomplete-in-vim
 " <C-y> to trigger autocompletion
-inoremap <C-y> <C-x><C-o>
+" inoremap <C-y> <C-x><C-o>
 " <C-space> instead of <C-n> 
-inoremap <Nul> <C-n>
+" inoremap <Nul> <C-n>
 
 " === LSP
+
+" Goto Definition with <C-]>
+" Jump Back with <C-o>
+nmap <C-]> :LspDefinition<cr>
 
 if executable('elixir_ls')
   augroup elixir_lsp
@@ -151,6 +156,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_enable_elixir_checker = 1
 let g:syntastic_elixir_checkers = ['elixir']
+let g:syntastic_ruby_checkers = ['rubocop']
 
 " === MATCHIT
 runtime macros/matchit.vim

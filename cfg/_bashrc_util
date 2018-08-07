@@ -186,7 +186,8 @@ buildroot-install() {
 tgt=~/.java_env ; [ -f $tgt ] && source $tgt     # source java support
 
 function swapescape() {
-  setxkbmap -option caps:swapescape 2> /dev/null   # swap tab and escape key
+  # setxkbmap -option caps:swapescape 2> /dev/null   # swap tab and escape key
+  setxkbmap -option caps:escape 2> /dev/null   # swap tab and escape key
 }
 swapescape
 
