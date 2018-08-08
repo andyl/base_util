@@ -185,11 +185,21 @@ buildroot-install() {
 # MISC 
 tgt=~/.java_env ; [ -f $tgt ] && source $tgt     # source java support
 
-function swapescape() {
-  # setxkbmap -option caps:swapescape 2> /dev/null   # swap tab and escape key
-  setxkbmap -option caps:escape 2> /dev/null   # swap tab and escape key
+###########################################################################
+# ESCAPE KEY SWAPPING
+# `caps:none`       (no swap)
+# `caps:escape`     (caps becomes another escape key)
+# `caps:swapescape` (swap cap lock an descape)
+
+function clearcap_escape() {
+  setxkbmap -option caps:none 2> /dev/null   
 }
-swapescape
+
+function setcap_escape() {
+  setxkbmap -option caps:escape 2> /dev/null   
+}
+
+setcap_escape
 
 ###########################################################################
 # FUNCTIONS
