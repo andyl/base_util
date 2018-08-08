@@ -52,7 +52,7 @@ Plug 'kana/vim-textobj-user'             " customizable text objects
 Plug 'tpope/vim-surround'                " edit containing objects
 Plug 'tpope/vim-repeat'                  " repeat support for plugins
 " -- CODING UTILITIES -----
-Plug 'vim-scripts/taglist.vim'           " source code browsing
+" Plug 'vim-scripts/taglist.vim'           " source code browsing
 Plug 'milkypostman/vim-togglelist'       " toggle quicklist and location list
 Plug 'tpope/vim-unimpaired'              " jump leading/trailing paren
 Plug 'tmhedberg/matchit'                 " % matching
