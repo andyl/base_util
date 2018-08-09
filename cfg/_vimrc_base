@@ -12,9 +12,9 @@ Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 " -- FZF ----- 
+Plug 'lvht/fzf-mru'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " -- FILE UTILS ----- 
-Plug 'junegunn/fzf.vim'                  " fuzzy file open
 Plug 'scrooloose/nerdtree'               " file browser
 Plug 'dsimidzija/vim-nerdtree-ignore'    " file browser
 Plug 'vim-scripts/nerdtree-ack'          " search from directory
@@ -52,7 +52,6 @@ Plug 'kana/vim-textobj-user'             " customizable text objects
 Plug 'tpope/vim-surround'                " edit containing objects
 Plug 'tpope/vim-repeat'                  " repeat support for plugins
 " -- CODING UTILITIES -----
-" Plug 'vim-scripts/taglist.vim'           " source code browsing
 Plug 'milkypostman/vim-togglelist'       " toggle quicklist and location list
 Plug 'tpope/vim-unimpaired'              " jump leading/trailing paren
 Plug 'tmhedberg/matchit'                 " % matching
@@ -101,10 +100,23 @@ set timeoutlen=1000 ttimeoutlen=0
 " nnoremap <silent> gd   :call LanguageClient_textDocument_definition()<CR>
 " nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 
-" === LISTS
+" === LISTS  
+
+let g:syntastic_is_open = 0  
+function! ToggleSyntastic()
+  if g:syntastic_is_open == 1
+      lclose
+      let g:syntastic_is_open = 0 
+  else
+      Errors
+      let g:syntastic_is_open = 1 
+  endif
+endfunction
+
 let g:toggle_list_no_mappings=1
 nmap <F7> :call ToggleQuickfixList()<cr>
-nmap <F9> :call ToggleLocationList()<cr>
+nmap <F9> :call ToggleSyntastic()<cr>
+" nmap <F9> :call ToggleLocationList()<cr>
 
 " === CLEAN UP JUNK DATA FILE
 autocmd VimLeave * if filereadable(expand("~/.vim/.netrwhist"))|call delete(expand("~/.vim/.netrwhist"))|endif 
@@ -294,6 +306,10 @@ nmap <leader>pl :! a2ps -c --highlight-level=none --sides=duplex -T 2 --line-num
 
 " === FZF - fast file finding
 nmap <C-p> :<C-u>FZF<CR>
+nmap <C-m> :<C-u>FZFMru<CR>
+
+" set max lenght for the mru file list
+let g:fzf_mru_file_list_size = 10 " 10 is default value
 
 " === ACK.VIM 
 nmap <leader>k :Ack 
@@ -486,7 +502,6 @@ autocmd FileType ruby  let g:surround_35  = "#{\r}"      " #
 
 " === BUFFER MANIPULATION [BufExplorer]  
 " (other commands from BufExplorer - be, bv, bs)
-nmap <leader>bb :CtrlPBuffer<cr>
 nmap <leader>bd :bd<cr>
 nmap <leader>bx :bd<cr>
 nmap <leader>bl :bnext<cr>

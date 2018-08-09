@@ -4,6 +4,18 @@ Layout/EmptyLinesAroundClassBody:
 Layout/EmptyLineBetweenDefs:
   Enabled: false
 
+Style/TernaryParentheses:
+  Enabled: false
+
+Style/EmptyCaseCondition:
+  Enabled: false
+
+Style/RedundantConditional:
+  Enabled: false
+
+Style/ParallelAssignment:
+  Enabled: false
+
 Style/RegexpLiteral:
   Enabled: false
 
