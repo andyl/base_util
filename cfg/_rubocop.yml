@@ -1,3 +1,6 @@
+Layout/EmptyLinesAroundClassBody:
+  Enabled: false
+
 Style/FrozenStringLiteralComment:
   Enabled: false
 
@@ -13,7 +16,16 @@ Style/SpaceInsideBlockBraces:
 Style/SpaceInsideHashLiteralBraces:
   Enabled: false
 
+Style/RedundantSelf:
+  Enabled: false
+
+Style/HashSyntax:
+  EnforcedStyle: no_mixed_keys
+
 Style/SpaceInsideParens:
+  Enabled: false
+
+Style/SingleLineMethods:
   Enabled: false
 
 Style/FrozenStringLiteralComment:
@@ -33,4 +45,7 @@ Style/BracesAroundHashParameters:
 
 Metrics/LineLength:
   Max: 120
+
+Naming/PredicateName:
+  Enabled: false
 
