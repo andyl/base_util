@@ -1,6 +1,12 @@
 Layout/EmptyLinesAroundClassBody:
   Enabled: false
 
+Layout/EmptyLineBetweenDefs:
+  Enabled: false
+
+Style/RegexpLiteral:
+  Enabled: false
+
 Style/FrozenStringLiteralComment:
   Enabled: false
 
@@ -8,6 +14,9 @@ Style/SpaceBeforeComma:
   Enabled: false
 
 Style/SpaceBeforeSemicolon:
+  Enabled: false
+
+Style/NumericPredicate:
   Enabled: false
 
 Style/SpaceInsideBlockBraces:
@@ -46,6 +55,12 @@ Style/BracesAroundHashParameters:
 Metrics/LineLength:
   Max: 120
 
+Metrics/ClassLength:
+  Max: 500
+
 Naming/PredicateName:
+  Enabled: false
+
+Performance/StringReplacement:
   Enabled: false
 
