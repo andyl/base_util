@@ -14,12 +14,12 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 " -- FZF ----- 
 Plug 'lvht/fzf-mru'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 " -- FILE UTILS ----- 
 Plug 'scrooloose/nerdtree'               " file browser
 Plug 'dsimidzija/vim-nerdtree-ignore'    " file browser
 Plug 'vim-scripts/nerdtree-ack'          " search from directory
 Plug 'mileszs/ack.vim'                   " file search
-Plug 'jlanzarotta/bufexplorer'           " buffer manipulation
 Plug 'tpope/vim-projectionist'           " src/test file nav
 Plug 'vim-scripts/SyntaxRange'           " vimdeck syntax highlighting
 " -- LANG ELIXIR -----
@@ -525,7 +525,7 @@ let g:airline_symbols_ascii = 1
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_tabs = 1
-let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#show_buffers = 1
 let g:airline#extensions#tabline#tab_min_count = 2
 let g:airline#extensions#tabline#buffer_min_count = 2
 let g:airline#extensions#tabline#show_tab_nr = 1
@@ -544,16 +544,17 @@ nmap <leader>7 :bl\|7bn<cr>
 nmap <leader>8 :bl\|8bn<cr>
 nmap <leader>9 :bl\|9bn<cr>
 
-" === BUFFER MANIPULATION [BufExplorer]  
-" (other commands from BufExplorer - be, bv, bs)
+" === BUFFER MANIPULATION 
 
-let g:bufExplorerSplitBelow=1     " Split new window below current.
-let g:bufExplorerSplitHorzSize=8  " New split window is n rows high.
+" switch to buffer 5 by typing 5<CR>
+" delete buffer 5 by typing d5<CR>
 
+nmap <leader>bb :ls<cr>:b
+
+nmap <leader>bn :bnext<cr>
+nmap <leader>bp :bprev<cr>
 nmap <leader>bd :bd<cr>
 nmap <leader>bx :bd<cr>
-nmap <leader>bl :bnext<cr>
-nmap <leader>bh :bprev<cr>
 
 " === ENCODING
 if !exists('g:encoding_set')
