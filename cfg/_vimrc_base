@@ -15,13 +15,16 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'lvht/fzf-mru'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-" -- FILE UTILS ----- 
+" -- NERDTREE ----- 
 Plug 'scrooloose/nerdtree'               " file browser
 Plug 'dsimidzija/vim-nerdtree-ignore'    " file browser
 Plug 'vim-scripts/nerdtree-ack'          " search from directory
+" -- ----- 
 Plug 'mileszs/ack.vim'                   " file search
 Plug 'tpope/vim-projectionist'           " src/test file nav
-Plug 'vim-scripts/SyntaxRange'           " vimdeck syntax highlighting
+" -- LANG GENERAL -----
+Plug 'fvictorio/vim-extract-variable'    " refactoring support
+Plug 'vim-syntastic/syntastic'           " file linting
 " -- LANG ELIXIR -----
 Plug 'powerman/vim-plugin-AnsiEsc'       " docco with ANSI colors
 Plug 'elixir-lang/vim-elixir'            " syntax highlighting
@@ -29,7 +32,6 @@ Plug 'mattreduce/vim-mix'                " mix helpers
 Plug 'andyl/vim-snipmate-elixir'         " snippets for elixir
 Plug 'andyl/vim-projectionist-elixir'    " source/test file navigation
 Plug 'andyl/vim-textobj-elixir'          " elixir text objects
-Plug 'andyl/vim-refactoring-elixir'      " basic refactoring support
 " -- LANG RUBY ----- 
 Plug 'vim-ruby/vim-ruby'                 " syntax highlighting
 Plug 'tpope/vim-rails'                   " rails support
@@ -43,6 +45,11 @@ Plug 'tomlion/vim-solidity'              " solidity
 Plug 'rhysd/vim-crystal'                 " syntax highlighting
 " -- LANG RUST -----
 Plug 'rust-lang/rust.vim'                " syntax highlighting
+" -- CODING UTILITIES -----
+Plug 'milkypostman/vim-togglelist'       " toggle quicklist and location list
+Plug 'tpope/vim-unimpaired'              " jump leading/trailing paren
+Plug 'tmhedberg/matchit'                 " % matching
+Plug 'vim-scripts/SyntaxRange'           " vimdeck syntax highlighting
 " -- EDITING UTILS -----
 Plug 'dhruvasagar/vim-table-mode'        " vim table mode
 Plug 'junegunn/vim-easy-align'           " column alignment
@@ -51,11 +58,6 @@ Plug 'vim-scripts/tComment'              " toggle comments on/off
 Plug 'kana/vim-textobj-user'             " customizable text objects
 Plug 'tpope/vim-surround'                " edit containing objects
 Plug 'tpope/vim-repeat'                  " repeat support for plugins
-" -- CODING UTILITIES -----
-Plug 'milkypostman/vim-togglelist'       " toggle quicklist and location list
-Plug 'tpope/vim-unimpaired'              " jump leading/trailing paren
-Plug 'tmhedberg/matchit'                 " % matching
-Plug 'vim-syntastic/syntastic'           " file linting
 " -- FILE FORMATS -----
 Plug 'vimoutliner/vimoutliner'           " outline files
 Plug 'pearofducks/ansible-vim'           " ansible yaml files
