@@ -19,8 +19,8 @@ Plug 'scrooloose/nerdtree'               " file browser
 Plug 'dsimidzija/vim-nerdtree-ignore'    " file browser
 Plug 'vim-scripts/nerdtree-ack'          " search from directory
 Plug 'mileszs/ack.vim'                   " file search
-Plug 'tpope/vim-projectionist'           " src/test file nav
 Plug 'jlanzarotta/bufexplorer'           " buffer manipulation
+Plug 'tpope/vim-projectionist'           " src/test file nav
 Plug 'vim-scripts/SyntaxRange'           " vimdeck syntax highlighting
 " -- LANG ELIXIR -----
 Plug 'powerman/vim-plugin-AnsiEsc'       " docco with ANSI colors
@@ -116,7 +116,6 @@ endfunction
 let g:toggle_list_no_mappings=1
 nmap <F7> :call ToggleQuickfixList()<cr>
 nmap <F9> :call ToggleSyntastic()<cr>
-" nmap <F9> :call ToggleLocationList()<cr>
 
 " === CLEAN UP JUNK DATA FILE
 autocmd VimLeave * if filereadable(expand("~/.vim/.netrwhist"))|call delete(expand("~/.vim/.netrwhist"))|endif 
@@ -127,13 +126,6 @@ set nobackup
 set noswapfile
 
 set shortmess+=I
-
-" === COMPLETION
-" from http://stackoverflow.com/questions/2269005/how-can-i-change-the-keybinding-used-to-autocomplete-in-vim
-" <C-y> to trigger autocompletion
-" inoremap <C-y> <C-x><C-o>
-" <C-space> instead of <C-n> 
-" inoremap <Nul> <C-n>
 
 " === LSP
 
@@ -500,13 +492,6 @@ autocmd FileType eruby let g:surround_45 = "<% \r %>"    " -
 autocmd FileType eruby let g:surround_61 = "<%= \r %>"   " =
 autocmd FileType ruby  let g:surround_35  = "#{\r}"      " #
 
-" === BUFFER MANIPULATION [BufExplorer]  
-" (other commands from BufExplorer - be, bv, bs)
-nmap <leader>bd :bd<cr>
-nmap <leader>bx :bd<cr>
-nmap <leader>bl :bnext<cr>
-nmap <leader>bh :bprev<cr>
-
 " === PANE ZOOMING
 nmap <leader>z <C-w>o
 vmap <leader>z <C-w>o
@@ -536,12 +521,11 @@ if !exists('g:airline_symbols')
 endif
 
 let g:airline_theme = 'luna'
-" let g:airline_powerline_fonts = 1
 let g:airline_symbols_ascii = 1
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_tabs = 1
-let g:airline#extensions#tabline#show_buffers = 1
+let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#tab_min_count = 2
 let g:airline#extensions#tabline#buffer_min_count = 2
 let g:airline#extensions#tabline#show_tab_nr = 1
@@ -559,6 +543,17 @@ nmap <leader>6 :bl\|6bn<cr>
 nmap <leader>7 :bl\|7bn<cr>
 nmap <leader>8 :bl\|8bn<cr>
 nmap <leader>9 :bl\|9bn<cr>
+
+" === BUFFER MANIPULATION [BufExplorer]  
+" (other commands from BufExplorer - be, bv, bs)
+
+let g:bufExplorerSplitBelow=1     " Split new window below current.
+let g:bufExplorerSplitHorzSize=8  " New split window is n rows high.
+
+nmap <leader>bd :bd<cr>
+nmap <leader>bx :bd<cr>
+nmap <leader>bl :bnext<cr>
+nmap <leader>bh :bprev<cr>
 
 " === ENCODING
 if !exists('g:encoding_set')
