@@ -34,7 +34,7 @@ sourcefile ~/.bashrc_code
 
 ###########################################################################
 # AIRFLOW
-export AIRFLOW_HOME=/home/aleak/src/airflow
+export AIRFLOW_HOME=/home/aleak/util/air_util
 
 ###########################################################################
 # NPM
