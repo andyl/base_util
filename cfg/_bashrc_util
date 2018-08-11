@@ -350,6 +350,7 @@ alias g8='cd ~8'              # go to the Nth dir on the stack
 alias g9='cd ~9'              # go to the Nth dir on the stack 
 
 alias  gu='pushdp $UTIL_DIR'
+alias gua='pushdp $UTIL_DIR/air_util'
 alias gub='pushdp $UTIL_DIR/base_util'
 alias guc='pushdp $UTIL_DIR/code_util'
 alias gud='pushdp $UTIL_DIR/depp_util'
