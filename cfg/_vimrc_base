@@ -185,6 +185,8 @@ nmap <F2> :set cursorline! cursorline?<cr>
 imap <F2> <esc>:set cursorline! cursorline?<cr>i<right>
 
 " === SEARCH AND REPLACE
+" 1) search for a pattern
+" 2) hit F3 then type the replacement
 vmap <F3> :s///g<left><left>
 nmap <F3> :%s///g<left><left>
 
