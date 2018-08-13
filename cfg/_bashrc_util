@@ -358,6 +358,8 @@ alias gue='pushdp $UTIL_DIR/elix_util'
 alias gun='pushdp $UTIL_DIR/notes'
 alias guo='pushdp $UTIL_DIR/org'
 
+alias guad='pushdp $UTIL_DIR/air_util/dags'
+
 alias gubb='pushdp $UTIL_DIR/base_util/bin'
 alias gubc='pushdp $UTIL_DIR/base_util/cfg'
 
