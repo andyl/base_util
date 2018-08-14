@@ -7,6 +7,9 @@ Layout/EmptyLinesAroundClassBody:
 Layout/EmptyLineBetweenDefs:
   Enabled: false
 
+Style/ZeroLengthPredicate:
+  Enabled: false
+
 Style/TernaryParentheses:
   Enabled: false
 
