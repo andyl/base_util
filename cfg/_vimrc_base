@@ -18,7 +18,7 @@ Plug 'junegunn/fzf.vim'
 " -- NERDTREE ----- 
 Plug 'scrooloose/nerdtree'               " file browser
 Plug 'dsimidzija/vim-nerdtree-ignore'    " file browser
-Plug 'vim-scripts/nerdtree-ack'          " search from directory
+" Plug 'vim-scripts/nerdtree-ack'          " search from directory
 " -- ----- 
 Plug 'mileszs/ack.vim'                   " file search
 Plug 'tpope/vim-projectionist'           " src/test file nav
