@@ -5,18 +5,19 @@ export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/b
 
 ###########################################################################
 
-function sourcefile() {
-  tgt=$1
-  [ -f $1 ] && source $1
-}
-
-###########################################################################
-
 # sudo timedatectl set-timezone <tz> -> updates /etc/timezone
 #      timedatectl                   -> shows timezone
 #      date                          -> shows time
 export TZ="America/Los_Angeles"
 # export TZ="America/New_York"
+
+###########################################################################
+
+function sourcefile() {
+  tgt=$1
+  [ -f $1 ] && source $1
+}
+
 sourcefile ~/.rails_env
 sourcefile ~/.bashu_aliases
 sourcefile ~/.bashu_functions
@@ -31,6 +32,10 @@ export PATH=$UTIL_PATH:$PATH      # setup util PATH
 ###########################################################################
 # CODE UTIL
 sourcefile ~/.bashrc_code
+
+###########################################################################
+# PGP/SOPS
+sourcefile ~/.sops_env
 
 ###########################################################################
 # AIRFLOW
