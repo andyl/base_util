@@ -76,8 +76,14 @@ Style/BracesAroundHashParameters:
 Metrics/LineLength:
   Max: 120
 
+Metrics/MethodLength:
+  Max: 150
+
 Metrics/ClassLength:
   Max: 500
+
+Metrics/AbcSize:
+  Max: 100
 
 Naming/PredicateName:
   Enabled: false
