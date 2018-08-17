@@ -1,22 +1,24 @@
 #!/usr/bin/env ruby
 
-# add bytes and neg_bytes methods
+# add hbytes and hmatch methods class String
 class String
-  def bytes
+
+  HPOWERS = { 'K' => 3, 'M' => 6, 'G' => 9 }.freeze
+
+  def hbytes
     return 0 if self.empty?
-    zeros = { 'k' => 3, 'm' => 6, 'g' => 9 }
-    self.sub(/([kmg])/i) {|m| '0' * zeros[m.downcase]}.sub(/\..*/) {|m| m[1..-2]}.to_i
+    sub(/([KMG])/) {|m| '0' * HPOWERS[m]}.sub(/\..*/) {|m| m[1..-2]}.to_i
   end
 
-  def neg_bytes
-    -1 * self.bytes
+  def hmatch
+    gsub(',', '.').upcase[/(\d+(\.\d)?[KMG]|\d\d+)/, 1] || ''
   end
 end
 
 # add hsort - sort by human-readable sizes
 class Array
   def hsort
-    sort_by {|line| String(line[/(\d+(\.\d)?[KGM]|\d\d+)/, 1]).neg_bytes}
+    sort_by {|line| line.hmatch.hbytes}
   end
 end
 
