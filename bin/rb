@@ -1,7 +1,27 @@
 #!/usr/bin/env ruby
 
-def execute(_, code)
-  puts _.instance_eval(&code)
+# add bytes and neg_bytes methods
+class String
+  def bytes
+    return 0 if self.empty?
+    zeros = { 'k' => 3, 'm' => 6, 'g' => 9 }
+    self.sub(/([kmg])/i) {|m| '0' * zeros[m.downcase]}.sub(/\..*/) {|m| m[1..-2]}.to_i
+  end
+
+  def neg_bytes
+    -1 * self.bytes
+  end
+end
+
+# add hsort - sort by human-readable sizes
+class Array
+  def hsort
+    sort_by {|line| String(line[/(\d+(\.\d)?[KGM]|\d\d+)/, 1]).neg_bytes}
+  end
+end
+
+def execute(ele, code)
+  puts ele.instance_eval(&code)
 rescue Errno::EPIPE
   exit
 end
