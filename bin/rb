@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+require 'json'
+
 # add hbytes and hmatch methods class String
 class String
 
