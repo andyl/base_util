@@ -143,7 +143,9 @@ alias tv="no_tmux && tm new-session vim"
 # show the links that others can use to join the sharing session
 alias tmate-links="tmate show-messages | grep -v clear | grep -v ssh.tmate.io | cut -d ' ' -f 1-6 --complement"
 
-# need a links-send command...
+sessionkey () {
+  tmate show-messages | grep 'ssh session:' | cut -d ' ' -f10 | tee >(xclip -selection clipboard)
+}
 
 ###########################################################################
 # JETBRAINS TERMINAL SUPPORT
