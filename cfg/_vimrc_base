@@ -30,6 +30,7 @@ Plug 'vim-syntastic/syntastic'           " file linting
 Plug 'powerman/vim-plugin-AnsiEsc'       " docco with ANSI colors
 Plug 'elixir-lang/vim-elixir'            " syntax highlighting
 Plug 'mattreduce/vim-mix'                " mix helpers
+Plug 'mhinz/vim-mix-format'              " :VimMixFormat
 Plug 'andyl/vim-snipmate-elixir'         " snippets for elixir
 Plug 'andyl/vim-projectionist-elixir'    " source/test file navigation
 Plug 'andyl/vim-textobj-elixir'          " elixir text objects
