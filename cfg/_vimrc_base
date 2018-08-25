@@ -23,7 +23,8 @@ Plug 'vim-scripts/nerdtree-ack'          " search from directory
 Plug 'mileszs/ack.vim'                   " file search
 Plug 'tpope/vim-projectionist'           " src/test file nav
 " -- LANG GENERAL -----
-Plug 'fvictorio/vim-extract-variable'    " refactoring support
+" Removed because it slows down nerdtree...
+" Plug 'fvictorio/vim-extract-variable'    " refactoring support
 Plug 'vim-syntastic/syntastic'           " file linting
 " -- LANG ELIXIR -----
 Plug 'powerman/vim-plugin-AnsiEsc'       " docco with ANSI colors
