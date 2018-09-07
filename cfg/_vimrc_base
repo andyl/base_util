@@ -118,8 +118,18 @@ function! ToggleSyntastic()
 endfunction
 
 let g:toggle_list_no_mappings=1
-nmap <F7> :call ToggleQuickfixList()<cr>
+nmap <F7> :SyntasticToggleMode<cr>
+nmap <F8> :call ToggleQuickfixList()<cr>
 nmap <F9> :call ToggleSyntastic()<cr>
+
+" === SYNTASTIC 
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_enable_elixir_checker = 1
+let g:syntastic_elixir_checkers = ['elixir']
+let g:syntastic_ruby_checkers = ['rubocop']
+let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_mode_map = {'mode': 'passive'}
 
 " === CLEAN UP JUNK DATA FILE
 autocmd VimLeave * if filereadable(expand("~/.vim/.netrwhist"))|call delete(expand("~/.vim/.netrwhist"))|endif 
@@ -158,14 +168,6 @@ if executable('solargraph')
       \ })
   augroup END
 endif
-
-" === SYNTASTIC 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_enable_elixir_checker = 1
-let g:syntastic_elixir_checkers = ['elixir']
-let g:syntastic_ruby_checkers = ['rubocop']
-let g:syntastic_python_checkers=['flake8']
 
 " === MATCHIT
 runtime macros/matchit.vim
