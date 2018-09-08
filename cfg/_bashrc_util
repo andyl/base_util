@@ -85,6 +85,8 @@ export PATH=$PATH:~/.cargo/bin
 ###########################################################################
 # FZF
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(vim {})+abort'"
+alias fz="fzf --preview 'bat --color \"always\" {}'"
 
 ###########################################################################
 # VIM / NEOVIM / NVIM / NV
@@ -148,19 +150,7 @@ sessionkey () {
 }
 
 ###########################################################################
-# JETBRAINS TERMINAL SUPPORT
-# JetBrains defined the bash function `load_login_configs`
-# See the JetBrains directory `plugins/terminal`
-# See the terminal settings "Ctrl-Alt-S" (last setting "Shell Integration") 
-
-function is_jetbrains() {
-  if [ "$(type -t load_login_configs)" == "function" ]; then
-    return 0
-  else
-    return 1
-  fi
-}
-is_jetbrains && export JETBRAINS_TERM="true"
+# CLI Utils
 
 ###########################################################################
 # BUILDROOT
