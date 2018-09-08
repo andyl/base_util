@@ -27,10 +27,6 @@ alias free='free -h'
 # copy the current working directory to the clipboard
 alias cpwd='pwd | xclip -selection clipboard'
 
-# quickly find files and directory
-alias ff='find . -type f -name'
-alias fd='find . -type d -name'
-
 # get internet speed
 alias speedtest='wget -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test500.zip'
 

@@ -36,22 +36,4 @@ function gr {
     grep -r $1 .
 }
 
-# shortcut for compiling and running Java programs (I use this for competitions)
-function j {
-    filename="${1%.*}"
-    javac $filename.java
-    if [[ $? == 0 ]]; then
-       java $filename
-    fi
-}
-
-# shortcut for compiling and running C++ programs
-function g {
-    filename="${1%.*}"
-    g++ $filename.cpp -o $filename
-    if [[ $? == 0 ]]; then
-       ./$filename
-    fi
-}
-
 # vim: ft=sh
