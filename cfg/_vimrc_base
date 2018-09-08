@@ -107,7 +107,7 @@ set timeoutlen=1000 ttimeoutlen=0
 " === LISTS  
 
 let g:syntastic_is_open = 0  
-function! ToggleSyntastic()
+function! ToggleSyntasticList()
   if g:syntastic_is_open == 1
       lclose
       let g:syntastic_is_open = 0 
@@ -118,9 +118,10 @@ function! ToggleSyntastic()
 endfunction
 
 let g:toggle_list_no_mappings=1
-nmap <F7> :SyntasticToggleMode<cr>
-nmap <F8> :call ToggleQuickfixList()<cr>
-nmap <F9> :call ToggleSyntastic()<cr>
+nmap <F6> :SyntasticToggleMode<cr>
+nmap <F7> :SyntasticCheck<cr>
+nmap <F8> :call ToggleSyntasticList()<cr>
+nmap <F9> :call ToggleQuickfixList()<cr>
 
 " === SYNTASTIC 
 let g:syntastic_always_populate_loc_list = 1
