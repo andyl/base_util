@@ -104,34 +104,6 @@ set timeoutlen=1000 ttimeoutlen=0
 " nnoremap <silent> gd   :call LanguageClient_textDocument_definition()<CR>
 " nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 
-" === LISTS  
-
-let g:syntastic_is_open = 0  
-function! ToggleSyntasticList()
-  if g:syntastic_is_open == 1
-      lclose
-      let g:syntastic_is_open = 0 
-  else
-      Errors
-      let g:syntastic_is_open = 1 
-  endif
-endfunction
-
-let g:toggle_list_no_mappings=1
-nmap <F6> :SyntasticToggleMode<cr>
-nmap <F7> :SyntasticCheck<cr>
-nmap <F8> :call ToggleSyntasticList()<cr>
-nmap <F9> :call ToggleQuickfixList()<cr>
-
-" === SYNTASTIC 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_enable_elixir_checker = 1
-let g:syntastic_elixir_checkers = ['elixir']
-let g:syntastic_ruby_checkers = ['rubocop']
-let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_mode_map = {'mode': 'passive'}
-
 " === CLEAN UP JUNK DATA FILE
 autocmd VimLeave * if filereadable(expand("~/.vim/.netrwhist"))|call delete(expand("~/.vim/.netrwhist"))|endif 
 
@@ -565,6 +537,37 @@ nmap <leader>bn :bnext<cr>
 nmap <leader>bp :bprev<cr>
 nmap <leader>bd :bd<cr>
 nmap <leader>bx :bd<cr>
+
+" === LISTS  
+
+let g:syntastic_is_open = 0  
+function! ToggleSyntasticList()
+  if g:syntastic_is_open == 1
+      lclose
+      let g:syntastic_is_open = 0 
+  else
+      Errors
+      let g:syntastic_is_open = 1 
+  endif
+endfunction
+
+let g:toggle_list_no_mappings=1
+nmap <F6> :SyntasticToggleMode<cr>
+nmap <F7> :SyntasticCheck<cr>
+nmap <F8> :call ToggleSyntasticList()<cr>
+nmap <F9> :call ToggleQuickfixList()<cr>
+
+" === SYNTASTIC 
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_enable_elixir_checker = 1
+let g:syntastic_elixir_checkers = ['elixir']
+let g:syntastic_ruby_checkers = ['rubocop']
+let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_mode_map = {'mode': 'passive'}
+
+nmap <leader>sn :lnext<cr>
+nmap <leader>sp :lprev<cr>
 
 " === ENCODING
 if !exists('g:encoding_set')
