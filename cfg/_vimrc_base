@@ -123,12 +123,10 @@ nmap \gt :tab split<cr>:LspDefinition<cr>
 nmap \gs :sp<cr>:LspDefinition<cr>
 nmap \gv :vsp<cr>:LspDefinition<cr>
 
-let g:lsp_log_verbose = 1
+" turn on for debugging
+let g:lsp_log_verbose = 0
 let g:lsp_log_file = expand('/tmp/vim_lsp.log')
 let g:asyncomplete_log_file = expand('/tmp/vim_asyncomplete.log')
-
-let g:asyncomplete_auto_popup = 1
-set completeopt+=preview
 
 " install with ansible 'elixir_ls' role
 if executable('elixir_ls')
