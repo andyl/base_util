@@ -7,10 +7,11 @@ Plug 'MarcWeber/vim-addon-mw-utils'      " support lib for snipmate
 Plug 'tomtom/tlib_vim'                   " support lib for snipmate
 Plug 'garbas/vim-snipmate'               " snippet plugin
 " -- LSP/COMPLETION ----- 
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
+" Plug 'prabirshrestha/asyncomplete.vim'
+" Plug 'prabirshrestha/async.vim'
+" Plug 'prabirshrestha/vim-lsp'
+" Plug 'prabirshrestha/asyncomplete-lsp.vim'
 " -- FZF ----- 
 Plug 'lvht/fzf-mru'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -120,27 +121,40 @@ set shortmess+=I
 " Jump Back with <C-o>
 " nmap <C-]> :LspDefinition<cr>
 
-if executable('elixir_ls')
-  augroup elixir_lsp
-    au!
-    au User lsp_setup call lsp#register_server({
-      \ 'name': 'elixir-ls',
-      \ 'cmd': {server_info->['elixir_ls']},
-      \ 'whitelist': ['elixir', 'eelixir'],
-      \ })
-  augroup END
-endif
+" if executable('elixir_ls')
+"   augroup elixir_lsp
+"     au!
+"     au User lsp_setup call lsp#register_server({
+"       \ 'name': 'elixir-ls',
+"       \ 'cmd': {server_info->['elixir_ls']},
+"       \ 'whitelist': ['elixir', 'eelixir'],
+"       \ })
+"   augroup END
+" endif
+"
+" if executable('solargraph')
+"   augroup ruby_lsp
+"     au!
+"     au User lsp_setup call lsp#register_server({
+"       \ 'name': 'ruby-ls',
+"       \ 'cmd': {server_info->['solargraph', 'stdio']},
+"       \ 'whitelist': ['ruby'],
+"       \ })
+"   augroup END
+" endif
 
-if executable('solargraph')
-  augroup ruby_lsp
-    au!
-    au User lsp_setup call lsp#register_server({
-      \ 'name': 'ruby-ls',
-      \ 'cmd': {server_info->['solargraph', 'stdio']},
-      \ 'whitelist': ['ruby'],
-      \ })
-  augroup END
-endif
+" Required for operations modifying multiple buffers like rename.
+set hidden
+
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
+    \ 'python': ['/usr/local/bin/pyls'],
+    \ 'ruby': ['tcp://localhost:7658'],
+    \ }
+
+
 
 " === MATCHIT
 runtime macros/matchit.vim
