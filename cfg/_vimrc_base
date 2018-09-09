@@ -456,20 +456,6 @@ endfun
 nnoremap <silent> <C-Left> :call BarLeft()<cr>
 nnoremap <silent> <C-Right> :call BarRight()<cr>
 
-" === TAGS
-" let $CDIR=expand('%:p:h')
-" set tags=$CDIR/.tags
-" CTAGS-BUNDLER
-" set tags=tags,gems.tags
-" let Tlist_GainFocus_On_ToggleOpen=1
-" nmap <leader>g :TlistToggle<cr>     
-" nmap <leader>x :!ct<cr>:TlistUpdate<cr>
-
-" === FILE NAVIGATION 
-" Enhances vim.ruby - for use with 'gf'
-" Adds Bundler paths. Run 'ct' to generate the .paths.vim
-" autocmd BufNewFile,BufRead *.rb silent! source .paths.vim
-
 " === EDITING ~/.vimrc
 nmap <leader>ce :split  ~/.vimrc<CR>
 nmap <leader>cs :source ~/.vimrc<CR>
