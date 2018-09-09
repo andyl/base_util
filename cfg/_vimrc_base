@@ -118,7 +118,7 @@ set shortmess+=I
 
 " Goto Definition with <C-]>
 " Jump Back with <C-o>
-nmap <C-]> :LspDefinition<cr>
+" nmap <C-]> :LspDefinition<cr>
 
 if executable('elixir_ls')
   augroup elixir_lsp
