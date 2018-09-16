@@ -140,9 +140,9 @@ endif
 " gem install solargraph
 if executable('solargraph')
   au User lsp_setup call lsp#register_server({
-    \ 'name': 'ruby-ls',
+    \ 'name': 'solargraph',
     \ 'cmd': {server_info->['solargraph', 'stdio']},
-    \ 'whitelist': ['ruby'],
+    \ 'whitelist': ['ruby', 'eruby'],
     \ })
 endif
 
