@@ -23,8 +23,6 @@ Plug 'vim-scripts/nerdtree-ack'          " search from directory
 Plug 'mileszs/ack.vim'                   " file search
 Plug 'tpope/vim-projectionist'           " src/test file nav
 " -- LANG GENERAL -----
-" Removed because it slows down nerdtree...
-" Plug 'fvictorio/vim-extract-variable'    " refactoring support
 Plug 'vim-syntastic/syntastic'           " file linting
 " -- LANG ELIXIR -----
 Plug 'powerman/vim-plugin-AnsiEsc'       " docco with ANSI colors
@@ -113,6 +111,20 @@ set nobackup
 set noswapfile
 
 set shortmess+=I
+
+" === REFACTORING
+
+" extract variable
+" v~,ev
+
+function! <SID>ExtractVar()
+  let varname = input('Variable name? ')
+  if varname != ''
+    execute "normal gvc".varname."\<ESC>O\<C-A> = \<ESC>p0"
+  endif
+endfunction
+
+vnoremap <leader>ev :call <SID>ExtractVar()<CR>
 
 " === LSP
 
@@ -244,7 +256,7 @@ vmap <A-Down> ]egv
 map <F8> :vertical wincmd f<CR>
 
 " === AUTORUN - autoexec vim script on VimEnter
-fu! LoadAutorun()
+function! LoadAutorun()
   if filereadable(getcwd() . '/.autorun.vim')
     exec "source " . getcwd() . "/.autorun.vim"
   endif
