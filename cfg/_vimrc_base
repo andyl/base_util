@@ -489,6 +489,9 @@ autocmd FileType eruby let g:surround_45 = "<% \r %>"    " -
 autocmd FileType eruby let g:surround_61 = "<%= \r %>"   " =
 autocmd FileType ruby  let g:surround_35  = "#{\r}"      " #
 
+nmap vm' F'vf'
+nmap vm" F"vf"
+
 " === PANE ZOOMING
 nmap <leader>z <C-w>o
 vmap <leader>z <C-w>o
