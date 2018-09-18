@@ -115,17 +115,37 @@ set shortmess+=I
 
 " === REFACTORING
 
-" extract variable
-" v~,ev
-
-function! <SID>ExtractVar()
+" refactor extract
+" v~,re
+function! <SID>RefactorExtract()
   let varname = input('Variable name? ')
   if varname != ''
     execute "normal gvc".varname."\<ESC>O\<C-A> = \<ESC>p0"
   endif
 endfunction
 
-vnoremap <leader>ev :call <SID>ExtractVar()<CR>
+vnoremap <leader>re :call <SID>RefactorExtract()<CR>
+
+" refactor inline
+" <hover over variable>,ri
+function! <SID>RefactorInline()
+  " Copy the variable under the cursor into the 'a' register
+  normal "ayiw
+  " 4 diws to get the variable, = sign and whitespace
+  normal 4diw
+  " Copy the value into the 'b' register
+  normal "bd$
+  " Delete the remnants of the line
+  normal dd
+  " Store current line, that's where we will start searching from
+  let current_line = line(".")
+  " Find the start and end of the current block
+  let [block_start, block_end] = common#get_range_for_block('\<def\|it\>','Wb')
+  " Rename the variable within the range of the block
+  call common#gsub_all_in_range(current_line, block_end, '\<' . @a . '\>', @b)
+endfunction
+
+vnoremap <leader>ri :call <SID>RefactorInline()<CR>
 
 " === LSP
 
