@@ -115,6 +115,33 @@ set shortmess+=I
 
 " === REFACTORING
 
+" Find pattern to matching end, flags as per :h search()
+function! <SID>get_range_for_block(pattern_start, flags)
+  if !exists("g:loaded_matchit") 
+    throw("matchit.vim required")
+  endif
+  let cursor_position = getpos(".")
+  let block_start = search(a:pattern_start, a:flags)
+  if (match(getline("."), "^\\s*it\\s\\+") == 0)
+    normal $
+  endif
+  normal %
+  let block_end = line(".")
+  call setpos(".",cursor_position) 
+  return [block_start, block_end]
+endfunction
+
+" Loop over the line range given, global replace pattern with replace
+function! <SID>gsub_all_in_range(start_line, end_line, pattern, replace)
+  let lnum = a:start_line
+  while lnum <= a:end_line
+    let oldline = getline(lnum)
+    let newline = substitute(oldline,a:pattern,a:replace,'g')
+    call setline(lnum, newline)
+    let lnum = lnum + 1
+  endwhile
+endfunction!
+
 " refactor extract
 " v~,re
 function! <SID>RefactorExtract()
@@ -140,12 +167,12 @@ function! <SID>RefactorInline()
   " Store current line, that's where we will start searching from
   let current_line = line(".")
   " Find the start and end of the current block
-  let [block_start, block_end] = common#get_range_for_block('\<def\|it\>','Wb')
+  let [blk_start, blk_end] = <SID>get_range_for_block('\<def\|it\>','Wb')
   " Rename the variable within the range of the block
-  call common#gsub_all_in_range(current_line, block_end, '\<' . @a . '\>', @b)
+  call <SID>gsub_all_in_range(current_line, blk_end, '\<' . @a . '\>', @b)
 endfunction
 
-vnoremap <leader>ri :call <SID>RefactorInline()<CR>
+nnoremap <leader>ri :call <SID>RefactorInline()<CR>
 
 " === LSP
 
