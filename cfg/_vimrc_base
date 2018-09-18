@@ -24,6 +24,12 @@ Plug 'mileszs/ack.vim'                   " file search
 Plug 'tpope/vim-projectionist'           " src/test file nav
 " -- LANG GENERAL -----
 Plug 'vim-syntastic/syntastic'           " file linting
+" -- TEXT MANIPULATION -----
+Plug 'vim-scripts/tComment'              " toggle comments on/off
+Plug 'kana/vim-textobj-user'             " customizable text objects
+Plug 'mattn/vim-textobj-url'             " au/iu
+Plug 'tpope/vim-surround'                " edit containing objects
+Plug 'tpope/vim-repeat'                  " repeat support for plugins
 " -- LANG ELIXIR -----
 Plug 'powerman/vim-plugin-AnsiEsc'       " docco with ANSI colors
 Plug 'elixir-lang/vim-elixir'            " syntax highlighting
@@ -53,11 +59,6 @@ Plug 'vim-scripts/SyntaxRange'           " vimdeck syntax highlighting
 " -- EDITING UTILS -----
 Plug 'dhruvasagar/vim-table-mode'        " vim table mode
 Plug 'junegunn/vim-easy-align'           " column alignment
-" -- TEXT MANIPULATION -----
-Plug 'vim-scripts/tComment'              " toggle comments on/off
-Plug 'kana/vim-textobj-user'             " customizable text objects
-Plug 'tpope/vim-surround'                " edit containing objects
-Plug 'tpope/vim-repeat'                  " repeat support for plugins
 " -- FILE FORMATS -----
 Plug 'vimoutliner/vimoutliner'           " outline files
 Plug 'pearofducks/ansible-vim'           " ansible yaml files
