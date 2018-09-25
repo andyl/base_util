@@ -115,6 +115,13 @@ set noswapfile
 
 set shortmess+=I
 
+" === LEDGER
+" https://github.com/ledger/ledger/wiki/Getting-started-with-Vim
+" https://github.com/ledger/vim-ledger
+au BufNewFile,BufRead *.ldg,*.ledger setf ledger | comp ledger
+filetype plugin indent on
+syntax on
+
 " === LSP
 
 " Goto Definition
