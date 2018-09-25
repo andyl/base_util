@@ -51,6 +51,8 @@ Plug 'tomlion/vim-solidity'              " solidity
 Plug 'rhysd/vim-crystal'                 " syntax highlighting
 " -- LANG RUST -----
 Plug 'rust-lang/rust.vim'                " syntax highlighting
+" -- LEDGER -----    
+Plug 'ledger/vim-ledger'                 " ledger-cli accounting
 " -- CODING UTILITIES -----
 Plug 'milkypostman/vim-togglelist'       " toggle quicklist and location list
 Plug 'tpope/vim-unimpaired'              " jump leading/trailing paren
