@@ -367,6 +367,12 @@ alias guce='pushdp $UTIL_DIR/code_util/es'
 alias gucg='pushdp $UTIL_DIR/code_util/gems'
 alias gucs='pushdp $UTIL_DIR/code_util/shards'
 
+alias guoc='pushdp $UTIL_DIR/org/cheats'
+alias guog='pushdp $UTIL_DIR/org/gtd'
+alias guon='pushdp $UTIL_DIR/org/notes'
+alias guos='pushdp $UTIL_DIR/org/standup'
+alias guow='pushdp $UTIL_DIR/org/worklog'
+
 alias gudc='pushdp $UTIL_DIR/depp_util/cfg'
 
 alias  gv='pushdp ~/var'
