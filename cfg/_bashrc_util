@@ -376,6 +376,7 @@ alias gucs='pushdp $UTIL_DIR/code_util/shards'
 
 alias guoc='pushdp $UTIL_DIR/org/cheats'
 alias guog='pushdp $UTIL_DIR/org/gtd'
+alias guol='pushdp $UTIL_DIR/org/ledger'
 alias guon='pushdp $UTIL_DIR/org/notes'
 alias guos='pushdp $UTIL_DIR/org/standup'
 alias guow='pushdp $UTIL_DIR/org/worklog'
