@@ -123,6 +123,15 @@ au BufNewFile,BufRead *.ldg,*.ledger setf ledger | comp ledger
 filetype plugin indent on
 syntax on
 
+" For ledger
+let g:ledger_maxwidth = 100
+let g:ledger_fold_blanks = 1
+function LedgerSort()
+  :%! ledger -f - print --sort 'date, amount'
+  :%LedgerAlign
+endfunction
+command LedgerSort call LedgerSort()
+
 " === LSP
 
 " Goto Definition
