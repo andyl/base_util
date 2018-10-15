@@ -72,6 +72,12 @@ alias  mr="mixrun"
 
 alias le=ledger
 
+function ledenv() {
+  export LEDGER_FILE=~/util/org/ledger/data/${1}.ldg
+}
+
+ledenv pers
+
 ###########################################################################
 # GO
 mkdir -p ~/.go
