@@ -73,7 +73,13 @@ alias  mr="mixrun"
 alias le=ledger
 
 function ledenv() {
-  export LEDGER_FILE=~/util/org/ledger/data/${1}.ldg
+  ARG=$1
+  if [[ "$ARG" == "pers" || "$ARG" == "bugm" ]]; then
+    export LEDGER_FN=${ARG}
+    export LEDGER_FILE=~/util/org/ledger/data/${ARG}.ldg
+  else
+    echo "Usage: ledenv < pers | bugm > (currently '${LEDGER_FN}')"
+  fi
 }
 
 ledenv pers
