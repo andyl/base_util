@@ -156,6 +156,11 @@ alias tv="no_tmux && tm new-session vim"
 # note also: ~/.complete has completions for tmux and tmuxinator
 
 ###########################################################################
+# NordVPN
+
+alias vpn=nordvpn
+
+###########################################################################
 # TMATE 
 # screen sharing utility for tmux
 
