@@ -109,6 +109,9 @@ set timeoutlen=1000 ttimeoutlen=0
 " === CLEAN UP JUNK DATA FILE
 autocmd VimLeave * if filereadable(expand("~/.vim/.netrwhist"))|call delete(expand("~/.vim/.netrwhist"))|endif 
 
+" === ENCRYPTION
+set cryptmethod=blowfish2
+
 " === FILE BACKUPS - disable file backups
 set updatecount=0     
 set nobackup
