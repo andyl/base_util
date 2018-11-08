@@ -7,12 +7,10 @@ Plug 'MarcWeber/vim-addon-mw-utils'      " support lib for snipmate
 Plug 'tomtom/tlib_vim'                   " support lib for snipmate
 Plug 'garbas/vim-snipmate'               " snippet plugin
 " -- LSP/COMPLETION ----- 
-Plug 'w0rp/ale'                          " used by elixir-ls
-" -- LSP/COMPLETION ----- 
-" Plug 'prabirshrestha/asyncomplete.vim'
-" Plug 'prabirshrestha/async.vim'
-" Plug 'prabirshrestha/vim-lsp'
-" Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
 " -- FZF ----- 
 Plug 'lvht/fzf-mru'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -136,24 +134,6 @@ function LedgerSort()
   :%LedgerAlign
 endfunction
 command LedgerSort call LedgerSort()
-
-" === ALE
-let g:ale_completion_enabled = 1
-autocmd FileType elixir nnoremap <c-]> :ALEGoToDefinition<cr>
-let g:ale_linters = {}
-let g:ale_linters.scss = ['stylelint']
-let g:ale_linters.css = ['stylelint']
-
-let g:ale_fixers = {}
-let g:ale_fixers.javascript = ['eslint']
-let g:ale_fixers.scss = ['stylelint']
-let g:ale_fixers.css = ['stylelint']
-let g:ale_fixers.elm = ['format']
-let g:ale_fixers.ruby = ['rubocop']
-let g:ale_fixers.elixir = ['mix_format']
-
-" let g:ale_elixir_elixir_ls_release = '/Users/mitchell/Development/elixir-ls/rel'
-let g:ale_elixir_elixir_ls_release = '/usr/local/bin/elixir_ls'
 
 " === LSP
 
