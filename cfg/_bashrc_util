@@ -219,7 +219,7 @@ function setcap_escape() {
   setxkbmap -option caps:escape 2> /dev/null   
 }
 
-setcap_escape
+# setcap_escape
 
 ###########################################################################
 # FUNCTIONS
