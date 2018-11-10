@@ -209,7 +209,7 @@ tgt=~/.java_env ; [ -f $tgt ] && source $tgt     # source java support
 # ESCAPE KEY SWAPPING
 # `caps:none`       (no swap)
 # `caps:escape`     (caps becomes another escape key)
-# `caps:swapescape` (swap cap lock an descape)
+# `caps:swapescape` (swap cap lock and escape)
 
 function kb_caps_none() {
   setxkbmap -option caps:none 
