@@ -212,19 +212,26 @@ tgt=~/.java_env ; [ -f $tgt ] && source $tgt     # source java support
 # `caps:swapescape` (swap cap lock an descape)
 
 function kb_caps_none() {
-  setxkbmap -option caps:none 2> /dev/null   
+  setxkbmap -option caps:none 
 }
 
 function kb_caps_escape() {
-  setxkbmap -option caps:escape 2> /dev/null   
+  setxkbmap -option caps:escape 
 }
 
 function kb_caps_swapescape() {
-  setxkbmap -option caps:swapescape 2> /dev/null   
+  setxkbmap -option caps:swapescape 
 }
 
+function kb_clear() {
+  setxkbmap -option
+}
 
-# setcap_escape
+function kb_query() {
+  setxkbmap -query
+}
+
+kb_caps_escape
 
 ###########################################################################
 # FUNCTIONS
