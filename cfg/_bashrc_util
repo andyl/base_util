@@ -211,13 +211,18 @@ tgt=~/.java_env ; [ -f $tgt ] && source $tgt     # source java support
 # `caps:escape`     (caps becomes another escape key)
 # `caps:swapescape` (swap cap lock an descape)
 
-function clearcap_escape() {
+function kb_caps_none() {
   setxkbmap -option caps:none 2> /dev/null   
 }
 
-function setcap_escape() {
+function kb_caps_escape() {
   setxkbmap -option caps:escape 2> /dev/null   
 }
+
+function kb_caps_swapescape() {
+  setxkbmap -option caps:swapescape 2> /dev/null   
+}
+
 
 # setcap_escape
 
