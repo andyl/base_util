@@ -231,7 +231,7 @@ function kb_query() {
   setxkbmap -query
 }
 
-kb_caps_escape
+kb_caps_escape 2> /dev/null
 
 ###########################################################################
 # FUNCTIONS
