@@ -315,10 +315,10 @@ nmap <leader>p1 :! a2ps -c --highlight-level=none --sides=duplex -T 2 --line-num
 nmap <leader>pl :! a2ps -c --highlight-level=none --sides=duplex -T 2 --line-numbers=1 --landscape --columns=1 --font-size=9 %<cr>
 
 " === PROJECTIONIST
-nmap <leader>pa :A<cr>
-nmap <leader>pv :AV<cr>
-nmap <leader>ps :AS<cr>
-nmap <leader>pt :AT<cr>
+nmap <leader>aa :A<cr>
+nmap <leader>av :AV<cr>
+nmap <leader>as :AS<cr>
+nmap <leader>at :AT<cr>
 
 " === FZF - fast file finding
 nmap <C-p> :<C-u>FZF<CR>
@@ -419,13 +419,13 @@ nmap <leader>v :vsp<cr>
 nmap <leader>q :q<cr>
 nmap <leader>o :only<cr>
 
-" === PANE ARRANGEMENT
-" arrange split
-nmap <leader>as <C-w>J<cr>
-" arrange vertical
-nmap <leader>av <C-w>L<cr>
-" rotate panes
-nmap <leader>ar <C-w>r<cr>
+" === PANE LAYOUT
+" layout split
+nmap <leader>ls <C-w>J<cr>
+" layout vertical
+nmap <leader>lv <C-w>L<cr>
+" layout rotate
+nmap <leader>lr <C-w>r<cr>
 
 " === PANE NAVIGATION
 nmap <silent> <C-k> :wincmd k<cr>
