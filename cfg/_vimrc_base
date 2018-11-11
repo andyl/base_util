@@ -314,6 +314,12 @@ nmap <leader>pp :! a2ps -c --highlight-level=none --sides=duplex -T 2 --line-num
 nmap <leader>p1 :! a2ps -c --highlight-level=none --sides=duplex -T 2 --line-numbers=1 --portrait  --columns=1 --font-size=9 %<cr>
 nmap <leader>pl :! a2ps -c --highlight-level=none --sides=duplex -T 2 --line-numbers=1 --landscape --columns=1 --font-size=9 %<cr>
 
+" === PROJECTIONIST
+nmap <leader>pa :A<cr>
+nmap <leader>pv :AV<cr>
+nmap <leader>ps :AS<cr>
+nmap <leader>pt :AT<cr>
+
 " === FZF - fast file finding
 nmap <C-p> :<C-u>FZF<CR>
 nmap <C-m> :<C-u>FZFMru<CR>
