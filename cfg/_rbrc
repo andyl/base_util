@@ -1,3 +1,13 @@
+# rb utilities
+#
+# $ du -hs * | rb hsort
+# $ du -hs * | rb hsort.reverse
+# $ du -hs * | rb -l hmatch
+# $ du -hs * | rb -l hmatch.hbytes
+# $ ls -lh | rb hsort
+# $ ls -l  | rb hsort
+# $ ls -lh | rb -l hmatch
+
 require 'json'
 
 # add hbytes and hmatch methods class String
@@ -16,7 +26,7 @@ class String
 end
 
 # add hsort - sort by human-readable sizes
-class Array
+class Enumerator
   def hsort
     sort_by {|line| line.hmatch.hbytes}
   end
