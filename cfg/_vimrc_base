@@ -323,7 +323,7 @@ nmap <leader>at :AT<cr>
 " === FZF - fast file finding
 nmap <C-p> :<C-u>FZF<CR>
 nmap <C-m> :<C-u>FZFMru<CR>
-nmap <C-d> :call fzf#run({'down': 10, 'source': 'fd -t d', 'sink': 'NERDTreeFind'})<CR>
+nmap <C-e> :call fzf#run({'down': 10, 'source': 'fd -t d -d 5', 'sink': 'NERDTreeFind'})<CR>
 
 " set max lenght for the mru file list
 let g:fzf_mru_file_list_size = 10 " 10 is default value
