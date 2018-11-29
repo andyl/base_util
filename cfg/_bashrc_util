@@ -441,11 +441,6 @@ alias  gap='pushdp ~/.ansible/playbooks'
 alias gapl='pushdp ~/.ansible/playbooks/library'
 alias gapr='pushdp ~/util/x-ansible/roles'
 
-alias gdev='pushdp ~/dev'
-alias gdev='pushdp ~/dev'
-
-alias grb='pushdp ~/.rubies'
-
 alias ba="cd .."
 
 alias   sf="rm -f ~/.dir_fcs; ln -s \`pwd\` ~/.dir_fcs"                   # set focus dir
