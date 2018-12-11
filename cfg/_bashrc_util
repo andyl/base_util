@@ -418,7 +418,7 @@ alias gvd='pushdp ~/var/data'
 alias gvi='pushdp ~/var/iso'
 alias gvs='pushdp ~/var/seed'
 
-alias gvvm='pushdb ~/vvm'
+alias gvvm='pushdp ~/vvm'
 
 alias  gs='pushdp ~/src'
 alias gsp='pushdp ~/src/BAMRU-Private'
