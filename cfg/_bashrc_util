@@ -389,6 +389,7 @@ alias gud='pushdp $UTIL_DIR/depp_util'
 alias gue='pushdp $UTIL_DIR/elix_util'
 alias gun='pushdp $UTIL_DIR/notes'
 alias guo='pushdp $UTIL_DIR/org'
+alias gux='pushdp $UTIL_DIR/x-ansible'
 
 alias guad='pushdp $UTIL_DIR/air_util/dags'
 
