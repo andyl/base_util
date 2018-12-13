@@ -47,6 +47,11 @@ export AIRFLOW_HOME=/home/aleak/util/air_util
 export PATH=$PATH:~/.npm-global/bin:./node_modules/.bin    
 
 ###########################################################################
+# VBOXMANAGE
+
+alias vbm=vboxmanage
+
+###########################################################################
 # RUBY
 chruby_path="/usr/local/share/chruby/chruby.sh"
 autosh_path="/usr/local/share/chruby/auto.sh"
