@@ -35,14 +35,14 @@ class Vb < Thor
   desc "destroy NAME", "destroy a machine"
   def destroy(name)
     tgt = name_for(name)
-    halt(name)
+    halt(name) if is_live?(name)
     run "vboxmanage unregistervm #{tgt}"
   end
 
   desc "rename NAME NEWNAME", "rename a machine"
   def rename(name, new_name)
     tgt = name_for(name)
-    halt(name)
+    halt(name) if is_live?(name)
     run "vboxmanage modifyvm #{tgt} --name #{new_name}"
   end
 
@@ -54,11 +54,15 @@ class Vb < Thor
   end
 
   def vmlist_live
-    `vboxmanage list runningvms | cut -d' ' -f1 | tr -d '"' | sort`
+    `vboxmanage list runningvms | cut -d' ' -f1 | tr -d '"' | sort`.chomp.strip.chomp
   end
 
   def vmlist
-    `vboxmanage list vms | cut -d' ' -f1 | tr -d '"' | sort`
+    `vboxmanage list vms | cut -d' ' -f1 | tr -d '"' | sort`.chomp.strip.chomp
+  end
+
+  def is_live?(name)
+    vmlist_live.split("\n").include?(name_for(name))
   end
 
   def names_for(name)
