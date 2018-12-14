@@ -39,8 +39,8 @@ class Vb < Thor
     run "vboxmanage unregistervm #{tgt}"
   end
 
-  desc "rename NAME", "rename a machine"
-  def rename(name)
+  desc "rename NAME NEWNAME", "rename a machine"
+  def rename(name, new_name)
     tgt = name_for(name)
     run "vboxmanage modifyvm #{tgt} --name #{new_name}"
   end
