@@ -42,6 +42,7 @@ class Vb < Thor
   desc "rename NAME NEWNAME", "rename a machine"
   def rename(name, new_name)
     tgt = name_for(name)
+    halt(name)
     run "vboxmanage modifyvm #{tgt} --name #{new_name}"
   end
 
