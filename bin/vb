@@ -1,0 +1,77 @@
+#!/usr/bin/env ruby
+
+# simple CLI to drive `VBoxManage`
+
+require 'thor'
+
+class Vb < Thor
+  desc "list", "list all Vbox machines"
+  def list
+    puts vmlist
+  end
+
+  desc "list_live", "list all running Vbox machines"
+  def list_live
+    puts vmlist_live
+  end
+
+  desc "show NAME", "show the full-name for a machine"
+  def show(name)
+    puts name_for(name)
+  end
+
+  desc "start NAME", "start a machine"
+  def start(name)
+    tgt = name_for(name)
+    run "vboxmanage startvm #{tgt} --type headless"
+  end
+
+  desc "halt NAME", "halt a machine"
+  def halt(name)
+    tgt = name_for(name)
+    run "vboxmanage controlvm #{tgt} poweroff"
+  end
+
+  desc "destroy NAME", "destroy a machine"
+  def destroy(name)
+    tgt = name_for(name)
+    halt(name)
+    run "vboxmanage unregistervm #{tgt}"
+  end
+
+  desc "rename NAME", "rename a machine"
+  def rename(name)
+    tgt = name_for(name)
+    run "vboxmanage modifyvm #{tgt} --name #{new_name}"
+  end
+
+  private
+
+  def run(cmd)
+    puts cmd
+    puts `#{cmd}`
+  end
+
+  def vmlist_live
+    `vboxmanage list runningvms | cut -d' ' -f1 | tr -d '"' | sort`
+  end
+
+  def vmlist
+    `vboxmanage list vms | cut -d' ' -f1 | tr -d '"' | sort`
+  end
+
+  def names_for(name)
+    regex = Regexp.new(name.chars.join('.*'))
+    rlist = vmlist&.split("\n")
+    rlist&.select {|line| line.match?(regex)}
+  end
+
+  def name_for(name)
+    list = names_for(name)
+    alen = list.length
+    abort "Unrecognized Name (#{name} [#{alen}])" unless alen == 1
+    list.first
+  end
+end
+
+Vb.start
