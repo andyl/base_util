@@ -417,12 +417,13 @@ alias guow='pushdp $UTIL_DIR/org/worklog'
 
 alias gudc='pushdp $UTIL_DIR/depp_util/cfg'
 
-alias  gv='pushdp ~/var'
-alias gvb='pushdp ~/var/backup'
-alias gvc='pushdp ~/var/cache'
-alias gvd='pushdp ~/var/data'
-alias gvi='pushdp ~/var/iso'
-alias gvs='pushdp ~/var/seed'
+alias   gv='pushdp ~/var'
+alias  gvb='pushdp ~/var/backup'
+alias  gvc='pushdp ~/var/cache'
+alias  gvd='pushdp ~/var/data'
+alias gvdb='pushdp ~/var/data/blob'
+alias  gvi='pushdp ~/var/iso'
+alias  gvs='pushdp ~/var/seed'
 
 alias gvvm='pushdp ~/vvm'
 
