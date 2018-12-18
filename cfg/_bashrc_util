@@ -421,7 +421,7 @@ alias   gv='pushdp ~/var'
 alias  gvb='pushdp ~/var/backup'
 alias  gvc='pushdp ~/var/cache'
 alias  gvd='pushdp ~/var/data'
-alias gvdb='pushdp ~/var/data/blob'
+alias gvdc='pushdp ~/var/data/cblob'
 alias  gvi='pushdp ~/var/iso'
 alias  gvs='pushdp ~/var/seed'
 
