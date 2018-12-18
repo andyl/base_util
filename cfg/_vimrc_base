@@ -68,6 +68,8 @@ Plug 'slim-template/vim-slim'            " slim files
 Plug 'jtratner/vim-flavored-markdown'    " markdown files
 " -- TMUX -----
 Plug 'benmills/vimux'                    " tmux integration
+" -- NGINX -----
+Plug 'chr4/nginx.vim'                    " nginx syntax highlighting 
 " -- COLORSCHEMES -----
 Plug 'junegunn/seoul256.vim'             " seoul256
 Plug 'NLKNguyen/papercolor-theme'        " PaperColor
