@@ -5,7 +5,7 @@ call plug#begin('~/.vim/plugged')
 " -- SNIPMATE ----- 
 Plug 'MarcWeber/vim-addon-mw-utils'      " support lib for snipmate
 Plug 'tomtom/tlib_vim'                   " support lib for snipmate
-Plug 'garbas/vim-snipmate'               " snippet plugin
+Plug 'SirVer/ultisnips'                  " snipmate replacement
 " -- LSP/COMPLETION ----- 
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/async.vim'
@@ -24,6 +24,8 @@ Plug 'mileszs/ack.vim'                   " file search
 Plug 'tpope/vim-projectionist'           " src/test file nav
 " -- LANG GENERAL -----
 Plug 'vim-syntastic/syntastic'           " file linting
+" -- DOCKER -----
+Plug 'ekalinin/Dockerfile.vim'           " Dockerfile editing
 " -- TEXT MANIPULATION -----
 Plug 'vim-scripts/tComment'              " toggle comments on/off
 Plug 'kana/vim-textobj-user'             " customizable text objects
@@ -103,8 +105,10 @@ set timeoutlen=1000 ttimeoutlen=0
 " === CLEAN UP JUNK DATA FILE
 autocmd VimLeave * if filereadable(expand("~/.vim/.netrwhist"))|call delete(expand("~/.vim/.netrwhist"))|endif 
 
-" === ENCRYPTION
-set cryptmethod=blowfish2
+" === ENCRYPTION (vim only...)
+if !has('nvim')
+  set cryptmethod=blowfish2
+endif
 
 " === FILE BACKUPS - disable file backups
 set updatecount=0     
