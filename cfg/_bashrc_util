@@ -319,7 +319,8 @@ alias bejek="bundle exec jekyll"
 
 alias dk="docker"
 alias dkc="docker-compose"
-alias dkps="docker ps --format 'table {{.Image}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}'"
+alias dks="docker search --limit 5 --format 'table {{.Name}}\t{{.Description}}\t{{.StarCount}}'"
+alias dkps="docker --format 'table {{.Image}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}'"
 
 # start bash for a container
 function dkb() {
