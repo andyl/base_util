@@ -321,6 +321,15 @@ alias dk="docker"
 alias dkc="docker-compose"
 alias dkps="docker ps --format 'table {{.Image}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}'"
 
+function dkb() {
+  if [ $# != 1 ]; then
+    echo "Usage: dkb <container_name>"
+  else
+    name=$1
+    docker exec -it $name bash
+  fi
+}
+
 ###########################################################################
 # BASH OPTIONS
 
