@@ -582,6 +582,14 @@ shopt -s globstar     # enable **/<filename> matching
 shopt -s histverify   # history expansion
 
 ###########################################################################
+# AUTOCOMPLETE
+
+source /etc/bash_completion
+
+CPD=~/.complete
+[ -d $CPD ] && for f in $CPD/*.sh $CPD/*.bash; do source $f; done
+
+###########################################################################
 # BASH PROMPT
 
 # set the command prompt
@@ -601,15 +609,6 @@ then
 else
   PS1="${PSGreen}\u@\h${PSClear} \w${PSRed}>${PSClear} " 
 fi
-
-###########################################################################
-# AUTOCOMPLETE
-
-source /etc/bash_completion
-
-CPD=~/.complete
-[ -d $CPD ] && for f in $CPD/*.sh $CPD/*.bash; do source $f; done
-
 
 ###########################################################################
 # DEMO PROMPT
