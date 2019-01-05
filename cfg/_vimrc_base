@@ -145,8 +145,8 @@ nmap \gh :LspHover<cr>
 
 " turn on for debugging
 let g:lsp_log_verbose = 0
-let g:lsp_log_file = expand('/tmp/vim_lsp.log')
-let g:asyncomplete_log_file = expand('/tmp/vim_asyncomplete.log')
+let g:lsp_log_file = expand("/tmp/vim_lsp_" . $USER . ".log")
+let g:asyncomplete_log_file = expand("/tmp/vim_asyncomplete_" . $USER . ".log")
 
 " install with ansible 'elixir_ls' role
 if executable('elixir_ls')
