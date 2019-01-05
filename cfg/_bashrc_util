@@ -268,7 +268,7 @@ function ap() {          # Run Ansible
 # ALIASES
 
 alias xx="exit"                  # kill the shell...
-alias ss="xfce4-screenshooter"   # screen shot
+alias xss="xfce4-screenshooter"  # screen shot
 
 alias sc="sudo systemctl"        # systemd job control
 alias jc="sudo journalctl"       # systemd log viewer
