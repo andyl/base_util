@@ -585,7 +585,7 @@ shopt -s histverify   # history expansion
 ###########################################################################
 # AUTOCOMPLETE
 
-source /etc/bash_completion
+[ -f /etc/bash_completion ] && source /etc/bash_completion
 
 CPD=~/.complete
 [ -d $CPD ] && for f in $CPD/*.sh $CPD/*.bash; do source $f; done
