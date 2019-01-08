@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# sshchat
+
+ssh casmacc.plus -p 9000
+
