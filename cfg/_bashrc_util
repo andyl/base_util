@@ -274,7 +274,6 @@ alias sc="sudo systemctl"        # systemd job control
 alias jc="sudo journalctl"       # systemd log viewer
 
 alias  va="vagrant"
-alias  vx="vbox_provision"
 alias  an="ansible"
 
 alias  be="bundle exec"
@@ -388,7 +387,7 @@ alias g7='cd ~7'              # go to the Nth dir on the stack
 alias g8='cd ~8'              # go to the Nth dir on the stack 
 alias g9='cd ~9'              # go to the Nth dir on the stack 
 
-alias gr='pushdp ~/run'
+alias gd='pushdp ~/dsvc'
 
 alias  gu='pushdp $UTIL_DIR'
 alias gua='pushdp $UTIL_DIR/air_util'
