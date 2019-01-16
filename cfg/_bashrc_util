@@ -129,7 +129,7 @@ vimcycle() {
 }
 
 ###########################################################################
-# TMUX / TMUXINATOR
+# TMUX / TMUXINATOR / TMATE
 
 # check for active TMUX session
 no_tmux() {
@@ -144,6 +144,14 @@ in_tmux() {
     echo "TMUX NOT STARTED!"
     return 1
   fi
+}
+
+live_tmux() {
+  return $(echo $TMUX | grep tmux > /dev/null) 
+}
+
+live_tmate() {
+  return $(echo $TMUX | grep tmate > /dev/null) 
 }
 
 alias  tm="tmux"   
@@ -161,21 +169,17 @@ alias tv="no_tmux && tm new-session vim"
 
 # note also: ~/.complete has completions for tmux and tmuxinator
 
-###########################################################################
-# NordVPN
-
-alias vpn=nordvpn
-
-###########################################################################
-# TMATE 
-# screen sharing utility for tmux
-
 # show the links that others can use to join the sharing session
 alias tmate-links="tmate show-messages | grep -v clear | grep -v ssh.tmate.io | cut -d ' ' -f 1-6 --complement"
 
 sessionkey () {
   tmate show-messages | grep 'ssh session:' | cut -d ' ' -f10 | tee >(xclip -selection clipboard)
 }
+
+###########################################################################
+# NordVPN
+
+alias vpn=nordvpn
 
 ###########################################################################
 # CLI Utils
