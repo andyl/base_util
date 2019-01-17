@@ -15,13 +15,16 @@ abort() {
 
 live_tmux_session && abort
 
+# get rid of old sessions
+sudo rm -r /tmp/tmate*
+
 # start a detached session
 tmate -S /tmp/tmate.sock new-session -d
 
 # run the `tmate_address` command
 tmate -S /tmp/tmate.sock send-keys "clear" Enter
 tmate -S /tmp/tmate.sock send-keys "# WELCOME TO TMATE!" Enter
-# tmate -S /tmp/tmate.sock send-keys "tmate_address" Enter
+tmate -S /tmp/tmate.sock send-keys "tmate_address" Enter
 
 # attach to the session
 tmate -S /tmp/tmate.sock attach
