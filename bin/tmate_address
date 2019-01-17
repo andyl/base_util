@@ -13,7 +13,7 @@ live_tmate_session() {
 
 # write error message and exit
 abort() {
-  echo "NO LIVE TMATE SESSION (start with 'tmate')"
+  echo "NO LIVE TMATE SESSION (start with 'tmate_start')"
   exit 1
 }
 
