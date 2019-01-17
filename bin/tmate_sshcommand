@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# echo the last SSH connection string
+
+# looks in the sshchat log for the last posted connection string
+
+cstring=`echo '/exit' | ssh casmacc.net -p 9000 2> /dev/null | grep ssh | tail -1 | cut -f 3 -d ' '`
+
+echo "ssh $cstring"
+

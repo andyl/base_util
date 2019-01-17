@@ -1,20 +1,29 @@
 #!/usr/bin/env bash
 
-source ~/.bashrc_util
+# this is mean to be run from within a live TMATE session
+
+# it posts the ssh connection string to STDOUT and also to `sshchat`
+
+SSHCHAT_HOST='casmacc.net -p 9000'
+
+# return 0 (true) if $TMUX contains 'tmate', otherwise 1 (false)
+live_tmate_session() {
+  return $(echo $TMUX | grep tmate > /dev/null) 
+}
 
 abort() {
   echo "NO LIVE TMATE SESSION (start with 'tmate')"
   exit 1
 }
 
-$(live_tmate) || abort
+$(live_tmate_session) || abort
 
 result=`tmate show-messages | grep 'ssh session:' | cut -f 9-10 -d ' '`
 
-sshchat_host='casmacc.net -p 9000'
+# write to sshchat
+echo -e "[ Your TMATE connection string... ]\r$result\r" | ssh $SSHCHAT_HOST > /dev/null 2>&1 
 
-echo -e "[ Your TMATE connection string... ]\r$result\r" | ssh $sshchat_host > /dev/null 2>&1 
-
+# write to stdout
 echo "[ Send this ssh command to your partner via email, chat etc. ]"
 echo "[ The TMATE connection string was auto-posted to 'sshchat'.  ]"
 echo $result

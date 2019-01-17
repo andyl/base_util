@@ -146,10 +146,12 @@ in_tmux() {
   fi
 }
 
+# return 0 (true) if $TMUX contains 'tmux', otherwise 1 (false)
 live_tmux() {
   return $(echo $TMUX | grep tmux > /dev/null) 
 }
 
+# return 0 (true) if $TMUX contains 'tmate', otherwise 1 (false)
 live_tmate() {
   return $(echo $TMUX | grep tmate > /dev/null) 
 }
