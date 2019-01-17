@@ -21,6 +21,7 @@ tmate -S /tmp/tmate.sock new-session -d
 # run the `tmate_address` command
 tmate -S /tmp/tmate.sock send-keys "clear" Enter
 tmate -S /tmp/tmate.sock send-keys "# WELCOME TO TMATE!" Enter
+sleep 2
 tmate -S /tmp/tmate.sock send-keys "tmate_address" Enter
 
 # attach to the session
