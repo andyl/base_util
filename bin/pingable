@@ -1,8 +1,0 @@
-#!/usr/bin/env ruby
-
-require 'ping'
-
-abort "Usage: pingable <host>" unless ARGV.length == 1
-
-puts Ping.pingecho(ARGV[0], 0.1) ? "yes" : "no"
-
