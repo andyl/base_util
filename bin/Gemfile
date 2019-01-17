@@ -13,7 +13,6 @@ gem "net-sftp"
 gem "net-ssh"
 gem "octokit"
 gem "radix62"
-gem "solargraph"
 gem "thor"
-
+gem "solargraph"
 
