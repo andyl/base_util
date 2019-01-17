@@ -1,0 +1,8 @@
+# copy this file to ~/.gitconfig_user
+# override this with your own settings!
+[user]
+  name  = your_username
+  email = you@mailhost.com
+[github]
+  user    = your_github_username
+  patoken = your_personal_access_token
