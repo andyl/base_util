@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 
+source ~/.bashrc_util
+
+abort() {
+  echo "NO LIVE TMATE SESSION (start with 'tmate')"
+  exit 1
+}
+
+$(live_tmate) || abort
+
 result=`tmate show-messages | grep 'ssh session:' | cut -f 9-10 -d ' '`
 
 sshchat_host='casmacc.net -p 9000'
