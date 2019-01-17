@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+# start tmate and auto-run the command `tmate_address`
+
+# returns true if either TMUX or TMATE is active
+live_tmux_session() {
+  [ -n "$TMUX" ] || return 1
+}
+
+abort() {
+  echo "LIVE TMUX/TMATE SESSION!!"
+  echo "Run 'tmate_start' from a non-tmux console."
+  exit 1
+}
+
+live_tmux_session && abort
+
+# start a detached session
+tmate -S /tmp/tmate.sock new-session -d
+
+# run the `tmate_address` command
+tmate -S /tmp/tmate.sock send-keys "clear" Enter
+tmate -S /tmp/tmate.sock send-keys "# WELCOME TO TMATE!" Enter
+tmate -S /tmp/tmate.sock send-keys "tmate_address" Enter
+
+# attach to the session
+tmate -S /tmp/tmate.sock attach
+

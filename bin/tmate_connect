@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+# start tmate and auto-run the command `tmate_address`
+
+live_tmux_session() {
+  return [ -n "$TMUX" ]
+}
+
+abort() {
+  echo "LIVE TMUX/TMATE SESSION!!"
+  echo "Run 'tmate_start' from a non-tmux console."
+  exit 1
+}
+
+live_tmux_session && abort
+
+cmd=$(tmate_sshcommand)
+echo $cmd
+eval "$cmd"
+

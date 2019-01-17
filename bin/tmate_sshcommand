@@ -4,7 +4,7 @@
 
 # looks in the sshchat log for the last posted connection string
 
-cstring=`echo '/exit' | ssh casmacc.net -p 9000 2> /dev/null | grep ssh | tail -1 | cut -f 3 -d ' '`
+cstring=`echo '/exit' | ssh casmacc.net -p 9000 2> /dev/null | grep ssh | tail -1 | cut -f 3 -d ' ' | tr -d '\015'`
 
 echo "ssh $cstring"
 
