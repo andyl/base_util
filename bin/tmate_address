@@ -11,6 +11,7 @@ live_tmate_session() {
   return $(echo $TMUX | grep tmate > /dev/null) 
 }
 
+# write error message and exit
 abort() {
   echo "NO LIVE TMATE SESSION (start with 'tmate')"
   exit 1
