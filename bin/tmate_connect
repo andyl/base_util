@@ -1,14 +1,15 @@
 #!/usr/bin/env bash
 
-# start tmate and auto-run the command `tmate_address`
+# connect to a tmux session
 
+# returns true if either TMUX or TMATE is active
 live_tmux_session() {
-  return [ -n "$TMUX" ]
+  [ -n "$TMUX" ] || return 1
 }
 
 abort() {
   echo "LIVE TMUX/TMATE SESSION!!"
-  echo "Run 'tmate_start' from a non-tmux console."
+  echo "Run 'tmate_connect' from a non-tmux console."
   exit 1
 }
 
