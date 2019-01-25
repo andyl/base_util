@@ -22,6 +22,7 @@ sourcefile ~/.rails_env
 sourcefile ~/.bashu_aliases
 sourcefile ~/.bashu_functions
 sourcefile ~/.bashu_marks
+sourcefile ~/.bashu_depp
 
 ###########################################################################
 # BASE UTIL
