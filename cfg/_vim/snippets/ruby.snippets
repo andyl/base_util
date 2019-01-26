@@ -1,3 +1,17 @@
-snippet ding
-  ding ${1:bing}
-	bong $1
+# ----- pry -----
+snippet rp
+	require 'pry'$0
+snippet bp
+	binding.pry$0
+
+# ----- rspec -----
+snippet exp
+	expect($1).to $2
+snippet it
+	it "$1" do
+	  $2
+	end
+snippet desc
+	describe "$1" do
+	  $2
+	end
