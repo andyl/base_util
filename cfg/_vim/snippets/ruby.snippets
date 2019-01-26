@@ -8,14 +8,15 @@ snippet bp
 
 # ----- rspec -----
 snippet exp
-	expect(${1} ).to $2
+	expect(${1:expression}).to $2
 
 snippet it
-	it " $1" do
+	it "${1:description}" do
 	  $2
 	end
+	$0
 
 snippet desc
-	describe "$1" do
-	  "$2"
+	describe "${1:description}" do
+	  $2
 	end
