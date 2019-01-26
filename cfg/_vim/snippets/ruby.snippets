@@ -1,17 +1,21 @@
 # ----- pry -----
-snippet rp
+
+snippet rp "does something nice"
 	require 'pry'$0
+
 snippet bp
 	binding.pry$0
 
 # ----- rspec -----
 snippet exp
-	expect($1).to $2
+	expect(${1} ).to $2
+
 snippet it
-	it "$1" do
+	it " $1" do
 	  $2
 	end
+
 snippet desc
 	describe "$1" do
-	  $2
+	  "$2"
 	end
