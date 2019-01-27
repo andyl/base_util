@@ -1,31 +1,22 @@
 # ----- pry -----
-
 snippet rp "does something nice"
 	require 'pry'$0
-
 snippet bp
 	binding.pry$0
-
 # ----- rspec -----
 snippet exp
 	expect(${1:expression}).to$2
-
 snippet it
 	it "${1:description}" do
 	  $2
-	end
-	$0
-
+	end$0
 snippet desc
 	describe "${1:description}" do
 	  $2
-	end
-
+	end$0
 snippet let
 	let(${1:sym}) { ${2:expression} }$0
-
 snippet eq
 	eq(${1:val})$0
-
 snippet bea
 	be_a(${1:klas})$0
