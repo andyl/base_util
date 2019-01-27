@@ -7,10 +7,10 @@ Plug 'MarcWeber/vim-addon-mw-utils'      " support lib for snipmate
 Plug 'tomtom/tlib_vim'                   " support lib for snipmate
 Plug 'SirVer/ultisnips'                  " snipmate replacement
 " -- LSP/COMPLETION ----- 
-" Plug 'prabirshrestha/asyncomplete.vim'
-" Plug 'prabirshrestha/async.vim'
-" Plug 'prabirshrestha/vim-lsp'
-" Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
 " -- FZF ----- 
 Plug 'lvht/fzf-mru'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -404,6 +404,10 @@ nmap ac <Plug>(EasyAlign)
 " usage: vipat
 " ac = align character
 " usage: vipac=
+
+let g:easy_align_delimiters = {
+\  '^': {'pattern': ',', 'left_margin': 1, 'right_margin': 1, 'stick_to_left': 0}
+\}
 
 " === TAB MANIPULATION AND NAVIGATION
 nmap <leader>tn :tabnew<CR>
