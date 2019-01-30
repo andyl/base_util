@@ -45,6 +45,8 @@ Plug 'vim-ruby/vim-ruby'                 " syntax highlighting
 Plug 'tpope/vim-rails'                   " rails support
 Plug 'nelstrom/vim-textobj-rubyblock'    " ruby text objects
 Plug 'bronson/vim-ruby-block-conv'       " toggle {} to begin/end
+" Plug 'dbakker/vim-projectroot'           " required by solargraph
+" Plug 'hackhowtofaq/vim-solargraph'       " ruby language server
 " -- LANG JAVASCRIPT -----
 Plug 'mxw/vim-jsx'                       " ReactJS/JSX
 Plug 'kchmck/vim-coffee-script'          " coffeescript
