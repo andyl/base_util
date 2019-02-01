@@ -158,11 +158,13 @@ if executable('elixir_ls')
 endif
 
 " gem install solargraph
+" 'cmd': {server_info->['solargraph', 'stdio']},
 if executable('solargraph')
   au User lsp_setup call lsp#register_server({
     \ 'name': 'solargraph',
-    \ 'cmd': {server_info->['solargraph', 'stdio']},
-    \ 'whitelist': ['ruby', 'eruby'],
+    \ 'cmd': {server_info->[&shell, &shellcmdflag, 'solargraph stdio']},
+    \ 'initialization_options': {"diagnostics": "true"},
+    \ 'whitelist': ['ruby'],
     \ })
 endif
 
@@ -174,15 +176,6 @@ if executable('pyls')
     \ 'whitelist': ['python'],
     \ })
 endif
-
-" === ELIXIR CONFIG
-" let g:LanguageClient_serverCommands = {
-"       \ 'elixir': []
-"       \ }
-" nnoremap <silent> K    :call LanguageClient_textDocument_hover()<CR>
-" nnoremap <silent> gd   :call LanguageClient_textDocument_definition()<CR>
-" nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
-
 
 " === MATCHIT
 runtime macros/matchit.vim
