@@ -68,8 +68,9 @@ Plug 'vimoutliner/vimoutliner'           " outline files
 Plug 'pearofducks/ansible-vim'           " ansible yaml files
 Plug 'slim-template/vim-slim'            " slim files
 Plug 'jtratner/vim-flavored-markdown'    " markdown files
-" -- TMUX -----
+" -- TMUX/TERMINAL -----
 Plug 'benmills/vimux'                    " tmux integration
+Plug 'kassio/neoterm'                    " terminal management
 " -- NGINX -----
 Plug 'chr4/nginx.vim'                    " nginx syntax highlighting 
 " -- COLORSCHEMES -----
