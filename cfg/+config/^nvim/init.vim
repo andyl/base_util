@@ -3,14 +3,23 @@
 set runtimepath+=~/.vim,~/.vim/after
 set packpath+=~/.vim
 
-" -----------------------------------------------------------------
 " ----- load base config
 source ~/.vimrc_base
 
-" -----------------------------------------------------------------
-" ----- load base config
-" ----- neovim-specific configuration
+" ----- misc
 set lazyredraw
+
+" ----- mouse
+set mouse=a
+
+" ----- colorschemes
+let g:gruvbox_contrast_dark='hard'
+set background=dark
+colorscheme gruvbox
+
+" ----- terminal 
+autocmd BufWinEnter,WinEnter term://* startinsert
+autocmd BufLeave             term://* stopinsert
 
 " turn off line numbers in terminal mode
 augroup TerminalStuff
@@ -18,15 +27,16 @@ augroup TerminalStuff
   autocmd TermOpen * setlocal nonumber norelativenumber
 augroup END
 
-" ----- colorschemes
-let g:gruvbox_contrast_dark='hard'
-set background=dark
-colorscheme gruvbox
+" terminal navigate
+tnoremap <c-h> <C-\><C-n><C-w>h
+tnoremap <c-j> <C-\><C-n><C-w>j
+tnoremap <c-k> <C-\><C-n><C-w>k
+tnoremap <c-l> <C-\><C-n><C-w>l
 
-" ----- terminal config
-autocmd BufWinEnter,WinEnter term://* startinsert
-autocmd BufLeave             term://* stopinsert
+" easily escape terminal
+tnoremap <leader><esc> <C-\><C-n>
 
-" ----- mouse
-set mouse=a
+" toggle terminal
+nmap <leader>tv :vertical botright Ttoggle<cr><C-w>l
+nmap <leader>ts :rightbelow Ttoggle<cr><C-w>j
 
