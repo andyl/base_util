@@ -4,8 +4,11 @@
 call plug#begin('~/.vim/plugged')
 " -- SNIPPETS ----- 
 Plug 'SirVer/ultisnips'                  " snipmate replacement
-" -- LSP/COMPLETION/FZF -----
-Plug 'Shougo/deoplete.nvim'           , {'do': ':UpdateRemotePlugins'}
+" -- DEOPLETE -----
+Plug 'Shougo/deoplete.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
+" -- LSP/FZF -----
 Plug 'autozimu/LanguageClient-neovim' , {'branch': 'next', 'do': './install.sh'}
 Plug 'junegunn/fzf'                   , { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -129,7 +132,10 @@ function LedgerSort()
 endfunction
 command LedgerSort call LedgerSort()
 
-" === LSP (LanguageClient neovim)
+" === DEOPLETE
+let g:deoplete#enable_at_startup = 1
+
+" === LSP 
 
 " Required for operations modifying multiple buffers like rename.
 set hidden
