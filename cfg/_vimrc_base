@@ -7,10 +7,13 @@ Plug 'MarcWeber/vim-addon-mw-utils'      " support lib for snipmate
 Plug 'tomtom/tlib_vim'                   " support lib for snipmate
 Plug 'SirVer/ultisnips'                  " snipmate replacement
 " -- LSP/COMPLETION ----- 
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
+" Plug 'prabirshrestha/asyncomplete.vim'
+" Plug 'prabirshrestha/async.vim'
+" Plug 'prabirshrestha/vim-lsp'
+" Plug 'prabirshrestha/asyncomplete-lsp.vim'
+" -- LSP/COMPLETION -----
+Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
+Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
 " -- FZF ----- 
 Plug 'lvht/fzf-mru'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -134,49 +137,68 @@ function LedgerSort()
 endfunction
 command LedgerSort call LedgerSort()
 
-" === LSP
+" === LSP (LanguageClient neovim)
+
+" Required for operations modifying multiple buffers like rename.
+set hidden
+
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
+    \ 'python': ['/usr/local/bin/pyls'],
+    \ 'ruby': ['solargraph', 'stdio']
+    \ }
+
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+" Or map each action separately
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
+" === LSP (vim-lsp)
 
 " Goto Definition
 " Jump Back with <C-o>
-nmap \gd :LspDefinition<cr>
-nmap \gt :tab split<cr>:LspDefinition<cr>
-nmap \gs :sp<cr>:LspDefinition<cr>
-nmap \gv :vsp<cr>:LspDefinition<cr>
-nmap \gh :LspHover<cr>
+" nmap \gd :LspDefinition<cr>
+" nmap \gt :tab split<cr>:LspDefinition<cr>
+" nmap \gs :sp<cr>:LspDefinition<cr>
+" nmap \gv :vsp<cr>:LspDefinition<cr>
+" nmap \gh :LspHover<cr>
 
 " turn on for debugging
-let g:lsp_log_verbose = 0
-let g:lsp_log_file = expand("/tmp/vim_lsp_" . $USER . ".log")
-let g:asyncomplete_log_file = expand("/tmp/vim_asyncomplete_" . $USER . ".log")
+" let g:lsp_log_verbose = 0
+" let g:lsp_log_file = expand("/tmp/vim_lsp_" . $USER . ".log")
+" let g:asyncomplete_log_file = expand("/tmp/vim_asyncomplete_" . $USER . ".log")
 
 " install with ansible 'elixir_ls' role
-if executable('elixir_ls')
-  au User lsp_setup call lsp#register_server({
-    \ 'name': 'elixir-ls',
-    \ 'cmd': {server_info->['elixir_ls']},
-    \ 'whitelist': ['elixir', 'eelixir'],
-    \ })
-endif
+" if executable('elixir_ls')
+"   au User lsp_setup call lsp#register_server({
+"     \ 'name': 'elixir-ls',
+"     \ 'cmd': {server_info->['elixir_ls']},
+"     \ 'whitelist': ['elixir', 'eelixir'],
+"     \ })
+" endif
 
 " gem install solargraph
 " 'cmd': {server_info->['solargraph', 'stdio']},
-if executable('solargraph')
-  au User lsp_setup call lsp#register_server({
-    \ 'name': 'solargraph',
-    \ 'cmd': {server_info->[&shell, &shellcmdflag, 'solargraph stdio']},
-    \ 'initialization_options': {"diagnostics": "true"},
-    \ 'whitelist': ['ruby'],
-    \ })
-endif
+" if executable('solargraph')
+"   au User lsp_setup call lsp#register_server({
+"     \ 'name': 'solargraph',
+"     \ 'cmd': {server_info->[&shell, &shellcmdflag, 'solargraph stdio']},
+"     \ 'initialization_options': {"diagnostics": "true"},
+"     \ 'whitelist': ['ruby'],
+"     \ })
+" endif
 
 " pip install python-language-server
-if executable('pyls')
-  au User lsp_setup call lsp#register_server({
-    \ 'name': 'pyls',
-    \ 'cmd': {server_info->['pyls']},
-    \ 'whitelist': ['python'],
-    \ })
-endif
+" if executable('pyls')
+"   au User lsp_setup call lsp#register_server({
+"     \ 'name': 'pyls',
+"     \ 'cmd': {server_info->['pyls']},
+"     \ 'whitelist': ['python'],
+"     \ })
+" endif
 
 " === MATCHIT
 runtime macros/matchit.vim
