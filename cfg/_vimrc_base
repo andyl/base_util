@@ -5,9 +5,13 @@ call plug#begin('~/.vim/plugged')
 " -- SNIPPETS ----- 
 Plug 'SirVer/ultisnips'                  " snipmate replacement
 " -- DEOPLETE -----
-Plug 'Shougo/deoplete.nvim'
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
 " -- LSP/FZF -----
 Plug 'autozimu/LanguageClient-neovim' , {'branch': 'next', 'do': './install.sh'}
 Plug 'junegunn/fzf'                   , { 'dir': '~/.fzf', 'do': './install --all' }
