@@ -135,7 +135,7 @@ command LedgerSort call LedgerSort()
 " === LSP / LSC
 
 let g:ale_completion_enabled = 1
-let g:ale_elixir_elixir_ls_release = '/home/aleak/.pkg/elixir_ls/elixir-ls/rel'
+let g:ale_elixir_elixir_ls_release = expand('~/.pkg/elixir_ls/rel')
 
 let g:ale_linters        = {}
 let g:ale_linters.elixir = ['elixir-ls']
@@ -150,9 +150,9 @@ let g:ale_fixers.ruby             = ['rubocop']
 let g:ale_fixers.elixir           = ['mix_format']
 
 nnoremap <silent> \gd :ALEGoToDefinition<CR>
-nnoremap <silent> \gt :tab split<CR>:ALEGoToDefinition<CR>
-nnoremap <silent> \gs :sp<CR>:ALEGoToDefinition<CR>
-nnoremap <silent> \gv :vsp<CR>:ALEGoToDefinition<CR>
+nnoremap <silent> \gt :ALEGoToDefinitionInTab<CR>
+nnoremap <silent> \gs :ALEGoToDefinitionInSplit<CR>
+nnoremap <silent> \gv :ALEGoToDefinitionInVSplit<CR>
 nnoremap <silent> \gh :ALEHover<CR>          
 nnoremap <silent> \gr :ALEFindReferences<CR>
 nnoremap <silent> \gs :ALESymbolSearch<CR>
