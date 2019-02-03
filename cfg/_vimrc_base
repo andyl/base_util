@@ -7,7 +7,7 @@ Plug 'SirVer/ultisnips'                  " snipmate replacement
 " -- ALE (LINT/LSC/COMPLETION) -----
 Plug 'w0rp/ale'
 " -- FZF -----
-Plug 'junegunn/fzf'                   , { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'lvht/fzf-mru'
 " -- NERDTREE ----- 
@@ -85,8 +85,8 @@ Plug 'terryma/vim-multiple-cursors'      " multiple cursors
 Plug 'itchyny/calendar.vim'              " vim calendars
 Plug 'tpope/vim-fugitive'                " git integration
 Plug 'vim-scripts/bats.vim'              " bats editing
-" Plug 'mattn/gist-vim'                    " post github gists
-" Plug 'mattn/webapi-vim'                  " required by gist-vim
+Plug 'mattn/gist-vim'                    " post github gists
+Plug 'mattn/webapi-vim'                  " required by gist-vim
 call plug#end()
 
 " === FILE MODES
@@ -129,10 +129,7 @@ function LedgerSort()
 endfunction
 command LedgerSort call LedgerSort()
 
-" === DEOPLETE
-" let g:deoplete#enable_at_startup = 1
-
-" === LSP / LSC
+" === ALE / LSP / LSC / LINT
 
 let g:ale_completion_enabled = 1
 let g:ale_elixir_elixir_ls_release = expand('~/.pkg/elixir_ls/rel')
@@ -527,7 +524,7 @@ let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_tabs = 1
 let g:airline#extensions#tabline#show_buffers = 0
-let g:airline#extensions#tabline#tab_min_count = 0
+let g:airline#extensions#tabline#tab_min_count = 1
 let g:airline#extensions#tabline#buffer_min_count = 2
 let g:airline#extensions#tabline#show_tab_nr = 1
 let g:airline#extensions#tabline#tab_nr_type = 1
