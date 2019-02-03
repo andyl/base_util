@@ -135,7 +135,7 @@ command LedgerSort call LedgerSort()
 " === LSP / LSC
 
 let g:ale_completion_enabled = 1
-let g:ale_elixir_elixir_ls_release = '/home/aleak/.pkg/elixir_ls/elixir_ls/rel'
+let g:ale_elixir_elixir_ls_release = '/home/aleak/.pkg/elixir_ls/elixir-ls/rel'
 
 let g:ale_linters        = {}
 let g:ale_linters.elixir = ['elixir-ls']
