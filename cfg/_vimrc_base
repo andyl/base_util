@@ -152,7 +152,7 @@ nnoremap <silent> \gs :ALEGoToDefinitionInSplit<CR>
 nnoremap <silent> \gv :ALEGoToDefinitionInVSplit<CR>
 nnoremap <silent> \gh :ALEHover<CR>          
 nnoremap <silent> \gr :ALEFindReferences<CR>
-nnoremap <silent> \gs :ALESymbolSearch<CR>
+nnoremap <silent> \gy :ALESymbolSearch 
 
 " === MATCHIT
 runtime macros/matchit.vim
