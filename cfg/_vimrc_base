@@ -154,6 +154,9 @@ nnoremap <silent> \gh :ALEHover<CR>
 nnoremap <silent> \gr :ALEFindReferences<CR>
 nnoremap <silent> \gy :ALESymbolSearch 
 
+nnoremap <silent> <leader>aj :ALENext<CR>
+nnoremap <silent> <leader>ak :ALEPrevious<CR>
+
 " === MATCHIT
 runtime macros/matchit.vim
 
