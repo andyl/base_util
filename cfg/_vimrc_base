@@ -154,10 +154,8 @@ nnoremap <silent> \gh :ALEHover<CR>
 nnoremap <silent> \gr :ALEFindReferences<CR>
 nnoremap <silent> \gy :ALESymbolSearch 
 
-nnoremap <silent> <leader>aj :ALENext<CR>
-nnoremap <silent> <leader>ak :ALEPrevious<CR>
-
-
+nnoremap <silent> \wn :ALENext<CR>
+nnoremap <silent> \wp :ALEPrevious<CR>
 
 " === MATCHIT
 runtime macros/matchit.vim
@@ -412,6 +410,12 @@ nmap <leader>ls <C-w>J<cr>
 nmap <leader>lv <C-w>L<cr>
 " layout rotate
 nmap <leader>lr <C-w>r<cr>
+
+" === SESSION
+" window-save
+nmap <leader>ws :mksession! .session.vim<CR>
+" window-restore
+nmap <leader>wr :source .session.vim<CR>
 
 " === PANE NAVIGATION
 nmap <silent> <C-k> :wincmd k<cr>
