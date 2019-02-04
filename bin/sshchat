@@ -2,5 +2,6 @@
 
 # sshchat
 
-ssh casmacc.net -p 9000
+echo "CONNECTING VIA 'ssh casmacc-net -p 9000'"
 
+ssh casmacc.net -p 9000
