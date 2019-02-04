@@ -106,6 +106,12 @@ if !has('nvim')
   set cryptmethod=blowfish2
 endif
 
+" === TOGGLELIST
+let g:toggle_list_no_mappings = 1
+
+" nmap <script> <silent> <leader>l :call ToggleLocationList()<CR>
+" nmap <script> <silent> <leader>q :call ToggleQuickfixList()<CR>
+
 " === FILE BACKUPS - disable file backups
 set updatecount=0     
 set nobackup
