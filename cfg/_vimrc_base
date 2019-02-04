@@ -18,7 +18,7 @@ Plug 'vim-scripts/nerdtree-ack'          " search from directory
 Plug 'mileszs/ack.vim'                   " file search
 Plug 'tpope/vim-projectionist'           " src/test file nav
 " -- LANG GENERAL -----
-Plug 'vim-syntastic/syntastic'           " file linting
+" Plug 'vim-syntastic/syntastic'           " file linting
 " -- DOCKER -----
 Plug 'ekalinin/Dockerfile.vim'           " Dockerfile editing
 " -- TEXT MANIPULATION -----
@@ -156,6 +156,8 @@ nnoremap <silent> \gy :ALESymbolSearch
 
 nnoremap <silent> <leader>aj :ALENext<CR>
 nnoremap <silent> <leader>ak :ALEPrevious<CR>
+
+
 
 " === MATCHIT
 runtime macros/matchit.vim
@@ -559,45 +561,40 @@ nmap <leader>bx :bd<cr>
 
 " === LISTS  
 
-let g:syntastic_is_open = 0  
-function! ToggleSyntasticList()
-  if g:syntastic_is_open == 1
-      lclose
-      let g:syntastic_is_open = 0 
-  else
-      Errors
-      let g:syntastic_is_open = 1 
-  endif
-endfunction
-
-let g:toggle_list_no_mappings=1
-nmap <F6> :SyntasticToggleMode<cr>
-nmap <F7> :SyntasticCheck<cr>
-nmap <F8> :call ToggleSyntasticList()<cr>
-nmap <F9> :call ToggleQuickfixList()<cr>
+" let g:syntastic_is_open = 0  
+" function! ToggleSyntasticList()
+"   if g:syntastic_is_open == 1
+"       lclose
+"       let g:syntastic_is_open = 0 
+"   else
+"       Errors
+"       let g:syntastic_is_open = 1 
+"   endif
+" endfunction
+"
+" let g:toggle_list_no_mappings=1
+" nmap <F6> :SyntasticToggleMode<cr>
+" nmap <F7> :SyntasticCheck<cr>
+" nmap <F8> :call ToggleSyntasticList()<cr>
+" nmap <F9> :call ToggleQuickfixList()<cr>
 
 " === SYNTASTIC 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_enable_elixir_checker = 1
-let g:syntastic_elixir_checkers = ['elixir']
-let g:syntastic_ruby_checkers = ['rubocop']
-let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_mode_map = {'mode': 'passive'}
-
-nmap <leader>sn :lnext<cr>
-nmap <leader>sp :lprev<cr>
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_enable_elixir_checker = 1
+" let g:syntastic_elixir_checkers = ['elixir']
+" let g:syntastic_ruby_checkers = ['rubocop']
+" let g:syntastic_python_checkers = ['flake8']
+" let g:syntastic_mode_map = {'mode': 'passive'}
+"
+" nmap <leader>sn :lnext<cr>
+" nmap <leader>sp :lprev<cr>
 
 " === ENCODING
 if !exists('g:encoding_set')
   set encoding=utf-8
 endif
 let g:encoding_set=1
-
-" === NEOVIM SETTINGS
-" if has('nvim')
-"   set inccommand=nosplit
-" endif
 
 " === TERM-SPECIFIC ITEMS 
 if exists('$TMUX')
