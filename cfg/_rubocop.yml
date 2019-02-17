@@ -52,6 +52,9 @@ Style/SpaceInsideHashLiteralBraces:
 Style/RedundantSelf:
   Enabled: false
 
+Style/Lambda:
+  Enabled: false
+
 Style/HashSyntax:
   EnforcedStyle: no_mixed_keys
 
