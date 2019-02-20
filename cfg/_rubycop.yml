@@ -5,6 +5,9 @@ Rails:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
+Style/ClassAndModuleChildren:
+  Enabled: false
+
 Metrics/BlockLength:
   Max: 500
 
