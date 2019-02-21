@@ -19,6 +19,9 @@ Style/ZeroLengthPredicate:
 Style/TernaryParentheses:
   Enabled: false
 
+Style/ClassAndModuleChildren:
+  Enabled: false
+
 Style/EmptyCaseCondition:
   Enabled: false
 
