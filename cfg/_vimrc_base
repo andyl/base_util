@@ -17,8 +17,6 @@ Plug 'vim-scripts/nerdtree-ack'          " search from directory
 " -- SEARCH AND NAV ----- 
 Plug 'mileszs/ack.vim'                   " file search
 Plug 'tpope/vim-projectionist'           " src/test file nav
-" -- LANG GENERAL -----
-" Plug 'vim-syntastic/syntastic'           " file linting
 " -- DOCKER -----
 Plug 'ekalinin/Dockerfile.vim'           " Dockerfile editing
 " -- TEXT MANIPULATION -----
@@ -137,7 +135,10 @@ command LedgerSort call LedgerSort()
 
 " === ALE / LSP / LSC / LINT
 
-let g:ale_completion_enabled = 1
+set completeopt=menu,menuone,preview,noselect,noinsert
+
+let g:ale_completion_enabled=1
+let g:ale_completion_delay=100
 let g:ale_elixir_elixir_ls_release = expand('~/.pkg/elixir_ls/rel')
 
 let g:ale_linters        = {}
