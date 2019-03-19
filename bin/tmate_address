@@ -22,9 +22,9 @@ $(live_tmate_session) || abort
 ssh_command=`tmate show-messages | grep 'ssh session:' | cut -f 10-11 -d ' '`
 
 # write to sshchat
-echo -e "[ Your TMATE connection string... ]\r$ssh_command\r" | ssh $SSHCHAT_HOST > /dev/null 2>&1 
+echo -e "[ Your TMATE connection string... ]\rssh $ssh_command\r" | ssh $SSHCHAT_HOST > /dev/null 2>&1 
 
 # write to stdout
 echo ">> This ssh command was auto-posted to 'sshchat' (ssh $SSHCHAT_HOST)"
 echo ">> Send the command to your partner via email, sshchat, etc."
-echo $ssh_command
+echo ssh $ssh_command
