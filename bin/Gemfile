@@ -1,18 +1,18 @@
 # Standard Gems
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
-gem "pry"
-gem "hirb"
-
-gem "colored"
-gem "faraday"
-gem "highline"
-gem "multipart-post"
-gem "net-ping"
-gem "net-sftp"
-gem "net-ssh"
-gem "octokit"
-gem "radix62"
-gem "thor"
-gem "solargraph"
+gem 'pry'
+gem 'pry-stack_explorer'
+gem 'hirb'
+gem 'colored'
+gem 'faraday'
+gem 'highline'
+gem 'multipart-post'
+gem 'net-ping'
+gem 'net-sftp'
+gem 'net-ssh'
+gem 'octokit'
+gem 'radix62'
+gem 'thor'
+gem 'solargraph'
 
