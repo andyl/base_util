@@ -63,6 +63,9 @@ nmap <leader>x :call UpdateTaskL("=", "X")<cr>
 vmap <leader>a :call UpdateTaskL("=", "A")<cr>gv
 nmap <leader>a :call UpdateTaskL("=", "A")<cr>
 
+vmap <leader>f :call UpdateTaskL("=", "F")<cr>gv
+nmap <leader>f :call UpdateTaskL("=", "F")<cr>
+
 vmap <leader>h :call UpdateTaskL("-", "H")<cr>gv
 vmap <leader>m :call UpdateTaskL("-", "M")<cr>gv
 vmap <leader>l :call UpdateTaskL("-", "L")<cr>gv
