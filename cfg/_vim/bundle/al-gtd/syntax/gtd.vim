@@ -7,7 +7,7 @@ augroup END
 " GTD SYNTAX -----
 syntax match gGroup     /{.*}/
 syntax match gHandle    /\![a-z0-9][a-z0-9][a-z0-9][a-z0-9]/
-syntax match gStatus    /=[IAWSTRXiawstrx]/ 
+syntax match gStatus    /=[IFAWSTRXifawstrx]/ 
 syntax match gScope     /\ :[A-Za-z][a-z0-9A-Z_/]*/
 syntax match gContext   / @[a-z][a-z]*/
 syntax match gHPriority /\-[Hh]/
