@@ -418,7 +418,7 @@ alias gubc='pushdp $UTIL_DIR/base_util/cfg'
 alias gucb='pushdp $UTIL_DIR/code_util/bin'
 alias gucc='pushdp $UTIL_DIR/code_util/cfg'
 alias guci='pushdp $UTIL_DIR/code_util/inc'
-alias guce='pushdp $UTIL_DIR/code_util/es'
+alias guce='pushdp $UTIL_DIR/code_util/exs'
 alias gucg='pushdp $UTIL_DIR/code_util/gems'
 alias gucs='pushdp $UTIL_DIR/code_util/shards'
 
