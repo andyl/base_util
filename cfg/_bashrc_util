@@ -112,7 +112,8 @@ export PATH=$PATH:~/.cargo/bin
 
 ###########################################################################
 # FZF
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+# export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+export FZF_DEFAULT_COMMAND='rg --files --follow --glob "!.git/*"'
 export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(vim {})+abort'"
 alias fz="fzf --preview 'bat --color \"always\" {}'"
 
