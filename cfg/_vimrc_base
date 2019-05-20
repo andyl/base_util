@@ -424,11 +424,11 @@ nmap <leader>o :only<cr>
 
 " === PANE LAYOUT
 " layout split
-nmap <leader>ls <C-w>J<cr>
+nmap <leader>ls <C-w>J
 " layout vertical
-nmap <leader>lv <C-w>L<cr>
+nmap <leader>lv <C-w>L
 " layout rotate
-nmap <leader>lr <C-w>r<cr>
+nmap <leader>lr <C-w>r
 
 " === SESSION
 " window-save
