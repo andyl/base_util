@@ -33,7 +33,7 @@ Plug 'mhinz/vim-mix-format'              " :VimMixFormat
 Plug 'andyl/vim-snipmate-elixir'         " snippets for elixir
 Plug 'andyl/vim-projectionist-elixir'    " source/test file navigation
 Plug 'andyl/vim-textobj-elixir'          " elixir text objects
-Plug 'GrzegorzKozub/vim-elixirls', { 'do': ':ElixirLsCompileSync' }
+" Plug 'GrzegorzKozub/vim-elixirls', { 'do': ':ElixirLsCompileSync' }
 " -- LANG RUBY ----- 
 Plug 'vim-ruby/vim-ruby'                 " syntax highlighting
 Plug 'tpope/vim-rails'                   " rails support
@@ -50,7 +50,7 @@ Plug 'rust-lang/rust.vim'                " syntax highlighting
 " -- LEDGER -----    
 Plug 'ledger/vim-ledger'                 " ledger-cli accounting
 " -- GRAPHQL -----    
-" Plug 'jparise/vim-graphql'               " graphql syntax highlighting
+Plug 'jparise/vim-graphql'               " graphql syntax highlighting
 " -- CODING UTILITIES -----
 Plug 'milkypostman/vim-togglelist'       " toggle quicklist and location list
 Plug 'tpope/vim-unimpaired'              " jump leading/trailing paren
@@ -141,7 +141,7 @@ command LedgerSort call LedgerSort()
 set completeopt=menu,menuone,preview,noselect,noinsert
 
 let g:ale_completion_enabled=1
-let g:ale_completion_delay=100
+let g:ale_completion_delay=200
 let g:ale_elixir_elixir_ls_release = expand('~/.pkg/elixir_ls/rel')
 
 let g:ale_linters        = {}
@@ -158,9 +158,6 @@ let g:ale_fixers.elixir           = ['mix_format']
 
 " https://github.com/JakeBecker/elixir-ls/issues/54
 let g:ale_elixir_elixir_ls_config = { 'elixirLS': { 'dialyzerEnabled': v:false } }
-
-let g:ale_linters = {}
-let g:ale_linters.elixir = [ 'credo', 'elixir-ls' ]
 
 nnoremap <silent> \gd :ALEGoToDefinition<CR>
 nnoremap <silent> \gt :ALEGoToDefinitionInTab<CR>
