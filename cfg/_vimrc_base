@@ -49,6 +49,8 @@ Plug 'rhysd/vim-crystal'                 " syntax highlighting
 Plug 'rust-lang/rust.vim'                " syntax highlighting
 " -- LEDGER -----    
 Plug 'ledger/vim-ledger'                 " ledger-cli accounting
+" -- GRAPHQL -----    
+" Plug 'jparise/vim-graphql'               " graphql syntax highlighting
 " -- CODING UTILITIES -----
 Plug 'milkypostman/vim-togglelist'       " toggle quicklist and location list
 Plug 'tpope/vim-unimpaired'              " jump leading/trailing paren

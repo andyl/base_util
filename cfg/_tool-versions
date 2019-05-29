@@ -1,2 +1,8 @@
 elixir 1.8.2-otp-22
 erlang 22.0.1
+
+# elixir> mix local.hex
+# elixir> mix local.rebar
+# elixir> mix archive.install hex phx_new
+# elixir> mix archive.install hex mix_templates
+# elixir> mix archive.install hex mix_generator
