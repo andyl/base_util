@@ -141,14 +141,13 @@ set completeopt=menu,menuone,preview,noselect,noinsert
 
 let g:ale_completion_enabled=1
 let g:ale_completion_delay=200
-" let g:ale_elixir_elixir_ls_release = expand('~/.pkg/elixir_ls/rel')
-let g:ale_elixir_elixir_ls_release = expand('~/.pkg/lcl/elixir-ls/rel')
+let g:ale_elixir_elixir_ls_release = expand('~/.pkg/elixir-ls/rel')
 
 let g:ale_disable_lsp = 0
 
 let g:ale_linters        = {}
-" let g:ale_linters.elixir = ['credo', 'elixir-ls']
-let g:ale_linters.elixir = ['elixir-ls']
+let g:ale_linters.elixir = ['credo', 'elixir-ls']
+" let g:ale_linters.elixir = ['elixir-ls']
 let g:ale_linters.ruby   = ['solargraph', 'rubocop', 'ruby']
 
 let g:ale_fixers                  = {'*': ['remove_trailing_lines', 'trim_whitespace']}
