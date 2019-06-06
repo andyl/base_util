@@ -418,7 +418,8 @@ nmap <leader>t9 9gt
 nmap <leader>s :sp<cr>
 nmap <leader>v :vsp<cr>
 nmap <leader>q :q<cr>
-nmap <leader>o :only<cr>
+nmap <leader>o :wa<cr>:only<cr>
+nmap <leader>i :wa<cr>:only<cr>:call <SID>ToggleNerd()<cr>
 
 " === PANE LAYOUT
 " layout split
