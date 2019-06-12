@@ -1,6 +1,7 @@
 elixir 1.8.2-otp-22
 erlang 22.0.1
 ruby 2.6.0
+nodejs 12.4.0
 
 # asdf install elixir 1.9.0-rc.0-otp-22
 
@@ -10,3 +11,4 @@ ruby 2.6.0
 # elixir> mix archive.install hex mix_templates
 # elixir> mix archive.install hex mix_generator
 # elixir> mix archive.install hex sobelow
+
