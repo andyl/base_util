@@ -147,6 +147,7 @@ let g:ale_elixir_elixir_ls_release = expand('~/.vim/plugged/vim-elixirls/elixir-
 let g:ale_linters        = {}
 let g:ale_linters.elixir = ['elixir-ls']
 let g:ale_linters.ruby   = ['solargraph', 'rubocop', 'ruby']
+let g:ale_set_balloons   = 1
 
 let g:ale_fixers                  = {'*': ['remove_trailing_lines', 'trim_whitespace']}
 let g:ale_fixers.javascript       = ['eslint']
@@ -163,11 +164,12 @@ nnoremap <silent> \gd :wa<CR>:ALEGoToDefinition<CR>
 nnoremap <silent> \gt :wa<CR>:ALEGoToDefinitionInTab<CR>
 nnoremap <silent> \gs :wa<CR>:ALEGoToDefinitionInSplit<CR>
 nnoremap <silent> \gv :wa<CR>:ALEGoToDefinitionInVSplit<CR>
-nnoremap <silent> \gh :wa<CR>:ALEHover<CR>          
 nnoremap <silent> \gr :wa<CR>:ALEFindReferences<CR>
-nnoremap <silent> \gy :wa<CR>:ALESymbolSearch 
+nnoremap <silent> \wh :wa<CR>:ALEHover<CR>          
 nnoremap <silent> \wn :wa<CR>:ALENext<CR>
 nnoremap <silent> \wp :wa<CR>:ALEPrevious<CR>
+
+nnoremap <leader>d :ALEHover<CR>
 
 augroup UseALEToFormatElixirFiles
   autocmd FileType elixir,eelixir nnoremap <leader>f :ALEFix<CR>
