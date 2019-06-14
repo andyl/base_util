@@ -34,9 +34,6 @@ Plug 'andyl/vim-snipmate-elixir'         " snippets for elixir
 Plug 'andyl/vim-projectionist-elixir'    " source/test file navigation
 Plug 'andyl/vim-textobj-elixir'          " elixir text objects
 Plug 'GrzegorzKozub/vim-elixirls', { 'do': ':ElixirLsCompileSync' }
-" -- VIM RELATIONIST -----
-Plug 'andyl/vim-relationist'             " related file nav
-" Plug 'andyl/vim-relationist-phoenix'     " controller/view/template navigation
 " -- LANG RUBY ----- 
 Plug 'vim-ruby/vim-ruby'                 " syntax highlighting
 Plug 'tpope/vim-rails'                   " rails support
@@ -91,6 +88,9 @@ Plug 'tpope/vim-fugitive'                " git integration
 Plug 'vim-scripts/bats.vim'              " bats editing
 Plug 'mattn/gist-vim'                    " post github gists
 Plug 'mattn/webapi-vim'                  " required by gist-vim
+" -- VIM RELATIONIST -----
+Plug 'andyl/vim-relationist'             " related file nav
+Plug 'andyl/vim-relationist-phoenix'     " controller/view/template navigation
 call plug#end()
 
 " === FILE MODES
