@@ -89,8 +89,8 @@ Plug 'vim-scripts/bats.vim'              " bats editing
 Plug 'mattn/gist-vim'                    " post github gists
 Plug 'mattn/webapi-vim'                  " required by gist-vim
 " -- VIM RELATIONIST -----
-Plug 'andyl/vim-relationist'             " related file nav
-Plug 'andyl/vim-relationist-phoenix'     " controller/view/template navigation
+" Plug 'andyl/vim-relationist'             " related file nav
+" Plug 'andyl/vim-relationist-phoenix'     " controller/view/template navigation
 call plug#end()
 
 " === FILE MODES
