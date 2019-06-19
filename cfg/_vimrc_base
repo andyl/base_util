@@ -350,34 +350,22 @@ nmap <leader>at :AT<cr>
 " set max lenght for the mru file list
 let g:fzf_mru_file_list_size = 10 " 10 is default value
 
-" define custom FZF Commands
+" key bindings to open file in split window
+let g:fzf_action = {
+      \ 'ctrl-t': 'tab split',
+      \ 'ctrl-s': 'split',
+      \ 'ctrl-v': 'vsplit' }
 
-command! -bang -nargs=* FzfFind call fzf#vim#grep(
-  \ 'rg --glob=!node_modules/* --glob=!_build --line-number --no-heading --fixed-strings --smart-case --trim --hidden --follow --color "always" '.shellescape(<q-args>),
-  \ 0, fzf#vim#with_preview(), <bang>0)
-nnoremap \f :FzfFind<cr>
-" -- find in all files --
-"   * same as above but without excluding any files/folders
-command! -bang -nargs=* FzfFindAllFiles call fzf#vim#grep(
-  \ 'rg --line-number --no-heading --fixed-strings --smart-case --hidden --follow --color "always" '.shellescape(<q-args>),
-  \ 0, fzf#vim#with_preview(), <bang>0)
-nnoremap \<S-f> :FzfFindAllFiles<cr>
-" -- search filenames
-"   * ignore files not tracked in git
-"   * show a preview
-"command! -bang -nargs=* FzfGitTrackedFiles call fzf#run({'source': 'git ls-files', 'sink': 'e', 'down': '40%'})
-"command! -bang -nargs=* -complete=dir FzfGitTrackedFiles call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
-command! -bang -nargs=* -complete=dir FzfAllFiles call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+" ----- custom FZF Commands
 
-" create FZF keymappings
+command! -bang -nargs=* FzFind call fzf#vim#grep('rg --ignore-file . --line-number --no-heading --fixed-strings --smart-case --trim --hidden --follow --color "always" '.shellescape(<q-args>), 0, fzf#vim#with_preview(), <bang>0)
 
-nnoremap \p :GFiles<cr>
-nnoremap \<S-p> :FzfAllFiles<cr>
+" ----- FZF keymappings
 
+nmap \f :FzFind<cr>
 nmap <C-p> :wa<CR>:<C-u>FZF<CR>
 nmap <C-m> :wa<CR>:<C-u>FZFMru<CR>
 nmap <C-e> :wa<CR>:call fzf#run({'down': 10, 'source': 'fd -t d -d 5', 'sink': 'NERDTreeFind'})<CR>
-
 
 " === ACK.VIM 
 nmap <leader>k :Ack 
