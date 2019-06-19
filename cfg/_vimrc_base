@@ -354,7 +354,6 @@ nmap <C-p> :wa<CR>:<C-u>FZF<CR>
 nmap <C-m> :wa<CR>:<C-u>FZFMru<CR>
 nmap <C-e> :wa<CR>:call fzf#run({'down': 10, 'source': 'fd -t d -d 5', 'sink': 'NERDTreeFind'})<CR>
 
-" --
 command! -bang -nargs=* FzfFind call fzf#vim#grep(
   \ 'rg --glob=!node_modules/* --glob=!_build --line-number --no-heading --fixed-strings --smart-case --trim --hidden --follow --color "always" '.shellescape(<q-args>),
   \ 0, fzf#vim#with_preview(), <bang>0)
