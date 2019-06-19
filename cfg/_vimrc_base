@@ -350,9 +350,7 @@ nmap <leader>at :AT<cr>
 " set max lenght for the mru file list
 let g:fzf_mru_file_list_size = 10 " 10 is default value
 
-nmap <C-p> :wa<CR>:<C-u>FZF<CR>
-nmap <C-m> :wa<CR>:<C-u>FZFMru<CR>
-nmap <C-e> :wa<CR>:call fzf#run({'down': 10, 'source': 'fd -t d -d 5', 'sink': 'NERDTreeFind'})<CR>
+" define custom FZF Commands
 
 command! -bang -nargs=* FzfFind call fzf#vim#grep(
   \ 'rg --glob=!node_modules/* --glob=!_build --line-number --no-heading --fixed-strings --smart-case --trim --hidden --follow --color "always" '.shellescape(<q-args>),
@@ -369,13 +367,17 @@ nnoremap \<S-f> :FzfFindAllFiles<cr>
 "   * show a preview
 "command! -bang -nargs=* FzfGitTrackedFiles call fzf#run({'source': 'git ls-files', 'sink': 'e', 'down': '40%'})
 "command! -bang -nargs=* -complete=dir FzfGitTrackedFiles call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
-nnoremap \p :GFiles<cr>
-" -- search all filenames
-"   * same as above but without excluding any files/folders
 command! -bang -nargs=* -complete=dir FzfAllFiles call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+
+" create FZF keymappings
+
+nnoremap \p :GFiles<cr>
 nnoremap \<S-p> :FzfAllFiles<cr>
-" -- most recently used
-nnoremap \r :FZFMru<cr>
+
+nmap <C-p> :wa<CR>:<C-u>FZF<CR>
+nmap <C-m> :wa<CR>:<C-u>FZFMru<CR>
+nmap <C-e> :wa<CR>:call fzf#run({'down': 10, 'source': 'fd -t d -d 5', 'sink': 'NERDTreeFind'})<CR>
+
 
 " === ACK.VIM 
 nmap <leader>k :Ack 
