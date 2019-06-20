@@ -112,10 +112,20 @@ export PATH=$PATH:~/.cargo/bin
 
 ###########################################################################
 # FZF
-# export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 export FZF_DEFAULT_COMMAND='rg --files --follow --glob "!.git/*"'
 export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(vim {})+abort'"
 alias fz="fzf --preview 'bat --color \"always\" {}'"
+
+fzf_kill() {
+    local pids=$(
+      ps -f -u $USER | sed 1d | fzf --multi | tr -s [:blank:] | cut -d' ' -f3
+      )
+    if [[ -n $pids ]]; then
+        echo "$pids" | xargs kill -9 "$@"
+    fi
+}
+
+alias fkill='fzf_kill'
 
 ###########################################################################
 # VIM / NEOVIM / NVIM / NV

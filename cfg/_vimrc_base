@@ -17,6 +17,7 @@ Plug 'vim-scripts/nerdtree-ack'          " search from directory
 " -- SEARCH AND NAV ----- 
 Plug 'mileszs/ack.vim'                   " file search
 Plug 'tpope/vim-projectionist'           " src/test file nav
+Plug 'c-brenn/fuzzy-projectionist.vim'   " fzf meets projectionist (eg :Fmodel)
 " -- DOCKER -----
 Plug 'ekalinin/Dockerfile.vim'           " Dockerfile editing
 " -- TEXT MANIPULATION -----
