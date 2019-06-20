@@ -16,8 +16,8 @@ Plug 'dsimidzija/vim-nerdtree-ignore'    " file browser
 Plug 'vim-scripts/nerdtree-ack'          " search from directory
 " -- SEARCH AND NAV ----- 
 Plug 'mileszs/ack.vim'                   " file search
-Plug 'tpope/vim-projectionist'           " src/test file nav
-Plug 'c-brenn/fuzzy-projectionist.vim'   " fzf meets projectionist (eg :Fmodel)
+Plug 'tpope/vim-projectionist'           " alternate file nav
+Plug 'andyl/fuzzy-projectionist.vim'     " fzf meets projectionist (eg :Fmodel)
 " -- DOCKER -----
 Plug 'ekalinin/Dockerfile.vim'           " Dockerfile editing
 " -- TEXT MANIPULATION -----
@@ -32,7 +32,7 @@ Plug 'elixir-lang/vim-elixir'            " syntax highlighting
 Plug 'mattreduce/vim-mix'                " mix helpers
 Plug 'mhinz/vim-mix-format'              " :VimMixFormat
 Plug 'andyl/vim-snipmate-elixir'         " snippets for elixir
-Plug 'andyl/vim-projectionist-elixir'    " source/test file navigation
+Plug 'andyl/vim-projectionist-elixir'    " elixir file navigation
 Plug 'andyl/vim-textobj-elixir'          " elixir text objects
 Plug 'GrzegorzKozub/vim-elixirls', { 'do': ':ElixirLsCompileSync' }
 " -- LANG RUBY ----- 
@@ -57,6 +57,7 @@ Plug 'milkypostman/vim-togglelist'       " toggle quicklist and location list
 Plug 'tpope/vim-unimpaired'              " jump leading/trailing paren
 Plug 'tmhedberg/matchit'                 " % matching
 Plug 'vim-scripts/SyntaxRange'           " vimdeck syntax highlighting
+Plug 'janko/vim-test'                    " test runner
 " -- EDITING UTILS -----
 Plug 'dhruvasagar/vim-table-mode'        " vim table mode
 Plug 'junegunn/vim-easy-align'           " column alignment
@@ -89,9 +90,6 @@ Plug 'tpope/vim-fugitive'                " git integration
 Plug 'vim-scripts/bats.vim'              " bats editing
 Plug 'mattn/gist-vim'                    " post github gists
 Plug 'mattn/webapi-vim'                  " required by gist-vim
-" -- VIM RELATIONIST -----
-" Plug 'andyl/vim-relationist'             " related file nav
-" Plug 'andyl/vim-relationist-phoenix'     " controller/view/template navigation
 call plug#end()
 
 " === FILE MODES
@@ -315,11 +313,29 @@ nmap <leader>pp :! a2ps -c --highlight-level=none --sides=duplex -T 2 --line-num
 nmap <leader>p1 :! a2ps -c --highlight-level=none --sides=duplex -T 2 --line-numbers=1 --portrait  --columns=1 --font-size=9 %<cr>
 nmap <leader>pl :! a2ps -c --highlight-level=none --sides=duplex -T 2 --line-numbers=1 --landscape --columns=1 --font-size=9 %<cr>
 
+" === VIM TEST
+
+nmap \tn :wa<cr>:TestNearest<cr>
+nmap \tf :wa<cr>:TestFile<cr>
+nmap \ts :wa<cr>:TestSuite<cr>
+nmap \tl :wa<cr>:TestLast<cr>
+
 " === PROJECTIONIST
 nmap <leader>aa :A<cr>
 nmap <leader>av :AV<cr>
 nmap <leader>as :AS<cr>
 nmap <leader>at :AT<cr>
+
+" Phoenix Navigation
+nmap \rve :wa<cr>:Eview<cr>
+nmap \rvt :wa<cr>:Tview<cr>
+nmap \rvs :wa<cr>:Sview<cr>
+nmap \rvv :wa<cr>:Vview<cr>
+nmap \rce :wa<cr>:Econtroller<cr>
+nmap \rct :wa<cr>:Tcontroller<cr>
+nmap \rcs :wa<cr>:Scontroller<cr>
+nmap \rcv :wa<cr>:Vcontroller<cr>
+nmap \rt  :wa<cr>:Ftemplate<cr>
 
 " === FZF - fast file finding
 
@@ -342,13 +358,13 @@ com! FzRtmpl call fzf#run({'down': 10, 'source': 'fd template -E test', 'sink': 
 
 " ----- FZF keymappings
 
-nmap \rv :FzRview<cr>
-nmap \rc :FzRcont<cr>
-nmap \rt :FzRtmpl<cr>
+nmap \fv :FzRview<cr>
+nmap \fc :FzRcont<cr>
+nmap \ft :FzRtmpl<cr>
 
 " after you search with `Rg`, you can multi-file select with `shift-tab`, put
 " the selected into a quick-fix with `enter`, then use `cdo`...
-nmap \f    :wa<CR>:<C-u>Rg<CR> 
+nmap \fr   :wa<CR>:<C-u>Rg<CR> 
 
 nmap <C-p> :wa<CR>:<C-u>FZF<CR>
 nmap <C-m> :wa<CR>:<C-u>FZFMru<CR>
