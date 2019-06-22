@@ -1,4 +1,4 @@
-k VIM-PLUG - ALTERNATIVE PLUGIN MANAGER
+" VIM-PLUG - ALTERNATIVE PLUGIN MANAGER
 " Cmds - :PlugInstall / :PlugClean / :PlugStatus / :PlugUpdate / :PlugUpgrade
 " Docco at http://github.com/junegunn/vim-plug 
 call plug#begin('~/.vim/plugged')
