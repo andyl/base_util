@@ -363,16 +363,18 @@ let g:fzf_action = {
 " Search directory names, open in NERDTree
 com! FzNerdTree call fzf#run({'down': 10, 'source': 'fd -t d -d 5', 'sink': 'NERDTreeFind'})
 
-" Search for related views, controllers, templates
+" Search for related views, controllers, templates, live-handlers
 com! FzRview call fzf#run({'down': 10, 'source': 'fd view -E test', 'sink': 'e'})
 com! FzRcont call fzf#run({'down': 10, 'source': 'fd controller -E test', 'sink': 'e'})
 com! FzRtmpl call fzf#run({'down': 10, 'source': 'fd template -E test', 'sink': 'e'})
+com! FzRlive call fzf#run({'down': 10, 'source': 'fd live -E test', 'sink': 'e'})
 
 " ----- FZF keymappings
 
 nmap \fv :FzRview<cr>
 nmap \fc :FzRcont<cr>
 nmap \ft :FzRtmpl<cr>
+nmap \fl :FzRlive<cr>
 
 " after you search with `Rg`, you can multi-file select with `shift-tab`, put
 " the selected into a quick-fix with `enter`, then use `cdo`...
