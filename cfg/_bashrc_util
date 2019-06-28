@@ -338,9 +338,14 @@ alias bejek="bundle exec jekyll"
 ###########################################################################
 # DOCKER
 
+# shorthands
 alias dk="docker"
 alias dkc="docker-compose"
-alias dks="docker search --limit 5 --format 'table {{.Name}}\t{{.Description}}\t{{.StarCount}}'"
+
+# docker hub-search
+alias dkhs="docker search --limit 5 --format 'table {{.Name}}\t{{.Description}}\t{{.StarCount}}'"
+
+# docker ps
 alias dkps="docker ps -a --format 'table {{.Image}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}'"
 
 # start bash for a container
