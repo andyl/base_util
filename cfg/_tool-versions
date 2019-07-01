@@ -32,7 +32,7 @@ rust 1.35.0
 # elixir> mix local.rebar
 # elixir> mix archive.install hex phx_new
 # elixir> mix archive.install hex mix_templates
-# elixir> mix archive.install hex mix_generator
+# elixir> mix archive.install path ~/src/mix_generator
 # elixir> mix archive.install hex sobelow
 
 # --------------------------
