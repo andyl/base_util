@@ -1,11 +1,47 @@
-elixir 1.8.2-otp-22
+elixir 1.9.0
 erlang 22.0.1
+ruby 2.6.0
+nodejs 12.4.0
+crystal 0.29.0
+rust 1.35.0
 
+# --------------------------
+# ----- adding plugins
+
+# asdf plugin-add erlang
+# asdf plugin-add elixir
+# asdf plugin-add ruby
+# asdf plugin-add nodejs
+# asdf plugin-add crystal
+# asdf plugin-add rust
+
+# --------------------------
+# ----- installing runtimes
+
+# asdf install erlang
 # asdf install elixir 1.9.0-rc.0-otp-22
+# asdf install ruby 2.6.0
+# asdf install nodejs 12.4.0
+# asdf install crystal 0.29.0
+# asdf install rust 1.35.0
+
+# --------------------------
+# ----- elixir configuration
 
 # elixir> mix local.hex
 # elixir> mix local.rebar
 # elixir> mix archive.install hex phx_new
-# elixir> mix archive.install hex mix_templates
-# elixir> mix archive.install hex mix_generator
+# elixir> mix archive.install github andyl/mix_templates
+# elixir> mix archive.install github andyl/mix_generator
 # elixir> mix archive.install hex sobelow
+
+# --------------------------
+# ----- ruby configuration
+
+# see ~/.default-gems
+
+# --------------------------
+# ----- nodejs configuration
+
+# see ~/.default-npm-packages
+
