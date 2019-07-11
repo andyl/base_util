@@ -112,10 +112,20 @@ export PATH=$PATH:~/.cargo/bin
 
 ###########################################################################
 # FZF
-# export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 export FZF_DEFAULT_COMMAND='rg --files --follow --glob "!.git/*"'
 export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(vim {})+abort'"
 alias fz="fzf --preview 'bat --color \"always\" {}'"
+
+fzf_kill() {
+    local pids=$(
+      ps -f -u $USER | sed 1d | fzf --multi | tr -s [:blank:] | cut -d' ' -f3
+      )
+    if [[ -n $pids ]]; then
+        echo "$pids" | xargs kill -9 "$@"
+    fi
+}
+
+alias fkill='fzf_kill'
 
 ###########################################################################
 # VIM / NEOVIM / NVIM / NV
@@ -328,9 +338,14 @@ alias bejek="bundle exec jekyll"
 ###########################################################################
 # DOCKER
 
+# shorthands
 alias dk="docker"
 alias dkc="docker-compose"
-alias dks="docker search --limit 5 --format 'table {{.Name}}\t{{.Description}}\t{{.StarCount}}'"
+
+# docker hub-search
+alias dkhs="docker search --limit 5 --format 'table {{.Name}}\t{{.Description}}\t{{.StarCount}}'"
+
+# docker ps
 alias dkps="docker ps -a --format 'table {{.Image}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}'"
 
 # start bash for a container
@@ -399,7 +414,7 @@ alias g7='cd ~7'              # go to the Nth dir on the stack
 alias g8='cd ~8'              # go to the Nth dir on the stack 
 alias g9='cd ~9'              # go to the Nth dir on the stack 
 
-alias gd='pushdp ~/dsvc'
+alias gdk='pushdp ~/dks'
 
 alias  gu='pushdp $UTIL_DIR'
 alias gua='pushdp $UTIL_DIR/air_util'
