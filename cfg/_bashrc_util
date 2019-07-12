@@ -341,7 +341,7 @@ alias bejek="bundle exec jekyll"
 # shorthands
 alias dk="docker"
 alias dkc="docker-compose"
-alias ldk="lazydocker"
+alias dkl="lazydocker"
 
 # docker hub-search
 alias dkhs="docker search --limit 5 --format 'table {{.Name}}\t{{.Description}}\t{{.StarCount}}'"
