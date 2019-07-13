@@ -353,6 +353,7 @@ alias dkps="docker ps -a --format 'table {{.Image}}\t{{.Names}}\t{{.Status}}\t{{
 function dksh() {
   if [ $# != 1 ]; then
     echo "Usage: dksh <container_name>"
+    echo "Start a bash shell in container"
   else
     name=$1
     docker exec -it $name bash
