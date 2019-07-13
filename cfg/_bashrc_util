@@ -341,7 +341,7 @@ alias bejek="bundle exec jekyll"
 # shorthands
 alias dk="docker"
 alias dkc="docker-compose"
-alias dkl="lazydocker"
+alias dklz="lazydocker"
 
 # docker hub-search
 alias dkhs="docker search --limit 5 --format 'table {{.Name}}\t{{.Description}}\t{{.StarCount}}'"
@@ -349,10 +349,10 @@ alias dkhs="docker search --limit 5 --format 'table {{.Name}}\t{{.Description}}\
 # docker ps
 alias dkps="docker ps -a --format 'table {{.Image}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}'"
 
-# start bash for a container
-function dkb() {
+# start bash shell for a container
+function dksh() {
   if [ $# != 1 ]; then
-    echo "Usage: dkb <container_name>"
+    echo "Usage: dksh <container_name>"
   else
     name=$1
     docker exec -it $name bash
