@@ -162,20 +162,84 @@ let g:ale_fixers.elixir           = ['mix_format']
 " https://github.com/JakeBecker/elixir-ls/issues/54
 let g:ale_elixir_elixir_ls_config = { 'elixirLS': { 'dialyzerEnabled': v:false } }
 
-nnoremap <silent> \gd :wa<CR>:ALEGoToDefinition<CR>
+nnoremap <silent> \ge :wa<CR>:ALEGoToDefinition<CR>
 nnoremap <silent> \gt :wa<CR>:ALEGoToDefinitionInTab<CR>
 nnoremap <silent> \gs :wa<CR>:ALEGoToDefinitionInSplit<CR>
 nnoremap <silent> \gv :wa<CR>:ALEGoToDefinitionInVSplit<CR>
 nnoremap <silent> \gr :wa<CR>:ALEFindReferences<CR>
-nnoremap <silent> \wh :wa<CR>:ALEHover<CR>          
-nnoremap <silent> \wn :wa<CR>:ALENext<CR>
-nnoremap <silent> \wp :wa<CR>:ALEPrevious<CR>
 
-nnoremap <leader>d :ALEHover<CR>
+nmap <leader>ch :ALEHover<CR>
+nmap <leader>cn :ALENext<CR>
+nmap <leader>cp :ALEPrevious<CR>
 
 augroup UseALEToFormatElixirFiles
   autocmd FileType elixir,eelixir nnoremap <leader>f :ALEFix<CR>
 augroup END
+
+" === PROJECTIONIST
+nmap <leader>ae :A<cr>
+nmap <leader>av :AV<cr>
+nmap <leader>as :AS<cr>
+nmap <leader>at :AT<cr>
+
+" ----- Phoenix Navigation
+
+" related view
+nmap \rve :wa<cr>:Eview<cr>
+nmap \rvt :wa<cr>:Tview<cr>
+nmap \rvs :wa<cr>:Sview<cr>
+nmap \rvv :wa<cr>:Vview<cr>
+
+" related controller
+nmap \rce :wa<cr>:Econtroller<cr>
+nmap \rct :wa<cr>:Tcontroller<cr>
+nmap \rcs :wa<cr>:Scontroller<cr>
+nmap \rcv :wa<cr>:Vcontroller<cr>
+
+" related live
+nmap \rle :wa<cr>:Elive<cr>
+nmap \rlt :wa<cr>:Tlive<cr>
+nmap \rls :wa<cr>:Slive<cr>
+nmap \rlv :wa<cr>:Vlive<cr>
+
+" related phoenix template - brings up a FuzzyFinder
+" open in a related split/vsplit/tab with C-s/C-v/C-t
+nmap \rt  :wa<cr>:exec("Ftemplate ".split(expand("%:t:r"), "_")[0])<cr>
+
+" === FZF - fast file finding
+
+" set max length for the mru file list
+let g:fzf_mru_file_list_size = 10 " 10 is default value
+
+" key bindings to open file in split window
+let g:fzf_action = {
+      \ 'ctrl-t': 'tab split',
+      \ 'ctrl-s': 'split',
+      \ 'ctrl-v': 'vsplit' }
+
+" Search directory names, open in NERDTree
+com! FzNerdTree call fzf#run({'down': 10, 'source': 'fd -t d -d 5', 'sink': 'NERDTreeFind'})
+
+" Search for related views, controllers, templates, live-handlers
+com! FzRview call fzf#run({'down': 10, 'source': 'fd view -E test', 'sink': 'e'})
+com! FzRcont call fzf#run({'down': 10, 'source': 'fd controller -E test', 'sink': 'e'})
+com! FzRtmpl call fzf#run({'down': 10, 'source': 'fd template -E test', 'sink': 'e'})
+com! FzRlive call fzf#run({'down': 10, 'source': 'fd live -E test', 'sink': 'e'})
+
+" ----- FZF keymappings
+
+nmap \fv :FzRview<cr>
+nmap \fc :FzRcont<cr>
+nmap \ft :FzRtmpl<cr>
+nmap \fl :FzRlive<cr>
+
+" after you search with `Rg`, you can multi-file select with `shift-tab`, put
+" the selected into a quick-fix with `enter`, then use `cdo`...
+nmap \fr   :wa<CR>:<C-u>Rg<CR> 
+
+nmap <C-p> :wa<CR>:<C-u>FZF<CR>
+nmap <C-m> :wa<CR>:<C-u>FZFMru<CR>
+nmap <C-e> :wa<CR>:<C-u>FzNerdTree<CR>
 
 " === MATCHIT
 runtime macros/matchit.vim
@@ -318,71 +382,6 @@ nmap \tn :wa<cr>:TestNearest<cr>
 nmap \tf :wa<cr>:TestFile<cr>
 nmap \ts :wa<cr>:TestSuite<cr>
 nmap \tl :wa<cr>:TestLast<cr>
-
-" === PROJECTIONIST
-nmap <leader>aa :A<cr>
-nmap <leader>av :AV<cr>
-nmap <leader>as :AS<cr>
-nmap <leader>at :AT<cr>
-
-" ----- Phoenix Navigation
-
-" related view
-nmap \rve :wa<cr>:Eview<cr>
-nmap \rvt :wa<cr>:Tview<cr>
-nmap \rvs :wa<cr>:Sview<cr>
-nmap \rvv :wa<cr>:Vview<cr>
-
-" related controller
-nmap \rce :wa<cr>:Econtroller<cr>
-nmap \rct :wa<cr>:Tcontroller<cr>
-nmap \rcs :wa<cr>:Scontroller<cr>
-nmap \rcv :wa<cr>:Vcontroller<cr>
-
-" related live
-nmap \rle :wa<cr>:Elive<cr>
-nmap \rlt :wa<cr>:Tlive<cr>
-nmap \rls :wa<cr>:Slive<cr>
-nmap \rlv :wa<cr>:Vlive<cr>
-
-" related phoenix template - brings up a FuzzyFinder
-" open in a related split/vsplit/tab with C-s/C-v/C-t
-nmap \rt  :wa<cr>:exec("Ftemplate ".split(expand("%:t:r"), "_")[0])<cr>
-
-" === FZF - fast file finding
-
-" set max length for the mru file list
-let g:fzf_mru_file_list_size = 10 " 10 is default value
-
-" key bindings to open file in split window
-let g:fzf_action = {
-      \ 'ctrl-t': 'tab split',
-      \ 'ctrl-s': 'split',
-      \ 'ctrl-v': 'vsplit' }
-
-" Search directory names, open in NERDTree
-com! FzNerdTree call fzf#run({'down': 10, 'source': 'fd -t d -d 5', 'sink': 'NERDTreeFind'})
-
-" Search for related views, controllers, templates, live-handlers
-com! FzRview call fzf#run({'down': 10, 'source': 'fd view -E test', 'sink': 'e'})
-com! FzRcont call fzf#run({'down': 10, 'source': 'fd controller -E test', 'sink': 'e'})
-com! FzRtmpl call fzf#run({'down': 10, 'source': 'fd template -E test', 'sink': 'e'})
-com! FzRlive call fzf#run({'down': 10, 'source': 'fd live -E test', 'sink': 'e'})
-
-" ----- FZF keymappings
-
-nmap \fv :FzRview<cr>
-nmap \fc :FzRcont<cr>
-nmap \ft :FzRtmpl<cr>
-nmap \fl :FzRlive<cr>
-
-" after you search with `Rg`, you can multi-file select with `shift-tab`, put
-" the selected into a quick-fix with `enter`, then use `cdo`...
-nmap \fr   :wa<CR>:<C-u>Rg<CR> 
-
-nmap <C-p> :wa<CR>:<C-u>FZF<CR>
-nmap <C-m> :wa<CR>:<C-u>FZFMru<CR>
-nmap <C-e> :wa<CR>:<C-u>FzNerdTree<CR>
 
 " === ACK.VIM 
 nmap <leader>k :Ack 
