@@ -44,6 +44,7 @@ Plug 'bronson/vim-ruby-block-conv'       " toggle {} to begin/end
 Plug 'mxw/vim-jsx'                       " ReactJS/JSX
 Plug 'kchmck/vim-coffee-script'          " coffeescript
 Plug 'tomlion/vim-solidity'              " solidity
+Plug 'pangloss/vim-javascript'           " javascript
 " -- LANG CRYSTAL -----
 Plug 'rhysd/vim-crystal'                 " syntax highlighting
 " -- LANG RUST -----
