@@ -257,7 +257,7 @@ command! Wc write|bdelete
 
 " === CURSORLINE
 " note: cursorline also set in the `focus` function
-set cursorline
+set nocursorline
 set nocursorcolumn
 nmap <F2> :set cursorline! cursorline?<cr>
 imap <F2> <esc>:set cursorline! cursorline?<cr>i<right>
