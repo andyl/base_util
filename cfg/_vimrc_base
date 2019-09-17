@@ -175,9 +175,9 @@ nnoremap <silent> \gs :wa<CR>:ALEGoToDefinitionInSplit<CR>
 nnoremap <silent> \gv :wa<CR>:ALEGoToDefinitionInVSplit<CR>
 nnoremap <silent> \gr :wa<CR>:ALEFindReferences<CR>
 
-nmap <leader>ch :ALEHover<CR>
-nmap <leader>cn :ALENext<CR>
-nmap <leader>cp :ALEPrevious<CR>
+nmap \ah :ALEHover<CR>
+nmap \an :ALENext<CR>
+nmap \ap :ALEPrevious<CR>
 
 augroup UseALEToFormatElixirFiles
   autocmd FileType elixir,eelixir nnoremap <leader>f :ALEFix<CR>
