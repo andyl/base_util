@@ -67,13 +67,11 @@ export PATH=./bin:$PATH   # prepend binstubs path
 ###########################################################################
 # ELIXIR/ERLANG
 export ERL_AFLAGS="-kernel shell_history enabled"
+export ELIXIR_EDITOR="nvim"
 export PATH=$PATH:~/.mix/escripts             # setup escript path
 alias   ie="iex -pa ~/.iex 2> /dev/null"
 alias  iex="iex -pa ~/.iex 2> /dev/null"
 alias iexm="iex -pa ~/.iex -S mix 2> /dev/null"
-alias  shx="searchex"
-alias  she="mix escript.build && MIX_ENV=eval ./searchex"
-alias  shd="mix escript.build && ./searchex"
 alias   mc="mix compile"
 alias   mt="mix test"
 alias   mr="mixrun"
