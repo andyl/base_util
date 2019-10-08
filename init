@@ -66,19 +66,19 @@ system "touch #{homedir}/.hushlogin"
 # create ~/.util_dir file
 # enables flexible location of the util/bin directory.
 # ~/.util_dir is sourced in .bashrc
-File.open(".util_dir", 'w') {|f| f.puts "export UTIL_DIR=#{util_dir}"}
+File.open('.util_dir', 'w') {|f| f.puts "export UTIL_DIR=#{util_dir}"}
 puts "UTIL_DIR:  #{util_dir}"
 
 # create ~/.util_path file
 # one path entry for each *_util/bin directory
 # ~/.util_path is sourced in .bashrc
-File.open(".util_path", 'w') {|f| f.puts "export UTIL_PATH=#{util_path.join(':')}"}
+File.open('.util_path', 'w') {|f| f.puts "export UTIL_PATH=#{util_path.join(':')}"}
 puts "UTIL_PATH: #{util_path}"
 
 # create symlinks for each cfg file...
-target_spec = util_dir + "/*_util/cfg/_*"
+target_spec = util_dir + '/*_util/cfg/_*'
 target_list = Dir.glob(target_spec).sort
-target_hash = target_list.reduce({}) { |acc,val| acc[val.split('/').last] = val; acc}
+target_hash = target_list.reduce({}) { |acc, val| acc[val.split('/').last] = val; acc}
 
 if target_list.length > 0
   puts "Generating base links for #{util_dir}"
@@ -87,6 +87,7 @@ if target_list.length > 0
     util_base = src_path.split('/')[-3]
     tgt_file  = '.' + tgt_base
     next if File.exist?(tgt_file) && File.symlink?(tgt_file) && File.readlink(tgt_file) == src_path
+
     system "mv #{tgt_file} #{tgt_file}.old" if File.exist?(tgt_file)
     system "rm -f #{tgt_file}"
     puts "-> #{util_base}/#{tgt_base}"
@@ -128,7 +129,6 @@ results = target_list.reduce([]) do |acc, elem|
   util_base = elem.split('cfg').first + 'cfg/'
   src_path  = '+' + elem.split('+').last
   src_array = src_path.split('/')
-  # src_base  = elem
   link_idx  = src_array.index {|el| el.count('^') > 0}
   src_link  = util_base + src_array[0..link_idx].join('/')
   tgt_base  = src_array[0..link_idx - 1].join('/').gsub('^', '').gsub('+', '.')
@@ -140,7 +140,10 @@ end
 
 results.each do |result|
   pf = ->(field) { pfield(field, result, results) }
-  puts "#{pf.call(:src_path)} | make #{pf.call(:tgt_base)} | #{pf.call(:tgt_link)} -> #{pf.call(:src_link).gsub('/home/aleak', '~')}"
+  src = pf.call(:src_path)
+  tgt = pf.call(:tgt_base)
+  alt = "#{pf.call(:tgt_link)} -> #{pf.call(:src_link).gsub('/home/aleak', '~')}"
+  puts "#{src} | make #{tgt} | #{alt}"
   system "mv #{result.tgt_link} #{result.tgt_link}.old" if File.exist?(result.tgt_link)
   system "mkdir -p #{result.tgt_base}"
   system "ln -fs #{result.src_link} #{result.tgt_link}"
@@ -149,15 +152,19 @@ end
 # -------------------------------------------------
 # Sometimes we store config data in alternate directories
 # -------------------------------------------------
-srclist = %w(
-  ~/var/data/vscode
-)
+srclist = [
+  %w[~/var/data/vscode ~/.vscode],
+  %w[~/var/data/coc ~/.config/coc]
+]
 
-results = srclist.reduce([]) do |acc, dir|
-  src = File.expand_path(dir)
-  tgt = File.expand_path("~/." + src.split("/").last)
+results = srclist.reduce([]) do |acc, element|
+  data, link = element
+  src = File.expand_path(data)
+  tgt = File.expand_path(link)
+
   next(acc) unless File.exist?(src)
   next(acc) if File.exist?(tgt) && File.symlink?(tgt) && File.readlink(tgt) == src
+
   acc + [OpenStruct.new(src: src, tgt: tgt)]
 end
 
