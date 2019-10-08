@@ -207,9 +207,10 @@ endfunction
 inoremap <silent><expr> <c-space> coc#refresh()
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-set coc.preferences.jumpCommand='split'
-
 nmap <silent> \ge <Plug>(coc-definition)
+nmap <silent> \gs :sp<CR><Plug>(coc-definition)
+nmap <silent> \gv :vsp<CR><Plug>(coc-definition)
+nmap <silent> \gt :tabnew<CR><Plug>(coc-definition)
 " nmap <silent> \gt <CR>:ALEGoToDefinitionInTab<CR>
 " nmap <silent> \gs :wa<CR>:ALEGoToDefinitionInSplit<CR>
 " nmap <silent> \gv :wa<CR>:ALEGoToDefinitionInVSplit<CR>
