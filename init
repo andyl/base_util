@@ -157,17 +157,13 @@ end
 # -------------------------------------------------
 srclist = [
   %w[~/var/data/vscode ~/.vscode],
-  %w[~/var/data/coc/extentions ~/.config/coc/extensions]
+  %w[~/var/data/coc/extensions ~/.config/coc/extensions]
 ]
-
-puts 'AAAA'
 
 results = srclist.reduce([]) do |acc, element|
   data, link = element
   src = File.expand_path(data)
   tgt = File.expand_path(link)
-
-  puts "#{src} --- #{tgt}"
 
   next(acc) unless File.exist?(src)
   next(acc) if File.exist?(tgt) && File.symlink?(tgt) && File.readlink(tgt) == src
@@ -177,14 +173,10 @@ results = srclist.reduce([]) do |acc, element|
   acc + [OpenStruct.new(src: src, tgt: tgt, tgt_base: tgt_base)]
 end
 
-puts 'BBBB'
-puts results
-
 results.each do |result|
-  tgt = result.tgt
   src = result.src
-  puts tgt
-  puts src
+  tgt = result.tgt
+  tgt_base = result.tgt_base
   puts "EXT LINK: #{src}"
   system "mkdir -p #{tgt_base}"
   system "rm -r #{tgt}.old"     if File.exist?("#{tgt}.old")
