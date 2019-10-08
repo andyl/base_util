@@ -4,12 +4,12 @@ require 'ostruct'
 
 # Util directories contain dotfiles and utility scripts.
 #
-# The goal is to make it FAST to setup new user accounts, 
-# configured with the right tools for a specific environment 
+# The goal is to make it FAST to setup new user accounts,
+# configured with the right tools for a specific environment
 # (production, test, development, etc.)
 #
 # The setup process is:
-# 1) copy util directories onto your machine (eg to ~/util), 
+# 1) copy util directories onto your machine (eg to ~/util),
 #    using rcp, rsync, or git-clone
 # 2) run '~/util/base_util/init' and you're done
 #
@@ -50,16 +50,16 @@ require 'ostruct'
 # - a file ~/.util_dir with the path to the ~/util directory
 # - a file ~/.util_path with path entries for all bin directories
 #
-# The .util_dir and .util_path files are used in .bashrc to 
+# The .util_dir and .util_path files are used in .bashrc to
 # reference config files and scripts in the util directories.
 
 # capture util_dir and util_path
 util_dir  = File.dirname(File.dirname(File.expand_path(__FILE__)))
-path_glob = [util_dir + "/*_util/bin"]
+path_glob = [util_dir + '/*_util/bin']
 util_path = Dir.glob(path_glob).sort
 
 # cd to the home directory
-homedir = ENV["BOOTSTRAP_HOME"] || File.expand_path("~")
+homedir = ENV['BOOTSTRAP_HOME'] || File.expand_path('~')
 Dir.chdir homedir
 system "touch #{homedir}/.hushlogin"
 
@@ -112,7 +112,7 @@ end
 # ~/.config/app/subdir -> ~/util/base_util/cfg/+config/app/^subdir
 # -------------------------------------------------
 
-target_spec = util_dir + "/*_util/cfg/+*/**/^*"
+target_spec = util_dir + '/*_util/cfg/+*/**/^*'
 target_list = Dir.glob(target_spec).sort.uniq
 
 return unless target_list.length > 0
@@ -123,18 +123,20 @@ end
 
 puts "Generating deep links for #{util_dir}/*_util/cfg"
 results = target_list.reduce([]) do |acc, elem|
-  next(acc) if elem.count("^") != 1
-  util_base = elem.split("cfg").first + "cfg/"
-  src_path  = '+' + elem.split("+").last
-  src_array = src_path.split("/")
-  src_base  = elem
-  link_idx  = src_array.index {|el| el.count("^") > 0}
-  src_link  = util_base + src_array[0..link_idx].join("/")
-  tgt_base  = src_array[0..link_idx-1].join("/").gsub("^", "").gsub("+", ".")
-  tgt_link  = src_array[0..link_idx].join("/").gsub("^", "").gsub("+", ".")
+  next(acc) if elem.count('^') != 1
+
+  util_base = elem.split('cfg').first + 'cfg/'
+  src_path  = '+' + elem.split('+').last
+  src_array = src_path.split('/')
+  # src_base  = elem
+  link_idx  = src_array.index {|el| el.count('^') > 0}
+  src_link  = util_base + src_array[0..link_idx].join('/')
+  tgt_base  = src_array[0..link_idx - 1].join('/').gsub('^', '').gsub('+', '.')
+  tgt_link  = src_array[0..link_idx].join('/').gsub('^', '').gsub('+', '.')
   next(acc) if File.exist?(tgt_link) && File.symlink?(tgt_link) && File.readlink(tgt_link) == src_link
+
   acc + [OpenStruct.new(src_path: src_path, tgt_base: tgt_base, tgt_link: tgt_link, src_link: src_link)]
-end 
+end
 
 results.each do |result|
   pf = ->(field) { pfield(field, result, results) }
