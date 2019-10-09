@@ -32,7 +32,6 @@ Plug 'tpope/vim-repeat'                  " repeat support for plugins
 Plug 'powerman/vim-plugin-AnsiEsc'       " docco with ANSI colors
 Plug 'elixir-lang/vim-elixir'            " syntax highlighting
 Plug 'mattreduce/vim-mix'                " mix helpers
-Plug 'mhinz/vim-mix-format'              " :MixFormat
 Plug 'andyl/vim-snipmate-elixir'         " snippets for elixir
 Plug 'andyl/vim-projectionist-elixir'    " elixir file navigation
 Plug 'andyl/vim-textobj-elixir'          " elixir text objects
@@ -93,6 +92,25 @@ Plug 'vim-scripts/bats.vim'              " bats editing
 Plug 'mattn/gist-vim'                    " post github gists
 Plug 'mattn/webapi-vim'                  " required by gist-vim
 call plug#end()
+
+" === MISC 
+let mapleader=","
+set directory=~/.vimtmp,/tmp,.
+set splitright
+set splitbelow
+set number
+set nowritebackup
+set incsearch
+set visualbell
+set ignorecase
+set smartcase
+set nocompatible
+set laststatus=2
+set printoptions=duplex:long,number:y
+let g:otl_text_view = 1
+nmap <space> i~<esc>r
+set statusline=%F%m%r%h%w\ [TYPE=%Y]\ [%{hostname()}]\ [%l,%v]\ [%p%%]\ [LEN=%L]\ [%{$PWDS}]
+set title titlestring=<vim>\ %{$USER}@%{hostname()}\ %t\ %m%r%h%w
 
 " === FILE MODES
 autocmd BufRead,BufNewFile *.thor    set filetype=ruby
@@ -209,44 +227,29 @@ nmap <silent> \ge :call CocAction('jumpDefinition')<CR>
 nmap <silent> \gs :call CocAction('jumpDefinition', 'split')<CR>
 nmap <silent> \gv :call CocAction('jumpDefinition', 'vsplit')<CR>
 nmap <silent> \gt :call CocAction('jumpDefinition', 'tabe')<CR>
+
 nmap <silent> \gr <Plug>(coc-references)
 
 " nmap <silent> \gy <Plug>(coc-type-definition)
 " nmap <silent> \gi <Plug>(coc-implementation)
 
-" nmap <silent> \an <Plug>(coc-diagnostic-next)
-" nmap <silent> \ap <Plug>(coc-diagnostic-prev)
-" nnoremap <silent> \ah :call <SID>show_documentation()<CR>
+nmap <silent> \an <Plug>(coc-diagnostic-next)
+nmap <silent> \ap <Plug>(coc-diagnostic-prev)
+nmap <silent> \ah :call <SID>show_documentation()<CR>
 
-" function! s:show_documentation()
-"   if (index(['vim','help'], &filetype) >= 0)
-"     execute 'h '.expand('<cword>')
-"   else
-"     call CocAction('doHover')
-"   endif
-" endfunction
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" code formatting
+nmap <leader>f :call CocAction('format')<cr>
 
 " see also: refactoring
-" nnoremap <leader>rn <Plug>(coc-rename)
 nnoremap <leader>rn :call CocAction('rename')<CR>
-
-" ----- Code Formatting
-" xmap <leader>f  
-" nmap <leader>f  <Plug>(coc-format-selected)
-
-" Elixir Specific! TODO: make this work with all languages
-" nnoremap <leader>f :MixFormat<cr>
-" nnoremap <leader>m :MixFormat<cr>
-nnoremap <leader>f :call CocAction('format')<CR>
-
-augroup mygroup
-  autocmd!
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
-
-nmap <silent> <C-d> <Plug>(coc-range-select)
-xmap <silent> <C-d> <Plug>(coc-range-select)
 
 " === PROJECTIONIST
 nmap <leader>ae :A<cr>
@@ -357,25 +360,6 @@ vnoremap <silent> # :<C-U>
   \gvy?<C-R><C-R>=substitute(
   \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
   \gV:call setreg('"', old_reg, old_regtype)<CR>
-
-" === MISC STUFF
-let mapleader=","
-set directory=~/.vimtmp,/tmp,.
-set splitright
-set splitbelow
-set number
-set nowritebackup
-set incsearch
-set visualbell
-set ignorecase
-set smartcase
-set nocompatible
-set laststatus=2
-set printoptions=duplex:long,number:y
-let g:otl_text_view = 1
-nmap <space> i~<esc>r
-set statusline=%F%m%r%h%w\ [TYPE=%Y]\ [%{hostname()}]\ [%l,%v]\ [%p%%]\ [LEN=%L]\ [%{$PWDS}]
-set title titlestring=<vim>\ %{$USER}@%{hostname()}\ %t\ %m%r%h%w
 
 " === MODE TRANSITION
 " use jk or kj as a single keystroke to escape
@@ -836,6 +820,11 @@ endfunction
 
 " call function before saving
 autocmd BufWritePre *.rb,*.slim,*.rake,*.erb :call <SID>StripTrailingWhitespaces()
+
+" === MULTICURSOR MULTI CURSOR 
+
+
+
 
 " === REFACTORING
 
