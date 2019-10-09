@@ -209,12 +209,13 @@ inoremap <silent><expr> <c-space> coc#refresh()
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " ----- GoTo Definition
-" nmap <silent> \ge <Plug>(coc-definition)
-" nmap <silent> \ge <Plug>(coc-action-jumpDefinition)
-nmap <silent> \ge CocAction('jumpDefinition')
-nmap <silent> \gs :sp<CR><Plug>(coc-definition)
-nmap <silent> \gv :vsp<CR><Plug>(coc-definition)
-nmap <silent> \gt :vsp<CR><Plug>(coc-definition)<C-W>T
+nmap <silent> \ge :call CocAction('jumpDefinition')<CR>
+nmap <silent> \gs :call CocAction('jumpDefinition', 'split')<CR>
+nmap <silent> \gv :call CocAction('jumpDefinition', 'vsplit')<CR>
+nmap <silent> \gt :call CocAction('jumpDefinition', 'tabe')<CR>
+" nmap <silent> \gs :sp<CR><Plug>(coc-definition)
+" nmap <silent> \gv :vsp<CR><Plug>(coc-definition)
+" nmap <silent> \gt :vsp<CR><Plug>(coc-definition)<C-W>T
 nmap <silent> \gr <Plug>(coc-references)
 
 " nmap <silent> \gy <Plug>(coc-type-definition)
