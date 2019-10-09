@@ -175,7 +175,7 @@ let g:ale_completion_enabled=0
 " === ElixirLS / COC
 
 " to install elixir-ls
-" > cd ~/src
+" > cd ~/.pkg/lcl
 " > git clone https://github.com/JakeBecker/elixir-ls.git
 " > cd elixir-ls
 " > mix deps.get && mix compile
@@ -214,7 +214,8 @@ inoremap <silent><expr> <c-space> coc#refresh()
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " ----- GoTo Definition
-nmap <silent> \ge <Plug>(coc-definition)
+" nmap <silent> \ge <Plug>(coc-definition)
+nmap <silent> \ge <Plug>(coc-action-jumpDefinition)
 nmap <silent> \gs :sp<CR><Plug>(coc-definition)
 nmap <silent> \gv :vsp<CR><Plug>(coc-definition)
 nmap <silent> \gt :vsp<CR><Plug>(coc-definition)<C-W>T
