@@ -1,8 +1,5 @@
 // coc-settings.json 
 {
-  "languageserver": {
-    "elixirLS": {
-      "dialyzerEnabled": false
-    }
-  }
+  "elixir.pathToElixirLS": "/usr/local/bin/elixir_ls",
+  "elixirLS.dialyzerEnabled": false
 }

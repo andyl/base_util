@@ -174,17 +174,12 @@ let g:ale_completion_enabled=0
 
 " === ElixirLS / COC
 
-" to install elixir-ls
-" > cd ~/.pkg/lcl
-" > git clone https://github.com/JakeBecker/elixir-ls.git
-" > cd elixir-ls
-" > mix deps.get && mix compile
-" > mix elixir_ls.release
+" to install elixir-ls, use ANSIBLE (roles/Edit/ElixisLS)
 
 " THEN in coc-settings.json...
 "  "languageserver": {
 "     "elixirLS": {
-"      "command": "/absolute/path/to/elixir-ls/release/language_server.sh",
+"      "command": "/usr/local/bin/elixir_ls",
 "      "filetypes": ["elixir", "eelixir"]
 "     }
 "  }
@@ -215,7 +210,8 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " ----- GoTo Definition
 " nmap <silent> \ge <Plug>(coc-definition)
-nmap <silent> \ge <Plug>(coc-action-jumpDefinition)
+" nmap <silent> \ge <Plug>(coc-action-jumpDefinition)
+nmap <silent> \ge CocAction('jumpDefinition')
 nmap <silent> \gs :sp<CR><Plug>(coc-definition)
 nmap <silent> \gv :vsp<CR><Plug>(coc-definition)
 nmap <silent> \gt :vsp<CR><Plug>(coc-definition)<C-W>T
