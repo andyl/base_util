@@ -806,11 +806,6 @@ endfunction
 " call function before saving
 autocmd BufWritePre *.rb,*.slim,*.rake,*.erb :call <SID>StripTrailingWhitespaces()
 
-" === MULTICURSOR MULTI CURSOR 
-
-
-
-
 " === REFACTORING
 
 " Find pattern to matching end, flags as per :h search()
