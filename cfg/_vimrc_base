@@ -32,7 +32,7 @@ Plug 'tpope/vim-repeat'                  " repeat support for plugins
 Plug 'powerman/vim-plugin-AnsiEsc'       " docco with ANSI colors
 Plug 'elixir-lang/vim-elixir'            " syntax highlighting
 Plug 'mattreduce/vim-mix'                " mix helpers
-Plug 'mhinz/vim-mix-format'              " :VimMixFormat
+Plug 'mhinz/vim-mix-format'              " :MixFormat
 Plug 'andyl/vim-snipmate-elixir'         " snippets for elixir
 Plug 'andyl/vim-projectionist-elixir'    " elixir file navigation
 Plug 'andyl/vim-textobj-elixir'          " elixir text objects
@@ -179,10 +179,6 @@ let g:ale_completion_enabled=0
 " nmap \an :ALENext<CR>
 " nmap \ap :ALEPrevious<CR>
 " nmap \ah :ALEHover<CR>
-"
-" augroup UseALEToFormatElixirFiles
-"   autocmd FileType elixir,eelixir nnoremap <leader>f :ALEFix<CR>
-" augroup END
 
 " === COC - Command of Completion
 
@@ -191,7 +187,6 @@ set nobackup
 set nowritebackup
 set updatetime=300
 set shortmess+=c
-" set signcolumn=yes
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
@@ -210,11 +205,11 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 nmap <silent> \ge <Plug>(coc-definition)
 nmap <silent> \gs :sp<CR><Plug>(coc-definition)
 nmap <silent> \gv :vsp<CR><Plug>(coc-definition)
-nmap <silent> \gt :tabnew <Plug>(coc-definition)<CR>
+nmap <silent> \gt :vsp<CR><Plug>(coc-definition)<C-W>T
+nmap <silent> \gr <Plug>(coc-references)
 
 " nmap <silent> \gy <Plug>(coc-type-definition)
 " nmap <silent> \gi <Plug>(coc-implementation)
-" nmap <silent> \gr <Plug>(coc-references)
 
 nmap <silent> \an <Plug>(coc-diagnostic-next)
 nmap <silent> \ap <Plug>(coc-diagnostic-prev)
@@ -231,8 +226,12 @@ endfunction
 " autocmd CursorHold * silent call CocActionAsync('highlight')
 " nmap <leader>rn <Plug>(coc-rename)
 
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+" ----- Code Formatting
+" xmap <leader>f  
+" nmap <leader>f  <Plug>(coc-format-selected)
+
+" Elixir Specific! TODO: make this work with all languages
+nmap <leader>f :MixFormat<cr>
 
 augroup mygroup
   autocmd!
