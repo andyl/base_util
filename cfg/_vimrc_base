@@ -5,7 +5,7 @@ call plug#begin('~/.vim/plugged')
 " -- SNIPPETS ----- 
 Plug 'SirVer/ultisnips'                  " snipmate replacement
 " -- ALE (Async Lint Engine) -----
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
 " -- COC (Command of Completion) -----
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " -- FZF -----
