@@ -5,7 +5,7 @@ call plug#begin('~/.vim/plugged')
 " -- SNIPPETS ----- 
 Plug 'SirVer/ultisnips'                  " snipmate replacement
 " -- ALE (Async Lint Engine) -----
-" Plug 'w0rp/ale'
+Plug 'w0rp/ale'
 " -- COC (Command of Completion) -----
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " -- FZF -----
@@ -214,27 +214,30 @@ nmap <silent> \gr <Plug>(coc-references)
 " nmap <silent> \gy <Plug>(coc-type-definition)
 " nmap <silent> \gi <Plug>(coc-implementation)
 
-nmap <silent> \an <Plug>(coc-diagnostic-next)
-nmap <silent> \ap <Plug>(coc-diagnostic-prev)
-nnoremap <silent> \ah :call <SID>show_documentation()<CR>
+" nmap <silent> \an <Plug>(coc-diagnostic-next)
+" nmap <silent> \ap <Plug>(coc-diagnostic-prev)
+" nnoremap <silent> \ah :call <SID>show_documentation()<CR>
 
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
+" function! s:show_documentation()
+"   if (index(['vim','help'], &filetype) >= 0)
+"     execute 'h '.expand('<cword>')
+"   else
+"     call CocAction('doHover')
+"   endif
+" endfunction
 
-" autocmd CursorHold * silent call CocActionAsync('highlight')
-" nmap <leader>rn <Plug>(coc-rename)
+" see also: refactoring
+" nnoremap <leader>rn <Plug>(coc-rename)
+nnoremap <leader>rn :call CocAction('rename')<CR>
 
 " ----- Code Formatting
 " xmap <leader>f  
 " nmap <leader>f  <Plug>(coc-format-selected)
 
 " Elixir Specific! TODO: make this work with all languages
-nmap <leader>f :MixFormat<cr>
+" nnoremap <leader>f :MixFormat<cr>
+" nnoremap <leader>m :MixFormat<cr>
+nnoremap <leader>f :call CocAction('format')<CR>
 
 augroup mygroup
   autocmd!
@@ -861,7 +864,7 @@ function! <SID>gsub_all_in_range(start_line, end_line, pattern, replace)
     call setline(lnum, newline)
     let lnum = lnum + 1
   endwhile
-endfunction!
+endfunction
 
 " refactor extract
 " v~,re
