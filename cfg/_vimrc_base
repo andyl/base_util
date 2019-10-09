@@ -202,6 +202,7 @@ endfunction
 inoremap <silent><expr> <c-space> coc#refresh()
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
+" ----- GoTo Definition
 nmap <silent> \ge <Plug>(coc-definition)
 nmap <silent> \gs :sp<CR><Plug>(coc-definition)
 nmap <silent> \gv :vsp<CR><Plug>(coc-definition)
