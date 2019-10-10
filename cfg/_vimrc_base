@@ -503,6 +503,7 @@ let g:easy_align_delimiters = {
 
 " === TAB MANIPULATION AND NAVIGATION
 nmap <leader>tn :tabnew<CR>
+nmap <leader>to :tabnew %<CR>
 nmap <leader>tx :tabclose<CR>
 nmap <leader>th :tabp<CR>
 nmap <leader>tl :tabn<CR>
