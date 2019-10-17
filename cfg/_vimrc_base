@@ -89,7 +89,7 @@ Plug 'terryma/vim-multiple-cursors'      " multiple cursors
 Plug 'itchyny/calendar.vim'              " vim calendars
 Plug 'tpope/vim-fugitive'                " git integration
 Plug 'vim-scripts/bats.vim'              " bats editing
-Plug 'gillyb/stable-windows'             " no window scroll on split
+" Plug 'gillyb/stable-windows'             " no window scroll on split
 Plug 'mattn/gist-vim'                    " post github gists
 Plug 'mattn/webapi-vim'                  " required by gist-vim
 call plug#end()
