@@ -336,16 +336,13 @@ alias bejek="bundle exec jekyll"
 ###########################################################################
 # DOCKER
 
-# shorthands
 alias dk="docker"
 alias dkc="docker-compose"
 alias dklz="lazydocker"
-
-# docker hub-search
 alias dkhs="docker search --limit 5 --format 'table {{.Name}}\t{{.Description}}\t{{.StarCount}}'"
-
-# docker ps
 alias dkps="docker ps -a --format 'table {{.Image}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}'"
+alias dkls="docker images"
+alias dkrm="docker rmi --force "
 
 # start bash shell for a container
 function dksh() {
