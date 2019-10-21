@@ -454,6 +454,9 @@ alias  gvs='pushdp ~/var/seed'
 
 alias gvvm='pushdp ~/vvm'
 
+alias  gl='pushdp ~/lib'
+alias  gr='pushdp ~/rel'
+
 alias  gs='pushdp ~/src'
 alias gsp='pushdp ~/src/BAMRU-Private'
 alias gsl='pushdp ~/src/lica'
