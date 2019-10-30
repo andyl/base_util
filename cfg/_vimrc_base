@@ -216,11 +216,9 @@ nmap <silent> \gt :call CocAction('jumpDefinition', 'tabe')<CR>
 
 nmap <silent> \gr <Plug>(coc-references)
 
-" nmap <silent> \gy <Plug>(coc-type-definition)
-" nmap <silent> \gi <Plug>(coc-implementation)
-
-nmap <silent> \an <Plug>(coc-diagnostic-next)
-nmap <silent> \ap <Plug>(coc-diagnostic-prev)
+" nmap <silent> \an <Plug>(coc-diagnostic-next)
+" nmap <silent> \ap <Plug>(coc-diagnostic-prev)
+nmap <silent> \an :call <SID>diagnostic_next()<CR>
 nmap <silent> \ah :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
