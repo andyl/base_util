@@ -1,4 +1,4 @@
 # default gems for asdf
-
 bundler
 pry
+neovim
