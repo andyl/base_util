@@ -347,10 +347,9 @@ vnoremap <silent> # :<C-U>
   \gV:call setreg('"', old_reg, old_regtype)<CR>
 
 " === MODE TRANSITION
-" use jk or kj as a single keystroke to escape
+" use jk as a single keystroke to escape
 autocmd InsertLeave * :normal `^
-imap kj <esc>
-imap kk <esc>
+imap jk <esc>
 imap jj <esc>
 imap :w <esc>:w
 imap :q <esc>:q
