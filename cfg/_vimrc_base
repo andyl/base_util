@@ -30,7 +30,7 @@ Plug 'tpope/vim-surround'                " edit containing objects
 Plug 'tpope/vim-repeat'                  " repeat support for plugins
 " -- LANG ELIXIR -----
 Plug 'powerman/vim-plugin-AnsiEsc'       " docco with ANSI colors
-Plug 'andyl/vim-elixir'                  " syntax highlighting
+Plug 'elixir-lang/vim-elixir'            " syntax highlighting
 Plug 'mattreduce/vim-mix'                " mix helpers
 Plug 'andyl/vim-snipmate-elixir'         " snippets for elixir
 Plug 'andyl/vim-projectionist-elixir'    " elixir file navigation
