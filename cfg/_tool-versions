@@ -4,6 +4,7 @@ ruby 2.6.0
 nodejs 13.0.1
 crystal 0.29.0
 rust 1.35.0
+golang 1.13.3
 
 # --------------------------
 # ----- adding plugins
