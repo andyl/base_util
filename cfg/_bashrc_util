@@ -57,14 +57,6 @@ alias bmg=bugmark_graphql
 alias vbm=vboxmanage
 
 ###########################################################################
-# RUBY
-# chruby_path="/usr/local/share/chruby/chruby.sh"
-# autosh_path="/usr/local/share/chruby/auto.sh"
-# sourcefile $chruby_path   # setup chruby path
-# sourcefile $autosh_path   # autoset chruby on every `cd`
-# export PATH=./bin:$PATH   # prepend binstubs path
-
-###########################################################################
 # ELIXIR/ERLANG
 export ERL_AFLAGS="-kernel shell_history enabled"
 export ELIXIR_EDITOR="code"
