@@ -58,11 +58,11 @@ alias vbm=vboxmanage
 
 ###########################################################################
 # RUBY
-chruby_path="/usr/local/share/chruby/chruby.sh"
-autosh_path="/usr/local/share/chruby/auto.sh"
-sourcefile $chruby_path   # setup chruby path
-sourcefile $autosh_path   # autoset chruby on every `cd`
-export PATH=./bin:$PATH   # prepend binstubs path
+# chruby_path="/usr/local/share/chruby/chruby.sh"
+# autosh_path="/usr/local/share/chruby/auto.sh"
+# sourcefile $chruby_path   # setup chruby path
+# sourcefile $autosh_path   # autoset chruby on every `cd`
+# export PATH=./bin:$PATH   # prepend binstubs path
 
 ###########################################################################
 # ELIXIR/ERLANG
