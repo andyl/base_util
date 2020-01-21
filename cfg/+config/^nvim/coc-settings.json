@@ -5,6 +5,7 @@
 {
   "elixir.pathToElixirLS": "/usr/local/bin/elixir_ls",
   "elixirLS.dialyzerEnabled": false,
-  "solargraph.diagnostics": true
+  "solargraph.diagnostics": true,
+  "javascript.validate.enable": false
 }
 
