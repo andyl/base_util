@@ -1,7 +1,7 @@
 " WLOG SYNTAX -----
 syntax match wRoadmap   /^# ROADMAP.*/
-syntax match wTitle     /^Title: Week beginning [01][0-9]-[01][0-9]-[0-3][0-9]$/
-syntax match wDayStart  /^# \(MON\|TUE\|WED\|THU\|FRI\|SAT\|SUN\) [01][0-9]-[01][0-9]-[0-3][0-9].*/ 
+syntax match wTitle     /^Title: Week beginning [012][0-9]-[01][0-9]-[0-3][0-9]$/
+syntax match wDayStart  /^# \(MON\|TUE\|WED\|THU\|FRI\|SAT\|SUN\) [012][0-9]-[01][0-9]-[0-3][0-9].*/ 
 syntax match wDayEnd    /^---$/  
 syntax match wTaskStart /^## [0-2][0-9][0134][05].*/
 syntax match wTaskEnd   /^\[\]$/
