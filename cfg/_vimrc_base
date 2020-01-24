@@ -48,6 +48,8 @@ Plug 'pangloss/vim-javascript'           " javascript
 Plug 'evanleck/vim-svelte'               " svelte
 " -- LANG CRYSTAL -----
 Plug 'rhysd/vim-crystal'                 " syntax highlighting
+" -- LANG HTML -----
+Plug 'mattn/emmet-vim'                   " HTML snippets
 " -- LANG RUST -----
 Plug 'rust-lang/rust.vim'                " syntax highlighting
 " -- LEDGER -----    
@@ -71,8 +73,6 @@ Plug 'jtratner/vim-flavored-markdown'    " markdown files
 " -- TMUX/TERMINAL -----
 Plug 'benmills/vimux'                    " tmux integration
 Plug 'kassio/neoterm'                    " terminal management
-" -- NGINX -----
-Plug 'chr4/nginx.vim'                    " nginx syntax highlighting 
 " -- COLORSCHEMES -----
 Plug 'junegunn/seoul256.vim'             " seoul256
 Plug 'NLKNguyen/papercolor-theme'        " PaperColor
@@ -143,6 +143,11 @@ set nobackup
 set noswapfile
 
 set shortmess+=I
+
+" === EMMET
+" see https://medium.com/vim-drops/be-a-html-ninja-with-emmet-for-vim-feee15447ef1
+
+let g:user_emmet_leader_key=','
 
 " === LEDGER
 " https://github.com/ledger/ledger/wiki/Getting-started-with-Vim
