@@ -165,11 +165,11 @@ live_tmate() {
 }
 
 alias  tm="tmux"   
-alias  mx="tmuxinator" 
+alias  tmnew="tmux new -s"
 
-alias tmt="in_tmux && tm new-window -c '#{pane_current_path}'"       # new tab
 alias tms="in_tmux && tm split-window -v -c '#{pane_current_path}'"  # split win
 alias tmv="in_tmux && tm split-window -h -c '#{pane_current_path}'"  # split vert
+alias tmt="in_tmux && tm new-window -c '#{pane_current_path}'"       # new tab
 
 tmr() {
   no_tmux && tm new \; send "$*" C-m \; attach
