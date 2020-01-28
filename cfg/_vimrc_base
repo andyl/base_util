@@ -40,6 +40,8 @@ Plug 'vim-ruby/vim-ruby'                 " syntax highlighting
 Plug 'tpope/vim-rails'                   " rails support
 Plug 'nelstrom/vim-textobj-rubyblock'    " ruby text objects
 Plug 'bronson/vim-ruby-block-conv'       " toggle {} to begin/end
+" -- LANG R -----
+Plug 'jalvesaq/Nvim-R'                   " R lang
 " -- LANG JAVASCRIPT -----
 Plug 'mxw/vim-jsx'                       " ReactJS/JSX
 Plug 'kchmck/vim-coffee-script'          " coffeescript
