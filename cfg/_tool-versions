@@ -5,6 +5,7 @@ nodejs 13.7.0
 crystal 0.29.0
 rust 1.35.0
 golang 1.13.3
+R 3.6.2
 
 # --------------------------
 # ----- adding plugins
