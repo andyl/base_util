@@ -1,4 +1,4 @@
-# Dotfile and Utility scripts
+# Dotfile and Utility Scripts
 
 ## Usage
 
