@@ -250,7 +250,12 @@ function kb_query() {
   setxkbmap -query
 }
 
-kb_caps_escape 2> /dev/null
+# works with VORTEX keyboard
+# kb_caps_escape 2> /dev/null
+
+# works with K380 keyboard
+kb_caps_swapescape 2> /dev/null
+
 
 ###########################################################################
 # FUNCTIONS
