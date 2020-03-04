@@ -184,7 +184,7 @@ let g:ale_completion_enabled=0
 " let g:ale_fixers.ruby             = ['rubocop']
 " let g:ale_fixers.elixir           = ['mix_format']
 
-" === ElixirLS / COC
+" === ElixirLS / COC / LSP
 
 " to install elixir-ls, use ANSIBLE (roles/Edit/ElixisLS)
 
