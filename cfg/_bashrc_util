@@ -317,7 +317,7 @@ alias brc="spring rails console"
 alias brk="spring rake"
 alias brs="spring rspec"
 
-alias gopen="gnome-open"
+alias gopen="gio open"
 
 alias kar="killall -9 ruby ; pkill -f spring"
 alias kan="killall -9 node"
