@@ -51,7 +51,6 @@ export PATH=$PATH:~/.npm-global/bin:./node_modules/.bin
 # BUGMARK
 alias bmg=bugmark_graphql
 
-
 ###########################################################################
 # VBOXMANAGE
 alias vbm=vboxmanage
@@ -118,6 +117,13 @@ fzf_kill() {
 }
 
 alias fkill='fzf_kill'
+
+###########################################################################
+# HOST ARCHITECTURE, ID and OS
+
+alias host_id="hostnamectl"
+alias host_os="lsb_release -a"
+alias host_arch="uname -m"
 
 ###########################################################################
 # VIM / NEOVIM / NVIM / NV
