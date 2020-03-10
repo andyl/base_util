@@ -120,10 +120,18 @@ alias fkill='fzf_kill'
 
 ###########################################################################
 # HOST ARCHITECTURE, ID and OS
+#
+# armv7l is 32-bit (arm32)  (RPi and Odroid XU4)
+# armv8l is 64-git (arm64)
+# armhf: 32-bit (Beaglebone)
+# armel: 32-bit
 
 alias host_id="hostnamectl"
 alias host_os="lsb_release -a"
 alias host_arch="uname -m"
+alias host_cpu="lscpu"
+alias host_mem="free"
+alias host_disk="df"
 
 ###########################################################################
 # VIM / NEOVIM / NVIM / NV
