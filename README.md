@@ -18,7 +18,7 @@ deployment.
 Each directory should have two sub-directories: 
 'cfg' and 'bin'.  
 
-Each bin directory will go onto your path.
+Each bin directory will go on your path.
 
 Each file and directory under 'cfg' beginning with
 an underscore will be symlinked as a ~/.dotfile.  
