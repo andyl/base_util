@@ -132,6 +132,7 @@ alias host_arch="uname -m"
 alias host_cpu="lscpu"
 alias host_mem="free"
 alias host_disk="df"
+alias portview="sudo ss -tulpn"
 
 ###########################################################################
 # VIM / NEOVIM / NVIM / NV
