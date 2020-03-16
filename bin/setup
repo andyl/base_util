@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-cd util
-rm -rf code_util
-git clone offa:GitBare/code_util.git
