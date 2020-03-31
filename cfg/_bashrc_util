@@ -21,7 +21,7 @@ sourcefile ~/.rails_env
 sourcefile ~/.bashu_aliases
 sourcefile ~/.bashu_functions
 sourcefile ~/.bashu_marks
-sourcefile ~/.bashu_depp
+sourcefile ~/.bashu_deck
 
 ###########################################################################
 # BASE UTIL
@@ -36,7 +36,7 @@ sourcefile ~/.bashrc_code
 ###########################################################################
 # PGP/SOPS
 sourcefile ~/.sops_env
-alias sopw="cd ~;sops .env_depp.enc.yml"
+alias sopw="cd ~;sops .env_deck.enc.yml"
 
 ###########################################################################
 # AIRFLOW
@@ -430,7 +430,7 @@ alias  gu='pushdp $UTIL_DIR'
 alias gua='pushdp $UTIL_DIR/air_util'
 alias gub='pushdp $UTIL_DIR/base_util'
 alias guc='pushdp $UTIL_DIR/code_util'
-alias gud='pushdp $UTIL_DIR/depp_util'
+alias gud='pushdp $UTIL_DIR/deck_util'
 alias gue='pushdp $UTIL_DIR/elix_util'
 alias gun='pushdp $UTIL_DIR/notes'
 alias guo='pushdp $UTIL_DIR/org'
@@ -455,7 +455,7 @@ alias guon='pushdp $UTIL_DIR/org/notes'
 alias guos='pushdp $UTIL_DIR/org/standup'
 alias guow='pushdp $UTIL_DIR/org/worklog'
 
-alias gudc='pushdp $UTIL_DIR/depp_util/cfg'
+alias gudc='pushdp $UTIL_DIR/deck_util/cfg'
 
 alias   gv='pushdp ~/var'
 alias  gvb='pushdp ~/var/backup'
