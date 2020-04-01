@@ -73,14 +73,14 @@ Style/SingleLineMethods:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
-Style/AlignArray:
-  Enabled: false
-
-Style/AlignHash:
-  Enabled: false
-
-Style/AlignParameters:
-  Enabled: false
+# Style/AlignArray:
+#   Enabled: false
+#
+# Style/AlignHash:
+#   Enabled: false
+#
+# Style/AlignParameters:
+#   Enabled: false
 
 Style/BracesAroundHashParameters:
   Enabled: false
@@ -106,5 +106,5 @@ Metrics/AbcSize:
 Naming/PredicateName:
   Enabled: false
 
-Performance/StringReplacement:
-  Enabled: false
+# Performance/StringReplacement:
+#   Enabled: false

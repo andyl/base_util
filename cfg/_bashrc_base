@@ -456,6 +456,7 @@ alias guon='pushdp $UTIL_DIR/org/notes'
 alias guos='pushdp $UTIL_DIR/org/standup'
 alias guow='pushdp $UTIL_DIR/org/worklog'
 
+alias gudb='pushdp $UTIL_DIR/deck_util/bin'
 alias gudc='pushdp $UTIL_DIR/deck_util/cfg'
 
 alias   gv='pushdp ~/var'
