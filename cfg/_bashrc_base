@@ -32,6 +32,7 @@ export PATH=$UTIL_PATH:$PATH      # setup util PATH
 ###########################################################################
 # CODE UTIL
 sourcefile ~/.bashrc_code
+sourcefile ~/.bashrc_deck
 
 ###########################################################################
 # PGP/SOPS
