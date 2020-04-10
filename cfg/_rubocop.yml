@@ -16,6 +16,9 @@ Style/SpecialGlobalVars:
 Style/ZeroLengthPredicate:
   Enabled: false
 
+Style/RescueStandardError:
+  Enabled: false
+
 Style/TernaryParentheses:
   Enabled: false
 
