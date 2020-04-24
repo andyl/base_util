@@ -1,4 +1,4 @@
-elixir 1.10.2
+elixir 1.10.2-otp-22
 erlang 22.2.3
 ruby 2.7.0
 nodejs 13.7.0
