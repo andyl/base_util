@@ -280,18 +280,6 @@ function path() {                    # show path elements, one per line
   printf "%s\n" $PATH | tr -d \,
 }
 
-function rollback() {     # DB rollback for Rails development
-  (echo '>> rollback dev'  ; bundle exec rails db:rollback) && (echo '>> rollback test' ; RAILS_ENV=test bundle exec rails db:rollback)
-}
-
-function migrate() {     # DB migration for Rails development
-  (echo '>> migrate dev'  ; bundle exec rails db:migrate) && (echo '>> migrate test' ; RAILS_ENV=test bundle exec rails db:migrate)
-}
-
-function reorder() {     # Reorder Membership Records
-  echo '>> reorder dev'  ; bundle exec rails runner "Membership.all.each {|m| m.uras!}"
-}
-
 function ap() {          # Run Ansible
   ansible-playbook "$@"
   rm -f *retry
