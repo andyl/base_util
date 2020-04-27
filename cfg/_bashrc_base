@@ -136,7 +136,7 @@ alias fkill='fzf_kill'
 
 alias host_id="hostnamectl"
 alias host_os="lsb_release -a 2> /dev/null"
-alias host_dist="lsb_release -a 2> /dev/null | grep Distributor | cut -f 2"
+alias host_dist="lsb_release -a 2> /dev/null | grep Distributor | cut -f 2 | tr '[:upper:]' '[:lower:]'"
 alias host_relvsn="lsb_release -a 2> /dev/null | grep Release | cut -f 2"
 alias host_relname="lsb_release -a 2> /dev/null | grep Codename | cut -f 2"
 alias host_arch="uname -m"
