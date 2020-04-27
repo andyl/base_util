@@ -121,13 +121,24 @@ alias fkill='fzf_kill'
 ###########################################################################
 # HOST ARCHITECTURE, ID and OS
 #
-# armv7l is 32-bit (arm32)  (RPi and Odroid XU4)
+# armv6l is 32-bit (arm32)  (RPi0)
+# armv7l is 32-bit (arm32)  (RPi4 and Odroid XU4)
 # armv8l is 64-git (arm64)
 # armhf: 32-bit (Beaglebone)
 # armel: 32-bit
 
+# | COMMAND      | EXAMPLE | ANSIBLE VARIABLE             |
+# |--------------|---------|------------------------------|
+# | host_arch    | x86_64  | ansible_architecture         |
+# | host_dist    | Ubuntu  | ansible_distribution         |
+# | host_relvsn  | 18.04   | ansible_distribution_version |
+# | host_relname | bionic  | ansible_distribution_release |
+
 alias host_id="hostnamectl"
-alias host_os="lsb_release -a"
+alias host_os="lsb_release -a 2> /dev/null"
+alias host_dist="lsb_release -a 2> /dev/null | grep Distributor | cut -f 2"
+alias host_relvsn="lsb_release -a 2> /dev/null | grep Release | cut -f 2"
+alias host_relname="lsb_release -a 2> /dev/null | grep Codename | cut -f 2"
 alias host_arch="uname -m"
 alias host_cpu="lscpu"
 alias host_mem="free"
