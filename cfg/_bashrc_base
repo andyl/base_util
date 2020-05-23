@@ -294,7 +294,7 @@ function path() {                    # show path elements, one per line
 function ap() {          # Run Ansible
   ansible-playbook "$@"
   rm -f *retry
-  alert ding
+  play ding
 }
 
 ###########################################################################
