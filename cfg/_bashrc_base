@@ -21,7 +21,6 @@ sourcefile ~/.rails_env
 sourcefile ~/.bashu_aliases
 sourcefile ~/.bashu_functions
 sourcefile ~/.bashu_marks
-sourcefile ~/.bashu_date
 
 ###########################################################################
 # BASE UTIL
@@ -30,14 +29,14 @@ sourcefile ~/.util_path           # define $UTIL_PATH
 export PATH=$UTIL_PATH:$PATH      # setup util PATH 
 
 ###########################################################################
-# CODE UTIL
+# CODE AND DATE UTIL
 sourcefile ~/.bashrc_code
 sourcefile ~/.bashrc_date
 
 ###########################################################################
 # PGP/SOPS
-sourcefile ~/.sops_env
-alias sopw="cd ~;sops .env_date.enc.yml"
+# sourcefile ~/.sops_env
+# alias sopw="cd ~;sops .env_date.enc.yml"
 
 ###########################################################################
 # AIRFLOW
