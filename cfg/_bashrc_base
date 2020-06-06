@@ -34,15 +34,6 @@ sourcefile ~/.bashrc_code
 sourcefile ~/.bashrc_date
 
 ###########################################################################
-# PGP/SOPS
-# sourcefile ~/.sops_env
-# alias sopw="cd ~;sops .env_date.enc.yml"
-
-###########################################################################
-# AIRFLOW
-export AIRFLOW_HOME=/home/aleak/util/air_util
-
-###########################################################################
 # NPM
 export PATH=$PATH:~/.npm-global/bin:./node_modules/.bin    
 
