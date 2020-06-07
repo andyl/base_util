@@ -85,8 +85,8 @@ Style/FrozenStringLiteralComment:
 # Style/AlignParameters:
 #   Enabled: false
 
-Style/BracesAroundHashParameters:
-  Enabled: false
+# Style/BracesAroundHashParameters:
+#   Enabled: false
 
 Metrics/LineLength:
   Max: 120
