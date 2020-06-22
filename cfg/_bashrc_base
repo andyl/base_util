@@ -31,7 +31,7 @@ export PATH=$UTIL_PATH:$PATH      # setup util PATH
 ###########################################################################
 # CODE AND DATE UTIL
 sourcefile ~/.bashrc_code
-sourcefile ~/.bashrc_date
+# sourcefile ~/.bashrc_date
 
 ###########################################################################
 # NPM
