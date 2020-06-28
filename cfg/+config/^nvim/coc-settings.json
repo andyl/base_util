@@ -3,7 +3,7 @@
 // :CocInstall coc-solargraph
 // :CocInstall coc-elixir
 {
-  "elixir.pathToElixirLS": "/home/aleak/.pkg/elixir_ls/rel/language_server.sh",
+  "elixir.pathToElixirLS": "/home/aleak/.pkg/elixir_ls/rel/release/language_server.sh",
   "elixirLS.dialyzerEnabled": false,
   "solargraph.diagnostics": true,
   "javascript.validate.enable": true

@@ -188,9 +188,9 @@ let g:ale_completion_enabled=0
 
 " to install elixir-ls
 " - use ANSIBLE (roles/Lang/ElixisLS)
-" - run compile script (compile_elixir_ls)
+" - run compile script `compile_elixir_ls`
 
-" THEN in coc-settings.json...
+" THEN in ~/.config/nvim/coc-settings.json...
 " {
 "   "elixir.pathToElixirLS": "/home/aleak/.pkg/elixir_ls/rel/release/language_server.sh",
 "   "elixirLS.dialyzerEnabled": false
