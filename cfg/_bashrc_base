@@ -607,6 +607,14 @@ On_IPurple='\e[10;95m'  # Purple
 On_ICyan='\e[0;106m'    # Cyan
 On_IWhite='\e[0;107m'   # White 
 
+# see https://stackoverflow.com/questions/5947742/how-to-change-the-output-color-of-echo-in-linux
+red=`tput setaf 1`
+green=`tput setaf 2`
+yellow=`tput setaf 3`
+reset=`tput sgr0`
+
+# echo "${red}red text ${green}green text${reset}"
+
 ###########################################################################
 # BASH OPTIONS
 
