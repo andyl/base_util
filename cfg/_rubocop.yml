@@ -7,6 +7,9 @@ Layout/EmptyLinesAroundModuleBody:
 Layout/EmptyLinesAroundClassBody:
   Enabled: false
 
+RequireNotFound:
+  Enabled: false
+
 Layout/EmptyLineBetweenDefs:
   Enabled: false
 
