@@ -183,15 +183,14 @@ live_tmate() {
 alias  tm="tmux"   
 alias  tmnew="tmux new -s"
 
-alias tms="in_tmux && tm split-window -v -c '#{pane_current_path}'"  # split win
-alias tmv="in_tmux && tm split-window -h -c '#{pane_current_path}'"  # split vert
-alias tmt="in_tmux && tm new-window -c '#{pane_current_path}'"       # new tab
+# see below: terminator aliases 'tn', 'ts' and 'tv'
+alias tts="in_tmux && tm split-window -v -c '#{pane_current_path}'"  # tmux tab split
+alias ttv="in_tmux && tm split-window -h -c '#{pane_current_path}'"  # tmux tab split vert
+alias ttn="in_tmux && tm new-window -c '#{pane_current_path}'"       # tmux tab new
 
 tmr() {
   no_tmux && tm new \; send "$*" C-m \; attach
 }
-
-alias tv="no_tmux && tm new-session vim"
 
 # note also: ~/.complete has completions for tmux and tmuxinator
 
@@ -497,6 +496,7 @@ alias gfcl="gf ; if [ -d current/log ] ; then pushdp ./current/log ; fi"  # curr
 
 # create new tab in current terminator window
 # https://askubuntu.com/questions/380315/command-to-open-new-tab-in-the-current-terminal
+# see above: tmux aliases 'ttn', 'tts' and 'ttv'
 alias tn="xdotool key ctrl+shift+t"
 alias ts="xdotool key ctrl+shift+s"
 alias tv="xdotool key ctrl+shift+v"
