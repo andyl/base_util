@@ -1,6 +1,6 @@
-" VIM-PLUG - ALTERNATIVE PLUGIN MANAGER
+" VIM-PLUG - PLUGIN MANAGER
 " Cmds - :PlugInstall / :PlugClean / :PlugStatus / :PlugUpdate / :PlugUpgrade
-" Docco at http://github.com/junegunn/vim-plug 
+" Docs at http://github.com/junegunn/vim-plug 
 call plug#begin('~/.vim/plugged')
 " -- SNIPPETS ----- 
 Plug 'SirVer/ultisnips'                  " snipmate replacement
