@@ -46,6 +46,19 @@ alias bmg=bugmark_graphql
 alias vbm=vboxmanage
 
 ###########################################################################
+# UTIL FUNCTIONS
+
+tkill () {
+  local NAME=$1
+  if [ -z $NAME ]
+  then
+  echo "Usage: tkill <process name>"
+  else
+  ps ax | grep $NAME | grep -v grep | cut -f3 -d' ' | xargs kill -9
+  fi
+}
+
+###########################################################################
 # ELIXIR/ERLANG
 export ERL_AFLAGS="-kernel shell_history enabled"
 export ELIXIR_EDITOR="code"
