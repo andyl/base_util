@@ -218,6 +218,10 @@ endfunction
 inoremap <silent><expr> <c-space> coc#refresh()
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
+" ----- Date Tag
+nmap <silent> \d :r !w_date_tag<cr>kJA
+imap <silent> \d <esc>:r !w_date_tag<cr>kJA
+
 " ----- GoTo Definition
 nmap <silent> \ge :call CocAction('jumpDefinition')<CR>
 nmap <silent> \gs :call CocAction('jumpDefinition', 'split')<CR>
