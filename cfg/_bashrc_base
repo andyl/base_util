@@ -469,7 +469,7 @@ alias gvdc='pushdp ~/var/data/cblob'
 alias  gvi='pushdp ~/var/iso'
 alias  gvs='pushdp ~/var/seed'
 
-alias gvvm='pushdp ~/vvm'
+alias gvvm='pushdp ~/VVM'
 
 alias  gl='pushdp ~/lib'
 alias  gr='pushdp ~/rel'
