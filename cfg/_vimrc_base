@@ -37,9 +37,10 @@ Plug 'andyl/vim-projectionist-elixir'    " elixir file navigation
 Plug 'andyl/vim-textobj-elixir'          " elixir text objects
 " -- LANG RUBY ----- 
 Plug 'vim-ruby/vim-ruby'                 " syntax highlighting
-Plug 'tpope/vim-rails'                   " rails support
+Plug 'andyl/vim-projectionist-ruby'      " ruby file navigation
 Plug 'nelstrom/vim-textobj-rubyblock'    " ruby text objects
 Plug 'bronson/vim-ruby-block-conv'       " toggle {} to begin/end
+Plug 'andyl/vim-snipmate-ruby'           " snippets for ruby
 " -- LANG R -----
 Plug 'jalvesaq/Nvim-R'                   " R lang
 " -- LANG JAVASCRIPT -----
