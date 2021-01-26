@@ -40,3 +40,6 @@ tnoremap <leader><esc> <C-\><C-n>
 nmap <leader>tv :vertical botright Ttoggle<cr><C-w>l
 nmap <leader>ts :rightbelow Ttoggle<cr><C-w>j
 
+" disable python2 provider
+let g:loaded_python_provider=0
+
