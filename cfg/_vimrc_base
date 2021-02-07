@@ -8,6 +8,7 @@ Plug 'SirVer/ultisnips'                  " snipmate replacement
 Plug 'w0rp/ale'
 " -- COC (Command of Completion) -----
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'iamcco/coc-tailwindcss',  {'do': 'yarn install --frozen-lockfile && yarn run build'}
 " -- FZF -----
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
