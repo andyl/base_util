@@ -72,6 +72,9 @@ alias   mr="mixrun"
 
 alias mat="mix atree"
 
+# https://thinkingelixir.com/elixir-1-11-and-erlang-docs/
+export KERL_BUILD_DOCS="yes"
+
 ###########################################################################
 # LEDGER
 
