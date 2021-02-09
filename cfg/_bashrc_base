@@ -199,11 +199,6 @@ live_tmate() {
 alias  tm="tmux"   
 alias  tmnew="tmux new -s"
 
-# see below: terminator aliases 'tn', 'ts' and 'tv'
-alias tts="in_tmux && tm split-window -v -c '#{pane_current_path}'"  # tmux tab split
-alias ttv="in_tmux && tm split-window -h -c '#{pane_current_path}'"  # tmux tab split vert
-alias ttn="in_tmux && tm new-window -c '#{pane_current_path}'"       # tmux tab new
-
 tmr() {
   no_tmux && tm new \; send "$*" C-m \; attach
 }
@@ -217,13 +212,19 @@ sessionkey () {
   tmate show-messages | grep 'ssh session:' | cut -d ' ' -f10 | tee >(xclip -selection clipboard)
 }
 
-###########################################################################
-# NordVPN
+# create new tab in current tmux window
+alias ttn="in_tmux && tm new-window -c '#{pane_current_path}'"       # tmux tab new
+alias tts="in_tmux && tm split-window -v -c '#{pane_current_path}'"  # tmux tab split
+alias ttv="in_tmux && tm split-window -h -c '#{pane_current_path}'"  # tmux tab split vert
 
-alias vpn=nordvpn
-
 ###########################################################################
-# CLI Utils
+# TERMINATOR
+
+# create new tab in current terminator window
+# https://askubuntu.com/questions/380315/command-to-open-new-tab-in-the-current-terminal
+alias tn="xdotool key ctrl+shift+t"
+alias ts="xdotool key ctrl+shift+s"
+alias tv="xdotool key ctrl+shift+v"
 
 ###########################################################################
 # BUILDROOT
@@ -370,150 +371,6 @@ function dksh() {
     docker exec -it $name bash
   fi
 }
-
-###########################################################################
-# DIRECTORY PUSH/POP
-
-# prevents duplicate paths from filling up the pushd stack  
-function pushdp
-{
-  if [ -z "$1" ]; then 
-    pushd
-  else
-    stack=`dirs` ; IFS=' ' ; idx=0 ; pos=0 ; src=`readlink -f $1`
-    for path in $stack ; do
-      tgt=`eval echo $path`    # expand ~ character...
-      if [ "$src" == "$tgt" ]; then
-        pos=$idx      
-      fi
-      ((idx++))
-    done
-    if [ "$pos" == "0" ]; then
-      pushd $1
-    else
-      pushd +$pos       
-    fi
-  fi
-}
-
-ph () {
-  echo " PUSHD/POPD ALIASES"
-  echo " ph - Help (this command!)"
-  echo " pd - Display stack"
-  echo " pa - Add directory to stack"
-  echo " px - Remove directory from stack"
-  echo " pc - Clear stack"
-  echo " pb - go Back on the stack"
-  echo " pf - go Forward on the stack"
-  echo " pg <dir> - go to a directory (full path)"
-  echo " g<num> - go to the Nth dir on the stack"
-}
-
-alias pd='dirs -v'            # display stack
-alias pa='pushdp'             # add directory to stack
-alias px='popd'               # remove directory from stack 
-alias pc='dirs -c ; dirs -v'  # clear stack 
-alias pb='pushd +1'           # go back on the stack
-alias pf='pushd -0'           # go forward on the stack
-alias pg='pushdp'             # go to a directory
-alias g0='cd ~0'              # go to the Nth dir on the stack 
-alias g1='cd ~1'              # go to the Nth dir on the stack 
-alias g2='cd ~2'              # go to the Nth dir on the stack 
-alias g3='cd ~3'              # go to the Nth dir on the stack 
-alias g4='cd ~4'              # go to the Nth dir on the stack 
-alias g5='cd ~5'              # go to the Nth dir on the stack 
-alias g6='cd ~6'              # go to the Nth dir on the stack 
-alias g7='cd ~7'              # go to the Nth dir on the stack 
-alias g8='cd ~8'              # go to the Nth dir on the stack 
-alias g9='cd ~9'              # go to the Nth dir on the stack 
-
-alias gdk='pushdp ~/dks'
-
-alias  gu='pushdp $UTIL_DIR'
-alias gua='pushdp $UTIL_DIR/air_util'
-alias gub='pushdp $UTIL_DIR/base_util'
-alias guc='pushdp $UTIL_DIR/code_util'
-alias gud='pushdp $UTIL_DIR/date_util'
-alias gue='pushdp $UTIL_DIR/elix_util'
-alias gun='pushdp $UTIL_DIR/notes'
-alias guo='pushdp $UTIL_DIR/org'
-alias gux='pushdp $UTIL_DIR/x-ansible'
-
-alias guad='pushdp $UTIL_DIR/air_util/dags'
-
-alias gubb='pushdp $UTIL_DIR/base_util/bin'
-alias gubc='pushdp $UTIL_DIR/base_util/cfg'
-
-alias gucb='pushdp $UTIL_DIR/code_util/bin'
-alias gucc='pushdp $UTIL_DIR/code_util/cfg'
-alias guci='pushdp $UTIL_DIR/code_util/inc'
-alias guce='pushdp $UTIL_DIR/code_util/exs'
-alias gucg='pushdp $UTIL_DIR/code_util/gems'
-alias gucs='pushdp $UTIL_DIR/code_util/shards'
-
-alias guoc='pushdp $UTIL_DIR/org/cheats'
-alias guog='pushdp $UTIL_DIR/org/gtd'
-alias guol='pushdp $UTIL_DIR/org/ledger'
-alias guon='pushdp $UTIL_DIR/org/notes'
-alias guos='pushdp $UTIL_DIR/org/standup'
-alias guow='pushdp $UTIL_DIR/org/worklog'
-
-alias gudb='pushdp $UTIL_DIR/date_util/bin'
-alias gudc='pushdp $UTIL_DIR/date_util/cfg'
-
-alias   gv='pushdp ~/var'
-alias  gvb='pushdp ~/var/backup'
-alias  gvc='pushdp ~/var/cache'
-alias  gvd='pushdp ~/var/data'
-alias gvdb='pushdp ~/var/data/bin'
-alias gvdc='pushdp ~/var/data/cblob'
-alias  gvi='pushdp ~/var/iso'
-alias  gvs='pushdp ~/var/seed'
-
-alias gvvm='pushdp ~/VVM'
-
-alias  gl='pushdp ~/lib'
-alias  gr='pushdp ~/rel'
-
-alias  gs='pushdp ~/src'
-alias gsp='pushdp ~/src/BAMRU-Private'
-alias gsl='pushdp ~/src/lica'
-alias gsb='pushdp ~/src/bugmark'
-alias gse='pushdp ~/src/ext'
-alias gsR='pushdp ~/src/REL'
-alias gsbe='pushdp ~/src/bugmark/exchange'
-alias gsbw='pushdp ~/src/bugmark/website'
-alias gsbi='pushdp ~/src/bugmark/iora'
-alias gsbt='pushdp ~/src/bugmark/test_bench'
-alias gsbs='pushdp ~/src/bugmark/sandbox'
-alias gsc='pushdp ~/src/casmacc'
-alias gscn='pushdp ~/src/casmacc/nginx_proxy'
-alias gsch='pushdp ~/src/casmacc/html_helloworld'
-alias gscs='pushdp ~/src/casmacc/static_helloworld'
-alias gscp='pushdp ~/src/casmacc/phoenix_helloworld'
-
-alias  gdl='pushdp ~/dl'
-alias  gzz='pushdp ~/zz'
-
-alias   ga='pushdp ~/.ansible'
-alias  gai='pushdp ~/.ansible/inventory'
-alias  gap='pushdp ~/.ansible/playbooks'
-alias gapl='pushdp ~/.ansible/playbooks/library'
-alias gapr='pushdp ~/util/x-ansible/roles'
-
-alias ba="cd .."
-
-alias   sf="rm -f ~/.dir_fcs; ln -s \`pwd\` ~/.dir_fcs"                   # set focus dir
-alias   gf="if [ -d ~/.dir_fcs ] ; then ga; cd -P ~/.dir_fcs       ; fi"  # goto focus dir
-alias  gfc="gf ; if [ -d current ]     ; then pushdp ./current     ; fi"  # production env
-alias gfcl="gf ; if [ -d current/log ] ; then pushdp ./current/log ; fi"  # current/log
-
-# create new tab in current terminator window
-# https://askubuntu.com/questions/380315/command-to-open-new-tab-in-the-current-terminal
-# see above: tmux aliases 'ttn', 'tts' and 'ttv'
-alias tn="xdotool key ctrl+shift+t"
-alias ts="xdotool key ctrl+shift+s"
-alias tv="xdotool key ctrl+shift+v"
 
 ###########################################################################
 # DIRECTORY LISTING
