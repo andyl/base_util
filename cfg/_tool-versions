@@ -1,7 +1,7 @@
 elixir 1.11.1-otp-23
 erlang 23.1.1
 ruby 2.7.0
-nodejs 13.7.0
+nodejs 15.8.0
 crystal 0.29.0
 rust 1.41.0
 golang 1.14.4
