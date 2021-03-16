@@ -29,6 +29,8 @@ Plug 'kana/vim-textobj-user'             " customikzable text objects
 Plug 'mattn/vim-textobj-url'             " au/iu
 Plug 'tpope/vim-surround'                " edit containing objects
 Plug 'tpope/vim-repeat'                  " repeat support for plugins
+" -- LANG JSON -----
+Plug 'tpope/vim-jdaddy'                  " JSON text objects and formatting
 " -- LANG ELIXIR -----
 Plug 'powerman/vim-plugin-AnsiEsc'       " docco with ANSI colors
 Plug 'elixir-lang/vim-elixir'            " syntax highlighting
@@ -187,6 +189,16 @@ let g:ale_completion_enabled=0
 " let g:ale_ruby_rubocop_executable = 'bundle'
 " let g:ale_fixers.ruby             = ['rubocop']
 " let g:ale_fixers.elixir           = ['mix_format']
+
+" === JSON
+
+" USE THIS TO FORMAT JSON TEXT...
+"
+" :JsonTool
+" :'<,'>JsonTool
+" :10,25JsonTool
+
+command! -range -nargs=0 -bar JsonTool <line1>,<line2>!python -m json.tool
 
 " === ElixirLS / COC / LSP
 
