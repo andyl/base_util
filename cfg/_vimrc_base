@@ -510,13 +510,6 @@ endfunction
 
 nnoremap <silent> <leader>c :call <SID>ToggleVimuxTerminal()<cr>
 
-" === TMP FILE - copy between vim instances using tmp file
-nmap <leader>ty y:call writefile(split(@0,'\n'), "/tmp/vimtmp")<cr>
-vmap <leader>ty y:call writefile(split(@0,'\n'), "/tmp/vimtmp")<cr>
-nmap <leader>td d:call writefile(split(@1,'\n'), "/tmp/vimtmp")<cr>
-vmap <leader>td d:call writefile(split(@1,'\n'), "/tmp/vimtmp")<cr>
-nmap <leader>tp :r /tmp/vimtmp<cr>
-
 " === VIM EASY ALIGN
 vmap at :EasyAlign *\|<cr>
 vmap ac <Plug>(EasyAlign)
@@ -531,9 +524,17 @@ let g:easy_align_delimiters = {
 \  '^': {'pattern': ',', 'left_margin': 1, 'right_margin': 1, 'stick_to_left': 0}
 \}
 
+" === TMP FILE - copy between vim instances using tmp file
+nmap <leader>ty y:call writefile(split(@0,'\n'), "/tmp/vimtmp")<cr>
+vmap <leader>ty y:call writefile(split(@0,'\n'), "/tmp/vimtmp")<cr>
+nmap <leader>td d:call writefile(split(@1,'\n'), "/tmp/vimtmp")<cr>
+vmap <leader>td d:call writefile(split(@1,'\n'), "/tmp/vimtmp")<cr>
+nmap <leader>tp :r /tmp/vimtmp<cr>
+
 " === TAB MANIPULATION AND NAVIGATION
 nmap <leader>tn :tabnew<CR>
 nmap <leader>to :tabnew %<CR>
+nmap <leader>tO :tabnew %<CR>:call <SID>ToggleNerd()<cr>
 nmap <leader>tx :tabclose<CR>
 nmap <leader>th :tabp<CR>
 nmap <leader>tl :tabn<CR>
@@ -552,7 +553,7 @@ nmap <leader>s :sp<cr>
 nmap <leader>v :vsp<cr>
 nmap <leader>q :q<cr>
 nmap <leader>o :wa<cr>:only<cr>
-nmap <leader>i :wa<cr>:only<cr>:call <SID>ToggleNerd()<cr>
+nmap <leader>O :wa<cr>:only<cr>:call <SID>ToggleNerd()<cr>
 
 " === PANE LAYOUT
 " layout split
