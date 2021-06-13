@@ -4,6 +4,8 @@
 call plug#begin('~/.vim/plugged')
 " -- SNIPPETS ----- 
 Plug 'SirVer/ultisnips'                  " snipmate replacement
+" -- MISC -----
+Plug 'andyl/nvls'
 " -- ALE (Async Lint Engine) -----
 Plug 'w0rp/ale'
 " -- COC (Command of Completion) -----
