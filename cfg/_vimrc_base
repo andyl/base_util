@@ -6,6 +6,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'SirVer/ultisnips'                  " snipmate replacement
 " -- MISC -----
 Plug 'andyl/nvls'
+Plug 'andyl/rfx_nvim'
 " -- ALE (Async Lint Engine) -----
 Plug 'w0rp/ale'
 " -- COC (Command of Completion) -----
