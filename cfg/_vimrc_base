@@ -3,7 +3,7 @@
 " Docs at http://github.com/junegunn/vim-plug 
 call plug#begin('~/.vim/plugged')
 " -- SNIPPETS ----- 
-Plug 'SirVer/ultisnips'                  " snipmate replacement
+" Plug 'SirVer/ultisnips'                  " snipmate replacement
 " -- MISC -----
 Plug 'andyl/nvls'
 Plug 'andyl/rfxi_nvim'
@@ -159,6 +159,23 @@ set shortmess+=I
 " see https://medium.com/vim-drops/be-a-html-ninja-with-emmet-for-vim-feee15447ef1
 
 let g:user_emmet_leader_key=','
+
+" === COC-SNIPPETS
+" Install with `:CocInstall coc-snippets`
+" See https://github.com/neoclide/coc-snippets
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'
 
 " === LEDGER
 " https://github.com/ledger/ledger/wiki/Getting-started-with-Vim
