@@ -2,24 +2,15 @@
 " Cmds - :PlugInstall / :PlugClean / :PlugStatus / :PlugUpdate / :PlugUpgrade
 " Docs at http://github.com/junegunn/vim-plug 
 call plug#begin('~/.vim/plugged')
-
-if has("nvim")
-
-  Plug 'nvim-treesitter/nvim-treesitter'  " syntax highlighting
-  Plug 'nvim-treesitter/playground'       " treesitter AST browsing
-  Plug 'nvim-lua/popup.nvim'              " popup window utilities
-  Plug 'nvim-lua/plenary.nvim'            " neovim utility functions
-  Plug 'nvim-telescope/telescope.nvim'    " fuzzy finder
-
-endif
-
+" -- SNIPPETS ----- 
+" Plug 'SirVer/ultisnips'                  " snipmate replacement
 " -- MISC -----
 Plug 'andyl/nvls'
 Plug 'andyl/rfxi_nvim'
 " -- ALE (Async Lint Engine) -----
-" Plug 'w0rp/ale'
+Plug 'w0rp/ale'
 " -- COC (Command of Completion) -----
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " -- FZF -----
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -43,15 +34,15 @@ Plug 'tpope/vim-repeat'                  " repeat support for plugins
 " -- LANG JSON -----
 Plug 'tpope/vim-jdaddy'                  " JSON text objects and formatting
 " -- LANG ELIXIR -----
-" Plug 'powerman/vim-plugin-AnsiEsc'       " docco with ANSI colors
-Plug 'elixir-editors/vim-elixir'         " filetype detection
+Plug 'powerman/vim-plugin-AnsiEsc'       " docco with ANSI colors
+Plug 'elixir-lang/vim-elixir'            " syntax highlighting
 Plug 'mattreduce/vim-mix'                " mix helpers
 Plug 'andyl/vim-snipmate-elixir'         " snippets for elixir
 Plug 'andyl/vim-projectionist-elixir'    " elixir file navigation
-" Plug 'andyl/vim-textobj-elixir'          " elixir text objects
-" Plug 'elixir-lsp/coc-elixir', {'do': 'yarn install && yarn prepack'}
+Plug 'andyl/vim-textobj-elixir'          " elixir text objects
+Plug 'elixir-lsp/coc-elixir', {'do': 'yarn install && yarn prepack'}
 " -- LANG RUBY ----- 
-" Plug 'vim-ruby/vim-ruby'                 " syntax highlighting
+Plug 'vim-ruby/vim-ruby'                 " syntax highlighting
 Plug 'andyl/vim-projectionist-ruby'      " ruby file navigation
 Plug 'nelstrom/vim-textobj-rubyblock'    " ruby text objects
 Plug 'bronson/vim-ruby-block-conv'       " toggle {} to begin/end
@@ -65,11 +56,11 @@ Plug 'tomlion/vim-solidity'              " solidity
 Plug 'pangloss/vim-javascript'           " javascript
 Plug 'evanleck/vim-svelte'               " svelte
 " -- LANG CRYSTAL -----
-" Plug 'rhysd/vim-crystal'                 " syntax highlighting
+Plug 'rhysd/vim-crystal'                 " syntax highlighting
 " -- LANG HTML -----
 Plug 'mattn/emmet-vim'                   " HTML snippets
 " -- LANG RUST -----
-" Plug 'rust-lang/rust.vim'                " syntax highlighting
+Plug 'rust-lang/rust.vim'                " syntax highlighting
 " -- LEDGER -----    
 Plug 'ledger/vim-ledger'                 " ledger-cli accounting
 " -- GRAPHQL -----    
@@ -162,12 +153,6 @@ set nobackup
 set noswapfile
 
 set shortmess+=I
-
-" === TREESITTER
-
-if has("nvim")
-  lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
-endif
 
 " === EMMET
 " see https://medium.com/vim-drops/be-a-html-ninja-with-emmet-for-vim-feee15447ef1
@@ -347,13 +332,6 @@ nmap \fr   :wa<CR>:<C-u>Rg<CR>
 nmap <C-p> :wa<CR>:<C-u>FZF<CR>
 nmap <C-m> :wa<CR>:<C-u>FZFMru<CR>
 nmap <C-e> :wa<CR>:<C-u>FzNerdTree<CR>
-
-" === TELESCOPE
-
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " === MATCHIT
 runtime macros/matchit.vim

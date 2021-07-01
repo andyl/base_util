@@ -151,6 +151,9 @@ vimcycle() {
   in_tmux && while [ true ] ; do nvim $1 ; done
 }
 
+alias vno='nvim ~/.vimrc_base'
+alias vnn='nvim ~/.config/nvim/init.vim'
+
 ###########################################################################
 # TMUX / TMUXINATOR / TMATE
 
