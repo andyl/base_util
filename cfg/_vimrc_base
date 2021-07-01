@@ -11,7 +11,6 @@ Plug 'andyl/rfxi_nvim'
 Plug 'w0rp/ale'
 " -- COC (Command of Completion) -----
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'iamcco/coc-tailwindcss',  {'do': 'yarn install --frozen-lockfile && yarn run build'}
 " -- FZF -----
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -159,23 +158,6 @@ set shortmess+=I
 " see https://medium.com/vim-drops/be-a-html-ninja-with-emmet-for-vim-feee15447ef1
 
 let g:user_emmet_leader_key=','
-
-" === COC-SNIPPETS
-" Install with `:CocInstall coc-snippets`
-" See https://github.com/neoclide/coc-snippets
-
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-let g:coc_snippet_next = '<tab>'
 
 " === LEDGER
 " https://github.com/ledger/ledger/wiki/Getting-started-with-Vim
