@@ -1,4 +1,6 @@
-" VIM-PLUG - PLUGIN MANAGER
+" === VIMRC FOR NEOVIM
+
+" === VIM-PLUG - PLUGIN MANAGER
 " Cmds - :PlugInstall / :PlugClean / :PlugStatus / :PlugUpdate / :PlugUpgrade
 " Docs at http://github.com/junegunn/vim-plug 
 call plug#begin('~/.vim/plugged')
@@ -101,30 +103,35 @@ Plug 'vim-scripts/bats.vim'              " bats editing
 " Plug 'gillyb/stable-windows'             " no window scroll on split
 Plug 'mattn/gist-vim'                    " post github gists
 Plug 'mattn/webapi-vim'                  " required by gist-vim
+
 call plug#end()
 
-
-
-" ----- vimrc for neovim
+" === PATHS
 
 set runtimepath+=~/.vim,~/.vim/after
 set packpath+=~/.vim
 
-" ----- load base config
+" === LOAD BASE CONFIG
 source ~/.vimrc_base
 
-" ----- misc
+" === TREESITTER
+
+" if has("nvim")
+"   lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
+" endif
+
+" === MISC
 set lazyredraw
 
-" ----- mouse
+" === MOUSE
 set mouse=a
 
-" ----- colorschemes
+" === COLORSCHEMES
 let g:gruvbox_contrast_dark='hard'
 set background=dark
 colorscheme gruvbox
 
-" ----- terminal 
+" === TERMINAL 
 autocmd BufWinEnter,WinEnter term://* startinsert
 autocmd BufLeave             term://* stopinsert
 
