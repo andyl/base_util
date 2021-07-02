@@ -12,6 +12,10 @@ Plug 'andyl/rfxi_nvim'
 Plug 'w0rp/ale'
 " -- COC (Command of Completion) -----
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" -- TELESCOPE -----
+Plug 'nvim-lua/popup.nvim'               " nvim-lua utility library
+Plug 'nvim-lua/plenary.nvim'             " nvim-lua utility library
+Plug 'nvim-telescope/telescope.nvim'     " telescope fuzzy-finder
 " -- FZF -----
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -116,9 +120,27 @@ source ~/.vimrc_base
 
 " === TREESITTER
 
-" if has("nvim")
-"   lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
-" endif
+"lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
+
+" require("nvim-treesitter.configs").setup {
+"     ensure_installed = { "lua", "python", "bash", "yaml", "json", "ruby",
+"     "javascript", "rust", "css", "scss", "html", "erlang", "elixir" },
+"     ignore_install = { "javascript" },
+"     highlight = {
+"             enable = true,
+"     },
+"     indent = {
+"             enable = true,
+"     },
+" }
+
+" === TELESCOPE
+
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " === MISC
 set lazyredraw
