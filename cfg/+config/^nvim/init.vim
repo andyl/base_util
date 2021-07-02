@@ -8,6 +8,8 @@ call plug#begin('~/.vim/plugged')
 " -- MISC -----
 Plug 'andyl/nvls'
 Plug 'andyl/rfxi_nvim'
+Plug 'andyl/al-gtd'
+Plug 'andyl/al-worklog'
 " -- ALE (Async Lint Engine) -----
 Plug 'w0rp/ale'
 " -- COC (Command of Completion) -----
