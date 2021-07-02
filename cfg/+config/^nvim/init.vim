@@ -33,8 +33,6 @@ Plug 'vim-scripts/nerdtree-ack'          " search from directory
 Plug 'mileszs/ack.vim'                   " file search
 Plug 'tpope/vim-projectionist'           " alternate file nav
 Plug 'andyl/fuzzy-projectionist.vim'     " fzf meets projectionist (eg :Fmodel)
-" -- DOCKER -----
-Plug 'ekalinin/Dockerfile.vim'           " Dockerfile editing
 " -- TEXT MANIPULATION -----
 Plug 'vim-scripts/tComment'              " toggle comments on/off
 Plug 'kana/vim-textobj-user'             " customikzable text objects
@@ -57,8 +55,6 @@ Plug 'andyl/vim-projectionist-ruby'      " ruby file navigation
 Plug 'nelstrom/vim-textobj-rubyblock'    " ruby text objects
 Plug 'bronson/vim-ruby-block-conv'       " toggle {} to begin/end
 Plug 'andyl/vim-snipmate-ruby'           " snippets for ruby
-" -- LANG R -----
-Plug 'jalvesaq/Nvim-R'                   " R lang
 " -- LANG JAVASCRIPT -----
 Plug 'mxw/vim-jsx'                       " ReactJS/JSX
 Plug 'kchmck/vim-coffee-script'          " coffeescript
