@@ -3,8 +3,8 @@
 
 " PATHOGEN PLUGIN MANAGER 
 " LOADS CUSTOM PLUGINS IN ~/.vim/bundle ...
-call pathogen#runtime_append_all_bundles()   
-call pathogen#helptags()
+" call pathogen#runtime_append_all_bundles()   
+" call pathogen#helptags()
 
 " -----------------------------------------------------------------
 " ----- load base config
@@ -31,13 +31,13 @@ function! <SID>focus()
   if index(defaultTypes, &filetype)
     let g:gruvbox_contrast_dark='hard'
     set background=dark
-    colorscheme gruvbox
+    " colorscheme gruvbox
   else
     set nocursorline
     colorscheme default
   end
   exec 'hi ColorColumn ctermbg=' . g:blur_bg
-  AirlineRefresh  
+  " AirlineRefresh  
 endfunction
 
 function! <SID>blur()
@@ -48,11 +48,11 @@ function! <SID>blur()
     let &colorcolumn=join(range(1,150),",")
   endif
   exec 'hi ColorColumn ctermbg=' . g:blur_bg
-  AirlineRefresh
+  " AirlineRefresh
 endfunction
 
 autocmd BufEnter,FocusGained,VimEnter,WinEnter *      :call <SID>focus()
-autocmd BufEnter,FocusGained,VimEnter,WinEnter *.wlog colorscheme worklog | AirlineRefresh
-autocmd BufEnter,FocusGained,VimEnter,WinEnter *.otl  colorscheme otl     | AirlineRefresh
-autocmd BufEnter,FocusGained,VimEnter,WinEnter *.gtd  colorscheme gtd     | AirlineRefresh
+" autocmd BufEnter,FocusGained,VimEnter,WinEnter *.wlog colorscheme worklog | AirlineRefresh
+" autocmd BufEnter,FocusGained,VimEnter,WinEnter *.otl  colorscheme otl     | AirlineRefresh
+" autocmd BufEnter,FocusGained,VimEnter,WinEnter *.gtd  colorscheme gtd     | AirlineRefresh
 
