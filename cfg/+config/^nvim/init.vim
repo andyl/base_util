@@ -16,7 +16,7 @@ Plug 'andyl/rfxi_nvim'
 Plug 'andyl/al-gtd'
 Plug 'andyl/al-worklog'
 " -- ALE (Async Lint Engine) -----
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
 " -- COC (Command of Completion) -----
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " -- TELESCOPE -----

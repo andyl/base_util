@@ -540,14 +540,14 @@ fi
 ###########################################################################
 # EDITOR ALIASES
 
-alias lvim="vim -c \"normal '0\""  # open the last file edited
-alias vimm='vim'
-alias vimn='vim'
-alias vin='vim'
-alias vim-='vim -'
+alias lvim="nvim -c \"normal '0\""  # open the last file edited
+alias vimm='nvim'
+alias vimn='nvim'
+alias vin='nvim'
+alias vim-='nvim -'
 
-export EDITOR="vim"
-export VISUAL="vim"
+export EDITOR="nvim"
+export VISUAL="nvim"
 export TERMINAL="terminator"
 
 alias em="emacs -nw"
