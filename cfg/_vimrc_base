@@ -296,12 +296,12 @@ let g:table_mode_corner = '|'
 let g:table_mode_corner_corner = '|'
 
 " === MOVE LINE UP/DOWN
-nmap <A-Up> [e
-nmap <A-Down> ]e
+" nmap <A-Up> [e
+" nmap <A-Down> ]e
 
 " === MOVE REGION UP/DOWN
-vmap <A-Up> [egv
-vmap <A-Down> ]egv
+" vmap <A-Up> [egv
+" vmap <A-Down> ]egv
 
 " === FOR EDITING HELP OUTLINES - OPENS TARGET FILE IN VERTICAL SPLIT WINDOW
 map <F8> :vertical wincmd f<CR>

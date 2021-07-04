@@ -19,6 +19,10 @@ Plug 'andyl/al-worklog'
 " Plug 'w0rp/ale'
 " -- COC (Command of Completion) -----
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" -- TREESITTER -----
+Plug 'nvim-treesitter/nvim-treesitter'   " AST generator
+Plug 'nvim-treesitter/playground'        " AST browser
+Plug 'nvim-treesitter/nvim-treesitter-textobjects' 
 " -- TELESCOPE -----
 Plug 'nvim-lua/popup.nvim'               " nvim-lua utility library
 Plug 'nvim-lua/plenary.nvim'             " nvim-lua utility library
@@ -121,21 +125,55 @@ set packpath+=~/.vim
 " === LOAD BASE CONFIG
 source ~/.vimrc_base
 
-" === TREESITTER
+" === TREESITTER / TRS / TSZ
 
-"lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
+" Treesitter CLI is needed to install Elixir 
+" > npm install -g tree-sitter-cli
+" > asdf reshim nodejs
 
-" require("nvim-treesitter.configs").setup {
-"     ensure_installed = { "lua", "python", "bash", "yaml", "json", "ruby",
-"     "javascript", "rust", "css", "scss", "html", "erlang", "elixir" },
-"     ignore_install = { "javascript" },
-"     highlight = {
-"             enable = true,
-"     },
-"     indent = {
-"             enable = true,
-"     },
-" }
+lua <<EOF
+require("nvim-treesitter.configs").setup {
+  ignore_install = { },
+  indent = { enable = true },
+  highlight = { enable = true },
+  ensure_installed = { "lua", "python", "bash", "yaml", "json", "ruby",
+  "javascript", "rust", "css", "scss", "html", "erlang", "elixir", "query" },
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "ggi",     -- init node/scope selection
+      node_incremental = "<a-up>",   -- expand to the upper named parent
+      scope_incremental = "ggs",  -- expand to the upper scope (as defined in locals.scm)
+      node_decremental = "<a-down>",   -- collapse to the previous node
+    },
+  },
+  textobjects = {
+    select = {
+      enable = true,
+      -- Automatically jump forward to textobj, similar to targets.vim 
+      lookahead = true,
+      keymaps = {
+        -- use the capture groups defined in textobjects.scm
+        ["af"] = "@function.outer",
+        ["if"] = "@function.inner",
+        ["ac"] = "@class.outer",
+        ["ic"] = "@class.inner",
+        -- define custom textobjects like this
+        ["iF"] = {
+          python = "(function_definition) @function",
+          cpp = "(function_definition) @function",
+          c = "(function_definition) @function",
+          java = "(method_declaration) @function",
+          elixir = "(function_declaration) @function",
+        },
+        ["iM"] = {
+          elixir = "(method_declaration) @function",
+        },
+      },
+    },
+  },
+}
+EOF
 
 " === TELESCOPE
 
@@ -198,9 +236,9 @@ fun! SetZoomState()
 endfun
 
 if !exists("g:ZoomWinFuncRef")
- let g:ZoomWinFuncRef = function("SetZoomState")
+  let g:ZoomWinFuncRef = function("SetZoomState")
 endif
- 
+
 " === VIM-AIRLINE 
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
