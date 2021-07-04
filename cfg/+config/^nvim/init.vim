@@ -22,6 +22,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " -- TREESITTER -----
 Plug 'nvim-treesitter/nvim-treesitter'   " AST generator
 Plug 'nvim-treesitter/playground'        " AST browser
+Plug 'nvim-treesitter/nvim-treesitter-refactor'
 Plug 'nvim-treesitter/nvim-treesitter-textobjects' 
 " -- TELESCOPE -----
 Plug 'nvim-lua/popup.nvim'               " nvim-lua utility library
@@ -145,6 +146,14 @@ require("nvim-treesitter.configs").setup {
       node_incremental = "<a-up>",   -- expand to the upper named parent
       scope_incremental = "ggs",  -- expand to the upper scope (as defined in locals.scm)
       node_decremental = "<a-down>",   -- collapse to the previous node
+    },
+  },
+  refactor = {
+    smart_rename = {
+      enable = true,
+      keymaps = {
+        smart_rename = "grr",
+      },
     },
   },
   textobjects = {
