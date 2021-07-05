@@ -20,10 +20,9 @@ Plug 'andyl/al-worklog'
 " -- COC (Command of Completion) -----
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " -- TREESITTER -----
-Plug 'nvim-treesitter/nvim-treesitter'   " AST generator
-Plug 'nvim-treesitter/playground'        " AST browser
-Plug 'nvim-treesitter/nvim-treesitter-refactor'
-Plug 'nvim-treesitter/nvim-treesitter-textobjects' 
+" Plug 'nvim-treesitter/nvim-treesitter'   " AST generator
+" Plug 'nvim-treesitter/playground'        " AST browser
+" Plug 'nvim-treesitter/nvim-treesitter-textobjects' 
 " -- TELESCOPE -----
 Plug 'nvim-lua/popup.nvim'               " nvim-lua utility library
 Plug 'nvim-lua/plenary.nvim'             " nvim-lua utility library
@@ -133,55 +132,44 @@ source ~/.vimrc_base
 " > asdf reshim nodejs
 
 lua <<EOF
-require("nvim-treesitter.configs").setup {
-  ignore_install = { },
-  indent = { enable = true },
-  highlight = { enable = true },
-  ensure_installed = { "lua", "python", "bash", "yaml", "json", "ruby",
-  "javascript", "rust", "css", "scss", "html", "erlang", "elixir", "query" },
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = "ggi",     -- init node/scope selection
-      node_incremental = "<a-up>",   -- expand to the upper named parent
-      scope_incremental = "ggs",  -- expand to the upper scope (as defined in locals.scm)
-      node_decremental = "<a-down>",   -- collapse to the previous node
-    },
-  },
-  refactor = {
-    smart_rename = {
-      enable = true,
-      keymaps = {
-        smart_rename = "grr",
-      },
-    },
-  },
-  textobjects = {
-    select = {
-      enable = true,
-      -- Automatically jump forward to textobj, similar to targets.vim 
-      lookahead = true,
-      keymaps = {
-        -- use the capture groups defined in textobjects.scm
-        ["af"] = "@function.outer",
-        ["if"] = "@function.inner",
-        ["ac"] = "@class.outer",
-        ["ic"] = "@class.inner",
-        -- define custom textobjects like this
-        ["iF"] = {
-          python = "(function_definition) @function",
-          cpp = "(function_definition) @function",
-          c = "(function_definition) @function",
-          java = "(method_declaration) @function",
-          elixir = "(function_declaration) @function",
-        },
-        ["iM"] = {
-          elixir = "(method_declaration) @function",
-        },
-      },
-    },
-  },
-}
+-- require("nvim-treesitter.configs").setup {
+--   ignore_install = { },
+--   indent = { enable = true },
+--   highlight = { enable = true },
+--   ensure_installed = { "lua", "python", "bash", "yaml", "json", "ruby",
+--   "javascript", "rust", "css", "scss", "html", "erlang", "elixir", "query" },
+--   incremental_selection = {
+--     enable = true,
+--     keymaps = {
+--       init_selection = "ggi",     -- init node/scope selection
+--       node_incremental = "<a-up>",   -- expand to the upper named parent
+--       scope_incremental = "ggs",  -- expand to the upper scope (as defined in locals.scm)
+--       node_decremental = "<a-down>",   -- collapse to the previous node
+--     },
+--   },
+--   textobjects = {
+--     select = {
+--       enable = true,
+--       -- Automatically jump forward to textobj, similar to targets.vim 
+--       lookahead = true,
+--       keymaps = {
+--         -- use the capture groups defined in textobjects.scm
+--         ["af"] = "@function.outer",
+--         ["if"] = "@function.inner",
+--         ["ac"] = "@class.outer",
+--         ["ic"] = "@class.inner",
+--         -- define custom textobjects like this
+--         ["iF"] = {
+--           c = "(function_definition) @function",
+--           elixir = "(function_declaration) @function",
+--         },
+--         ["iM"] = {
+--           elixir = "(method_declaration) @function",
+--         },
+--       },
+--     },
+--   },
+-- }
 EOF
 
 " === TELESCOPE
