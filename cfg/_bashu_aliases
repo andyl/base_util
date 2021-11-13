@@ -8,6 +8,9 @@ alias la='ls -lA --color'
 alias sl='ls'
 alias l='ls'
 
+# asdf 
+alias asdfh="asdf | head -n -7"
+
 # quick directory movement
 alias ..='cd ..'
 alias ...='cd ../..'
