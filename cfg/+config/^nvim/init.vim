@@ -82,6 +82,7 @@ Plug 'milkypostman/vim-togglelist'       " toggle quicklist and location list
 Plug 'tpope/vim-unimpaired'              " jump leading/trailing paren
 Plug 'tmhedberg/matchit'                 " % matching
 Plug 'vim-scripts/SyntaxRange'           " vimdeck syntax highlighting
+Plug 'liuchengxu/vim-which-key'          " shows key mappings
 Plug 'janko/vim-test'                    " test runner
 " -- EDITING UTILS -----
 Plug 'dhruvasagar/vim-table-mode'        " vim table mode
