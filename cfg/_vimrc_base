@@ -194,11 +194,6 @@ nmap \rlv :wa<cr>:Vlive<cr>
 " open in a related split/vsplit/tab with C-s/C-v/C-t
 nmap \rt  :wa<cr>:exec("Ftemplate ".split(expand("%:t:r"), "_")[0])<cr>
 
-" ----- Nvim Terminal 
-
-nmap <leader>t :terminal<cr>A
-nmap \t :terminal<cr>A
-
 " === FZF - fast file finding
 
 " set max length for the mru file list
