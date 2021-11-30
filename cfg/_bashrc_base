@@ -100,7 +100,7 @@ export PATH=$PATH:$GOPATH/bin
 
 ###########################################################################
 # ANDROID STUDIO
-export ANDROID_HOME=~/Android/Sdk
+export ANDROID_HOME=~/.pkg/android/current
 export PATH=$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 
 ###########################################################################
