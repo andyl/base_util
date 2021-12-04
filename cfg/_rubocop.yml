@@ -10,6 +10,9 @@ Layout/EmptyLinesAroundClassBody:
 Layout/EmptyLineBetweenDefs:
   Enabled: false
 
+Style/GlobalStdStream:
+  Enabled: false
+
 Style/SpecialGlobalVars:
   Enabled: false
 
