@@ -1,3 +1,6 @@
+Naming/AccessorMethodName:
+  Enabled: false
+
 Layout/EmptyLinesAroundBlockBody:
   Enabled: false
 
@@ -74,9 +77,6 @@ Style/SpaceInsideParens:
   Enabled: false
 
 Style/SingleLineMethods:
-  Enabled: false
-
-Style/FrozenStringLiteralComment:
   Enabled: false
 
 # Style/AlignArray:
