@@ -4,6 +4,9 @@ Naming/AccessorMethodName:
 Style/StringLiterals: 
   Enabled: false
 
+Style/Proc: 
+  Enabled: false
+
 Layout/TrailingWhitespace: 
   Enabled: false
 
