@@ -9,6 +9,7 @@ golang 1.14.4
 R 3.6.2
 java openjdk-15.0.1
 lua 5.3.5
+zig 0.8.1
 
 # --------------------------
 # ----- adding plugins
