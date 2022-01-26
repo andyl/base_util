@@ -551,10 +551,8 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 export TERMINAL="terminator"
 
-alias em="emacs -nw"
-alias nv="nvim"
-
-# alias nvn="export XDG_CONFIG_HOME=~/.neovim; nvim -u ~/.neovim/init.lua" 
+alias nv="export XDG_CONFIG_HOME=~/.config/nvim; nvim -u ~/.config/nvim/init.vim"
+alias nvn="export XDG_CONFIG_HOME=~/.neovim; nvim -u ~/.neovim/init.lua" 
 
 ###########################################################################
 # POSTGRESS HELPERS
