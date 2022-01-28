@@ -38,10 +38,6 @@ sourcefile ~/.bashrc_date
 export PATH=$PATH:~/.npm-global/bin:./node_modules/.bin    
 
 ###########################################################################
-# BUGMARK
-alias bmg=bugmark_graphql
-
-###########################################################################
 # VBOXMANAGE
 alias vbm=vboxmanage
 
@@ -213,31 +209,7 @@ alias tn="xdotool key ctrl+shift+t"
 alias ts="xdotool key ctrl+shift+s"
 alias tv="xdotool key ctrl+shift+v"
 
-###########################################################################
-# BUILDROOT
-# utility to create embedded system images
-
-buildroot-install() {
-  BUILDROOT_VERSION="2017.02.1"
-  if [ -n "$(ls -A .)" ]
-  then
-    echo "ERROR: current directory must be empty!"
-    return 1
-  else
-    echo "INSTALLING BUILDROOT"
-    wget https://buildroot.org/downloads/buildroot-$BUILDROOT_VERSION.tar.gz
-    tar xf *gz
-    rm *gz
-    mv buildroot-$BUILDROOT_VERSION/* .
-    mv buildroot-$BUILDROOT_VERSION/.* . 2> /dev/null
-    rmdir buildroot-$BUILDROOT_VERSION
-    echo "--------------------------------------------------------------"
-    echo "current BR Version: $BUILDROOT_VERSION (defined in .bashrc)"
-    echo "find latest BR version at https://buildroot.org/download.html"
-    echo "BR docs at https://buildroot.org/docs.html"
-    echo "now you can run '> make menuconfig'..."
-  fi
-}
+# see also TMUX comnmands (ttn, tts, ttv) above...
 
 ###########################################################################
 # MISC 
@@ -532,12 +504,6 @@ if [ `which xterm_title` ]; then
   PROMPT_COMMAND='export PWDS=`pwd_short`;xterm_title "${USRNAME}@${SYSNAME} ${PWDS}"'
 fi
 
-# if [ -n "$TMUX" ]; then
-#   export TERM='screen-256color'
-# else
-#   export TERM='xterm-256color'
-# fi
-
 ###########################################################################
 # EDITOR ALIASES
 
@@ -551,8 +517,8 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 export TERMINAL="terminator"
 
-# alias nv="nvim -u ~/.config/nvim/init.vim"
 alias nv="XDG_CONFIG_HOME=~/.config XDG_LOCAL_HOME=~/.local nvim"
+alias nvo="XDG_CONFIG_HOME=~/.config XDG_LOCAL_HOME=~/.local nvim"
 alias nvn="XDG_CONFIG_HOME=~/.config_tst XDG_LOCAL_HOME=~/.local_tst nvim" 
 
 ###########################################################################
@@ -577,25 +543,3 @@ export PROMPT_COMMAND="history -a; history -n; ${PROMPT_COMMAND}"   # mem/file s
 # if [[ $- =~ .*i.* ]]; then bind '"\\C-r": "\\C-ahh \\C-j"'; fi
 # bind '"\\C-r": "\\C-a hh \\C-j"'
 
-###########################################################################
-# RAKE
-
-export COMP_WORDBREAKS="${COMP_WORDBREAKS/\:/}"
-
-###########################################################################
-# RAKE
-
-# function echo_color() {
-#   printf "\033[0;90m$1\033[0m\n"
-# }
-# echo_color "c-f  Move forward"
-# echo_color "c-b  Move backward"
-# echo_color "c-p  Move up"
-# echo_color "c-n  Move down"
-# echo_color "c-a  Jump to beginning of line"
-# echo_color "c-e  Jump to end of line"
-# echo_color "c-d  Delete forward"
-# echo_color "c-h  Delete backward"
-# echo_color "c-k  Delete forward to end of line"
-# echo_color "c-u  Delete entire line"
-#
