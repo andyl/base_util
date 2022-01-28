@@ -661,14 +661,6 @@ if &term == "nvim"
   set guicursor=i:ver25-iCursor
 endif
 
-" Experiment with JetBrains console (it doesn't work)
-" The `JETBRAINS_TERM` var is setup in bashrc
-if !empty($JETBRAINS_TERM)
-  let &t_SI = "\e]12;green\x7"    " when entering insert mode
-  let &t_SR = "\e]12;red\x7"      " when entering replace mode
-  let &t_EI = "\e]12;white\x7"    " when entering normal mode
-endif
-
 " See http://arniealmighty.wordpress.com for screen/cursor color notes
 " (doesn't seem to be working)
 if &term == 'screen'                            " GNU Screen 
@@ -756,4 +748,97 @@ function! <SID>RefactorInline()
 endfunction
 
 nnoremap <leader>ri :call <SID>RefactorInline()<CR>
+
+" === TELESCOPE
+
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+" === MISC
+set lazyredraw
+
+" === MOUSE
+set mouse=a
+
+" === COLORSCHEMES
+let g:gruvbox_contrast_dark='hard'
+set background=dark
+colorscheme gruvbox
+
+" === TERMINAL 
+autocmd BufWinEnter,WinEnter term://* startinsert
+autocmd BufLeave             term://* stopinsert
+
+" turn off line numbers in terminal mode
+augroup TerminalStuff
+  au! 
+  autocmd TermOpen * setlocal nonumber norelativenumber
+augroup END
+
+" terminal navigate
+tnoremap <c-h> <C-\><C-n><C-w>h
+tnoremap <c-j> <C-\><C-n><C-w>j
+tnoremap <c-k> <C-\><C-n><C-w>k
+tnoremap <c-l> <C-\><C-n><C-w>l
+
+" easily escape terminal
+tnoremap <leader><esc> <C-\><C-n>
+
+" toggle terminal
+nmap <leader>tv :vertical botright Ttoggle<cr><C-w>l
+nmap <leader>ts :rightbelow Ttoggle<cr><C-w>j
+
+" disable python2 provider
+let g:loaded_python_provider=0
+
+" === ZOOM STATE ON STATUS LINE
+fun! SetZoomState()
+  if g:airline_section_y != "ZOOM"
+    let g:orig_zoom_state = g:airline_section_y
+    let g:airline_section_y = "ZOOM"
+    let g:airline_theme     = 'light'
+  else
+    let g:airline_section_y = g:orig_zoom_state
+    let g:airline_theme = 'luna'
+    let g:orig_zoom_state = ""
+  endif
+  AirlineRefresh
+  AirlineRefresh
+endfun
+
+if !exists("g:ZoomWinFuncRef")
+  let g:ZoomWinFuncRef = function("SetZoomState")
+endif
+
+" === VIM-AIRLINE 
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+
+let g:airline_theme = 'papercolor'
+let g:airline_symbols_ascii = 1
+let g:airline#extensions#whitespace#enabled = 0
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_tabs = 1
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#tab_min_count = 2
+let g:airline#extensions#tabline#buffer_min_count = 2
+let g:airline#extensions#tabline#show_tab_nr = 1
+let g:airline#extensions#tabline#tab_nr_type = 1
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+let g:airline#extensions#tabline#show_close_button = 0
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline#extensions#bufferline#enabled = 0
+nmap <leader>1 :bl\|1bn<cr>
+nmap <leader>2 :bl\|2bn<cr>
+nmap <leader>3 :bl\|3bn<cr>
+nmap <leader>4 :bl\|4bn<cr>
+nmap <leader>5 :bl\|5bn<cr>
+nmap <leader>6 :bl\|6bn<cr>
+nmap <leader>7 :bl\|7bn<cr>
+nmap <leader>8 :bl\|8bn<cr>
+nmap <leader>9 :bl\|9bn<cr>
 
