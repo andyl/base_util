@@ -2,8 +2,8 @@
 
 " === PATHOGEN PLUGIN MANAGER 
 " LOADS CUSTOM PLUGINS IN ~/.vim/bundle ...
-call pathogen#runtime_append_all_bundles()   
-call pathogen#helptags()
+" call pathogen#runtime_append_all_bundles()   
+" call pathogen#helptags()
 
 " === VIM-PLUG - PLUGIN MANAGER
 " Cmds - :PlugInstall / :PlugClean / :PlugStatus / :PlugUpdate / :PlugUpgrade

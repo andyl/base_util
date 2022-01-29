@@ -517,9 +517,9 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 export TERMINAL="terminator"
 
-alias  nv="XDG_CONFIG_HOME=~/.config XDG_DATA_HOME=~/.local nvim"
-alias nvo="XDG_CONFIG_HOME=~/.config XDG_DATA_HOME=~/.local nvim"
-alias nvn="XDG_CONFIG_HOME=~/.config_tst XDG_DATA_HOME=~/.local_tst nvim" 
+alias  nv="XDG_CONFIG_HOME=~/.config XDG_DATA_HOME=~/.local/share nvim"
+alias nvo="XDG_CONFIG_HOME=~/.config XDG_DATA_HOME=~/.local/share nvim"
+alias nvn="XDG_CONFIG_HOME=~/.config_tst XDG_DATA_HOME=~/.local_tst/share nvim" 
 
 ###########################################################################
 # POSTGRESS HELPERS
