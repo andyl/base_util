@@ -29,9 +29,17 @@ sourcefile ~/.util_path           # define $UTIL_PATH
 export PATH=$UTIL_PATH:$PATH      # setup util PATH 
 
 ###########################################################################
-# CODE AND DATE UTIL
+# ALTERNATE UTIL
 sourcefile ~/.bashrc_code
 sourcefile ~/.bashrc_date
+sourcefile ~/.bashrc_nvim
+
+###########################################################################
+# EDITOR
+
+export EDITOR="nvim"
+export VISUAL="nvim"
+export TERMINAL="terminator"
 
 ###########################################################################
 # NPM
@@ -503,23 +511,6 @@ alias deldemoprompt="rm -f $PROMPT_FILE"
 if [ `which xterm_title` ]; then
   PROMPT_COMMAND='export PWDS=`pwd_short`;xterm_title "${USRNAME}@${SYSNAME} ${PWDS}"'
 fi
-
-###########################################################################
-# EDITOR ALIASES
-
-alias lvim="nvim -c \"normal '0\""  # open the last file edited
-alias vimm='nvim'
-alias vimn='nvim'
-alias vin='nvim'
-alias vim-='nvim -'
-
-export EDITOR="nvim"
-export VISUAL="nvim"
-export TERMINAL="terminator"
-
-alias  nv="XDG_CONFIG_HOME=~/.config XDG_DATA_HOME=~/.local/share nvim"
-alias nvo="XDG_CONFIG_HOME=~/.config XDG_DATA_HOME=~/.local/share nvim"
-alias nvn="XDG_CONFIG_HOME=~/.config_tst XDG_DATA_HOME=~/.local_tst/share nvim" 
 
 ###########################################################################
 # POSTGRESS HELPERS

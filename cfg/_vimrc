@@ -7,52 +7,11 @@
 " call pathogen#helptags()
 
 " -----------------------------------------------------------------
-" ----- load base config
-source ~/.vimrc_base
-
-" -----------------------------------------------------------------
 " ----- vim-specific configurations
 
 " === COLOR SCHEMES, FOCUS AND BLUR
 " see https://github.com/morhetz/gruvbox
 
-set t_Co=256
 syntax on
 set background=dark
-let g:blur_bg=237
-
-function! <SID>focus()
-  set cc=""
-  if &filetype == "nerdtree"
-    return
-  endif
-  hi clear
-  let defaultTypes = ["text", "otl", "wlog", "gtd"]
-  if index(defaultTypes, &filetype)
-    let g:gruvbox_contrast_dark='hard'
-    set background=dark
-    " colorscheme gruvbox
-  else
-    set nocursorline
-    colorscheme default
-  end
-  exec 'hi ColorColumn ctermbg=' . g:blur_bg
-  " AirlineRefresh  
-endfunction
-
-function! <SID>blur()
-  hi clear
-  if &filetype == "nerdtree"
-    set cc=""
-  else
-    let &colorcolumn=join(range(1,150),",")
-  endif
-  exec 'hi ColorColumn ctermbg=' . g:blur_bg
-  " AirlineRefresh
-endfunction
-
-autocmd BufEnter,FocusGained,VimEnter,WinEnter *      :call <SID>focus()
-" autocmd BufEnter,FocusGained,VimEnter,WinEnter *.wlog colorscheme worklog | AirlineRefresh
-" autocmd BufEnter,FocusGained,VimEnter,WinEnter *.otl  colorscheme otl     | AirlineRefresh
-" autocmd BufEnter,FocusGained,VimEnter,WinEnter *.gtd  colorscheme gtd     | AirlineRefresh
 
