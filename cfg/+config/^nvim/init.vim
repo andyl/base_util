@@ -1,14 +1,10 @@
 " === VIMRC FOR NEOVIM
 
-" === PATHOGEN PLUGIN MANAGER 
-" LOADS CUSTOM PLUGINS IN ~/.vim/bundle ...
-" call pathogen#runtime_append_all_bundles()   
-" call pathogen#helptags()
-
 " === VIM-PLUG - PLUGIN MANAGER
 " Cmds - :PlugInstall / :PlugClean / :PlugStatus / :PlugUpdate / :PlugUpgrade
 " Docs at http://github.com/junegunn/vim-plug 
-call plug#begin('~/.vim/plugged')
+
+call plug#begin('~/.vim/plugged_pro')
 
 " -- MISC -----
 Plug 'andyl/nvls'
