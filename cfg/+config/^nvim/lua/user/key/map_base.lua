@@ -18,9 +18,9 @@ local keytable = {
 
 }
 
-local function unmap(key)
-  pcall(vim.cmd('mapclear "' .. key .. '"'))
-end
+-- local function unmap(key)
+--   pcall(vim.cmd('mapclear "' .. key .. '"'))
+-- end
 
 -- unmap("<leader>q")
 -- unmap("<C-k>")

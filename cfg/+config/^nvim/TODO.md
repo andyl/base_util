@@ -115,10 +115,9 @@ Organization:
 - [x] PRO: Migrate to Telescope
 - [x] PRO: Migrate to NvimTree
 - [x] Lualine - edit status in footer
+- [x] Snippets - Write snippets 
 
 ## Tasks
-
-- [ ] Snippets - Write snippets 
 
 - [ ] NvimTree - Highlight active file (BROKEN)
 - [ ] NvimTree - Rename & Delete with Open Buffers
