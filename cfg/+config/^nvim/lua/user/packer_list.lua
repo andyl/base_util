@@ -63,14 +63,6 @@ return Packer.startup(function(use)
   use 'mattn/vim-textobj-url'                  -- au/iu
   use 'tpope/vim-surround'                     -- edit containing objects
   use 'tpope/vim-repeat'                       -- repeat support for plugins
-  -- MISC
-  use 'chrisbra/unicode.vim'                   -- :SearchUni check|C-v u2705|✅
-  use 'moll/vim-bbye'                          -- delete buffer w/o closing win
-  use 'lewis6991/impatient.nvim'               -- fast startup
-  use 'goolord/alpha-nvim'                     -- greeter UI
-  use 'antoinemadec/FixCursorHold.nvim'        -- needed to fix lsp doc highlight
-  use 'kshenoy/vim-signature'                  -- show marks in gutter
-  use 'rafcamlet/nvim-luapad'                  -- neovim lua repl
   -- LANG JSON
   use 'tpope/vim-jdaddy'                       -- JSON text objects & formatting
   -- LANG ELIXIR
@@ -88,23 +80,30 @@ return Packer.startup(function(use)
   use 'morhetz/gruvbox'                        -- gruvbox
   -- FILE FORMATS
   use 'jtratner/vim-flavored-markdown'         -- markdown files
-  -- LAYOUTS -----
+  -- LAYOUTS
   use 'andyl/zoomwintab.vim'                   -- pane zooming
+  -- MISC
+  use 'chrisbra/unicode.vim'                   -- :SearchUni check|C-v u2705|✅
+  use 'moll/vim-bbye'                          -- delete buffer w/o closing win
+  use 'lewis6991/impatient.nvim'               -- fast startup
+  use 'antoinemadec/FixCursorHold.nvim'        -- needed to fix lsp doc highlight
+  use 'kshenoy/vim-signature'                  -- show marks in gutter
+  use 'rafcamlet/nvim-luapad'                  -- neovim lua repl
+  use 'terryma/vim-multiple-cursors'           -- multiple cursors
   -- LANG RUBY
   -- Plug 'vim-ruby/vim-ruby'                  -- syntax highlighting
   -- Plug 'andyl/vim-projectionist-ruby'       -- ruby file navigation
   -- Plug 'nelstrom/vim-textobj-rubyblock'     -- ruby text objects
   -- Plug 'bronson/vim-ruby-block-conv'        -- toggle {} to begin/end
   -- Plug 'andyl/vim-snipmate-ruby'            -- snippets for ruby
-  -- CODING UTILITIES -----
+  -- CODING UTILITIES
   -- Plug 'milkypostman/vim-togglelist'        -- toggle quicklist and location list
   -- Plug 'tpope/vim-unimpaired'               -- jump leading/trailing paren
   -- Plug 'tmhedberg/matchit'                  -- % matching
   -- Plug 'vim-scripts/SyntaxRange'            -- vimdeck syntax highlighting
   -- Plug 'liuchengxu/vim-which-key'           -- shows key mappings
   -- Plug 'janko/vim-test'                     -- test runner
-  -- MISC -----
-  -- Plug 'terryma/vim-multiple-cursors'       -- multiple cursors
+  -- MISC
   -- Plug 'tpope/vim-fugitive'                 -- git integration
   -- Plug 'vim-scripts/bats.vim'               -- bats editing
   -- Plug 'gillyb/stable-windows'              -- no window scroll on split
