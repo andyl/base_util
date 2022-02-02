@@ -116,12 +116,19 @@ Organization:
 - [x] PRO: Migrate to NvimTree
 - [x] Lualine - edit status in footer
 - [x] Snippets - Write snippets 
+- [x] Install Luapad - a repl-like Lua explorer
 
 ## Tasks
+
+- [ ] Read NvimTree source 
+- [ ] Read Neovim Source 
 
 - [ ] NvimTree - Highlight active file (BROKEN)
 - [ ] NvimTree - Rename & Delete with Open Buffers
 - [ ] NvimTree - One-Char Copy Command 
+
+- [ ] LSP: Cleanup elixirls config (dialyzer = false)
+- [ ] LSP: Fix or remove nlsp-settings
 
 - [ ] WhichKey - Add KeyMap nav/search
 - [ ] WhichKey - Define hotkeys for quickfix and local lists
