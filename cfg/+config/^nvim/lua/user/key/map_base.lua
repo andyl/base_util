@@ -81,3 +81,6 @@ KmI("jj", "<esc>")
 KmI(":w", "<esc>:w")
 KmI(":q", "<esc>:q")
 
+-- SNIPPET JUMPS
+KmI("<A-j>", "<esc>:lua require('luasnip').jump(1)<cr>")
+KmI("<A-k>", "<esc>:lua require('luasnip').jump(-1)<cr>")

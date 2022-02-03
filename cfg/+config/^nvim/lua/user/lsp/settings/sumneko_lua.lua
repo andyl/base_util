@@ -1,6 +1,10 @@
 return {
 	settings = {
 
+    elixirLS = {
+      dialyzerEnabled = false,
+    },
+
 		Lua = {
 			diagnostics = {
 				globals = { "vim" },

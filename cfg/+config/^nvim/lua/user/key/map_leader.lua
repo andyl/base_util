@@ -11,37 +11,37 @@ local n_opts = {
 
 local keytable = {
 
-  ["q"] = { ":q<cr>"                       , "Pane Quit"            },
-  ["e"] = { "<cmd>NvimTreeToggle<cr>"      , "Explorer"             },
-  ["s"] = { ":sp<cr>"                      , "Pane Split"           },
-  ["v"] = { ":vsp<cr>"                     , "Pane Vsplit"          },
-  ["o"] = { ":only<cr>"                    , "Pane Only"            },
-  ["O"] = { ":only<cr>:NvimTreeToggle<cr>" , "Pane Only w/Explorer" },
+  ["q"] = { ":q<cr>",                       "Pane Quit"            },
+  ["e"] = { "<cmd>NvimTreeToggle<cr>",      "Explorer"             },
+  ["s"] = { ":sp<cr>",                      "Pane Split"           },
+  ["v"] = { ":vsp<cr>",                     "Pane Vsplit"          },
+  ["o"] = { ":only<cr>",                    "Pane Only"            },
+  ["O"] = { ":only<cr>:NvimTreeToggle<cr>", "Pane Only w/Explorer" },
 
   a = { -- vim_projecionist - navigation between SRC and TEST files
     name = "Alternate File",
-    e = { ":A<cr>",  "Open in Term" },
+    e = { ":A<cr>",  "Open in Term"   },
     v = { ":AV<cr>", "Open in Vsplit" },
-    s = { ":AS<cr>", "Open in Split" },
-    t = { ":AT<cr>", "Open in Tab"  },
+    s = { ":AS<cr>", "Open in Split"  },
+    t = { ":AT<cr>", "Open in Tab"    },
   },
 
   f = { -- telescope - fuzzy finders
     name = "Find",
-    b = { "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>", "Buffers" },
-    f = { "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>", "Files" },
-    m = { "<cmd>Telescope frecency<cr>", "MRU" },
-    t = { "<cmd>Telescope live_grep theme=ivy<cr>", "Text"  },
+    b = { "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",    "Buffers" },
+    f = { "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>", "Files"   },
+    m = { "<cmd>Telescope frecency<cr>",                                                                                       "MRU"     },
+    t = { "<cmd>Telescope live_grep theme=ivy<cr>",                                                                            "Text"    },
   },
 
   t = { -- tab manipulation and navigation
     name = "Tab",
-    n = { ":tabnew<cr>"                 , "New"                              },
-    o = { ":tabnew %<cr>"               , "Open pane in New Tab"             },
-    O = { ":tabnew %<cr>:NvimTreeToggle", "Open pane in New Tab w/Explorer"  },
-    x = { ":tabclose<cr>"               , "Close"                            },
-    h = { ":tabp<cr>"                   , "Jump Left"                        },
-    l = { ":tabn<cr>"                   , "Jump Right"                       },
+    n = { ":tabnew<cr>",                      "New"                             },
+    o = { ":tabnew %<cr>",                    "Open pane in New Tab"            },
+    O = { ":tabnew %<cr>:NvimTreeToggle<cr>", "Open pane in New Tab w/Explorer" },
+    x = { ":tabclose<cr>",                    "Close"                           },
+    h = { ":tabp<cr>",                        "Jump Left"                       },
+    l = { ":tabn<cr>",                        "Jump Right"                      },
   },
 
 }
