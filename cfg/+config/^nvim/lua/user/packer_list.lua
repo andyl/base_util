@@ -33,7 +33,6 @@ return Packer.startup(function(use)
   use 'nvim-telescope/telescope-frecency.nvim' -- frecency tracker
   -- SNIPPETS
   use 'L3MON4D3/LuaSnip'                       -- snippet engine
-  use 'rafamadriz/friendly-snippets'           -- a bunch of snippets to use
   -- CMP/COMPLETION
   use 'hrsh7th/nvim-cmp'                       -- the completion plugin
   use 'hrsh7th/cmp-buffer'                     -- buffer completions
@@ -68,7 +67,6 @@ return Packer.startup(function(use)
   -- LANG ELIXIR
   use 'powerman/vim-plugin-AnsiEsc'            -- docco with ANSI colors
   use 'elixir-editors/vim-elixir'              -- filetype detection
-  use 'andyl/vim-snipmate-elixir'              -- snippets for elixir
   use 'andyl/vim-projectionist-elixir'         -- elixir file navigation
   use 'andyl/vim-textobj-elixir'               -- elixir text objects
   -- COLORSCHEMES

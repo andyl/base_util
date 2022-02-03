@@ -129,6 +129,8 @@ Organization:
 - [ ] Read NvimTree source 
 - [ ] Read Neovim Source 
 
+- [ ] Telescope - working MRU lookup 
+
 - [ ] NvimTree - Highlight active file (BROKEN)
 - [ ] NvimTree - One-Char Copy Command 
 
