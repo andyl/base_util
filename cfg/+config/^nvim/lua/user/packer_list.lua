@@ -28,9 +28,7 @@ return Packer.startup(function(use)
   use 'benmills/vimux'                         -- tmux integration
   use 'akinsho/toggleterm.nvim'                -- terminal management
   -- TELESCOPE
-  use 'tami5/sqlite.lua'                       -- needed for frecency
   use 'nvim-telescope/telescope.nvim'          -- fuzzy finder
-  use 'nvim-telescope/telescope-frecency.nvim' -- frecency tracker
   -- SNIPPETS
   use 'L3MON4D3/LuaSnip'                       -- snippet engine
   -- CMP/COMPLETION
