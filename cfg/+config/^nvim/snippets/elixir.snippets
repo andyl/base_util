@@ -7,7 +7,7 @@ snippet put IO.puts
 snippet ins IO.inspect
 	IO.inspect(${0})
 snippet insl IO.inspect with label
-	IO.inspect(${0}label: "${1:label}")
+	IO.inspect(${1}label: "${2:label}")${0}
 snippet if if .. do .. end
 	if ${1} do
 		${0:${VISUAL}}

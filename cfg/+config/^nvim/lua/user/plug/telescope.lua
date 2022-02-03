@@ -91,9 +91,6 @@ telescope.setup({
     -- builtin picker
   },
   extensions = {
-    frecency = {
-      show_scores = true,
-    }
     -- Your extension configuration goes here:
     -- extension_name = {
     --   extension_config_key = value,
@@ -102,4 +99,3 @@ telescope.setup({
   },
 })
 
-telescope.load_extension("frecency")
