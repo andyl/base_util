@@ -124,12 +124,18 @@ Organization:
 - [x] Fix key mapping bugs
 - [x] Add keymap for snippet jumps
 
+## 2022 Feb 03 Thu
+
+- [x] Telescope - working MRU lookup 
+- [x] Fix snippets
+- [x] WhichKey - Add KeyMap nav/search
+
 ## Tasks
 
 - [ ] Read NvimTree source 
 - [ ] Read Neovim Source 
-
-- [ ] Telescope - working MRU lookup 
+- [ ] Read Lsp Source 
+- [ ] Read Telescope Source 
 
 - [ ] NvimTree - Highlight active file (BROKEN)
 - [ ] NvimTree - One-Char Copy Command 
@@ -137,7 +143,6 @@ Organization:
 - [ ] LSP: Cleanup elixirls config (dialyzer = false)
 - [ ] LSP: Fix or remove nlsp-settings
 
-- [ ] WhichKey - Add KeyMap nav/search
 - [ ] WhichKey - Define hotkeys for quickfix and local lists
 
 - [ ] Lualine - file path in footer
