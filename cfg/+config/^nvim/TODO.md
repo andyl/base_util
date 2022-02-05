@@ -129,6 +129,12 @@ Organization:
 - [x] Telescope - working MRU lookup 
 - [x] Fix snippets
 - [x] WhichKey - Add KeyMap nav/search
+- [x] Add betterQuickFix (nvim-bqf)
+- [x] EasyAlign: align lua comments `-`
+
+## 2022 Feb 04 Fri
+
+- [ ] Fix Ack 
 
 ## Tasks
 
@@ -144,6 +150,7 @@ Organization:
 - [ ] LSP: Fix or remove nlsp-settings
 
 - [ ] WhichKey - Define hotkeys for quickfix and local lists
+- [ ] WhichKey - Open quickfix item in vsplit, tab, etc.
 
 - [ ] Lualine - file path in footer
 

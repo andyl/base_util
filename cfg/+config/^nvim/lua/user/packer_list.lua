@@ -52,7 +52,7 @@ return Packer.startup(function(use)
   use 'dhruvasagar/vim-table-mode'             -- vim table mode
   use 'junegunn/vim-easy-align'                -- column alignment
   -- SEARCH AND NAV
-  use 'mileszs/ack.vim'                        -- file search
+  use 'mileszs/ack.vim'                        -- ACK file search
   use 'tpope/vim-projectionist'                -- alternate file nav
   use 'andyl/fuzzy-projectionist.vim'          -- fzf meets projectionist (eg :Fmodel)
   -- TEXT MANIPULATION
