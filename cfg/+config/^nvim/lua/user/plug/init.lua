@@ -7,6 +7,7 @@ require "user.plug.telescope"
 require "user.plug.cmp"
 require "user.plug.lualine"
 require "user.plug.luasnip"
+require "user.plug.mkdx"
 require "user.plug.tabline"
 require "user.plug.comment"
 
