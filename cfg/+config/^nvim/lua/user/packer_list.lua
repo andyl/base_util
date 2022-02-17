@@ -75,7 +75,7 @@ return Packer.startup(function(use)
   use 'tomasr/molokai'                         -- molokai
   use 'morhetz/gruvbox'                        -- gruvbox
   -- FILE FORMATS
-  use 'jtratner/vim-flavored-markdown'         -- markdown files
+  use 'preservim/vim-markdown'                 -- markdown syntax highlighting and folding
   -- LAYOUTS
   use 'andyl/zoomwintab.vim'                   -- pane zooming
   -- MISC
