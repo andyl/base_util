@@ -9,7 +9,16 @@ local n_opts = {
   nowait  = true,       -- use `nowait` when creating keymaps
 }
 
-local keytable = {
+local v_opts = {
+  mode    = "v",        -- VISUAL mode
+  prefix  = "<leader>", -- leader key ","
+  buffer  = nil,        -- Specify a buffer num for buffer local mapping
+  silent  = true,       -- use `silent` when creating keymaps
+  noremap = true,       -- use `noremap` when creating keymaps
+  nowait  = true,       -- use `nowait` when creating keymaps
+}
+
+local keytable_n = {
 
   ["q"] = { ":q<cr>",                       "Pane Quit"            },
   ["e"] = { "<cmd>NvimTreeToggle<cr>",      "Explorer"             },
@@ -18,7 +27,7 @@ local keytable = {
   ["o"] = { ":only<cr>",                    "Pane Only"            },
   ["O"] = { ":only<cr>:NvimTreeToggle<cr>", "Pane Only w/Explorer" },
 
-  a = { -- vim_projecionist - navigation between SRC and TEST files
+  a = { -- ALT-FILE - vim_projecionist - navigation between SRC and TEST files
     name = "Alternate File",
     e = { ":A<cr>",  "Open in Term"   },
     v = { ":AV<cr>", "Open in Vsplit" },
@@ -26,7 +35,7 @@ local keytable = {
     t = { ":AT<cr>", "Open in Tab"    },
   },
 
-  f = { -- telescope - fuzzy finders
+  f = { -- FIND - telescope - fuzzy finders
     name = "Find",
     b = { "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>", "Buffers"  },
     f = { "<cmd>Telescope find_files<cr>",                                                                                  "Files"    },
@@ -36,7 +45,7 @@ local keytable = {
     t = { "<cmd>Telescope live_grep theme=ivy<cr>",                                                                         "Text"     },
   },
 
-  t = { -- tab manipulation and navigation
+  t = { -- TAB - tab manipulation and navigation
     name = "Tab",
     n = { ":tabnew<cr>",                      "New"                             },
     o = { ":tabnew %<cr>",                    "Open pane in New Tab"            },
@@ -46,9 +55,31 @@ local keytable = {
     l = { ":tabn<cr>",                        "Jump Right"                      },
   },
 
+  l = { -- LAYOUT - pane layout
+    name = "Layout",
+    s = { "<C-w>J", "layout split"    },
+    v = { "<C-w>L", "layout vertical" },
+    r = { "<C-w>r", "layout rotate"   },
+  },
+
+  x = { -- CROSS-COPY - copy across vim instances using external file
+    name = "CrossCopy",
+    y = { "y:call writefile(split(@0,\"\\n\"), \"/tmp/vimtmp\")<cr>", "yank"   },
+    d = { "d:call writefile(split(@1,\"\\n\"), \"/tmp/vimtmp\")<cr>", "delete" },
+    p = { ":r /tmp/vimtmp<cr>",                                       "paste"  },
+  }
 }
 
-if WhichKeyOk then WhichKey.register(keytable, n_opts) end
+local keytable_v = {
+  x = { -- CROSS-COPY - copy across vim instances using external file
+    name = "CrossCopy",
+    y = { "y:call writefile(split(@0,\"\\n\"), \"/tmp/vimtmp\")<cr>", "yank"   },
+    d = { "d:call writefile(split(@1,\"\\n\"), \"/tmp/vimtmp\")<cr>", "delete" },
+  }
+}
+
+if WhichKeyOk then WhichKey.register(keytable_n, n_opts) end
+if WhichKeyOk then WhichKey.register(keytable_v, v_opts) end
 
 -- TAB NAVIGATION
 KmN("<leader>t1", "1gt")
@@ -60,16 +91,4 @@ KmN("<leader>t6", "6gt")
 KmN("<leader>t7", "7gt")
 KmN("<leader>t8", "8gt")
 KmN("<leader>t9", "9gt")
-
--- PANE LAYOUT
-KmN("<leader>ls", "<C-w>J") -- layout split
-KmN("<leader>lv", "<C-w>L") -- layout vertical
-KmN("<leader>lr", "<C-w>r") -- layout rotate
-
--- CROSS-FILE - copy across vim instances using external file
-KmN("<leader>xy", "y:call writefile(split(@0,\"\\n\"), \"/tmp/vimtmp\")<cr>")
-KmV("<leader>xy", "y:call writefile(split(@0,\"\\n\"), \"/tmp/vimtmp\")<cr>")
-KmN("<leader>xd", "d:call writefile(split(@1,\"\\n\"), \"/tmp/vimtmp\")<cr>")
-KmV("<leader>xd", "d:call writefile(split(@1,\"\\n\"), \"/tmp/vimtmp\")<cr>")
-KmN("<leader>xp", ":r /tmp/vimtmp<cr>")
 
