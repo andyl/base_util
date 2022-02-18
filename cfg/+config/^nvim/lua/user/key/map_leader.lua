@@ -45,6 +45,20 @@ local keytable_n = {
     t = { "<cmd>Telescope live_grep theme=ivy<cr>",                                                                         "Text"     },
   },
 
+  l = { -- LAYOUT - pane layout
+    name = "Layout",
+    s = { "<C-w>J", "layout split"    },
+    v = { "<C-w>L", "layout vertical" },
+    r = { "<C-w>r", "layout rotate"   },
+  },
+
+  p = { -- PRINT - print files
+    name = "Print",
+    p = { ":! a2ps -c --highlight-level=none --sides=duplex -T 2 --line-numbers=1 %<cr>",                                       "Portrait"         },
+    l = { ":! a2ps -c --highlight-level=none --sides=duplex -T 2 --line-numbers=1 --portrait  --columns=1 --font-size=9 %<cr>", "Landscape"        },
+    s = { ":! a2ps -c --highlight-level=none --sides=duplex -T 2 --line-numbers=1 --landscape --columns=1 --font-size=9 %<cr>", "Single Landscape" },
+  },
+
   t = { -- TAB - tab manipulation and navigation
     name = "Tab",
     n = { ":tabnew<cr>",                      "New"                             },
@@ -53,13 +67,6 @@ local keytable_n = {
     x = { ":tabclose<cr>",                    "Close"                           },
     h = { ":tabp<cr>",                        "Jump Left"                       },
     l = { ":tabn<cr>",                        "Jump Right"                      },
-  },
-
-  l = { -- LAYOUT - pane layout
-    name = "Layout",
-    s = { "<C-w>J", "layout split"    },
-    v = { "<C-w>L", "layout vertical" },
-    r = { "<C-w>r", "layout rotate"   },
   },
 
   x = { -- CROSS-COPY - copy across vim instances using external file
