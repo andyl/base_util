@@ -65,7 +65,7 @@ tkill () {
 ###########################################################################
 # ELIXIR/ERLANG
 export ERL_AFLAGS="-kernel shell_history enabled"
-export ELIXIR_EDITOR="code"
+export ELIXIR_EDITOR="nvim"
 export PATH=$PATH:~/.mix/escripts             # setup escript path
 alias   ie="iex -pa ~/.iex 2> /dev/null"
 alias  iex="iex -pa ~/.iex 2> /dev/null"
@@ -73,8 +73,6 @@ alias iexm="iex -pa ~/.iex -S mix 2> /dev/null"
 alias   mc="mix compile"
 alias   mt="mix test"
 alias   mr="mixrun"
-
-alias mat="mix atree"
 
 # https://thinkingelixir.com/elixir-1-11-and-erlang-docs/
 export KERL_BUILD_DOCS="yes"
