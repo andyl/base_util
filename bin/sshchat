@@ -3,5 +3,6 @@
 # sshchat
 
 echo "CONNECTING VIA 'ssh casmacc-net -p 9000'"
+echo "'/exit' or C-d to exit"
 
 ssh casmacc.net -p 9000

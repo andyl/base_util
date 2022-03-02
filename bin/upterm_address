@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+chat_ip=64.225.123.201 
+
+ssh_command=`upterm session current | grep 'SSH Session:' | cut -f 15-20 -d ' '`
+
+# write to sshchat
+echo -e "[ Your UPTERM connection string... ]\rssh $ssh_command\r" | ssh $chat_ip -p 9000 > /dev/null 2>&1 
+
+# write to stdout
+echo ">> This ssh command was auto-posted to 'sshchat' (ssh $chat_ip)"
+echo ">> You can send the command to your partner via email, sshchat, etc."
+echo ssh $ssh_command
