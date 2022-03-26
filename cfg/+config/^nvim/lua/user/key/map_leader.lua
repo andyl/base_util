@@ -50,6 +50,7 @@ local keytable_n = {
     s = { "<C-w>J", "layout split"    },
     v = { "<C-w>L", "layout vertical" },
     r = { "<C-w>r", "layout rotate"   },
+    e = { "<C-w>=", "layout equalize" },
   },
 
   p = { -- PRINT - print files
