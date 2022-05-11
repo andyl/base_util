@@ -9,7 +9,7 @@ local n_opts = {
   nowait  = true,    -- use `nowait` when creating keymaps
 }
 
-local keymap = {
+local n_keymap = {
 
   a = { -- LSP operations
     name = "LSP",
@@ -39,10 +39,36 @@ local keymap = {
     t = { ":vsplit | terminal<cr><C-W>T"       , "Tab"    },
   },
 
+  i = { -- Insert
+    name = "Insert",
+    d = { ":r !w_date_tag<cr>kJA", "Date"  },
+    t = { ":r !w_time_tag<cr>kJA", "Time"  },
+  },
+
+
 }
 
-if WhichKeyOk then WhichKey.register(keymap, n_opts) end
+if WhichKeyOk then WhichKey.register(n_keymap, n_opts) end
 
--- DATE TAG
-KmN("\\d", ":r !w_date_tag<cr>kJA")
-KmI("\\d", "<esc>:r !w_date_tag<cr>kJA")
+local i_opts = {
+  mode    = "i",     -- INSERT mode
+  prefix  = "\\",    -- slash key
+  buffer  = nil,     -- Give a buffer num for buffer local mapping
+  silent  = true,    -- use `silent` when creating keymaps
+  noremap = true,    -- use `noremap` when creating keymaps
+  nowait  = true,    -- use `nowait` when creating keymaps
+}
+
+
+local i_keymap = {
+
+  i = { -- Insert
+    name = "Insert",
+    d = { "<esc>:r !w_date_tag<cr>kJA", "Date"  },
+    t = { "<esc>:r !w_time_tag<cr>kJA", "Time"  },
+  },
+
+}
+
+if WhichKeyOk then WhichKey.register(i_keymap, i_opts) end
+
