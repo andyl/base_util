@@ -41,9 +41,9 @@ local n_keymap = {
 
   i = { -- Insert
     name = "Insert",
-    d = { ":r !w_date_tag<cr>kJA" , "Date"        },
-    t = { ":r !w_time_tag<cr>kJA" , "Exact Time"  },
-    q = { ":r !w_timestamp<cr>kJA", "Quarter-hour Time"  },
+    d = { ":r !w_date_tag<cr>kJA",   "Date"              },
+    t = { ":r !w_time_exact<cr>kJA", "Exact Time"        },
+    q = { ":r !w_time_qhour<cr>kJA", "Quarter-hour Time" },
   },
 
 
@@ -65,8 +65,9 @@ local i_keymap = {
 
   i = { -- Insert
     name = "Insert",
-    d = { "<esc>:r !w_date_tag<cr>kJA", "Date"  },
-    t = { "<esc>:r !w_time_tag<cr>kJA", "Time"  },
+    d = { "<esc>:r !w_date_tag<cr>kJA",   "Date"              },
+    t = { "<esc>:r !w_time_exact<cr>kJA", "Exact Time"        },
+    q = { "<esc>:r !w_time_qhour<cr>kJA", "Quarter-hour Time" },
   },
 
 }
