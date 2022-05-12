@@ -1,4 +1,5 @@
 -- key/init
+-- configuration for "WhichKey" configuartion
 
 require "user.key.conf"
 require "user.key.map_base"
