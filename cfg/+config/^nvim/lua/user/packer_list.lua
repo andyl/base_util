@@ -26,14 +26,14 @@ return Packer.startup(function(use)
   use 'terrortylor/nvim-comment'               -- commenting tool
   -- NEOVIM/TERMINAL
   use 'benmills/vimux'                         -- tmux integration
-  -- use 'akinsho/toggleterm.nvim'                -- terminal management
   use {"akinsho/toggleterm.nvim", tag = 'v1.*', config = function()
-    require("toggleterm").setup()
+    require("toggleterm").setup()              -- terminal management
   end}
   -- TELESCOPE
   use 'nvim-telescope/telescope.nvim'          -- fuzzy finder
   -- SNIPPETS
   use 'L3MON4D3/LuaSnip'                       -- snippet engine
+  use 'mattn/emmet-vim'                        -- html snippets (trigger using <C-y ,>)
   -- CMP/COMPLETION
   use 'hrsh7th/nvim-cmp'                       -- the completion plugin
   use 'hrsh7th/cmp-buffer'                     -- buffer completions
