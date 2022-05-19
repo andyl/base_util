@@ -2,7 +2,7 @@ elixir 1.13.3-otp-24
 erlang 24.2 
 ruby 3.0.2
 dart 2.14.4
-nodejs 15.8.0
+nodejs 18.2.0
 crystal 0.29.0
 rust 1.58.0
 golang 1.14.4

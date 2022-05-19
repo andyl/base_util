@@ -9,7 +9,7 @@ alias sl='ls'
 alias l='ls'
 
 # asdf 
-alias asdfh="asdf | head -n -7"
+alias asdfh="asdf | head -n -23"
 
 # quick directory movement
 alias ..='cd ..'
