@@ -6,7 +6,7 @@ if not status_ok then return end
 -- auto-install servers
 
 local servers = {
-  "bashls", "cssls", "elixirls", "html", "jsonls", "solargraph", "sumneko_lua"
+  "tailwindcss", "bashls", "cssls", "elixirls", "html", "jsonls", "solargraph", "sumneko_lua"
 }
 
 for _, name in pairs(servers) do
