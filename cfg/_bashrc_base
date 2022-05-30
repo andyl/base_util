@@ -319,7 +319,7 @@ alias bejek="bundle exec jekyll"
 # DOCKER
 
 alias dk="docker"
-alias dkc="docker-compose"
+alias dkc="docker compose"
 alias dklz="lazydocker"
 alias dkhs="docker search --limit 5 --format 'table {{.Name}}\t{{.Description}}\t{{.StarCount}}'"
 alias dkps="docker ps -a --format 'table {{.Image}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}'"
