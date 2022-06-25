@@ -1,11 +1,6 @@
 -- nvim-tree
 --------------------------------------------------------
 
--- each of these are documented in `:help nvim-tree.OPTION_NAME`
-vim.g.nvim_tree_icons = { folder = { arrow_closed = "›" } }
-vim.g.nvim_tree_show_icons = { git = 0, folders = 1, files = 1, folder_arrows = 1, tree_width = 30 }
-vim.g.nvim_tree_highlight_opened_files = 3
-
 local status_ok, nvim_tree = pcall(require, "nvim-tree")
 if not status_ok then return end
 
@@ -15,6 +10,19 @@ if not config_status_ok then return end
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
 nvim_tree.setup {
+  renderer = {
+    highlight_opened_files = "all",
+    icons = {
+      glyphs = { folder = { arrow_closed = "›" } },
+      show = {
+        git = false,
+        file = true,
+        folder = true,
+        folder_arrow = true,
+        -- tree_width = 30
+      }
+    }
+  },
   ignore_ft_on_setup = { "startify", "dashboard", "alpha", },
   update_to_buf_dir  = { enable = true, auto_open = true },
   system_open        = { cmd = nil, args = {} },
