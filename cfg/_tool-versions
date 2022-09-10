@@ -1,5 +1,5 @@
-elixir 1.13.3-otp-24
-erlang 24.2 
+elixir 1.14.0-otp-25
+erlang 25.0.4
 ruby 3.0.2
 dart 2.14.4
 nodejs 18.2.0
