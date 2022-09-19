@@ -24,7 +24,7 @@ nvim_tree.setup {
     }
   },
   ignore_ft_on_setup = { "startify", "dashboard", "alpha", },
-  update_to_buf_dir  = { enable = true, auto_open = true },
+  -- update_to_buf_dir  = { enable = true, auto_open = true },
   system_open        = { cmd = nil, args = {} },
   filters            = { dotfiles = false, custom = {} },
   -- git_hl = 1,
@@ -64,7 +64,7 @@ nvim_tree.setup {
     height = 30,
     hide_root_folder = false,
     side = "left",
-    auto_resize = true,
+    -- auto_resize = true,
     mappings = {
       custom_only = false,
       list = {
