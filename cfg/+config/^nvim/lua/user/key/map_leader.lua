@@ -51,6 +51,7 @@ local keytable_n = {
     v = { "<C-w>L", "layout vertical" },
     r = { "<C-w>r", "layout rotate"   },
     e = { "<C-w>=", "layout equalize" },
+    w = { ":silent !kill -s SIGWINCH $PPID<cr>", "window change" },
   },
 
   p = { -- PRINT - print files
