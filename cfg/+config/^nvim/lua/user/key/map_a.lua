@@ -10,6 +10,7 @@
 -- vim.cmd ":vmap ac <Plug>(EasyAlign)"
 
 vim.cmd ":nmap at :EasyAlign *\\|<cr>"
+vim.cmd ":vmap at :EasyAlign *\\|<cr>"
 vim.cmd ":nmap ac :EasyAlign "
 vim.cmd ":vmap ac :EasyAlign "
 
