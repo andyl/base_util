@@ -10,4 +10,5 @@ require "user.plug.luasnip"
 require "user.plug.mkdx"
 require "user.plug.tabline"
 require "user.plug.comment"
+require "user.plug.treesitter"
 

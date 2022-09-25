@@ -50,7 +50,6 @@ return Packer.startup(function(use)
   use 'andyl/nvls'                             -- test plugin
   use 'andyl/rfx.nvim'                         -- test plugin
   use 'andyl/al-gtd'                           -- GTD
-  -- use 'andyl/al-worklog'                       -- worklog
   -- EDITING UTILS
   use 'dhruvasagar/vim-table-mode'             -- vim table mode
   use 'junegunn/vim-easy-align'                -- column alignment
