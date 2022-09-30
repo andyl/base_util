@@ -26,7 +26,7 @@ return Packer.startup(function(use)
   use 'terrortylor/nvim-comment'               -- commenting tool
   -- NEOVIM/TERMINAL
   use 'benmills/vimux'                         -- tmux integration
-  use {"akinsho/toggleterm.nvim", tag = 'v1.*', config = function()
+  use {"akinsho/toggleterm.nvim", tag = '*', config = function()
     require("toggleterm").setup()              -- terminal management
   end}
   -- TELESCOPE
