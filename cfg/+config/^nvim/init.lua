@@ -13,11 +13,10 @@ require "user.lsp"           -- lsp configuration
 
 -- hack/workaround to fix broken heex highlighting
 -- https://github.com/elixir-editors/vim-elixir/issues/562
-
-vim.api.nvim_exec(
-[[
-  au BufRead,BufNewFile *.ex,*.exs set filetype=elixir
-  au BufRead,BufNewFile *.eex,*.heex,*.leex,*.sface,*.lexs set filetype=eelixir
-  au BufRead,BufNewFile mix.lock set filetype=elixir
-]], false)
+-- vim.api.nvim_exec(
+-- [[
+--   au BufRead,BufNewFile *.ex,*.exs set filetype=elixir
+--   au BufRead,BufNewFile *.eex,*.heex,*.leex,*.sface,*.lexs set filetype=eelixir
+--   au BufRead,BufNewFile mix.lock set filetype=elixir
+-- ]], false)
 

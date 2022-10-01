@@ -23,7 +23,7 @@ vim.cmd [[
 
 -- Autosync if booting
 
-if PACKER_BOOTSTRAP then 
-  Packer.sync() 
+if PACKER_BOOTSTRAP then
+  Packer.sync()
 end
 
