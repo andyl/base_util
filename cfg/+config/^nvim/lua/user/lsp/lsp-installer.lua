@@ -1,12 +1,28 @@
 -- lsp-installer
 
+-- Key Commands
+-- :LspInstallInfo - list installed and available servers
+-- :LspInstall     - install latest server
+-- :LspInfo        - LSP info for current buffer
+
 local status_ok, lsp_installer = pcall(require, "nvim-lsp-installer")
 if not status_ok then return end
 
 -- auto-install servers
 
 local servers = {
-  "tailwindcss", "bashls", "cssls", "elixirls", "html", "jsonls", "solargraph", "sumneko_lua", "dockerls", "tsserver"
+  "bashls",      -- bash
+  "cssls",       -- css
+  "dockerls",    -- dockerfile
+  "elixirls",    -- elixir
+  "html",        -- html
+  "jsonls",      -- json
+  "marksman",    -- markdown
+  "solargraph",  -- ruby
+  "sumneko_lua", -- lua
+  "tailwindcss", -- tailwind
+  "tsserver",    -- javascript and typescript
+  "yamlls",      -- yaml
 }
 
 for _, name in pairs(servers) do
