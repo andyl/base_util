@@ -1,7 +1,7 @@
 # Startup file for bash - goes in the user home directory 
 ###########################################################################
 
-export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:~/.bin:~/.local/bin:~/var/data/bin/$(uname -m)
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:~/.bin:~/.local/bin:~/var/data/bin/$(uname -m):~/dks/bin
 
 ###########################################################################
 
