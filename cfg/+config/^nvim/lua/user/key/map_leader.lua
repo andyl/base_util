@@ -42,6 +42,7 @@ local keytable_n = {
     m = { "<cmd>Telescope oldfiles<cr>",                                                                                    "MRU"      },
     c = { "<cmd>Telescope commands<cr>",                                                                                    "Commands" },
     k = { "<cmd>Telescope keymaps<cr>",                                                                                     "Keymaps"  },
+    h = { "<cmd>Telescope help_tags<cr>",                                                                                   "Help Tags"},
     t = { "<cmd>Telescope live_grep theme=ivy<cr>",                                                                         "Text"     },
   },
 
