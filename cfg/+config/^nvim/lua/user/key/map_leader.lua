@@ -57,7 +57,7 @@ local keytable_n = {
 
   m = { -- MARKDOWN - markdown preview
     name = "Markdown",
-    p = { ":MarkdownPreview<CR>"    , "preview start"    },
+    s = { ":MarkdownPreview<CR>"    , "preview start"    },
     x = { ":MarkdownPreviewStop<CR>", "preview stop"     },
   },
 
