@@ -55,6 +55,12 @@ local keytable_n = {
     w = { ":silent !kill -s SIGWINCH $PPID<cr>", "window change" },
   },
 
+  m = { -- MARKDOWN - markdown preview
+    name = "Markdown",
+    p = { ":MarkdownPreview<CR>"    , "preview start"    },
+    x = { ":MarkdownPreviewStop<CR>", "preview stop"     },
+  },
+
   p = { -- PRINT - print files
     name = "Print",
     p = { ":! a2ps -c --highlight-level=none --sides=duplex -T 2 --line-numbers=1 %<cr>",                                       "Portrait"         },

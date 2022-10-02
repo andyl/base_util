@@ -1,21 +1,13 @@
-# Neovim README
+# Neovim Configuration README
 
 The plugin manager is 'packer.nvim'
 
--- Regenerate compiled loader file
-:PackerCompile
+| Command              | Desc                                            |
+|----------------------|-------------------------------------------------|
+| :PackerCompile       | Regenerate compiled loader file                 |
+| :PackerClean         | Remove any disabled or unused plugins           |
+| :PackerInstall       | Clean, then install missing plugins             |
+| :PackerUpdate        | Clean, then update and install plugins          |
+| :PackerSync          | Perform `PackerUpdate` and then `PackerCompile` |
+| :PackerLoad <plugin> | Loads <plugin> immediately                      |
 
--- Remove any disabled or unused plugins
-:PackerClean
-
--- Clean, then install missing plugins
-:PackerInstall
-
--- Clean, then update and install plugins
-:PackerUpdate
-
--- Perform `PackerUpdate` and then `PackerCompile`
-:PackerSync
-
--- Loads opt plugin immediately
-:PackerLoad completion-nvim ale

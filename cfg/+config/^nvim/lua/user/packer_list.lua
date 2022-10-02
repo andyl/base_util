@@ -76,8 +76,15 @@ return Packer.startup(function(use)
   use 'sjl/badwolf'                            -- badwolf
   use 'tomasr/molokai'                         -- molokai
   use 'morhetz/gruvbox'                        -- gruvbox
-  -- FILE FORMATS
-  use 'tpope/vim-markdown'                     -- markdown highlighting & folding
+  -- MARKDOWN
+  use(
+    {
+      "iamcco/markdown-preview.nvim",
+      run = "cd app && npm install",
+      setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
+      ft = { "markdown" },
+    }
+  )
   -- LAYOUTS
   use 'andyl/zoomwintab.vim'                   -- pane zooming
   -- MISC
