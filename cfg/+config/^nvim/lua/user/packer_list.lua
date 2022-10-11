@@ -21,9 +21,11 @@ return Packer.startup(function(use)
   use 'williamboman/nvim-lsp-installer'        -- simple language server installer
   use 'tamago324/nlsp-settings.nvim'           -- language server settings in JSON
   use 'jose-elias-alvarez/null-ls.nvim'        -- for formatters and linters
-  -- COMMENTS AND AUTOPAIRS
+  -- COMMENTS, AUTOPAIRS, LISTS
   use 'windwp/nvim-autopairs'                  -- integrates with cmp and treesitter
   use 'terrortylor/nvim-comment'               -- commenting tool
+  use 'gaoDean/autolist.nvim'                  -- list generator
+
   -- NEOVIM/TERMINAL
   use 'benmills/vimux'                         -- tmux integration
   use {"akinsho/toggleterm.nvim", tag = '*', config = function()

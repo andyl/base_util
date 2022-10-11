@@ -1,19 +1,5 @@
 # Nvim Config
 
-## Plugins
-
-- Nav: NvimTree, Telescope, Which Key
-- Code: Completion, LSP, Treesitter 
-
-## CrossLang
-
-|------------|-------------------|----------------|
-|            | vim tgt           | lua tgt        |
-|------------|-------------------|----------------|
-| vim caller | source <filename> | lua cmd        |
-| lua caller | vim.cmd           | require "path" |
-|------------|-------------------|----------------|
-
 ## WhichKey
 
 Filenames: 
