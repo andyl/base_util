@@ -325,6 +325,7 @@ alias dkhs="docker search --limit 5 --format 'table {{.Name}}\t{{.Description}}\
 alias dkps="docker ps -a --format 'table {{.Image}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}'"
 alias dkls="docker images"
 alias dkrm="docker rmi --force "
+alias dkprune="docker system prune --all --force --volumes"
 
 # start bash shell for a container
 function dksh() {
