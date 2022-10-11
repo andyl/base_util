@@ -122,6 +122,10 @@ Organization:
 
 - [ ] Fix Ack 
 
+## 2022 Oct 10 Mon
+
+- [ ] Add `autolist` plugin 
+
 ## Tasks
 
 - [ ] Read NvimTree source 
