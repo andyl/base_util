@@ -4,8 +4,8 @@ ruby 3.0.2
 dart 2.14.4
 nodejs 18.2.0
 crystal 0.29.0
-rust 1.58.0
-golang 1.14.4
+rust 1.64.0
+golang 1.19.2
 R 3.6.2
 java openjdk-15.0.1
 lua 5.3.5

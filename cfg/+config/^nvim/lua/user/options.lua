@@ -4,6 +4,7 @@
 -- :help options
 
 local vo = vim.opt
+local vg = vim.g
 
 -- MISC OPTIONS
 vo.clipboard      = "unnamedplus"           -- allows neovim to access the system clipboard
@@ -44,4 +45,6 @@ vo.swapfile       = false                   -- creates a swapfile
 -- LINE NUMBERING OPTIONS
 vo.number         = true                    -- set numbered lines
 vo.relativenumber = false                   -- set relative numbered lines
+-- NVIM PROVIDER OPTIONS
+vg.loaded_perl_provider = 0                 -- disable perl provider
 
