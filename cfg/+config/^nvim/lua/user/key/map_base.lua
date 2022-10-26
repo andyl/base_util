@@ -41,7 +41,7 @@ function KmV(key, cmd) km("v", key, cmd) end  -- visual_mode
 function KmT(key, cmd) km("t", key, cmd) end  -- terminal_mode
 
 -- LEADER KEY
-keymap("", ",", "<Nop>", opts)
+-- keymap("", ",", "<Nop>", opts)
 vim.g.mapleader = ","
 vim.g.maplocalleader = ","
 
