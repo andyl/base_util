@@ -117,5 +117,19 @@ return Packer.startup(function(use)
   -- Plug 'mattn/gist-vim'                     -- post github gists
   -- Plug 'mattn/webapi-vim'                   -- required by gist-vim
 
+  -- NEORG - https://github.com/nvim-neorg/neorg
+  use {
+    "nvim-neorg/neorg",
+    run = ":Neorg sync-parsers",
+    config = function()
+      require('neorg').setup {
+        load = {
+          ["core.defaults"] = {}
+        }
+      }
+    end,
+    requires = "nvim-lua/plenary.nvim"
+  }
+
 end)
 
