@@ -12,11 +12,18 @@
 -- Mason log is in ~/.local/share/nvim/mason.log
 -- LSP log is ~/.local/share/nvim/lsp.log
 
+-- https://github.com/williamboman/mason.nvim
+-- https://github.com/williamboman/mason-lspconfig.nvim
+-- https://github.com/neovim/nvim-lspconfig
+
 local status_ok1, mason = pcall(require, "mason")
 if not status_ok1 then return end
 
-local status_ok2, lspcfg = pcall(require, "mason-lspconfig")
+local status_ok2, ml_lspcfg = pcall(require, "mason-lspconfig")
 if not status_ok2 then return end
+
+local status_ok3, nv_lspcfg = pcall(require, "lspconfig")
+if not status_ok3 then return end
 
 -- start mason
 
@@ -39,15 +46,15 @@ local servers = {
   "yamlls",      -- yaml
 }
 
-lspcfg.setup {
+ml_lspcfg.setup {
   ensure_installed = servers,
 }
 
 -- handlers attach servers to buffers
 
-lspcfg.setup_handlers {
+ml_lspcfg.setup_handlers {
   function (server_name) -- default handler sets up all servers
-    require("lspconfig")[server_name].setup {}
+    nv_lspcfg[server_name].setup {}
   end,
 }
 
