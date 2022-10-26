@@ -18,7 +18,9 @@ return Packer.startup(function(use)
   use 'JoosepAlviste/nvim-ts-context-commentstring'
   -- LSP
   use 'neovim/nvim-lspconfig'                  -- enable LSP
-  use 'williamboman/nvim-lsp-installer'        -- simple language server installer
+  use 'williamboman/mason.nvim'                -- package installer
+  use 'williamboman/mason-lspconfig.nvim'      -- language-server installer
+  -- use 'williamboman/nvim-lsp-installer'        -- simple language server installer
   use 'tamago324/nlsp-settings.nvim'           -- language server settings in JSON
   use 'jose-elias-alvarez/null-ls.nvim'        -- for formatters and linters
   -- COMMENTS, AUTOPAIRS, LISTS
