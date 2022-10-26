@@ -1,9 +1,7 @@
+-- lsp/settings/jsonls
+
 return {
 	settings = {
-
-    elixirLS = {
-      dialyzerEnabled = false,
-    },
 
 		Lua = {
 			diagnostics = {

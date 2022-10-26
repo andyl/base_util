@@ -23,6 +23,7 @@ nvim_tree.setup {
       }
     }
   },
+  sort_by = "case_sensitive",
   ignore_ft_on_setup = { "startify", "dashboard", "alpha", },
   -- update_to_buf_dir  = { enable = true, auto_open = true },
   system_open        = { cmd = nil, args = {} },
