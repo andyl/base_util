@@ -17,16 +17,17 @@ return Packer.startup(function(use)
   use 'nvim-treesitter/nvim-treesitter'        -- syntax highlighter
   use 'JoosepAlviste/nvim-ts-context-commentstring'
   -- LSP
-  use 'neovim/nvim-lspconfig'                  -- enable LSP
   use 'williamboman/mason.nvim'                -- package installer
   use 'williamboman/mason-lspconfig.nvim'      -- language-server installer
+  use 'neovim/nvim-lspconfig'                  -- enable LSP servers and set properties
   use 'tamago324/nlsp-settings.nvim'           -- language server settings in JSON
   use 'jose-elias-alvarez/null-ls.nvim'        -- for formatters and linters
+  -- DAP
+  use 'mfussenegger/nvim-dap'                  -- debug adapter protocol
   -- COMMENTS, AUTOPAIRS, LISTS
   use 'windwp/nvim-autopairs'                  -- integrates with cmp and treesitter
   use 'terrortylor/nvim-comment'               -- commenting tool
   use 'gaoDean/autolist.nvim'                  -- list generator
-
   -- NEOVIM/TERMINAL
   use 'benmills/vimux'                         -- tmux integration
   use {"akinsho/toggleterm.nvim", tag = '*', config = function()

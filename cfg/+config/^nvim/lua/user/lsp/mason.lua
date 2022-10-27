@@ -8,6 +8,8 @@
 -- :MasonUninstallAll        | uninstalls all packages
 -- :MasonLog                 | opens the mason.nvim log file in a new tab
 -- :LspInfo                  | show currently active LSP client
+-- :LspInstall               | install lsp server
+-- :LspUninstall             | uninstall lsp server
 
 -- Mason log is in ~/.local/share/nvim/mason.log
 -- LSP log is ~/.local/share/nvim/lsp.log
