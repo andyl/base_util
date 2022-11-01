@@ -37,13 +37,15 @@ local keytable_n = {
 
   f = { -- FIND - telescope - fuzzy finders
     name = "Find",
-    b = { "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>", "Buffers"  },
-    f = { "<cmd>Telescope find_files<cr>",                                                                                  "Files"    },
-    m = { "<cmd>Telescope oldfiles<cr>",                                                                                    "MRU"      },
-    c = { "<cmd>Telescope commands<cr>",                                                                                    "Commands" },
-    k = { "<cmd>Telescope keymaps<cr>",                                                                                     "Keymaps"  },
-    h = { "<cmd>Telescope help_tags<cr>",                                                                                   "Help Tags"},
-    t = { "<cmd>Telescope live_grep theme=ivy<cr>",                                                                         "Text"     },
+    b = { "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>", "Buffers"     },
+    c = { "<cmd>Telescope commands<cr>",                                                                                    "Commands"    },
+    d = { "<cmd>Telescope diagnostics<cr>",                                                                                 "Diagnostics" },
+    f = { "<cmd>Telescope find_files<cr>",                                                                                  "Files"       },
+    h = { "<cmd>Telescope help_tags<cr>",                                                                                   "Help Tags"   },
+    k = { "<cmd>Telescope keymaps<cr>",                                                                                     "Keymaps"     },
+    m = { "<cmd>Telescope oldfiles<cr>",                                                                                    "MRU"         },
+    o = { "<cmd>Telescope vim_options<cr>",                                                                                 "Options"     },
+    g = { "<cmd>Telescope live_grep theme=ivy<cr>",                                                                         "Grep"        },
   },
 
   l = { -- LAYOUT - pane layout
