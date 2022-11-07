@@ -41,11 +41,12 @@ local keytable_n = {
     c = { "<cmd>Telescope commands<cr>",                                                                                    "Commands"    },
     d = { "<cmd>Telescope diagnostics<cr>",                                                                                 "Diagnostics" },
     f = { "<cmd>Telescope find_files<cr>",                                                                                  "Files"       },
+    g = { "<cmd>Telescope live_grep theme=ivy<cr>",                                                                         "Grep Text"   },
     h = { "<cmd>Telescope help_tags<cr>",                                                                                   "Help Tags"   },
     k = { "<cmd>Telescope keymaps<cr>",                                                                                     "Keymaps"     },
     m = { "<cmd>Telescope oldfiles<cr>",                                                                                    "MRU"         },
     o = { "<cmd>Telescope vim_options<cr>",                                                                                 "Options"     },
-    g = { "<cmd>Telescope live_grep theme=ivy<cr>",                                                                         "Grep"        },
+    r = { "<cmd>Telescope registers<cr>",                                                                                   "Registers"   },
   },
 
   l = { -- LAYOUT - pane layout
