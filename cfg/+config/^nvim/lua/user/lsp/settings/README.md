@@ -1,7 +1,10 @@
-# LSP Config
+# LSP Settings
 
-These files are redundant but saved for reference.
+These files are for LSP configuration.
 
-LSP config is done in JSON.
-- uses the `nlsp-settings.nvim` plugin 
-- json config is in the `nlsp-settings` directory
+They are called from `mason.lua`
+
+To examine the configuration settings of an LSP server:
+
+:lua print(vim.inspect(require'lspconfig'["server_name"]))
+

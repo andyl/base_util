@@ -11,17 +11,35 @@ local n_opts = {
 
 local n_keymap = {
 
-  a = { -- LSP operations
-    name = "LSP",
-    n = { ":lua vim.diagnostic.goto_next()<cr>",  "GotoNext Diagnostic"      },
-    p = { ":lua vim.diagnostic.goto_prev()<cr>",  "GotoPrev Diagnostic"      },
-    l = { ":lua vim.diagnostic.open_float()<cr>", "Current Line Diagnostics" },
-    d = { "<cmd>Telescope diagnostics<CR>",       "Telescope Diagnostics"    },
-    u = { ":lua vim.lsp.buf.references()<cr>",    "Show Users"               },
-    k = { ":lua vim.lsp.buf.hover()<cr>",         "Doc Hover"                },
-    c = { ":lua vim.lsp.buf.code_action()<cr>",   "Code Action"              },
-    r = { ":lua vim.lsp.buf.rename()<cr>",        "Rename"                   },
-    f = { ":lua vim.lsp.buf.formatting()<cr>",    "Reformat"                 },
+  a = { -- LSP Actions
+    name = "LSP Actions ",
+    n = { ":lua vim.diagnostic.goto_next()<cr>",     "GotoNext Diagnostic"      },
+    p = { ":lua vim.diagnostic.goto_prev()<cr>",     "GotoPrev Diagnostic"      },
+    l = { ":lua vim.diagnostic.open_float()<cr>",    "Current Line Diagnostics" },
+    c = { ":lua vim.lsp.buf.code_action()<cr>",      "Code Action"              },
+    f = { ":lua vim.lsp.buf.formatting()<cr>",       "Reformat"                 },
+    k = { ":lua vim.lsp.buf.hover()<cr>",            "Doc Hover"                },
+    r = { ":lua vim.lsp.buf.rename()<cr>",           "Rename"                   },
+    u = { ":lua vim.lsp.buf.references()<cr>",       "Show Users"               },
+  },
+
+  f = { -- LSP Find with Telescope
+    name = "LSP Find",
+    r = { ":lua require'telescope.builtin'.lsp_references()<cr>",      "References"      },
+    d = { ":lua require'telescope.builtin'.diagnostics()<cr>",         "Diagnostics"     },
+    i = { ":lua require'telescope.builtin'.lsp_implementations()<cr>", "Implementations" },
+    x = { ":lua require'telescope.builtin'.lsp_definitions()<cr>",     "Definitions"     },
+    s = { -- Symbols
+      name = "Symbols",
+      ["d"] = {":lua require'telescope.builtin'.lsp_document_symbols()<cr>",          "Document"  },
+      ["w"] = {":lua require'telescope.builtin'.lsp_workspace_symbols()<cr>",         "Workspace" },
+      ["y"] = {":lua require'telescope.builtin'.lsp_dynamic_workspace_symbols()<cr>", "Dynamic"   },
+    },
+    c = { -- Calls
+      name = "Calls",
+      ["a"] = {":lua require'telescope.builtin'.lsp_outgoing_calls()<cr>", "Outgoing"},
+      ["i"] = {":lua require'telescope.builtin'.lsp_incoming_calls()<cr>", "Incoming"},
+    },
   },
 
   g = { -- LSP Goto Definition
@@ -84,7 +102,6 @@ local v_opts = {
   noremap = true,    -- use `noremap` when creating keymaps
   nowait  = true,    -- use `nowait` when creating keymaps
 }
-
 
 local v_keymap = {
 

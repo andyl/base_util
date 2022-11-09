@@ -11,25 +11,16 @@
 -- :LspInstall               | install lsp server
 -- :LspUninstall             | uninstall lsp server
 
--- Mason log is in ~/.local/share/nvim/mason.log
--- LSP log is ~/.local/share/nvim/lsp.log
+-- Mason log | ~/.local/state/nvim/mason.log
+-- LSP log   | ~/.local/state/nvim/lsp.log
 
 -- https://github.com/williamboman/mason.nvim
 -- https://github.com/williamboman/mason-lspconfig.nvim
 -- https://github.com/neovim/nvim-lspconfig
 
-local status_ok1, mason = pcall(require, "mason")
-if not status_ok1 then return end
-
-local status_ok2, ml_lspcfg = pcall(require, "mason-lspconfig")
-if not status_ok2 then return end
-
-local status_ok3, nv_lspcfg = pcall(require, "lspconfig")
-if not status_ok3 then return end
-
 -- start mason
 
-mason.setup()
+require'mason'.setup()
 
 -- auto-install servers
 
@@ -48,15 +39,30 @@ local servers = {
   "yamlls",      -- yaml
 }
 
-ml_lspcfg.setup {
+require'mason-lspconfig'.setup {
   ensure_installed = servers,
 }
 
 -- handlers attach servers to buffers
 
-ml_lspcfg.setup_handlers {
+local function server_config(server)
+  local tgt = "user.lsp.settings." .. server
+  local opts = require(tgt)
+  require"lspconfig"[server].setup(opts)
+end
+
+require'mason-lspconfig'.setup_handlers {
   function (server_name) -- default handler sets up all servers
-    nv_lspcfg[server_name].setup {}
+    require"lspconfig"[server_name].setup {}
   end,
+  ["sumneko_lua"] = function ()
+    server_config("sumneko_lua")
+  end,
+  ["jsonls"] = function ()
+    server_config("jsonls")
+  end,
+  -- ["elixirls"] = function ()
+  --   server_config("elixirls")
+  -- end,
 }
 

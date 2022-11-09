@@ -1,11 +1,11 @@
--- lsp/settings/jsonls
+-- lsp/settings/sumneko_lua
 
-return {
+local opts = {
 	settings = {
 
 		Lua = {
 			diagnostics = {
-				globals = { "vim" },
+				globals = { "vim", "use" },
 			},
 			workspace = {
 				library = {
@@ -16,3 +16,5 @@ return {
 		},
 	},
 }
+
+return opts

@@ -3,16 +3,22 @@
 -- :h mason-commands
 --
 -- :Mason                    | opens a graphical status window
--- :MasonInstall <pkg> ...   | installs/reinstalls the packages
+-- :MasonInstall <pkg> ...   | installs/reinstalls the provided packages
 -- :MasonUninstall <pkg> ... | uninstalls the provided packages
 -- :MasonUninstallAll        | uninstalls all packages
--- :MasonLog                 | opens mason.nvim log file in a new tab
---
--- :LspInfo                  | LSP info for current buffer
+-- :MasonLog                 | opens the mason.nvim log file in a new tab
+-- :LspInfo                  | show currently active LSP client
+-- :LspInstall               | install lsp server
+-- :LspUninstall             | uninstall lsp server
 
-local status_ok, _ = pcall(require, "lspconfig")
-if not status_ok then return end
+-- Mason log | ~/.local/state/nvim/mason.log
+-- LSP log   | ~/.local/state/nvim/lsp.log
 
-require "user.lsp.mason"
+-- https://github.com/williamboman/mason.nvim
+-- https://github.com/williamboman/mason-lspconfig.nvim
+-- https://github.com/neovim/nvim-lspconfig
+
+require("lspconfig")
+require("user.lsp.mason")
 require("user.lsp.handlers").setup()
-require "user.lsp.null-ls"
+require("user.lsp.null-ls")

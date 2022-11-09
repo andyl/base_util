@@ -15,12 +15,12 @@ return Packer.startup(function(use)
   use 'folke/which-key.nvim'                   -- key mapper and displayer
   -- TREESITTER
   use 'nvim-treesitter/nvim-treesitter'        -- syntax highlighter
+  use 'nvim-treesitter/playground'             -- display treesitter AST
   use 'JoosepAlviste/nvim-ts-context-commentstring'
   -- LSP
   use 'williamboman/mason.nvim'                -- package installer
   use 'williamboman/mason-lspconfig.nvim'      -- language-server installer
   use 'neovim/nvim-lspconfig'                  -- enable LSP servers and set properties
-  use 'tamago324/nlsp-settings.nvim'           -- language server settings in JSON
   use 'jose-elias-alvarez/null-ls.nvim'        -- for formatters and linters
   -- DAP
   use 'mfussenegger/nvim-dap'                  -- debug adapter protocol

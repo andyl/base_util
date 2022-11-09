@@ -1,6 +1,6 @@
 -- lsp/settings/elixirls
 
-return {
+local opts = {
 	settings = {
     elixirLS = {
       dialyzerEnabled = false,
@@ -8,9 +8,8 @@ return {
     elixirls = {
       dialyzerEnabled = false,
     },
-    elixir = {
-      dialyzerEnabled = false,
-    },
   },
 }
+
+return opts
 
