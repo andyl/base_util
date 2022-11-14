@@ -97,8 +97,24 @@ return Packer.startup(function(use)
   use 'lewis6991/impatient.nvim'               -- fast startup
   use 'antoinemadec/FixCursorHold.nvim'        -- needed to fix lsp doc highlight
   use 'kshenoy/vim-signature'                  -- show marks in gutter
-  use 'rafcamlet/nvim-luapad'                  -- neovim lua repl
   use 'terryma/vim-multiple-cursors'           -- multiple cursors
+  -- NEOVIM LUA DEVELOPMENT
+  use 'rafcamlet/nvim-luapad'                  -- neovim lua repl
+  use 'folke/neodev.nvim'                      -- lsp autocompletion for nvim lua API
+  -- NEORG - https://github.com/nvim-neorg/neorg
+  use {
+    "nvim-neorg/neorg",
+    run = ":Neorg sync-parsers",
+    config = function()
+      require('neorg').setup {
+        load = {
+          ["core.defaults"] = {}
+        }
+      }
+    end,
+    requires = "nvim-lua/plenary.nvim"
+  }
+
   -- LANG RUBY
   -- Plug 'vim-ruby/vim-ruby'                  -- syntax highlighting
   -- Plug 'andyl/vim-projectionist-ruby'       -- ruby file navigation
@@ -118,20 +134,6 @@ return Packer.startup(function(use)
   -- Plug 'gillyb/stable-windows'              -- no window scroll on split
   -- Plug 'mattn/gist-vim'                     -- post github gists
   -- Plug 'mattn/webapi-vim'                   -- required by gist-vim
-
-  -- NEORG - https://github.com/nvim-neorg/neorg
-  use {
-    "nvim-neorg/neorg",
-    run = ":Neorg sync-parsers",
-    config = function()
-      require('neorg').setup {
-        load = {
-          ["core.defaults"] = {}
-        }
-      }
-    end,
-    requires = "nvim-lua/plenary.nvim"
-  }
 
 end)
 
