@@ -1,7 +1,16 @@
 # Nvim Todo 
 
+## Reading 
+- [ ] Read Lsp Help + Source + Luapad
+- [ ] Read Telescope Help + Source + Luapad 
+- [ ] Read NvimTree Help + Source + Luapad 
+
+## LSP
+- [ ] LSP: Cleanup elixirls config (dialyzer = false)
+- [ ] LSP: Fix tailwindlsp in phoenix project using Mitch Hanberg hints 
+
 ## Goals 
-- [ ] elixir: lsp and umbrella projects 
+- [ ] lsp and umbrella projects 
 - [ ] goal: goto-definition, completion, documentation from HEEX 
 - [ ] goal: goto-definition, completion, documentation from ~H 
 - [ ] goal: approach n how to incorporate refactoring actions 
@@ -16,19 +25,9 @@
 - [ ] Learn quicklists and local lists 
 - [ ] Write credo plugins 
 
-## Reading 
-- [ ] Read Lsp Help + Source 
-- [ ] Read Neovim Help + Source 
-- [ ] Read Telescope Help + Source 
-- [ ] Read NvimTree Help + Source 
-
 ## NvimTree
 - [ ] NvimTree - Highlight active file (BROKEN)
 - [ ] NvimTree - One-Char Copy Command 
-
-## LSP
-- [ ] LSP: Cleanup elixirls config (dialyzer = false)
-- [ ] LSP: Fix tailwindlsp in phoenix project using Mitch Hanberg hints
 
 ## WhichKey 
 - [ ] WhichKey - Define hotkeys for quickfix and local lists
