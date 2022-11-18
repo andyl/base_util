@@ -92,3 +92,7 @@
 
 - [x] Add `autolist` plugin 
 
+## 2022 Nov 18 Fri
+
+- [x] Disable dialyzer in ElixirLS
+- [x] Enable code completion with TailwindLS 

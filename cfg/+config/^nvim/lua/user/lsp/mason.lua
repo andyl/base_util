@@ -55,13 +55,13 @@ require'mason-lspconfig'.setup_handlers {
   function (server_name) -- default handler sets up all servers
     require"lspconfig"[server_name].setup {}
   end,
-  ["sumneko_lua"] = function ()
+  ["sumneko_lua"] = function ()      -- custom settings for LUA
     server_config("sumneko_lua")
   end,
-  ["jsonls"] = function ()
+  ["jsonls"] = function ()           -- custom settings for JSON
     server_config("jsonls")
   end,
-  ["elixirls"] = function ()
+  ["elixirls"] = function ()         -- custom settings for ELIXIR
     server_config("elixirls")
   end,
 }

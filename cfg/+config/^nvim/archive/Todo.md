@@ -1,25 +1,27 @@
 # Nvim Todo 
 
-## Thorns 
-- [ ] ElixirLS    | disable dialyzer
-- [ ] Tailwind-LS | complete tailwind classes
-- [ ] ElixirLS    | Heex jump to components
-- [ ] ElixirLS    | Heex component completion
+## Heex LS
+
+| Ctx   | Type     | Action         | Status |
+|-------|----------|----------------|--------|
+| ~H    | Tailwind | Completion     | X      |
+| .heex | Tailwind | Completion     |        |
+| ~H    | ElixirLS | Completion     |        |
+| ~H    | ElixirLS | GotoDefinition |        |
+| ~H    | ElixirLS | Documentation  |        |
+| .heex | ElixirLS | Completion     |        |
+| .heex | ElixirLS | GotoDefinition |        |
+| .heex | ElixirLS | Documentation  |        |
 
 ## Reading 
 - [ ] Read Lsp Help + Source + Luapad
 - [ ] Read Telescope Help + Source + Luapad 
 - [ ] Read NvimTree Help + Source + Luapad 
 
-## LSP
-- [ ] LSP: Cleanup elixirls config (dialyzer = false)
-- [ ] LSP: Fix tailwindlsp in phoenix project using Mitch Hanberg hints 
-
 ## Goals 
 - [ ] lsp and umbrella projects 
-- [ ] goal: goto-definition, completion, documentation from HEEX 
-- [ ] goal: goto-definition, completion, documentation from ~H 
-- [ ] goal: approach n how to incorporate refactoring actions 
+- [ ] working lsp-heex operations 
+- [ ] approach n how to incorporate refactoring actions 
 
 ## Glitches 
 - [ ] CSS linting warning on `@tailwind` directive
