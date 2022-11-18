@@ -1,5 +1,11 @@
 # Nvim Todo 
 
+## Thorns 
+- [ ] ElixirLS    | disable dialyzer
+- [ ] Tailwind-LS | complete tailwind classes
+- [ ] ElixirLS    | Heex jump to components
+- [ ] ElixirLS    | Heex component completion
+
 ## Reading 
 - [ ] Read Lsp Help + Source + Luapad
 - [ ] Read Telescope Help + Source + Luapad 
