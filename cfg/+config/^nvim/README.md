@@ -1,6 +1,8 @@
 # Neovim Configuration README
 
-The plugin manager is 'packer.nvim'
+## Plugins 
+
+The plugin manager is Packer - 'wbthomason/packer.nvim'
 
 | Command              | Desc                                            |
 |----------------------|-------------------------------------------------|
@@ -10,4 +12,18 @@ The plugin manager is 'packer.nvim'
 | :PackerUpdate        | Clean, then update and install plugins          |
 | :PackerSync          | Perform `PackerUpdate` and then `PackerCompile` |
 | :PackerLoad <plugin> | Loads <plugin> immediately                      |
+
+## Language Servers
+
+The language server manager is Mason - jwilliamboman/mason.nvim
+
+| Command | Desc                            |
+|---------|---------------------------------|
+| :Mason  | Show installed language servers |
+
+## Treesitter Grammars
+
+| Command   | Desc                       |
+|-----------|----------------------------|
+| :TSUpdate | Update Treesitter Grammars |
 

@@ -61,8 +61,8 @@ require'mason-lspconfig'.setup_handlers {
   ["jsonls"] = function ()
     server_config("jsonls")
   end,
-  -- ["elixirls"] = function ()
-  --   server_config("elixirls")
-  -- end,
+  ["elixirls"] = function ()
+    server_config("elixirls")
+  end,
 }
 
