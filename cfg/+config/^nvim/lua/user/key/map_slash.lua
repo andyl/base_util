@@ -13,14 +13,14 @@ local n_keymap = {
 
   a = { -- LSP Actions
     name = "LSP Actions ",
-    n = { ":lua vim.diagnostic.goto_next()<cr>",     "GotoNext Diagnostic"      },
-    p = { ":lua vim.diagnostic.goto_prev()<cr>",     "GotoPrev Diagnostic"      },
-    l = { ":lua vim.diagnostic.open_float()<cr>",    "Current Line Diagnostics" },
-    c = { ":lua vim.lsp.buf.code_action()<cr>",      "Code Action"              },
-    f = { ":lua vim.lsp.buf.formatting()<cr>",       "Reformat"                 },
-    k = { ":lua vim.lsp.buf.hover()<cr>",            "Doc Hover"                },
-    r = { ":lua vim.lsp.buf.rename()<cr>",           "Rename"                   },
-    u = { ":lua vim.lsp.buf.references()<cr>",       "Show Users"               },
+    n = { ":lua vim.diagnostic.goto_next()<cr>",         "GotoNext Diagnostic"      },
+    p = { ":lua vim.diagnostic.goto_prev()<cr>",         "GotoPrev Diagnostic"      },
+    l = { ":lua vim.diagnostic.open_float()<cr>",        "Current Line Diagnostics" },
+    c = { ":lua vim.lsp.buf.code_action()<cr>",          "Code Action"              },
+    f = { ":lua vim.lsp.buf.format({async = true})<cr>", "Reformat"                 },
+    k = { ":lua vim.lsp.buf.hover()<cr>",                "Doc Hover"                },
+    r = { ":lua vim.lsp.buf.rename()<cr>",               "Rename"                   },
+    u = { ":lua vim.lsp.buf.references()<cr>",           "Show Users"               },
   },
 
   f = { -- LSP Find with Telescope
