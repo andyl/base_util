@@ -17,6 +17,7 @@ return Packer.startup(function(use)
   use 'nvim-treesitter/nvim-treesitter'        -- syntax highlighter
   use 'nvim-treesitter/playground'             -- display treesitter AST
   use 'JoosepAlviste/nvim-ts-context-commentstring'
+  use 'nvim-treesitter/nvim-treesitter-textobjects'
   -- LSP
   use 'williamboman/mason.nvim'                -- package installer
   use 'williamboman/mason-lspconfig.nvim'      -- language-server installer
