@@ -9,7 +9,7 @@ julia 1.8.2
 lua 5.3.5
 nodejs 18.2.0
 php 8.1.12
-ruby 3.0.2
+ruby 3.2.0
 rust 1.64.0
 zig 0.9.1
 
