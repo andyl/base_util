@@ -6,11 +6,11 @@ The plugin manager is Packer - 'wbthomason/packer.nvim'
 
 | Command              | Desc                                            |
 |----------------------|-------------------------------------------------|
+| :PackerSync          | Perform `PackerUpdate` and then `PackerCompile` |
 | :PackerCompile       | Regenerate compiled loader file                 |
+| :PackerUpdate        | Clean, then update and install plugins          |
 | :PackerClean         | Remove any disabled or unused plugins           |
 | :PackerInstall       | Clean, then install missing plugins             |
-| :PackerUpdate        | Clean, then update and install plugins          |
-| :PackerSync          | Perform `PackerUpdate` and then `PackerCompile` |
 | :PackerLoad <plugin> | Loads <plugin> immediately                      |
 
 ## Language Servers

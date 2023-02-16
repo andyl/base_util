@@ -102,6 +102,10 @@ return Packer.startup(function(use)
   -- NEOVIM LUA DEVELOPMENT
   use 'rafcamlet/nvim-luapad'                  -- neovim lua repl
   use 'folke/neodev.nvim'                      -- lsp autocompletion for nvim lua API
+  -- GIST
+  use 'rudylee/nvim-gist'                      -- post github gists
+  -- use 'mattn/gist-vim'                         -- post github gists
+  -- use 'mattn/webapi-vim'                       -- required by gist-vim
   -- NEORG - https://github.com/nvim-neorg/neorg
   use {
     "nvim-neorg/neorg",
@@ -133,8 +137,6 @@ return Packer.startup(function(use)
   -- Plug 'tpope/vim-fugitive'                 -- git integration
   -- Plug 'vim-scripts/bats.vim'               -- bats editing
   -- Plug 'gillyb/stable-windows'              -- no window scroll on split
-  -- Plug 'mattn/gist-vim'                     -- post github gists
-  -- Plug 'mattn/webapi-vim'                   -- required by gist-vim
 
 end)
 
