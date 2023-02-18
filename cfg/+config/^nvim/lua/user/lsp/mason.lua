@@ -33,7 +33,7 @@ local servers = {
   "jsonls",      -- json
   "marksman",    -- markdown
   "solargraph",  -- ruby
-  "sumneko_lua", -- lua
+  -- "sumneko_lua", -- lua
   "tailwindcss", -- tailwind
   "tsserver",    -- javascript and typescript
   "yamlls",      -- yaml
@@ -55,9 +55,9 @@ require'mason-lspconfig'.setup_handlers {
   function (server_name) -- default handler sets up all servers
     require"lspconfig"[server_name].setup {}
   end,
-  ["sumneko_lua"] = function ()      -- custom settings for LUA
-    server_config("sumneko_lua")
-  end,
+  -- ["sumneko_lua"] = function ()      -- custom settings for LUA
+  --   server_config("sumneko_lua")
+  -- end,
   ["jsonls"] = function ()           -- custom settings for JSON
     server_config("jsonls")
   end,
