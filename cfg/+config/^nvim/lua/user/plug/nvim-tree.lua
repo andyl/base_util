@@ -24,7 +24,7 @@ nvim_tree.setup {
     }
   },
   sort_by = "case_sensitive",
-  ignore_ft_on_setup = { "startify", "dashboard", "alpha", },
+  -- ignore_ft_on_setup = { "startify", "dashboard", "alpha", },
   -- update_to_buf_dir  = { enable = true, auto_open = true },
   system_open        = { cmd = nil, args = {} },
   filters            = { dotfiles = false, custom = {} },
@@ -33,7 +33,7 @@ nvim_tree.setup {
   -- add_trailing  = 1,
   disable_netrw = true,
   hijack_netrw  = true,
-  open_on_setup = false,
+  -- open_on_setup = false,
   -- auto_close    = false,
   open_on_tab   = false,
   hijack_cursor = false,
