@@ -25,10 +25,6 @@ return Packer.startup(function(use)
   use 'jose-elias-alvarez/null-ls.nvim'        -- for formatters and linters
   -- DAP
   use 'mfussenegger/nvim-dap'                  -- debug adapter protocol
-  -- COMMENTS, AUTOPAIRS, LISTS
-  use 'windwp/nvim-autopairs'                  -- integrates with cmp and treesitter
-  use 'terrortylor/nvim-comment'               -- commenting tool
-  use 'gaoDean/autolist.nvim'                  -- list generator
   -- NEOVIM/TERMINAL
   use 'benmills/vimux'                         -- tmux integration
   use {"akinsho/toggleterm.nvim", tag = '*', config = function()
@@ -119,24 +115,10 @@ return Packer.startup(function(use)
     end,
     requires = "nvim-lua/plenary.nvim"
   }
-
-  -- LANG RUBY
-  -- Plug 'vim-ruby/vim-ruby'                  -- syntax highlighting
-  -- Plug 'andyl/vim-projectionist-ruby'       -- ruby file navigation
-  -- Plug 'nelstrom/vim-textobj-rubyblock'     -- ruby text objects
-  -- Plug 'bronson/vim-ruby-block-conv'        -- toggle {} to begin/end
-  -- Plug 'andyl/vim-snipmate-ruby'            -- snippets for ruby
-  -- CODING UTILITIES
-  -- Plug 'milkypostman/vim-togglelist'        -- toggle quicklist and location list
-  -- Plug 'tpope/vim-unimpaired'               -- jump leading/trailing paren
-  -- Plug 'tmhedberg/matchit'                  -- % matching
-  -- Plug 'vim-scripts/SyntaxRange'            -- vimdeck syntax highlighting
-  -- Plug 'liuchengxu/vim-which-key'           -- shows key mappings
-  -- Plug 'janko/vim-test'                     -- test runner
-  -- MISC
-  -- Plug 'tpope/vim-fugitive'                 -- git integration
-  -- Plug 'vim-scripts/bats.vim'               -- bats editing
-  -- Plug 'gillyb/stable-windows'              -- no window scroll on split
+  -- COMMENTS, AUTOPAIRS, LISTS
+  use 'windwp/nvim-autopairs'                  -- integrates with cmp and treesitter
+  use 'terrortylor/nvim-comment'               -- commenting tool
+  use 'gaoDean/autolist.nvim'                  -- list generator
 
 end)
 
