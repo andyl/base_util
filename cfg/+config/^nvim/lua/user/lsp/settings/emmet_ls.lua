@@ -10,9 +10,10 @@ local opts = {
     },
   },
   filetypes = {
+    "css",
+    "scss",
+    "sass",
     "html",
-    -- "javascriptreact",
-    -- "typescriptreact",
     "elixir",
     "eelixir",
     "html.heex",
@@ -21,6 +22,8 @@ local opts = {
     "html_eex",
     "phoenix-heex",
     "phoenix_heex",
+    -- "javascriptreact",
+    -- "typescriptreact",
     -- "eruby",
   },
 }
