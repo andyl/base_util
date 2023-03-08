@@ -25,18 +25,18 @@ require'mason'.setup()
 -- auto-install servers
 
 local servers = {
-  "bashls",      -- bash
-  "cssls",       -- css
-  "dockerls",    -- dockerfile
-  "elixirls",    -- elixir
-  "html",        -- html
-  "jsonls",      -- json
-  "marksman",    -- markdown
-  "solargraph",  -- ruby
-  -- "sumneko_lua", -- lua
-  "tailwindcss", -- tailwind
-  "tsserver",    -- javascript and typescript
-  "yamlls",      -- yaml
+  "bashls",       -- bash
+  "cssls",        -- css
+  "dockerls",     -- dockerfile
+  "elixirls",     -- elixir
+  "html",         -- html
+  "jsonls",       -- json
+  "lua_ls",       -- lua
+  "marksman",     -- markdown
+  "solargraph",   -- ruby
+  "tailwindcss",  -- tailwind
+  "tsserver",     -- javascript and typescript
+  "yamlls",       -- yaml
 }
 
 require'mason-lspconfig'.setup {
@@ -55,14 +55,14 @@ require'mason-lspconfig'.setup_handlers {
   function (server_name) -- default handler sets up all servers
     require"lspconfig"[server_name].setup {}
   end,
-  -- ["sumneko_lua"] = function ()      -- custom settings for LUA
-  --   server_config("sumneko_lua")
-  -- end,
   ["jsonls"] = function ()           -- custom settings for JSON
     server_config("jsonls")
   end,
   ["elixirls"] = function ()         -- custom settings for ELIXIR
     server_config("elixirls")
+  end,
+  ["tailwindcss"] = function ()      -- custom settings for TAILWIND
+    server_config("tailwindcss")
   end,
 }
 

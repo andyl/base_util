@@ -21,8 +21,6 @@ zig 0.9.1
 # asdf plugin-add ruby
 # asdf plugin-add nodejs
 # asdf plugin-add crystal
-# asdf plugin-add rust
-# asdf plugin-add java
 
 # --------------------------
 # ----- installing runtimes
@@ -31,8 +29,6 @@ zig 0.9.1
 # asdf install elixir 1.9.2
 # asdf install ruby 2.7.0
 # asdf install nodejs 12.4.0
-# asdf install crystal 0.29.0
-# asdf install rust 1.35.0
 
 # --------------------------
 # ----- elixir configuration
