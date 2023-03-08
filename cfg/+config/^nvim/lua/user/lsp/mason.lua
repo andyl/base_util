@@ -14,11 +14,18 @@
 -- Mason log | ~/.local/state/nvim/mason.log
 -- LSP log   | ~/.local/state/nvim/lsp.log
 
+-- MASON USES LSPCONFIG:
+-- https://github.com/neovim/nvim-lspconfig
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+--
+-- LSPCONFIG HELP:
+-- :help lsp-config
+--
+-- EXAMPLE LSP config:
+-- https://github.com/megalithic/dotfiles/blob/94cce5036d8fc19c74b7a259f084560246194fe5/config/nvim/lua/mega/plugins/lsp/servers.lua#L477-L546
 -- https://github.com/williamboman/mason.nvim
 -- https://github.com/williamboman/mason-lspconfig.nvim
--- https://github.com/neovim/nvim-lspconfig
-
--- start mason
+--
 
 require'mason'.setup()
 
@@ -29,11 +36,13 @@ local servers = {
   "cssls",        -- css
   "dockerls",     -- dockerfile
   "elixirls",     -- elixir
+  "emmet_ls",    -- emmet
   "html",         -- html
   "jsonls",       -- json
   "lua_ls",       -- lua
   "marksman",     -- markdown
   "solargraph",   -- ruby
+  "sqlls",       -- sql
   "tailwindcss",  -- tailwind
   "tsserver",     -- javascript and typescript
   "yamlls",       -- yaml
@@ -54,6 +63,9 @@ end
 require'mason-lspconfig'.setup_handlers {
   function (server_name) -- default handler sets up all servers
     require"lspconfig"[server_name].setup {}
+  end,
+  ["lua_ls"] = function ()           -- custom settings for LUA
+    server_config("lua_ls")
   end,
   ["jsonls"] = function ()           -- custom settings for JSON
     server_config("jsonls")

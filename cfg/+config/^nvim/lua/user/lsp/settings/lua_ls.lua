@@ -1,4 +1,4 @@
--- lsp/settings/sumneko_lua
+-- lsp/settings/lua_ls
 
 local opts = {
 	settings = {
