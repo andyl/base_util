@@ -14,6 +14,10 @@
 -- Mason log | ~/.local/state/nvim/mason.log
 -- LSP log   | ~/.local/state/nvim/lsp.log
 
+-- MASON REPOS
+-- https://github.com/williamboman/mason.nvim
+-- https://github.com/williamboman/mason-lspconfig.nvim
+--
 -- MASON USES LSPCONFIG:
 -- https://github.com/neovim/nvim-lspconfig
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
@@ -23,8 +27,6 @@
 --
 -- EXAMPLE LSP config:
 -- https://github.com/megalithic/dotfiles/blob/94cce5036d8fc19c74b7a259f084560246194fe5/config/nvim/lua/mega/plugins/lsp/servers.lua#L477-L546
--- https://github.com/williamboman/mason.nvim
--- https://github.com/williamboman/mason-lspconfig.nvim
 --
 
 require'mason'.setup()
