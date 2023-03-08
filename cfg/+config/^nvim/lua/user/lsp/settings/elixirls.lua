@@ -5,9 +5,9 @@ local opts = {
     elixirLS = {
       dialyzerEnabled = false,
     },
-    elixirls = {
-      dialyzerEnabled = false,
-    },
+    -- elixirls = {
+    --   dialyzerEnabled = false,
+    -- },
   },
 }
 
