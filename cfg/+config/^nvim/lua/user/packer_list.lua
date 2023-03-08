@@ -34,7 +34,7 @@ return Packer.startup(function(use)
   use 'nvim-telescope/telescope.nvim'          -- fuzzy finder
   -- SNIPPETS
   use 'L3MON4D3/LuaSnip'                       -- snippet engine
-  use 'mattn/emmet-vim'                        -- html snippets (trigger using <C-y ,>)
+  -- use 'mattn/emmet-vim'                        -- html snippets (trigger using <C-y ,>)
   -- CMP/COMPLETION
   use 'hrsh7th/nvim-cmp'                       -- the completion plugin
   use 'hrsh7th/cmp-buffer'                     -- buffer completions
