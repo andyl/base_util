@@ -6,6 +6,7 @@ if not PackerOk then return end
 return Packer.startup(function(use)
   -- NEOVIM BASICS
   use 'wbthomason/packer.nvim'                 -- let Packer manage itself
+  use 'MunifTanjim/nui.nvim'                   -- UI library
   use 'nvim-lua/popup.nvim'                    -- the vim Popup API
   use 'nvim-lua/plenary.nvim'                  -- common lua functions
   -- NVIM-TREE
@@ -119,6 +120,19 @@ return Packer.startup(function(use)
   use 'windwp/nvim-autopairs'                  -- integrates with cmp and treesitter
   use 'terrortylor/nvim-comment'               -- commenting tool
   use 'gaoDean/autolist.nvim'                  -- list generator
+  -- CHATGPT
+  use({
+    'jackMort/ChatGPT.nvim',
+    config = function()
+      require("chatgpt").setup({
+      })
+    end,
+    requires = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim"
+    }
+  })
 
 end)
 
