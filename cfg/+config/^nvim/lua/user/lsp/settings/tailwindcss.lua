@@ -1,5 +1,35 @@
 -- lsp/settings/tailwindcss
 
+---Require a module using `pcall` and report any errors
+--- param module string
+--- param opts table?
+--- return boolean, any
+
+local function megrequire(module, opts)
+  opts = opts or { silent = false }
+  local ok, result = pcall(require, module)
+  if not ok and not opts.silent then
+    if opts.message then result = opts.message .. "\n" .. result end
+    vim.notify(result, "ERROR", { title = vim.fmt("Error requiring: %s", module) })
+  end
+  return ok, result
+end
+
+local ok_lsp, lspconfig = megrequire("lspconfig")
+if not ok_lsp then return end
+
+local function root_pattern(...)
+  local patterns = vim.tbl_flatten({ ... })
+
+  return function(startpath)
+    for _, pattern in ipairs(patterns) do
+      return lspconfig.util.search_ancestors(startpath, function(path)
+        if lspconfig.util.path.exists(vim.fn.glob(lspconfig.util.path.join(path, pattern))) then return path end
+      end)
+    end
+  end
+end
+
 local opts = {
   init_options = {
     userLanguages = {
@@ -9,12 +39,12 @@ local opts = {
       heex = "phoenix-heex",
     },
   },
-  -- handlers = {
-  --   ["tailwindcss/getConfiguration"] = function(_, _, params, _, bufnr, _)
-  --     lsp.buf_notify(bufnr, "tailwindcss/getConfigurationResponse", { _id = params._id })
-  --     P("tailwindcss getConfiguration callback")
-  --   end,
-  -- },
+  handlers = {
+    ["tailwindcss/getConfiguration"] = function(_, _, params, _, bufnr, _)
+      vim.lsp.buf_notify(bufnr, "tailwindcss/getConfigurationResponse", { _id = params._id })
+      print("tailwindcss getConfiguration callback")
+    end,
+  },
   settings = {
     includeLanguages = {
           ["html-eex"] = "html",
@@ -52,16 +82,16 @@ local opts = {
     "elixir",
     "eelixir",
   },
-  -- root_dir = root_pattern(
-  --   "./assets/tailwind.config.js",
-  --   "tailwind.config.js",
-  --   "tailwind.config.ts",
-  --   "postcss.config.js",
-  --   "postcss.config.ts",
-  --   "package.json",
-  --   "node_modules",
-  --   ".git"
-  -- ),
+  root_dir = root_pattern(
+    "./assets/tailwind.config.js",
+    "tailwind.config.js",
+    "tailwind.config.ts",
+    "postcss.config.js",
+    "postcss.config.ts",
+    "package.json",
+    "node_modules",
+    ".git"
+  ),
 }
 
 return opts

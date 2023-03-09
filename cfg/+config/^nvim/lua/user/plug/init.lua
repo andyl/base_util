@@ -11,5 +11,5 @@ require "user.plug.mkdx"
 require "user.plug.tabline"
 require "user.plug.comment"
 require "user.plug.treesitter"
-require "user.plug.autolist"
+-- require "user.plug.autolist"
 

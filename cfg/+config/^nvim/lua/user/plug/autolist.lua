@@ -5,8 +5,22 @@ require('autolist').setup({
   ft = {
     "markdown",
     "text",
-  }
+  },
+  lists = {
+		markdown = {
+			"unordered",
+			"digit",
+			"ascii",
+			"roman",
+		},
+		text = {
+			"unordered",
+			"digit",
+			"ascii",
+			"roman",
+		},
+		tex = { "latex_item" },
+		plaintex = { "latex_item" },
+	},
 })
-
--- require('autolist').setup()
 

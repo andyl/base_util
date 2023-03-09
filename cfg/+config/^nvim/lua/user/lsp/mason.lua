@@ -66,6 +66,9 @@ require'mason-lspconfig'.setup_handlers {
   function (server_name) -- default handler sets up all servers
     require"lspconfig"[server_name].setup {}
   end,
+  ["emmet_ls"] = function ()         -- custom settings for EMMET
+    server_config("emmet_ls")
+  end,
   ["lua_ls"] = function ()           -- custom settings for LUA
     server_config("lua_ls")
   end,
