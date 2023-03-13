@@ -29,28 +29,28 @@
 -- https://github.com/megalithic/dotfiles/blob/94cce5036d8fc19c74b7a259f084560246194fe5/config/nvim/lua/mega/plugins/lsp/servers.lua#L477-L546
 --
 
-require'mason'.setup()
+require 'mason'.setup()
 
 -- auto-install servers
 
 local servers = {
-  "bashls",       -- bash
-  "cssls",        -- css
-  "dockerls",     -- dockerfile
-  "elixirls",     -- elixir
+  "bashls",      -- bash
+  "cssls",       -- css
+  "dockerls",    -- dockerfile
+  "elixirls",    -- elixir
   "emmet_ls",    -- emmet
-  "html",         -- html
-  "jsonls",       -- json
-  "lua_ls",       -- lua
-  "marksman",     -- markdown
-  "solargraph",   -- ruby
+  "html",        -- html
+  "jsonls",      -- json
+  "lua_ls",      -- lua
+  "marksman",    -- markdown
+  "solargraph",  -- ruby
   "sqlls",       -- sql
-  "tailwindcss",  -- tailwind
-  "tsserver",     -- javascript and typescript
-  "yamlls",       -- yaml
+  "tailwindcss", -- tailwind
+  "tsserver",    -- javascript and typescript
+  "yamlls",      -- yaml
 }
 
-require'mason-lspconfig'.setup {
+require 'mason-lspconfig'.setup {
   ensure_installed = servers,
 }
 
@@ -59,27 +59,17 @@ require'mason-lspconfig'.setup {
 local function server_config(server)
   local tgt = "user.lsp.settings." .. server
   local opts = require(tgt)
-  require"lspconfig"[server].setup(opts)
+  require "lspconfig"[server].setup(opts)
 end
 
-require'mason-lspconfig'.setup_handlers {
-  function (server_name) -- default handler sets up all servers
-    require"lspconfig"[server_name].setup {}
+require 'mason-lspconfig'.setup_handlers {
+  function(server_name)  -- default handler sets up all servers
+    require "lspconfig"[server_name].setup {}
   end,
-  ["emmet_ls"] = function ()         -- custom settings for EMMET
-    server_config("emmet_ls")
-  end,
-  ["lua_ls"] = function ()           -- custom settings for LUA
-    server_config("lua_ls")
-  end,
-  ["jsonls"] = function ()           -- custom settings for JSON
-    server_config("jsonls")
-  end,
-  ["elixirls"] = function ()         -- custom settings for ELIXIR
-    server_config("elixirls")
-  end,
-  ["tailwindcss"] = function ()      -- custom settings for TAILWIND
-    server_config("tailwindcss")
-  end,
+  ["elixirls"] = function() server_config("elixirls") end,
+  ["emmet_ls"] = function() server_config("emmet_ls") end,
+  ["jsonls"] = function() server_config("jsonls") end,
+  ["lua_ls"] = function() server_config("lua_ls") end,
+  ["tailwindcss"] = function() server_config("tailwindcss") end,
+  ["yamlls"] = function() server_config("yamlls") end,
 }
-
