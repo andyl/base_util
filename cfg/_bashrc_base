@@ -185,19 +185,12 @@ live_tmate() {
   return $(echo $TMUX | grep tmate > /dev/null) 
 }
 
-alias  tm="tmux"   
-alias  tmnew="tmux new -s"
-
-tmr() {
-  no_tmux && tm new \; send "$*" C-m \; attach
-}
-
 # note also: ~/.complete has completions for tmux and tmuxinator
 
 # show the links that others can use to join the sharing session
 alias tmate-links="tmate show-messages | grep -v clear | grep -v ssh.tmate.io | cut -d ' ' -f 1-6 --complement"
 
-sessionkey () {
+sessionkey() {
   tmate show-messages | grep 'ssh session:' | cut -d ' ' -f10 | tee >(xclip -selection clipboard)
 }
 
@@ -205,6 +198,43 @@ sessionkey () {
 alias ttn="in_tmux && tm new-window -c '#{pane_current_path}'"       # tmux tab new
 alias tts="in_tmux && tm split-window -v -c '#{pane_current_path}'"  # tmux tab split
 alias ttv="in_tmux && tm split-window -h -c '#{pane_current_path}'"  # tmux tab split vert
+
+# run command in tmux 
+tmr() {
+  no_tmux && tm new \; send "$*" C-m \; attach
+}
+
+# if live_tmux rename the session 
+# else start a new session with a given name 
+tms() {
+  local session=$1
+  if [ -z $session ]
+  then
+  echo -e "Set tmux session name\n  Usage: tms <tmux session name>"
+  else
+    if `live_tmux` 
+    then 
+    tm rename-session $session 
+    else 
+    tmux new -s $session
+    fi
+  fi
+}
+
+# if no_tmux attach to session
+# TODO: add auto-complete
+tma() {
+  local session=$1
+  if [ -z $session ] && no_tmux
+  then
+  echo -e "Attach to an new or existing tmux session\n  Usage: tma <tmux session name>"
+  else
+    tmux attach -t $1 
+  fi
+}
+
+alias   tm="tmux"             # start tmux 
+alias tmls="tmux ls"          # list active sessions 
 
 ###########################################################################
 # TERMINATOR
