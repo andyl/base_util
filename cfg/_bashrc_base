@@ -201,7 +201,7 @@ alias ttv="in_tmux && tm split-window -h -c '#{pane_current_path}'"  # tmux tab 
 
 # run command in tmux 
 tmr() {
-  no_tmux && tm new \; send "$*" C-m \; attach
+  no_tmux && tmux new \; send "$*" C-m \; attach
 }
 
 # if live_tmux rename the session 
@@ -219,6 +219,11 @@ tms() {
     tmux new -s $session
     fi
   fi
+}
+
+# set session name and run a command 
+tmsr() {
+  no_tmux && tmux new -s $1 \; send "${*:2}" C-m \; attach
 }
 
 # if no_tmux attach to session
