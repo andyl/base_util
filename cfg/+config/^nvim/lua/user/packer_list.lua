@@ -26,7 +26,7 @@ return Packer.startup(function(use)
   -- DAP
   use 'mfussenegger/nvim-dap'                  -- debug adapter protocol
   -- NEOVIM/TERMINAL
-  use 'benmills/vimux'                         -- tmux integration
+  -- use 'benmills/vimux'                         -- tmux integration
   use {"akinsho/toggleterm.nvim", tag = '*', config = function()
     require("toggleterm").setup()              -- terminal management
   end}
