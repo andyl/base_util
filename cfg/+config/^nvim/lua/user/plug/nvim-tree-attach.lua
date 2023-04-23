@@ -102,4 +102,36 @@ if not status_ok then return end
 
 nvim_tree.setup {
   on_attach = on_attach,
+  renderer = {
+    highlight_opened_files = "all",
+    icons = {
+      glyphs = { folder = { arrow_closed = "›" } },
+      show = {
+        git = false,
+        file = true,
+        folder = true,
+        folder_arrow = true,
+      }
+    }
+  },
+  sort_by = "case_sensitive",
+  diagnostics = {
+    enable = true,
+    icons = {
+      hint    = "",
+      info    = "",
+      warning = "",
+      error   = "",
+    },
+  },
+  update_focused_file = {
+    enable      = true,
+    update_cwd  = false,
+    ignore_list = {},
+  },
+  git = {
+    enable = false,
+    ignore = true,
+    timeout = 500,
+  },
 }
