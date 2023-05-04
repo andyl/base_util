@@ -26,7 +26,7 @@ return Packer.startup(function(use)
   -- DAP
   use 'mfussenegger/nvim-dap'                  -- debug adapter protocol
   -- NEOVIM/TERMINAL
-  -- use 'benmills/vimux'                         -- tmux integration
+  use 'benmills/vimux'                         -- tmux integration
   use {"akinsho/toggleterm.nvim", tag = '*', config = function()
     require("toggleterm").setup()              -- terminal management
   end}
@@ -65,6 +65,7 @@ return Packer.startup(function(use)
   -- LANG JSON
   use 'tpope/vim-jdaddy'                       -- JSON text objects & formatting
   -- LANG ELIXIR
+  use 'mhinz/vim-mix-format'                   -- wrapper to run mix format
   use 'powerman/vim-plugin-AnsiEsc'            -- docco with ANSI colors
   use 'elixir-editors/vim-elixir'              -- filetype detection
   use 'andyl/vim-projectionist-elixir'         -- elixir file navigation
