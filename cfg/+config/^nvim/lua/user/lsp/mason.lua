@@ -34,20 +34,21 @@ require 'mason'.setup()
 -- auto-install servers
 
 local servers = {
-  "bashls",      -- bash
-  "cssls",       -- css
-  "dockerls",    -- dockerfile
-  "elixirls",    -- elixir
-  "emmet_ls",    -- emmet
-  "html",        -- html
-  "jsonls",      -- json
-  "lua_ls",      -- lua
-  "marksman",    -- markdown
-  "solargraph",  -- ruby
-  "sqlls",       -- sql
-  "tailwindcss", -- tailwind
-  "tsserver",    -- javascript and typescript
-  "yamlls",      -- yaml
+  "bashls",        -- bash
+  "cssls",         -- css
+  "dockerls",      -- dockerfile
+  "elixirls",      -- elixir
+  "emmet_ls",      -- emmet
+  "html",          -- html
+  "jsonls",        -- json
+  "lua_ls",        -- lua
+  "marksman",      -- markdown
+  "rust_analyzer", -- rust
+  "solargraph",    -- ruby
+  "sqlls",         -- sql
+  "tailwindcss",   -- tailwind
+  "tsserver",      -- javascript and typescript
+  "yamlls",        -- yaml
 }
 
 require 'mason-lspconfig'.setup {
