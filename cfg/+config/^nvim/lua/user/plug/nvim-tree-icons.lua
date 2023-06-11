@@ -1,3 +1,4 @@
+print("HELLO BONG")
 require'nvim-web-devicons'.setup {
  -- your personnal icons can go here (to override)
  -- you can specify color or cterm_color instead of specifying both of them
@@ -26,8 +27,13 @@ require'nvim-web-devicons'.setup {
  override_by_filename = {
   [".gitignore"] = {
     icon = "",
-    color = "#f1502f",
+    color = "#ff00ff",
     name = "Gitignore"
+  },
+  ["docker-compose.yml"] = {
+    icon = "",
+    color = "#f1502f",
+    name = "DkCompose"
   }
  };
  -- same as `override` but specifically for overrides by extension
