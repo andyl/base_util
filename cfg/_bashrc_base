@@ -107,10 +107,6 @@ export PATH=$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools:
 export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin
 
 ###########################################################################
-# RUST
-export PATH=$PATH:~/.cargo/bin
-
-###########################################################################
 # HOST ARCHITECTURE, ID and OS
 #
 # armv6l is 32-bit (arm32)  (RPi0)
@@ -349,6 +345,12 @@ alias cy="crystal"
 alias jek="jekyll"
 alias bej="bundle exec jekyll"
 alias bejek="bundle exec jekyll"
+
+###########################################################################
+# RUST 
+
+alias cg="cargo"
+export PATH=$PATH:~/.cargo/bin
 
 ###########################################################################
 # DOCKER
