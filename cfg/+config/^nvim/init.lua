@@ -10,4 +10,5 @@ require "user.pane"          -- pane utilities (resizing)
 require "user.term"          -- terminal configuration
 require "user.key"           -- keymap setup
 require "user.lsp"           -- lsp configuration
+require "user.filetypes"     -- filetype detection
 
