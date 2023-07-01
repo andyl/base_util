@@ -53,6 +53,7 @@ return Packer.startup(function(use)
   -- EDITING UTILS
   use 'dhruvasagar/vim-table-mode'             -- vim table mode
   use 'junegunn/vim-easy-align'                -- column alignment
+  use 'dkarter/bullets.vim'                    -- numbered lists
   -- SEARCH AND NAV
   use 'mileszs/ack.vim'                        -- ACK file search
   use 'tpope/vim-projectionist'                -- alternate file nav
