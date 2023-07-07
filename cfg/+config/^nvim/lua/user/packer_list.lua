@@ -101,8 +101,6 @@ return Packer.startup(function(use)
   use 'folke/neodev.nvim'                      -- lsp autocompletion for nvim lua API
   -- GIST
   use 'rudylee/nvim-gist'                      -- post github gists
-  -- use 'mattn/gist-vim'                         -- post github gists
-  -- use 'mattn/webapi-vim'                       -- required by gist-vim
   -- NEORG - https://github.com/nvim-neorg/neorg
   use {
     "nvim-neorg/neorg",
@@ -116,6 +114,8 @@ return Packer.startup(function(use)
     end,
     requires = "nvim-lua/plenary.nvim"
   }
+  -- OBSIDIAN - https://obsidian.md
+  use 'epwalsh/obsidian.nvim'
   -- COMMENTS, AUTOPAIRS, LISTS
   use 'windwp/nvim-autopairs'                  -- integrates with cmp and treesitter
   use 'terrortylor/nvim-comment'               -- commenting tool
