@@ -1,9 +1,7 @@
 R 3.6.2
 crystal 0.29.0
 dart 2.14.4
-# elixir 1.14.4-otp-25
-# erlang 25.2.3
-elixir 1.15.1-otp-26
+elixir 1.15.2-otp-26
 erlang 26.0.2
 golang 1.19.2
 java openjdk-19.0.1
