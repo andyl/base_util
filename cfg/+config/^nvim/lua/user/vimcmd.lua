@@ -35,5 +35,8 @@ autocmd BufRead,BufNewFile *.gta     set filetype=gtd
 let g:table_mode_corner = '|'
 let g:table_mode_corner_corner = '|'
 
+" === BULLETS.VIM
+let g:bullets_checkbox_markers = ' .-ox'
+
 ]]
 

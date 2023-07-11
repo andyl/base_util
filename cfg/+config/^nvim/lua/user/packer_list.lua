@@ -53,7 +53,6 @@ return Packer.startup(function(use)
   -- EDITING UTILS
   use 'dhruvasagar/vim-table-mode'             -- vim table mode
   use 'junegunn/vim-easy-align'                -- column alignment
-  use 'dkarter/bullets.vim'                    -- numbered lists
   -- SEARCH AND NAV
   use 'mileszs/ack.vim'                        -- ACK file search
   use 'tpope/vim-projectionist'                -- alternate file nav
@@ -119,7 +118,8 @@ return Packer.startup(function(use)
   -- COMMENTS, AUTOPAIRS, LISTS
   use 'windwp/nvim-autopairs'                  -- integrates with cmp and treesitter
   use 'terrortylor/nvim-comment'               -- commenting tool
-  use 'gaoDean/autolist.nvim'                  -- list generator
+  use 'dkarter/bullets.vim'                    -- numbered lists
+  -- use 'gaoDean/autolist.nvim'                  -- list generator
   -- CHATGPT
   use 'MunifTanjim/nui.nvim'                   -- UI library
   use({
