@@ -16,3 +16,16 @@ customizations
 - vimcmd.lua 
 - let g:bullets_checkbox_markers = ' .-ox'
 
+## 2023 Jul 14 Fri 
+
+Obsidian Org Tools 
+- folders 
+- links 
+- tags 
+- metadata 
+
+Links now work properly in nvim and obsidian 
+- marksman lsp 
+- add ~/.config/marksman/config.toml 
+
+
