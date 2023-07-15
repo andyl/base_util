@@ -38,5 +38,9 @@ let g:table_mode_corner_corner = '|'
 " === BULLETS.VIM
 let g:bullets_checkbox_markers = ' .-ox'
 
+" === MARKDOWN FOLDING
+let g:markdown_folding = 1
+autocmd FileType markdown setlocal foldlevel=99
+
 ]]
 

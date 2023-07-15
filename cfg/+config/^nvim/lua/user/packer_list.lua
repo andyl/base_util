@@ -78,6 +78,7 @@ return Packer.startup(function(use)
   use 'tomasr/molokai'                         -- molokai
   use 'morhetz/gruvbox'                        -- gruvbox
   -- MARKDOWN
+  use 'tpope/vim-markdown'                     -- syntax highlighting and folding
   use(
     {
       "iamcco/markdown-preview.nvim",
