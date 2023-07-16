@@ -46,7 +46,12 @@ require'nvim-web-devicons'.setup {
   ["pdf"] = {
     icon = "",
     color = "#81e043",
-    name = "Svg"
+    name = "Pdf"
+  },
+  ["csv"] = {
+    icon = "",
+    color = "#81e043",
+    name = "Csv"
   },
   ["svg"] = {
     icon = "",
