@@ -39,27 +39,27 @@ require'nvim-web-devicons'.setup {
  -- takes effect when `strict` is true
  override_by_extension = {
   ["log"] = {
-    icon = "",
+    icon = "∋",
     color = "#81e043",
     name = "Log"
   },
   ["pdf"] = {
-    icon = "",
+    icon = "∈",
     color = "#81e043",
     name = "Pdf"
   },
   ["csv"] = {
-    icon = "",
+    icon = "✠",
     color = "#81e043",
     name = "Csv"
   },
   ["svg"] = {
-    icon = "",
+    icon = "Ⅱ",
     color = "#81e043",
     name = "Svg"
   },
   ["txt"] = {
-    icon = "",
+    icon = "♠",
     color = "#81e043",
     name = "Txt"
   },
