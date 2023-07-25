@@ -50,6 +50,12 @@ local n_keymap = {
     t = { ":vsplit | lua vim.lsp.buf.definition()<cr><C-W>T", "Tab"          },
   },
 
+  o = { -- Obsidian
+    name = "Obsidian",
+    o = { ":! obs<cr>", "Open" },
+  },
+
+
   t = { -- Terminal Management
     name = "Terminal",
     f = { "<cmd>ToggleTerm direction=float<cr>", "Float"  },
