@@ -52,9 +52,8 @@ local n_keymap = {
 
   o = { -- Obsidian
     name = "Obsidian",
-    o = { ":! obs<cr>", "Open" },
+    o = { ":! obs %<cr><cr>", "Open" },
   },
-
 
   t = { -- Terminal Management
     name = "Terminal",
