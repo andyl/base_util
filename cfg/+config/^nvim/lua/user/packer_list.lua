@@ -49,6 +49,7 @@ return Packer.startup(function(use)
   -- UTILITY
   use 'andyl/nvls'                             -- test plugin
   use 'andyl/rfx.nvim'                         -- test plugin
+  use 'tpope/vim-speeddating'                  -- increment/decrement dates (C-a/C-x)
   use 'andyl/al-gtd'                           -- GTD
   -- EDITING UTILS
   use 'dhruvasagar/vim-table-mode'             -- vim table mode
