@@ -7,7 +7,13 @@ Layout/HashAlignment:
 Style/StringLiterals: 
   Enabled: false
 
+Style/GlobalVars: 
+  Enabled: false
+
 Style/Proc: 
+  Enabled: false
+
+Layout/SpaceAroundOperators: 
   Enabled: false
 
 Layout/TrailingWhitespace: 
@@ -28,6 +34,9 @@ Layout/EmptyLinesAroundClassBody:
   Enabled: false
 
 Layout/EmptyLineBetweenDefs:
+  Enabled: false
+
+Layout/MultilineMethodCallIndentation:
   Enabled: false
 
 Style/GlobalStdStream:
