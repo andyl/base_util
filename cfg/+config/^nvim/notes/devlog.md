@@ -28,4 +28,9 @@ Links now work properly in nvim and obsidian
 - marksman lsp 
 - add ~/.config/marksman/config.toml 
 
+## 2023 Sep 11 Mon
+
+Convert from Packer.nvim to Lazy.nvim 
+- Packer is no longer maintained
+- Lazy is the recommended alternative
 

@@ -1,6 +1,6 @@
 # Neovim Configuration README
 
-## Plugins 
+## Plugins / Packer 
 
 The plugin manager is Packer - 'wbthomason/packer.nvim'
 
@@ -12,6 +12,12 @@ The plugin manager is Packer - 'wbthomason/packer.nvim'
 | :PackerClean         | Remove any disabled or unused plugins           |
 | :PackerInstall       | Clean, then install missing plugins             |
 | :PackerLoad <plugin> | Loads <plugin> immediately                      |
+
+## Plugins / Lazy.nvim 
+
+| Command              | Desc                                            |
+|----------------------|-------------------------------------------------|
+| :Lazy                | Show the UI for the Lazy Package Manager        |
 
 ## Language Servers
 
