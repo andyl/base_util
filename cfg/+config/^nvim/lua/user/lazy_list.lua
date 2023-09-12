@@ -1,11 +1,10 @@
--- packer_list - define list of Lazy Plugins
+-- lazy_list - define list of Lazy Plugins
 
 LazyOk, Lazy = pcall(require, "lazy")
 if not LazyOk then return end
 
 return Lazy.setup({
   -- NEOVIM BASICS
-  -- 'wbthomason/packer.nvim',                -- let Lazy manage itself
   'nvim-lua/popup.nvim',                   -- the vim Popup API
   'nvim-lua/plenary.nvim',                 -- common lua functions
   -- NVIM-TREE
@@ -28,9 +27,6 @@ return Lazy.setup({
   -- NEOVIM/TERMINAL
   'benmills/vimux',                        -- tmux integration
   {"akinsho/toggleterm.nvim", version = '*', config = true},
-  -- {"akinsho/toggleterm.nvim", tag = '*', config = function()
-  --   require("toggleterm").setup()              -- terminal management
-  -- end},
   -- TELESCOPE
   'nvim-telescope/telescope.nvim',         -- fuzzy finder
   -- SNIPPETS
@@ -71,7 +67,6 @@ return Lazy.setup({
   'powerman/vim-plugin-AnsiEsc',           -- docco with ANSI colors
   'elixir-editors/vim-elixir',             -- filetype detection
   'andyl/vim-projectionist-elixir',        -- elixir file navigation
-  -- 'andyl/vim-textobj-elixir',              -- elixir text objects
   -- COLORSCHEMES
   'junegunn/seoul256.vim',                 -- seoul256
   'NLKNguyen/papercolor-theme',            -- PaperColor
@@ -81,14 +76,6 @@ return Lazy.setup({
   'morhetz/gruvbox',                       -- gruvbox
   -- MARKDOWN
   'tpope/vim-markdown',                    -- syntax highlighting and folding
-  -- use(
-  --   {
-  --     "iamcco/markdown-preview.nvim",
-  --     run = "cd app && npm install",
-  --     setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
-  --     ft = { "markdown" },
-  --   }
-  -- )
   -- LAYOUTS
   'andyl/zoomwintab.vim',                  -- pane zooming
   -- MISC
@@ -103,40 +90,11 @@ return Lazy.setup({
   'folke/neodev.nvim',                     -- lsp autocompletion for nvim lua API
   -- GIST
   'rudylee/nvim-gist',                     -- post github gists
-  -- NEORG - https://github.com/nvim-neorg/neorg
-  -- {
-  --   "nvim-neorg/neorg",
-  --   run = ":Neorg sync-parsers",
-  --   config = function()
-  --     require('neorg').setup {
-  --       load = {
-  --         ["core.defaults"] = {}
-  --       }
-  --     }
-  --   end,
-  --   requires = "nvim-lua/plenary.nvim"
-  -- }
   -- OBSIDIAN - https://obsidian.md
   'epwalsh/obsidian.nvim',
   -- COMMENTS, AUTOPAIRS, LISTS
   'windwp/nvim-autopairs',                 -- integrates with cmp and treesitter
   'terrortylor/nvim-comment',              -- commenting tool
   'dkarter/bullets.vim',                   -- numbered lists
-  -- 'gaoDean/autolist.nvim'                  -- list generator
-  -- CHATGPT
-  -- 'MunifTanjim/nui.nvim',                  -- UI library
-  -- use({
-  --   'jackMort/ChatGPT.nvim',
-  --   config = function()
-  --     require("chatgpt").setup({
-  --     })
-  --   end,
-  --   requires = {
-  --     "MunifTanjim/nui.nvim",
-  --     "nvim-lua/plenary.nvim",
-  --     "nvim-telescope/telescope.nvim"
-  --   }
-  -- })
-
 })
 
