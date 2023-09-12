@@ -5,7 +5,7 @@ if not LazyOk then return end
 
 return Lazy.setup({
   -- NEOVIM BASICS
-  'wbthomason/packer.nvim',                -- let Lazy manage itself
+  -- 'wbthomason/packer.nvim',                -- let Lazy manage itself
   'nvim-lua/popup.nvim',                   -- the vim Popup API
   'nvim-lua/plenary.nvim',                 -- common lua functions
   -- NVIM-TREE
@@ -27,6 +27,7 @@ return Lazy.setup({
   'mfussenegger/nvim-dap',                 -- debug adapter protocol
   -- NEOVIM/TERMINAL
   'benmills/vimux',                        -- tmux integration
+  {"akinsho/toggleterm.nvim", version = '*', config = true},
   -- {"akinsho/toggleterm.nvim", tag = '*', config = function()
   --   require("toggleterm").setup()              -- terminal management
   -- end},
@@ -60,7 +61,7 @@ return Lazy.setup({
   'andyl/fuzzy-projectionist.vim',         -- fzf meets projectionist (eg :Fmodel)
   -- TEXT MANIPULATION
   'kana/vim-textobj-user',                 -- customizable text objects
-  'mattn/vim-textobj-url',                 -- au/iu
+  -- 'mattn/vim-textobj-url',                 -- au/iu
   'tpope/vim-surround',                    -- edit containing objects
   'tpope/vim-repeat',                      -- repeat support for plugins
   -- LANG JSON
@@ -70,7 +71,7 @@ return Lazy.setup({
   'powerman/vim-plugin-AnsiEsc',           -- docco with ANSI colors
   'elixir-editors/vim-elixir',             -- filetype detection
   'andyl/vim-projectionist-elixir',        -- elixir file navigation
-  'andyl/vim-textobj-elixir',              -- elixir text objects
+  -- 'andyl/vim-textobj-elixir',              -- elixir text objects
   -- COLORSCHEMES
   'junegunn/seoul256.vim',                 -- seoul256
   'NLKNguyen/papercolor-theme',            -- PaperColor
