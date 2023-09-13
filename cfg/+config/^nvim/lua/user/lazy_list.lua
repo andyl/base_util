@@ -30,7 +30,7 @@ return Lazy.setup({
   -- TELESCOPE
   'nvim-telescope/telescope.nvim',         -- fuzzy finder
   -- SNIPPETS
-  'L3MON4D3/LuaSnip',                      -- snippet engine
+  {'L3MON4D3/LuaSnip', lazy = true},       -- snippet engine
   -- CMP/COMPLETION
   'hrsh7th/nvim-cmp',                      -- the completion plugin
   'hrsh7th/cmp-buffer',                    -- buffer completions
