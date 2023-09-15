@@ -45,7 +45,7 @@ return Lazy.setup({
   'crispgm/nvim-tabline',                  -- tab line
   -- UTILITY
   'andyl/nvls',                            -- test plugin
-  'andyl/rfx.nvim',                        -- test plugin
+  -- 'andyl/rfx.nvim',                        -- test plugin
   'tpope/vim-speeddating',                 -- increment/decrement dates (C-a/C-x)
   'andyl/al-gtd',                          -- GTD
   -- EDITING UTILS

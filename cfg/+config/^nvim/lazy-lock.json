@@ -40,7 +40,6 @@
   "playground": { "branch": "master", "commit": "429f3e76cbb1c59fe000b690f7a5bea617b890c0" },
   "plenary.nvim": { "branch": "master", "commit": "9ce85b0f7dcfe5358c0be937ad23e456907d410b" },
   "popup.nvim": { "branch": "master", "commit": "b7404d35d5d3548a82149238289fa71f7f6de4ac" },
-  "rfx.nvim": { "branch": "master", "commit": "57a0f8deeaf13f0d771039bb45f290f8e49ee1c9" },
   "seoul256.vim": { "branch": "master", "commit": "b21c9e63f7c2d543db8b34a393a0b42ec7e9b891" },
   "telescope.nvim": { "branch": "master", "commit": "59812c26d826e8c717e29406267ea1260f71e103" },
   "toggleterm.nvim": { "branch": "main", "commit": "b90a1381e9b5b8596f49070ee86c71db267ac868" },
