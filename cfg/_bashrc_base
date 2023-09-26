@@ -519,13 +519,22 @@ export GIT_PS1_SHOWSTASHSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true
 export GIT_PS1_SHOWUPSTREAD="auto"
 
+exit_status() { 
+  es=$? 
+  if [ $es -eq 0 ]; then 
+    echo -e "${PSGreen}${es}${PSClear}"
+      else
+    echo -e "${PSRed}${es}${PSClear}"
+  fi
+}
+
 GITC=$CPD/git-completion.sh
 if [ -f $GITC ]
 then
   source $GITC
-  PS1="${PSGreen}\u@\h${PSClear}${PSYellow}\`__git_ps1\`${PSClear} \w${PSRed}>${PSClear} " 
+  PS1="${PSGreen}\u@\h-\$?${PSClear}${PSYellow}\`__git_ps1\`${PSClear} \w${PSRed}>${PSClear} " 
 else
-  PS1="${PSGreen}\u@\h${PSClear} \w${PSRed}>${PSClear} " 
+  PS1="${PSGreen}\u@\h-\$?${PSClear}\w${PSRed}>${PSClear} " 
 fi
 
 ###########################################################################
