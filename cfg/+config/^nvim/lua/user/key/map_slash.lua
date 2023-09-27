@@ -50,6 +50,13 @@ local n_keymap = {
     t = { ":vsplit | lua vim.lsp.buf.definition()<cr><C-W>T", "Tab"          },
   },
 
+  i = { -- Insert
+    name = "Insert",
+    d = { ":r !w_date_tag<cr>kJA",   "Date"              },
+    t = { ":r !w_time_exact<cr>kJA", "Exact Time"        },
+    q = { ":r !w_time_qhour<cr>kJA", "Quarter-hour Time" },
+  },
+
   o = { -- Obsidian
     name = "Obsidian",
     o = { ":! obs %<cr><cr>", "Open" },
@@ -63,13 +70,7 @@ local n_keymap = {
     t = { ":vsplit | terminal<cr><C-W>T"       , "Tab"    },
   },
 
-  i = { -- Insert
-    name = "Insert",
-    d = { ":r !w_date_tag<cr>kJA",   "Date"              },
-    t = { ":r !w_time_exact<cr>kJA", "Exact Time"        },
-    q = { ":r !w_time_qhour<cr>kJA", "Quarter-hour Time" },
-  },
-
+  x = { ":ToggleCheckbox<cr>", "Toggle Checkbox"},
 
 }
 
