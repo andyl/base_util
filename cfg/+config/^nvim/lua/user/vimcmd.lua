@@ -40,7 +40,6 @@ let g:table_mode_corner_corner = '|'
 
 " === BULLETS.VIM
 let g:bullets_checkbox_markers = ' .-x'
-let g:bullets_mapping_leader = '\'
 
 " === MARKDOWN FOLDING
 let g:markdown_folding = 1
