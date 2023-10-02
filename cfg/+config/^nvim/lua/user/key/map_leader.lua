@@ -46,6 +46,7 @@ local keytable_n = {
     k = { "<cmd>Telescope keymaps<cr>",                                                                                     "Keymaps"     },
     m = { "<cmd>Telescope oldfiles<cr>",                                                                                    "MRU"         },
     o = { "<cmd>Telescope vim_options<cr>",                                                                                 "Options"     },
+    p = { "<cmd>Telescope project<cr>",                                                                                     "Projects"    },
     r = { "<cmd>Telescope registers<cr>",                                                                                   "Registers"   },
   },
 

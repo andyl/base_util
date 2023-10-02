@@ -28,8 +28,8 @@ return Lazy.setup({
   'benmills/vimux',                        -- tmux integration
   {"akinsho/toggleterm.nvim", version = '*', config = true},
   -- TELESCOPE
-  -- 'ahmedkhalf/project.nvim',               -- project finder
   'nvim-telescope/telescope.nvim',         -- fuzzy finder
+  'nvim-telescope/telescope-project.nvim', -- project finder
   -- SNIPPETS
   {'L3MON4D3/LuaSnip', lazy = true},       -- snippet engine
   -- CMP/COMPLETION
