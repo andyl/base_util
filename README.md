@@ -1,5 +1,9 @@
 # Dotfile and Utility Scripts
 
+## Test 
+
+~/src/datacat/README.md 
+
 ## Usage
 
 To use:
