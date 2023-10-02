@@ -1,5 +1,9 @@
 # Neovim Devlog 
 
+## Next Actions  
+
+PROJECTS
+
 ## 2023 Jul 10 Mon 
 
 actions
