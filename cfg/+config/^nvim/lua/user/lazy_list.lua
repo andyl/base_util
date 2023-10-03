@@ -29,7 +29,6 @@ return Lazy.setup({
   {"akinsho/toggleterm.nvim", version = '*', config = true},
   -- TELESCOPE
   'nvim-telescope/telescope.nvim',         -- fuzzy finder
-  'nvim-telescope/telescope-project.nvim', -- project finder
   -- SNIPPETS
   {'L3MON4D3/LuaSnip', lazy = true},       -- snippet engine
   -- CMP/COMPLETION

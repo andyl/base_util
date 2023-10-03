@@ -1,37 +1,55 @@
--- telescope-project
+-- project navigation
 --------------------------------------------------------
 
--- see https://github.com/nvim-telescope/telescope-project.nvim
+-- put your cursor over a directory path
+-- press 'gp' (go project)
+-- test to see if the directory path exists
+-- if true
+--   - change the CWD
+--   - change the Nvim tree root path
+-- else
+--   - write an error message
 
--- local status_proj, project = pcall(require, "project_nvim")
--- if not status_proj then return end
---
--- project.setup()
+function cursor_path()
+    local line = vim.fn.getline('.')
+    local pattern = '%s*(~?/[%w.-_/]+)%s*'
+    local filepath = string.match(line, pattern)
 
------
+    if filepath then
+        return filepath
+    else
+        return ""
+    end
+end
 
-require('telescope').load_extension('project')
+function is_directory(path)
+    if string.match(path, "^~") then
+        path = vim.fn.expand(path)
+    end
 
-local project_actions = require("telescope._extensions.project.actions")
+    local stat = vim.loop.fs_stat(path)
 
-require('telescope').setup {
-  extensions = {
-    project = {
-      base_dirs = {
-        '~/dev/src',
-        {'~/dev/src2'},
-        {'~/dev/src3', max_depth = 4},
-        {path = '~/dev/src4'},
-        {path = '~/dev/src5', max_depth = 2},
-      },
-      hidden_files = true, -- default: false
-      theme = "dropdown",
-      order_by = "asc",
-      search_by = "title",
-      sync_with_nvim_tree = true,
-      on_project_selected = function(prompt_bufnr)
-        project_actions.change_working_directory(prompt_bufnr, true)
-      end
-    }
-  }
-}
+    if stat and stat.type == "directory" then
+        return true
+    else
+        return false
+    end
+end
+
+function chproj()
+  local path = cursor_path()
+  if path == "" then
+    print("Error: no path under cursor")
+  else
+    if is_directory(path) then
+      print("Changed root path (" .. path .. ")")
+      vim.fn.chdir(path)
+      require("nvim-tree.api").tree.change_root(path)
+    else
+      print("Error: not a directory (" .. path .. ")")
+    end
+  end
+end
+
+-- vim.api.nvim_set_keymap('n', '<Leader>gp', ':lua print(get_filepath_under_cursor())<CR>', { noremap = true, silent = true })
+
