@@ -38,3 +38,25 @@ Convert from Packer.nvim to Lazy.nvim
 - Packer is no longer maintained
 - Lazy is the recommended alternative
 
+## 2023 Oct 03 Tue
+
+TableMode 
+- enable: `gte` 
+- disable: `gtd` 
+- realign: `gtr` 
+
+Project & File Navigation 
+
+- Navigate between projects and files based on paths in the document text.
+- Useful to transition between Obsidian notes (~/util/org) and code repos. 
+
+| Code    | ~/.config/nvim/lua/user/plug/navigation.lua |
+| Keymaps | ~/.config/nvim/lua/user/key/map_g.lua       |
+
+- Project nav (`gpp`) 
+- Set project from buffer (`gpb`)
+- Project history editing (`gph`)
+- Telescope Navigate between project (find projects - `fp`)
+
+- Open file (in split, fsplit, etc.) 
+- Open file and set WD

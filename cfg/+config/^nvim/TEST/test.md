@@ -8,5 +8,8 @@
 /home/aleak/.config/nvim 
 /home/aleak/.config/nvim/README.md
 
+(~/util/org)
+{~/util/org}
+
 ~/.config/nvim 
 

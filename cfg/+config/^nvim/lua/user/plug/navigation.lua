@@ -3,13 +3,26 @@
 
 -- see ../key/map_g.lua for keyboard commands ...
 
+local function clean_path(inputString)
+  local bad_chars = "()[]<>{}"
+    local result = ""
+    for i = 1, #inputString do
+        local char = inputString:sub(i, i) -- Extract a single character
+        if not bad_chars:find(char, 1, true) then
+            result = result .. char -- Add the character to the result if it's not in the set to remove
+        end
+    end
+    return result
+end
+
 -- return the path under the cursor
 local function cursor_path()
   vim.cmd([[normal! yiW]])
   local filepath = vim.fn.getreg('')
+  local corepath = clean_path(filepath)
 
   if filepath then
-    return filepath
+    return corepath
   else
     return ""
   end
