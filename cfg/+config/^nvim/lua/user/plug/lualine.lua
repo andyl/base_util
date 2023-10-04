@@ -53,8 +53,8 @@ lualine.setup({
 	},
 	inactive_sections = {
 		lualine_a = { branch, diagnostics },
-		lualine_b = { "filename" },
-		lualine_c = { },
+		lualine_b = { proj_root },
+		lualine_c = { "filename" },
 		lualine_x = { },
 		lualine_y = { mode },
 		lualine_z = { filetype, "encoding" },

@@ -15,6 +15,17 @@ local function clean_path(inputString)
     return result
 end
 
+local function full_path(path)
+  return vim.fn.expand(path)
+end
+
+local function home_path(path)
+  local comp = full_path(path)
+  local home = full_path('$HOME')
+  local fini = string.gsub(comp, home, "~")
+  return fini
+end
+
 -- return the path under the cursor
 local function cursor_path()
   vim.cmd([[normal! yiW]])
@@ -31,7 +42,7 @@ end
 -- predicate returns true if path is a directory
 local function is_dir(path)
   if string.match(path, "^~") then
-    path = vim.fn.expand(path)
+    path = full_path(path)
   end
 
   local stat = vim.loop.fs_stat(path)
@@ -45,7 +56,7 @@ end
 
 local function is_file(path)
   if string.match(path, "^~") then
-    path = vim.fn.expand(path)
+    path = full_path(path)
   end
 
   local stat = vim.loop.fs_stat(path)
@@ -67,14 +78,25 @@ end
 
 local function project_root(input_path)
   local matches = { '.git', '.pbase' }
-  local home_dir = vim.fn.expand('$HOME')
+  local home_dir = full_path('$HOME')
   local path = get_path(input_path)
 
   while path ~= home_dir do
     for _, match in ipairs(matches) do
       local target_path = path .. '/' .. match
       if vim.fn.isdirectory(target_path) == 1 or vim.fn.filereadable(target_path) == 1 then
-        return path
+        if match == ".pbase" then
+          local file = io.open(target_path, "r")
+          if file then
+            local newpath = file:read()
+            file:close()
+            return newpath
+          else
+            return {}
+          end
+        else
+          return path
+        end
       end
     end
     path = vim.fn.fnamemodify(path, ':h')
@@ -86,13 +108,13 @@ local function opentree()
   vim.cmd("NvimTreeOpen")
 end
 
-local history_file = vim.fn.expand("~/.local/share/nvim/projhist.txt")
+local history_file = full_path("~/.local/share/nvim/projhist.txt")
 
 local function clear_history_line(lineToRemove)
   local filename = history_file
   local lines = {}
   local found = false
-  local expath = vim.fn.expand(lineToRemove)
+  local expath = full_path(lineToRemove)
 
   local file = io.open(filename, "r")
 
@@ -129,7 +151,7 @@ local function write_history(path)
   clear_history_line(path)
   local hfile = io.open(history_file, "a")
   if hfile then
-    hfile:write(vim.fn.expand(path) .. "\n")
+    hfile:write(full_path(path) .. "\n")
     hfile:close()
   end
 end
@@ -186,7 +208,7 @@ end
 local function current_buffer_path()
   local current_buf = vim.fn.bufnr("%")
   if current_buf ~= 0 then
-    return vim.fn.expand(vim.fn.bufname(current_buf))
+    return full_path(vim.fn.bufname(current_buf))
   else
     return ""
   end
@@ -207,11 +229,11 @@ function OpenCursorPath(mode)
 end
 
 function ProjRoot()
-  return project_root(current_buffer_path())
+  return home_path(project_root(current_buffer_path()))
 end
 
 function SetwdBufferPath()
-  local proj_path = project_root(current_buffer_path())
+  local proj_path = home_path(project_root(current_buffer_path()))
   setwd(proj_path)
 end
 
