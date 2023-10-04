@@ -60,3 +60,4 @@ Project & File Navigation
 
 - Open file (in split, fsplit, etc.) 
 - Open file and set WD
+
