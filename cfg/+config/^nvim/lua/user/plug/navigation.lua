@@ -206,6 +206,10 @@ function OpenCursorPath(mode)
   end
 end
 
+function ProjRoot()
+  return project_root(current_buffer_path())
+end
+
 function SetwdBufferPath()
   local proj_path = project_root(current_buffer_path())
   setwd(proj_path)

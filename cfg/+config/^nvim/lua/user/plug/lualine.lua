@@ -3,35 +3,9 @@
 local status_ok, lualine = pcall(require, "lualine")
 if not status_ok then return end
 
--- local hide_in_width = function()
--- 	return vim.fn.winwidth(0) > 80
--- end
-
--- local location = {
--- 	"location",
--- 	padding = 0,
--- }
-
--- cool function for progress
--- local progress = function()
--- 	local current_line = vim.fn.line(".")
--- 	local total_lines = vim.fn.line("$")
--- 	local chars = { "__", "▁▁", "▂▂", "▃▃", "▄▄", "▅▅", "▆▆", "▇▇", "██" }
--- 	local line_ratio = current_line / total_lines
--- 	local index = math.ceil(line_ratio * #chars)
--- 	return chars[index]
--- end
-
--- local spaces = function()
--- 	return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
--- end
-
--- local diff = {
--- 	"diff",
--- 	colored = false,
--- 	symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
---   cond = hide_in_width
--- }
+local function proj_root()
+  return ProjRoot()
+end
 
 local diagnostics = {
 	"diagnostics",
@@ -71,8 +45,8 @@ lualine.setup({
 	},
 	sections = {
 		lualine_a = { branch, diagnostics },
-		lualine_b = { "filename" },
-		lualine_c = { },
+		lualine_b = { proj_root },
+		lualine_c = { "filename" },
 		lualine_x = { },
 		lualine_y = { mode },
 		lualine_z = { filetype, "encoding" },
