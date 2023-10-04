@@ -208,7 +208,8 @@ end
 local function current_buffer_path()
   local current_buf = vim.fn.bufnr("%")
   if current_buf ~= 0 then
-    return full_path(vim.fn.bufname(current_buf))
+    -- return full_path(vim.fn.bufname(current_buf))
+    return vim.fn.expand('%:p')
   else
     return ""
   end
@@ -229,7 +230,12 @@ function OpenCursorPath(mode)
 end
 
 function ProjRoot()
-  return home_path(project_root(current_buffer_path()))
+  local path = current_buffer_path()
+  if path == "" then
+    return "---"
+  else
+    return home_path(project_root(current_buffer_path()))
+  end
 end
 
 function SetwdBufferPath()
