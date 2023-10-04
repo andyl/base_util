@@ -18,14 +18,34 @@ local n_keymap = {
   x = { "<Cmd>call jobstart(['xdg-open', expand('<cfile>')], {'detach': v:true})<CR>",
     "Open URL in browser" },
 
-  p = { ":lua chproj()<cr>", "Goto project directory under cursor" },
+
+  f = { -- Files
+    name = "File",
+    f = { ":lua OpenCursorPath('f')<cr>", "Open file under cursor" },
+    e = { ":lua OpenCursorPath('e')<cr>", "Open file under cursor" },
+    v = { ":lua OpenCursorPath('v')<cr>", "Open file in vsplit" },
+    s = { ":lua OpenCursorPath('s')<cr>", "Open file in split" },
+    t = { ":lua OpenCursorPath('t')<cr>", "Open file in tab" },
+    F = { ":lua OpenCursorPath('F')<cr>", "Open file and set WD" },
+    E = { ":lua OpenCursorPath('E')<cr>", "Open file and set WD" },
+    V = { ":lua OpenCursorPath('V')<cr>", "Open file and set WD" },
+    S = { ":lua OpenCursorPath('S')<cr>", "Open file and set WD" },
+    T = { ":lua OpenCursorPath('T')<cr>", "Open file and set WD" },
+  },
+
+  p = { -- Projects
+    name = "Setwd to Project",
+    p = { ":lua SetwdCursorPath()<cr>",                 "Setwd to project directory under cursor" },
+    b = { ":lua SetwdBufferPath()<cr>",                 "Setwd to project root for the current buffer" },
+    h = { ":edit ~/.local/share/nvim/projhist.txt<cr>", "Edit project history file" },
+  },
 
   t = { -- Table Mode
     name = "TableMode",
     d = { ":TableModeDisable<cr>", "Disable" },
-    e = { ":TableModeEnable<cr>", "Enable" },
+    e = { ":TableModeEnable<cr>" , "Enable" },
     r = { ":TableModeRealign<cr>", "Realign" },
-    t = { ":TableModeToggle", "Toggle" },
+    t = { ":TableModeToggle"     , "Toggle" },
   },
 
 }

@@ -3,12 +3,10 @@
 ~/src/feedex
 ~/src/datacat
 
+~/util/org 
+
 /home/aleak/.config/nvim 
 /home/aleak/.config/nvim/README.md
-~/.config/nvim 
 
-- [x] ping 
-  - [x] pong 
-  - [x] ding 
-  - [x] dong
+~/.config/nvim 
 
