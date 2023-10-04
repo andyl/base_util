@@ -5,14 +5,14 @@
 
 local function clean_path(inputString)
   local bad_chars = "()[]<>{}"
-    local result = ""
-    for i = 1, #inputString do
-        local char = inputString:sub(i, i) -- Extract a single character
-        if not bad_chars:find(char, 1, true) then
-            result = result .. char -- Add the character to the result if it's not in the set to remove
-        end
+  local result = ""
+  for i = 1, #inputString do
+    local char = inputString:sub(i, i)     -- Extract a single character
+    if not bad_chars:find(char, 1, true) then
+      result = result .. char              -- Add the character to the result if it's not in the set to remove
     end
-    return result
+  end
+  return result
 end
 
 local function full_path(path)
@@ -110,11 +110,15 @@ end
 
 local history_file = full_path("~/.local/share/nvim/projhist.txt")
 
+local function nospace(string)
+  string.gsub(string, "%s+", "")
+end
+
 local function clear_history_line(lineToRemove)
   local filename = history_file
   local lines = {}
   local found = false
-  local expath = full_path(lineToRemove)
+  local expath = full_path(nospace(lineToRemove))
 
   local file = io.open(filename, "r")
 
@@ -123,7 +127,7 @@ local function clear_history_line(lineToRemove)
   end
 
   for line in file:lines() do
-    if line ~= expath then
+    if nospace(line) ~= expath then
       table.insert(lines, line)
     else
       found = true
@@ -139,8 +143,8 @@ local function clear_history_line(lineToRemove)
       return
     end
 
-    for _, line in ipairs(lines) do
-      file:write(line .. "\n")
+    for _, zline in ipairs(lines) do
+      file:write(zline .. "\n")
     end
 
     file:close()
@@ -151,7 +155,7 @@ local function write_history(path)
   clear_history_line(path)
   local hfile = io.open(history_file, "a")
   if hfile then
-    hfile:write(full_path(path) .. "\n")
+    hfile:write(full_path(nospace(path)) .. "\n")
     hfile:close()
   end
 end
