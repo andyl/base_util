@@ -1,15 +1,28 @@
--- project navigation functions
---------------------------------------------------------
+-- Project Navigation Functions
+--
+-- - change to project root under cursor
+-- - project root affects: terminal, telescope, tree
+-- - project root appears in `lualine`
+--
+-- - open file under cursor (`gf` like) in split, vsplit etc.
+-- - open file under cursor AND change project root
+--
+-- - project history (telescope interface / past projects)
+--
+-- keyboard commandds:
+-- ../key/map_g.lua (gpp, gpb, gph, gfv, gfs, ...)
+-- ../key/map_leader.lua (,fp - open past projects)
+-------------------------------
 
--- see ../key/map_g.lua for keyboard commands ...
+----- Path Utilities and Filetype Predicates
 
 local function clean_path(inputString)
   local bad_chars = "()[]<>{}"
   local result = ""
   for i = 1, #inputString do
-    local char = inputString:sub(i, i)     -- Extract a single character
+    local char = inputString:sub(i, i) -- Extract a single char
     if not bad_chars:find(char, 1, true) then
-      result = result .. char              -- Add the character to the result if it's not in the set to remove
+      result = result .. char          -- Add the char to the result
     end
   end
   return result
@@ -26,20 +39,6 @@ local function home_path(path)
   return fini
 end
 
--- return the path under the cursor
-local function cursor_path()
-  vim.cmd([[normal! yiW]])
-  local filepath = vim.fn.getreg('')
-  local corepath = clean_path(filepath)
-
-  if filepath then
-    return corepath
-  else
-    return ""
-  end
-end
-
--- predicate returns true if path is a directory
 local function is_dir(path)
   if string.match(path, "^~") then
     path = full_path(path)
@@ -68,7 +67,7 @@ local function is_file(path)
   end
 end
 
-local function get_path(input_path)
+local function get_directory_path(input_path)
   if is_file(input_path) then
     return vim.fn.fnamemodify(input_path, ':p')
   else
@@ -76,12 +75,38 @@ local function get_path(input_path)
   end
 end
 
+----- path and project root lookup
+
+-- return the path under the cursor
+local function cursor_path()
+  vim.cmd([[normal! yiW]])
+  local filepath = vim.fn.getreg('')
+  local corepath = clean_path(filepath)
+
+  if filepath then
+    return corepath
+  else
+    return ""
+  end
+end
+
+-- return the path of the current buffer
+local function buffer_path()
+  local current_buf = vim.fn.bufnr("%")
+  if current_buf ~= 0 then
+    return vim.fn.expand('%:p')
+  else
+    return ""
+  end
+end
+
+-- search up the directory tree for the project root
 local function project_root(input_path)
   local matches = { '.git', '.pbase' }
   local home_dir = full_path('$HOME')
-  local path = get_path(input_path)
+  local path = get_directory_path(input_path)
 
-  while path ~= home_dir do
+  while path ~= home_dir and path ~= '/' do
     for _, match in ipairs(matches) do
       local target_path = path .. '/' .. match
       if vim.fn.isdirectory(target_path) == 1 or vim.fn.filereadable(target_path) == 1 then
@@ -92,7 +117,7 @@ local function project_root(input_path)
             file:close()
             return newpath
           else
-            return {}
+            return ""
           end
         else
           return path
@@ -101,12 +126,13 @@ local function project_root(input_path)
     end
     path = vim.fn.fnamemodify(path, ':h')
   end
-  return home_dir
+  if path == "/" then
+    return ""
+  end
+  return path
 end
 
-local function opentree()
-  vim.cmd("NvimTreeOpen")
-end
+----- project history
 
 local history_file = full_path("~/.local/share/nvim/projhist.txt")
 
@@ -160,13 +186,37 @@ local function write_history(path)
   end
 end
 
-local function setwd(path)
-  print("New project root (" .. path .. ")")
-  vim.fn.chdir(path)
-  require("nvim-tree.api").tree.change_root(path)
-  write_history(path)
-  opentree()
+local function history_to_table()
+  local lines = {}
+  local file = io.open(history_file, "r")
+  if file then
+    for line in file:lines() do
+      table.insert(lines, 1, line)
+    end
+    file:close()
+    return lines
+  else
+    return {}
+  end
 end
+
+----- set working directory and tree root
+
+local function opentree()
+  vim.cmd("NvimTreeOpen")
+end
+
+local function setwd(path)
+  if path ~= "" then
+    print("New project root (" .. path .. ")")
+    vim.fn.chdir(path)
+    require("nvim-tree.api").tree.change_root(path)
+    write_history(path)
+    opentree()
+  end
+end
+
+----- open file
 
 local function open_file(filepath, mode)
   local opts = {
@@ -209,16 +259,33 @@ local function open_file(filepath, mode)
   opts[mode]()
 end
 
-local function current_buffer_path()
-  local current_buf = vim.fn.bufnr("%")
-  if current_buf ~= 0 then
-    -- return full_path(vim.fn.bufname(current_buf))
-    return vim.fn.expand('%:p')
-  else
-    return ""
-  end
+----- telescope support
+
+local pickers = require("telescope.pickers")
+local finders = require("telescope.finders")
+local actions = require("telescope.actions")
+local action_state = require("telescope.actions.state")
+
+----- global functions - test with `:lua <function>`
+
+-- display the telescope project picker
+function ShowProjectPicker()
+  local opts = history_to_table()
+
+  pickers.new(opts, {
+    finder = finders.new_table({ results = opts }),
+    attach_mappings = function(bufnr, _)
+      actions.select_default:replace(function()
+        actions.close(bufnr)
+        local proj_path = action_state.get_selected_entry()
+        setwd(proj_path[1])
+      end)
+      return true
+    end
+  }):find()
 end
 
+-- open the filepath under the cursor - mode is ['f', 'e', ...]
 function OpenCursorPath(mode)
   local path = cursor_path()
   if path == "" then
@@ -233,20 +300,23 @@ function OpenCursorPath(mode)
   end
 end
 
+-- return the project root directory
 function ProjRoot()
-  local path = current_buffer_path()
+  local path = buffer_path()
   if path == "" then
     return "---"
   else
-    return home_path(project_root(current_buffer_path()))
+    return home_path(project_root(buffer_path()))
   end
 end
 
+-- set the working directory to the project root of the current buffer
 function SetwdBufferPath()
-  local proj_path = home_path(project_root(current_buffer_path()))
+  local proj_path = home_path(project_root(buffer_path()))
   setwd(proj_path)
 end
 
+-- set the working directory to the file or directory path under the cursor
 function SetwdCursorPath()
   local path = cursor_path()
   if path == "" then
@@ -261,39 +331,3 @@ function SetwdCursorPath()
   end
 end
 
------ TELESCOPE
-
-local pickers = require("telescope.pickers")
-local finders = require("telescope.finders")
-local actions = require("telescope.actions")
-local action_state = require("telescope.actions.state")
-
-local function read_lines_to_table()
-  local lines = {}
-  local file = io.open(history_file, "r")
-  if file then
-    for line in file:lines() do
-      table.insert(lines, 1, line)
-    end
-    file:close()
-    return lines
-  else
-    return {}
-  end
-end
-
-function ShowProjectPicker()
-  local opts = read_lines_to_table()
-
-  pickers.new(opts, {
-    finder = finders.new_table({ results = opts }),
-    attach_mappings = function(bufnr, _)
-      actions.select_default:replace(function()
-        actions.close(bufnr)
-        local proj_path = action_state.get_selected_entry()
-        setwd(proj_path[1])
-      end)
-      return true
-    end
-  }):find()
-end
