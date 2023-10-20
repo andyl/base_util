@@ -10,46 +10,23 @@ lua 5.3.5
 nodejs 18.2.0
 php 8.1.12
 ruby 3.2.1 
-rust 1.70.0
+rust 1.73.0
 zig 0.9.1
 deno 1.34.0
 
-# --------------------------
 # ----- adding plugins
-
-# asdf plugin-add erlang
 # asdf plugin-add elixir
-# asdf plugin-add ruby
-# asdf plugin-add nodejs
-# asdf plugin-add crystal
 
-# --------------------------
 # ----- installing runtimes
-
-# asdf install erlang 22.3.2
+# asdf update elixir 
+# asdf list all elixir 
 # asdf install elixir 1.9.2
-# asdf install ruby 2.7.0
-# asdf install nodejs 12.4.0
 
-# --------------------------
 # ----- elixir configuration
-
-# use `ex_config` to do this all in one shot...
-#
 # elixir> mix local.hex
 # elixir> mix local.rebar
 # elixir> mix archive.install hex phx_new
 # elixir> mix archive.install github andyl/mix_templates
 # elixir> mix archive.install github andyl/mix_generator
 # elixir> mix archive.install hex sobelow
-
-# --------------------------
-# ----- ruby configuration
-
-# see ~/.default-gems
-
-# --------------------------
-# ----- nodejs configuration
-
-# see ~/.default-npm-packages
-
+# use `ex_config` to do this all in one shot...
