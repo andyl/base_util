@@ -79,36 +79,13 @@ alias   mr="mixrun"
 export KERL_BUILD_DOCS="yes"
 
 ###########################################################################
-# LEDGER
-
-alias le=ledger
-
-function ledenv() {
-  ARG=$1
-  if [[ "$ARG" == "pers" || "$ARG" == "bugm" ]]; then
-    export LEDGER_FN=${ARG}
-    export LEDGER_FILE=~/util/org/ledger/data/${ARG}.ldg
-  else
-    echo "Usage: ledenv < pers | bugm > (currently '${LEDGER_FN}')"
-  fi
-}
-
-ledenv pers
-
-###########################################################################
 # GO
 mkdir -p ~/.go
 export GOPATH=~/.go
 export PATH=$PATH:$GOPATH/bin
 
 ###########################################################################
-# FLUTTER & ANDROID STUDIO
-export ANDROID_HOME=~/Android/Sdk 
-export PATH=$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools:
-export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin
-
-###########################################################################
-# HOST ARCHITECTURE, ID and OS
+# HOST ARCHITECTURE, ID and OS - Used by Ansible and Jet 
 #
 # armv6l is 32-bit (arm32)  (RPi0)
 # armv7l is 32-bit (arm32)  (RPi4 and Odroid XU4)
@@ -294,12 +271,6 @@ function path() {                    # show path elements, one per line
   printf "%s\n" $PATH | tr -d \,
 }
 
-function ap() {          # Run Ansible
-  ansible-playbook "$@"
-  rm -f *retry
-  play ding
-}
-
 ###########################################################################
 # ALIASES
 
@@ -308,9 +279,6 @@ alias xss="xfce4-screenshooter"  # screen shot
 
 alias sc="sudo systemctl"        # systemd job control
 alias jc="sudo journalctl"       # systemd log viewer
-
-alias  va="vagrant"
-alias  an="ansible"
 
 alias  be="bundle exec"
 alias ber="bundle exec rails"
@@ -325,12 +293,6 @@ alias Hg="history | grep"
 alias HG="history | grep"
 
 alias  g="git"
-
-alias  sp="spring"
-alias brl="spring rails"
-alias brc="spring rails console"
-alias brk="spring rake"
-alias brs="spring rspec"
 
 alias gopen="gio open"
 
