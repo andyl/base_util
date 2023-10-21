@@ -48,7 +48,7 @@ local servers = {
   "sqlls",         -- sql
   "tailwindcss",   -- tailwind
   "tsserver",      -- javascript and typescript
-  "yamlls",        -- yaml
+  -- "yamlls",        -- yaml
 }
 
 require 'mason-lspconfig'.setup {
@@ -72,5 +72,5 @@ require 'mason-lspconfig'.setup_handlers {
   ["jsonls"] = function() server_config("jsonls") end,
   ["lua_ls"] = function() server_config("lua_ls") end,
   ["tailwindcss"] = function() server_config("tailwindcss") end,
-  ["yamlls"] = function() server_config("yamlls") end,
+  -- ["yamlls"] = function() server_config("yamlls") end,
 }

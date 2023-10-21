@@ -3,7 +3,20 @@
 local opts = {
 	settings = {
     yaml = {
-      keyOrdering = false
+      keyOrdering = false,
+      completion = false,
+      customTags = {
+        '!shell mapping'
+      },
+      disableAdditionalProperties = true,
+      format = {
+        bracketSpacing = false,
+        enable = false,
+      },
+      schemaStore = {
+        enable = false,
+      },
+      validate = false,
     }
   }
 }
