@@ -8,6 +8,7 @@ require'nvim-treesitter.configs'.setup{
     "eex",
     "elixir",
     "erlang",
+    "hcl",
     "heex",
     "html",
     "javascript",
