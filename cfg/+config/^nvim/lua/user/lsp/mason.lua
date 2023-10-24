@@ -48,7 +48,6 @@ local servers = {
   "sqlls",         -- sql
   "tailwindcss",   -- tailwind
   "tsserver",      -- javascript and typescript
-  -- "yamlls",        -- yaml
 }
 
 require 'mason-lspconfig'.setup {
