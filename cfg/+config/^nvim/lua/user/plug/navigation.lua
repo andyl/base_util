@@ -16,6 +16,21 @@
 
 ----- Path Utilities and Filetype Predicates
 
+-- local function log(message)
+--
+--   local log_file = vim.fn.stdpath('data') .. '/navlog.txt'
+--   print(log_file)
+--   local file = io.open(log_file, 'a')
+--   if file then
+--     local timestamp = os.date('%Y-%m-%d %H:%M:%S')
+--     local log_entry = string.format("[%s] %s\n", timestamp, message)
+--     file:write(log_entry)
+--     file:close()
+--   else
+--     vim.api.nvim_err_writeln("Failed to open the log file for writing")
+--   end
+-- end
+
 local function clean_path(inputString)
   local bad_chars = "()[]<>{}"
   local result = ""
@@ -102,21 +117,30 @@ end
 
 -- search up the directory tree for the project root
 local function project_root(input_path)
+  -- log("STARTING PROJECT ROOT")
+
   local matches = { '.git', '.pbase' }
   local home_dir = full_path('$HOME')
   local path = get_directory_path(input_path)
 
-  while path ~= home_dir and path ~= '/' do
+  -- log(home_dir)
+
+  while path ~= home_dir and path ~= '/' and path ~= '.' do
+    -- log("PointA |" .. path .. "|" .. home_dir .. "|")
     for _, match in ipairs(matches) do
       local target_path = path .. '/' .. match
+      -- log("PointB " .. "|" .. match .. "|" .. target_path .. "|")
       if vim.fn.isdirectory(target_path) == 1 or vim.fn.filereadable(target_path) == 1 then
+        -- log("PointC")
         if match == ".pbase" then
           local file = io.open(target_path, "r")
+          -- log("PointD")
           if file then
             local newpath = file:read()
             file:close()
             return newpath
           else
+            -- log("PointE")
             return ""
           end
         else
