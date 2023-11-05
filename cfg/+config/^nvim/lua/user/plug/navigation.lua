@@ -31,16 +31,14 @@
 --   end
 -- end
 
-local function clean_path(inputString)
-  local bad_chars = "()[]<>{}"
-  local result = ""
-  for i = 1, #inputString do
-    local char = inputString:sub(i, i) -- Extract a single char
-    if not bad_chars:find(char, 1, true) then
-      result = result .. char          -- Add the char to the result
-    end
+-- handles cases like: [link text](asdf.md)
+local function clean_path(str)
+  local clean = str:gsub('[%<%>%{%}%(%[%]%)]', ' ')
+  local words = {}
+  for word in clean:gmatch("[%w_./~]+") do
+    words[#words + 1] = word
   end
-  return result
+  return words[#words]
 end
 
 local function full_path(path)
