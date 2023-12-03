@@ -40,6 +40,8 @@ return Lazy.setup({
   'hrsh7th/cmp-cmdline',                   -- cmdline completions
   'saadparwaiz1/cmp_luasnip',              -- snippet completions
   'hrsh7th/cmp-nvim-lsp',                  -- lsp integration
+  -- OLLAMA
+  'nomnivore/ollama.nvim',                 -- ollama integration
   -- GIT
   'lewis6991/gitsigns.nvim',               -- git integration
   -- STATUS LINES
