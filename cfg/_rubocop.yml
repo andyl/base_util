@@ -10,6 +10,9 @@ Style/StringLiterals:
 Style/GlobalVars: 
   Enabled: false
 
+Style/Documentation: 
+  Enabled: false
+
 Style/Proc: 
   Enabled: false
 
@@ -24,6 +27,7 @@ Layout/RescueEnsureAlignment:
 
 Layout/BeginEndAlignment: 
   Enabled: false
+
 Layout/EmptyLinesAroundBlockBody:
   Enabled: false
 
