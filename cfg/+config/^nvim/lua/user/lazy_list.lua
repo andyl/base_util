@@ -22,6 +22,8 @@ return Lazy.setup({
   'williamboman/mason-lspconfig.nvim',     -- language-server installer
   'neovim/nvim-lspconfig',                 -- enable LSP servers and set properties
   'jose-elias-alvarez/null-ls.nvim',       -- for formatters and linters
+  -- SOURCEGRAPH / CODY
+  'sourcegraph/sg.nvim',                   -- AI co-pilot
   -- DAP
   'mfussenegger/nvim-dap',                 -- debug adapter protocol
   -- NEOVIM/TERMINAL
