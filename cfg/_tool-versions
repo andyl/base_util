@@ -7,7 +7,7 @@ golang 1.19.2
 java openjdk-20.0.1
 julia 1.8.2
 lua 5.3.5
-nodejs 18.2.0
+nodejs 21.4.0
 php 8.1.12
 ruby 3.2.1 
 rust 1.73.0
