@@ -80,8 +80,6 @@ return Lazy.setup({
   'morhetz/gruvbox',                       -- gruvbox
   -- MARKDOWN
   'tpope/vim-markdown',                    -- syntax highlighting and folding
-  -- LAYOUTS
-  'andyl/zoomwintab.vim',                  -- pane zooming
   -- MISC
   'chrisbra/unicode.vim',                  -- :SearchUni check|C-v u2705|✅
   'moll/vim-bbye',                         -- delete buffer w/o closing win
