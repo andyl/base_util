@@ -31,15 +31,15 @@ return Lazy.setup({
   'nvim-telescope/telescope.nvim',         -- fuzzy finder
   -- NGINX
   'chr4/nginx.vim',                        -- nginx config files
-  -- SNIPPETS
-  -- {'L3MON4D3/LuaSnip', lazy = true},       -- snippet engine
   -- CMP/COMPLETION
   'hrsh7th/nvim-cmp',                      -- the completion plugin
   'hrsh7th/cmp-buffer',                    -- buffer completions
   'hrsh7th/cmp-path',                      -- path completions
   'hrsh7th/cmp-cmdline',                   -- cmdline completions
-  -- 'saadparwaiz1/cmp_luasnip',              -- snippet completions
+  'saadparwaiz1/cmp_luasnip',              -- snippet completions
   'hrsh7th/cmp-nvim-lsp',                  -- lsp integration
+  -- SNIPPETS
+  {'L3MON4D3/LuaSnip', lazy = true},       -- snippet engine
   -- OLLAMA
   'nomnivore/ollama.nvim',                 -- ollama integration
   -- GIT
