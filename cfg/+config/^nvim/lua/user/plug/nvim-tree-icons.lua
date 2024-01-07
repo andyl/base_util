@@ -53,6 +53,11 @@ require'nvim-web-devicons'.setup {
     color = "#81e043",
     name = "Csv"
   },
+  ["toml"] = {
+    icon = "✠",
+    color = "#81e043",
+    name = "Toml"
+  },
   ["svg"] = {
     icon = "Ⅱ",
     color = "#81e043",
