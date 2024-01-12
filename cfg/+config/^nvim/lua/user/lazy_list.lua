@@ -47,6 +47,8 @@ return Lazy.setup({
   -- STATUS LINES
   'nvim-lualine/lualine.nvim',             -- status line
   'crispgm/nvim-tabline',                  -- tab line
+  -- TEST
+  {dir = "~/src/Plugins/test1.nvim"},
   -- UTILITY
   'andyl/nvls',                            -- test plugin
   -- 'andyl/rfx.nvim',                        -- test plugin
