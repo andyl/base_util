@@ -1,4 +1,4 @@
-print("HI FROM GLOBALS")
+-- print("HI FROM GLOBALS")
 
 -- :lua P(table)
 P = function(val)
