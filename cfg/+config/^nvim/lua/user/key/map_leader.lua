@@ -87,6 +87,22 @@ local keytable_n = {
     y = { "y:call writefile(split(@0,\"\\n\"), \"/tmp/vimtmp\")<cr>", "yank"   },
     d = { "d:call writefile(split(@1,\"\\n\"), \"/tmp/vimtmp\")<cr>", "delete" },
     p = { ":r /tmp/vimtmp<cr>",                                       "paste"  },
+  },
+
+  ["#"] = { -- FIND-Prev - find prev
+    name = "Find Prev",
+    e = { ":#",             "Open Prev in Term"   },
+    v = { ":vsp<cr>#",      "Open Prev in Vsplit" },
+    s = { ":sp<cr>#",       "Open Prev in Split"  },
+    t = { ":tabnew %<cr>#", "Open Prev in Tab"    },
+  },
+
+  ["*"] = { -- FIND-Next - find next
+    name = "Find Next",
+    e = { ":*",             "Open Next in Term"   },
+    v = { ":vsp<cr>*",      "Open Next in Vsplit" },
+    s = { ":sp<cr>*",       "Open Next in Split"  },
+    t = { ":tabnew %<cr>*", "Open Next in Tab"    },
   }
 }
 
