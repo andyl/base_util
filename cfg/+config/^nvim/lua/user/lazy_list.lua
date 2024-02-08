@@ -24,6 +24,10 @@ return Lazy.setup({
   'jose-elias-alvarez/null-ls.nvim',       -- for formatters and linters
   -- DAP
   'mfussenegger/nvim-dap',                 -- debug adapter protocol
+  -- NOICE
+  "MunifTanjim/nui.nvim",                  -- UI component library
+  "rcarriga/nvim-notify",                  -- notifications library
+  "folke/noice.nvim",                      -- command line & notifications
   -- NEOVIM/TERMINAL
   'benmills/vimux',                        -- tmux integration
   {"akinsho/toggleterm.nvim", version = '*', config = true},
