@@ -45,9 +45,10 @@ local keytable_n = {
     h = { "<cmd>Telescope help_tags<cr>",                                                                                   "Help Tags"   },
     k = { "<cmd>Telescope keymaps<cr>",                                                                                     "Keymaps"     },
     m = { "<cmd>Telescope oldfiles<cr>",                                                                                    "MRU"         },
-    o = { "<cmd>Telescope vim_options<cr>",                                                                                 "Options"     },
+    o = { ":lua require('user.search_org').search_md()<cr>",                                                                "Org Files"   },
     p = { ":lua ShowProjectPicker()<cr>",                                                                                   "Projects"    },
     r = { "<cmd>Telescope registers<cr>",                                                                                   "Registers"   },
+    v = { "<cmd>Telescope vim_options<cr>",                                                                                 "Vim Opts"    },
   },
 
   l = { -- LAYOUT - pane layout
