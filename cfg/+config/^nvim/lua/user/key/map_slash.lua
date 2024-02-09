@@ -20,7 +20,7 @@ local n_keymap = {
     f = { ":lua vim.lsp.buf.format({async = true})<cr>", "Reformat"                 },
     k = { ":lua vim.lsp.buf.hover()<cr>",                "Doc Hover"                },
     r = { ":lua vim.lsp.buf.rename()<cr>",               "Rename"                   },
-    u = { ":lua vim.lsp.buf.references()<cr>",           "Show Users"               },
+    u = { ":lua vim.lsp.buf.references()<cr>",           "Show References (users)"  },
   },
 
   f = { -- LSP Find with Telescope

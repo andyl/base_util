@@ -22,13 +22,19 @@ return Lazy.setup({
   'williamboman/mason-lspconfig.nvim',     -- language-server installer
   'neovim/nvim-lspconfig',                 -- enable LSP servers and set properties
   'jose-elias-alvarez/null-ls.nvim',       -- for formatters and linters
-  -- DAP
+  -- DEBUGGING
   'mfussenegger/nvim-dap',                 -- debug adapter protocol
+  'jbyuki/one-small-step-for-vimkind',     -- debugger for lua & neovim plugins
+  -- NOICE
+  'MunifTanjim/nui.nvim',                  -- UI component library
+  'rcarriga/nvim-notify',                  -- notifications library
+  'folke/noice.nvim',                      -- command line & notifications
   -- NEOVIM/TERMINAL
   'benmills/vimux',                        -- tmux integration
   {"akinsho/toggleterm.nvim", version = '*', config = true},
   -- TELESCOPE
   'nvim-telescope/telescope.nvim',         -- fuzzy finder
+  'axkirillov/easypick.nvim',              -- simple custom telescope pickers
   -- NGINX
   'chr4/nginx.vim',                        -- nginx config files
   -- CMP/COMPLETION
@@ -47,6 +53,8 @@ return Lazy.setup({
   -- STATUS LINES
   'nvim-lualine/lualine.nvim',             -- status line
   'crispgm/nvim-tabline',                  -- tab line
+  -- TEST
+  {dir = "~/src/Plugins/test1.nvim"},
   -- UTILITY
   'andyl/nvls',                            -- test plugin
   -- 'andyl/rfx.nvim',                        -- test plugin

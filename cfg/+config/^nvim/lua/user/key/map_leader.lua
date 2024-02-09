@@ -45,9 +45,10 @@ local keytable_n = {
     h = { "<cmd>Telescope help_tags<cr>",                                                                                   "Help Tags"   },
     k = { "<cmd>Telescope keymaps<cr>",                                                                                     "Keymaps"     },
     m = { "<cmd>Telescope oldfiles<cr>",                                                                                    "MRU"         },
-    o = { "<cmd>Telescope vim_options<cr>",                                                                                 "Options"     },
+    o = { ":lua require('user.search_org').search_md()<cr>",                                                                "Org Files"   },
     p = { ":lua ShowProjectPicker()<cr>",                                                                                   "Projects"    },
     r = { "<cmd>Telescope registers<cr>",                                                                                   "Registers"   },
+    v = { "<cmd>Telescope vim_options<cr>",                                                                                 "Vim Opts"    },
   },
 
   l = { -- LAYOUT - pane layout
@@ -87,6 +88,22 @@ local keytable_n = {
     y = { "y:call writefile(split(@0,\"\\n\"), \"/tmp/vimtmp\")<cr>", "yank"   },
     d = { "d:call writefile(split(@1,\"\\n\"), \"/tmp/vimtmp\")<cr>", "delete" },
     p = { ":r /tmp/vimtmp<cr>",                                       "paste"  },
+  },
+
+  ["#"] = { -- FIND-Prev - find prev
+    name = "Find Prev",
+    e = { ":#",             "Open Prev in Term"   },
+    v = { ":vsp<cr>#",      "Open Prev in Vsplit" },
+    s = { ":sp<cr>#",       "Open Prev in Split"  },
+    t = { ":tabnew %<cr>#", "Open Prev in Tab"    },
+  },
+
+  ["*"] = { -- FIND-Next - find next
+    name = "Find Next",
+    e = { ":*",             "Open Next in Term"   },
+    v = { ":vsp<cr>*",      "Open Next in Vsplit" },
+    s = { ":sp<cr>*",       "Open Next in Split"  },
+    t = { ":tabnew %<cr>*", "Open Next in Tab"    },
   }
 }
 

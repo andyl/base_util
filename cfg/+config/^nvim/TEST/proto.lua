@@ -2,7 +2,9 @@ local pickers = require "telescope.pickers"
 local finders = require "telescope.finders"
 local conf = require("telescope.config").values
 
-local history_file = vim.fn.expand("~/.local/share/nvim/projhist.txt")
+-- local history_file = vim.fn.expand("~/.local/share/nvim/projhist.txt")
+
+local history_file = vim.fn.expand("~/proj.txt")
 
 local function read_lines_to_table()
   local lines = {}
