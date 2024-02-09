@@ -35,6 +35,14 @@ local keytable_n = {
     t = { ":AT<cr>", "Open in Tab"    },
   },
 
+  c = { -- commands
+    name = "Commands",
+    d = { ":lua TermCmd('lazydocker')<cr>",  "lazydocker" },
+    g = { ":lua TermCmd('lazygit')<cr>",     "lazygit"    },
+    h = { ":lua TermCmd('htop')<cr>",        "htop"       },
+    n = { ":lua TermCmd('ncdu')<cr>",        "ncdu"       },
+  },
+
   f = { -- FIND - telescope - fuzzy finders
     name = "Find",
     b = { "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>", "Buffers"     },

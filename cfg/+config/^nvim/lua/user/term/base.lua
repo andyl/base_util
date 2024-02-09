@@ -15,3 +15,13 @@ augroup END
 
 ]]
 
+function TermCmd(command)
+  local opts = {
+    cmd = command,
+    hidden = true,
+    dir = "git_dir",
+    direction = "tab",
+  }
+  local term = require('toggleterm.terminal').Terminal:new(opts)
+  term:toggle()
+end
