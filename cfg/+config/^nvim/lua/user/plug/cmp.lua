@@ -56,7 +56,7 @@ cmp.setup {
   },
   mapping = {
     ["<C-p>"] = cmp.mapping.select_prev_item(),
-		["<C-n>"] = cmp.mapping.select_next_item(),
+    ["<C-n>"] = cmp.mapping.select_next_item(),
     ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
     ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
     ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
@@ -122,11 +122,35 @@ cmp.setup {
     behavior = cmp.ConfirmBehavior.Replace,
     select = false,
   },
- -- window.documentation = {
- --    border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
- --  },
+  -- window.documentation = {
+  --    border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+  --  },
   experimental = {
     ghost_text = false,
     native_menu = false,
   },
 }
+
+-- cmp-cmdline
+--------------------------------------------------------
+
+cmp.setup.cmdline('/', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = {
+    { name = 'buffer' }
+  }
+})
+
+cmp.setup.cmdline(':', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
+    { name = 'path' }
+  }, {
+    {
+      name = 'cmdline',
+      option = {
+        ignore_cmds = { 'Man', '!' }
+      }
+    }
+  })
+})
