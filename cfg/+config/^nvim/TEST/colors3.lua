@@ -1,9 +1,8 @@
 -- from https://github.com/nvim-telescope/telescope.nvim/blob/master/developers.md
 
+local conf = require('telescope.config').values
 local pickers = require "telescope.pickers"
 local finders = require "telescope.finders"
-local conf = require("telescope.config").values
-
 local actions = require "telescope.actions"
 local action_state = require "telescope.actions.state"
 
@@ -11,36 +10,42 @@ local action_state = require "telescope.actions.state"
 local colors = function(opts)
   opts = opts or {}
   pickers.new(opts, {
-    prompt_title = "colors",
-    finder = finders.new_table {
-      results = {
-        { name = "red",   color = "#ff0000", startline = 22 },
-        { name = "green", color = "#00ff00", startline = 32 },
-        { name = "blue",  color = "#0000ff", startline = 44 },
-      },
-
+    prompt_title = "files",
+    finder = finders.new_dynamic {
+      fn = function(prompt)
+        Log("AAA")
+        Log(prompt)
+        return {
+          { name = "/home/aleak/ttt/a1.txt", xline = 1 },
+          { name = "/home/aleak/ttt/b1.txt", xline = 3 },
+          { name = "/home/aleak/ttt/z2.txt", xline = 5 },
+        }
+      end,
       entry_maker = function(entry)
+        Log("BBB")
+        Log(entry)
         return {
           value = entry,
-          display = entry.color,
-          ordinal = entry.startline,
-          alt = entry.name .. " 22"
+          path = entry.name,
+          lnum = entry.xline,
+          display = entry.xline .. ' ' .. entry.name,
+          ordinal = 1
         }
       end
     },
-    sorter = conf.generic_sorter(opts),
+    previewer = conf.file_previewer({}),
     attach_mappings = function(prompt_bufnr, _)
       actions.select_default:replace(function()
         actions.close(prompt_bufnr)
         local selection = action_state.get_selected_entry()
-        print(vim.inspect(selection.alt))
-        vim.api.nvim_put({ selection[1] }, "", false, true)
+        Log("CCC")
+        Log(selection)
+        vim.cmd('edit +' .. selection.lnum .. ' ' .. selection.path)
       end)
       return true
     end,
   }):find()
 end
 
--- to execute the function
--- colors()
-colors(require("telescope.themes").get_dropdown {})
+colors()
+

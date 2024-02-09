@@ -22,12 +22,13 @@ return Lazy.setup({
   'williamboman/mason-lspconfig.nvim',     -- language-server installer
   'neovim/nvim-lspconfig',                 -- enable LSP servers and set properties
   'jose-elias-alvarez/null-ls.nvim',       -- for formatters and linters
-  -- DAP
+  -- DEBUGGING
   'mfussenegger/nvim-dap',                 -- debug adapter protocol
+  'jbyuki/one-small-step-for-vimkind',     -- debugger for lua & neovim plugins
   -- NOICE
-  "MunifTanjim/nui.nvim",                  -- UI component library
-  "rcarriga/nvim-notify",                  -- notifications library
-  "folke/noice.nvim",                      -- command line & notifications
+  'MunifTanjim/nui.nvim',                  -- UI component library
+  'rcarriga/nvim-notify',                  -- notifications library
+  'folke/noice.nvim',                      -- command line & notifications
   -- NEOVIM/TERMINAL
   'benmills/vimux',                        -- tmux integration
   {"akinsho/toggleterm.nvim", version = '*', config = true},

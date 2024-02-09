@@ -11,4 +11,5 @@ require "user.key"           -- keymap setup
 require "user.lsp"           -- lsp configuration
 require "user.globals"       -- global configuration
 require "user.filetypes"     -- filetype detection
+require "user.util.dev"      -- development utilities
 

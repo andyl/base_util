@@ -1,4 +1,5 @@
 local M = {}
+MessClear()
 local pickers = require('telescope.pickers')
 local finders = require('telescope.finders')
 local conf = require('telescope.config').values
@@ -17,19 +18,29 @@ end
 
 -- The main search function
 M.search_md = function()
-  -- The picker
   pickers.new({}, {
     prompt_title = "Search Markdown Files",
     finder = finders.new_dynamic({
+      entry_maker = function(section)
+        Log("VVVVV")
+        local tab = {
+          value = section,
+          ordinal = section[1],
+          display = section[5] .. " " .. section[2] .. " " .. section[3] .. " " .. section[6],
+          path = section[4],
+          lnum = section[6],
+        }
+        -- local tab = section[4]
+        Log(tab)
+        return tab
+      end,
       fn = function(prompt)
         if not prompt or prompt == "" then
-          return nil
+          return {}
         end
 
         local url = "http://localhost:5001/search_nvim?query=" .. urlencode(prompt)
         local command = "curl -s '" .. url .. "'"
-
-        -- Run curl and capture the output
         local handle = io.popen(command)
         local result = nil
         if handle then
@@ -42,22 +53,21 @@ M.search_md = function()
         -- Parse the JSON result. Assuming the JSON structure is an array of file paths.
         local sections = vim.fn.json_decode(result)
         if not sections then
-          return nil
+          return {}
         end
 
-        -- Return the list of file paths
-        return vim.tbl_map(function(section)
-          print(vim.inspect(section[2]))
-          return {
-            value = section,
-            ordinal = section[1],
-            display = section[5] .. " " .. section[2] .. " " .. section[3] .. " " .. section[6],
-            path = section[4],
-            lnum = section[6],
-          }
+        Log("------------------------------------------------------------")
+
+        local tabres = vim.tbl_map(function(section)
+          return section
         end, sections)
+
+        Log(tabres)
+
+        return tabres
       end,
     }),
+
     sorter = conf.generic_sorter({}),
     previewer = conf.file_previewer({}),
     attach_mappings = function(prompt_bufnr, _)
@@ -77,4 +87,3 @@ end
 M.search_md()
 
 -- return M
-
