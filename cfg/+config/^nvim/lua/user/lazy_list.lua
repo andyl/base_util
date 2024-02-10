@@ -21,10 +21,11 @@ return Lazy.setup({
   'williamboman/mason.nvim',               -- package installer
   'williamboman/mason-lspconfig.nvim',     -- language-server installer
   'neovim/nvim-lspconfig',                 -- enable LSP servers and set properties
-  'jose-elias-alvarez/null-ls.nvim',       -- for formatters and linters
+  '/nvimtools/none-ls.nvim',               -- for formatters and linters
   -- DEBUGGING
   'mfussenegger/nvim-dap',                 -- debug adapter protocol
   'jbyuki/one-small-step-for-vimkind',     -- debugger for lua & neovim plugins
+  'rcarriga/nvim-dap-ui',                  -- DAP ui
   -- NOICE
   'MunifTanjim/nui.nvim',                  -- UI component library
   'rcarriga/nvim-notify',                  -- notifications library
@@ -57,7 +58,6 @@ return Lazy.setup({
   {dir = "~/src/Plugins/test1.nvim"},
   -- UTILITY
   'andyl/nvls',                            -- test plugin
-  -- 'andyl/rfx.nvim',                        -- test plugin
   'tpope/vim-speeddating',                 -- increment/decrement dates (C-a/C-x)
   'andyl/al-gtd',                          -- GTD
   -- EDITING UTILS
