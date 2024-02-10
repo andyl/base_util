@@ -25,6 +25,7 @@ return Lazy.setup({
   -- DEBUGGING
   'mfussenegger/nvim-dap',                 -- debug adapter protocol
   'jbyuki/one-small-step-for-vimkind',     -- debugger for lua & neovim plugins
+  'rcarriga/nvim-dap-ui',                  -- DAP ui
   -- NOICE
   'MunifTanjim/nui.nvim',                  -- UI component library
   'rcarriga/nvim-notify',                  -- notifications library
