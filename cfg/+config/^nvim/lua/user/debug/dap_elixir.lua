@@ -1,5 +1,7 @@
 -- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation#elixir
 -- https://github.com/elixir-lsp/elixir-ls#debugger-support
+--
+-- DISABLED as of 2024 Feb 10 Sat / Wait until more people use DAP for Elixir...
 
 local dap = require("dap")
 
