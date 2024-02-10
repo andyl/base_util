@@ -14,5 +14,6 @@ require "user.plug.tabline"
 require "user.plug.comment"
 require "user.plug.treesitter"
 require "user.plug.easypick"
+require "user.plug.gitsigns"
 require "user.plug.noice"
 
