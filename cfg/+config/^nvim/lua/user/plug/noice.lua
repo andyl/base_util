@@ -1,18 +1,14 @@
 -- noice.nvim
 
-require("noice").setup({})
+-- require("telescope").load_extension("noice")
 
-require("telescope").load_extension("noice")
+local function skip_notifications_with(term)
+  return {filter = { event = "notify", find = term }, opts = { skip = true }}
+end
 
 require("noice").setup({
   routes = {
-    {
-      filter = {
-        event = "msg_show",
-        kind = "",
-        find = "nohl",
-      },
-      opts = { skip = true },
-    },
-  },
+    skip_notifications_with("cannot close the last tab"),
+    skip_notifications_with("bing"),
+  }
 })
