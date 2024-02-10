@@ -1,6 +1,5 @@
--- print("HI FROM GLOBALS")
-
 -- :lua P(table)
+
 P = function(val)
   print(vim.inspect(val))
   return val
