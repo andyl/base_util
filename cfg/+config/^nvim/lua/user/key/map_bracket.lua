@@ -1,41 +1,6 @@
 -- Nav using bracket [ ]
 
--- TODO: Finish this
-
---[[
-FROM 'UNIMPAIRED.VIM' BY TIM POPE
-FILES (supplied as command-line arguments to Neovim)
-- [ ] *[a*     |:previous|
-- [ ] *]a*     |:next|
-- [ ] *[A*     |:first|
-- [ ] *]A*     |:last|
-BUFFERS
-- [x] *[b*     |:bprevious|
-- [x] *]b*     |:bnext|
-- [x] *[B*     |:bfirst|
-- [x] *]B*     |:blast|
-LOCATION LIST (local)
-- [ ] *[l*     |:lprevious|
-- [ ] *]l*     |:lnext|
-- [ ] *[L*     |:lfirst|
-- [ ] *]L*     |:llast|
-- [ ] *[<C-L>* |:lpfile|
-- [ ] *]<C-L>* |:lnfile|
-QUICKFIX LIST (project wide)
-- [x] *[q*     |:cprevious|
-- [x] *]q*     |:cnext|
-- [x] *[Q*     |:cfirst|
-- [x] *]Q*     |:clast|
-- [ ] *[<C-Q>* |:cpfile| (Note that <C-Q> only works in a terminal if you disable
-- [ ] *]<C-Q>* |:cnfile| flow control: stty -ixon)
-TAGS
-- [ ] *[t*     |:tprevious|
-- [ ] *]t*     |:tnext|
-- [ ] *[T*     |:tfirst|
-- [ ] *]T*     |:tlast|
-- [ ] *[<C-T>* |:ptprevious|
-- [ ] *]<C-T>* |:ptnext|
-]]
+-- INSPIRED BY 'UNIMPAIRED.VIM' BY TIM POPE
 
 local nl_opts = {
   mode    = "n",     -- NORMAL mode
@@ -47,12 +12,13 @@ local nl_opts = {
 }
 
 local nl_keymap = {
-  ["b"] = {":bprevious<cr>",     "Buffers :bprevious"},
-  ["B"] = {":bfirst<cr>",        "Buffers :bfirst"},
-  ["t"] = {":tabprev<cr>",       "Tabs :tabprev"},
-  ["T"] = {":tabfirst<cr>",      "Tabs :tabfirst"},
-  ["q"] = {":cprevious<cr>",     "Quickfix :cprevious"},
-  ["Q"] = {":cfirst<cr>",        "Quickfix :cfirst"}
+  ["b"] = {":bprevious<cr>",          "Buffers :bprevious"},
+  ["B"] = {":bfirst<cr>",             "Buffers :bfirst"},
+  ["g"] = {":Gitsigns next_hunk<cr>", "Gitsigns next_hunk"},
+  ["t"] = {":tabprev<cr>",            "Tabs :tabprev"},
+  ["T"] = {":tabfirst<cr>",           "Tabs :tabfirst"},
+  ["q"] = {":cprevious<cr>",          "Quickfix :cprevious"},
+  ["Q"] = {":cfirst<cr>",             "Quickfix :cfirst"}
 
 }
 
@@ -70,12 +36,13 @@ local nr_opts = {
 }
 
 local nr_keymap = {
-  ["b"] = {":bnext<cr>",     "Buffers :bnext"},
-  ["B"] = {":blast<cr>",     "Buffers :blast"},
-  ["t"] = {":tabnext<cr>",   "Tabs :tabnext"},
-  ["T"] = {":tablast<cr>",   "Tabs :tablast"},
-  ["q"] = {":cnext<cr>",     "Quickfix :cnext"},
-  ["Q"] = {":clast<cr>",     "Quickfix :clast"}
+  ["b"] = {":bnext<cr>",              "Buffers :bnext"},
+  ["B"] = {":blast<cr>",              "Buffers :blast"},
+  ["g"] = {":Gitsigns prev_hunk<cr>", "Gitsigns prev_hunk"},
+  ["t"] = {":tabnext<cr>",            "Tabs :tabnext"},
+  ["T"] = {":tablast<cr>",            "Tabs :tablast"},
+  ["q"] = {":cnext<cr>",              "Quickfix :cnext"},
+  ["Q"] = {":clast<cr>",              "Quickfix :clast"}
 }
 
 if WhichKeyOk then WhichKey.register(nr_keymap, nr_opts) end
