@@ -87,8 +87,10 @@ local keytable_n = {
     o = { ":tabnew %<cr>",                    "Open pane in New Tab"            },
     O = { ":tabnew %<cr>:NvimTreeToggle<cr>", "Open pane in New Tab w/Explorer" },
     x = { ":tabclose<cr>",                    "Close"                           },
-    h = { ":tabp<cr>",                        "Jump Left"                       },
-    l = { ":tabn<cr>",                        "Jump Right"                      },
+    h = { ":tabprev<cr>",                     "Jump Left"                       },
+    H = { ":tabfirst<cr>",                    "Jump to First"                   },
+    l = { ":tabnext<cr>",                     "Jump Right"                      },
+    L = { ":tablast<cr>",                     "Jump to Last"                    },
   },
 
   x = { -- CROSS-COPY - copy across vim instances using external file
