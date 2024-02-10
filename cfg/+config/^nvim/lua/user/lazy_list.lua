@@ -86,8 +86,15 @@ return Lazy.setup({
   'sjl/badwolf',                           -- badwolf
   'tomasr/molokai',                        -- molokai
   'morhetz/gruvbox',                       -- gruvbox
-  -- MARKDOWN
+  -- MARKDOWN / OBSIDIAN
   'tpope/vim-markdown',                    -- syntax highlighting and folding
+  'epwalsh/obsidian.nvim',                 -- tag search
+  {
+    "iamcco/markdown-preview.nvim",
+    ft = { "markdown" },
+    build = "cd app && yarn install",
+    config = function() vim.g.mkdp_filetypes = { "markdown" } end,
+  },
   -- MISC
   'chrisbra/unicode.vim',                  -- :SearchUni check|C-v u2705|✅
   'moll/vim-bbye',                         -- delete buffer w/o closing win
@@ -100,8 +107,6 @@ return Lazy.setup({
   'folke/neodev.nvim',                     -- lsp autocompletion for nvim lua API
   -- GIST
   'rudylee/nvim-gist',                     -- post github gists
-  -- OBSIDIAN - https://obsidian.md
-  'epwalsh/obsidian.nvim',
   -- COMMENTS, AUTOPAIRS, LISTS
   'windwp/nvim-autopairs',                 -- integrates with cmp and treesitter
   'terrortylor/nvim-comment',              -- commenting tool
