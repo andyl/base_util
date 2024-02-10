@@ -58,7 +58,6 @@ return Lazy.setup({
   {dir = "~/src/Plugins/test1.nvim"},
   -- UTILITY
   'andyl/nvls',                            -- test plugin
-  -- 'andyl/rfx.nvim',                        -- test plugin
   'tpope/vim-speeddating',                 -- increment/decrement dates (C-a/C-x)
   'andyl/al-gtd',                          -- GTD
   -- EDITING UTILS
