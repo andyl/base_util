@@ -9,6 +9,6 @@ end
 require("noice").setup({
   routes = {
     skip_notifications_with("cannot close the last tab"),
-    skip_notifications_with("bing"),
+    skip_notifications_with("written"),
   }
 })
