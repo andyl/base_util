@@ -87,8 +87,8 @@ return Lazy.setup({
   'tomasr/molokai',                        -- molokai
   'morhetz/gruvbox',                       -- gruvbox
   -- MARKDOWN / OBSIDIAN
+  -- 'epwalsh/obsidian.nvim',                 -- tag search
   'tpope/vim-markdown',                    -- syntax highlighting and folding
-  'epwalsh/obsidian.nvim',                 -- tag search
   {
     "iamcco/markdown-preview.nvim",
     ft = { "markdown" },
