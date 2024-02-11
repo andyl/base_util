@@ -10,5 +10,6 @@ require("noice").setup({
   routes = {
     skip_notifications_with("cannot close the last tab"),
     skip_notifications_with("written"),
+    skip_notifications_with("toggleterm"),
   }
 })
