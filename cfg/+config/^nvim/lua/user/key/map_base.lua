@@ -68,10 +68,14 @@ KmT("<C-Left>",  "<C-\\><C-n>:call BarLeft(2)<cr>")
 KmT("<C-Right>", "<C-\\><C-n>:call BarRight(2)<cr>A")
 
 -- SEARCH HIGHLIGHT
-vim.cmd "nmap <leader>h :set hlsearch!<cr>"
-vim.cmd "nmap <F4> :set hlsearch! hlsearch?<cr>"
-vim.cmd "imap <F4> <esc>:set hlsearch! hlsearch?<cr>i<right>"
+-- turn off hlsearch
+vim.cmd "nmap <F4> :set nohlsearch<cr>"
+vim.cmd "imap <F4> <esc>:set nohlsearch<cr>i<right>"
+-- turn on hlsearch when searching
 vim.cmd "nnoremap / :set hlsearch<cr>/"
+-- disabled because of noisy noice notifications
+-- vim.cmd "nmap <F4> :set hlsearch! hlsearch?<cr>"
+-- vim.cmd "imap <F4> <esc>:set hlsearch! hlsearch?<cr>i<right>"
 
 -- MODE TRANSITION
 KmI("kk", "<esc>")

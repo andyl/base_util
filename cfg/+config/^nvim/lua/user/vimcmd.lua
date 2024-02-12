@@ -26,8 +26,8 @@ endfunction
 " call function before saving
 autocmd BufWritePre *.lua,*.ex,*.exs,*.rb,*.erb :call StripTrailingWhitespaces()
 
-" === SPEED DATING
-autocmd BufRead,BufNewFile *.md      1SpeedDatingFormat %Y %h %d %i
+" " === SPEED DATING
+" autocmd BufRead,BufNewFile *.md      1SpeedDatingFormat %Y %h %d %i
 
 " === FILE MODES
 autocmd BufRead,BufNewFile *.thor    set filetype=ruby
@@ -43,7 +43,8 @@ let g:bullets_checkbox_markers = ' .-x'
 
 " === MARKDOWN FOLDING
 let g:markdown_folding = 1
+autocmd BufRead,BufNewFile *.md set filetype=markdown
+autocmd BufRead,BufNewFile *.md set syntax=markdown
 autocmd FileType markdown setlocal foldlevel=99
-
 ]]
 

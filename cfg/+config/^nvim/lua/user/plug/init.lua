@@ -15,5 +15,7 @@ require "user.plug.comment"
 require "user.plug.treesitter"
 require "user.plug.easypick"
 require "user.plug.gitsigns"
-require "user.plug.noice"
+require "user.plug.noice"        -- command line update
+require "user.plug.neodev"       -- dev utilities
+require "user.plug.speeddating"  -- date increment/decrement with C-a and C-x
 

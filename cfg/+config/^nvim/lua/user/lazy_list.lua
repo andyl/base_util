@@ -22,10 +22,6 @@ return Lazy.setup({
   'williamboman/mason-lspconfig.nvim',     -- language-server installer
   'neovim/nvim-lspconfig',                 -- enable LSP servers and set properties
   '/nvimtools/none-ls.nvim',               -- for formatters and linters
-  -- DEBUGGING
-  'mfussenegger/nvim-dap',                 -- debug adapter protocol
-  'jbyuki/one-small-step-for-vimkind',     -- debugger for lua & neovim plugins
-  'rcarriga/nvim-dap-ui',                  -- DAP ui
   -- NOICE
   'MunifTanjim/nui.nvim',                  -- UI component library
   'rcarriga/nvim-notify',                  -- notifications library
@@ -47,6 +43,13 @@ return Lazy.setup({
   'hrsh7th/cmp-nvim-lsp',                  -- lsp integration
   -- SNIPPETS
   {'L3MON4D3/LuaSnip', lazy = true},       -- snippet engine
+  -- DEBUGGING
+  'mfussenegger/nvim-dap',                 -- debug adapter protocol
+  'jbyuki/one-small-step-for-vimkind',     -- debugger for lua & neovim plugins
+  'rcarriga/nvim-dap-ui',                  -- DAP ui
+  -- NEOVIM LUA DEVELOPMENT
+  'rafcamlet/nvim-luapad',                 -- neovim lua repl
+  'folke/neodev.nvim',                     -- lsp autocompletion for nvim lua API
   -- OLLAMA
   'nomnivore/ollama.nvim',                 -- ollama integration
   -- GIT
@@ -86,8 +89,15 @@ return Lazy.setup({
   'sjl/badwolf',                           -- badwolf
   'tomasr/molokai',                        -- molokai
   'morhetz/gruvbox',                       -- gruvbox
-  -- MARKDOWN
+  -- MARKDOWN / OBSIDIAN
+  -- 'epwalsh/obsidian.nvim',                 -- tag search
   'tpope/vim-markdown',                    -- syntax highlighting and folding
+  {
+    "iamcco/markdown-preview.nvim",
+    ft = { "markdown" },
+    build = "cd app && yarn install",
+    config = function() vim.g.mkdp_filetypes = { "markdown" } end,
+  },
   -- MISC
   'chrisbra/unicode.vim',                  -- :SearchUni check|C-v u2705|✅
   'moll/vim-bbye',                         -- delete buffer w/o closing win
@@ -95,13 +105,8 @@ return Lazy.setup({
   'antoinemadec/FixCursorHold.nvim',       -- needed to fix lsp doc highlight
   'kshenoy/vim-signature',                 -- show marks in gutter
   'terryma/vim-multiple-cursors',          -- multiple cursors
-  -- NEOVIM LUA DEVELOPMENT
-  'rafcamlet/nvim-luapad',                 -- neovim lua repl
-  'folke/neodev.nvim',                     -- lsp autocompletion for nvim lua API
   -- GIST
   'rudylee/nvim-gist',                     -- post github gists
-  -- OBSIDIAN - https://obsidian.md
-  'epwalsh/obsidian.nvim',
   -- COMMENTS, AUTOPAIRS, LISTS
   'windwp/nvim-autopairs',                 -- integrates with cmp and treesitter
   'terrortylor/nvim-comment',              -- commenting tool
