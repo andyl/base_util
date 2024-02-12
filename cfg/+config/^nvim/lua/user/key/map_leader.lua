@@ -36,7 +36,7 @@ local keytable_n = {
   },
 
   d = { -- DEBUGGER / DAP
-    name = "Commands",
+    name = "Debugger",
     b = { ":lua require('dap').toggle_breakpoint()<cr>",     "toggle breakpoint" },
     c = { ":lua require('dap').continue()<cr>",              "continue"          },
     n = { ":lua require('dap').step_over()<cr>",             "step over next"    },
@@ -72,6 +72,19 @@ local keytable_n = {
     r = { "<cmd>Telescope registers<cr>",                                                                                   "Registers"    },
     s = { "<cmd>Telescope search_history<cr>",                                                                              "Search Hist." },
     v = { "<cmd>Telescope vim_options<cr>",                                                                                 "Vim Opts"     },
+  },
+
+  g = { -- GPT / ChatGPT
+    name = "ChatGPT",
+    a = { ":ChatGPTActAs<cr>",                       "ChatGPT ActAs"         },
+    c = { ":ChatGPTCompleteCode<cr>",                "ChatGPT CompleteCode"  },
+    e = { ":ChatGPTEditWithInstructions<cr>",        "ChatGPT Edit"          },
+    g = { ":ChatGPT<cr>",                            "ChatGPT"               },
+    r = { -- ChatGPT Run
+      name = "Run",
+      ["t"] = {":ChatGPTRun add_tests<cr>",          "Generate Tests"    },
+      ["r"] = {":ChatGPTRun code_readability<cr>",   "Code Readability"  },
+    },
   },
 
   l = { -- LAYOUT - pane layout
