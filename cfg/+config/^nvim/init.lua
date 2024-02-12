@@ -10,7 +10,7 @@ require "user.term"          -- terminal configuration
 require "user.key"           -- keymap setup
 require "user.lsp"           -- lsp configuration
 require "user.debug"         -- dap configuration
-require "user.filetypes"     -- filetype detection
+require "user.filetypes"     -- filetype detection and customization
 require "user.globals"       -- global configuration
 require "user.util.dev"      -- development utilities
 
