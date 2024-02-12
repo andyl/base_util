@@ -1,3 +1,3 @@
 -- dap/init
 
-require("user.debug.dap_lua")
+require("user.debug.lang_lua")

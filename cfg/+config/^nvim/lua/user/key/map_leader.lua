@@ -35,22 +35,18 @@ local keytable_n = {
     t = { ":AT<cr>", "Open in Tab"    },
   },
 
--- vim.api.nvim_set_keymap('n', '<F8>', [[:lua require"dap".toggle_breakpoint()<CR>]], { noremap = true })
--- vim.api.nvim_set_keymap('n', '<F9>', [[:lua require"dap".continue()<CR>]], { noremap = true })
--- vim.api.nvim_set_keymap('n', '<F10>', [[:lua require"dap".step_over()<CR>]], { noremap = true })
--- vim.api.nvim_set_keymap('n', '<S-F10>', [[:lua require"dap".step_into()<CR>]], { noremap = true })
--- vim.api.nvim_set_keymap('n', '<F12>', [[:lua require"dap.ui.widgets".hover()<CR>]], { noremap = true })
--- vim.api.nvim_set_keymap('n', '<F5>', [[:lua require"osv".launch({port = 8096})<CR>]], { noremap = true })
-
-  -- TODO: Finish
-  -- d = { -- DEBUGGER / DAP
-  --   name = "Commands",
-  --   d = { ":lua TermCmd('lazydocker')<cr>",  "lazydocker" },
-  --   g = { ":lua TermCmd('lazygit')<cr>",     "lazygit"    },
-  --   h = { ":lua TermCmd('htop')<cr>",        "htop"       },
-  --   n = { ":lua TermCmd('ncdu')<cr>",        "ncdu"       },
-  -- },
-
+  d = { -- DEBUGGER / DAP
+    name = "Commands",
+    b = { ":lua require('dap').toggle_breakpoint()<cr>",     "toggle breakpoint" },
+    c = { ":lua require('dap').continue()<cr>",              "continue"          },
+    n = { ":lua require('dap').step_over()<cr>",             "step over next"    },
+    i = { ":lua require('dap').step_into()<cr>",             "step into"         },
+    k = { ":lua require('dap.ui.widgets').hover()<cr>",      "hover info"        },
+    l = { ":lua require('dap').continue()<cr>",              "link client"       },
+    o = { ":lua require('dap').step_out()<cr>",              "step out"          },
+    r = { ":lua require('dap.ui').repl()<cr>",               "toggle repl"       },
+    s = { ":lua require('osv').launch({ port = 8096 })<cr>", "start server"      },
+  },
 
   c = { -- COMMANDS - curses applications
     name = "Commands",
@@ -62,18 +58,20 @@ local keytable_n = {
 
   f = { -- FIND - telescope - fuzzy finders
     name = "Find",
-    b = { "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>", "Buffers"     },
-    c = { "<cmd>Telescope commands<cr>",                                                                                    "Commands"    },
-    d = { "<cmd>Telescope diagnostics<cr>",                                                                                 "Diagnostics" },
-    f = { "<cmd>Telescope find_files<cr>",                                                                                  "Files"       },
-    g = { "<cmd>Telescope live_grep theme=ivy<cr>",                                                                         "Grep Text"   },
-    h = { "<cmd>Telescope help_tags<cr>",                                                                                   "Help Tags"   },
-    k = { "<cmd>Telescope keymaps<cr>",                                                                                     "Keymaps"     },
-    m = { "<cmd>Telescope oldfiles<cr>",                                                                                    "MRU"         },
-    o = { ":lua require('user.search_org').search_md()<cr>",                                                                "Org Files"   },
-    p = { ":lua ShowProjectPicker()<cr>",                                                                                   "Projects"    },
-    r = { "<cmd>Telescope registers<cr>",                                                                                   "Registers"   },
-    v = { "<cmd>Telescope vim_options<cr>",                                                                                 "Vim Opts"    },
+    b = { "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>", "Buffers"      },
+    c = { "<cmd>Telescope commands<cr>",                                                                                    "Commands"     },
+    d = { "<cmd>Telescope diagnostics<cr>",                                                                                 "Diagnostics"  },
+    f = { "<cmd>Telescope find_files<cr>",                                                                                  "Files"        },
+    g = { "<cmd>Telescope live_grep theme=ivy<cr>",                                                                         "Grep Text"    },
+    h = { "<cmd>Telescope help_tags<cr>",                                                                                   "Help Tags"    },
+    k = { "<cmd>Telescope keymaps<cr>",                                                                                     "Keymaps"      },
+    m = { "<cmd>Telescope oldfiles<cr>",                                                                                    "MRU"          },
+    n = { "<cmd>Telescope command_history<cr>",                                                                             "Normal Hist." },
+    o = { ":lua require('user.search_org').search_md()<cr>",                                                                "Org Files"    },
+    p = { ":lua ShowProjectPicker()<cr>",                                                                                   "Projects"     },
+    r = { "<cmd>Telescope registers<cr>",                                                                                   "Registers"    },
+    s = { "<cmd>Telescope search_history<cr>",                                                                              "Search Hist." },
+    v = { "<cmd>Telescope vim_options<cr>",                                                                                 "Vim Opts"     },
   },
 
   l = { -- LAYOUT - pane layout

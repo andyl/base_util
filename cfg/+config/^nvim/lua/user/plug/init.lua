@@ -16,4 +16,5 @@ require "user.plug.treesitter"
 require "user.plug.easypick"
 require "user.plug.gitsigns"
 require "user.plug.noice"
+require "user.plug.neodev"
 

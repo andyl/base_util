@@ -22,10 +22,6 @@ return Lazy.setup({
   'williamboman/mason-lspconfig.nvim',     -- language-server installer
   'neovim/nvim-lspconfig',                 -- enable LSP servers and set properties
   '/nvimtools/none-ls.nvim',               -- for formatters and linters
-  -- DEBUGGING
-  'mfussenegger/nvim-dap',                 -- debug adapter protocol
-  'jbyuki/one-small-step-for-vimkind',     -- debugger for lua & neovim plugins
-  'rcarriga/nvim-dap-ui',                  -- DAP ui
   -- NOICE
   'MunifTanjim/nui.nvim',                  -- UI component library
   'rcarriga/nvim-notify',                  -- notifications library
@@ -47,6 +43,13 @@ return Lazy.setup({
   'hrsh7th/cmp-nvim-lsp',                  -- lsp integration
   -- SNIPPETS
   {'L3MON4D3/LuaSnip', lazy = true},       -- snippet engine
+  -- DEBUGGING
+  'mfussenegger/nvim-dap',                 -- debug adapter protocol
+  'jbyuki/one-small-step-for-vimkind',     -- debugger for lua & neovim plugins
+  'rcarriga/nvim-dap-ui',                  -- DAP ui
+  -- NEOVIM LUA DEVELOPMENT
+  'rafcamlet/nvim-luapad',                 -- neovim lua repl
+  'folke/neodev.nvim',                     -- lsp autocompletion for nvim lua API
   -- OLLAMA
   'nomnivore/ollama.nvim',                 -- ollama integration
   -- GIT
@@ -102,9 +105,6 @@ return Lazy.setup({
   'antoinemadec/FixCursorHold.nvim',       -- needed to fix lsp doc highlight
   'kshenoy/vim-signature',                 -- show marks in gutter
   'terryma/vim-multiple-cursors',          -- multiple cursors
-  -- NEOVIM LUA DEVELOPMENT
-  'rafcamlet/nvim-luapad',                 -- neovim lua repl
-  'folke/neodev.nvim',                     -- lsp autocompletion for nvim lua API
   -- GIST
   'rudylee/nvim-gist',                     -- post github gists
   -- COMMENTS, AUTOPAIRS, LISTS
