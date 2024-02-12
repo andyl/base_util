@@ -1,7 +1,7 @@
 -- plug/treesitter
 -- cmds - :TSUpdate | :TSConfigInfo | :TSInstallInfo | :TSInstallSync
 
-require'nvim-treesitter.configs'.setup{
+require('nvim-treesitter.configs').setup{
   ensure_installed = {
     "bash",
     "css",

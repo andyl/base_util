@@ -94,7 +94,7 @@ return Lazy.setup({
   'morhetz/gruvbox',                       -- gruvbox
   -- MARKDOWN / OBSIDIAN
   -- 'epwalsh/obsidian.nvim',                 -- tag search
-  'tpope/vim-markdown',                    -- syntax highlighting and folding
+  -- 'tpope/vim-markdown',                    -- syntax highlighting and folding
   {
     "iamcco/markdown-preview.nvim",
     ft = { "markdown" },
