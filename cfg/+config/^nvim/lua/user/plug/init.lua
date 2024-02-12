@@ -14,8 +14,9 @@ require "user.plug.tabline"
 require "user.plug.comment"
 require "user.plug.treesitter"
 require "user.plug.easypick"
-require "user.plug.gitsigns"
+require "user.plug.gitsigns"     -- git change  bars
 require "user.plug.noice"        -- command line update
 require "user.plug.neodev"       -- dev utilities
 require "user.plug.speeddating"  -- date increment/decrement with C-a and C-x
+require "user.plug.gpt"          -- chatgpt
 
