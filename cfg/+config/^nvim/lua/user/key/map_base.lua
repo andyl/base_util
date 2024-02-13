@@ -78,10 +78,10 @@ vim.cmd "nnoremap / :set hlsearch<cr>/"
 -- vim.cmd "imap <F4> <esc>:set hlsearch! hlsearch?<cr>i<right>"
 
 -- MODE TRANSITION
-KmI("kk", "<esc>")
-KmI("kj", "<esc>")
+-- KmI("kk", "<esc>")
+-- KmI("kj", "<esc>")
+-- KmI("jj", "<esc>")
 KmI("jk", "<esc>")
-KmI("jj", "<esc>")
 KmI(":w", "<esc>:w")
 KmI(":q", "<esc>:q")
 
