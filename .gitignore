@@ -3,3 +3,4 @@ cfg/_vim/sessions
 cfg/_vim/init.vim
 **/workspaceStorage/
 cfg/+config/^nvim/lazy-lock.json
+lazy-lock.json
