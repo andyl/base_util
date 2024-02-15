@@ -69,6 +69,7 @@ local keytable_n = {
     n = { "<cmd>Telescope command_history<cr>",                                                                             "Normal Hist." },
     o = { ":lua require('user.search_org').search_md()<cr>",                                                                "Org Files"    },
     p = { ":lua ShowProjectPicker()<cr>",                                                                                   "Projects"     },
+    q = { "<cmd>Telescope quickfix<cr>",                                                                                    "Quickfix"     },
     r = { "<cmd>Telescope registers<cr>",                                                                                   "Registers"    },
     s = { "<cmd>Telescope search_history<cr>",                                                                              "Search Hist." },
     v = { "<cmd>Telescope vim_options<cr>",                                                                                 "Vim Opts"     },
