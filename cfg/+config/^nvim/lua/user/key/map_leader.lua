@@ -59,7 +59,8 @@ local keytable_n = {
   f = { -- FIND - telescope - fuzzy finders
     name = "Find",
     b = { "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>", "Buffers"      },
-    c = { "<cmd>Telescope commands<cr>",                                                                                    "Commands"     },
+    c = { "<cmd>Telescope command_history<cr>",                                                                             "Cmd History"  },
+    C = { "<cmd>Telescope commands<cr>",                                                                                    "Commands"     },
     d = { "<cmd>Telescope diagnostics<cr>",                                                                                 "Diagnostics"  },
     f = { "<cmd>Telescope find_files<cr>",                                                                                  "Files"        },
     g = { "<cmd>Telescope live_grep theme=ivy<cr>",                                                                         "Grep Text"    },
