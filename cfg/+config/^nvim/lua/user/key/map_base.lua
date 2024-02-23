@@ -85,10 +85,6 @@ KmI("kj", "<esc>")
 KmI(":w", "<esc>:w")
 KmI(":q", "<esc>:q")
 
--- LIST TERMINATION
-KmI("lx", "<esc>cc")      -- autolist terminate into insert mode
-KmI("LX", "<esc>cc<esc>") -- autolist terminate into normal mode
-
 -- SNIPPET JUMPS
 KmI("<A-j>", "<esc>:lua require('luasnip').jump(1)<cr>")
 KmI("<A-k>", "<esc>:lua require('luasnip').jump(-1)<cr>")
