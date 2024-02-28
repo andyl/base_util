@@ -62,6 +62,12 @@ local n_keymap = {
     o = { ":! obs %<cr><cr>", "Open" },
   },
 
+  u = { -- Unit Test
+    name = "UnitTest",
+    f = { ":lua require('neotest').run.run(vim.fn.expand('%'))<cr>",  "Current File"  },
+    t = { ":lua require('neotest').run.run()<cr>",                   "Nearest Test"  },
+  },
+
   t = { -- Terminal Management
     name = "Terminal",
     f = { "<cmd>ToggleTerm direction=float<cr>", "Float"  },
