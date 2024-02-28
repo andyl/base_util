@@ -64,8 +64,9 @@ local n_keymap = {
 
   u = { -- Unit Test
     name = "UnitTest",
-    f = { ":lua require('neotest').run.run(vim.fn.expand('%'))<cr>",  "Current File"  },
-    t = { ":lua require('neotest').run.run()<cr>",                   "Nearest Test"  },
+    f = { ":lua require('neotest').run.run(vim.fn.expand('%'))<cr>", "Current File"    },
+    t = { ":lua require('neotest').run.run()<cr>",                   "Nearest Test"    },
+    w = { ":lua require('neotest').watch.watch()<cr>",               "Toggle Watcher"  },
   },
 
   t = { -- Terminal Management
