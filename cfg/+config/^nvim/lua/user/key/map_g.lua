@@ -45,7 +45,7 @@ local n_keymap = {
     d = { ":TableModeDisable<cr>", "Disable" },
     e = { ":TableModeEnable<cr>" , "Enable" },
     r = { ":TableModeRealign<cr>", "Realign" },
-    t = { ":TableModeToggle"     , "Toggle" },
+    t = { ":TableModeToggle<cr>" , "Toggle" },
   },
 
 }
