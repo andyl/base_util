@@ -45,10 +45,10 @@ return Lazy.setup({ -- NEOVIM BASICS
 'hrsh7th/cmp-buffer',                    -- buffer completions
 'hrsh7th/cmp-path',                      -- path completions
 'hrsh7th/cmp-cmdline',                   -- cmdline completions
-'saadparwaiz1/cmp_luasnip',              -- snippet completions
 'hrsh7th/cmp-nvim-lsp',                  -- lsp integration
 -- SNIPPETS
-{'L3MON4D3/LuaSnip', lazy = true},       -- snippet engine
+'L3MON4D3/LuaSnip',                      -- snippet engine
+'saadparwaiz1/cmp_luasnip',              -- snippet completions
 -- DEBUGGING
 'mfussenegger/nvim-dap',                 -- debug adapter protocol
 'jbyuki/one-small-step-for-vimkind',     -- debugger for lua & neovim plugins
