@@ -67,7 +67,7 @@ return Lazy.setup({ -- NEOVIM BASICS
 {dir = "~/src/Plugins/test1.nvim"},
 -- INCREMENT/DECREMENT (C-a/C-x)
 'tpope/vim-speeddating',                 -- dates
--- 'triglav/vim-visual-increment',          -- block/visual selection of numbers or letters
+'triglav/vim-visual-increment',          -- visual selection - block of numbers
 -- UTILITY
 'andyl/nvls',                            -- test plugin
 'andyl/al-gtd',                          -- GTD
