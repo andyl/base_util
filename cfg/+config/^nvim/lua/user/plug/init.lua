@@ -16,7 +16,7 @@ require "user.plug.easypick"
 require "user.plug.luasnip"      -- snippets
 require "user.plug.gitsigns"     -- git change  bars
 require "user.plug.noice"        -- command line update
-require "user.plug.neotest"      -- user interface for running tests
+-- require "user.plug.neotest"      -- user interface for running tests
 require "user.plug.neodev"       -- dev utilities
 require "user.plug.speeddating"  -- date increment/decrement with C-a and C-x
 require "user.plug.gpt"          -- chatgpt

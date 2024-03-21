@@ -22,9 +22,9 @@ return Lazy.setup({ -- NEOVIM BASICS
 'neovim/nvim-lspconfig',                 -- enable LSP servers and set properties
 '/nvimtools/none-ls.nvim',               -- for formatters and linters
 -- NEOTEST
-'antoinemadec/FixCursorHold.nvim',       -- Bug Workaround
-'jfpedroza/neotest-elixir',              -- Elixir adapter for Neotest
-'nvim-neotest/neotest',                  -- Neotest
+-- 'antoinemadec/FixCursorHold.nvim',       -- Bug Workaround
+-- 'jfpedroza/neotest-elixir',              -- Elixir adapter for Neotest
+-- 'nvim-neotest/neotest',                  -- Neotest
 -- NOICE
 'MunifTanjim/nui.nvim',                  -- UI component library
 'rcarriga/nvim-notify',                  -- notifications library
@@ -65,9 +65,11 @@ return Lazy.setup({ -- NEOVIM BASICS
 'crispgm/nvim-tabline',                  -- tab line
 -- TEST
 {dir = "~/src/Plugins/test1.nvim"},
+-- INCREMENT/DECREMENT (C-a/C-x)
+'tpope/vim-speeddating',                 -- dates
+-- 'triglav/vim-visual-increment',          -- block/visual selection of numbers or letters
 -- UTILITY
 'andyl/nvls',                            -- test plugin
-'tpope/vim-speeddating',                 -- increment/decrement dates (C-a/C-x)
 'andyl/al-gtd',                          -- GTD
 -- EDITING UTILS
 'dhruvasagar/vim-table-mode',            -- vim table mode
