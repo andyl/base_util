@@ -12,7 +12,7 @@ local n_opts = {
 local n_keymap = {
 
   a = { -- LSP Actions
-    name = "LSP Actions ",
+    name = "LSP Actions",
     n = { ":lua vim.diagnostic.goto_next()<cr>",         "GotoNext Diagnostic"      },
     p = { ":lua vim.diagnostic.goto_prev()<cr>",         "GotoPrev Diagnostic"      },
     l = { ":lua vim.diagnostic.open_float()<cr>",        "Current Line Diagnostics" },
@@ -21,6 +21,12 @@ local n_keymap = {
     k = { ":lua vim.lsp.buf.hover()<cr>",                "Doc Hover"                },
     r = { ":lua vim.lsp.buf.rename()<cr>",               "Rename"                   },
     u = { ":lua vim.lsp.buf.references()<cr>",           "Show References (users)"  },
+  },
+
+  e = { -- Extensions
+    name = "Extensions",
+    l = { ":Lazy<cr>",         "Lazy Package Manager"      },
+    m = { ":Mason<cr>",        "Mason LSP Manager"         },
   },
 
   f = { -- LSP Find with Telescope
@@ -55,6 +61,19 @@ local n_keymap = {
     d = { ":r !w_date_tag<cr>kJA",   "Date"              },
     t = { ":r !w_time_exact<cr>kJA", "Exact Time"        },
     q = { ":r !w_time_qhour<cr>kJA", "Quarter-hour Time" },
+  },
+
+  l = { -- LLM / ChatGPT
+    name = "LLM / ChatGPT",
+    a = { ":ChatGPTActAs<cr>",                       "ChatGPT ActAs"         },
+    c = { ":ChatGPTCompleteCode<cr>",                "ChatGPT CompleteCode"  },
+    e = { ":ChatGPTEditWithInstructions<cr>",        "ChatGPT Edit"          },
+    g = { ":ChatGPT<cr>",                            "ChatGPT"               },
+    r = { -- ChatGPT Run
+      name = "Run",
+      ["t"] = {":ChatGPTRun add_tests<cr>",          "Generate Tests"    },
+      ["r"] = {":ChatGPTRun code_readability<cr>",   "Code Readability"  },
+    },
   },
 
   o = { -- Obsidian

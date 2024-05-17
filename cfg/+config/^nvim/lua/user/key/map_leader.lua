@@ -76,17 +76,10 @@ local keytable_n = {
     v = { "<cmd>Telescope vim_options<cr>",                                                                                 "Vim Opts"     },
   },
 
-  g = { -- GPT / ChatGPT
-    name = "ChatGPT",
-    a = { ":ChatGPTActAs<cr>",                       "ChatGPT ActAs"         },
-    c = { ":ChatGPTCompleteCode<cr>",                "ChatGPT CompleteCode"  },
-    e = { ":ChatGPTEditWithInstructions<cr>",        "ChatGPT Edit"          },
-    g = { ":ChatGPT<cr>",                            "ChatGPT"               },
-    r = { -- ChatGPT Run
-      name = "Run",
-      ["t"] = {":ChatGPTRun add_tests<cr>",          "Generate Tests"    },
-      ["r"] = {":ChatGPTRun code_readability<cr>",   "Code Readability"  },
-    },
+  g = { -- Git (Gitsigns)
+    name = "Gitsigns",
+    r = { ":lua require('gitsigns').reset_hunk()<cr>", "reset hunk"    },
+    s = { ":lua require('gitsigns').stage_hunk()<cr>", "stage hunk"    },
   },
 
   l = { -- LAYOUT - pane layout
