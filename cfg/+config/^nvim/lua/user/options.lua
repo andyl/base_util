@@ -32,6 +32,7 @@ vo.wrap           = false                   -- display lines as one long line
 vo.scrolloff      = 8                       -- is one of my fav
 vo.sidescrolloff  = 8
 vo.guifont        = "monospace:h17"         -- the font used in graphical neovim applications
+vo.virtualedit    = "block"                 -- useful for block edit at end of line
 -- PANE OPTIONS
 vo.splitbelow     = true                    -- horizontal splits go below current window
 vo.splitright     = true                    -- vertical splits go to the right of current window
