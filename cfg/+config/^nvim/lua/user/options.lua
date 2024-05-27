@@ -1,7 +1,8 @@
 -- options
 --------------------------------------------------------
 
--- :help options
+-- :options      | interactive sandbox
+-- :help options | help
 
 local vo = vim.opt
 local vg = vim.g
@@ -23,13 +24,13 @@ vo.timeoutlen     = 1000                    -- time to wait for a mapped sequenc
 vo.undofile       = true                    -- enable persistent undo
 vo.updatetime     = 300                     -- faster completion (4000ms default)
 vo.expandtab      = true                    -- convert tabs to spaces
-vo.shiftwidth     = 2                       -- the number of spaces inserted for each indentation
 vo.tabstop        = 2                       -- insert 2 spaces for a tab
+vo.shiftwidth     = 2                       -- the number of spaces inserted for each indentation
 vo.cursorline     = false                   -- highlight the current line
 vo.numberwidth    = 4                       -- set number column width to 2 {default 4}
 vo.signcolumn     = "yes"                   -- always show the sign column
 vo.wrap           = false                   -- display lines as one long line
-vo.scrolloff      = 8                       -- is one of my fav
+vo.scrolloff      = 8                       -- scroll offset
 vo.sidescrolloff  = 8
 vo.guifont        = "monospace:h17"         -- the font used in graphical neovim applications
 vo.virtualedit    = "block"                 -- useful for block edit at end of line
