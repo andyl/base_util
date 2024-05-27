@@ -1,6 +1,7 @@
 -- plug/treesitter
 -- cmds - :TSUpdate | :TSConfigInfo | :TSInstallInfo | :TSInstallSync
 
+-- https://github.com/nvim-treesitter/nvim-treesitter/wiki/List-of-parsers
 require('nvim-treesitter.configs').setup{
   ensure_installed = {
     "bash",
@@ -18,6 +19,7 @@ require('nvim-treesitter.configs').setup{
     "lua",
     "markdown",
     "query",
+    "regex",
     "ruby",
     "rust",
     "scss",
