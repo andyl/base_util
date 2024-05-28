@@ -167,6 +167,8 @@ local v_keymap = {
     },
   },
 
+  x = { ":ToggleCheckbox<cr>", "Toggle Checkbox"},
+
 }
 
 if WhichKeyOk then WhichKey.register(v_keymap, v_opts) end
