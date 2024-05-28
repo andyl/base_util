@@ -9,6 +9,8 @@ They are called from `mason.lua`
 To examine the configuration settings of an LSP server:
 
 :lua print(vim.inspect(require'lspconfig'["server_name"]))
+    - or - 
+:lua vim.print(require'lspconfig'["server_name"])
 
 ## LSP Log 
 

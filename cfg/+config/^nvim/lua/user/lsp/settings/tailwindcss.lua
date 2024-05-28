@@ -10,7 +10,7 @@ local function megrequire(module, opts)
   local ok, result = pcall(require, module)
   if not ok and not opts.silent then
     if opts.message then result = opts.message .. "\n" .. result end
-    vim.notify(result, "ERROR", { title = vim.fmt("Error requiring: %s", module) })
+    vim.notify(result, 4, { title = vim.fmt("Error requiring: %s", module) })
   end
   return ok, result
 end
@@ -19,7 +19,8 @@ local ok_lsp, lspconfig = megrequire("lspconfig")
 if not ok_lsp then return end
 
 local function root_pattern(...)
-  local patterns = vim.tbl_flatten({ ... })
+  -- local patterns = vim.tbl_flatten({ ... })
+  local patterns = vim.iter({ ... }):flatten():totable()
 
   return function(startpath)
     for _, pattern in ipairs(patterns) do

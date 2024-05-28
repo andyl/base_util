@@ -14,11 +14,11 @@
 -- Mason log | ~/.local/state/nvim/mason.log
 -- LSP log   | ~/.local/state/nvim/lsp.log
 
--- https://github.com/williamboman/mason.nvim
--- https://github.com/williamboman/mason-lspconfig.nvim
 -- https://github.com/neovim/nvim-lspconfig
+-- https://github.com/williamboman/mason-lspconfig.nvim
+-- https://github.com/williamboman/mason.nvim
 
-require("lspconfig")
-require("user.lsp.mason")
-require("user.lsp.handlers").setup()
-require("user.lsp.null-ls")
+require("lspconfig")                    -- start lspconfig
+require("user.lsp.mason")               -- run mason init
+require("user.lsp.handlers").setup()    -- run handlers
+require("user.lsp.none-ls")             -- none-ls

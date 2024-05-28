@@ -21,10 +21,6 @@ return Lazy.setup({ -- NEOVIM BASICS
 'williamboman/mason-lspconfig.nvim',     -- language-server installer
 'neovim/nvim-lspconfig',                 -- enable LSP servers and set properties
 '/nvimtools/none-ls.nvim',               -- for formatters and linters
--- NEOTEST
--- 'antoinemadec/FixCursorHold.nvim',       -- Bug Workaround
--- 'jfpedroza/neotest-elixir',              -- Elixir adapter for Neotest
--- 'nvim-neotest/neotest',                  -- Neotest
 -- NOICE
 'MunifTanjim/nui.nvim',                  -- UI component library
 'rcarriga/nvim-notify',                  -- notifications library
