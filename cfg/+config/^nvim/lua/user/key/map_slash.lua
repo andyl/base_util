@@ -167,7 +167,7 @@ local v_keymap = {
     },
   },
 
-  x = { ":ToggleCheckbox<cr>", "Toggle Checkbox"},
+  x = { ":lua require('user.util.togglecheck').vtoggle()<cr>", "Toggle Checkbox Block"},
 
 }
 

@@ -102,6 +102,7 @@ return Lazy.setup({ -- NEOVIM BASICS
   build = "cd app && yarn install",
   config = function() vim.g.mkdp_filetypes = { "markdown" } end,
 },
+'dkarter/bullets.vim',                   -- numbered lists and checkboxes
 -- MISC
 'chrisbra/unicode.vim',                  -- :SearchUni check|C-v u2705|✅
 'moll/vim-bbye',                         -- delete buffer w/o closing win
@@ -114,6 +115,5 @@ return Lazy.setup({ -- NEOVIM BASICS
 -- COMMENTS, AUTOPAIRS, LISTS
 'windwp/nvim-autopairs',                 -- integrates with cmp and treesitter
 'terrortylor/nvim-comment',              -- commenting tool
-'dkarter/bullets.vim',                   -- numbered lists
  })
 
