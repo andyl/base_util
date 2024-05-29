@@ -370,7 +370,7 @@ PSClear='\[\e[0m\]'     # Text Reset
 
 # Regular Colors
 Black='\e[0;30m'        # Black
-Red='\e[0;31m'          # Re d
+Red='\e[0;31m'          # Red
 Green='\e[0;32m'        # Green
 Yellow='\e[0;33m'       # Yellow
 Blue='\e[0;34m'         # Blue
@@ -388,6 +388,12 @@ PSBlue='\[\e[0;34m\]'         # Blue
 PSPurple='\[\e[0;35m\]'       # Purple
 PSCyan='\[\e[0;36m\]'         # Cyan
 PSWhite='\[\e[0;37m\]'        # White
+
+# Xtended Colors (256 Colors)
+# From https://misc.flogisoft.com/bash/tip_colors_and_formatting
+# Search: "256 color reference chart"
+# https://en.wikipedia.org/wiki/File:Xterm_256color_chart.svg
+PSxGreen='\[\e[38;5;028m\]'  # #008700 
 
 # Bold
 BBlack='\e[1;30m'       # Black
@@ -499,9 +505,9 @@ GITC=$CPD/git-completion.sh
 if [ -f $GITC ]
 then
   source $GITC
-  PS1="${PSGreen}\u@\h-\$?${PSClear}${PSYellow}\`__git_ps1\`${PSClear} \w${PSRed}>${PSClear} " 
+  PS1="${PSxGreen}\u@\h-\$?${PSClear}${PSYellow}\`__git_ps1\`${PSClear} \w${PSRed}>${PSClear} " 
 else
-  PS1="${PSGreen}\u@\h-\$?${PSClear}\w${PSRed}>${PSClear} " 
+  PS1="${PSxGreen}\u@\h-\$?${PSClear}\w${PSRed}>${PSClear} " 
 fi
 
 ###########################################################################
