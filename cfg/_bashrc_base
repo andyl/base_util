@@ -498,6 +498,14 @@ export GIT_PS1_SHOWSTASHSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true
 export GIT_PS1_SHOWUPSTREAD="auto"
 
+# set the cursor shape 
+# export CursorBlock="\e[0 q"
+# export CursorUnderline="\e[4 q"
+# export CursorBeam="\e[6 q"
+
+# echo -e $CursorBlock 
+# export TERM="xterm"
+
 exit_status() { 
   es=$? 
   if [ $es -eq 0 ]; then 
@@ -533,9 +541,9 @@ alias deldemoprompt="rm -f $PROMPT_FILE"
 ###########################################################################
 # MISC
 
-if [ `which xterm_title` ]; then
-  PROMPT_COMMAND='export PWDS=`pwd_short`;xterm_title "${USRNAME}@${SYSNAME} ${PWDS}"'
-fi
+# if [ `which xterm_title` ]; then
+#   PROMPT_COMMAND='export PWDS=`pwd_short`;xterm_title "${USRNAME}@${SYSNAME} ${PWDS}"'
+# fi
 
 ###########################################################################
 # POSTGRESS HELPERS
