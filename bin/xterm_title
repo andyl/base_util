@@ -10,8 +10,8 @@ if [ $# -eq 0 ]; then
   exit 1
 fi
 
-if [ "$TERM"=="xterm" ] || [ "$TERM"=="xterm-kitty" ]; then
-  if [ "$1"=="clear" ]; then 
+if [ "$TERM" == "xterm" ] || [ "$TERM" == "xterm-kitty" ]; then
+  if [ "$1" == "clear" ]; then 
     echo -ne "\033]0;\007" 
   else
     echo -ne "\033]0;$@\007" 
