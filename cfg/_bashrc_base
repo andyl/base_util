@@ -568,6 +568,13 @@ ssh_htag() {
   fi
 }
 
+ssh_htag_l() { 
+  if is_ssh; then 
+    echo "<$HOSTNAME> "
+  fi
+}
+
+
 # if [ `which xterm_title` ]; then
 #   PROMPT_COMMAND='export PWDS=`pwd_short`;xterm_title "${USRNAME}@${SYSNAME} ${PWDS}"'
 # fi
