@@ -13,14 +13,14 @@ local n_keymap = {
 
   a = { -- LSP Actions
     name = "LSP Actions",
-    n = { ":lua vim.diagnostic.goto_next()<cr>",         "GotoNext Diagnostic"      },
-    p = { ":lua vim.diagnostic.goto_prev()<cr>",         "GotoPrev Diagnostic"      },
-    l = { ":lua vim.diagnostic.open_float()<cr>",        "Current Line Diagnostics" },
     c = { ":lua vim.lsp.buf.code_action()<cr>",          "Code Action"              },
+    d = { ":lua vim.lsp.buf.references()<cr>",           "Display References"       },
     f = { ":lua vim.lsp.buf.format({async = true})<cr>", "Reformat"                 },
     k = { ":lua vim.lsp.buf.hover()<cr>",                "Doc Hover"                },
+    l = { ":lua vim.diagnostic.open_float()<cr>",        "Current Line Diagnostics" },
+    n = { ":lua vim.diagnostic.goto_next()<cr>",         "GotoNext Diagnostic"      },
+    p = { ":lua vim.diagnostic.goto_prev()<cr>",         "GotoPrev Diagnostic"      },
     r = { ":lua vim.lsp.buf.rename()<cr>",               "Rename"                   },
-    u = { ":lua vim.lsp.buf.references()<cr>",           "Show References (users)"  },
   },
 
   e = { -- Extensions
