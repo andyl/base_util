@@ -14,5 +14,6 @@ if [ "$TERM"=="xterm" ] || [ "$TERM"=="xterm-kitty" ]; then
   if [ "$1"=="clear" ]; then 
     echo -ne "\033]0;\007" 
   else
-  echo -ne "\033]0;$@\007" 
+    echo -ne "\033]0;$@\007" 
+  fi
 fi 
