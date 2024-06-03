@@ -1,5 +1,6 @@
 # Startup file for bash - goes in the user home directory 
 ###########################################################################
+# vim: set filetype=bash :
 
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:~/.bin:~/.local/bin:~/var/data/bin/$(uname -m):~/dks/bin
 
@@ -221,7 +222,7 @@ alias   tm="tmux"             # start tmux
 alias tmls="tmux ls"          # list active sessions 
 
 ###########################################################################
-# TERMINATOR
+# TERMINAL HELPERS (TERMINATOR & DAISY)
 
 # create new tab in current terminator window
 # https://askubuntu.com/questions/380315/command-to-open-new-tab-in-the-current-terminal
@@ -498,14 +499,6 @@ export GIT_PS1_SHOWSTASHSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true
 export GIT_PS1_SHOWUPSTREAD="auto"
 
-# set the cursor shape 
-# export CursorBlock="\e[0 q"
-# export CursorUnderline="\e[4 q"
-# export CursorBeam="\e[6 q"
-
-# echo -e $CursorBlock 
-# export TERM="xterm"
-
 exit_status() { 
   es=$? 
   if [ $es -eq 0 ]; then 
@@ -539,7 +532,41 @@ alias setdemoprompt="echo 'user@host' > $PROMPT_FILE"
 alias deldemoprompt="rm -f $PROMPT_FILE"
 
 ###########################################################################
-# MISC
+# XTERM_TITLE UTILITIES
+
+# short pwd 
+pwd_short() { 
+  pwd | sed "s|$HOME|~|"
+}
+
+# check for active SSH session
+is_ssh() { 
+  if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+      # This is an SSH session
+      return 0 
+  else
+      # This is a local session
+      return 1
+  fi
+}
+
+ssh_prefix() { 
+  if is_ssh; then 
+    echo "$HOSTNAME:"
+  fi
+}
+
+ssh_hname() { 
+  if is_ssh; then 
+    echo $HOSTNAME
+  fi
+}
+
+ssh_htag() { 
+  if is_ssh; then 
+    echo " <$HOSTNAME>"
+  fi
+}
 
 # if [ `which xterm_title` ]; then
 #   PROMPT_COMMAND='export PWDS=`pwd_short`;xterm_title "${USRNAME}@${SYSNAME} ${PWDS}"'

@@ -1,4 +1,0 @@
-#!/bin/sh
-
-pwd | sed -e s/\\/home\\/$USER/~/
-
