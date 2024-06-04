@@ -508,12 +508,19 @@ exit_status() {
   fi
 }
 
+set_term_title() {
+    echo -ne "\033]0;$(date +%H:%M:%S)\007"
+}
+
+# Update PS1 to include the function call
+# export PS1='$(set_terminal_title)\u@\h:\w\$ '
+
 GITC=$CPD/git-completion.sh
 if [ -f $GITC ]; then
   source $GITC
-  PS1="${PSxGrey50}\u@\h-\$?${PSClear}${PSYellow}\`__git_ps1\`${PSClear} \w${PSRed}>${PSClear} " 
+  PS1="\`set_term_title\`${PSxGrey50}\u@\h-\$?${PSClear}${PSYellow}\`__git_ps1\`${PSClear} \w${PSRed}>${PSClear} " 
 else
-  PS1="${PSxGrey50}\u@\h-\$?${PSClear}\w${PSRed}>${PSClear} " 
+  PS1="\`set_term_title\`${PSxGrey50}\u@\h-\$?${PSClear}\w${PSRed}>${PSClear} " 
 fi
 
 ###########################################################################
