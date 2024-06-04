@@ -532,7 +532,7 @@ ssh_hname() {
 
 ssh_htag() { 
   if is_ssh; then 
-    echo "$HOSTNAME} "
+    echo "$HOSTNAME) "
   fi
 }
 
