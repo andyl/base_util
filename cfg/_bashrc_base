@@ -1,6 +1,6 @@
 # Startup file for bash - goes in the user home directory 
 ###########################################################################
-# vim: set filetype=bash :
+# vim: set filetype=sh :
 
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:~/.bin:~/.local/bin:~/var/data/bin/$(uname -m):~/dks/bin
 
@@ -485,12 +485,12 @@ shopt -s histverify   # history expansion
 [ -f /etc/bash_completion ] && source /etc/bash_completion
 
 CPD=~/.complete
+
 [ -d $CPD ] && for f in $CPD/*.sh $CPD/*.bash; do source $f; done
 
 ###########################################################################
-# BASH PROMPT
+# BASH PROMPT VARIABLES
 
-# set the command prompt
 export USRNAME=`whoami`
 export SYSNAME=`hostname`
 
@@ -499,53 +499,15 @@ export GIT_PS1_SHOWSTASHSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true
 export GIT_PS1_SHOWUPSTREAD="auto"
 
-exit_status() { 
-  es=$? 
-  if [ $es -eq 0 ]; then 
-    echo -e "${PSGreen}${es}${PSClear}"
-      else
-    echo -e "${PSRed}${es}${PSClear}"
-  fi
-}
-
-set_term_title() {
-    echo -ne "\033]0;$(date +%H:%M:%S)\007"
-}
-
-# Update PS1 to include the function call
-# export PS1='$(set_terminal_title)\u@\h:\w\$ '
-
 GITC=$CPD/git-completion.sh
-if [ -f $GITC ]; then
-  source $GITC
-  PS1="\`set_term_title\`${PSxGrey50}\u@\h-\$?${PSClear}${PSYellow}\`__git_ps1\`${PSClear} \w${PSRed}>${PSClear} " 
-else
-  PS1="\`set_term_title\`${PSxGrey50}\u@\h-\$?${PSClear}\w${PSRed}>${PSClear} " 
-fi
 
 ###########################################################################
-# DEMO PROMPT
+# PROMPT & TITLE UTILITIES
 
-PROMPT_FILE=~/.demoprompt
-
-if [ -f $PROMPT_FILE ]
-then 
-  PROMPT_TEXT=`cat $PROMPT_FILE`
-  PS1="${PSGreen}$PROMPT_TEXT${PSClear}${PSRed}>${PSClear} "
-fi
-
-alias setdemoprompt="echo 'user@host' > $PROMPT_FILE"
-alias deldemoprompt="rm -f $PROMPT_FILE"
-
-###########################################################################
-# XTERM_TITLE UTILITIES
-
-# short pwd 
 pwd_short() { 
   pwd | sed "s|$HOME|~|"
 }
 
-# check for active SSH session
 is_ssh() { 
   if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
       # This is an SSH session
@@ -580,9 +542,60 @@ ssh_htag_l() {
   fi
 }
 
-# if [ `which xterm_title` ]; then
-#   PROMPT_COMMAND='export PWDS=`pwd_short`;xterm_title "${USRNAME}@${SYSNAME} ${PWDS}"'
-# fi
+exit_status() { 
+  es=$? 
+  if [ $es -eq 0 ]; then 
+    echo -e "${PSGreen}${es}${PSClear}"
+      else
+    echo -e "${PSRed}${es}${PSClear}"
+  fi
+}
+
+time_title() {
+    echo -ne "\033]0;$(date +%H:%M:%S)\007"
+}
+
+xterm_title() { 
+  XT="xterm_title"
+  USAGE="Usage: $XT <title> - sets the xterm title\n To test: $XT Hello World; sleep 2" 
+
+  if [ $# -eq 0 ]; then
+    echo -e $USAGE
+    return 1
+  fi
+
+  if [ "$TERM" == "xterm" ] || [ "$TERM" == "xterm-kitty" ]; then
+    echo -ne "\033]0;$@\007" 
+  fi 
+}
+
+term_title() { 
+  xterm_title "$(ssh_htag_l)$(pwd_short)/"
+}
+
+###########################################################################
+# BASH PROMPT
+
+if [ -f $GITC ]; then
+  source $GITC
+  PS1="\`term_title\`${PSxGrey50}\u@\h-\$?${PSClear}${PSYellow}\`__git_ps1\`${PSClear} \w${PSRed}>${PSClear} " 
+else
+  PS1="\`term_title\`${PSxGrey50}\u@\h-\$?${PSClear}\w${PSRed}>${PSClear} " 
+fi
+
+###########################################################################
+# DEMO PROMPT
+
+PROMPT_FILE=~/.demoprompt
+
+if [ -f $PROMPT_FILE ]
+then 
+  PROMPT_TEXT=`cat $PROMPT_FILE`
+  PS1="${PSGreen}$PROMPT_TEXT${PSClear}${PSRed}>${PSClear} "
+fi
+
+alias setdemoprompt="echo 'user@host' > $PROMPT_FILE"
+alias deldemoprompt="rm -f $PROMPT_FILE"
 
 ###########################################################################
 # POSTGRESS HELPERS
