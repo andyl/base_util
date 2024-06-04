@@ -564,11 +564,11 @@ xterm_title() {
 }
 
 tm_title() {
-  echo "z>$(pwd_short)/"
+  echo "z>$(pwd_short)"
 }
 
 term_title() { 
-  xterm_title "$(ssh_htag)$(pwd_short)/"
+  xterm_title "$(ssh_htag)$(pwd_short)"
 }
 
 ###########################################################################
