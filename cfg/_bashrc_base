@@ -509,8 +509,7 @@ exit_status() {
 }
 
 GITC=$CPD/git-completion.sh
-if [ -f $GITC ]
-then
+if [ -f $GITC ]; then
   source $GITC
   PS1="${PSxGrey50}\u@\h-\$?${PSClear}${PSYellow}\`__git_ps1\`${PSClear} \w${PSRed}>${PSClear} " 
 else
@@ -573,7 +572,6 @@ ssh_htag_l() {
     echo "<$HOSTNAME> "
   fi
 }
-
 
 # if [ `which xterm_title` ]; then
 #   PROMPT_COMMAND='export PWDS=`pwd_short`;xterm_title "${USRNAME}@${SYSNAME} ${PWDS}"'
