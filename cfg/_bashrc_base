@@ -569,6 +569,10 @@ xterm_title() {
   fi 
 }
 
+tm_title() {
+  echo "z>$(pwd_short)/"
+}
+
 term_title() { 
   xterm_title "$(ssh_htag_l)$(pwd_short)/"
 }
