@@ -14,7 +14,6 @@ export TZ="America/Los_Angeles"
 ###########################################################################
 
 function sourcefile() {
-  tgt=$1
   [ -f $1 ] && source $1
 }
 
