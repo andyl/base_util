@@ -47,6 +47,7 @@ local servers = {
   "rust_analyzer",         -- rust
   "solargraph",            -- ruby
   "sqlls",                 -- sql
+  "terraformls",           -- hashicorp terraform/hcl
   "tailwindcss",           -- tailwind
   "tsserver",              -- javascript and typescript
 }
