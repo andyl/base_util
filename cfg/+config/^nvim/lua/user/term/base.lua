@@ -2,10 +2,9 @@
 
 vim.cmd [[
 
-" auto init with insert mode
+" terminal auto init with insert mode
 autocmd BufWinEnter,WinEnter term://* startinsert
 autocmd BufLeave             term://* stopinsert
-autocmd TermClose * :quit
 
 " turn off line numbers in terminal mode
 augroup TerminalStuff

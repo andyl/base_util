@@ -77,13 +77,15 @@ vim.cmd "nnoremap / :set hlsearch<cr>/"
 -- vim.cmd "nmap <F4> :set hlsearch! hlsearch?<cr>"
 -- vim.cmd "imap <F4> <esc>:set hlsearch! hlsearch?<cr>i<right>"
 
--- MODE TRANSITION
--- KmI("kk", "<esc>")
--- KmI("jj", "<esc>")
+-- TRANSITION FROM INSERT TO NORMAL MODE
+KmT("<esc>", "<C-\\><C-n>")         -- terminal mode
+KmT(",q",    "<C-\\><C-n>:q<cr>")   -- terminal model quit
+
 KmI("jk", "<esc>")
 KmI("kj", "<esc>")
-KmI(":w", "<esc>:w")
-KmI(":q", "<esc>:q")
+
+-- KmI(":w", "<esc>:w")
+-- KmI(":q", "<esc>:q")
 
 -- SNIPPET JUMPS
 KmI("<A-j>", "<esc>:lua require('luasnip').jump(1)<cr>")
