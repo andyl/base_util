@@ -1,6 +1,13 @@
 -- plug/treesitter
 -- cmds - :TSUpdate | :TSConfigInfo | :TSInstallInfo | :TSInstallSync
 
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "markdown",
+    callback = function()
+        vim.cmd("highlight link markdownError NONE")
+    end,
+})
+
 -- https://github.com/nvim-treesitter/nvim-treesitter/wiki/List-of-parsers
 require('nvim-treesitter.configs').setup{
   ensure_installed = {
@@ -35,6 +42,10 @@ require('nvim-treesitter.configs').setup{
     enable = true,
     disable = { },
     additional_vim_regex_highlighting = false,
+    custom_captures = {
+      ["markdown.emphasis"] = nil,
+      ["markdown_inline.emphasis"] = nil,
+    },
   },
   query_linter = {
     enable = true,
@@ -108,3 +119,4 @@ require('nvim-treesitter.configs').setup{
     },
   },
 }
+
