@@ -324,8 +324,18 @@ export PATH=$PATH:~/.cargo/bin
 ###########################################################################
 # DOCKER
 
-alias dk="docker"
-alias dkc="docker compose"
+dk() { 
+  xterm_title "$(ssh_htag)dk $(pwd_short)/"
+  TERM=xterm docker $@
+  xterm_title clear 
+}
+
+dkc() { 
+  xterm_title "$(ssh_htag)dkc $(pwd_short)/"
+  TERM=xterm docker compose $@
+  xterm_title clear 
+}
+
 alias dklz="lazydocker"
 alias dkhs="docker search --limit 5 --format 'table {{.Name}}\t{{.Description}}\t{{.StarCount}}'"
 alias dkps="docker ps -a --format 'table {{.Image}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}'"
