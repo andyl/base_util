@@ -1,6 +1,9 @@
 -- plug/treesitter
 -- cmds - :TSUpdate | :TSConfigInfo | :TSInstallInfo | :TSInstallSync
 
+-- disable error highlighting for underscore characters in markdown text
+-- example text: "http://google.com/search_documentation"
+
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "markdown",
     callback = function()
