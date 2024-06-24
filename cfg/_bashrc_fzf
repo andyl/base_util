@@ -1,0 +1,50 @@
+###########################################################################
+# FZF Config
+
+# Using FZF from BASH...
+# HISTORY | ^r  | $ ^r     | bring up history
+# FILE    | ^t  | $ vim ^t | edit selected file
+# CD      | A-c | $ A-c    | change directory
+
+export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd -d 8 -H --type directory"
+
+###########################################################################
+# FZF Path 
+if [[ ! "$PATH" == */home/aleak/.fzf/bin* ]]; then
+  PATH="${PATH:+${PATH}:}/home/aleak/.fzf/bin"
+fi
+
+# Auto-completion
+sourcefile /home/aleak/.fzf/shell/completion.bash
+
+# Key bindings
+sourcefile /home/aleak/.fzf/shell/key-bindings.bash
+
+# Aliases
+alias fnv='nvim $(fzf)'
+alias fcd='pushdp $(fd -d 8 -H --type directory | fzf)'
+
+alias fz="fzf --preview 'bat --color \"always\" {}'"
+
+# redefine fzf_cd to use `pushdp` instead of `cd`
+__fzf_cd__ () 
+{ 
+    local cmd dir;
+    cmd="${FZF_ALT_C_COMMAND:-"command find -L . -mindepth 1 \\( -path '*/\\.*' -o -fstype 'sysfs' -o -fstype 'devfs' -o -fstype 'devtmpfs' -o -fstype 'proc' \\) -prune     -o -type d -print 2> /dev/null | cut -b3-"}";
+    dir=$(eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse --bind=ctrl-z:ignore $FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS" $(__fzfcmd) +m) && printf 'pushdp %q' "$dir"
+}
+
+# kill processes
+fzf_kill() {
+    local pids=$(
+      ps -f -u $USER | sed 1d | fzf --multi | tr -s [:blank:] | cut -d' ' -f3
+      )
+    if [[ -n $pids ]]; then
+        echo "$pids" | xargs kill -9 "$@"
+    fi
+}
+
+alias fkill='fzf_kill'
+
