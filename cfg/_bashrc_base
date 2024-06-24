@@ -363,7 +363,7 @@ alias   ls='LC_ALL=C ls -FC --group-directories --color'
 alias   ll='ls'
 alias  lsl='ls -l'
 alias lsal='ls -alh'
-alias  cls='TERM=xtern clear'
+alias  cls='TERM=xterm clear'
 alias gree='tree'
 alias tree='tree -C --dirsfirst -L 5'
 
