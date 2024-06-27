@@ -48,15 +48,6 @@ export TERMINAL="terminator"
 export PATH=$PATH:~/.npm-global/bin:./node_modules/.bin    
 
 ###########################################################################
-# VVM - Vagrant Virtual Machines 
-
-alias vbm=vboxmanage
-alias vbox="virtualbox &"
-alias va=vagrant
-
-# other commands: `vb`
-
-###########################################################################
 # UTIL FUNCTIONS
 
 tkill () {
