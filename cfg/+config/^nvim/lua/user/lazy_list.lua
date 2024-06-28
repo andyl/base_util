@@ -20,7 +20,7 @@ return Lazy.setup({ -- NEOVIM BASICS
 'williamboman/mason.nvim',               -- package installer
 'williamboman/mason-lspconfig.nvim',     -- language-server installer
 'neovim/nvim-lspconfig',                 -- enable LSP servers and set properties
-'/nvimtools/none-ls.nvim',               -- for formatters and linters
+'nvimtools/none-ls.nvim',                -- for formatters and linters
 -- NOICE
 'MunifTanjim/nui.nvim',                  -- UI component library
 'rcarriga/nvim-notify',                  -- notifications library
