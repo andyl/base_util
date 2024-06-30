@@ -1,17 +1,19 @@
 -- lsp/settings/cssls
+-- :lua vim.print(require'lspconfig'["cssls"])
 
 local opts = {
   settings = {
     css = {
-      validate = true,
+      validate = false,
       lint = {
         unknownAtRules = "ignore"
       }
     },
-    scss = { validate = true,
-          lint = {
-              unknownAtRules = "ignore"
-          }
+    scss = {
+      validate = true,
+      lint = {
+        unknownAtRules = "ignore"
+      }
     },
   },
 }
