@@ -36,7 +36,7 @@ require 'mason'.setup()
 
 local servers = {
   "bashls",                -- bash
-  "cssls",                 -- css
+  -- "cssls",                 -- css
   "dockerls",              -- dockerfile
   "elixirls",              -- elixir
   "emmet_ls",              -- emmet
