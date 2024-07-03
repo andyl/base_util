@@ -47,7 +47,7 @@ nv() {
   else
     xterm_title "$(ssh_htag)nv $@" 
   fi
-  TERM=xterm XDG_CONFIG_HOME=$NV_CONF_PRO XDG_DATA_HOME=$NV_DATA_PRO/share nvim $@
+  TERM=xterm-256color XDG_CONFIG_HOME=$NV_CONF_PRO XDG_DATA_HOME=$NV_DATA_PRO/share nvim $@
   xterm_title clear 
 }
 

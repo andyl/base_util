@@ -109,26 +109,6 @@ alias host_disk="df"
 alias portview="sudo ss -tulpn"
 
 ###########################################################################
-# VIM / NEOVIM / NVIM / NV
-
-# use VI in terminal...
-# set -o vi
-
-# use for .vimrc and plugin testing
-# restart vim by simply ":qa!"
-# terminate cycle by killing console...
-vimcycle() {
-  if [ -z "$1" ]; then
-    echo "Usage: vimcycle <file>"
-    return 1
-  fi
-  in_tmux && while [ true ] ; do nvim $1 ; done
-}
-
-alias vno='nvim ~/.vimrc_base'
-alias vnn='nvim ~/.config/nvim/init.vim'
-
-###########################################################################
 # TMUX / TMUXINATOR / TMATE
 
 # check for active TMUX session
@@ -205,12 +185,12 @@ tma() {
   then
   echo -e "Attach to an new or existing tmux session\n  Usage: tma <tmux session name>"
   else
-    tmux attach -t $1 
+    TERM=xterm-256color tmux attach -t $1 
   fi
 }
 
-alias   tm="tmux"             # start tmux 
-alias tmls="tmux ls"          # list active sessions 
+alias   tm="TERM=xterm-256color tmux"  # start tmux 
+alias tmls="tmux ls"                   # list active sessions 
 
 ###########################################################################
 # TERMINAL HELPERS (TERMINATOR & DAISY)
