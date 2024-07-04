@@ -11,6 +11,8 @@ export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/b
 #      date                          -> shows time
 export TZ="America/Los_Angeles"
 
+alias udate='date -u +"%y-%m-%d_%H:%M UTC"'
+
 ###########################################################################
 
 function sourcefile() {
