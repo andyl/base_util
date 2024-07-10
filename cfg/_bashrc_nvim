@@ -15,7 +15,7 @@
 # | Old  | old   | nvo | gnco   | gndo   | rno   | cno  | Backup Copy |
 
 ###########################################################################
-# VARIABLES
+# DIRECTORIES
 
 export NV_BASE_CONF=~/.nvim_conf
 export NV_BASE_DATA=~/.nvim_data
@@ -48,16 +48,14 @@ nv() {
     xterm_title "$(ssh_htag)nv $@" 
   fi
   TERM=xterm-256color XDG_CONFIG_HOME=$NV_CONF_PRO XDG_DATA_HOME=$NV_DATA_PRO/share nvim $@
-  xterm_title clear 
 }
 
-# alias  nv="TERM=xterm XDG_CONFIG_HOME=$NV_CONF_PRO XDG_DATA_HOME=$NV_DATA_PRO/share nvim"
-alias nvp="TERM=xterm XDG_CONFIG_HOME=$NV_CONF_PRO XDG_DATA_HOME=$NV_DATA_PRO/share nvim"
-alias nvd="TERM=xterm XDG_CONFIG_HOME=$NV_CONF_DEV XDG_DATA_HOME=$NV_DATA_DEV/share nvim"
-alias nvt="TERM=xterm XDG_CONFIG_HOME=$NV_CONF_TST XDG_DATA_HOME=$NV_DATA_TST/share nvim"
-alias nvn="TERM=xterm XDG_CONFIG_HOME=$NV_CONF_NEW XDG_DATA_HOME=$NV_DATA_NEW/share nvim"
-alias nva="TERM=xterm XDG_CONFIG_HOME=$NV_CONF_ALT XDG_DATA_HOME=$NV_DATA_ALT/share nvim"
-alias nvo="TERM=xterm XDG_CONFIG_HOME=$NV_CONF_OLD XDG_DATA_HOME=$NV_DATA_OLD/share nvim"
+alias nvp="TERM=xterm-256color XDG_CONFIG_HOME=$NV_CONF_PRO XDG_DATA_HOME=$NV_DATA_PRO/share nvim"
+alias nvd="TERM=xterm-256color XDG_CONFIG_HOME=$NV_CONF_DEV XDG_DATA_HOME=$NV_DATA_DEV/share nvim"
+alias nvt="TERM=xterm-256color XDG_CONFIG_HOME=$NV_CONF_TST XDG_DATA_HOME=$NV_DATA_TST/share nvim"
+alias nvn="TERM=xterm-256color XDG_CONFIG_HOME=$NV_CONF_NEW XDG_DATA_HOME=$NV_DATA_NEW/share nvim"
+alias nva="TERM=xterm-256color XDG_CONFIG_HOME=$NV_CONF_ALT XDG_DATA_HOME=$NV_DATA_ALT/share nvim"
+alias nvo="TERM=xterm-256color XDG_CONFIG_HOME=$NV_CONF_OLD XDG_DATA_HOME=$NV_DATA_OLD/share nvim"
 
 nvw() { 
   nvim $(which $1)
