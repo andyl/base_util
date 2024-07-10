@@ -18,6 +18,8 @@
 -- https://github.com/williamboman/mason-lspconfig.nvim
 -- https://github.com/williamboman/mason.nvim
 
+AppendLog("LSPINIT")
+
 require("lspconfig")                    -- start lspconfig
 require("user.lsp.mason")               -- run mason init
 require("user.lsp.handlers").setup()    -- run handlers

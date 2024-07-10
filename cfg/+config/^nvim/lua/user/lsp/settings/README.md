@@ -12,6 +12,8 @@ To examine the configuration settings of an LSP server:
     - or - 
 :lua vim.print(require'lspconfig'["server_name"])
 
+:lua AppendLog(ToString(require'lspconfig'["tailwindcss"])) 
+
 ## LSP Log 
 
 - LSP log | ~/.local/state/nvim/lsp.log

@@ -47,12 +47,11 @@ local opts = {
     end,
   },
   settings = {
+    dynamicRegistration = true,
     includeLanguages = {
-          ["html-eex"] = "html",
-          ["phoenix-heex"] = "html",
-      elixir = "html",
-      heex = "html",
-      erb = "html",
+      elixir = "html-eex",
+      heex = "html-eex",
+      erb = "html-eex",
     },
     tailwindCSS = {
       lint = {
@@ -66,8 +65,8 @@ local opts = {
       },
       experimental = {
         classRegex = {
-          [[class= "([^"]*)]],
-          [[class: "([^"]*)]],
+          'class[:]\\s*"([^"]*)"',
+          'class.*"([^"]*)',
           "~H\"\"\".*class=\"([^\"]*)\".*\"\"\"",
         },
       },
@@ -75,6 +74,7 @@ local opts = {
     },
   },
   filetypes = {
+    "ex",
     "css",
     "scss",
     "sass",
@@ -91,8 +91,13 @@ local opts = {
     "postcss.config.ts",
     "package.json",
     "node_modules",
-    ".git"
+    ".git",
+    ".pbase"
   ),
 }
+
+-- AppendLog("----- TSCSSDONE")
+-- AppendLog("Opts: " .. ToString(opts))
+-- AppendLog("-----")
 
 return opts

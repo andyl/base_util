@@ -35,21 +35,21 @@ require 'mason'.setup()
 -- server names at https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 
 local servers = {
-  "bashls",                -- bash
-  -- "cssls",                 -- css
-  "dockerls",              -- dockerfile
-  "elixirls",              -- elixir
-  "emmet_ls",              -- emmet
-  "html",                  -- html
-  "jsonls",                -- json
-  "lua_ls",                -- lua
-  "marksman",              -- markdown
-  "rust_analyzer",         -- rust
-  "solargraph",            -- ruby
-  "sqlls",                 -- sql
-  "terraformls",           -- hashicorp terraform/hcl
-  "tailwindcss",           -- tailwind
-  "tsserver",              -- javascript and typescript
+  "bashls",          -- bash
+  -- "cssls",           -- css
+  "dockerls",        -- dockerfile
+  "elixirls",        -- elixir
+  "emmet_ls",        -- emmet
+  "html",            -- html
+  "jsonls",          -- json
+  "lua_ls",          -- lua
+  "marksman",        -- markdown
+  "rust_analyzer",   -- rust
+  "solargraph",      -- ruby
+  "sqlls",           -- sql
+  "terraformls",     -- hashicorp terraform/hcl
+  "tailwindcss",     -- tailwind
+  "tsserver",        -- javascript and typescript
 }
 
 require 'mason-lspconfig'.setup {
@@ -61,6 +61,7 @@ require 'mason-lspconfig'.setup {
 local function server_config(server)
   local tgt = "user.lsp.settings." .. server
   local opts = require(tgt)
+  AppendLog("Loading LSP config for " .. server)
   require "lspconfig"[server].setup(opts)
 end
 
