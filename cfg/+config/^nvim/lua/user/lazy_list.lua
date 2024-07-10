@@ -8,7 +8,8 @@ return Lazy.setup({ -- NEOVIM BASICS
 'nvim-lua/plenary.nvim',                 -- common lua functions
 -- NVIM-TREE
 'kyazdani42/nvim-web-devicons',          -- webfonts
-'kyazdani42/nvim-tree.lua',              -- nvimtree file explorer
+'kyazdani42/nvim-tree.lua',              -- nvimtree file explorer (<leader>e)
+'nvim-neo-tree/neo-tree.nvim',           -- neotree (<leader>E)
 -- WHICH-KEY
 'folke/which-key.nvim',                  -- key mapper and displayer
 -- TREESITTER
