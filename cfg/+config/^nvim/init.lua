@@ -5,8 +5,10 @@ require "user.globals"       -- global configuration
 require "user.util.dev"      -- development utilities
 require "user.options"       -- config options
 require "user.vimcmd"        -- vim commands (autocommands)
+
 require "user.lazy_boot"     -- lazy installation
 require "user.lazy_list"     -- lazy plugin specifications
+
 require "user.plug"          -- plugin configuration
 require "user.pane"          -- pane utilities (resizing)
 require "user.term"          -- terminal configuration
