@@ -5,19 +5,19 @@ if not LazyOk then return end
 
 return Lazy.setup({
 -- NEOVIM BASICS
-require 'user/lzp/popup',                -- the vim Popup API
-require 'user/lzp/plenary',              -- common lua functions
+require 'user/lzp/base_popup',           -- the vim Popup API
+require 'user/lzp/base_plenary',         -- common lua functions
 -- NVIM-TREE
-'kyazdani42/nvim-web-devicons',          -- webfonts
-'kyazdani42/nvim-tree.lua',              -- nvimtree file explorer (<leader>e)
-'nvim-neo-tree/neo-tree.nvim',           -- neotree (<leader>E)
--- WHICH-KEY
-'folke/which-key.nvim',                  -- key mapper and displayer
+require 'user/lzp/nvt_devicons',         -- webfonts
+require 'user/lzp/nvt_nvim_tree',        -- nvimtree file explorer (<leader>e)
+require 'user/lzp/nvt_neotree',          -- neotree (<leader>E)
 -- TREESITTER
-'nvim-treesitter/nvim-treesitter',       -- syntax highlighter
-'nvim-treesitter/playground',            -- display treesitter AST
+require 'user/lzp/ts_treesitter',        -- syntax highlighter
+require 'user/lzp/ts_playground',        -- display treesitter AST
 require 'user/lzp/ts_comment',           -- TS commenting
 require 'user/lzp/ts_textobj',           -- TS text objects
+-- WHICH-KEY
+'folke/which-key.nvim',                  -- key mapper and displayer
 -- LSP
 'williamboman/mason.nvim',               -- package installer
 'williamboman/mason-lspconfig.nvim',     -- language-server installer
@@ -28,8 +28,8 @@ require 'user/lzp/ts_textobj',           -- TS text objects
 'rcarriga/nvim-notify',                  -- notifications library
 'folke/noice.nvim',                      -- command line & notifications
 -- NEOVIM/TERMINAL
-'benmills/vimux',                        -- tmux integration
-require 'user/lzp/toggleterm',           -- terminal toggle
+require 'user/lzp/term_tmux',            -- tmux integration
+require 'user/lzp/term_toggle',          -- terminal toggle
 -- TELESCOPE
 'nvim-telescope/telescope.nvim',         -- fuzzy finder
 'axkirillov/easypick.nvim',              -- simple custom telescope pickers
