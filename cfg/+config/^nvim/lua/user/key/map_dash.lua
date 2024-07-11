@@ -10,6 +10,7 @@ local n_opts = {
 }
 
 local n_keymap = {
+  ["r"] = { "<cmd>lua require('spectre').toggle()<cr>", "Replace across Projects" },
 }
 
 if WhichKeyOk then WhichKey.register(n_keymap, n_opts) end
