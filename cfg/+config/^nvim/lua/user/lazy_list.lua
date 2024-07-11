@@ -36,6 +36,8 @@ require 'user/lzp/term_toggle',          -- terminal toggle
 -- GPT
 "folke/trouble.nvim",                    -- GPT dependency
 "jackMort/ChatGPT.nvim",                 -- GPT
+-- OLLAMA
+'nomnivore/ollama.nvim',                 -- ollama integration
 -- NGINX
 'chr4/nginx.vim',                        -- nginx config files
 -- CMP/COMPLETION
@@ -54,8 +56,6 @@ require 'user/lzp/term_toggle',          -- terminal toggle
 -- NEOVIM LUA DEVELOPMENT
 'rafcamlet/nvim-luapad',                 -- neovim lua repl
 'folke/neodev.nvim',                     -- lsp autocompletion for nvim lua API
--- OLLAMA
-'nomnivore/ollama.nvim',                 -- ollama integration
 -- GIT
 'lewis6991/gitsigns.nvim',               -- git integration
 -- STATUS LINES
@@ -70,15 +70,15 @@ require 'user/lzp/term_toggle',          -- terminal toggle
 'andyl/nvls',                            -- test plugin
 'andyl/al-gtd',                          -- GTD
 -- EDITING UTILS
-'dhruvasagar/vim-table-mode',            -- vim table mode
-'junegunn/vim-easy-align',               -- column alignment
+require 'user/lzp/edit_table_mode',      -- vim table mode
+require 'user/lzp/edit_easy_align',      -- column alignment
+require 'user/lzp/edit_spectre',         -- project-wide search/replace
 -- SEARCH AND NAV
 'mileszs/ack.vim',                       -- ACK file search
 'tpope/vim-projectionist',               -- alternate file nav
 'andyl/fuzzy-projectionist.vim',         -- fzf meets projectionist (eg :Fmodel)
 -- TEXT MANIPULATION
 'kana/vim-textobj-user',                 -- customizable text objects
--- 'mattn/vim-textobj-url',                 -- au/iu
 'tpope/vim-surround',                    -- edit containing objects
 'tpope/vim-repeat',                      -- repeat support for plugins
 -- LANG JSON
