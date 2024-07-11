@@ -19,7 +19,6 @@ local v_opts = {
 }
 
 local keytable_n = {
-
   ["1"] = { ":tabnext1<cr>",                "Goto Tab 1"           },
   ["2"] = { ":tabnext2<cr>",                "Goto Tab 2"           },
   ["3"] = { ":tabnext3<cr>",                "Goto Tab 3"           },
