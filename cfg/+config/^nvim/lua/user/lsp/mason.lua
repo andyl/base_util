@@ -61,7 +61,6 @@ require 'mason-lspconfig'.setup {
 local function server_config(server)
   local tgt = "user.lsp.settings." .. server
   local opts = require(tgt)
-  AppendLog("Loading LSP config for " .. server)
   require "lspconfig"[server].setup(opts)
 end
 
