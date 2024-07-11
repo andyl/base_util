@@ -12,6 +12,7 @@ local opts = {
     "nvim-tree/nvim-web-devicons", -- icon fonts
     "MunifTanjim/nui.nvim",        -- ui component library
     "3rd/image.nvim",              -- preview image support: See `# Preview Mode`
+    "s1n7ax/nvim-window-picker",   -- window picker
   },
   deactivate = function()
     vim.cmd([[Neotree close]])
@@ -23,7 +24,8 @@ local opts = {
     },
     window = {
       mappings = {
-        ["o"] = {"open", nowait=false},
+        -- ["o"] = {"open", nowait=false},
+        ["o"] = "open_with_window_picker",
         ["v"] = "open_vsplit",
         ["s"] = "open_split",
         ["t"] = "open_tabnew",
