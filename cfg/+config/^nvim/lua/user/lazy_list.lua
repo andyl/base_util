@@ -3,9 +3,10 @@
 LazyOk, Lazy = pcall(require, "lazy")
 if not LazyOk then return end
 
-return Lazy.setup({ -- NEOVIM BASICS
-'nvim-lua/popup.nvim',                   -- the vim Popup API
-'nvim-lua/plenary.nvim',                 -- common lua functions
+return Lazy.setup({
+-- NEOVIM BASICS
+require 'user/lzp/popup',                -- the vim Popup API
+require 'user/lzp/plenary',              -- common lua functions
 -- NVIM-TREE
 'kyazdani42/nvim-web-devicons',          -- webfonts
 'kyazdani42/nvim-tree.lua',              -- nvimtree file explorer (<leader>e)
@@ -15,8 +16,8 @@ return Lazy.setup({ -- NEOVIM BASICS
 -- TREESITTER
 'nvim-treesitter/nvim-treesitter',       -- syntax highlighter
 'nvim-treesitter/playground',            -- display treesitter AST
-'JoosepAlviste/nvim-ts-context-commentstring',
-'nvim-treesitter/nvim-treesitter-textobjects',
+require 'user/lzp/ts_comment',           -- TS commenting
+require 'user/lzp/ts_textobj',           -- TS text objects
 -- LSP
 'williamboman/mason.nvim',               -- package installer
 'williamboman/mason-lspconfig.nvim',     -- language-server installer
@@ -28,7 +29,7 @@ return Lazy.setup({ -- NEOVIM BASICS
 'folke/noice.nvim',                      -- command line & notifications
 -- NEOVIM/TERMINAL
 'benmills/vimux',                        -- tmux integration
-{"akinsho/toggleterm.nvim", version = '*', config = true},
+require 'user/lzp/toggleterm',           -- terminal toggle
 -- TELESCOPE
 'nvim-telescope/telescope.nvim',         -- fuzzy finder
 'axkirillov/easypick.nvim',              -- simple custom telescope pickers
@@ -95,15 +96,8 @@ return Lazy.setup({ -- NEOVIM BASICS
 'tomasr/molokai',                        -- molokai
 'morhetz/gruvbox',                       -- gruvbox
 -- MARKDOWN / OBSIDIAN
--- 'epwalsh/obsidian.nvim',                 -- tag search
--- 'tpope/vim-markdown',                    -- syntax highlighting and folding
-{
-  "iamcco/markdown-preview.nvim",
-  ft = { "markdown" },
-  build = "cd app && yarn install",
-  config = function() vim.g.mkdp_filetypes = { "markdown" } end,
-},
-'dkarter/bullets.vim',                   -- numbered lists and checkboxes
+require 'user/lzp/md_preview',           -- markdown preview
+require 'user/lzp/md_bullets',           -- markdown bullets
 -- MISC
 'chrisbra/unicode.vim',                  -- :SearchUni check|C-v u2705|✅
 'moll/vim-bbye',                         -- delete buffer w/o closing win
