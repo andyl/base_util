@@ -1,4 +1,4 @@
 -- nvt_neotree
 --
 
-return 'nvim-neo-tree/neo-tree.nvim'
+return 'kyazdani42/nvim-tree.lua'
