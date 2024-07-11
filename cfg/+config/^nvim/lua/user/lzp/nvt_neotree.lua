@@ -24,10 +24,9 @@ local opts = {
     },
     window = {
       mappings = {
-        -- ["o"] = {"open", nowait=false},
         ["o"] = "open_with_window_picker",
-        ["v"] = "open_vsplit",
-        ["s"] = "open_split",
+        ["v"] = "vsplit_with_window_picker",
+        ["s"] = "split_with_window_picker",
         ["t"] = "open_tabnew",
         ["h"] = "close_node",
         ["oc"] = "noop",
