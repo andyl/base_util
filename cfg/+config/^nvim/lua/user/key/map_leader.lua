@@ -31,7 +31,7 @@ local keytable_n = {
   ["s"] = { ":sp<cr>",                      "Pane Split"           },
   ["v"] = { ":vsp<cr>",                     "Pane Vsplit"          },
   ["o"] = { ":only<cr>",                    "Pane Only"            },
-  ["O"] = { ":only<cr>:NvimTreeToggle<cr>", "Pane Only w/Explorer" },
+  ["O"] = { ":only<cr>:Neotree toggle<cr>", "Pane Only w/Explorer" },
 
   a = { -- ALT-FILE - vim_projecionist - navigation between SRC and TEST files
     name = "Alternate File",
@@ -114,7 +114,7 @@ local keytable_n = {
     name = "Tab",
     n = { ":tabnew<cr>",                      "New"                             },
     o = { ":tabnew %<cr>",                    "Open pane in New Tab"            },
-    O = { ":tabnew %<cr>:NvimTreeToggle<cr>", "Open pane in New Tab w/Explorer" },
+    O = { ":tabnew %<cr>:Neotree toggle<cr>", "Open pane in New Tab w/Explorer" },
     x = { ":tabclose<cr>",                    "Close"                           },
     h = { ":tabprev<cr>",                     "Jump Left"                       },
     H = { ":tabfirst<cr>",                    "Jump to First"                   },
