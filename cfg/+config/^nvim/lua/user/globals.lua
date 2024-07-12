@@ -1,5 +1,7 @@
--- :lua P(table)
+-- Global Utility Functions
+--
 
+-- :lua P(table)
 P = function(val)
   print(vim.inspect(val))
   return val

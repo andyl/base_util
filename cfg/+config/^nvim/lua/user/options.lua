@@ -1,4 +1,4 @@
--- options
+-- neovim options
 --------------------------------------------------------
 
 -- :options      | interactive sandbox

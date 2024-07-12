@@ -10,6 +10,12 @@ local n_opts = {
 }
 
 local n_keymap = {
+  ["1"] = { ":tabnext1<cr>",                            "Goto Tab 1"              },
+  ["2"] = { ":tabnext2<cr>",                            "Goto Tab 2"              },
+  ["3"] = { ":tabnext3<cr>",                            "Goto Tab 3"              },
+  ["4"] = { ":tabnext4<cr>",                            "Goto Tab 4"              },
+  ["5"] = { ":tabnext5<cr>",                            "Goto Tab 5"              },
+  ["6"] = { ":tabnext6<cr>",                            "Goto Tab 6"              },
   ["r"] = { "<cmd>lua require('spectre').toggle()<cr>", "Replace across Projects" },
 }
 

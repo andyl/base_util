@@ -1,7 +1,11 @@
 -- nvt_neotree
 --
+-- Neotree is a file-explorer.  Toggle open with "<leader>e"
+--
 -- https://github.com/nvim-neo-tree/neo-tree.nvim
 -- https://www.lazyvim.org/plugins/editor#neo-treenvim
+-- :help neo-tree
+-- :Telescope help_tags [neo-tree]
 
 local opts = {
   "nvim-neo-tree/neo-tree.nvim",
