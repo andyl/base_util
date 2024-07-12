@@ -17,12 +17,21 @@ require 'user/lzp/ts_playground',        -- display treesitter AST
 require 'user/lzp/ts_comment',           -- TS commenting
 require 'user/lzp/ts_textobj',           -- TS text objects
 -- WHICH-KEY
-'folke/which-key.nvim',                  -- key mapper and displayer
+require 'user/lzp/key_which_key',        -- key mapper and displayer
 -- LSP
 'williamboman/mason.nvim',               -- package installer
 'williamboman/mason-lspconfig.nvim',     -- language-server installer
 'neovim/nvim-lspconfig',                 -- enable LSP servers and set properties
 'nvimtools/none-ls.nvim',                -- for formatters and linters
+-- CMP/COMPLETION
+'hrsh7th/nvim-cmp',                      -- the completion plugin
+'hrsh7th/cmp-buffer',                    -- buffer completions
+'hrsh7th/cmp-path',                      -- path completions
+'hrsh7th/cmp-cmdline',                   -- cmdline completions
+'hrsh7th/cmp-nvim-lsp',                  -- lsp integration
+-- SNIPPETS
+'L3MON4D3/LuaSnip',                      -- snippet engine
+'saadparwaiz1/cmp_luasnip',              -- snippet completions
 -- NOICE
 'MunifTanjim/nui.nvim',                  -- UI component library
 'rcarriga/nvim-notify',                  -- notifications library
@@ -40,15 +49,6 @@ require 'user/lzp/term_toggle',          -- terminal toggle
 'nomnivore/ollama.nvim',                 -- ollama integration
 -- NGINX
 'chr4/nginx.vim',                        -- nginx config files
--- CMP/COMPLETION
-'hrsh7th/nvim-cmp',                      -- the completion plugin
-'hrsh7th/cmp-buffer',                    -- buffer completions
-'hrsh7th/cmp-path',                      -- path completions
-'hrsh7th/cmp-cmdline',                   -- cmdline completions
-'hrsh7th/cmp-nvim-lsp',                  -- lsp integration
--- SNIPPETS
-'L3MON4D3/LuaSnip',                      -- snippet engine
-'saadparwaiz1/cmp_luasnip',              -- snippet completions
 -- DEBUGGING
 'mfussenegger/nvim-dap',                 -- debug adapter protocol
 'jbyuki/one-small-step-for-vimkind',     -- debugger for lua & neovim plugins
