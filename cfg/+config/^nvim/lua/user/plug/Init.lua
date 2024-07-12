@@ -2,7 +2,6 @@
 
 require "user.plug.ack"
 require "user.plug.colorscheme"
-require "user.plug.nvim-tree-icons"
 require "user.plug.nvim-tree"
 require "user.plug.telescope"
 require "user.plug.cmp"

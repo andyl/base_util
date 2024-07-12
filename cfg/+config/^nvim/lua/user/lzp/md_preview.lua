@@ -1,5 +1,12 @@
 -- md_preview
 --
+-- Markdown preview plugin
+--
+-- https://github.com/iamcco/markdown-preview.nvim
+-- :MarkdownPreview
+-- :MarkdownPreviewStop
+--
+-- key definitions at `lua/user/key/map_leader.lua`
 
 return {
   "iamcco/markdown-preview.nvim",
