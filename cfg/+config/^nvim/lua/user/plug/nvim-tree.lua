@@ -1,3 +1,6 @@
+-- nvim-tree
+--
+-- THIS PLUGIN IS NO LONGER USED ACTIVELY
 --
 -- This function has been generated from your
 --   view.mappings.list
