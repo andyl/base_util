@@ -19,10 +19,10 @@ require 'user/lzp/ts_textobj',           -- TS text objects
 -- WHICH-KEY
 require 'user/lzp/key_which_key',        -- key mapper and displayer
 -- LSP
-'williamboman/mason.nvim',               -- package installer
-'williamboman/mason-lspconfig.nvim',     -- language-server installer
-'neovim/nvim-lspconfig',                 -- enable LSP servers and set properties
-'nvimtools/none-ls.nvim',                -- for formatters and linters
+require 'user/lzp/lsp_config',           -- enable LSP servers and set properties
+require 'user/lzp/lsp_mason',            -- LSP server installer
+require 'user/lzp/lsp_mason-lspconfig',  -- LSP/Mason glue code
+require 'user/lzp/lsp_none_ls',          -- for formatters and linters
 -- CMP/COMPLETION
 'hrsh7th/nvim-cmp',                      -- the completion plugin
 'hrsh7th/cmp-buffer',                    -- buffer completions
