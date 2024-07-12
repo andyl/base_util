@@ -1,4 +1,4 @@
--- lsp/settings/lua_ls
+-- lsp/lang/lua_ls
 
 local opts = {
 	settings = {

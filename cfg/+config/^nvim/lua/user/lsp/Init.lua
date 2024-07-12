@@ -1,4 +1,4 @@
--- lsp/init
+-- lsp/Init
 
 -- :h mason-commands
 --

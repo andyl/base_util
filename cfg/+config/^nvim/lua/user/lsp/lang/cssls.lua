@@ -1,4 +1,4 @@
--- lsp/settings/cssls
+-- lsp/lang/cssls
 -- :lua vim.print(require'lspconfig'["cssls"])
 
 local opts = {

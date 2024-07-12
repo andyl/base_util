@@ -1,4 +1,4 @@
--- lsp/settings/tailwindcss
+-- lsp/lang/tailwindcss
 
 ---Require a module using `pcall` and report any errors
 --- param module string

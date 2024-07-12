@@ -59,7 +59,7 @@ require 'mason-lspconfig'.setup {
 -- handlers attach servers to buffers
 
 local function server_config(server)
-  local tgt = "user.lsp.settings." .. server
+  local tgt = "user.lsp.lang." .. server
   local opts = require(tgt)
   require "lspconfig"[server].setup(opts)
 end

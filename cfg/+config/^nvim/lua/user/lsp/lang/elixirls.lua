@@ -1,4 +1,4 @@
--- lsp/settings/elixirls
+-- lsp/lang/elixirls
 
 local opts = {
   settings = {

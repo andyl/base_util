@@ -1,4 +1,4 @@
--- lsp/settings/emmet_ls
+-- lsp/lang/emmet_ls
 -- https://github.com/aca/emmet-ls
 
 local opts = {
