@@ -1,170 +1,127 @@
 -- key/map_leader
 
-local n_opts = {
-  mode    = "n",        -- NORMAL mode
-  prefix  = "<leader>", -- leader key ","
-  buffer  = nil,        -- Specify a buffer num for buffer local mapping
-  silent  = true,       -- use `silent` when creating keymaps
-  noremap = true,       -- use `noremap` when creating keymaps
-  nowait  = true,       -- use `nowait` when creating keymaps
-}
+-------------------------------------------------------------------------
 
-local v_opts = {
-  mode    = "v",        -- VISUAL mode
-  prefix  = "<leader>", -- leader key ","
-  buffer  = nil,        -- Specify a buffer num for buffer local mapping
-  silent  = true,       -- use `silent` when creating keymaps
-  noremap = true,       -- use `noremap` when creating keymaps
-  nowait  = true,       -- use `nowait` when creating keymaps
-}
+local opts1 =  {
+    { "<leader>#", group = "Find Prev"                             },
+    { "<leader>#e", ":#",             desc = "Open Prev in Term"   },
+    { "<leader>#s", ":sp<cr>#",       desc = "Open Prev in Split"  },
+    { "<leader>#t", ":tabnew %<cr>#", desc = "Open Prev in Tab"    },
+    { "<leader>#v", ":vsp<cr>#",      desc = "Open Prev in Vsplit" },
 
-local keytable_n = {
-  ["1"] = { ":tabnext1<cr>",                "Goto Tab 1"           },
-  ["2"] = { ":tabnext2<cr>",                "Goto Tab 2"           },
-  ["3"] = { ":tabnext3<cr>",                "Goto Tab 3"           },
-  ["4"] = { ":tabnext4<cr>",                "Goto Tab 4"           },
-  ["5"] = { ":tabnext5<cr>",                "Goto Tab 5"           },
-  ["6"] = { ":tabnext6<cr>",                "Goto Tab 6"           },
-  ["q"] = { ":q<cr>",                       "Pane Quit"            },
-  ["e"] = { "<cmd>Neotree toggle<cr>",      "Explorer Neotree"     },
-  ["E"] = { "<cmd>NvimTreeToggle<cr>",      "Explorer NvimTree"    },
-  ["s"] = { ":sp<cr>",                      "Pane Split"           },
-  ["v"] = { ":vsp<cr>",                     "Pane Vsplit"          },
-  ["o"] = { ":only<cr>",                    "Pane Only"            },
-  ["O"] = { ":only<cr>:Neotree toggle<cr>", "Pane Only w/Explorer" },
+    { "<leader>*", group = "Find Next"                                           },
+    { "<leader>*e", ":*",                          desc = "Open Next in Term"    },
+    { "<leader>*s", ":sp<cr>*",                    desc = "Open Next in Split"   },
+    { "<leader>*t", ":tabnew %<cr>*",              desc = "Open Next in Tab"     },
+    { "<leader>*v", ":vsp<cr>*",                   desc = "Open Next in Vsplit"  },
+    { "<leader>1", ":tabnext1<cr>",                desc = "Goto Tab 1"           },
+    { "<leader>2", ":tabnext2<cr>",                desc = "Goto Tab 2"           },
+    { "<leader>3", ":tabnext3<cr>",                desc = "Goto Tab 3"           },
+    { "<leader>4", ":tabnext4<cr>",                desc = "Goto Tab 4"           },
+    { "<leader>5", ":tabnext5<cr>",                desc = "Goto Tab 5"           },
+    { "<leader>6", ":tabnext6<cr>",                desc = "Goto Tab 6"           },
+    { "<leader>E", "<cmd>NvimTreeToggle<cr>",      desc = "Explorer NvimTree"    },
+    { "<leader>O", ":only<cr>:Neotree toggle<cr>", desc = "Pane Only w/Explorer" },
 
-  a = { -- ALT-FILE - vim_projecionist - navigation between SRC and TEST files
-    name = "Alternate File",
-    e = { ":A<cr>",  "Open in Term"   },
-    v = { ":AV<cr>", "Open in Vsplit" },
-    s = { ":AS<cr>", "Open in Split"  },
-    t = { ":AT<cr>", "Open in Tab"    },
-  },
+    { "<leader>a", group = "Alternate File"                            },
+    { "<leader>ae", ":A<cr>",                  desc = "Open in Term"   },
+    { "<leader>as", ":AS<cr>",                 desc = "Open in Split"  },
+    { "<leader>at", ":AT<cr>",                 desc = "Open in Tab"    },
+    { "<leader>av", ":AV<cr>",                 desc = "Open in Vsplit" },
 
-  d = { -- DEBUGGER / DAP
-    name = "Debugger",
-    b = { ":lua require('dap').toggle_breakpoint()<cr>",     "toggle breakpoint" },
-    c = { ":lua require('dap').continue()<cr>",              "continue"          },
-    n = { ":lua require('dap').step_over()<cr>",             "step over next"    },
-    i = { ":lua require('dap').step_into()<cr>",             "step into"         },
-    k = { ":lua require('dap.ui.widgets').hover()<cr>",      "hover info"        },
-    l = { ":lua require('dap').continue()<cr>",              "link client"       },
-    o = { ":lua require('dap').step_out()<cr>",              "step out"          },
-    r = { ":lua require('dap.ui').repl()<cr>",               "toggle repl"       },
-    s = { ":lua require('osv').launch({ port = 8096 })<cr>", "start server"      },
-  },
+    { "<leader>c", group = "Commands"                                     },
+    { "<leader>cd", ":lua TermCmd('lazydocker')<cr>", desc = "lazydocker" },
+    { "<leader>cg", ":lua TermCmd('lazygit')<cr>",    desc = "lazygit"    },
+    { "<leader>ch", ":lua TermCmd('htop')<cr>",       desc = "htop"       },
+    { "<leader>cn", ":lua TermCmd('ncdu')<cr>",       desc = "ncdu"       },
 
-  c = { -- COMMANDS - curses applications
-    name = "Commands",
-    d = { ":lua TermCmd('lazydocker')<cr>",  "lazydocker" },
-    g = { ":lua TermCmd('lazygit')<cr>",     "lazygit"    },
-    h = { ":lua TermCmd('htop')<cr>",        "htop"       },
-    n = { ":lua TermCmd('ncdu')<cr>",        "ncdu"       },
-  },
+    { "<leader>d", group = "Debugger"                                                             },
+    { "<leader>db", ":lua require('dap').toggle_breakpoint()<cr>",     desc = "toggle breakpoint" },
+    { "<leader>dc", ":lua require('dap').continue()<cr>",              desc = "continue"          },
+    { "<leader>di", ":lua require('dap').step_into()<cr>",             desc = "step into"         },
+    { "<leader>dk", ":lua require('dap.ui.widgets').hover()<cr>",      desc = "hover info"        },
+    { "<leader>dl", ":lua require('dap').continue()<cr>",              desc = "link client"       },
+    { "<leader>dn", ":lua require('dap').step_over()<cr>",             desc = "step over next"    },
+    { "<leader>do", ":lua require('dap').step_out()<cr>",              desc = "step out"          },
+    { "<leader>dr", ":lua require('dap.ui').repl()<cr>",               desc = "toggle repl"       },
+    { "<leader>ds", ":lua require('osv').launch({ port = 8096 })<cr>", desc = "start server"      },
 
-  f = { -- FIND - telescope - fuzzy finders
-    name = "Find",
-    b = { "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>", "Buffers"      },
-    c = { "<cmd>Telescope command_history<cr>",                                                                             "Cmd History"  },
-    C = { "<cmd>Telescope commands<cr>",                                                                                    "Commands"     },
-    d = { "<cmd>Telescope diagnostics<cr>",                                                                                 "Diagnostics"  },
-    f = { "<cmd>Telescope find_files<cr>",                                                                                  "Files"        },
-    g = { "<cmd>Telescope live_grep theme=ivy<cr>",                                                                         "Grep Text"    },
-    h = { "<cmd>Telescope help_tags<cr>",                                                                                   "Help Tags"    },
-    k = { "<cmd>Telescope keymaps<cr>",                                                                                     "Keymaps"      },
-    m = { "<cmd>Telescope oldfiles<cr>",                                                                                    "MRU"          },
-    n = { "<cmd>Telescope command_history<cr>",                                                                             "Normal Hist." },
-    o = { ":lua require('user.search_org').search_md()<cr>",                                                                "Org Files"    },
-    p = { ":lua ShowProjectPicker()<cr>",                                                                                   "Projects"     },
-    q = { "<cmd>Telescope quickfix<cr>",                                                                                    "Quickfix"     },
-    r = { "<cmd>Telescope registers<cr>",                                                                                   "Registers"    },
-    s = { "<cmd>Telescope search_history<cr>",                                                                              "Search Hist." },
-    v = { "<cmd>Telescope vim_options<cr>",                                                                                 "Vim Opts"     },
-  },
+    { "<leader>e", "<cmd>Neotree toggle<cr>",                          desc = "Explorer Neotree" },
 
-  g = { -- Git (Gitsigns)
-    name = "Gitsigns",
-    r = { ":lua require('gitsigns').reset_hunk()<cr>", "reset hunk"    },
-    s = { ":lua require('gitsigns').stage_hunk()<cr>", "stage hunk"    },
-  },
+    { "<leader>f", group = "Find"                                                            },
+    { "<leader>fC", "<cmd>Telescope commands<cr>",                     desc = "Commands"     },
+    { "<leader>fc", "<cmd>Telescope command_history<cr>",              desc = "Cmd History"  },
+    { "<leader>fd", "<cmd>Telescope diagnostics<cr>",                  desc = "Diagnostics"  },
+    { "<leader>ff", "<cmd>Telescope find_files<cr>",                   desc = "Files"        },
+    { "<leader>fg", "<cmd>Telescope live_grep theme=ivy<cr>",          desc = "Grep Text"    },
+    { "<leader>fh", "<cmd>Telescope help_tags<cr>",                    desc = "Help Tags"    },
+    { "<leader>fk", "<cmd>Telescope keymaps<cr>",                      desc = "Keymaps"      },
+    { "<leader>fm", "<cmd>Telescope oldfiles<cr>",                     desc = "MRU"          },
+    { "<leader>fn", "<cmd>Telescope command_history<cr>",              desc = "Normal Hist." },
+    { "<leader>fo", ":lua require('user.search_org').search_md()<cr>", desc = "Org Files"    },
+    { "<leader>fp", ":lua ShowProjectPicker()<cr>",                    desc = "Projects"     },
+    { "<leader>fq", "<cmd>Telescope quickfix<cr>",                     desc = "Quickfix"     },
+    { "<leader>fr", "<cmd>Telescope registers<cr>",                    desc = "Registers"    },
+    { "<leader>fs", "<cmd>Telescope search_history<cr>",               desc = "Search Hist." },
+    { "<leader>fv", "<cmd>Telescope vim_options<cr>",                  desc = "Vim Opts"     },
 
-  l = { -- LAYOUT - pane layout
-    name = "Layout",
-    s = { "<C-w>J", "layout split"    },
-    v = { "<C-w>L", "layout vertical" },
-    r = { "<C-w>r", "layout rotate"   },
-    e = { "<C-w>=", "layout equalize" },
-    w = { ":silent !kill -s SIGWINCH $PPID<cr>", "window change" },
-  },
+    { "<leader>g", group = "Gitsigns" },
+    { "<leader>gr", ":lua require('gitsigns').reset_hunk()<cr>", desc = "reset hunk" },
+    { "<leader>gs", ":lua require('gitsigns').stage_hunk()<cr>", desc = "stage hunk" },
 
-  m = { -- MARKDOWN - markdown preview
-    name = "Markdown",
-    s = { ":MarkdownPreview<CR>"    , "preview start"    },
-    x = { ":MarkdownPreviewStop<CR>", "preview stop"     },
-  },
+    { "<leader>l", group = "Layout"                                                 },
+    { "<leader>le", "<C-w>=",                              desc = "layout equalize" },
+    { "<leader>lr", "<C-w>r",                              desc = "layout rotate"   },
+    { "<leader>ls", "<C-w>J",                              desc = "layout split"    },
+    { "<leader>lv", "<C-w>L",                              desc = "layout vertical" },
+    { "<leader>lw", ":silent !kill -s SIGWINCH $PPID<cr>", desc = "window change"   },
 
-  p = { -- PRINT - print files
-    name = "Print",
-    p = { ":! a2ps -c --highlight-level=none --sides=duplex -T 2 --line-numbers=1 %<cr>",                                       "Portrait"         },
-    l = { ":! a2ps -c --highlight-level=none --sides=duplex -T 2 --line-numbers=1 --portrait  --columns=1 --font-size=9 %<cr>", "Landscape"        },
-    s = { ":! a2ps -c --highlight-level=none --sides=duplex -T 2 --line-numbers=1 --landscape --columns=1 --font-size=9 %<cr>", "Single Landscape" },
-  },
+    { "<leader>m", group = "Markdown"                                  },
+    { "<leader>ms", ":MarkdownPreview<CR>",     desc = "preview start" },
+    { "<leader>mx", ":MarkdownPreviewStop<CR>", desc = "preview stop"  },
 
-  t = { -- TAB - tab manipulation and navigation
-    name = "Tab",
-    n = { ":tabnew<cr>",                      "New"                             },
-    o = { ":tabnew %<cr>",                    "Open pane in New Tab"            },
-    O = { ":tabnew %<cr>:Neotree toggle<cr>", "Open pane in New Tab w/Explorer" },
-    x = { ":tabclose<cr>",                    "Close"                           },
-    h = { ":tabprev<cr>",                     "Jump Left"                       },
-    H = { ":tabfirst<cr>",                    "Jump to First"                   },
-    l = { ":tabnext<cr>",                     "Jump Right"                      },
-    L = { ":tablast<cr>",                     "Jump to Last"                    },
-  },
+    { "<leader>o", ":only<cr>", desc = "Pane Only" },
 
-  x = { -- CROSS-COPY - copy across vim instances using external file
-    name = "CrossCopy",
-    y = { "y:call writefile(split(@0,\"\\n\"), \"/tmp/vimtmp\")<cr>", "yank"   },
-    d = { "d:call writefile(split(@1,\"\\n\"), \"/tmp/vimtmp\")<cr>", "delete" },
-    p = { ":r /tmp/vimtmp<cr>",                                       "paste"  },
-  },
+    { "<leader>p", group = "Print"                                                                                                                                  },
+    { "<leader>pl", ":! a2ps -c --highlight-level=none --sides=duplex -T 2 --line-numbers=1 --portrait --columns=1 --font-size=9 %<cr>",  desc = "Landscape"        },
+    { "<leader>pp", ":! a2ps -c --highlight-level=none --sides=duplex -T 2 --line-numbers=1 %<cr>",                                       desc = "Portrait"         },
+    { "<leader>ps", ":! a2ps -c --highlight-level=none --sides=duplex -T 2 --line-numbers=1 --landscape --columns=1 --font-size=9 %<cr>", desc = "Single Landscape" },
 
-  ["#"] = { -- FIND-Prev - find prev
-    name = "Find Prev",
-    e = { ":#",             "Open Prev in Term"   },
-    v = { ":vsp<cr>#",      "Open Prev in Vsplit" },
-    s = { ":sp<cr>#",       "Open Prev in Split"  },
-    t = { ":tabnew %<cr>#", "Open Prev in Tab"    },
-  },
+    { "<leader>q", ":q<cr>", desc = "Pane Quit" },
 
-  ["*"] = { -- FIND-Next - find next
-    name = "Find Next",
-    e = { ":*",             "Open Next in Term"   },
-    v = { ":vsp<cr>*",      "Open Next in Vsplit" },
-    s = { ":sp<cr>*",       "Open Next in Split"  },
-    t = { ":tabnew %<cr>*", "Open Next in Tab"    },
+    { "<leader>s", ":sp<cr>", desc = "Pane Split" },
+
+    { "<leader>t", group = "Tab"                                                                 },
+    { "<leader>tH", ":tabfirst<cr>",                    desc = "Jump to First"                   },
+    { "<leader>tL", ":tablast<cr>",                     desc = "Jump to Last"                    },
+    { "<leader>tO", ":tabnew %<cr>:Neotree toggle<cr>", desc = "Open pane in New Tab w/Explorer" },
+    { "<leader>th", ":tabprev<cr>",                     desc = "Jump Left"                       },
+    { "<leader>tl", ":tabnext<cr>",                     desc = "Jump Right"                      },
+    { "<leader>tn", ":tabnew<cr>",                      desc = "New"                             },
+    { "<leader>to", ":tabnew %<cr>",                    desc = "Open pane in New Tab"            },
+    { "<leader>tx", ":tabclose<cr>",                    desc = "Close"                           },
+
+    { "<leader>v", ":vsp<cr>", desc = "Pane Vsplit" },
+
+    { "<leader>x", group = "CrossCopy"                                                      },
+    { "<leader>xd", 'd:call writefile(split(@1,"\\n"), "/tmp/vimtmp")<cr>', desc = "delete" },
+    { "<leader>xp", ":r /tmp/vimtmp<cr>",                                   desc = "paste"  },
+    { "<leader>xy", 'y:call writefile(split(@0,"\\n"), "/tmp/vimtmp")<cr>', desc = "yank"   },
   }
-}
 
-local keytable_v = {
-  x = { -- CROSS-COPY - copy across vim instances using external file
-    name = "CrossCopy",
-    y = { "y:call writefile(split(@0,\"\\n\"), \"/tmp/vimtmp\")<cr>", "yank"   },
-    d = { "d:call writefile(split(@1,\"\\n\"), \"/tmp/vimtmp\")<cr>", "delete" },
+WhichKey.add(opts1)
+
+-------------------------------------------------------------------------
+
+local opts2 =  {
+    {
+      mode = { "v" },
+
+      { "<leader>x", group = "CrossCopy"                                                      },
+      { "<leader>xd", 'd:call writefile(split(@1,"\\n"), "/tmp/vimtmp")<cr>', desc = "delete" },
+      { "<leader>xy", 'y:call writefile(split(@0,"\\n"), "/tmp/vimtmp")<cr>', desc = "yank"   },
+
+    },
   }
-}
 
-if WhichKeyOk then WhichKey.register(keytable_n, n_opts) end
-if WhichKeyOk then WhichKey.register(keytable_v, v_opts) end
-
--- TAB NAVIGATION
-KmN("<leader>t1", "1gt")
-KmN("<leader>t2", "2gt")
-KmN("<leader>t3", "3gt")
-KmN("<leader>t4", "4gt")
-KmN("<leader>t5", "5gt")
-KmN("<leader>t6", "6gt")
-KmN("<leader>t7", "7gt")
-KmN("<leader>t8", "8gt")
-KmN("<leader>t9", "9gt")
-
+WhichKey.add(opts2)

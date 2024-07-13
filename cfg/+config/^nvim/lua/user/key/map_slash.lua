@@ -1,175 +1,125 @@
 -- key/map_slash
 
-local n_opts = {
-  mode    = "n",     -- NORMAL mode
-  prefix  = "\\",    -- slash key
-  buffer  = nil,     -- Give a buffer num for buffer local mapping
-  silent  = true,    -- use `silent` when creating keymaps
-  noremap = true,    -- use `noremap` when creating keymaps
-  nowait  = true,    -- use `nowait` when creating keymaps
-}
+local opts1 =   {
+    { "\\a", group = "LSP Actions"                                                             },
+    { "\\ac", ":lua vim.lsp.buf.code_action()<cr>",          desc = "Code Action"              },
+    { "\\ad", ":lua vim.lsp.buf.references()<cr>",           desc = "Display References"       },
+    { "\\af", ":lua vim.lsp.buf.format({async = true})<cr>", desc = "Reformat"                 },
+    { "\\ak", ":lua vim.lsp.buf.hover()<cr>",                desc = "Doc Hover"                },
+    { "\\al", ":lua vim.diagnostic.open_float()<cr>",        desc = "Current Line Diagnostics" },
+    { "\\an", ":lua vim.diagnostic.goto_next()<cr>",         desc = "GotoNext Diagnostic"      },
+    { "\\ap", ":lua vim.diagnostic.goto_prev()<cr>",         desc = "GotoPrev Diagnostic"      },
+    { "\\ar", ":lua vim.lsp.buf.rename()<cr>",               desc = "Rename"                   },
 
-local n_keymap = {
+    { "\\e", group = "Extensions"                         },
+    { "\\el", ":Lazy<cr>",  desc = "Lazy Package Manager" },
+    { "\\em", ":Mason<cr>", desc = "Mason LSP Manager"    },
 
-  a = { -- LSP Actions
-    name = "LSP Actions",
-    c = { ":lua vim.lsp.buf.code_action()<cr>",          "Code Action"              },
-    d = { ":lua vim.lsp.buf.references()<cr>",           "Display References"       },
-    f = { ":lua vim.lsp.buf.format({async = true})<cr>", "Reformat"                 },
-    k = { ":lua vim.lsp.buf.hover()<cr>",                "Doc Hover"                },
-    l = { ":lua vim.diagnostic.open_float()<cr>",        "Current Line Diagnostics" },
-    n = { ":lua vim.diagnostic.goto_next()<cr>",         "GotoNext Diagnostic"      },
-    p = { ":lua vim.diagnostic.goto_prev()<cr>",         "GotoPrev Diagnostic"      },
-    r = { ":lua vim.lsp.buf.rename()<cr>",               "Rename"                   },
-  },
+    { "\\f", group = "LSP Find" },
 
-  e = { -- Extensions
-    name = "Extensions",
-    l = { ":Lazy<cr>",         "Lazy Package Manager"      },
-    m = { ":Mason<cr>",        "Mason LSP Manager"         },
-  },
+    { "\\fc", group = "Calls"                                                                       },
+    { "\\fca", ":lua require'telescope.builtin'.lsp_outgoing_calls()<cr>", desc = "Outgoing"        },
+    { "\\fci", ":lua require'telescope.builtin'.lsp_incoming_calls()<cr>", desc = "Incoming"        },
+    { "\\fd", ":lua require'telescope.builtin'.diagnostics()<cr>",         desc = "Diagnostics"     },
+    { "\\fi", ":lua require'telescope.builtin'.lsp_implementations()<cr>", desc = "Implementations" },
+    { "\\fr", ":lua require'telescope.builtin'.lsp_references()<cr>",      desc = "References"      },
 
-  f = { -- LSP Find with Telescope
-    name = "LSP Find",
-    r = { ":lua require'telescope.builtin'.lsp_references()<cr>",      "References"      },
-    d = { ":lua require'telescope.builtin'.diagnostics()<cr>",         "Diagnostics"     },
-    i = { ":lua require'telescope.builtin'.lsp_implementations()<cr>", "Implementations" },
-    x = { ":lua require'telescope.builtin'.lsp_definitions()<cr>",     "Definitions"     },
-    s = { -- Symbols
-      name = "Symbols",
-      ["d"] = {":lua require'telescope.builtin'.lsp_document_symbols()<cr>",          "Document"  },
-      ["w"] = {":lua require'telescope.builtin'.lsp_workspace_symbols()<cr>",         "Workspace" },
-      ["y"] = {":lua require'telescope.builtin'.lsp_dynamic_workspace_symbols()<cr>", "Dynamic"   },
+    { "\\fs", group = "Symbols"                                                                          },
+    { "\\fsd", ":lua require'telescope.builtin'.lsp_document_symbols()<cr>",          desc = "Document"  },
+    { "\\fsw", ":lua require'telescope.builtin'.lsp_workspace_symbols()<cr>",         desc = "Workspace" },
+    { "\\fsy", ":lua require'telescope.builtin'.lsp_dynamic_workspace_symbols()<cr>", desc = "Dynamic"   },
+
+    { "\\fx", ":lua require'telescope.builtin'.lsp_definitions()<cr>", desc = "Definitions" },
+
+    { "\\g", group = "GoTo Definition"                                                  },
+    { "\\ge", ":lua vim.lsp.buf.definition()<cr>",                desc = "Current Pane" },
+    { "\\gs", ":split | lua vim.lsp.buf.definition()<cr>",        desc = "Split"        },
+    { "\\gt", ":vsplit | lua vim.lsp.buf.definition()<cr><C-W>T", desc = "Tab"          },
+    { "\\gv", ":vsplit | lua vim.lsp.buf.definition()<cr>",       desc = "Vsplit"       },
+
+    { "\\i", group = "Insert"                                       },
+    { "\\id", ":r !w_date_tag<cr>kJA",   desc = "Date"              },
+    { "\\iq", ":r !w_time_qhour<cr>kJA", desc = "Quarter-hour Time" },
+    { "\\it", ":r !w_time_exact<cr>kJA", desc = "Exact Time"        },
+
+    { "\\l", group = "LLM / ChatGPT"                                            },
+    { "\\la", ":ChatGPTActAs<cr>",                desc = "ChatGPT ActAs"        },
+    { "\\lc", ":ChatGPTCompleteCode<cr>",         desc = "ChatGPT CompleteCode" },
+    { "\\le", ":ChatGPTEditWithInstructions<cr>", desc = "ChatGPT Edit"         },
+    { "\\lg", ":ChatGPT<cr>",                     desc = "ChatGPT"              },
+
+    { "\\lr", group = "Run"                                                  },
+    { "\\lrr", ":ChatGPTRun code_readability<cr>", desc = "Code Readability" },
+    { "\\lrt", ":ChatGPTRun add_tests<cr>",        desc = "Generate Tests"   },
+
+    { "\\o", group = "Obsidian"                 },
+    { "\\oo", ":! obs %<cr><cr>", desc = "Open" },
+
+    { "\\t", group = "Terminal"                                      },
+    { "\\tf", "<cmd>ToggleTerm direction=float<cr>", desc = "Float"  },
+    { "\\ts", ":split | terminal<cr>A",              desc = "Split"  },
+    { "\\tt", ":vsplit | terminal<cr><C-W>T",        desc = "Tab"    },
+    { "\\tv", ":vsplit | terminal<cr>A",             desc = "Vsplit" },
+
+    { "\\u", group = "UnitTest"                                                                  },
+    { "\\uf", ":lua require('neotest').run.run(vim.fn.expand('%'))<cr>", desc = "Current File"   },
+    { "\\up", ":lua require('neotest').output_panel.toggle()<cr>",       desc = "Toggle Panel"   },
+    { "\\us", ":lua require('neotest').output_summary.toggle()<cr>",     desc = "Toggle Summary" },
+    { "\\ut", ":lua require('neotest').run.run()<cr>",                   desc = "Nearest Test"   },
+    { "\\uw", ":lua require('neotest').watch.toggle()<cr>",              desc = "Toggle Watcher" },
+
+    { "\\x", ":ToggleCheckbox<cr>", desc = "Toggle Checkbox" },
+  }
+
+WhichKey.add(opts1)
+
+-------------------------------------------------------------------------------------------------
+
+local opts2 =  {
+    {
+      mode = { "i" },
+      { "\\i", group = "Insert"                                            },
+      { "\\id", "<esc>:r !w_date_tag<cr>kJA",   desc = "Date"              },
+      { "\\iq", "<esc>:r !w_time_qhour<cr>kJA", desc = "Quarter-hour Time" },
+      { "\\it", "<esc>:r !w_time_exact<cr>kJA", desc = "Exact Time"        },
     },
-    c = { -- Calls
-      name = "Calls",
-      ["a"] = {":lua require'telescope.builtin'.lsp_outgoing_calls()<cr>", "Outgoing"},
-      ["i"] = {":lua require'telescope.builtin'.lsp_incoming_calls()<cr>", "Incoming"},
+  }
+
+WhichKey.add(opts2)
+
+-------------------------------------------------------------------------------------------------
+local opts3 =  {
+
+    {
+      mode = { "v" },
+
+      { "\\s", group = "Sort" },
+
+      { "\\sa", group = "Ascending" },
+      { "\\sa1", ":!sort -k1<CR>", desc = "Column 1" },
+      { "\\sa2", ":!sort -k2<CR>", desc = "Column 2" },
+      { "\\sa3", ":!sort -k3<CR>", desc = "Column 3" },
+      { "\\sa4", ":!sort -k4<CR>", desc = "Column 4" },
+      { "\\sa5", ":!sort -k5<CR>", desc = "Column 5" },
+      { "\\sa6", ":!sort -k6<CR>", desc = "Column 6" },
+      { "\\sa7", ":!sort -k7<CR>", desc = "Column 7" },
+      { "\\sa8", ":!sort -k8<CR>", desc = "Column 8" },
+      { "\\sa9", ":!sort -k9<CR>", desc = "Column 9" },
+
+      { "\\sd", group = "Descending" },
+      { "\\sd1", ":!sort -rk1<CR>", desc = "Column 1" },
+      { "\\sd2", ":!sort -rk2<CR>", desc = "Column 2" },
+      { "\\sd3", ":!sort -rk3<CR>", desc = "Column 3" },
+      { "\\sd4", ":!sort -rk4<CR>", desc = "Column 4" },
+      { "\\sd5", ":!sort -rk5<CR>", desc = "Column 5" },
+      { "\\sd6", ":!sort -rk6<CR>", desc = "Column 6" },
+      { "\\sd7", ":!sort -rk7<CR>", desc = "Column 7" },
+      { "\\sd8", ":!sort -rk8<CR>", desc = "Column 8" },
+      { "\\sd9", ":!sort -rk9<CR>", desc = "Column 9" },
+
+      { "\\x", ":lua require('user.util.togglecheck').vtoggle()<cr>", desc = "Toggle Checkbox Block" },
+
     },
-  },
+  }
 
-  g = { -- LSP Goto Definition
-    name = "GoTo Definition",
-    e = { ":lua vim.lsp.buf.definition()<cr>"               , "Current Pane" },
-    s = { ":split  | lua vim.lsp.buf.definition()<cr>"      , "Split"        },
-    v = { ":vsplit | lua vim.lsp.buf.definition()<cr>"      , "Vsplit"       },
-    t = { ":vsplit | lua vim.lsp.buf.definition()<cr><C-W>T", "Tab"          },
-  },
-
-  i = { -- Insert
-    name = "Insert",
-    d = { ":r !w_date_tag<cr>kJA",   "Date"              },
-    t = { ":r !w_time_exact<cr>kJA", "Exact Time"        },
-    q = { ":r !w_time_qhour<cr>kJA", "Quarter-hour Time" },
-  },
-
-  l = { -- LLM / ChatGPT
-    name = "LLM / ChatGPT",
-    a = { ":ChatGPTActAs<cr>",                       "ChatGPT ActAs"         },
-    c = { ":ChatGPTCompleteCode<cr>",                "ChatGPT CompleteCode"  },
-    e = { ":ChatGPTEditWithInstructions<cr>",        "ChatGPT Edit"          },
-    g = { ":ChatGPT<cr>",                            "ChatGPT"               },
-    r = { -- ChatGPT Run
-      name = "Run",
-      ["t"] = {":ChatGPTRun add_tests<cr>",          "Generate Tests"    },
-      ["r"] = {":ChatGPTRun code_readability<cr>",   "Code Readability"  },
-    },
-  },
-
-  o = { -- Obsidian
-    name = "Obsidian",
-    o = { ":! obs %<cr><cr>", "Open" },
-  },
-
-  u = { -- Unit Test
-    name = "UnitTest",
-    f = { ":lua require('neotest').run.run(vim.fn.expand('%'))<cr>", "Current File"    },
-    t = { ":lua require('neotest').run.run()<cr>",                   "Nearest Test"    },
-    w = { ":lua require('neotest').watch.toggle()<cr>",              "Toggle Watcher"  },
-    p = { ":lua require('neotest').output_panel.toggle()<cr>",       "Toggle Panel"    },
-    s = { ":lua require('neotest').output_summary.toggle()<cr>",     "Toggle Summary"  },
-  },
-
-  t = { -- Terminal Management
-    name = "Terminal",
-    f = { "<cmd>ToggleTerm direction=float<cr>", "Float"  },
-    s = { ":split  | terminal<cr>A"            , "Split"  },
-    v = { ":vsplit | terminal<cr>A"            , "Vsplit" },
-    t = { ":vsplit | terminal<cr><C-W>T"       , "Tab"    },
-  },
-
-  x = { ":ToggleCheckbox<cr>", "Toggle Checkbox"},
-
-}
-
-if WhichKeyOk then WhichKey.register(n_keymap, n_opts) end
-
-local i_opts = {
-  mode    = "i",     -- INSERT mode
-  prefix  = "\\",    -- slash key
-  buffer  = nil,     -- Give a buffer num for buffer local mapping
-  silent  = true,    -- use `silent` when creating keymaps
-  noremap = true,    -- use `noremap` when creating keymaps
-  nowait  = true,    -- use `nowait` when creating keymaps
-}
-
-
-local i_keymap = {
-
-  i = { -- Insert
-    name = "Insert",
-    d = { "<esc>:r !w_date_tag<cr>kJA",   "Date"              },
-    t = { "<esc>:r !w_time_exact<cr>kJA", "Exact Time"        },
-    q = { "<esc>:r !w_time_qhour<cr>kJA", "Quarter-hour Time" },
-  },
-
-}
-
-
-if WhichKeyOk then WhichKey.register(i_keymap, i_opts) end
-
-local v_opts = {
-  mode    = "v",     -- VISUAL mode
-  prefix  = "\\",    -- slash key
-  buffer  = nil,     -- Give a buffer num for buffer local mapping
-  silent  = true,    -- use `silent` when creating keymaps
-  noremap = true,    -- use `noremap` when creating keymaps
-  nowait  = true,    -- use `nowait` when creating keymaps
-}
-
-local v_keymap = {
-
-  s = { -- Sort
-    name = "Sort",
-    a = { -- Ascending
-      name = "Ascending",
-      ["1"] = {":!sort -k1<CR>", "Column 1"},
-      ["2"] = {":!sort -k2<CR>", "Column 2"},
-      ["3"] = {":!sort -k3<CR>", "Column 3"},
-      ["4"] = {":!sort -k4<CR>", "Column 4"},
-      ["5"] = {":!sort -k5<CR>", "Column 5"},
-      ["6"] = {":!sort -k6<CR>", "Column 6"},
-      ["7"] = {":!sort -k7<CR>", "Column 7"},
-      ["8"] = {":!sort -k8<CR>", "Column 8"},
-      ["9"] = {":!sort -k9<CR>", "Column 9"},
-    },
-    d = { -- Descending
-      name = "Descending",
-      ["1"] = {":!sort -rk1<CR>", "Column 1"},
-      ["2"] = {":!sort -rk2<CR>", "Column 2"},
-      ["3"] = {":!sort -rk3<CR>", "Column 3"},
-      ["4"] = {":!sort -rk4<CR>", "Column 4"},
-      ["5"] = {":!sort -rk5<CR>", "Column 5"},
-      ["6"] = {":!sort -rk6<CR>", "Column 6"},
-      ["7"] = {":!sort -rk7<CR>", "Column 7"},
-      ["8"] = {":!sort -rk8<CR>", "Column 8"},
-      ["9"] = {":!sort -rk9<CR>", "Column 9"},
-    },
-  },
-
-  x = { ":lua require('user.util.togglecheck').vtoggle()<cr>", "Toggle Checkbox Block"},
-
-}
-
-if WhichKeyOk then WhichKey.register(v_keymap, v_opts) end
-
+WhichKey.add(opts3)
