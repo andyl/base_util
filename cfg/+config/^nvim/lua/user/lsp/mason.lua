@@ -1,6 +1,7 @@
 -- mason
 
--- :h mason-commands
+-- :help mason-commands
+-- :help lsp-config
 --
 -- :Mason                    | opens a graphical status window
 -- :MasonInstall <pkg> ...   | installs/reinstalls the provided packages
@@ -22,17 +23,11 @@
 -- https://github.com/neovim/nvim-lspconfig
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 --
--- LSPCONFIG HELP:
--- :help lsp-config
---
 -- EXAMPLE LSP config:
 -- https://github.com/megalithic/dotfiles/blob/94cce5036d8fc19c74b7a259f084560246194fe5/config/nvim/lua/mega/plugins/lsp/servers.lua#L477-L546
---
 
-require 'mason'.setup()
-
--- auto-install servers
--- server names at https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+-- server names
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 
 local servers = {
   -- "cssls",        -- css
@@ -52,19 +47,15 @@ local servers = {
   "tsserver",        -- javascript and typescript
 }
 
-require 'mason-lspconfig'.setup {
-  ensure_installed = servers,
-}
-
--- handlers attach servers to buffers
-
 local function server_config(server)
   local tgt = "user.lsp.lang." .. server
   local opts = require(tgt)
   require "lspconfig"[server].setup(opts)
 end
 
-require 'mason-lspconfig'.setup_handlers {
+require('mason').setup()
+require('mason-lspconfig').setup { ensure_installed = servers }
+require('mason-lspconfig').setup_handlers {
   function(server_name)  -- default handler sets up all servers
     require "lspconfig"[server_name].setup {}
   end,

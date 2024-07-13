@@ -1,6 +1,6 @@
-# LSP Settings
+# LSP Lang Settings
 
-These files are for LSP configuration.
+These Lang settings are for LSP configuration.
 
 ## Mason 
 
