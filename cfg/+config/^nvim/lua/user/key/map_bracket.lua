@@ -19,7 +19,6 @@ local nl_keymap = {
   ["T"] = {":tabfirst<cr>",           "Tabs :tabfirst"},
   ["q"] = {":cprevious<cr>",          "Quickfix :cprevious"},
   ["Q"] = {":cfirst<cr>",             "Quickfix :cfirst"}
-
 }
 
 if WhichKeyOk then WhichKey.register(nl_keymap, nl_opts) end
