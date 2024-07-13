@@ -78,8 +78,8 @@ vim.cmd "nnoremap / :set hlsearch<cr>/"
 -- vim.cmd "imap <F4> <esc>:set hlsearch! hlsearch?<cr>i<right>"
 
 -- Hide error and notification messages
-vim.cmd "nmap <F5> :lua require('notify').dismiss()<cr>"
-vim.cmd "imap <F5> <esc>:lua require('notify').dismiss()<cr>i<right>"
+vim.cmd "nmap <F3> :lua require('notify').dismiss()<cr>"
+vim.cmd "imap <F3> <esc>:lua require('notify').dismiss()<cr>i<right>"
 
 -- TRANSITION FROM INSERT TO NORMAL MODE
 KmT("<esc>", "<C-\\><C-n>")         -- terminal mode

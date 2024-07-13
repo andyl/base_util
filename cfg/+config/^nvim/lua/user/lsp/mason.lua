@@ -60,8 +60,38 @@ require('mason-lspconfig').setup_handlers {
     require "lspconfig"[server_name].setup {}
   end,
   ["elixirls"] = function() server_config("elixirls") end,
-  ["emmet_ls"] = function() server_config("emmet_ls") end,
+  -- ["emmet_ls"] = function() server_config("emmet_ls") end,
   ["jsonls"] = function() server_config("jsonls") end,
   ["lua_ls"] = function() server_config("lua_ls") end,
-  ["tailwindcss"] = function() server_config("tailwindcss") end,
+  -- ["tailwindcss"] = function() server_config("tailwindcss") end,
 }
+
+local lspconfig = require("lspconfig")
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+lspconfig.tailwindcss.setup({
+  capabilities = capabilities,
+  filetypes = { "html", "elixir", "eelixir", "heex" },
+  init_options = {
+    userLanguages = {
+      elixir = "html-eex",
+      eelixir = "html-eex",
+      heex = "html-eex",
+    },
+  },
+  settings = {
+    tailwindCSS = {
+      experimental = {
+        classRegex = {
+          'class[:]\\s*"([^"]*)"',
+        },
+      },
+    },
+  },
+})
+
+lspconfig.emmet_ls.setup({
+  capabilities = capabilities,
+  filetypes = { "html", "css", "elixir", "eelixir", "heex" },
+})
+

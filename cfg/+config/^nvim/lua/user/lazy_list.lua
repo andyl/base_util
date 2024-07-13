@@ -17,6 +17,7 @@ require 'user/lzp/ts_playground',        -- display treesitter AST
 require 'user/lzp/ts_comment',           -- TS commenting
 require 'user/lzp/ts_textobj',           -- TS text objects
 -- WHICH-KEY
+require 'user/lzp/key_mini',             -- utility modules for which_key
 require 'user/lzp/key_which_key',        -- key mapper and displayer
 -- LSP
 require 'user/lzp/lsp_config',           -- enable LSP servers and set properties
