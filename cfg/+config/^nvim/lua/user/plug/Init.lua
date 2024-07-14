@@ -12,7 +12,6 @@ require "user.plug.tabline"
 require "user.plug.comment"
 require "user.plug.treesitter"
 require "user.plug.easypick"
-require "user.plug.luasnip"      -- snippets
 require "user.plug.gitsigns"     -- git change  bars
 require "user.plug.noice"        -- command line update
 require "user.plug.neodev"       -- dev utilities

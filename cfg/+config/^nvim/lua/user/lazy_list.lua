@@ -30,9 +30,7 @@ require 'user/lzp/lsp_none_ls',          -- for formatters and linters
 'hrsh7th/cmp-path',                      -- path completions
 'hrsh7th/cmp-cmdline',                   -- cmdline completions
 'hrsh7th/cmp-nvim-lsp',                  -- lsp integration
--- SNIPPETS
-'L3MON4D3/LuaSnip',                      -- snippet engine
-'saadparwaiz1/cmp_luasnip',              -- snippet completions
+require 'user/lzp/cmp_snippets',         -- snippet configuration
 -- NOICE
 'MunifTanjim/nui.nvim',                  -- UI component library
 'rcarriga/nvim-notify',                  -- notifications library
