@@ -2,7 +2,6 @@
 vim.cmd('filetype plugin on')
 vim.cmd('filetype indent on')
 
--- Define a new filetype for Deno shebangs
 vim.cmd([[
 augroup deno_shebang
   autocmd!
