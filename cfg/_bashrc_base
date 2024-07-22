@@ -383,6 +383,7 @@ PSWhite='\[\e[0;37m\]'        # White
 PSxGreen='\[\e[38;5;028m\]'      # #008700 
 PSxSkyBlue='\[\e[38;5;039m\]'    # #00afff 
 PSxSlateBlue='\[\e[38;5;099m\]'  # #875fff 
+PSxViolet='\[\e[38;5;128m\]'     # #9400D3
 PSxGold3='\[\e[38;5;178m\]'      # #d7af00
 PSxGrey50='\[\e[38;5;244m\]'     # #808080
 PSxGrey62='\[\e[38;5;247m\]'     # #9e9e9e
@@ -562,9 +563,9 @@ term_title() {
 
 if [ -f $GITC ]; then
   source $GITC
-  PS1="\`term_title\`${PSxGrey50}\u@\h-\$?${PSClear}${PSYellow}\`__git_ps1\`${PSClear} \w${PSRed}>${PSClear} " 
-else
-  PS1="\`term_title\`${PSxGrey50}\u@\h-\$?${PSClear}\w${PSRed}>${PSClear} " 
+  PS1="\`term_title\`${PSxViolet}\u@\h-\$?${PSClear}${PSYellow}\`__git_ps1\`${PSClear} \w${PSRed}>${PSClear} " 
+else                             
+  PS1="\`term_title\`${PSxViolet}\u@\h-\$?${PSClear}\w${PSRed}>${PSClear} " 
 fi
 
 ###########################################################################
