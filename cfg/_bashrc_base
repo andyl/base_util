@@ -92,7 +92,7 @@ export PATH=$PATH:$GOPATH/bin
 #
 # armv6l is 32-bit (arm32)  (RPi0)
 # armv7l is 32-bit (arm32)  (RPi4 and Odroid XU4)
-# armv8l is 64-git (arm64)
+# armv8l is 64-bit (arm64)
 # armhf: 32-bit (Beaglebone)
 # armel: 32-bit
 
@@ -275,22 +275,13 @@ alias hg="history | tail -30 | grep"
 alias Hg="history | grep"
 alias HG="history | grep"
 
-alias  g="git"
-
 alias gopen="gio open"
 
 alias kar="killall -9 ruby ; pkill -f spring"
 alias kan="killall -9 node"
 alias kac="killall -9 code ; killall -9 code"
 
-alias mm="middleman"
 alias update="sudo apt-get update ; sudo apt-get upgrade -y -q"
-
-alias cy="crystal"
-
-alias jek="jekyll"
-alias bej="bundle exec jekyll"
-alias bejek="bundle exec jekyll"
 
 ###########################################################################
 # RUST 
@@ -475,6 +466,15 @@ shopt -s histverify   # history expansion
 CPD=~/.complete
 
 [ -d $CPD ] && for f in $CPD/*.sh $CPD/*.bash; do source $f; done
+
+###########################################################################
+# GIT 
+
+alias   g="git"
+alias  gs="git stash"
+alias gsh="git stash --help"
+alias  gw="git worktree"
+alias gwh="git worktree --help"
 
 ###########################################################################
 # BASH PROMPT VARIABLES
