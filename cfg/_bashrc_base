@@ -471,9 +471,9 @@ CPD=~/.complete
 # GIT 
 
 alias   g="git"
-alias  gs="git stash"
+alias gst="git stash"
 alias gsh="git stash --help"
-alias  gw="git worktree"
+alias gwk="git worktree"
 alias gwh="git worktree --help"
 
 ###########################################################################
