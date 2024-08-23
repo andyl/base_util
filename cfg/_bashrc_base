@@ -6,6 +6,7 @@ export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/b
 
 ###########################################################################
 
+
 # sudo timedatectl set-timezone <tz> -> updates /etc/timezone
 #      timedatectl                   -> shows timezone
 #      date                          -> shows time
@@ -604,4 +605,9 @@ export PROMPT_COMMAND="history -a; history -n; ${PROMPT_COMMAND}"   # mem/file s
 # if this is interactive shell, then bind hh to Ctrl-r
 # if [[ $- =~ .*i.* ]]; then bind '"\\C-r": "\\C-ahh \\C-j"'; fi
 # bind '"\\C-r": "\\C-a hh \\C-j"'
+
+###########################################################################
+# DIRENV 
+
+eval "$(direnv hook bash)" 
 
