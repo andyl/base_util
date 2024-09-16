@@ -41,9 +41,9 @@ sourcefile ~/.bashrc_fzf
 
 ###########################################################################
 # EDITOR
-export EDITOR="nvim"
-export VISUAL="nvim"
-export TERMINAL="terminator"
+export EDITOR="nvexec"
+export VISUAL="nvexec"
+export TERMINAL="kitty"
 
 ###########################################################################
 # NPM
