@@ -11,7 +11,7 @@ ruby 3.3.0
 rust 1.80.1
 zig 0.9.1
 deno 1.34.0
-#
+##
 
 # ----- command-line tools 
 zoxide 0.9.4
