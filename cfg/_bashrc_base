@@ -157,8 +157,8 @@ alias ttn="in_tmux && tm new-window -c '#{pane_current_path}'"       # tmux tab 
 alias tts="in_tmux && tm split-window -v -c '#{pane_current_path}'"  # tmux tab split
 alias ttv="in_tmux && tm split-window -h -c '#{pane_current_path}'"  # tmux tab split vert
 
-# run command in tmux 
-tmr() {
+# execute command in tmux (tmux go!)
+tmx() {
   no_tmux && tmux new \; send "$*" C-m \; attach
 }
 
@@ -196,6 +196,7 @@ tma() {
   fi
 }
 
+alias  tmr="tmuxinator"
 alias   tm="TERM=xterm-256color tmux"  # start tmux 
 alias tmls="tmux ls"                   # list active sessions 
 
