@@ -4,7 +4,7 @@ erlang 27.1.1
 golang 1.23.2
 java openjdk-20.0.1
 julia 1.8.2
-lua 5.1.5
+lua 5.4.6
 nodejs 22.9.0
 php 8.1.12
 ruby 3.3.0
