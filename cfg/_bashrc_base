@@ -557,7 +557,15 @@ tm_title() {
   echo "z>$(pwd_short)"
 }
 
-term_title() { 
+# MIX COMPLETIONS
+function sourcemix() {
+  local mc=.mix_completions.bash 
+  [ -f $mc ] && source $mc || source ~/$mc
+}
+
+# PS1 Exec
+ps1_exec() { 
+  sourcemix 
   xterm_title "$(ssh_htag)$(pwd_short)"
 }
 
@@ -566,9 +574,9 @@ term_title() {
 
 if [ -f $GITC ]; then
   source $GITC
-  PS1="\`term_title\`${PSxViolet}\u@\h-\$?${PSClear}${PSYellow}\`__git_ps1\`${PSClear} \w${PSRed}>${PSClear} " 
+  PS1="\`ps1_exec\`${PSxViolet}\u@\h-\$?${PSClear}${PSYellow}\`__git_ps1\`${PSClear} \w${PSRed}>${PSClear} " 
 else                             
-  PS1="\`term_title\`${PSxViolet}\u@\h-\$?${PSClear}\w${PSRed}>${PSClear} " 
+  PS1="\`ps1_exec\`${PSxViolet}\u@\h-\$?${PSClear}\w${PSRed}>${PSClear} " 
 fi
 
 ###########################################################################
