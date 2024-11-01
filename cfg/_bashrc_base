@@ -560,7 +560,7 @@ tm_title() {
 # MIX COMPLETIONS
 function sourcemix() {
   local mc=.mix_completions.bash 
-  [ -f $mc ] && source $mc || source ~/$mc
+  [ -f $mc ] && source $mc || sourcefile ~/$mc
 }
 
 # PS1 Exec
