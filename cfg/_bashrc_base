@@ -6,7 +6,6 @@ export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/b
 
 ###########################################################################
 
-
 # sudo timedatectl set-timezone <tz> -> updates /etc/timezone
 #      timedatectl                   -> shows timezone
 #      date                          -> shows time
@@ -277,13 +276,31 @@ alias hg="history | tail -30 | grep"
 alias Hg="history | grep"
 alias HG="history | grep"
 
-alias gopen="gio open"
-
 alias kar="killall -9 ruby ; pkill -f spring"
 alias kan="killall -9 node"
 alias kac="killall -9 code ; killall -9 code"
 
 alias update="sudo apt-get update ; sudo apt-get upgrade -y -q"
+
+gopen() {
+    # If no arguments and stdin is not a terminal (i.e., being piped to)
+    if [ $# -eq 0 ] && [ ! -t 0 ]; then
+        # Read from stdin
+        while read -r url; do
+            [ -n "$url" ] && gio open "$url"
+        done
+    # If arguments were provided
+    elif [ $# -gt 0 ]; then
+        # Process each argument as a URL
+        for url in "$@"; do
+            gio open "$url"
+        done
+    else
+        echo "Usage: gopen URL [URL...]"
+        echo "   or: echo URL | gopen"
+        return 1
+    fi
+}
 
 ###########################################################################
 # RUST 
