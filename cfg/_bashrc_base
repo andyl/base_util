@@ -42,7 +42,7 @@ sourcefile ~/.bashrc_fzf
 # EDITOR
 export EDITOR="/home/aleak/util/code_util/bin/nvexec"
 export VISUAL="/home/aleak/util/code_util/bin/nvexec"
-export TERMINAL="kitty"
+export TERMINAL="ghostty"
 
 ###########################################################################
 # NPM
