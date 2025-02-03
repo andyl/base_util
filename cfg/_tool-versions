@@ -10,6 +10,7 @@ php 8.1.12
 ruby 3.3.0
 rust 1.81.0
 zig 0.13.0
+python 3.13.1
 deno 2.0.0
 
 # ----- command-line tools 
