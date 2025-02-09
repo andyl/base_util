@@ -261,8 +261,8 @@ function path() {                    # show path elements, one per line
 alias xx="exit"                  # kill the shell...
 alias xss="xfce4-screenshooter"  # screen shot
 
-alias sc="sudo systemctl"        # systemd job control
-alias jc="sudo journalctl"       # systemd log viewer
+alias sc="TERM=xterm-256color sudo systemctl"        # systemd job control
+alias jc="TERM=xterm-256color sudo journalctl"       # systemd log viewer
 
 alias  be="bundle exec"
 alias ber="bundle exec rails"
