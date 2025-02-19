@@ -32,6 +32,10 @@ sourcefile ~/.util_path           # define $UTIL_PATH
 export PATH=$UTIL_PATH:$PATH      # setup util PATH 
 
 ###########################################################################
+# ASDF
+export PATH=$HOME/.asdf/shims:$PATH  # setup asdf shims
+
+###########################################################################
 # ALTERNATE UTIL
 sourcefile ~/.bashrc_code
 sourcefile ~/.bashrc_date
