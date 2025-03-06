@@ -523,7 +523,7 @@ GITC=$CPD/git-completion.sh
 pwd_short() { 
   BASE=$(pwd) 
   if [ "$BASE" = "$HOME" ]; then
-    echo "- ~ -"
+    echo "~"
   else
     echo "$(echo $BASE | sed "s|$HOME|~|")"
   fi
