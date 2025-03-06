@@ -521,7 +521,12 @@ GITC=$CPD/git-completion.sh
 # PROMPT & TITLE UTILITIES
 
 pwd_short() { 
-  pwd | sed "s|$HOME|~|"
+  BASE=$(pwd) 
+  if [ "$BASE" = "$HOME" ]; then
+    echo "$HOME"
+  else
+    echo "$(echo $BASE | sed "s|$HOME|~|")"
+  fi
 }
 
 is_ssh() { 
