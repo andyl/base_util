@@ -42,10 +42,6 @@ alias srcbash='. ~/.bashrc'
 # tail any apache/php error files
 alias tailall='tailf /var/log/httpd/<my-website>-error_log'
 
-# git number aliases (https://github.com/holygeek/git-number)
-alias gn='git number'
-alias ga='git number add'
-
 # change the current directory to the parent directory that contains the .git folder
 alias git-root='cd "`git rev-parse --show-toplevel`"'
 
