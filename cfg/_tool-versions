@@ -11,6 +11,7 @@ lua 5.4.6
 nodejs 23.6.0
 php 8.1.12
 python 3.13.1
+uv 0.6.11
 ruby 3.3.0
 rust 1.81.0
 zig 0.14.0
