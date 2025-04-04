@@ -73,7 +73,8 @@ puts "UTIL_DIR:  #{util_dir}"
 # one path entry for each *_util/bin directory
 # ~/.util_path is sourced in .bashrc
 File.open('.util_path', 'w') {|f| f.puts "export UTIL_PATH=#{util_path.join(':')}"}
-puts "UTIL_PATH: #{util_path}"
+short_util_path = util_path.map {|path| path.gsub(util_dir + "/", "")}
+puts "UTIL_PATH: #{short_util_path.join(":")}"
 
 # create symlinks for each cfg file...
 target_spec = util_dir + '/*_util/cfg/_*'
