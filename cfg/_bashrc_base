@@ -606,10 +606,12 @@ ps1_exec() {
 if [ -f $GITC ]; then
   source $GITC
   # PS1="\`ps1_exec\`${PSxViolet}\u@\h-\$?${PSClear}${PSYellow}\`__git_ps1\`${PSClear} \w${PSRed}>${PSClear} " 
-  PS1="\`ps1_exec\`- \u@\h-\$?\`__git_ps1\` \w > " 
+  # PS1="\`ps1_exec\`- \u@\h-\$?\`__git_ps1\` \w > " 
+  PS1="\`ps1_exec\`${PSxSkyBlue}\u@\h-\$?\`__git_ps1\` \w > ${PSClear}" 
 else                             
   # PS1="\`ps1_exec\`${PSxViolet}\u@\h-\$?${PSClear}\w${PSRed}>${PSClear} " 
-  PS1="\`ps1_exec\`- \u@\h-\$?\w > " 
+  # PS1="\`ps1_exec\`- \u@\h-\$?\w > " 
+  PS1="\`ps1_exec\`${PSxSlateBlue}\u@\h-\$?\w > ${PSClear}" 
 fi
 
 ###########################################################################
