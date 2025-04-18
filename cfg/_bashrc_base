@@ -68,8 +68,9 @@ export PATH=$PATH:~/.mix/escripts
 export ERL_AFLAGS="-kernel shell_history enabled"
 
 export ELIXIR_EDITOR="terminator -e 'nvim +__LINE__ __FILE__'"  # for IEx
-export   PLUG_EDITOR="nvim-ghostty:__FILE__:__LINE__"           # for PhoenixLiveReload 
+# export   PLUG_EDITOR="nvim-ghostty:__FILE__:__LINE__"           # for PhoenixLiveReload 
 # export   PLUG_EDITOR="nvim-kitty:__FILE__:__LINE__"             # for PhoenixLiveReload 
+export PLUG_EDITOR="vscode://file/__FILE__:__LINE__"
 
 alias    ie="iex -pa ~/.iex 2> /dev/null"
 alias   iex="iex -pa ~/.iex 2> /dev/null"
