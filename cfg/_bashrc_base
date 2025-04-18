@@ -482,6 +482,7 @@ shopt -s dirspell     # spell correction during <tab> completion
 shopt -s extglob      # extended glob pattern matching
 shopt -s globstar     # enable **/<filename> matching
 shopt -s histverify   # history expansion
+shopt -s checkwinsize # for long lines
 
 ###########################################################################
 # AUTOCOMPLETE
@@ -595,6 +596,7 @@ function sourcemix() {
 ps1_exec() { 
   sourcemix 
   xterm_title "$(ssh_htag)$(pwd_short)"
+  printf ""
 }
 
 ###########################################################################
@@ -602,9 +604,11 @@ ps1_exec() {
 
 if [ -f $GITC ]; then
   source $GITC
-  PS1="\`ps1_exec\`${PSxViolet}\u@\h-\$?${PSClear}${PSYellow}\`__git_ps1\`${PSClear} \w${PSRed}>${PSClear} " 
+  # PS1="\`ps1_exec\`${PSxViolet}\u@\h-\$?${PSClear}${PSYellow}\`__git_ps1\`${PSClear} \w${PSRed}>${PSClear} " 
+  PS1="\`ps1_exec\`\u@\h-\$?\`__git_ps1\` \w > " 
 else                             
-  PS1="\`ps1_exec\`${PSxViolet}\u@\h-\$?${PSClear}\w${PSRed}>${PSClear} " 
+  # PS1="\`ps1_exec\`${PSxViolet}\u@\h-\$?${PSClear}\w${PSRed}>${PSClear} " 
+  PS1="\`ps1_exec\`\u@\h-\$?\w > " 
 fi
 
 ###########################################################################
