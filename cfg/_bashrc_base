@@ -67,10 +67,15 @@ tkill () {
 export PATH=$PATH:~/.mix/escripts      
 export ERL_AFLAGS="-kernel shell_history enabled"
 
+# for IEx 
 export ELIXIR_EDITOR="terminator -e 'nvim +__LINE__ __FILE__'"  # for IEx
-# export   PLUG_EDITOR="nvim-ghostty:__FILE__:__LINE__"           # for PhoenixLiveReload 
-# export   PLUG_EDITOR="nvim-kitty:__FILE__:__LINE__"             # for PhoenixLiveReload 
-export PLUG_EDITOR="vscode://file/__FILE__:__LINE__"
+
+# for PhoenixLiveReload 
+# https://github.com/phoenixframework/phoenix_live_reload#jumping-to-heex-function-definitions
+# see ~/.local/share/applications/README.md | setup_nvim_launchers
+export PLUG_EDITOR="nvim-ghostty:__FILE__:__LINE__"           
+# export PLUG_EDITOR="nvim-kitty:__FILE__:__LINE__"          
+# export PLUG_EDITOR="vscode://file/__FILE__:__LINE__"
 
 alias    ie="iex -pa ~/.iex 2> /dev/null"
 alias   iex="iex -pa ~/.iex 2> /dev/null"
@@ -603,15 +608,31 @@ ps1_exec() {
 ###########################################################################
 # BASH PROMPT
 
-if [ -f $GITC ]; then
-  source $GITC
+psmin() {
+  PS1='\h > '
+}
+
+psdn() { 
+  PS1='\h \w > '
+}
+
+psup() {
   # PS1="\`ps1_exec\`${PSxViolet}\u@\h-\$?${PSClear}${PSYellow}\`__git_ps1\`${PSClear} \w${PSRed}>${PSClear} " 
   # PS1="\`ps1_exec\`- \u@\h-\$?\`__git_ps1\` \w > " 
   PS1="\`ps1_exec\`${PSxSkyBlue}\u@\h-\$?\`__git_ps1\` \w > ${PSClear}" 
-else                             
+}
+
+psalt() { 
   # PS1="\`ps1_exec\`${PSxViolet}\u@\h-\$?${PSClear}\w${PSRed}>${PSClear} " 
   # PS1="\`ps1_exec\`- \u@\h-\$?\w > " 
-  PS1="\`ps1_exec\`${PSxSlateBlue}\u@\h-\$?\w > ${PSClear}" 
+  PS1="\`ps1_exec\`${PSxGold3}\u@\h-\$? \w > ${PSClear}" 
+}
+
+if [ -f $GITC ]; then
+  source $GITC
+  psup
+else                             
+  psalt
 fi
 
 ###########################################################################
