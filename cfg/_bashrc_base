@@ -672,7 +672,14 @@ export PROMPT_COMMAND="history -a; history -n; ${PROMPT_COMMAND}"   # mem/file s
 # bind '"\\C-r": "\\C-a hh \\C-j"'
 
 ###########################################################################
+
+# TEMP 
+
+alias rl="ssh zlira"
+
+###########################################################################
 # DIRENV 
 
 eval "$(direnv hook bash)" 
+
 
