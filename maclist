@@ -1,3 +1,0 @@
-#! /usr/bin/env bash 
-
-alldev macaddr | grep mac_addr | cut -d ' ' -f 2-3 | sort | grep '^[in]'
