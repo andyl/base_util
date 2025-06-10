@@ -1,7 +1,8 @@
 # ----- languages 
 
-erlang 27.2.1
-elixir 1.18.3-otp-27
+erlang 27.3.4
+elixir 1.19.0-rc.0-otp-27
+# elixir 1.18.3-otp-27
 
 deno 2.2.1
 golang 1.24.2
