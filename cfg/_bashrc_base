@@ -609,7 +609,7 @@ ps1_exec() {
 # BASH PROMPT
 
 psmin() {
-  PS1='\h > '
+  PS1='> '
 }
 
 psdn() { 
