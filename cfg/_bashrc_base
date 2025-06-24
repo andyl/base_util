@@ -609,17 +609,16 @@ ps1_exec() {
 # BASH PROMPT
 
 psmin() {
-  PS1='> '
+  PS1='-> '
 }
 
 psdn() { 
-  PS1='\h \w > '
+  # PS1='\h \w > '
+  PS1='-> '
 }
 
 psup() {
-  # PS1="\`ps1_exec\`${PSxViolet}\u@\h-\$?${PSClear}${PSYellow}\`__git_ps1\`${PSClear} \w${PSRed}>${PSClear} " 
-  # PS1="\`ps1_exec\`- \u@\h-\$?\`__git_ps1\` \w > " 
-  PS1="\`ps1_exec\`${PSxSkyBlue}\u@\h-\$?\`__git_ps1\` \w > ${PSClear}" 
+  PS1="\`ps1_exec\`${PSxSkyBlue}\u@\h\`__git_ps1\` \w > ${PSClear}" 
 }
 
 psalt() { 
