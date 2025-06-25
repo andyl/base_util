@@ -618,13 +618,13 @@ psdn() {
 }
 
 psup() {
-  PS1="\`ps1_exec\`${PSxSkyBlue}\u@\h\`__git_ps1\` \w |> ${PSClear}" 
+  PS1="\`ps1_exec\`${PSxSkyBlue}\u@\h\`__git_ps1\` \w|> ${PSClear}" 
 }
 
 psalt() { 
   # PS1="\`ps1_exec\`${PSxViolet}\u@\h-\$?${PSClear}\w${PSRed}>${PSClear} " 
   # PS1="\`ps1_exec\`- \u@\h-\$?\w > " 
-  PS1="\`ps1_exec\`${PSxGold3}\u@\h-\$? \w |> ${PSClear}" 
+  PS1="\`ps1_exec\`${PSxGold3}\u@\h-\$? \w|> ${PSClear}" 
 }
 
 if [ -f $GITC ]; then
