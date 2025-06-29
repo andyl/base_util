@@ -612,6 +612,10 @@ psmin() {
   PS1="\`ps1_exec\`-> "
 }
 
+psm() {
+  PS1="\`ps1_exec\`-> "
+}
+
 psd() { 
   PS1="\`ps1_exec\`-> "
 }
