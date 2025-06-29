@@ -609,27 +609,24 @@ ps1_exec() {
 # BASH PROMPT
 
 psmin() {
-  PS1='-> '
+  PS1="\`ps1_exec\`-> "
 }
 
-psdn() { 
-  # PS1='\h \w > '
-  PS1='-> '
+psd() { 
+  PS1="\`ps1_exec\`-> "
 }
 
-psup() {
+psu() {
   PS1="\`ps1_exec\`${PSxSkyBlue}\u@\h\`__git_ps1\` \w|> ${PSClear}" 
 }
 
 psalt() { 
-  # PS1="\`ps1_exec\`${PSxViolet}\u@\h-\$?${PSClear}\w${PSRed}>${PSClear} " 
-  # PS1="\`ps1_exec\`- \u@\h-\$?\w > " 
-  PS1="\`ps1_exec\`${PSxGold3}\u@\h-\$? \w|> ${PSClear}" 
+  PS1="\`ps1_exec\`${PSxGold3}\u@\h\`__git_ps1\` \w|> ${PSClear}" 
 }
 
 if [ -f $GITC ]; then
   source $GITC
-  psup
+  psu
 else                             
   psalt
 fi
