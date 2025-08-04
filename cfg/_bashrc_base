@@ -661,6 +661,13 @@ alias pgc="xterm_title '$(ssh_htag)pgc $(pwd_short)'; TERM=xterm sudo -u postgre
 alias pga="cd ~/.pgadmin4 && source bin/activate && python lib/python2.7/site-packages/pgadmin4/pgAdmin4.py"
 
 ###########################################################################
+# NVIDIA 
+
+sourcefile ~/util/code_util/bin/nvidia/ENV.sh 
+
+alias nvtop="TERM=xterm-256color nvtop"
+
+###########################################################################
 # HISTORY CONFIGURATION
 
 export HH_CONFIG=hicolor         # get more colors
@@ -674,7 +681,6 @@ export PROMPT_COMMAND="history -a; history -n; ${PROMPT_COMMAND}"   # mem/file s
 # bind '"\\C-r": "\\C-a hh \\C-j"'
 
 ###########################################################################
-
 # TEMP 
 
 alias rl="ssh zlira"
@@ -683,5 +689,4 @@ alias rl="ssh zlira"
 # DIRENV 
 
 eval "$(direnv hook bash)" 
-
 
