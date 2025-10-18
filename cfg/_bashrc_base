@@ -50,6 +50,10 @@ export TERMINAL="xterm-256color"
 export PATH=$PATH:~/.npm-global/bin:./node_modules/.bin    
 
 ###########################################################################
+# OPENCODE
+export PATH=/home/aleak/.opencode/bin:$PATH
+
+###########################################################################
 # UTIL FUNCTIONS
 
 tkill () {
