@@ -1,8 +1,10 @@
-# ----- languages 
+# ----- elixir / erlang 
 
 erlang 28.1
 # elixir 1.18.4-otp-28
 elixir 1.19.0-otp-28
+
+# ----- other languages 
 
 deno 2.2.1
 golang 1.24.2
@@ -12,12 +14,16 @@ lua 5.4.6
 nodejs 24.10.0
 php 8.1.12
 python 3.13.1
-uv 0.9.3
 ruby 3.3.0
 rust 1.81.0
 zig 0.14.0
 
+# ----- managers 
+
+uv 0.9.3
+
 # ----- command-line tools 
+
 zoxide 0.9.4
 tree-sitter 0.22.6
 
