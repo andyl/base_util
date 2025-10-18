@@ -22,18 +22,14 @@ zoxide 0.9.4
 tree-sitter 0.22.6
 
 # ----- adding plugins
-# asdf plugin-add elixir
+# asdf plugin add elixir
 
 # ----- installing runtimes
 # asdf update elixir 
 # asdf list all elixir 
 # asdf install elixir 1.9.2
 
-# ----- elixir configuration
-# elixir> mix local.hex
-# elixir> mix local.rebar
-# elixir> mix archive.install hex phx_new
-# elixir> mix archive.install github andyl/mix_templates
-# elixir> mix archive.install github andyl/mix_generator
-# elixir> mix archive.install hex sobelow
-# use `ex_config` to do this all in one shot...
+# ----- default configuration
+# elixir | ~/.default-mix-commands
+# nodejs | ~/.default-npm-packages
+# ruby   | ~/.default-gems

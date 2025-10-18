@@ -1,4 +1,29 @@
 # default gems for asdf
+# https://github.com/asdf-vm/asdf-ruby#default-gems 
+
 bundler
-pry
+colored
+dotenv
+erlang-etf
+eth
+faraday
+github-markdown
+gmail
+highline
+hirb
+multipart-post
 neovim
+net-ping
+net-sftp
+net-ssh
+octokit
+pry
+pry-stack_explorer
+radix62
+sinatra
+slop
+solargraph
+specific_install
+thor
+tmuxinator
+whenever
