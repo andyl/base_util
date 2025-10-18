@@ -211,9 +211,9 @@ alias tmls="tmux ls"                   # list active sessions
 
 # create new tab in current terminator window
 # https://askubuntu.com/questions/380315/command-to-open-new-tab-in-the-current-terminal
-alias tn="xdotool key ctrl+shift+t"
-alias ts="xdotool key ctrl+shift+s"
-alias tv="xdotool key ctrl+shift+v"
+alias tn="xdotool key ctrl+shift+t && sleep 0.2"
+alias ts="xdotool key ctrl+shift+s && sleep 0.2"
+alias tv="xdotool key ctrl+shift+v && sleep 0.2"
 
 # see also TMUX comnmands (ttn, tts, ttv) above...
 
