@@ -19,7 +19,7 @@ php 8.1.12
 python 3.14.0
 ruby 3.3.0
 rust 1.81.0
-zig 0.14.0
+zig 0.15.2
 
 # ----- managers 
 
