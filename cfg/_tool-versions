@@ -16,7 +16,7 @@ julia 1.8.2
 lua 5.4.6
 nodejs 24.10.0
 php 8.1.12
-python 3.14.0
+python 3.12.7
 ruby 3.3.0
 rust 1.81.0
 zig 0.15.2
