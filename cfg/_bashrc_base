@@ -625,7 +625,9 @@ psd() {
 }
 
 psu() {
-  PS1="\`ps1_exec\`${PSxSkyBlue}\u@\h\`__git_ps1\` \w|> ${PSClear}" 
+  # PS1="\`ps1_exec\`${PSxSkyBlue}\u@\h\`__git_ps1\` \w|> ${PSClear}" 
+  # PS1='$(ps1_exec)\[\e[38;5;39m\]\u@\h\[\e[0m\]$(__git_ps1 " \[\e[38;5;208m\]%s\[\e[0m\]") \[\e[38;5;39m\]\w\[\e[0m\]|> '
+  PS1='$(ps1_exec)\[\e[38;5;39m\]\u@\h\[\e[0m\]$(__git_ps1 " \[\e[38;5;208m\]%s\[\e[0m\]") \[\e[38;5;39m\]\w|>\[\e[0m\] '
 }
 
 psalt() { 
