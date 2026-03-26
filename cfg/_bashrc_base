@@ -75,7 +75,9 @@ export PATH=$PATH:~/.mix/escripts
 export ERL_AFLAGS="-kernel shell_history enabled"
 
 # for IEx 
-export ELIXIR_EDITOR="terminator -e 'nvim +__LINE__ __FILE__'"  # for IEx
+export ELIXIR_EDITOR="ghostty -e 'nvim +__LINE__ __FILE__'"  # for IEx
+
+export PROGEN_EDITOR="ghostty -e bash -c 'source ~/.bashrc_base && nvim __FILE__'"
 
 # for PhoenixLiveReload 
 # https://github.com/phoenixframework/phoenix_live_reload#jumping-to-heex-function-definitions
