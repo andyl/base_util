@@ -156,7 +156,7 @@ setlocal syntax=votl
 endif
 setlocal tabstop=2
 setlocal tagcase=
-setlocal tags=~/.vim/vimoutliner/vo_tags.tag,tags,gems.tags,~/util/org/notes/tags
+setlocal tags=~/.vim/vimoutliner/vo_tags.tag,tags,gems.tags,~/vault/org/notes/tags
 setlocal textwidth=78
 setlocal thesaurus=
 setlocal noundofile
