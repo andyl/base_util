@@ -484,6 +484,14 @@ alias gsh="git stash --help"
 alias gwk="git worktree"
 alias gwh="git worktree --help"
 
+# quickly resolve merge conflicts
+git_resolve() { 
+  # Fix ALL conflicted files at once 
+  git ls-files -u | cut -f2 | sort -u | xargs git checkout --theirs
+  git add .
+  git rebase --continue 
+}
+
 ###########################################################################
 # BASH PROMPT VARIABLES
 
