@@ -153,19 +153,7 @@ live_tmux() {
   return $(echo $TMUX | grep tmux > /dev/null) 
 }
 
-# return 0 (true) if $TMUX contains 'tmate', otherwise 1 (false)
-live_tmate() {
-  return $(echo $TMUX | grep tmate > /dev/null) 
-}
-
 # note also: ~/.complete has completions for tmux and tmuxinator
-
-# show the links that others can use to join the sharing session
-alias tmate-links="tmate show-messages | grep -v clear | grep -v ssh.tmate.io | cut -d ' ' -f 1-6 --complement"
-
-sessionkey() {
-  tmate show-messages | grep 'ssh session:' | cut -d ' ' -f10 | tee >(xclip -selection clipboard)
-}
 
 # create new tab in current tmux window
 alias ttn="in_tmux && tm new-window -c '#{pane_current_path}'"       # tmux tab new
