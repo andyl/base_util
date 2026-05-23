@@ -33,22 +33,22 @@ cfg symlinking supports nested config directories.
 
 Nested paths must be encoded using the following filename conventions:
 -> a single '+' character to show the dotfile root
--> a single '^' character to show where to built the symlink
+-> a single '%' character to show where to built the symlink
 
 ## Examples
 
 -------------------------------------------------
 For example:
-~/util/base_util/cfg/+config/app/^subdir/myfile
+~/util/base_util/cfg/+config/app/%subdir/myfile
 
 Will generate:
-~/.config/app/subdir -> ~/util/base_util/cfg/+config/app/^subdir
+~/.config/app/subdir -> ~/util/base_util/cfg/+config/app/%subdir
 
 -------------------------------------------------
 For example:
 ~/util/base_util/cfg/+config/^app/myfile
 
 Will generate:
-~/.config/app -> ~/util/base_util/cfg/+config/^app
+~/.config/app -> ~/util/base_util/cfg/+config/%app
 
 ## END

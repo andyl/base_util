@@ -108,16 +108,16 @@ end
 #
 # Nested paths must be encoded using the following filename conventions:
 # -> a single '+' character to show the dotfile root
-# -> a single '^' character to show where to build the symlink
+# -> a single '%' character to show where to build the symlink
 # -------------------------------------------------
 # For example:
-# ~/util/base_util/cfg/+config/app/^subdir/myfile
+# ~/util/base_util/cfg/+config/app/%subdir/myfile
 #
 # Will generate:
-# ~/.config/app/subdir -> ~/util/base_util/cfg/+config/app/^subdir
+# ~/.config/app/subdir -> ~/util/base_util/cfg/+config/app/%subdir
 # -------------------------------------------------
 
-target_spec = util_dir + '/*_util/cfg/+*/**/^*'
+target_spec = util_dir + '/*_util/cfg/+*/**/[%^]*'
 target_list = Dir.glob(target_spec).sort.uniq
 
 return unless target_list.length > 0
@@ -128,15 +128,15 @@ end
 
 puts "Generating deep links for #{util_dir}/*_util/cfg"
 results = target_list.reduce([]) do |acc, elem|
-  next(acc) if elem.count('^') != 1
+  next(acc) if elem.count('%^') != 1 
 
   util_base = elem.split('cfg').first + 'cfg/'
   src_path  = '+' + elem.split('+').last
   src_array = src_path.split('/')
-  link_idx  = src_array.index {|el| el.count('^') > 0}
+  link_idx  = src_array.index {|el| el.count('%^') > 0}
   src_link  = util_base + src_array[0..link_idx].join('/')
-  tgt_base  = src_array[0..link_idx - 1].join('/').gsub('^', '').gsub('+', '.')
-  tgt_link  = src_array[0..link_idx].join('/').gsub('^', '').gsub('+', '.')
+  tgt_base  = src_array[0..link_idx - 1].join('/').gsub(/[%^]/, '').gsub('+', '.')
+  tgt_link  = src_array[0..link_idx].join('/').gsub(/[%^]/, '').gsub('+', '.')
   next(acc) if File.exist?(tgt_link) && File.symlink?(tgt_link) && File.readlink(tgt_link) == src_link
 
   acc + [OpenStruct.new(src_path: src_path, tgt_base: tgt_base, tgt_link: tgt_link, src_link: src_link)]
