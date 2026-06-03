@@ -2,13 +2,14 @@
 # vim: set filetype=bash :
 # Startup file for bash - goes in the user home directory 
 
-export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:~/.bin:~/.local/bin:~/var/data/bin/$(uname -m):~/dks/bin:
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:~/.pkg/Bin:~/.bin:~/.local/bin:~/data/bin/$(uname -m):~/dks/bin:
 
 ###########################################################################
 
 # sudo timedatectl set-timezone <tz> -> updates /etc/timezone
 #      timedatectl                   -> shows timezone
 #      date                          -> shows time
+
 export TZ="America/Los_Angeles"
 
 alias udate='date -u +"%y-%m-%d_%H:%M UTC"'
@@ -19,7 +20,6 @@ function sourcefile() {
   [ -f $1 ] && source $1
 }
 
-sourcefile ~/.rails_env
 sourcefile ~/.bashu_aliases
 sourcefile ~/.bashu_functions
 sourcefile ~/.bashu_marks
@@ -43,18 +43,8 @@ sourcefile ~/.bashrc_fzf
 export PATH=$HOME/.asdf/shims:$PATH  # setup asdf shims
 
 ###########################################################################
-# EDITOR
-export EDITOR="/home/aleak/util/code_util/bin/nvexec"
-export VISUAL="/home/aleak/util/code_util/bin/nvexec"
-export TERMINAL="xterm-256color"
-
-###########################################################################
 # NPM
 export PATH=$PATH:~/.npm-global/bin:./node_modules/.bin    
-
-###########################################################################
-# OPENCODE
-export PATH=/home/aleak/.opencode/bin:$PATH
 
 ###########################################################################
 # UTIL FUNCTIONS
