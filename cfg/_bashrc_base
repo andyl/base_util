@@ -2,7 +2,7 @@
 # vim: set filetype=bash :
 # Startup file for bash - goes in the user home directory 
 
-export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:~/.pkg/Bin:~/.bin:~/.local/bin:~/data/bin/$(uname -m):~/dks/bin:
+export PATH=~/.pkg/Bin:~/.bin:~/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:~/data/bin/$(uname -m):~/dks/bin:
 
 ###########################################################################
 
