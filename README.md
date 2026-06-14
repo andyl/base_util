@@ -28,8 +28,8 @@ the ~/.config directory.  To support this, the
 cfg symlinking supports nested config directories.
 
 Nested paths must be encoded using the following filename conventions:
--> a single '+' character to show the dotfile root
--> a single '%' character to show where to built the symlink
+- a single '+' character to show the dotfile root
+- a single '%' character to show where to built the symlink
 
 ## Examples
 
