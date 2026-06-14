@@ -1,9 +1,5 @@
 # Dotfile and Utility Scripts
 
-## Test 
-
-~/src/datacat/README.md 
-
 ## Usage
 
 To use:
@@ -51,4 +47,3 @@ For example:
 Will generate:
 ~/.config/app -> ~/util/base_util/cfg/+config/%app
 
-## END
