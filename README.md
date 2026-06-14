@@ -3,10 +3,10 @@
 ## Usage
 
 To use:
-  mkdir ~/util
-  cd ~/util
-  git clone git://github.com/andyl/base_util.git
-  base_util/init
+- mkdir ~/util
+- cd ~/util
+- git clone git://github.com/andyl/base_util.git
+- base_util/init
 
 ## Layout
 
