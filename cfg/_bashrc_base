@@ -639,6 +639,8 @@ ps1_exec() {
   printf ""
 }
 
+export PROMPT_COMMAND=('history -a' 'history -n' 'ps1_exec')
+
 ###########################################################################
 # BASH PROMPT
 
@@ -647,23 +649,23 @@ __git_ps1_wrapped() {
 }
 
 psmin() {
-  PS1="\`ps1_exec\`-> "
+  # PS1="\`ps1_exec\`-> "
+  PS1="-> "
 }
 
 psm() {
-  PS1="\`ps1_exec\`-> "
-}
-
-psd() { 
-  PS1="\`ps1_exec\`-> "
+  # PS1="\`ps1_exec\`-> "
+  PS1="-> "
 }
 
 psu() {
-  PS1='$(ps1_exec)\[\e[38;5;39m\]\u@\h\[\e[0m\]$(__git_ps1_wrapped) \[\e[38;5;39m\]\w|>\[\e[0m\] '
+  # PS1='$(ps1_exec)\[\e[38;5;39m\]\u@\h\[\e[0m\]$(__git_ps1_wrapped) \[\e[38;5;39m\]\w|>\[\e[0m\] '
+  PS1='\[\e[38;5;39m\]\u@\h\[\e[0m\]$(__git_ps1_wrapped) \[\e[38;5;39m\]\w|>\[\e[0m\] '
 }
 
 psalt() { 
-  PS1="\`ps1_exec\`${PSxGold3}\u@\h\`__git_ps1\` \w|> ${PSClear}" 
+  # PS1="\`ps1_exec\`${PSxGold3}\u@\h\`__git_ps1\` \w|> ${PSClear}" 
+  PS1="${PSxGold3}\u@\h\`__git_ps1\` \w|> ${PSClear}" 
 }
 
 if [ -f $GITC ]; then
@@ -713,7 +715,6 @@ shopt -s histappend              # append new history items to .bash_history
 export HISTCONTROL=ignorespace   # leading space hides commands from history
 export HISTFILESIZE=10000        # increase history file size (default is 500)
 export HISTSIZE=${HISTFILESIZE}  # increase history size (default is 500)
-export PROMPT_COMMAND="history -a; history -n; ${PROMPT_COMMAND}"   # mem/file sync
 # if this is interactive shell, then bind hh to Ctrl-r
 # if [[ $- =~ .*i.* ]]; then bind '"\\C-r": "\\C-ahh \\C-j"'; fi
 # bind '"\\C-r": "\\C-a hh \\C-j"'
