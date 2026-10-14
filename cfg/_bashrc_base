@@ -40,7 +40,12 @@ sourcefile ~/.bashrc_fzf
 
 ###########################################################################
 # ASDF
-export PATH=$HOME/.asdf/shims:$PATH  # setup asdf shims
+# export PATH=$HOME/.asdf/shims:$PATH  # setup asdf shims
+
+###########################################################################
+# MISE 
+
+eval "$(mise activate bash)"
 
 ###########################################################################
 # NPM
