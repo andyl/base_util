@@ -5,15 +5,15 @@ bundler
 colored
 dotenv
 # erlang-etf
-eth
+# eth
 faraday
-github-markdown
+# github-markdown
 # gmail
 highline
 hirb
 multipart-post
 neovim
-net-ping
+# net-ping
 net-sftp
 net-ssh
 octokit
