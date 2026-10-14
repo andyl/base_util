@@ -1,14 +1,14 @@
-# default gems for asdf
+# default gems for mise
 # https://github.com/asdf-vm/asdf-ruby#default-gems 
 
 bundler
 colored
 dotenv
-erlang-etf
+# erlang-etf
 eth
 faraday
 github-markdown
-gmail
+# gmail
 highline
 hirb
 multipart-post
@@ -18,12 +18,12 @@ net-sftp
 net-ssh
 octokit
 pry
-pry-stack_explorer
+# pry-stack_explorer
 radix62
 sinatra
-slop
+# slop
 solargraph
 specific_install
 thor
-tmuxinator
+# tmuxinator
 whenever
