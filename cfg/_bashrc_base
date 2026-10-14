@@ -133,13 +133,15 @@ tkill () {
 
 ###########################################################################
 # ELIXIR/ERLANG
+
 export PATH=$PATH:~/.mix/escripts      
 export ERL_AFLAGS="-kernel shell_history enabled"
 
-# for IEx 
 export ELIXIR_EDITOR="ghostty -e 'nvim +__LINE__ __FILE__'"  # for IEx
 
 export PROGEN_EDITOR="ghostty -e bash -c 'source ~/.bashrc_base && nvim __FILE__'"
+
+export COMPOSER_EDITOR="ghostty -e 'nvim +__LINE__ __FILE__'"  
 
 # for PhoenixLiveReload 
 # https://github.com/phoenixframework/phoenix_live_reload#jumping-to-heex-function-definitions
@@ -627,14 +629,16 @@ tm_title() {
 }
 
 # MIX COMPLETIONS
-function sourcemix() {
-  local mc=.mix_completions.bash 
-  [ -f $mc ] && source $mc || sourcefile ~/$mc
-}
+# function sourcemix() {
+  # local mc=.mix_completions.bash 
+  # [ -f $mc ] && source $mc || sourcefile ~/$mc
+  # local cc=.composer_completions.bash 
+  # [ -f $cc ] && source $cc 
+# }
 
 # PS1 Exec
 ps1_exec() { 
-  sourcemix 
+  # sourcemix 
   xterm_title "$(ssh_htag)$(pwd_short)"
   printf ""
 }
