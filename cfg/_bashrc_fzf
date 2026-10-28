@@ -11,16 +11,8 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd -d 8 -H --type directory"
 
 ###########################################################################
-# FZF Path 
-if [[ ! "$PATH" == */home/aleak/.fzf/bin* ]]; then
-  PATH="${PATH:+${PATH}:}/home/aleak/.fzf/bin"
-fi
-
-# Auto-completion
-sourcefile /home/aleak/.fzf/shell/completion.bash
-
-# Key bindings
-sourcefile /home/aleak/.fzf/shell/key-bindings.bash
+# Key bindings + completion (fzf >= 0.48)
+command -v fzf >/dev/null && eval "$(fzf --bash)"
 
 # Aliases
 alias fnv='nvim $(fzf)'
