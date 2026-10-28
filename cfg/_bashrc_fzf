@@ -14,12 +14,13 @@ export FZF_ALT_C_COMMAND="fd -d 8 -H --type directory"
 # Key bindings + completion (fzf >= 0.48)
 command -v fzf >/dev/null && eval "$(fzf --bash)"
 
+###########################################################################
 # Aliases
 alias fnv='nvim $(fzf)'
 alias fcd='pushdp $(fd -d 8 -H --type directory | fzf)'
-
 alias fz="fzf --preview 'bat --color \"always\" {}'"
 
+###########################################################################
 # redefine fzf_cd to use `pushdp` instead of `cd`
 __fzf_cd__ () 
 { 
@@ -28,6 +29,7 @@ __fzf_cd__ ()
     dir=$(eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse --bind=ctrl-z:ignore $FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS" $(__fzfcmd) +m) && printf 'pushdp %q' "$dir"
 }
 
+###########################################################################
 # kill processes
 fzf_kill() {
     local pids=$(
