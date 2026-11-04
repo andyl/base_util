@@ -2,8 +2,8 @@
 #
 # Completes addresses one segment at a time, from _build/composer/index,
 # without starting the BEAM: steps (cb_std:setup:credo) for
-# `mix composer.step.{run,show,help,edit}`, recipes (cb_lab/lv/base) for
-# `mix composer.recipe.{run,show,help,edit}`, and listing stems (cb_lab/,
+# `mix composer.step.{run,show,help,edit}`, recipes (cb_wip/lv/base) for
+# `mix composer.recipe.{run,show,help,edit}`, and listing stems (cb_wip/,
 # cb_std:cluster:) for `mix composer.recipe.list` and `mix composer.step.list`.
 # A bare word completes to cookbook names and to the recipes or steps it
 # names; a leading / or : is the project's own cookbook. Every other `mix`
@@ -164,7 +164,7 @@ _composer_mix_complete() {
   local mode=""
   case ${COMP_WORDS[1]-} in
     composer.step.run | composer.step.show | composer.step.help | composer.step.edit) mode=step ;;
-    composer.recipe.run | composer.recipe.show | composer.recipe.help | composer.recipe.edit) mode=recipe ;;
+    composer.recipe.run | composer.recipe.show | composer.recipe.help | composer.recipe.edit | composer.recipe.graph) mode=recipe ;;
     composer.recipe.list) mode=rlist ;;
     composer.step.list) mode=slist ;;
   esac
