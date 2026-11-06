@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+
+# pgrm - drop postgres databases matching a wildcard
+#
+# usage: pgrm [-y] <pattern>    e.g. pgrm 'myapp_test*'
+#   -y  skip the confirmation prompt
+
+# databases that must never be dropped
+protected=(postgres template_base)
+
+yes=false
+[[ "$1" == "-y" ]] && { yes=true; shift; }
+
+if [[ -z "$1" ]]; then
+  echo "usage: pgrm [-y] <pattern>" >&2
+  exit 1
+fi
+
+# glob -> LIKE: escape \ % _ ', then * -> %, ? -> _
+like=$(printf '%s' "$1" | sed -e 's/[\\%_]/\\&/g' -e "s/'/''/g" -e 's/\*/%/g' -e 's/?/_/g')
+
+mapfile -t dbs < <(sudo -u postgres psql -X -At -c "
+  SELECT datname FROM pg_database
+  WHERE NOT datistemplate AND datname NOT IN ('postgres', 'template_base')
+    AND datname LIKE '$like'
+  ORDER BY datname")
+
+if (( ${#dbs[@]} == 0 )); then
+  echo "no databases match '$1'"
+  exit 0
+fi
+
+printf '  %s\n' "${dbs[@]}"
+
+if ! $yes; then
+  read -r -p "drop ${#dbs[@]} database(s)? [y/N] " ans
+  [[ "$ans" =~ ^[Yy] ]] || { echo "aborted"; exit 1; }
+fi
+
+for db in "${dbs[@]}"; do
+  for p in "${protected[@]}"; do
+    if [[ "$db" == "$p" ]]; then
+      echo "refusing to drop protected database '$db'" >&2
+      continue 2
+    fi
+  done
+  ident=${db//\"/\"\"}
+  sudo -u postgres psql -X -q -c "DROP DATABASE \"$ident\" WITH (FORCE)" && echo "dropped $db"
+done
