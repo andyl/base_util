@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# pgc - open a psql console as the postgres user
+
+source ~/.bashrc_base
+
+xterm_title "$(ssh_htag)pgc $(pwd_short)"
+TERM=xterm exec sudo -u postgres psql "$@"

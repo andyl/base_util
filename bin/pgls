@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+# pgls - list postgres databases, optionally filtered by a wildcard
+#
+# usage: pgls [pattern]    e.g. pgls 'myapp_*'
+
+pattern="${1:-*}"
+
+# glob -> LIKE: escape \ % _ ', then * -> %, ? -> _
+like=$(printf '%s' "$pattern" | sed -e 's/[\\%_]/\\&/g' -e "s/'/''/g" -e 's/\*/%/g' -e 's/?/_/g')
+
+sudo -u postgres psql -X -q -P footer=off -c "
+  SELECT datname AS database,
+         pg_get_userbyid(datdba) AS owner,
+         pg_size_pretty(pg_database_size(oid)) AS size
+  FROM pg_database
+  WHERE NOT datistemplate AND datname LIKE '$like'
+  ORDER BY datname"
