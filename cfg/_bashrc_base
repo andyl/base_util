@@ -196,7 +196,7 @@ alias host_disk="df"
 alias portview="sudo ss -tulpn"
 
 ###########################################################################
-# TMUX / TMUXINATOR / TMATE
+# TMUX 
 
 # check for active TMUX session
 no_tmux() {
@@ -248,9 +248,9 @@ tms() {
 }
 
 # set session name and run a command 
-tmsr() {
-  no_tmux && tmux new -s $1 \; send "${*:2}" C-m \; attach
-}
+# tmsr() {
+#   no_tmux && tmux new -s $1 \; send "${*:2}" C-m \; attach
+# }
 
 # if no_tmux attach to session
 # TODO: add auto-complete
@@ -264,9 +264,19 @@ tma() {
   fi
 }
 
-alias  tmr="tmuxinator"
-alias   tm="TERM=xterm-256color tmux"  # start tmux 
-alias tmls="tmux ls"                   # list active sessions 
+# alias   tm="TERM=xterm-256color tmux"  # start tmux 
+
+# how to get completion for this?
+tm() {
+  export TERM=xterm-256color
+  case "$1" in
+    rm)  shift; command tmux kill-session -t "$@" ;;
+    use) shift
+         if [ -n "$TMUX" ]; then command tmux switch-client -t "$@"
+         else command tmux attach-session -t "$@"; fi ;;
+    *)   command tmux "$@" ;;
+  esac
+}
 
 ###########################################################################
 # TERMINAL HELPERS (TERMINATOR & DAISY)
