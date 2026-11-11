@@ -231,7 +231,7 @@ __composer_complete() {
 }
 
 # The facet keys of mix composer.search (Composer.Search.facet_keys/0).
-__composer_facet_keys="kind cookbook chapter leaf launch frameworks capability tags provides requires host stability action phase"
+__composer_facet_keys="kind cookbook chapter leaf launch frameworks capability tags provides requires depends_on host stability action phase"
 
 # Completes mix composer.search: a flag, --kind's value or --facet's key.
 __composer_search_complete() {
