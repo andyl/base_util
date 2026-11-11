@@ -196,7 +196,27 @@ alias host_disk="df"
 alias portview="sudo ss -tulpn"
 
 ###########################################################################
+# TUIOS
+
+# TUIOS Wrapper (needs completion...)
+tu() { 
+  tuios
+}
+
+###########################################################################
 # TMUX 
+
+# TMUX Wrapper (needs completion...)
+tm() {
+  export TERM=xterm-256color
+  case "$1" in
+    rm)  shift; command tmux kill-session -t "$@" ;;
+    use) shift
+         if [ -n "$TMUX" ]; then command tmux switch-client -t "$@"
+         else command tmux attach-session -t "$@"; fi ;;
+    *)   command tmux "$@" ;;
+  esac
+}
 
 # check for active TMUX session
 no_tmux() {
@@ -262,20 +282,6 @@ tma() {
   else
     TERM=xterm-256color tmux attach -t $1 
   fi
-}
-
-# alias   tm="TERM=xterm-256color tmux"  # start tmux 
-
-# how to get completion for this?
-tm() {
-  export TERM=xterm-256color
-  case "$1" in
-    rm)  shift; command tmux kill-session -t "$@" ;;
-    use) shift
-         if [ -n "$TMUX" ]; then command tmux switch-client -t "$@"
-         else command tmux attach-session -t "$@"; fi ;;
-    *)   command tmux "$@" ;;
-  esac
 }
 
 ###########################################################################
