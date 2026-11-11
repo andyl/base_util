@@ -17,7 +17,7 @@ alias udate='date -u +"%y-%m-%d_%H:%M UTC"'
 ###########################################################################
 
 function sourcefile() {
-  [ -f $1 ] && source $1
+  [ -f "$1" ] && source "$1"
 }
 
 sourcefile ~/.bashu_aliases
