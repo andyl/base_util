@@ -200,7 +200,7 @@ alias portview="sudo ss -tulpn"
 
 # TUIOS Wrapper (needs completion...)
 tu() { 
-  tuios
+  no_tmux && tuios "$@"
 }
 
 ###########################################################################
