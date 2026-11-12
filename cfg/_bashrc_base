@@ -287,7 +287,12 @@ tma() {
 
 # TUIOS Wrapper (needs completion...)
 tu() {
-  no_tmux && no_tuios && tuios "$@"
+  no_tmux || return
+  if [ $# -eq 0 ]; then
+    no_tuios && tuios new
+  else
+    tuios "$@"
+  fi
 }
 
 # check for active TUIOS session
