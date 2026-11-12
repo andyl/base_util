@@ -286,13 +286,28 @@ tma() {
 # TUIOS - https://tuios.dev
 
 # TUIOS Wrapper (needs completion...)
+
+# tm() {
+#   export TERM=xterm-256color
+#   case "$1" in
+#     rm)  shift; command tmux kill-session -t "$@" ;;
+#     use) shift
+#          if [ -n "$TMUX" ]; then command tmux switch-client -t "$@"
+#          else command tmux attach-session -t "$@"; fi ;;
+#     *)   command tmux "$@" ;;
+#   esac
+# }
+
 tu() {
   no_tmux || return
-  if [ $# -eq 0 ]; then
-    no_tuios && tuios new
-  else
-    tuios "$@"
-  fi
+  case "$1" in
+    "")  no_tuios && tuios new ;;
+    rm)  shift; tuios kill-session "$@" ;;
+    use) shift
+         if [ -n "$TUIOS_SESSION" ]; then tuios switch-session "$@"
+         else tuios attach "$@"; fi ;;
+    *)   tuios "$@" ;;
+  esac
 }
 
 # check for active TUIOS session
