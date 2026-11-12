@@ -196,37 +196,10 @@ alias host_disk="df"
 alias portview="sudo ss -tulpn"
 
 ###########################################################################
-# TUIOS
+# Workmux - https://workmux.dev/
 
-# TUIOS Wrapper (needs completion...)
-tu() {
-  no_tmux && no_tuios && tuios "$@"
-}
-
-# check for active TUIOS session
-no_tuios() {
-  if [ -n "$TUIOS_SESSION" ]; then
-    echo "Live TUIOS Session!!!"
-    return 1
-  fi
-}
-
-in_tuios() {
-  if [ -z "$TUIOS_SESSION" ]; then
-    echo "TUIOS NOT STARTED!"
-    return 1
-  fi
-}
-
-# return 0 (true) if inside TUIOS and its socket is live, otherwise 1 (false)
-live_tuios() {
-  [ -n "$TUIOS_SESSION" ] && [ -S "$TUIOS_SOCKET" ]
-}
-
-# create new tab in current tuios window
-alias tun='in_tuios && tuios new-window --cwd "$PWD"'  # tuios tab new
-alias tus='in_tuios && tuios split-window down'        # tuios tab split
-alias tuv='in_tuios && tuios split-window right'       # tuios tab split vert
+alias wm="workmux"
+eval "$(workmux completions bash)"
 
 ###########################################################################
 # TMUX 
@@ -283,7 +256,7 @@ tms() {
   then
   echo -e "Set tmux session name\n  Usage: tms <tmux session name>"
   else
-    if `live_tmux` 
+    if $(live_tmux) 
     then 
     tm rename-session $session 
     else 
@@ -308,6 +281,39 @@ tma() {
     TERM=xterm-256color tmux attach -t $1 
   fi
 }
+
+###########################################################################
+# TUIOS - https://tuios.dev
+
+# TUIOS Wrapper (needs completion...)
+tu() {
+  no_tmux && no_tuios && tuios "$@"
+}
+
+# check for active TUIOS session
+no_tuios() {
+  if [ -n "$TUIOS_SESSION" ]; then
+    echo "Live TUIOS Session!!!"
+    return 1
+  fi
+}
+
+in_tuios() {
+  if [ -z "$TUIOS_SESSION" ]; then
+    echo "TUIOS NOT STARTED!"
+    return 1
+  fi
+}
+
+# return 0 (true) if inside TUIOS and its socket is live, otherwise 1 (false)
+live_tuios() {
+  [ -n "$TUIOS_SESSION" ] && [ -S "$TUIOS_SOCKET" ]
+}
+
+# create new tab in current tuios window
+alias tun='in_tuios && tuios new-window --cwd "$PWD"'  # tuios tab new
+alias tus='in_tuios && tuios split-window down'        # tuios tab split
+alias tuv='in_tuios && tuios split-window right'       # tuios tab split vert
 
 ###########################################################################
 # TERMINAL HELPERS (TERMINATOR & DAISY)
