@@ -287,26 +287,23 @@ tma() {
 
 # TUIOS Wrapper (needs completion...)
 
-# tm() {
-#   export TERM=xterm-256color
-#   case "$1" in
-#     rm)  shift; command tmux kill-session -t "$@" ;;
-#     use) shift
-#          if [ -n "$TMUX" ]; then command tmux switch-client -t "$@"
-#          else command tmux attach-session -t "$@"; fi ;;
-#     *)   command tmux "$@" ;;
-#   esac
-# }
+tu_killme() { 
+  live_tuios || { echo "Not in a live TUIOS session"; return 1; }
+  tuios kill-session "$TUIOS_SESSION" 
+}
+
+alias tuxx="tu_killme"
 
 tu() {
   no_tmux || return
   case "$1" in
-    "")  no_tuios && tuios new ;;
-    rm)  shift; tuios kill-session "$@" ;;
-    use) shift
-         if [ -n "$TUIOS_SESSION" ]; then tuios switch-session "$@"
-         else tuios attach "$@"; fi ;;
-    *)   tuios "$@" ;;
+    "")     no_tuios && tuios new ;;
+    rm)     shift; tuios kill-session "$@" ;;
+    use)    shift
+            if [ -n "$TUIOS_SESSION" ]; then tuios switch-session "$@"
+            else tuios attach "$@"; fi ;;
+    killme) tu_killme ;;
+    *)      tuios "$@" ;;
   esac
 }
 
