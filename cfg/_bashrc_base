@@ -289,7 +289,11 @@ tma() {
 
 tu_killme() { 
   live_tuios || { echo "Not in a live TUIOS session"; return 1; }
-  tuios kill-session "$TUIOS_SESSION" 
+  # $TUIOS_SESSION goes stale after a rename; ask the daemon for the live name
+  local name
+  name=$(tuios session-info --json | jq -r '.session_name // empty')
+  [ -n "$name" ] || { echo "Could not look up the TUIOS session name"; return 1; }
+  tuios kill-session "$name"
 }
 
 alias tuxx="tu_killme"
