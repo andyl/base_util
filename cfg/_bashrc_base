@@ -223,23 +223,36 @@ alias wm="workmux"
 # eval "$(workmux completions bash)"
 
 ###########################################################################
-# TMUX 
+# MULTIPLEXER NESTING GUARD
+
+# tmux and tuios share key bindings, so neither may run under the other,
+# even across ssh. LC_MUX names the live multiplexer, and the ssh wrapper
+# forwards it (sshd accepts LC_* by default). no_tmux and no_tuios check it.
+[ -n "$TMUX" ]          && export LC_MUX=tmux
+[ -n "$TUIOS_SESSION" ] && export LC_MUX=tuios
+
+ssh() { command ssh -o SendEnv=LC_MUX "$@"; }
+
+###########################################################################
+# TMUX
 
 # TMUX Wrapper (needs completion...)
 tm() {
   export TERM=xterm-256color
   case "$1" in
+    "")  no_tuios && command tmux ;;
     rm)  shift; command tmux kill-session -t "$@" ;;
     use) shift
          if [ -n "$TMUX" ]; then command tmux switch-client -t "$@"
-         else command tmux attach-session -t "$@"; fi ;;
+         else no_tuios && command tmux attach-session -t "$@"; fi ;;
     *)   command tmux "$@" ;;
   esac
 }
 
-# check for active TMUX session
+# check for active TMUX session, here or upstream over ssh
+# (TERM=screen*/tmux* comes from tmux's default-terminal, and ssh forwards it)
 no_tmux() {
-  if [ -n "$TMUX" ]; then
+  if [ -n "$TMUX" ] || [ "$LC_MUX" = tmux ] || [[ $TERM == screen* || $TERM == tmux* ]]; then
     echo "Live TMUX Session!!!"
     return 1
   fi
@@ -266,7 +279,7 @@ alias ttv="in_tmux && tm split-window -h -c '#{pane_current_path}'"  # tmux tab 
 
 # execute command in tmux (tmux go!)
 tmx() {
-  no_tmux && tmux new \; send "$*" C-m \; attach
+  no_tmux && no_tuios && tmux new \; send "$*" C-m \; attach
 }
 
 # if live_tmux rename the session 
@@ -280,8 +293,8 @@ tms() {
     if $(live_tmux) 
     then 
     tm rename-session $session 
-    else 
-    tmux new -s $session
+    else
+    no_tuios && tmux new -s $session
     fi
   fi
 }
@@ -299,7 +312,7 @@ tma() {
   then
   echo -e "Attach to an new or existing tmux session\n  Usage: tma <tmux session name>"
   else
-    TERM=xterm-256color tmux attach -t $1 
+    no_tuios && TERM=xterm-256color tmux attach -t $1
   fi
 }
 
@@ -345,9 +358,9 @@ _tu_complete() {
 }
 complete -F _tu_complete tu
 
-# check for active TUIOS session
+# check for active TUIOS session, here or upstream over ssh
 no_tuios() {
-  if [ -n "$TUIOS_SESSION" ]; then
+  if [ -n "$TUIOS_SESSION" ] || [ "$LC_MUX" = tuios ]; then
     echo "Live TUIOS Session!!!"
     return 1
   fi
