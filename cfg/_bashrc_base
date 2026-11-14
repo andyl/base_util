@@ -20,15 +20,15 @@ function sourcefile() {
   [ -f "$1" ] && source "$1"
 }
 
-sourcefile ~/.bashu_aliases
-sourcefile ~/.bashu_functions
-sourcefile ~/.bashu_marks
-sourcefile ~/.mix_completions.bash 
+[ -f ~/.bashu_aliases ] && source ~/.bashu_aliases
+[ -f ~/.bashu_functions ] && source ~/.bashu_functions
+[ -f ~/.bashu_marks ] && source ~/.bashu_marks
+[ -f ~/.mix_completions.bash ] && source ~/.mix_completions.bash
 
 ###########################################################################
 # BASE UTIL
-sourcefile ~/.util_dir            # define $UTIL_DIR
-sourcefile ~/.util_path           # define $UTIL_PATH
+[ -f ~/.util_dir ] && source ~/.util_dir  # define $UTIL_DIR
+[ -f ~/.util_path ] && source ~/.util_path  # define $UTIL_PATH
 export PATH=$UTIL_PATH:$PATH      # setup util PATH 
 
 ###########################################################################
@@ -38,10 +38,10 @@ eval "$(mise activate bash)"
 
 ###########################################################################
 # ALTERNATE UTIL
-sourcefile ~/.bashrc_code
-sourcefile ~/.bashrc_date
-sourcefile ~/.bashrc_edit
-sourcefile ~/.bashrc_fzf       
+[ -f ~/.bashrc_code ] && source ~/.bashrc_code
+[ -f ~/.bashrc_date ] && source ~/.bashrc_date
+[ -f ~/.bashrc_edit ] && source ~/.bashrc_edit
+[ -f ~/.bashrc_fzf ] && source ~/.bashrc_fzf
 
 ###########################################################################
 # NPM
@@ -776,7 +776,7 @@ alias pga="cd ~/.pgadmin4 && source bin/activate && python lib/python2.7/site-pa
 ###########################################################################
 # NVIDIA 
 
-sourcefile ~/util/code_util/bin/nvidia/ENV.sh 
+[ -f ~/util/code_util/bin/nvidia/ENV.sh ] && source ~/util/code_util/bin/nvidia/ENV.sh
 
 alias nvtop="TERM=xterm-256color nvtop"
 
