@@ -132,6 +132,19 @@ tkill () {
   fi
 }
 
+# where is this function/alias/binary defined?
+# bash records the source file/line of every function, but only reports it
+# under 'extdebug' - so toggle it on just for the lookup
+whence() {
+  [ -z "$1" ] && { echo "Usage: whence <name>"; return 1; }
+  local restore=0
+  shopt -q extdebug || { shopt -s extdebug; restore=1; }
+  declare -F "$1" || type "$1"
+  local rc=$?
+  [ $restore -eq 1 ] && shopt -u extdebug
+  return $rc
+}
+
 ###########################################################################
 # ELIXIR/ERLANG
 
