@@ -298,7 +298,7 @@ tma() {
 ###########################################################################
 # TUIOS - https://tuios.dev
 
-# TUIOS Wrapper (needs completion...)
+# TUIOS Wrapper
 
 tu_killme() { 
   live_tuios || { echo "Not in a live TUIOS session"; return 1; }
@@ -322,6 +322,20 @@ tu() {
     *)      tuios "$@" ;;
   esac
 }
+
+# completion: `tu <tab>` lists subcommands, `tu use|rm <tab>` lists sessions
+_tu_complete() {
+  local cur=${COMP_WORDS[COMP_CWORD]}
+  local IFS=$'\n'
+  case "$COMP_CWORD:${COMP_WORDS[1]}" in
+    1:*)
+      COMPREPLY=($(compgen -W $'use\nrm\nkillme\nls' -- "$cur")) ;;
+    2:use|2:rm)
+      local sessions=$(tuios ls --json 2>/dev/null | jq -r '.[].name' 2>/dev/null)
+      COMPREPLY=($(compgen -W "$sessions" -- "$cur")) ;;
+  esac
+}
+complete -F _tu_complete tu
 
 # check for active TUIOS session
 no_tuios() {
