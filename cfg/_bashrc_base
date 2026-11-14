@@ -321,7 +321,6 @@ tu() {
     killme) tu_killme ;;
     *)      tuios "$@" ;;
   esac
-  clear
 }
 
 # check for active TUIOS session
