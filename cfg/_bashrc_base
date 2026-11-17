@@ -1,8 +1,14 @@
 ###########################################################################
 # vim: set filetype=bash :
-# Startup file for bash - goes in the user home directory 
+# Startup file for bash - goes in the user home directory
 
-export PATH=~/.pkg/Bin:~/.bin:~/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:~/data/bin/$(uname -m):~/dks/bin:
+# File-wide shellcheck exemptions for an rc file:
+#   SC1090/SC1091 - sourced files are host-specific and can't be followed
+#   SC2034        - color vars etc. are defined for interactive/external use
+# shellcheck disable=SC1090,SC1091,SC2034
+
+PATH=~/.pkg/Bin:~/.bin:~/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:~/data/bin/$(uname -m):~/dks/bin:
+export PATH
 
 ###########################################################################
 
@@ -67,22 +73,23 @@ export PATH=$PATH:~/.npm-global/bin:./node_modules/.bin
 
 function pushdp
 {
-  if [ -z "$1" ]; then 
-    pushd
+  if [ -z "$1" ]; then
+    pushd || return
   else
-    stack=$(dirs) ; IFS=' ' ; idx=0 ; pos=0 ; src=`readlink -f $1`
+    local stack idx=0 pos=0 src path tgt IFS=' '
+    stack=$(dirs) ; src=$(readlink -f "$1")
     for path in $stack ; do
-      tgt=`eval echo $path`    # expand ~ character...
+      tgt=$(eval echo "$path")    # expand ~ character...
       if [ "$src" == "$tgt" ]; then
         pos=$idx      
       fi
       ((idx++))
     done
     if [ "$pos" == "0" ]; then
-      pushd $1 > /dev/null 
+      pushd "$1" > /dev/null || return
       echo "pushd $1 | ph for help"
     else
-      pushd +$pos > /dev/null 
+      pushd "+$pos" > /dev/null || return
       echo "pushd $1 | ph for help"
     fi
   fi
@@ -124,11 +131,11 @@ alias pg9='cd ~9'              # go to the Nth dir on the stack
 
 tkill () {
   local NAME=$1
-  if [ -z $NAME ]
+  if [ -z "$NAME" ]
   then
   echo "Usage: tkill <process name>"
   else
-  ps ax | grep $NAME | grep -v grep | cut -f3 -d' ' | xargs kill -9
+  pkill -9 -f "$NAME"
   fi
 }
 
@@ -139,7 +146,8 @@ whence() {
   [ -z "$1" ] && { echo "Usage: whence <name>"; return 1; }
   # bash records no source location for aliases; grep the startup files instead
   if alias "$1" &>/dev/null; then
-    local re=$(printf '%s' "$1" | sed 's/[][\.*^$+?(){}|/]/\\&/g')
+    local re
+    re=$(printf '%s' "$1" | sed 's/[][\.*^$+?(){}|/]/\\&/g')
     grep -nE "^[[:space:]]*alias[[:space:]]+$re=" \
       ~/.bashrc ~/.bashrc_* ~/.bashrc_*.d/*.sh 2>/dev/null |
       awk -F: -v n="$1" '{print n, $2, $1}' | grep . || alias "$1"
@@ -229,7 +237,7 @@ alias tv="xdotool key ctrl+shift+v && sleep 0.2"
 
 ###########################################################################
 # MISC 
-tgt=~/.java_env ; [ -f $tgt ] && source $tgt     # source java support
+tgt=~/.java_env ; [ -f "$tgt" ] && source "$tgt"    # source java support
 
 ###########################################################################
 # ESCAPE KEY SWAPPING
@@ -268,8 +276,9 @@ kb_caps_swapescape 2> /dev/null
 # FUNCTIONS
 
 function path() {                    # show path elements, one per line
-  IFS=:
-  printf "%s\n" $PATH | tr -d \,
+  local -a parts
+  IFS=: read -ra parts <<< "$PATH"
+  printf "%s\n" "${parts[@]}"
 }
 
 ###########################################################################
@@ -474,7 +483,7 @@ shopt -s checkwinsize # for long lines
 
 CPD=~/.complete
 
-[ -d $CPD ] && for f in $CPD/*.sh $CPD/*.bash; do source $f; done
+[ -d "$CPD" ] && for f in "$CPD"/*.sh "$CPD"/*.bash; do [ -f "$f" ] && source "$f"; done
 
 ###########################################################################
 # GIT 
@@ -496,8 +505,8 @@ git_resolve() {
 ###########################################################################
 # BASH PROMPT VARIABLES
 
-export USRNAME=`whoami`
-export SYSNAME=`hostname`
+USRNAME=$(whoami) ; export USRNAME
+SYSNAME=$(hostname) ; export SYSNAME
 
 export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWSTASHSTATE=true
@@ -514,7 +523,8 @@ pwd_short() {
   if [ "$BASE" = "$HOME" ]; then
     echo "~"
   else
-    echo "$(echo $BASE | sed "s|$HOME|~|")"
+    local tilde='~'
+    echo "${BASE/#"$HOME"/$tilde}"
   fi
 }
 
@@ -536,7 +546,7 @@ ssh_prefix() {
 
 ssh_hname() { 
   if is_ssh; then 
-    echo $HOSTNAME
+    echo "$HOSTNAME"
   fi
 }
 
@@ -564,12 +574,12 @@ xterm_title() {
   USAGE="Usage: $XT <title> - sets the xterm title\n To test: $XT Hello World; sleep 2" 
 
   if [ $# -eq 0 ]; then
-    echo -e $USAGE
+    echo -e "$USAGE"
     return 1
   fi
 
   if [[ "$TERM" =~ ^xterm(-256color|-kitty|-ghostty)?$ ]]; then
-    echo -ne "\033]0;$@\007" 
+    echo -ne "\033]0;$*\007"
   fi 
 }
 
@@ -621,8 +631,8 @@ psalt() {
   PS1="${PSxGold3}\u@\h\`__git_ps1\` \w|> ${PSClear}" 
 }
 
-if [ -f $GITC ]; then
-  source $GITC
+if [ -f "$GITC" ]; then
+  source "$GITC"
   psu
 else                             
   psalt
@@ -635,14 +645,14 @@ alias sn="hostname"
 
 PROMPT_FILE=~/.demoprompt
 
-if [ -f $PROMPT_FILE ]
-then 
-  PROMPT_TEXT=`cat $PROMPT_FILE`
+if [ -f "$PROMPT_FILE" ]
+then
+  PROMPT_TEXT=$(< "$PROMPT_FILE")
   PS1="${PSGreen}$PROMPT_TEXT${PSClear}${PSRed}>${PSClear} "
 fi
 
-alias setdemoprompt="echo 'user@host' > $PROMPT_FILE"
-alias deldemoprompt="rm -f $PROMPT_FILE"
+alias setdemoprompt='echo "user@host" > "$PROMPT_FILE"'
+alias deldemoprompt='rm -f "$PROMPT_FILE"'
 
 ###########################################################################
 # POSTGRESS HELPERS
@@ -650,7 +660,7 @@ alias deldemoprompt="rm -f $PROMPT_FILE"
 # pgadmin4 setup instructions -
 # https://askubuntu.com/questions/831262/how-to-install-pgadmin-4-in-desktop-mode-on-ubuntu
 
-alias pgc="xterm_title '$(ssh_htag)pgc $(pwd_short)'; TERM=xterm sudo -u postgres psql"
+alias pgc='xterm_title "$(ssh_htag)pgc $(pwd_short)"; TERM=xterm sudo -u postgres psql'
 alias pga="cd ~/.pgadmin4 && source bin/activate && python lib/python2.7/site-packages/pgadmin4/pgAdmin4.py"
 
 ###########################################################################
