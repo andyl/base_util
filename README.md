@@ -31,7 +31,7 @@ Nested paths must be encoded using the following filename conventions:
 - a single '+' character to show the dotfile root
 - a single '%' character to show where to built the symlink
 
-## Examples
+## Examplez
 
 -------------------------------------------------
 For example:
